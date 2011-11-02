@@ -1,0 +1,274 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- POM Build file for the Keystone Developer Guide -->
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.rackspace.cloud.api.auth</groupId>
+	<artifactId>auth-doc</artifactId>
+	<version>2.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+    <name>Keystone Dev Guide</name>
+     <profiles>                                                                                              
+        <profile>                                                                                           
+            <id>Rackspace Research Repositories</id>                                                        
+            <activation>                                                                                    
+                <activeByDefault>true</activeByDefault>                                                     
+            </activation>                                                                                   
+            <repositories>                                                                                  
+                <repository>                                                                                
+                    <id>rackspace-research</id>                                                             
+                    <name>Rackspace Research Repository</name>                                              
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>              
+                </repository>                                                                               
+            </repositories>                                                                                 
+            <pluginRepositories>                                                                            
+                <pluginRepository>                                                                          
+                    <id>rackspace-research</id>                                                             
+                    <name>Rackspace Research Repository</name>                                              
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>              
+                </pluginRepository>                                                                         
+            </pluginRepositories>                                                                           
+        </profile> 
+         </profiles>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<doctools.version>1.0.6-SNAPSHOT</doctools.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.1.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jettison</groupId>
+			<artifactId>jettison</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<!-- We need Saxon 9 and clouddocs-maven-plugin here to normalize wadls -->
+		<dependency>
+		  <groupId>net.sourceforge.saxon</groupId>
+		  <artifactId>saxon</artifactId>
+		  <version>9.1.0.8</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.rackspace.cloud.api</groupId>
+		  <artifactId>clouddocs-maven-plugin</artifactId>
+		  <version>${doctools.version}</version>
+		</dependency>
+	</dependencies>
+   <build>
+        <resources>
+            <resource>
+                <directory>target/docbkx/pdf</directory>
+                <excludes>
+                    <exclude>**/*.fo</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+      <!-- Unpack the wadl normalization xslts -->
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+      	<artifactId>maven-dependency-plugin</artifactId>
+      	<executions>
+      	  <execution>
+      	    <id>unpack-shared-resources</id>
+      	    <goals>
+      	      <goal>unpack-dependencies</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
+              <includeGroupIds>com.rackspace.cloud.api</includeGroupIds>
+              <includeArtifactIds>clouddocs-maven-plugin</includeArtifactIds>
+              <!-- <includeClassifiers>ns-resources</includeClassifiers> -->
+              <excludeTransitive>true</excludeTransitive>
+	      <includes>**/normalizeWadl/*.xsl</includes>
+            </configuration>
+          </execution>
+      	</executions>
+      </plugin>
+      <!-- Normalize the wadl -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-antrun-plugin</artifactId>
+	<version>1.5</version>
+	<executions>
+	  <execution>
+	    <id>ant</id>
+	    <phase>generate-sources</phase>
+	    <configuration>
+	      <target>
+		<java
+		    jar="${net.sourceforge.saxon:saxon:jar}"
+		    fork="true">
+		  <arg value="-u"/>
+		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/identity-admin.wadl"/>
+		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
+		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/identity-admin.wadl"/>
+		</java>
+		<java
+		    jar="${net.sourceforge.saxon:saxon:jar}"
+		    fork="true">
+		  <arg value="-u"/>
+		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/OS-KSADM-admin.wadl"/>
+		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
+		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/OS-KSADM-admin.wadl"/>
+		</java>
+
+		<java
+		    jar="${net.sourceforge.saxon:saxon:jar}"
+		    fork="true">
+		  <arg value="-u"/>
+		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/OS-KSCATALOG-admin.wadl"/>
+		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
+		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/OS-KSCATALOG-admin.wadl"/>
+		</java>
+
+		<java
+		    jar="${net.sourceforge.saxon:saxon:jar}"
+		    fork="true">
+		  <arg value="-u"/>
+		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/RAX-KSKEY-admin.wadl"/>
+		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
+		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/RAX-KSKEY-admin.wadl"/>
+		</java>
+
+		<java
+		    jar="${net.sourceforge.saxon:saxon:jar}"
+		    fork="true">
+		  <arg value="-u"/>
+		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/OS-KSEC2-admin.wadl"/>
+		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
+		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/OS-KSEC2-admin.wadl"/>
+		</java>
+	      </target>
+	    </configuration>
+	    <goals>
+	      <goal>run</goal>
+	    </goals>
+	  </execution>
+	</executions>
+      </plugin>
+            <plugin>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>clouddocs-maven-plugin</artifactId>
+                <version>${doctools.version}</version>
+                <executions>
+                    <execution>
+		      <id>g1</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+			<configuration>
+			  <highlightSource>false</highlightSource>
+			</configuration>
+                    </execution>
+                    <execution>
+		      <id>g2</id>
+		      <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                <configuration>
+			<!-- These parameters only apply to webhelp -->
+                    <enableDisqus>1</enableDisqus>
+                    <disqusShortname>os-identitydevguide</disqusShortname>
+                    <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                    <googleAnalyticsId>UA-17511903-6</googleAnalyticsId>
+                    <generateToc>
+                        appendix  toc,title
+                        article/appendix  nop
+                        article   toc,title
+                        book      title,figure,table,example,equation
+                        chapter   toc,title
+                        part      toc,title
+                        preface   toc,title
+                        qandadiv  toc
+                        qandaset  toc
+                        reference toc,title
+                        set       toc,title
+                    </generateToc>
+                    <postProcess>
+                        <!-- Copies the figures to the correct location for webhelp -->
+                        <copy todir="${basedir}/target/docbkx/webhelp/identity-dev-guide/figures">
+                            <fileset dir="${basedir}/src/docbkx/img">
+                                <include name="**/*.svg" />
+                            </fileset>
+                        </copy>
+                    	<!-- Copies HTML to a release folder for web site-->   
+
+                    	<copy
+                    		todir="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0">
+                    		<fileset
+                    			dir="${basedir}/target/docbkx/webhelp/identity-dev-guide">
+                    			<include name="**/*" />
+                    		</fileset>
+                    	</copy>
+                        <!--Moves PDF to the needed placement for web site and Google Analytics tracking-->
+                        <move failonerror="false"
+                            file="${basedir}/target/docbkx/pdf/identity-dev-guide.pdf"
+                            tofile="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/identity-dev-guide-2.0.pdf"/>
+                    	
+                <!-- Moves extension PDF and keeps name of the main dev guide -->
+                <copy failonerror="false"
+                	file="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/identity-dev-guide-2.0.pdf"
+                    		tofile="${basedir}/target/docbkx/webhelp/identity-dev-guide/identity-dev-guide.pdf"/>   	
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/RAX-KSKEY-service-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSKEY-service-devguide.pdf"/>
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/OS-KSADM-admin-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSADM-admin-devguide.pdf"/>
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/OS-KSCATALOG-admin-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSCATALOG-admin-devguide.pdf"/>
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/>  
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/>
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/RAX-KSGRP-service-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSGRP-service-devguide.pdf"/>
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/RAX-KSKEY-admin-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/RAX-KSKEY-admin-devguide.pdf"/>
+		        <move failonerror="false"
+		          file="${basedir}/target/docbkx/pdf/OS-KSEC2-admin-devguide.pdf"
+		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSEC2-admin-devguide.pdf"/>
+                    </postProcess>
+		      </configuration>
+		    </execution>
+                </executions>
+                <configuration>
+		  <!-- These parameters apply to pdf and webhelp -->
+                    <xincludeSupported>true</xincludeSupported>
+                    <sourceDirectory>src/docbkx</sourceDirectory>
+                    <includes>
+                    identity-dev-guide.xml,,OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
+	            OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
+                    </includes>
+                    <profileSecurity>reviewer</profileSecurity>
+                    <branding>openstack</branding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
