@@ -4,7 +4,8 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
 	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" status="draft"
 	xml:id="Keystone-Developer-Guide">
-	<title>Keystone Developer Guide</title>
+	<title>Cloud Authentication Client Developer Guide</title>
+	<titleabbrev>Cloud Auth Client DevGuide</titleabbrev>
 	<info>
 		<author>
 			<personname>
@@ -21,7 +22,7 @@
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
-		<productname>Keystone - OpenStack Identity</productname>
+		<productname>Cloud Authentication</productname>
 		<pubdate>2011-11-21</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
