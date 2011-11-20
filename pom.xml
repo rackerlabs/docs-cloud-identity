@@ -294,7 +294,7 @@
 	            OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
                     </includes>
                     <profileSecurity>reviewer</profileSecurity>
-                    <branding>openstack</branding>
+                    <branding>rackspace</branding>
                 </configuration>
             </plugin>
         </plugins>
