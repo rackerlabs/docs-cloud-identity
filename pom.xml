@@ -33,7 +33,7 @@
          </profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<doctools.version>1.0.6-SNAPSHOT</doctools.version>
+		<doctools.version>1.0.7</doctools.version>
 	</properties>
 
 	<dependencies>
@@ -110,7 +110,8 @@
 	<executions>
 	  <execution>
 	    <id>ant</id>
-	    <phase>generate-sources</phase>
+	  	<!-- Rose: Uncomment the following line and comment the corresponding one below to normalize the wadls from github instead of the local ones -->
+<!--	    <phase>generate-sources</phase>-->
 	    <configuration>
 	      <target>
 		<java
@@ -164,6 +165,46 @@
 	  </execution>
 	</executions>
       </plugin>
+        	
+        	<!-- Run the normalize wadl xslts on the source wadl files -->
+        	<plugin>
+        		<groupId>org.codehaus.mojo</groupId>
+        		<artifactId>xml-maven-plugin</artifactId>
+        		<executions>
+        			<execution>
+        				<goals>
+        					<goal>transform</goal>
+        				</goals>
+        				<!-- Rose: Comment the following line and uncomment the corresponding one above to normalize the wadls from github instead of the local ones -->
+        				<phase>generate-sources</phase>
+        			</execution>
+        		</executions>
+        		<configuration>
+        			<transformationSets>
+        				<transformationSet>
+        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        					<!-- Add wadls to be normalized below       -->
+        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        					<dir>/Users/rose.coste/documents/eclipseworkspace/openstack-keystone-github/keystone/keystone/content/admin</dir>
+        					<includes>
+        						<include>*.wadl</include>
+            				</includes>
+        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        					<!-- Add wadls to be normalized above       -->
+        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+        					<stylesheet>${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl</stylesheet>
+        				</transformationSet>
+        			</transformationSets>
+        		</configuration>
+        		<dependencies>
+        			<dependency>
+        				<groupId>net.sf.saxon</groupId>
+        				<artifactId>saxon</artifactId>
+        				<version>8.7</version>
+        			</dependency>
+        		</dependencies>
+        	</plugin> 
+        	
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
@@ -191,19 +232,6 @@
                     <disqusShortname>os-identitydevguide</disqusShortname>
                     <enableGoogleAnalytics>1</enableGoogleAnalytics>
                     <googleAnalyticsId>UA-17511903-6</googleAnalyticsId>
-                    <generateToc>
-                        appendix  toc,title
-                        article/appendix  nop
-                        article   toc,title
-                        book      title,figure,table,example,equation
-                        chapter   toc,title
-                        part      toc,title
-                        preface   toc,title
-                        qandadiv  toc
-                        qandaset  toc
-                        reference toc,title
-                        set       toc,title
-                    </generateToc>
                     <postProcess>
                         <!-- Copies the figures to the correct location for webhelp -->
                         <copy todir="${basedir}/target/docbkx/webhelp/identity-dev-guide/figures">
