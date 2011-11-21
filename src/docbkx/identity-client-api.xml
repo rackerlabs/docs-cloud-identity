@@ -4,9 +4,15 @@
 		xml:id="Service_API_Client_Operations"
 		version="5.0">
 	<title>Service API (Client Operations)</title>
-	  <para>The operations described in this chapter allow clients to authenticate and get access
-		tokens and service endpoints. The following calls are core Keystone Service APIs in version
-		2.0:</para>
+	  <para>The operations described in this chapter allow clients to perform
+	  	functions supported by the core authentication service API;
+	  	If any other authentication operations are valid, they require 
+	  	<link linkend="Extensions-d1e688">extensions to the core API</link>.
+	  </para>
+	  <para>
+		In the authentication service API v2.0, the following calls
+		require only the core API:
+	  </para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tokens" >
 				<wadl:method href="authenticate"/>
@@ -16,4 +22,3 @@
 			</wadl:resource>
 		</wadl:resources>
   </section>
-

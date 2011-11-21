@@ -48,13 +48,16 @@ This operation does not require a request body.</para>'>
             OpenStack cloud services. This document is intended for software developers interested in
             developing applications that utilize the Keystone Identity Service API for authentication.
         </para>
-        <para>This Guide assumes the reader is familiar with RESTful web services, HTTP/1.1, and JSON
-            and/or XML serialization formats. </para>
+        <para>This Guide assumes the reader is familiar with ReSTful
+		web services, HTTP/1.1, and JSON and/or XML serialization
+		formats. </para>
 	<section xml:id="General_Keystone_API_Information-d1e141">
        <title>General API Information</title>
-	<para>The Keystone API is implemented using a RESTful web service interface. All requests to
-	  authenticate and operate against the Keystone API should be performed using SSL over HTTP
-	  (HTTPS) on TCP port 443.</para>
+	<para>The authentication service API is implemented using a ReSTful
+			web service interface. All requests to authenticate and
+			operate against the authentication service should be
+			performed using SSL over HTTP (HTTPS) on TCP port
+			443.</para>
    </section>
 	<section xml:id="Request_Response_Types-d1e149">
 	  <title>Request/Response Types</title>
@@ -97,7 +100,7 @@ This operation does not require a request body.</para>'>
 		</tbody>
 	  </table>
 	  <example>
-		<title>JSON Request with Headers</title>
+		<title>Request with Headers: JSON</title>
 		<programlisting language="xml">
 <xi:include href="samples/samplerequestheader.txt" parse="text"/>
 </programlisting>
@@ -106,7 +109,7 @@ This operation does not require a request body.</para>'>
 </programlisting>
 	  </example>
 	  <example>
-		<title>XML Response with Headers</title>
+		<title>Response with Headers: XML</title>
 		<programlisting language="xml">
 <xi:include href="samples/sampleresponseheader.txt" parse="text"/>
 </programlisting>
@@ -522,7 +525,7 @@ Host: identity.api.openstack.org/v1.1/
 		serviceUnavailable(<errorcode>503</errorcode>)</simpara>
 		&NO_REQUEST;
 		<example>
-			<title>Extension Response: xml</title>
+			<title>Extension Response: XML</title>
 			<programlisting language="xml">
 <xi:include href="samples/extension.xml" parse="text"/>
 			</programlisting>
