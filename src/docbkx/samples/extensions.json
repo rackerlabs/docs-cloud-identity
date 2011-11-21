@@ -4,7 +4,7 @@
       {
         "name": "Reset Password Extension",
         "namespace": "http://docs.rackspacecloud.com/identity/api/ext/rpe/v2.0",
-        "alias": "RS-RPE",
+        "alias": "RAX-RPE",
         "updated": "2011-01-22T13:25:27-06:00",
         "description": "Adds the capability to reset a user's password. The user is emailed when the password has been reset.",
         "links": [
@@ -21,9 +21,9 @@
       }, {
         "name": "User Metadata Extension",
         "namespace": "http://docs.rackspacecloud.com/identity/api/ext/meta/v2.0",
-        "alias": "RS-META",
+        "alias": "RAX-META",
         "updated": "2011-01-12T11:22:33-06:00",
-        "description": "Allows associating arbritrary metadata with a user.",
+        "description": "Allows associating arbitrary metadata with a user.",
         "links": [
           {
             "rel": "describedby",

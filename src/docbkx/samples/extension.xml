@@ -4,11 +4,11 @@
            xmlns:atom="http://www.w3.org/2005/Atom"
            name="User Metadata Extension"
            namespace="http://docs.rackspacecloud.com/identity/api/ext/meta/v2.0"
-           alias="RS-META"
+           alias="RAX-META"
            updated="2011-01-12T11:22:33-06:00">
 
     <description>
-        Allows associating arbritrary metadata with a user.
+        Allows associating arbitrary metadata with a user.
     </description>
 
     <atom:link rel="describedby"
@@ -19,5 +19,3 @@
                href="http://docs.rackspacecloud.com/identity/api/ext/identity-meta.wadl"/>
 
 </extension>
-    
-

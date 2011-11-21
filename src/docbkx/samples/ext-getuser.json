@@ -12,7 +12,7 @@
     "username": "jqsmith",
     "email": "john.smith@example.org",
     "enabled": true,
-    "RS-META:metadata": {
+    "RAX-META:metadata": {
       "values": {
         "MetaKey1": "MetaValue1",
         "MetaKey2": "MetaValue2"
