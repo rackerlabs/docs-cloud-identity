@@ -560,40 +560,43 @@ Host: identity.api.openstack.org/v1.1/
 		</example>
 		<example xml:id="UserEXTJ">
 			<title>Extended User Response: JSON</title>
-			<programlisting language="javascript"><xi:include
-			href="samples/ext-getuser.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="samples/ext-getuser.json" parse="text"/></programlisting>
 		</example>
 	</section>
 	<section xml:id="Faults-d1e908">
 	  <title>Faults</title>
-	  <para>When an error occurs the system will return an HTTP error response code denoting the
-		type of error. The system will also return additional information about the fault in the
-		body of the response. </para>
+	  <para>When an error occurs, the system will return an HTTP error
+			response code denoting the type of error. The system will
+			also return additional information about the fault in the
+			body of the response. </para>
 	  <example>
-		<title>XML Fault Response</title>
+		<title>Fault Response: XML</title>
 		<programlisting language="xml">
 <xi:include href="samples/identity_fault.xml" parse="text"/>
 </programlisting>
 	  </example>
 	  <example>
-		<title>JSON Fault Response</title>
+		<title>Fault Response: JSON</title>
 		<programlisting language="javascript">
 <xi:include href="samples/identity_fault.json" parse="text"/>
 </programlisting>
 	  </example>
-	  <para>The error code is returned in the body of the response for convenience. The message
-		section returns a human readable message. The details section is optional and may contain
-		useful information for tracking down an error (e.g a stack trace). </para>
-	  <para>The root element of the fault (e.g. identityFault) may change depending on the type of error.
-		The following is an example of an itemNotFound error. </para>
+	  <para>The error code is returned in the body of the response. The
+			message section returns a human-readable message. The
+			details section is optional and may contain useful
+			information for tracking down an error. For example, a
+			stack trace may be provided. </para>
+	  <para>The root element of the fault may change depending on the
+			type of error. The following is an example of an
+			itemNotFound error. </para>
 	  <example>
-		<title>XML Not Found Fault</title>
+		<title>Item Not Found Fault: XML</title>
 		<programlisting language="xml">
 <xi:include href="samples/item_not_found.xml" parse="text"/>
 </programlisting>
 	  </example>
 	  <example>
-		<title>JSON Not Found Fault</title>
+		<title>Item Not Found Fault: JSON</title>
 		<programlisting language="javascript">
 <xi:include href="samples/item_not_found.json" parse="text"/>
 </programlisting>
@@ -605,61 +608,64 @@ Host: identity.api.openstack.org/v1.1/
 		<thead>
 		  <tr>
 			<td>Fault Element</td>
-			<td>Associated Error Code</td>
+			<td>Associated Error Codes</td>
 			<td>Expected in All Requests</td>
 		  </tr>
 		</thead>
 		<tbody>
-		  <tr align="center">
+		  <tr align="left">
 			<td>identityFault</td>
 			<td>500, 400</td>
 			<td> &CHECK; </td>
 		  </tr>
-		  <tr align="center">
+			<tr align="left">
 			<td>serviceUnavailable</td>
 			<td>503</td>
 			<td> &CHECK; </td>
 		  </tr>
-		  <tr align="center">
+			<tr align="left">
 			<td>badRequest</td>
 			<td>400</td>
 			<td> &CHECK; </td>
 		  </tr>         
-		  <tr align="center">
+			<tr align="left">
 			<td>unauthorized</td>
 			<td>401</td>
 			<td> &CHECK; </td>
 		  </tr>
-		  <tr align="center">
+			<tr align="left">
 			<td>overLimit</td>
 			<td>413</td>
 			<td/>
 		  </tr>
-		  <tr align="center">
+			<tr align="left">
 			<td>userDisabled</td>
 			<td>403</td>
 			<td/>
 		  </tr>
-		  <tr align="center">
+			<tr align="left">
 			<td>forbidden</td>
 			<td>403</td>
 			<td/>
 		  </tr>
-		  <tr align="center">
+			<tr align="left">
 			<td>itemNotFound</td>
 			<td>404</td>
 			<td/>
 		  </tr>
-		  <tr align="center">
+			<tr align="left">
 			<td>tenantConflict</td>
 			<td>409</td>
 			<td/>
 		  </tr>
 		</tbody>
 	  </table>
-	  <para>From an XML schema perspective, all API faults are extensions of the base fault type
-		  <type>identityFault</type>. When working with a system that binds XML to actual classes (such
-		as JAXB), one should be capable of using <type>identityFault</type> as a “catch-all” if
-		there&apos;s no interest in distinguishing between individual fault types. </para>
+	  <para>From an XML schema perspective, all API faults are extensions
+			of the base fault type, <type>identityFault</type>. When
+			working with a system that binds XML to actual classes,
+			use <type>identityFault</type> as a catch-all if there is
+			no interest in distinguishing between individual fault
+			types; for example, you may need to do this if you are
+			working with JAXB. </para>
 	</section>
     </chapter>
