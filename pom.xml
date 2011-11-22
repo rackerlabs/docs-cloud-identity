@@ -290,7 +290,7 @@
                     <xincludeSupported>true</xincludeSupported>
                     <sourceDirectory>src/docbkx</sourceDirectory>
                     <includes>
-                    identity-dev-guide.xml,,OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
+                    auth-client-devguide.xml,OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
 	            OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
                     </includes>
                     <profileSecurity>reviewer</profileSecurity>

@@ -6,6 +6,7 @@
 	xml:id="Identity-Developer-Guide">
 	<title>Cloud Identity Client Developer Guide</title>
 	<titleabbrev>Cloud Identity DevGuide</titleabbrev>
+	<?rax canonical.url.base="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content"?>
 	<info>
 		<author>
 			<personname>
@@ -38,6 +39,14 @@
 				Rackspace's implementation of OpenStack's Keystone
 				Identity Service. </para>
 		</abstract>
+		<revhistory>
+		  <revision>
+		    <date>2011-11-21</date>
+		    <revdescription>
+		      <para>Initial release for API v 2.0.</para>
+		    </revdescription>
+		  </revision>
+		</revhistory>
 	</info>
 	<!-- Chapters are referred from the book file through these include statements. You can add additional chapters using these types of statements. -->
 	<xi:include href="identity-overview-client.xml"/>

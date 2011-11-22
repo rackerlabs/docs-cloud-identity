@@ -35,26 +35,7 @@
         <title>Document Change History</title>
         <para>This version of the Developer Guide applies only to v2.0 of the API.
             The most recent changes are described in the table below: </para>
-        <informaltable rules="all">
-            <thead>
-                <tr align="center">
-                    <td colspan="1">Revision Date</td>
-                    <td colspan="4">Summary of Changes</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr align="left">
-                    <td colspan="1" align="center">Nov 21, 2011</td>
-                    <td colspan="4" align="left">
-                        <itemizedlist spacing="compact">
-                            <listitem>
-                                <para>Initial release for API v 2.0.</para>
-                            </listitem>
-                        </itemizedlist>
-                    </td>
-                </tr>
-            </tbody>
-        </informaltable>
+	    <?rax revhistory?>
     </section>
     <section xml:id="Additional_Resources-d1e130">
         <title>Additional Resources</title>
