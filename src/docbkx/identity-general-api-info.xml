@@ -146,8 +146,12 @@ This operation does not require a request body.</para>'>
 		</tbody>
 	  </table>
 	</section>
-	<section xml:id="Paginated_Collections-d1e325">
+	<section security="writeronly" xml:id="Paginated_Collections-d1e325">
 		<title>Paginated Collections</title>
+		<annotation>
+			<remark>"Paginated Collections" is not yet implemented as of v2.0;
+				hide it for now and reveal it when the feature is working." </remark>
+		</annotation>
 		<para> To reduce load on the service, list operations will return a
 			maximum number of items at a time. The maximum number of
 			items returned is determined by the Identity provider. To
@@ -255,9 +259,24 @@ This operation does not require a request body.</para>'>
 	</section>
 	<section xml:id="Versions-d1e472">
 		<title>Versions</title>
-		<para>
+		<para> The identity API uses a URI versioning scheme. The first element of
+			the path contains the target version identifier: for example, in 
+			https://auth.api.rackspacecloud.com/v2.0/&hellip;, the API version is 2.0. Other than requests to query for version, 
+			all requests must contain a target version. 
+		</para>
+	    <para>
+			Any features or functionality
+			changes that would necessitate a break in API compatibility will require a new
+			version, which will result in the URI version being updated accordingly. When new
+			API versions are released, older versions will be marked as <code>DEPRECATED</code>.
+			Rackspace will work with developers and partners to ensure that there is adequate time to
+			migrate to the new version before deprecated versions are discontinued. </para>
+		<para security="writeronly">
 			The authentication service API uses two versioning schemes, one based on the URI 
-			and the other based on MIME type. 
+			and the other based on MIME type.
+			<annotation>
+				<remark>MIME-type versioning is not yet implemented in v2.0; meanwhile, usiing URI-only text borrowed from 1.1. </remark>
+			</annotation>
 			<itemizedlist>
 				<listitem>
 					<para>			
@@ -297,7 +316,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 		<example>
 			<title>Request with URI Versioning</title>
 			<literallayout class="monospaced">
-GET /v1.1/tenants HTTP/1.1
+GET /v2.0/tenants HTTP/1.1
 Host: identity.api.openstack.org
 Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
