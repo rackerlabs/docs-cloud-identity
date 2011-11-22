@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="Overview-d1e65">
+    <title>Overview</title>
+    <para> This document describes Rackspace's implementation of the
+        OpenStack Keystone Identity Service v2.0 We have named our
+        Keystone implementation the Rackspace Cloud Authentication
+        Service v2.0. All earlier versions of the Rackspace Cloud
+        Authentication Service allow clients to obtain tokens that can
+        be used to access resources in the Rackspace Cloud, but only
+        v2.0 is an implementation of OpenStack's Keystone. </para>
+    <para>
+        While each version of the API implements different features, 
+        tokens created by any version can be recognized as valid by any other version.
+        For example, if you use v1.1 to generate a token, you can use that token
+        in calls to v2.0.
+    </para>
+    <section xml:id="Intended_Audience-d1e73">
+        <title>Intended Audience</title>
+        <para> This document is intended for client developers who
+            wish to consume an existing cloud service such as Cloud
+            Files or Cloud Servers. The Rackspace Cloud Authentication
+            Service, also known as the authentication service or
+            "Auth", allows these developers to obtain an
+            authentication token and a list of regional service
+            endpoints to the various services available in the cloud. </para>
+        <para>
+            To use this Developer Guide most effectively, readers should be familiar with ReSTful web
+            services, HTTP/1.1, and JSON and/or XML serialization formats.
+        </para>
+    </section>
+    <section xml:id="Document_Change_History-d1e85">
+        <title>Document Change History</title>
+        <para>This version of the Developer Guide applies only to v2.0 of the API.
+            The most recent changes are described in the table below: </para>
+        <informaltable rules="all">
+            <thead>
+                <tr align="center">
+                    <td colspan="1">Revision Date</td>
+                    <td colspan="4">Summary of Changes</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align="left">
+                    <td colspan="1" align="center">Nov 21, 2011</td>
+                    <td colspan="4" align="left">
+                        <itemizedlist spacing="compact">
+                            <listitem>
+                                <para>Initial release for API v 2.0.</para>
+                            </listitem>
+                        </itemizedlist>
+                    </td>
+                </tr>
+            </tbody>
+        </informaltable>
+    </section>
+    <section xml:id="Additional_Resources-d1e130">
+        <title>Additional Resources</title>
+        <para>
+            Descriptive information about this service is also published in its Web Application Description Language (WADL) and XML Schema Definition (XSD). 
+            You are welcome to read this information, but please use the appropriate US-based or UK-based version.
+        </para>
+        <para>
+            Your account may be based in either the US or the UK; this is not determined
+            by your physical location but by the location of the Rackspace retail site which
+            was used to create your account: 
+        </para>
+        <itemizedlist>
+            <listitem>
+                <para>
+                    If your account was
+                    created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
+                    <itemizedlist>
+                        <listitem>
+                            <para>
+                                The US-based WADL is <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl</link>.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                The US-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/xsd/api.xsd</link>.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>   
+            </listitem>
+            <listitem>
+                <para>
+                    If your account was
+                    created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
+                    <itemizedlist>
+                        <listitem>
+                            <para>
+                                The UK-based WADL is <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl</link>.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                The UK-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/xsd/api.xsd</link>.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </listitem>
+        </itemizedlist>
+        <para>
+            If you are unsure how your account was created, use the Rackspace contact
+            information at either site to ask for help.
+        </para>
+        <para>To see how the Cloud Authentication Service is used by other Rackspace services, read the API documentation collected 
+            at <link xlink:href="http://docs.rackspacecloud.com/api/">
+                http://docs.rackspacecloud.com/api/</link>.
+        </para>
+        <para>
+            To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
+            does not implement the OpenStack Keystone identity service, 
+            read the Rackspace Cloud Authentication Client Developer Guide for API v1.1 
+            at <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
+                http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf
+            </link>.
+        </para>
+        <para>
+            To learn about Keystone, read OpenStack's Keystone documentation 
+            at <link xlink:href="http://keystone.openstack.org/">
+                http://keystone.openstack.org/
+            </link>.
+        </para>
+    </section>
+    <xi:include href="identity-releasenotes-v20-client.xml"/>
+</chapter>
