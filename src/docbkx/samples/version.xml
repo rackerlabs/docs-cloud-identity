@@ -11,7 +11,7 @@
      </media-types>
 
      <atom:link rel="self"
-                href="http://identity.api.openstack.org/v2.0/"/>
+         href="http://auth.api.rackspacecloud.com/v2.0/"/>
 
     <atom:link rel="describedby"
                type="application/pdf"

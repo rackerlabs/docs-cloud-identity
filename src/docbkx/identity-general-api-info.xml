@@ -308,7 +308,7 @@ This operation does not require a request body.</para>'>
 			<title>Request with MIME-Type Versioning</title>
 			<literallayout class="monospaced">
 GET /tenants HTTP/1.1
-Host: identity.api.openstack.org
+Host: auth.api.rackspacecloud.com
 Accept: application/vnd.openstack.identity+xml;version=1.1
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
@@ -317,7 +317,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			<title>Request with URI Versioning</title>
 			<literallayout class="monospaced">
 GET /v2.0/tenants HTTP/1.1
-Host: identity.api.openstack.org
+Host: auth.api.rackspacecloud.com
 Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
@@ -344,8 +344,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 		</example>
 		<example>
 			<title>Multiple Choices Response: JSON</title>
-			<programlisting language="javascript"><xi:include
-			href="samples/choices.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="samples/choices.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			New features and functionality that do not break
@@ -379,7 +378,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			<title>Versions List Request</title>
 			<literallayout class="monospaced">
 GET HTTP/1.1
-Host: identity.api.openstack.org
+Host: auth.api.rackspacecloud.com
 			</literallayout>
 		</example>
 		<simpara>&CODES; <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue></simpara>
@@ -402,28 +401,30 @@ Host: identity.api.openstack.org
 		</example>
 		<example>
 			<title>Versions List Response: JSON</title>
-			<programlisting language="javascript"><xi:include 
-			href="samples/versions.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="samples/versions.json" parse="text"/></programlisting>
 		</example>
-		<para> You can obtain additional information about a specific
-			version by performing a &GET; on the base version URL. For
-			example,
-			<code>https://identity.api.openstack.org/v1.1/</code> is a base version URL,
-			in which <code>v1.1</code> is the initial version of the API.
-			Version request URLs should always end with a trailing
-			slash (/). If the slash is omitted, the server may respond
-			with a <returnvalue>302</returnvalue> redirection request.
-			Format extensions may be placed after the trailing slash. For example, 
-			<code>
-				https://identity.api.openstack.org/v1.1/.xml</code> includes <code>.xml</code> as a format extension. Note that
-			this is a special case that does not hold true for other
-			API requests. In general, requests such as <code>/tenants.xml</code>
-			and <code>/tenants/.xml</code> are handled equivalently. </para>
+		<para> You can obtain additional detailed information about a
+			specific version by performing a &GET; on the base version
+			URL. For example,
+				<code>https://auth.api.rackspacecloud.com/v1.0/</code>
+			is a base version URL, in which <code>v1.0</code> is the
+			initial version of the API. Version request URLs should
+			always end with a trailing slash (/). If the slash is
+			omitted, the server may respond with a
+				<returnvalue>302</returnvalue> redirection request.
+			Format extensions may be placed after the trailing slash.
+			For example, <code>
+				https://auth.api.rackspacecloud.com/v2.0/.xml</code>
+			includes <code>.xml</code> as a format extension. Note
+			that this is a special case that does not hold true for
+			other API requests. In general, requests such as
+				<code>/tenants.xml</code> and
+				<code>/tenants/.xml</code> are handled equivalently. </para>
 		<example>
 			<title>Version Details Request</title>
 			<literallayout class="monospaced">
 GET HTTP/1.1
-Host: identity.api.openstack.org/v1.1/
+Host: auth.api.rackspacecloud.com/v1.0/
 			</literallayout>
 		</example>
 		<simpara>&CODES; <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue></simpara>

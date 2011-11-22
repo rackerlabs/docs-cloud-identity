@@ -7,7 +7,7 @@
         "links": [
           {
             "rel": "self",
-            "href": "http://identity.api.openstack.org/v1.0"
+            "href": "http://auth.api.rackspacecloud.com/v1.0"
           }
         ],
         "media-types": {
@@ -27,7 +27,7 @@
         "links": [
           {
             "rel": "self",
-            "href": "http://identity.api.openstack.org/v1.1"
+            "href": "http://auth.api.rackspacecloud.com/v1.1"
           }
         ],
         "media-types": {
@@ -47,7 +47,7 @@
         "links": [
           {
             "rel": "self",
-            "href": "http://identity.api.openstack.org/v2.0"
+            "href": "http://auth.api.rackspacecloud.com/v2.0"
           }
         ],
         "media-types": {
