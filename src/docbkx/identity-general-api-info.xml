@@ -46,10 +46,13 @@ This operation does not require a request body.</para>'>
          <title>General API Information</title>
         <para>The authentication service allows clients to obtain
 		tokens that can be used to access cloud services such as those
-		provided by Rackspace and OpenStack. This document is intended
-		for software developers interested in developing applications
-		that utilize the Keystone Identity Service API for
-		authentication. </para>
+		provided by Rackspace and OpenStack. </para>
+		<para>
+			This document is intended for software developers interested
+			in developing applications that utilize Rackspace's
+			implementation of OpenStack's Keystone Identity
+			Service for authentication.
+		</para>
 	<para>The authentication service API is implemented using a ReSTful
 			web service interface. All requests to authenticate and
 			operate against the authentication service should be
@@ -447,8 +450,7 @@ Host: auth.api.rackspacecloud.com/v1.0/
 		</example>
 		<example>
 			<title>Version Details Response: JSON</title>
-			<programlisting language="javascript"><xi:include
-			href="samples/version.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="samples/version.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			The detailed version response contains pointers to
@@ -547,7 +549,7 @@ Host: auth.api.rackspacecloud.com/v1.0/
 			</programlisting>
 		</example>
 		<example>
-			<title>Extensions Response: JSON</title>
+			<title>Extension Response: JSON</title>
 			<programlisting language="javascript"><xi:include href="samples/extension.json" parse="text"/></programlisting>
 		</example>
 		<para> Extensions may define new data types, parameters, actions,

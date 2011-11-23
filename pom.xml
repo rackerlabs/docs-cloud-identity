@@ -234,7 +234,7 @@
                     <googleAnalyticsId>UA-17511903-6</googleAnalyticsId>
                     <postProcess>
                         <!-- Copies the figures to the correct location for webhelp -->
-                        <copy todir="${basedir}/target/docbkx/webhelp/identity-dev-guide/figures">
+                        <copy todir="${basedir}/target/docbkx/webhelp/auth-client-devguide/figures">
                             <fileset dir="${basedir}/src/docbkx/img">
                                 <include name="**/*.svg" />
                             </fileset>
@@ -244,14 +244,15 @@
                     	<copy
                     		todir="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0">
                     		<fileset
-                    			dir="${basedir}/target/docbkx/webhelp/identity-dev-guide">
+                    			dir="${basedir}/target/docbkx/webhelp/auth-client-devguide">
                     			<include name="**/*" />
                     		</fileset>
                     	</copy>
                         <!--Moves PDF to the needed placement for web site and Google Analytics tracking-->
-                        <move failonerror="false"
-                            file="${basedir}/target/docbkx/pdf/identity-dev-guide.pdf"
-                            tofile="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/identity-dev-guide-2.0.pdf"/>
+                    	<!-- this WAS a move; now it's a copy, because PDF on Wednesday morning is no longer with WebHelp like it was Tuesday morning -->
+                        <copy failonerror="false"
+                        	file="${basedir}/target/docbkx/pdf/auth-client-devguide.pdf"
+                        	tofile="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf"/>
                     	
                 <!-- Moves extension PDF and keeps name of the main dev guide -->
                 <copy failonerror="false"
@@ -289,10 +290,15 @@
 		  <!-- These parameters apply to pdf and webhelp -->
                     <xincludeSupported>true</xincludeSupported>
                     <sourceDirectory>src/docbkx</sourceDirectory>
+                	<!-- for now, just build auth-client-devguide: deal with the rest later
                     <includes>
                     auth-client-devguide.xml,OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
-	            OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
+	                OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
                     </includes>
+                    -->
+                	<includes>
+                		auth-client-devguide.xml
+                	</includes>
                     <profileSecurity>reviewer</profileSecurity>
                     <branding>rackspace</branding>
                 </configuration>
