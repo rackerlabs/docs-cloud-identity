@@ -85,7 +85,8 @@
                         </listitem>
                         <listitem>
                             <para>
-                                The US-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd</link>.
+                                The US-based XSDs are <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd</link> 
+                                and <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -103,7 +104,8 @@
                         </listitem>
                         <listitem>
                             <para>
-                                The UK-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>.
+                                The UK-based XSDs are <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>  
+                                and <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api-common.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
