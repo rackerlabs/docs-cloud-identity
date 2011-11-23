@@ -9,18 +9,25 @@
         Keystone implementation the Rackspace Cloud Identity Service
         v2.0; the identity service performs authentication, generating
         a token in response to valid credentials, and identification,
-        matching xxxxxxx. Earlier versions of this API, v1.0 and v1.1,
-        support only authentication and are named Rackspace Cloud
-        Authentication Service; All versions of the API allow clients
-        to obtain tokens that can be used to access resources in the
-        Rackspace Cloud, but only v2.0 is an implementation of
-        OpenStack's Keystone. </para>
+        matching users and their rolse. Earlier versions of this API,
+        v1.0 and v1.1, support only authentication and are named
+        Rackspace Cloud Authentication Service; all versions of the
+        API allow clients to obtain tokens that can be used to access
+        resources in the Rackspace Cloud, but only v2.0 is an
+        implementation of OpenStack's Keystone Identity Service. </para>
     <para>
         While each version of the API implements different features, 
         tokens created by any version can be recognized as valid by any other version.
         For example, if you use v1.1 to generate a token, you can use that token
         in calls to v2.0.
     </para>
+    <important>
+        <para>Rackspace's implementation of the OpenStack Keystone
+            Identity Service v2.0 is incomplete on one point. Keystone
+            supports two versioning schemes, based on URI and on MIME
+            type. Today, Rackspace supports only one of these: URI
+            versioning. </para>
+    </important>
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
         <para> This document is intended for client developers who
@@ -100,17 +107,15 @@
         </para>
         <para>
             To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
-            does not implement the OpenStack Keystone identity service, 
+            does not implement the OpenStack Keystone Identity Service, 
             read the Rackspace Cloud Authentication Client Developer Guide for API v1.1 
             at <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
-                http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf
-            </link>.
+                http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf</link>.
         </para>
         <para>
             To learn about Keystone, read OpenStack's Keystone documentation 
             at <link xlink:href="http://keystone.openstack.org/">
-                http://keystone.openstack.org/
-            </link>.
+                http://keystone.openstack.org/</link>.
         </para>
     </section>
     <xi:include href="identity-releasenotes-v20-client.xml"/>

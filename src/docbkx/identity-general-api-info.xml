@@ -262,8 +262,17 @@ This operation does not require a request body.</para>'>
 	</section>
 	<section xml:id="Versions-d1e472">
 		<title>Versions</title>
-		<para> The identity API uses a URI versioning scheme. The first element of
-			the path contains the target version identifier: for example, in 
+		<para> The identity API uses a URI versioning scheme. </para>
+		<important>
+			<para>Rackspace's implementation of the OpenStack Keystone Identity
+				Service v2.0 is incomplete on one point. Keystone
+				supports two versioning schemes, based on URI and on
+				MIME type. Today, Rackspace supports only one of
+				these: URI versioning. </para>
+		</important>
+		<para>
+			The first element of
+			the URI path contains the target version identifier: for example, in 
 			https://auth.api.rackspacecloud.com/v2.0/&hellip;, the API version is 2.0. Other than requests to query for version, 
 			all requests must contain a target version. 
 		</para>
@@ -278,7 +287,9 @@ This operation does not require a request body.</para>'>
 			The authentication service API uses two versioning schemes, one based on the URI 
 			and the other based on MIME type.
 			<annotation>
-				<remark>MIME-type versioning is not yet implemented in v2.0; meanwhile, usiing URI-only text borrowed from 1.1. </remark>
+				<remark>MIME-type versioning is not yet implemented in v2.0;
+					meanwhile, using URI-only text borrowed from Auth
+					1.1. </remark>
 			</annotation>
 			<itemizedlist>
 				<listitem>
@@ -307,7 +318,7 @@ This operation does not require a request body.</para>'>
 			versions are specified using both a MIME type and a
 			URI, the URI takes precedence.
 		</para>
-		<example>
+		<example security="writeronly">
 			<title>Request with MIME-Type Versioning</title>
 			<literallayout class="monospaced">
 GET /tenants HTTP/1.1
@@ -325,7 +336,7 @@ Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
 		</example>
-		<note>
+		<note security="writeronly">
 			<para>
 				The MIME-type versioning approach supports the
 				creation of permanent links, because the version
@@ -334,36 +345,34 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 				identifies a list of tenants associated with <code>12234</code> but does not identify a version.
 			</para>
 		</note>
-		<para>
+		<para security="writeronly">
 			If a request is made with no version specified, then a multiple-choices
 			response (<returnvalue>300</returnvalue>) will follow,
 			providing links and MIME types for available versions.
 		</para>
-		<example>
+		<example security="writeronly">
 			<title>Multiple Choices Response: XML</title>
 			<programlisting language="xml">
 <xi:include href="samples/choices.xml" parse="text"/>
 			</programlisting>
 		</example>
-		<example>
+		<example security="writeronly">
 			<title>Multiple Choices Response: JSON</title>
 			<programlisting language="javascript"><xi:include href="samples/choices.json" parse="text"/></programlisting>
 		</example>
-		<para>
-			New features and functionality that do not break
-			API compatibility will be introduced in the current
-			version of the API as <link linkend="Extensions-d1e688">extensions</link>and the
-			URI and MIME types will remain unchanged. Features or
-			functionality changes that would disrupt
-			in API compatibility will require a new version, which
-			will result in URI and MIME type version being updated
-			accordingly. When new API versions are released, older
-			versions will be marked as
-			<code>DEPRECATED</code>. Providers should work with
-			developers and partners to ensure there is adequate
-			time to migrate to the new version before deprecated
-			versions are discontinued.
-		</para>
+		<para> New features and functionality that do not break API
+			compatibility will be introduced in the current version of
+			the API as <link linkend="Extensions-d1e688"
+				>extensions</link> and the URI will
+			remain unchanged. Features or functionality changes that
+			would disrupt in API compatibility will require a new
+			version, which will result in the URI version
+			being updated accordingly. When new API versions are
+			released, older versions will be marked as
+				<code>DEPRECATED</code>. Providers should work with
+			developers and partners to ensure there is adequate time
+			to migrate to the new version before deprecated versions
+			are discontinued. </para>
 		<para>
 			You can programmatically determine
 			available API versions by performing a &GET; on the
@@ -466,13 +475,28 @@ Host: auth.api.rackspacecloud.com/v1.0/
 	</section>
 	<section xml:id="Extensions-d1e688">
 		<title>Extensions</title>
-		<para> The authentication service API is extensible. Extensions
-			serve two purposes: They allow the introduction of new
-			features in the API without requiring a version change and
-			they allow the introduction of vendor specific niche
-			functionality. Applications can programmatically determine
+		<para> The authentication service API is extensible, meaning that the API is structured so that some functions are implemented in the 
+			core API and others are implemented via optional extensions to that core.
+			Extensions
+			serve two purposes: 
+			<itemizedlist>
+				<listitem>
+					<para>
+						Extensions allow the introduction of new
+						features in the API without requiring a version change.
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						Extensions allow the introduction of vendor-specific niche
+						functionality.
+					</para>
+				</listitem>
+			</itemizedlist>
+			Every service provider can choose its own set of extensions to the core API.	 
+			Applications can programmatically determine
 			what extensions are available by performing a &GET; on the
-			/extensions URI. Note that this is a versioned request;
+			<code>/extensions</code> URI. Note that this is a versioned request;
 			that is, an extension available in one API version may not
 			be available in another, so a response is only applicable
 			to a specific version. </para>
@@ -501,8 +525,12 @@ Host: auth.api.rackspacecloud.com/v1.0/
 		<para>
 			Each extension is identified by two unique identifiers: a
 			<property>namespace</property> and an
-			<property>alias</property>.  Additionally, an extension
-			contains documentation links in multiple formats.
+			<property>alias</property>. 
+			You can use these identifiers to associate an extension with its vendor;
+			in the examples in this section, aliases prefixed <code>RAX-</code> indicate that Rackspace
+			provided these extensions. 
+			Additionally, an extension
+			contains links to documentation in multiple formats.
 		</para>
 		<example>
 			<title>Extensions Response: XML</title>
