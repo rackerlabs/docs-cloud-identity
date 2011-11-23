@@ -1,43 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<auth xmlns="http://docs.openstack.org/identity/api/v2.0">
-	<token expires="2010-11-01T03:32:15-05:00" id="ab48a9efdfedb23ty3494" />
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<access xmlns="http://docs.openstack.org/identity/api/v2.0" 
+	    xmlns:ns2="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+	    xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+	    xmlns:ns4="http://docs.openstack.org/common/api/v1.0" 
+	    xmlns:ns5="http://www.w3.org/2005/Atom">
+	<token id="00ff5500cc-0bad-444-999-ff11cc88bb22" expires="2011-11-24T12:07:55.000-06:00" />
+	<user id="9900022" name="joeuser">
+		<roles>
+			<role id="identity:default" name="identity:default" description="Default Role." />
+		</roles>
+	</user>
 	<serviceCatalog>
-		<service type="compute" name="Computers in the Cloud">
-			<endpoint region="North" 
-			          tenantId="1234"
-			          publicURL="https://north.compute.public.com/v2.0/1234" 
-			          internalURL="https://north.compute.internal.com/v2.0/1234">
-				<version id="2.0" info="https://north.compute.public.com/v2.0/"
-					list="https://north.compute.public.com/" />
-			</endpoint>
-			<endpoint region="South" 
-			          tenantId="3456"
-				      publicURL="https://south.compute.public.com/v2.0/3456" 
-				      internalURL="https://south.compute.internal.com/v2.0/3456">
-				<version id="2.0" info="https://south.compute.public.com/v2.0/"
-					list="https://south.compute.public.com/" />
+		<service type="compute" name="cloudServers">
+			<endpoint tenantId="555666" publicURL="https://servers.api.rackspacecloud.com/v1.0/555666">
+				<version id="1.0" info="https://servers.api.rackspacecloud.com/v1.0/" 
+					list="https://servers.api.rackspacecloud.com/" />
 			</endpoint>
 		</service>
-		<service type="object-store" name="HTTP Object Store">
-			<endpoint region="North" 
-			          tenantId="1234"
-			          publicURL="https://north.object-store.public.com/v1/1234"
-			          internalURL="https://north.object-store.internal.com/v1/1234">
-				<version id="1" info="https://north.object-store.public.com/v1/"
-					list="https://north.object-store.public.com/" />
-			</endpoint>
-			<endpoint region="South" 
-			          tenantId="3456"
-			          publicURL="https://south.object-store.public.com/v2.0/3456"
-			          internalURL="https://south.object-store.internal.com/v2.0/3456">
-				<version id="2.0" info="https://south.object-store.public.com/v1/"
-					list="https://south.object-store.public.com/" />
+		<service type="object-store" name="cloudFilesCDN">
+			<endpoint region="ORD" 
+				tenantId="MossoCloudFS_87878787-fdfd-bbad-3f8f-a90007172bad" 
+				publicURL="https://cdn2.clouddrive.com/v1/MossoCloudFS_87878787-fdfd-bbad-3f8f-a90007172bad">
+				<version id="1" info="https://cdn2.clouddrive.com/v1/" list="https://cdn2.clouddrive.com/" />
 			</endpoint>
 		</service>
-		<service type="dns" name="DNS-as-a-Service">
-			<endpoint publicURL="https://dns.public.com/v2.0/blah-blah">
-				<version id="2.0" info="https://dns.public.com/v2.0/" list="https://dns.public.com/" />
-			</endpoint>
+		<service type="object-store" name="cloudFiles">
+			<endpoint region="ORD" 
+				tenantId="MossoCloudFS_87878787-fdfd-bbad-3f8f-a90007172bad" 
+				publicURL="https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_87878787-fdfd-bbad-3f8f-a90007172bad" 
+				internalURL="https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_87878787-fdfd-bbad-3f8f-a90007172bad" />
 		</service>
 	</serviceCatalog>
-</auth>
+</access>
