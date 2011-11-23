@@ -21,25 +21,6 @@
         For example, if you use v1.1 to generate a token, you can use that token
         in calls to v2.0.
     </para>
-    <important>
-        <para>Rackspace's implementation of the OpenStack Keystone
-            Identity Service v2.0 is incomplete on two points:
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>
-                        Keystone supports two versioning schemes, based on URI and
-                        on MIME type. Today, Rackspace supports only one of these:
-                        URI versioning. 
-                    </para>
-                </listitem>
-                <listitem>
-                    <para> Keystone supports paginated collections
-                        returned by list operations. Today, Rackspace
-                        does not support paginated collections. </para>
-                </listitem>
-            </itemizedlist>
-             </para>
-    </important>
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
         <para> This document is intended for software developers
