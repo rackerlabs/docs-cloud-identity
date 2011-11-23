@@ -1,13 +1,11 @@
 {
   "roles": [
     {
-      "id": "Admin",
-      "tenantId": "1234",
-      "description": "All access"
+      "id": "identity:admin",
+      "description": "Admin Role."
     }, {
-      "id": "Guest",
-      "tenantId": "3456",
-      "description": "Guest Access"
+      "id": "identity:default",
+      "description": "Default Role."
     }
   ]
 }

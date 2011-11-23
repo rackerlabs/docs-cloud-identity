@@ -15,9 +15,9 @@
 
     <atom:link rel="describedby"
                type="application/pdf"
-               href="http://docs.openstack.org/identity/api/v2.0/identity-latest.pdf" />
+               href="http://docs.rackspacecloud.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
 
     <atom:link rel="describedby"
                type="application/vnd.sun.wadl+xml"
-               href="http://docs.openstack.org/identity/api/v2.0/identity.wadl" />
+               href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
 </version>

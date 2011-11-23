@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<extension xmlns="http://docs.openstack.org/common/api/v1.0"
-           xmlns:atom="http://www.w3.org/2005/Atom"
-           name="User Metadata Extension"
-           namespace="http://docs.rackspacecloud.com/identity/api/ext/meta/v2.0"
-           alias="RAX-META"
-           updated="2011-01-12T11:22:33-06:00">
-
-    <description>
-        Allows associating arbitrary metadata with a user.
-    </description>
-
-    <atom:link rel="describedby"
-               type="application/pdf"
-               href="http://docs.rackspacecloud.com/identity/api/ext/identity-meta-20111201.pdf"/>
-    <atom:link rel="describedby"
-               type="application/vnd.sun.wadl+xml"
-               href="http://docs.rackspacecloud.com/identity/api/ext/identity-meta.wadl"/>
-
+<extension  xmlns="http://docs.openstack.org/common/api/v1.0"
+            xmlns:atom="http://www.w3.org/2005/Atom"
+            name="Rackspace API Key Authentication Admin Extension" 
+            namespace="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+            alias="RAX-KSKEY"
+            updated="2011-08-14T13:25:27-06:00">
+            
+            <description>
+                Rackspace extension to OpenStack Identity v2.0 API enabling API Key authentication.
+            </description>
+            
+            <atom:link rel="describedby" type="application/pdf"
+                       href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin-devguide.pdf"/>
+            
+            <atom:link rel="describedby" type="application/vnd.sun.wadl+xml"
+                       href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin.wadl"/>                        
 </extension>

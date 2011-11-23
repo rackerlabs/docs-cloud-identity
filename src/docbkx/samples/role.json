@@ -1,6 +1,6 @@
 {
   "role": {
-    "id": "Guest",
-    "description": "Guest Access"
+    "id": "identity:default",
+    "description": "Default Role."
   }
 }
