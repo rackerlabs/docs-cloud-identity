@@ -259,7 +259,7 @@ This operation does not require a request body.</para>'>
 		<para> The identity API uses a URI versioning scheme. </para>
 		<important>
 			<para>Rackspace's implementation of the OpenStack Keystone Identity
-				Service v2.0 is incomplete on one point. Keystone
+				Service v2.0 is incomplete on this point. Keystone
 				supports two versioning schemes, based on URI and on
 				MIME type. Today, Rackspace supports only one of
 				these: URI versioning. </para>

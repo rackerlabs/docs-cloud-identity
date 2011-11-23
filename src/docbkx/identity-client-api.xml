@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <section
 		xmlns="http://docbook.org/ns/docbook"
-		xml:id="Service_API_Client_Operations"
+		xml:id="Client_Operations"
 		version="5.0">
-	<title>Service API (Client Operations)</title>
+	<title>Client Operations</title>
 	  <para>The operations described in this chapter allow clients to perform
 	  	functions supported by the core authentication service API;
 	  	If any other authentication operations are valid, they require 

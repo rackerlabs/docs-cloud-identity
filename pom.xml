@@ -242,7 +242,7 @@
                     	<!-- Copies HTML to a release folder for web site-->   
 
                     	<copy
-                    		todir="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0">
+                    		todir="${basedir}/target/docbkx/webhelp/api/auth-client-devguide/2.0">
                     		<fileset
                     			dir="${basedir}/target/docbkx/webhelp/auth-client-devguide">
                     			<include name="**/*" />
@@ -256,8 +256,8 @@
                     	
                 <!-- Moves extension PDF and keeps name of the main dev guide -->
                 <copy failonerror="false"
-                	file="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/identity-dev-guide-2.0.pdf"
-                    		tofile="${basedir}/target/docbkx/webhelp/identity-dev-guide/identity-dev-guide.pdf"/>   	
+                	file="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf"
+                	tofile="${basedir}/target/docbkx/webhelp/auth-client-devguide/auth-client-devguide.pdf"/>   	
 		        <move failonerror="false"
 		          file="${basedir}/target/docbkx/pdf/RAX-KSKEY-service-devguide.pdf"
 		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSKEY-service-devguide.pdf"/>
