@@ -503,7 +503,7 @@ Host: auth.api.rackspacecloud.com/v1.0/
 			<tbody>
 				<tr>
 					<td colspan="1">&GET;</td>
-					<td colspan="2">/extensions</td>
+					<td colspan="2">v2.0/extensions</td>
 					<td colspan="3">Returns a list of available extensions</td>
 				</tr>
 			</tbody>
