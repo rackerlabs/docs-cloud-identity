@@ -9,7 +9,7 @@
         Keystone implementation the Rackspace Cloud Identity Service
         v2.0; the identity service performs authentication, generating
         a token in response to valid credentials, and identification,
-        matching users and their rolse. Earlier versions of this API,
+        matching users and their roles. Earlier versions of this API,
         v1.0 and v1.1, support only authentication and are named
         Rackspace Cloud Authentication Service; all versions of the
         API allow clients to obtain tokens that can be used to access
@@ -30,13 +30,14 @@
     </important>
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
-        <para> This document is intended for client developers who
-            wish to consume an existing cloud service such as Cloud
-            Files or Cloud Servers. The Rackspace Cloud Authentication
-            Service, also known as the authentication service or
-            "Auth", allows these developers to obtain an
-            authentication token and a list of regional service
-            endpoints to the various services available in the cloud. </para>
+        <para> This document is intended for software developers
+            interested in developing applications that utilize the
+            Keystone Identity Service API for authentication. The
+            Rackspace Cloud Identity Service, also known as the
+            authentication service or "Auth", allows these developers
+            to obtain an authentication token and a list of regional
+            service endpoints to the various services available in the
+            cloud. </para>
         <para>
             To use this Developer Guide most effectively, readers should be familiar with ReSTful web
             services, HTTP/1.1, and JSON and/or XML serialization formats.
@@ -72,7 +73,7 @@
                         </listitem>
                         <listitem>
                             <para>
-                                The US-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/xsd/api.xsd</link>.
+                                The US-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -90,7 +91,7 @@
                         </listitem>
                         <listitem>
                             <para>
-                                The UK-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/xsd/api.xsd</link>.
+                                The UK-based XSD is <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
