@@ -33,7 +33,7 @@
          </profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<doctools.version>1.0.7</doctools.version>
+		<doctools.version>1.0.8-SNAPSHOT</doctools.version>
 	</properties>
 
 	<dependencies>
@@ -185,7 +185,7 @@
         					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
         					<!-- Add wadls to be normalized below       -->
         					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-        					<dir>/Users/rose.coste/documents/eclipseworkspace/openstack-keystone-github/keystone/keystone/content/admin</dir>
+        					<dir>src/wadl</dir>
         					<includes>
         						<include>*.wadl</include>
             				</includes>
@@ -231,58 +231,58 @@
                     <enableDisqus>1</enableDisqus>
                     <disqusShortname>os-identitydevguide</disqusShortname>
                     <enableGoogleAnalytics>1</enableGoogleAnalytics>
-                    <googleAnalyticsId>UA-17511903-6</googleAnalyticsId>
-                    <postProcess>
+                    <!-- <googleAnalyticsId>UA-17511903-6</googleAnalyticsId> -->
+                    <!-- <postProcess> -->
                         <!-- Copies the figures to the correct location for webhelp -->
-                        <copy todir="${basedir}/target/docbkx/webhelp/auth-client-devguide/figures">
-                            <fileset dir="${basedir}/src/docbkx/img">
-                                <include name="**/*.svg" />
-                            </fileset>
-                        </copy>
+                        <!-- <copy todir="${basedir}/target/docbkx/webhelp/auth-client-devguide/figures"> -->
+                        <!--     <fileset dir="${basedir}/src/docbkx/img"> -->
+                        <!--         <include name="**/*.svg" /> -->
+                        <!--     </fileset> -->
+                        <!-- </copy> -->
                     	<!-- Copies HTML to a release folder for web site-->   
 
-                    	<copy
-                    		todir="${basedir}/target/docbkx/webhelp/api/auth-client-devguide/2.0">
-                    		<fileset
-                    			dir="${basedir}/target/docbkx/webhelp/auth-client-devguide">
-                    			<include name="**/*" />
-                    		</fileset>
-                    	</copy>
+                    	<!-- <copy -->
+                    	<!-- 	todir="${basedir}/target/docbkx/webhelp/api/auth-client-devguide/2.0"> -->
+                    	<!-- 	<fileset -->
+                    	<!-- 		dir="${basedir}/target/docbkx/webhelp/auth-client-devguide"> -->
+                    	<!-- 		<include name="**/*" /> -->
+                    	<!-- 	</fileset> -->
+                    	<!-- </copy> -->
                         <!--Moves PDF to the needed placement for web site and Google Analytics tracking-->
                     	<!-- this WAS a move; now it's a copy, because PDF on Wednesday morning is no longer with WebHelp like it was Tuesday morning -->
-                        <copy failonerror="false"
-                        	file="${basedir}/target/docbkx/pdf/auth-client-devguide.pdf"
-                        	tofile="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf"/>
+                        <!-- <copy failonerror="false" -->
+                        <!-- 	file="${basedir}/target/docbkx/pdf/auth-client-devguide.pdf" -->
+                        <!-- 	tofile="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf"/> -->
                     	
                 <!-- Moves extension PDF and keeps name of the main dev guide -->
-                <copy failonerror="false"
-                	file="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf"
-                	tofile="${basedir}/target/docbkx/webhelp/auth-client-devguide/auth-client-devguide.pdf"/>   	
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/RAX-KSKEY-service-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSKEY-service-devguide.pdf"/>
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/OS-KSADM-admin-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSADM-admin-devguide.pdf"/>
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/OS-KSCATALOG-admin-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSCATALOG-admin-devguide.pdf"/>
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/>  
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/>
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/RAX-KSGRP-service-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSGRP-service-devguide.pdf"/>
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/RAX-KSKEY-admin-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/RAX-KSKEY-admin-devguide.pdf"/>
-		        <move failonerror="false"
-		          file="${basedir}/target/docbkx/pdf/OS-KSEC2-admin-devguide.pdf"
-		          tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSEC2-admin-devguide.pdf"/>
-                    </postProcess>
+                <!-- <copy failonerror="false" -->
+                <!-- 	file="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf" -->
+                <!-- 	tofile="${basedir}/target/docbkx/webhelp/auth-client-devguide/auth-client-devguide.pdf"/>   	 -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/RAX-KSKEY-service-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSKEY-service-devguide.pdf"/> -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/OS-KSADM-admin-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSADM-admin-devguide.pdf"/> -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/OS-KSCATALOG-admin-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSCATALOG-admin-devguide.pdf"/> -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/>   -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/> -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/RAX-KSGRP-service-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSGRP-service-devguide.pdf"/> -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/RAX-KSKEY-admin-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/RAX-KSKEY-admin-devguide.pdf"/> -->
+		<!--         <move failonerror="false" -->
+		<!--           file="${basedir}/target/docbkx/pdf/OS-KSEC2-admin-devguide.pdf" -->
+		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSEC2-admin-devguide.pdf"/> -->
+                    <!-- </postProcess> -->
 		      </configuration>
 		    </execution>
                 </executions>

@@ -6,7 +6,7 @@
 	xml:id="Identity-Developer-Guide">
 	<title>Cloud Identity Client Developer Guide</title>
 	<titleabbrev>Cloud Identity DevGuide</titleabbrev>
-	<?rax canonical.url.base="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content"?>
+	<?rax  pdf.url="../../auth-client-devguide-latest.pdf" canonical.url.base="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content"?> <!--status.bar.text="BETA"-->
 	<info>
 		<author>
 			<personname>
