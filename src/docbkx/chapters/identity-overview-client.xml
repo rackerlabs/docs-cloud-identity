@@ -23,14 +23,15 @@
     </para>
     <section xml:id="QuickStart-000">
         <title>QuickStart</title>
-        <para>
-            To authenticate, issue a <code>POST /v2.0/token</code> request, presenting valid Rackspace customer <emphasis>credentials</emphasis> to a Rackspace <emphasis>authentication endpoint</emphasis>.
+        <para> To authenticate, submit a <code>POST /v2.0/token</code>
+            request, presenting valid Rackspace customer
+                <emphasis>credentials</emphasis> in the message body
+            to a Rackspace <emphasis>authentication endpoint</emphasis>. 
         </para>
         <para>
             <emphasis>CREDENTIALS</emphasis>
         </para>
-        <para> Obtain your credentials from the Rackspace control
-            panel, <link xlink:href="https://cp.rackspace.com/">https://cp.rackspace.com/</link>. You can use either of
+        <para> You can use either of
             two kinds of credentials: 
             <itemizedlist>
                 <listitem>
@@ -41,6 +42,27 @@
                     <para>your <code>API key</code></para>
                 </listitem>
             </itemizedlist>
+        </para>
+        <para>
+            Your <code>username</code> and
+            <code>password</code> are the ones you use to login to the Rackspace control panel.
+            Once you are logged in, you can use the Rackspace control panel to obtain your API key.
+        </para>
+        <para>
+            Use the control panel for the region in which your account is based: 
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>
+                        US-based accounts use the control panel at <link xlink:href="https://manage.rackspacecloud.com/">https://manage.rackspacecloud.com/</link>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para> UK-based accounts use the control panel at
+                            <link
+                            xlink:href="https://lon.manage.rackspacecloud.com/"
+                            >https://lon.manage.rackspacecloud.com/</link>. </para>
+                </listitem>
+            </itemizedlist> 
         </para>
         <para>
             <emphasis>AUTHENTICATION ENDPOINT</emphasis>
@@ -60,15 +82,35 @@
                 </listitem>
             </itemizedlist>
         </para>
+        <para>
+            <emphasis>TRY IT</emphasis>
+        </para>
         <para> If you know your credentials and your authentication
-            endpoint, and you can issue <code>POST /v2.0/token</code>
-            request in an API call, you have all the basic information
-            you need to use the Rackspace Cloud Identity Service.
-            Successful authentication will provide you with a token,
-            which you can use as evidence that your identity has
-            already been authentication. The rest of this API
-            Developer Guide provides background information, including
-            sample requests and responses. </para>
+            endpoint, and you can issue a <code>POST
+                /v2.0/tokens</code> request in an API call, you have
+            all the basic information you need to use the Rackspace
+            Cloud Identity Service. 
+        </para>
+        <para>
+            You can use cURL to try it in two steps:
+            <orderedlist>
+                <listitem>
+                    <para>Get an authentication token.</para>
+                    <para>curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' -H "Content-type: application/json"</para>
+                </listitem>
+                <listitem>
+                    <para>Use the token to get the Cloud Files listing using the URL from the service catalog endpoint for Cloud Files</para>
+                    <para>curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_e6115bd0-8904-477e-b86b-514c251ff98a -H 'X-Auth-Token: b617bd63-fcc8-4515-9064-ac292150d7c9' --verbose</para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>  
+            Successful authentication will
+            provide you with a token, which you can use as evidence
+            that your identity has already been authenticated. The
+            rest of this API Developer Guide provides background
+            information, including sample requests and responses. 
+        </para>
     </section>
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
