@@ -92,22 +92,31 @@
             Cloud Identity Service. 
         </para>
         <para>
-            You can use cURL to try it in two steps:
+            You can use <link xlink:href="http://curl.haxx.se/">cURL</link> to try it in two steps:
             <orderedlist>
                 <listitem>
                     <para>Get an authentication token.</para>
-                    <para>curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' -H "Content-type: application/json"</para>
+                    <para>
+                        <code>curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' -H "Content-type: application/json"</code>
+                    </para>
+                    <para>
+                        Successful authentication returns a token which you can use as evidence
+                        that your identity has already been authenticated. To use the token, pass it to other services as <code>X-Auth-Token</code>.
+                    </para>
+                    <para>
+                        Authentication also returns a service catalog, listing the endpoints you can use for cloud services.
+                    </para>
                 </listitem>
                 <listitem>
-                    <para>Use the token to get the Cloud Files listing using the URL from the service catalog endpoint for Cloud Files</para>
-                    <para>curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_e6115bd0-8904-477e-b86b-514c251ff98a -H 'X-Auth-Token: b617bd63-fcc8-4515-9064-ac292150d7c9' --verbose</para>
+                    <para>Use the authentication token to send a GET to the Cloud Files service, using the Cloud Files service catalog endpoint that was returned along with the token.</para>
+                    <para>
+                        <code>curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee -H 'X-Auth-Token: vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose</code>
+                    </para>
                 </listitem>
             </orderedlist>
         </para>
         <para>  
-            Successful authentication will
-            provide you with a token, which you can use as evidence
-            that your identity has already been authenticated. The
+            The
             rest of this API Developer Guide provides background
             information, including sample requests and responses. 
         </para>
