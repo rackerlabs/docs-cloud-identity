@@ -214,20 +214,20 @@
         <request>
             <representation mediaType="application/xml" element="identity:auth">
 	      <doc>
-	          <xsdxt:sample title="Authentication with Username Request: XML">
+	          <xsdxt:sample title="Authenticate with Username Request: XML">
 				<xsdxt:code href="../common/samples/auth_credentials.xml"/>
 	          </xsdxt:sample>
-	          <xsdxt:sample title="Authentication with Token Request: XML">
+	          <xsdxt:sample title="Authenticate with Token Request: XML">
 				<xsdxt:code href="../common/samples/auth_with_token.xml"/>
 	          </xsdxt:sample>
 	      </doc>
 	    </representation>
         <representation mediaType="application/json">
 	      <doc>
-	          <xsdxt:sample title="Authentication with Username Request: JSON">
+	          <xsdxt:sample title="Authenticate with Username Request: JSON">
 				<xsdxt:code href="../common/samples/auth_credentials.json"/>
 	          </xsdxt:sample>
-	          <xsdxt:sample title="Authentication with Token Request: JSON">   
+	          <xsdxt:sample title="Authenticate with Token Request: JSON">   
 				<xsdxt:code href="../common/samples/auth_with_token.json"/>
 	          </xsdxt:sample>
 	      </doc>
@@ -240,8 +240,11 @@
                     You can see an example of an authentication response in <xref linkend="Request_Response_Types-d1e149"></xref>.
                 </p>    
             </doc>
-            </representation>    
-            <!-- rather than repeating samples here, link to section that uses a sample that's relevant here, too.
+            </representation>
+            <representation mediaType="application/xml" element="identity:access">
+            <!-- I'd link to the auth.xml sample in the hand-coded section if I could, rather than repeating the sample here -->
+            <!-- Note: this WADL chapter gets samples from /common/samples/; the rest of the book gets samples from /samples/ -->
+            <!-- only 2 duplicates in both sample collections: auth.xml (here), auth-credentials.json -->
 	      <doc>
 	          <xsdxt:sample title="Authentication Response: XML">
 		          <xsdxt:code href="../common/samples/auth.xml"/>
@@ -254,7 +257,7 @@
 		          <xsdxt:code href="../common/samples/auth.json"/>	
 	          </xsdxt:sample>
 	      </doc>
-	    -->
+            </representation>
         </response>
         <response status="403">
             <representation mediaType="application/xml" element="identity:userDisabled"/>
