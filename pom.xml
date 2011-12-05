@@ -299,6 +299,7 @@
                 	<includes>
                 		auth-client-devguide.xml
                 	</includes>
+                	<htmlhelp>QuickStart-000.html</htmlhelp>
                     <profileSecurity>reviewer</profileSecurity>
                     <branding>rackspace</branding>
                 </configuration>
