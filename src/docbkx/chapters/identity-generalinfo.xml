@@ -95,19 +95,19 @@ This operation does not require a request body.</para>'>
 	  <example>
 		<title>Request with Headers: JSON</title>
 		<programlisting language="xml">
-<xi:include href="samples/samplerequestheader.txt" parse="text"/>
+<xi:include href="../samples/samplerequestheader.txt" parse="text"/>
 </programlisting>
 		<programlisting language="xml">
-<xi:include href="samples/auth_credentials.json" parse="text"/>
+<xi:include href="../samples/auth_credentials.json" parse="text"/>
 </programlisting>
 	  </example>
 	  <example>
 		<title>Response with Headers: XML</title>
 		<programlisting language="xml">
-<xi:include href="samples/sampleresponseheader.txt" parse="text"/>
+<xi:include href="../samples/sampleresponseheader.txt" parse="text"/>
 </programlisting>
 		<programlisting language="xml">
-<xi:include href="samples/auth.xml" parse="text"/>
+<xi:include href="../samples/auth.xml" parse="text"/>
 </programlisting>
 	  </example>
 	</section>
@@ -200,35 +200,35 @@ This operation does not require a request body.</para>'>
 		<example>
 			<title>Tenant Collection, First Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/tenants-1.xml" parse="text"/>
+<xi:include href="../samples/tenants-1.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, First Page: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="samples/tenants-1.json" parse="text"/></programlisting>
+			href="../samples/tenants-1.json" parse="text"/></programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Second Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/tenants-2.xml" parse="text"/>
+<xi:include href="../samples/tenants-2.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Second Page: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="samples/tenants-2.json" parse="text"/></programlisting>
+			href="../samples/tenants-2.json" parse="text"/></programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Last Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/tenants-3.xml" parse="text"/>
+<xi:include href="../samples/tenants-3.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Last Page: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="samples/tenants-3.json" parse="text"/></programlisting>
+			href="../samples/tenants-3.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			In the JSON representation, paginated collections contain
@@ -245,13 +245,13 @@ This operation does not require a request body.</para>'>
 		<example>
 			<title>Paginated Roles in a User: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/getuser-1.xml" parse="text"/>
+<xi:include href="../samples/getuser-1.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Paginated Roles in an User: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="samples/getuser-1.json" parse="text"/></programlisting>
+			href="../samples/getuser-1.json" parse="text"/></programlisting>
 		</example>
 	</section>
 	<section xml:id="Versions-d1e472">
@@ -345,19 +345,19 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 		<example security="writeronly">
 			<title>Multiple Choices Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/choices.xml" parse="text"/>
+<xi:include href="../samples/choices.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example security="writeronly">
 			<title>Multiple Choices Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="samples/choices.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../samples/choices.json" parse="text"/></programlisting>
 		</example>
 		<para> New features and functionality that do not break API
 			compatibility will be introduced in the current version of
 			the API as <link linkend="Extensions-d1e688"
 				>extensions</link> and the URI will
 			remain unchanged. Features or functionality changes that
-			would disrupt in API compatibility will require a new
+			would disrupt API compatibility will require a new
 			version, which will result in the URI version
 			being updated accordingly. When new API versions are
 			released, older versions will be marked as
@@ -394,18 +394,18 @@ Host: auth.api.rackspacecloud.com
 		<example>
 			<title>Versions List Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/versions.xml" parse="text"/>
+<xi:include href="../samples/versions.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Versions List Response: Atom</title>
 			<programlisting language="xml">
-<xi:include href="samples/versions-atom.xml" parse="text"/>
+<xi:include href="../samples/versions-atom.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Versions List Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="samples/versions.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../samples/versions.json" parse="text"/></programlisting>
 		</example>
 		<para> You can obtain additional detailed information about a
 			specific version by performing a &GET; on the base version
@@ -440,18 +440,18 @@ Host: auth.api.rackspacecloud.com/v1.0/
 		<example>
 			<title>Version Details Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/version.xml" parse="text"/>
+<xi:include href="../samples/version.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Version Details Response: Atom</title>
 			<programlisting language="xml">
-<xi:include href="samples/version-atom.xml" parse="text"/>
+<xi:include href="../samples/version-atom.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Version Details Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="samples/version.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../samples/version.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			The detailed version response contains pointers to
@@ -527,12 +527,12 @@ Host: auth.api.rackspacecloud.com/v1.0/
 		<example>
 			<title>Extensions Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/extensions.xml" parse="text"/>
+<xi:include href="../samples/extensions.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Extensions Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="samples/extensions.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../samples/extensions.json" parse="text"/></programlisting>
 		</example>
 		<para> Extensions may also be queried individually by their unique
 			alias. This provides the simplest method of checking
@@ -565,12 +565,12 @@ Host: auth.api.rackspacecloud.com/v1.0/
 		<example>
 			<title>Extension Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/extension.xml" parse="text"/>
+<xi:include href="../samples/extension.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Extension Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="samples/extension.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../samples/extension.json" parse="text"/></programlisting>
 		</example>
 		<para> Extensions may define new data types, parameters, actions,
 			headers, states, and resources. In XML, additional
@@ -596,12 +596,12 @@ Host: auth.api.rackspacecloud.com/v1.0/
 		<example xml:id="UserEXT">
 			<title>Extended User Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="samples/ext-getuser.xml" parse="text"/>
+<xi:include href="../samples/ext-getuser.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example xml:id="UserEXTJ">
 			<title>Extended User Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="samples/ext-getuser.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../samples/ext-getuser.json" parse="text"/></programlisting>
 		</example>
 	</section>
 	<section xml:id="Faults-d1e908">
@@ -613,13 +613,13 @@ Host: auth.api.rackspacecloud.com/v1.0/
 	  <example>
 		<title>Fault Response: XML</title>
 		<programlisting language="xml">
-<xi:include href="samples/identity_fault.xml" parse="text"/>
+<xi:include href="../samples/identity_fault.xml" parse="text"/>
 </programlisting>
 	  </example>
 	  <example>
 		<title>Fault Response: JSON</title>
 		<programlisting language="javascript">
-<xi:include href="samples/identity_fault.json" parse="text"/>
+<xi:include href="../samples/identity_fault.json" parse="text"/>
 </programlisting>
 	  </example>
 	  <para>The error code is returned in the body of the response. The
@@ -633,13 +633,13 @@ Host: auth.api.rackspacecloud.com/v1.0/
 	  <example>
 		<title>Item Not Found Fault: XML</title>
 		<programlisting language="xml">
-<xi:include href="samples/item_not_found.xml" parse="text"/>
+<xi:include href="../samples/item_not_found.xml" parse="text"/>
 </programlisting>
 	  </example>
 	  <example>
 		<title>Item Not Found Fault: JSON</title>
 		<programlisting language="javascript">
-<xi:include href="samples/item_not_found.json" parse="text"/>
+<xi:include href="../samples/item_not_found.json" parse="text"/>
 </programlisting>
 	  </example>
 	  <para> The following is a list of possible fault types along with their associated error

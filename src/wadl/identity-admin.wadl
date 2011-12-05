@@ -187,7 +187,7 @@
     <!-- Token Operations -->
 
     <method name="POST" id="authenticate">
-        <doc xml:lang="EN" title="Authenticate for Service API">
+        <doc xml:lang="EN" title="Authenticate">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
 	      Authenticate to generate a token.
             </p>
@@ -235,6 +235,13 @@
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:access">
+            <doc>
+                <p xmlns="http://www.w3.org/1999/xhtml">
+                    You can see an example of an authentication response in <xref linkend="Request_Response_Types-d1e149"></xref>.
+                </p>    
+            </doc>
+            </representation>    
+            <!-- rather than repeating samples here, link to section that uses a sample that's relevant here, too.
 	      <doc>
 	          <xsdxt:sample title="Authentication Response: XML">
 		          <xsdxt:code href="../common/samples/auth.xml"/>
@@ -247,7 +254,7 @@
 		          <xsdxt:code href="../common/samples/auth.json"/>	
 	          </xsdxt:sample>
 	      </doc>
-	    </representation>
+	    -->
         </response>
         <response status="403">
             <representation mediaType="application/xml" element="identity:userDisabled"/>

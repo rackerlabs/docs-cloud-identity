@@ -49,12 +49,12 @@
 		</revhistory>
 	</info>
 	<!-- Chapters are referred from the book file through these include statements. You can add additional chapters using these types of statements. -->
-	<xi:include href="identity-overview-client.xml"/>
-	<xi:include href="identity-concepts.xml"/>
-	<xi:include href="identity-general-api-info.xml"/>
+	<xi:include href="chapters/identity-overview-client.xml"/>
+	<xi:include href="chapters/identity-concepts.xml"/>
+	<xi:include href="chapters/identity-generalinfo.xml"/>
 	<chapter xml:id="api_operations" role="api-reference">
 		<title>API Operations</title>
-		<xi:include href="identity-client-api.xml"/>
+		<xi:include href="chapters/identity-operations-client.xml"/>
 		<!-- for Rackspace Cloud Auth API Client DevGuide, omit doc for Admin (aka Service) API: <xi:include href="identity-service-api.xml"/> -->
 	</chapter>
 </book>
