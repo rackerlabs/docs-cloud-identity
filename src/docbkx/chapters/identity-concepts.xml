@@ -15,12 +15,12 @@
         </title>
         <mediaobject>
             <imageobject>
-                <imagedata scale="50" fileref="../figures/auth-token-flow.png" format="PNG" align="center"/>
+                <imagedata fileref="../figures/auth-token-flow.png" format="PNG" align="center"/>
             </imageobject>
         </mediaobject>
     </figure>
     <para>
-        If the client's authenication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth.
+        If the client's authentication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth.
     </para>
     <para>
         To use the Cloud Authentication Service effectively, you should understand several key concepts:
