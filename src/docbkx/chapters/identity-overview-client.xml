@@ -96,11 +96,8 @@
                 <listitem>
                     <para>Get an authentication token.</para>
                     <para>
-                        <code>curl -X POST
-                            https://auth.api.rackspacecloud.com/v2.0/tokens
-                            -d
-                            '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}'
-                            -H "Content-type: application/json"</code>
+<literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d
+'{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}'-H "Content-type: application/json"</literallayout>
                     </para>
                     <para> Successful authentication returns a token
                         which you can use as evidence that your
@@ -117,20 +114,18 @@
                         Files service catalog endpoint that was
                         returned along with the token.</para>
                     <para>
-                        <code>curl -X GET
-                            https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee
-                            -H 'X-Auth-Token:
-                            vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz'
-                            --verbose</code>
+<literallayout class="monospaced">curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee
+-H 'X-Auth-Token:vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose</literallayout>
                     </para>
                 </listitem>
             </orderedlist>
         </para>
         <para> The rest of this API Developer Guide provides reference
             and background information, including sample requests and
-            responses. To learn more about the Cloud Identity Service and this API, 
-            a good place to begin is by considering the fundamental ideas explained in <xref linkend="Identity-Service-Concepts-e1362"></xref>.
-        </para>
+            responses. To learn more about the Cloud Identity Service
+            and this API, a good place to begin is with  the
+            fundamental ideas explained in <xref
+                linkend="Identity-Service-Concepts-e1362"/>. </para>
     </section>
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
