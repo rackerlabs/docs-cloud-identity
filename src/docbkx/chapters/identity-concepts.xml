@@ -5,6 +5,24 @@
     xml:id="Identity-Service-Concepts-e1362">
     <title>Concepts</title>
     <para>
+        The basic function of the authentication service is to validate a client's credentials. If a client offers valid credentials,
+        Auth returns a token and a service catalog. The client can use the service catalog to find endpoints for the services it can use.
+        To any of those services, the client can show the token as evidence of having been authenticated.
+    </para>
+    <figure xml:id="filter">
+        <title>A client sends credentials to the Auth service; if they are valid, the Auth service returns a token which can be used
+        to identify the client to other services.
+        </title>
+        <mediaobject>
+            <imageobject>
+                <imagedata scale="50" fileref="../figures/auth-token-flow.png" format="PNG" align="center"/>
+            </imageobject>
+        </mediaobject>
+    </figure>
+    <para>
+        If the client's authenication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth.
+    </para>
+    <para>
         To use the Cloud Authentication Service effectively, you should understand several key concepts:
     </para>
     <glossary>
