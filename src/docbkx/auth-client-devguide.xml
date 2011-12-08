@@ -43,20 +43,31 @@
 			<revision>
 				<date>2011-12-08</date>
 				<revdescription>
-					<para>Added examples of authentication with an API key in <xref linkend="POST_authenticate_v2.0_tokens_Client_Operations"/> and elsewhere.</para>
-				</revdescription>
-				<revdescription>
-					<para>Added annotations explaining key points in authentication request and response examples in <xref linkend="Request_Response_Types-d1e149"/>.
-					</para>
-				</revdescription>
-				<revdescription>
-					<para>Added <link linkend="QuickStart-000">QuickStart</link> section.</para>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Added examples of authentication with an API key in <xref linkend="POST_authenticate_v2.0_tokens_Client_Operations"/>.
+							</para>
+							</listitem>
+						<listitem>
+							<para>
+								Added annotations explaining key points in authentication request and response examples in <xref linkend="Request_Response_Types-d1e149"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Added <link linkend="QuickStart-000">QuickStart</link> section.
+							</para>
+						</listitem>
+					</itemizedlist>
 				</revdescription>
 			</revision>
 		  <revision>
 		    <date>2011-11-21</date>
 		    <revdescription>
-		      <para>Initial release for API v2.0.</para>
+		    	<itemizedlist spacing="compact">
+		    		<listitem><para>Initial release for API v2.0.</para></listitem>
+		    	</itemizedlist>
 		    </revdescription>
 		  </revision>
 		</revhistory>
