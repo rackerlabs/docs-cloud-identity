@@ -92,11 +92,24 @@
         </para>
         <para> You can use <link xlink:href="http://curl.haxx.se/"
                 >cURL</link> to try the authentication process in two
-            steps: <orderedlist>
+            steps: get a token; send the token to a service.<orderedlist>
                 <listitem>
-                    <para>Get an authentication token.</para>
+                    <para>Get an authentication token by providing
+                        your username and either your API key or your
+                        password. Here are examples of both
+                        approaches:</para>
+                    <para><emphasis>You can request a token by
+                            providing your username and your API
+                            key.</emphasis></para>
                     <para>
-<literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d
+                        <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d 
+'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"theUserName", "apiKey":"00a00000a000a0000000a000a00aaa0a" } } }' -H "Content-type: application/json"</literallayout>
+                    </para>
+                    <para><emphasis>You can request a token by
+                            providing your username and your
+                            password.</emphasis></para>
+                    <para>
+                        <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d
 '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}'-H "Content-type: application/json"</literallayout>
                     </para>
                     <para> Successful authentication returns a token
@@ -110,11 +123,14 @@
                 </listitem>
                 <listitem>
                     <para>Use the authentication token to send a GET
-                        to the Cloud Files service, using the Cloud
-                        Files service catalog endpoint that was
-                        returned along with the token.</para>
+                        to a service you would like to use. Here is an
+                        example of passing an authentication token to
+                        the Cloud Files service, using the Cloud Files
+                        service catalog endpoint that was returned
+                        along with the token.</para>
+                    <para><emphasis>You can use a token and a service endpoint to tell a service that your credentials are valid.</emphasis></para>
                     <para>
-<literallayout class="monospaced">curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee
+                        <literallayout class="monospaced">curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee
 -H 'X-Auth-Token:vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose</literallayout>
                     </para>
                 </listitem>

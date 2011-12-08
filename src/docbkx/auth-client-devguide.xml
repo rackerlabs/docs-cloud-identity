@@ -44,7 +44,7 @@
 				<date>2011-12-08</date>
 				<revdescription>
 					<para>Added examples of authentication with an API key in 
-						<xref linkend="POST_authenticate_v2.0_tokens_Client_Operations"/>.
+						<xref linkend="POST_authenticate_v2.0_tokens_Client_Operations"/> and elsewhere.
 					</para>
 				</revdescription>
 				<revdescription>

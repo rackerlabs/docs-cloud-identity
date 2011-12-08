@@ -20,7 +20,11 @@
         </mediaobject>
     </figure>
     <para>
-        If the client's authentication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth.
+        You can see an OpenStack-oriented drawing of this idea, showing the OpenStack Keystone identity service authenticating for the OpenStack Nova compute service, 
+        at <link xlink:href="https://github.com/openstack/openstack-manuals/raw/master/doc/src/docbkx/openstack-identity-service-starter/figures/use_case_1.png">https://github.com/openstack/openstack-manuals/raw/master/doc/src/docbkx/openstack-identity-service-starter/figures/use_case_1.png</link>.
+    </para>
+    <para>
+        If the client's authentication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth. 
     </para>
     <para>
         To use the Cloud Authentication Service effectively, you should understand several key concepts:
