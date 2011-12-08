@@ -235,11 +235,14 @@
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:access">
-            <doc>
+            
+                <!-- I'd link to example marked up with callouts if I could; it might work if production URL hardcoded rather than xml:id within the book, 
+                    but then what happens in docs-beta? Skipping it for now
+                <doc>    
                 <p xmlns="http://www.w3.org/1999/xhtml">
                     You can see an example of an authentication response in <xref linkend="Request_Response_Types-d1e149"></xref>.
                 </p>    
-            </doc>
+                </doc> -->
             </representation>
             <representation mediaType="application/xml" element="identity:access">
             <!-- I'd link to the auth.xml sample in the hand-coded section if I could, rather than repeating the sample here -->
