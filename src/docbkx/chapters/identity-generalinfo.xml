@@ -99,9 +99,9 @@ This operation does not require a request body.</para>'>
 		</programlisting>
 	  	<programlistingco>
 	  		<areaspec>
-	  			<area xml:id="credentials.json.user" units="linecolumn" coords="5 31"/>
-	  			<area xml:id="credentials.json.password" units="linecolumn" coords="6 27"/>
-	  			<area xml:id="credentials.json.tenant" units="linecolumn" coords="8 23"/>
+	  			<area xml:id="request.json.user" units="linecolumn" coords="5 29"/>
+	  			<area xml:id="request.json.password" units="linecolumn" coords="6 27"/>
+	  			<area xml:id="request.json.tenant" units="linecolumn" coords="8 23"/>
 	  		</areaspec>	
 <programlisting language="javascript">
 <xi:include href="../samples/auth_credentials.json" parse="text"/>
@@ -109,59 +109,77 @@ This operation does not require a request body.</para>'>
 </programlistingco>	
 	  </example>
 		<calloutlist>
-			<callout arearefs="credentials.json.user">
+			<callout arearefs="request.json.user">
 				<para> This is the username you use to login to the Rackspace
 					control panel. </para>
 			</callout>
-			<callout arearefs="credentials.json.password">
+			<callout arearefs="request.json.password">
 				<para> This is the password you use to login to the Rackspace
 					control panel. </para>
 			</callout>
-			<callout arearefs="credentials.json.tenant">
-				<para> Tenant is an optional specification. You may find it useful
-					if, for example, your Rackspace username is
-					associated with your company, with multiple
-					projects or divisions within the company managed
-					separately as <link linkend="Tenant-d1e11"
-						>tenants</link>. </para>
+			<callout arearefs="request.json.tenant">
+				<para> <link linkend="Tenant-d1e11">Tenant</link> is an optional specification. 
+					Some services use multi-level authentication, with service-specific credentials
+					in addition to vendor-specific credentials. 
+					In such cases, associating a user with a tenant can
+					be a method of passing that additional level of identifying information to the service.
+				</para>
 			</callout>
 		</calloutlist>	
 	  <example>
 		<title>Authentication Response with Headers: XML</title>
 		<programlisting language="xml">
 <xi:include href="../samples/sampleresponseheader.txt" parse="text"/>
-</programlisting>
+		</programlisting>
+	  	<programlistingco>
+	  		<areaspec>
+	  			<area xml:id="response.xml.token" units="linecolumn" coords="8 51"/>
+	  			<area xml:id="response.xml.role" units="linecolumn" coords="11 10"/>
+	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="16 18"/>
+	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="18 32"/>
+	  			<area xml:id="response.xml.url" units="linecolumn" coords="19 77"/>
+	  			<area xml:id="response.xml.region" units="linecolumn" coords="25 27"/>
+	  		</areaspec>	
 		<programlisting language="xml">
 <xi:include href="../samples/auth.xml" parse="text"/>
-</programlisting>
+		</programlisting>
+	  	</programlistingco>			
 	  </example>
 		<calloutlist>
-			<callout arearefs="auth.xml.token.expires">
-				<para> Tokens are valid for a finite duration. The <code>expires</code>
+			<callout arearefs="response.xml.token">
+				<para> This token can be presented to a service as evidence of authentication.
+					Tokens are valid for a finite duration. The <code>expires</code>
 					attribute denotes the time after which the token will automatically become
 					invalid. A token may be manually revoked before the time identified by the
 					<code>expires</code> attribute; <code>expires</code> predicts a token's maximum possible lifespan but does not guarantee that it will reach that lifespan. 
 					Clients are encouraged to cache a
-					token until it expires. </para>
-			</callout>
-			<callout arearefs="auth.xml.sc.s.e.region">
-				<para>
-					A service may expose endpoints in different regions.
-					Regional endpoints allow clients to provision resources in
-					a manner that provides high availability.
+					token until it expires. 
 				</para>
 			</callout>
-			<callout arearefs="auth.xml.sc.s.e.v1d">
-				<para> The <code>v1Default</code> attribute denotes that an endpoint is being
-					returned in version 1.0 of the Cloud Authentication Service. The default
-					value of <code>v1Default</code> is <code>false</code>; clients
-					should assume the value is <code>false</code> when the attribute is missing. Auth 1.0
-					does not offer support for regional endpoints and therefore only returns one
-					endpoint per service. Resources stored in endpoints where
-					<code>v1Default</code> is<code>false</code>, will not be seen by Auth
-					1.0 clients. </para>
+			<callout arearefs="response.xml.role">
+				<para> 
+					Users can be assigned multiple roles, with each role providing specific privileges.
+					In this example, this user can perform only the default role.
+					Other users might hold additional roles with different privileges.
+					Roles need not be associated with actual job functions such as Administrator, Operator, Developer, Tester, or Trainer.
+				</para>
 			</callout>
-			<callout arearefs="auth.xml.sc.s.e.pu auth.xml.sc.s.e.iu">
+			<callout arearefs="response.xml.catalog">
+				<para> The service catalog lists the services this user can access.
+				In this example, three services are available: Cloud Servers, Cloud Files Content Distribution Network (CDN), and Cloud Files.
+				The catalog listing for each service provides at least one endpoint URL for that service.
+				Other information, such as regions and versions and tenants, is provided if it's relevant to this user's access to this service.
+				</para>
+			</callout>
+			<callout arearefs="response.xml.tenant">
+				<para> 
+					Some services recognize specification of a tenant; if a service does recognize tenants,
+					the format of the tenant specification is defined only by the service. 
+					In this example, Rackspace's Cloud Servers uses a "Nast ID" as a tenant ID 
+					while the Cloud Files and Cloud Files CDN services use a "Mosso ID".
+				</para>
+			</callout>
+			<callout arearefs="response.xml.url">
 				<para>
 					An endpoint can be assigned public and internal URLs. A
 					public URL is accessible from anywhere. Access to a public
@@ -170,9 +188,14 @@ This operation does not require a request body.</para>'>
 					an internal URL is free of charge.
 				</para>
 			</callout>
-			<callout arearefs="auth.xml.sc.s.e.nr">
-				<para> Some services are not region-specific. These services supply a single
-					non-regional endpoint and do not provide access to internal URLs. </para>
+			<callout arearefs="response.xml.region">
+				<para>
+					A service may expose endpoints in different regions.
+					Regional endpoints allow clients to provision resources in
+					a manner that provides high availability.
+					In this example, the endpoints for two of the available services are associated with the
+					"ORD" (Chicago) region; the service catalog entry for Cloud Servers does not identify a region.
+				</para>
 			</callout>
 		</calloutlist>	
 	</section>
