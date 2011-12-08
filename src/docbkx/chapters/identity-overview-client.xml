@@ -102,11 +102,11 @@
                     <para> Successful authentication returns a token
                         which you can use as evidence that your
                         identity has already been authenticated. To
-                        use the token, pass it to other services as
-                            <code>X-Auth-Token</code>. </para>
+                        use the token, pass it to other services as an
+                            <code>X-Auth-Token</code> header. </para>
                     <para> Authentication also returns a service
                         catalog, listing the endpoints you can use for
-                        cloud services. </para>
+                        Cloud services. </para>
                 </listitem>
                 <listitem>
                     <para>Use the authentication token to send a GET
