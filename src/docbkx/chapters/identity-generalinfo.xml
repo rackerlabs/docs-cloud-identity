@@ -148,8 +148,11 @@ This operation does not require a request body.</para>'>
 		<calloutlist>
 			<callout arearefs="response.xml.token">
 				<para> This token can be presented to a service as evidence of authentication.
-					Tokens are valid for a finite duration. The <code>expires</code>
-					attribute denotes the time after which the token will automatically become
+					Tokens are valid for a finite duration; a token's default lifespan is twenty-four hours. 
+				</para>
+				<para>
+					The token's <code>expires</code>
+					attribute identifies the time after which the token will automatically become
 					invalid. A token may be manually revoked before the time identified by the
 					<code>expires</code> attribute; <code>expires</code> predicts a token's maximum possible lifespan but does not guarantee that it will reach that lifespan. 
 					Clients are encouraged to cache a
