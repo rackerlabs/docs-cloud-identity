@@ -29,7 +29,7 @@
             message body to a Rackspace <emphasis>authentication
                 endpoint</emphasis>. </para>
         <para>
-            <emphasis>CREDENTIALS</emphasis>
+            <emphasis>GET YOUR CREDENTIALS</emphasis>
         </para>
         <para> You can use either of two sets of credentials: <itemizedlist>
                 <listitem>
@@ -64,7 +64,7 @@
             </itemizedlist> 
         </para>
         <para>
-            <emphasis>AUTHENTICATION ENDPOINT</emphasis>
+            <emphasis>CHOOSE YOUR AUTHENTICATION ENDPOINT</emphasis>
         </para>
         <para>
             Use the authentication endpoint for the region in which your account is based:
@@ -82,7 +82,8 @@
             </itemizedlist>
         </para>
         <para>
-            <emphasis>TRY IT</emphasis>
+            <emphasis>SEND YOUR CREDENTIALS TO YOUR AUTHENTICATION
+                ENDPOINT</emphasis>
         </para>
         <para> If you know your credentials and your authentication
             endpoint, and you can issue a <code>POST

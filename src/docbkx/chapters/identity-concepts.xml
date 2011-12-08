@@ -19,10 +19,18 @@
             </imageobject>
         </mediaobject>
     </figure>
-    <para>
-        You can see an OpenStack-oriented drawing of this idea, showing the OpenStack Keystone identity service authenticating for the OpenStack Nova compute service, 
-        at <link xlink:href="https://github.com/openstack/openstack-manuals/raw/master/doc/src/docbkx/openstack-identity-service-starter/figures/use_case_1.png">https://github.com/openstack/openstack-manuals/raw/master/doc/src/docbkx/openstack-identity-service-starter/figures/use_case_1.png</link>.
-    </para>
+    <para> You can see some OpenStack-oriented illustrations of this
+        idea, showing the OpenStack Keystone identity service
+        authenticating for the OpenStack Nova compute service, at
+            <link
+            xlink:href="http://docs.openstack.org/trunk/openstack-identity/admin/content/example-flows.html"
+            >http://docs.openstack.org/trunk/openstack-identity/admin/content/example-flows.html</link>.
+        Some of the OpenStack functions illustrated may not be
+        consistent with the privileges available to you as a Rackspace
+        customer; you are very welcome to examine this and other
+        OpenStack publications as general background material, but
+        please rely on Rackspace sources for specific information
+        about what you can do and how you can do it.</para>
     <para>
         If the client's authentication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth. 
     </para>
@@ -31,6 +39,20 @@
     </para>
     <glossary>
         <title>Glossary</title>
+        <glossentry xml:id="APIkey-d1e02">
+            <glossterm><emphasis role="bold">API Key</emphasis></glossterm>
+            <glossdef>
+                <para> Your API Key is a unique alphanumeric
+                    identifier associated with your account. You can
+                    use your API key as an authentication credential,
+                    paired with your username, to generate an
+                    authentication <link linkend="Token-d1e13">token</link> which will be recognized by
+                    the <link linkend="Service-d1e09">services</link>
+                    in your <link linkend="Service-d1e10">service catalog</link>. To find or generate your
+                    API key, login to the Rackspace control
+                    panel.</para>
+            </glossdef>    
+        </glossentry> 
         <glossentry xml:id="Authentication-d1e01">
             <glossterm><emphasis role="bold">Authentication</emphasis></glossterm>
             <glossdef>
@@ -138,6 +160,20 @@
                     can access resources and perform
                     operations.
                     Examples of OpenStack services include Compute (Nova), Object Storage (Swift), and Image Service (Glance). 
+                </para>
+            </glossdef>    
+        </glossentry> 
+        <glossentry xml:id="Service_Catalog-d1e10">
+            <glossterm><emphasis role="bold">Service Catalog</emphasis></glossterm>
+            <glossdef>
+                <para> 
+                    Your service catalog is the list of services available to you, as returned along with your authentication 
+                    <link linkend="Token-d1e13">token</link> and an expiration date for that token.
+                    All the services in your service catalog should recognize your token as valid until it expires.
+                </para>
+                <para>
+                    The catalog listing for each service provides at least one endpoint URL for that service. 
+                    Other information, such as regions and versions and tenants, is provided if it's relevant to your access to this service.
                 </para>
             </glossdef>    
         </glossentry> 
