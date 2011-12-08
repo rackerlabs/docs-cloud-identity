@@ -210,12 +210,30 @@
 	      The authentication service is a ReSTful web service. It is the entry point to all service APIs.
 	      To access the authentication service, you must know its URL.
 	    </p>
+        <p xmlns="http://www.w3.org/1999/xhtml">
+          You can authenticate by providing any of several kinds of credentials:
+          <ul>
+              <li>
+                  <p>username and API key</p>
+              </li>
+              <li>
+                  <p>username and password</p>
+              </li>
+              <li>
+                  <p>token</p>
+              </li>
+          </ul>
+          You can use whichever valid credentials you prefer. The authentication service's response is not affected by which kind of credentials you use.
+        </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:auth">
 	      <doc>
+	          <xsdxt:sample title="Authenticate with API Key Request: XML">
+	              <xsdxt:code href="../common/samples/auth_with_apikey.xml"/>
+	          </xsdxt:sample>
 	          <xsdxt:sample title="Authenticate with Username Request: XML">
-				<xsdxt:code href="../common/samples/auth_credentials.xml"/>
+	              <xsdxt:code href="../common/samples/auth_credentials.xml"/>
 	          </xsdxt:sample>
 	          <xsdxt:sample title="Authenticate with Token Request: XML">
 				<xsdxt:code href="../common/samples/auth_with_token.xml"/>
@@ -224,6 +242,9 @@
 	    </representation>
         <representation mediaType="application/json">
 	      <doc>
+	          <xsdxt:sample title="Authenticate with API Key Request: JSON">   
+	              <xsdxt:code href="../common/samples/auth_with_apikey.json"/>
+	          </xsdxt:sample>
 	          <xsdxt:sample title="Authenticate with Username Request: JSON">
 				<xsdxt:code href="../common/samples/auth_credentials.json"/>
 	          </xsdxt:sample>

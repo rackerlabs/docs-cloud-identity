@@ -1,0 +1,9 @@
+{
+    "auth": 
+    {
+        "RAX-KSKEY:apiKeyCredentials": {
+    "username": "jsmith",
+    "apiKey": "aaaaa-bbbbb-ccccc-12345678"
+        }
+    }
+}

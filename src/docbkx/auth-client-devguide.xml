@@ -43,7 +43,9 @@
 			<revision>
 				<date>2011-12-08</date>
 				<revdescription>
-					<para>Added details on authentication with API Key.</para>
+					<para>Added examples of authentication with an API key in 
+						<xref linkend="POST_authenticate_v2.0_tokens_Client_Operations.html"/>.
+					</para>
 				</revdescription>
 				<revdescription>
 					<para>Added <link linkend="QuickStart-000">QuickStart</link> section.</para>
