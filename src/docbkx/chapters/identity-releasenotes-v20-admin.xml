@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="Release_Notes-V11-d1e140">
+    <title>Release Notes for API Version 2.0</title>
+    <annotation>
+        <remark>This is extracted from more detailed Release Guide at https://wiki.mosso.com/display/CT/Auth+v2.0+Release+Guide.</remark>
+    </annotation>
+    <para>Version 2.0 of the Auth API differs from Version 1.1 in
+        several important ways: 
+        <itemizedlist>
+            <listitem>
+                <para><emphasis role="bold">API
+                    CHANGES:</emphasis></para>
+                <itemizedlist>
+                    <listitem>
+                        <para> API implements OpenStack's Keystone v2.0 API Specification. </para>
+                    </listitem>
+                    <listitem>
+                        <para> Admin functions can only be performed by users with "Admin" role assigned. Users with "Admin" roles are validated against the Auth REALMS database. </para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+            <listitem>
+                <para><emphasis role="bold">NEW
+                    FEATURES:</emphasis></para>
+                <itemizedlist>
+                    <listitem>
+                        <para> Introduction of tenants and roles. </para>
+                    </listitem>
+                    <listitem>
+                        <para> Service catalog includes service types such as <code>compute</code> and <code>object-store</code>. </para>
+                    </listitem>
+                    <listitem>
+                        <para> Service catalog includes version information and version list links. </para>
+                    </listitem>
+                    <listitem>
+                        <para> Upon authentication, service catalog returns a separate <code>tenantID</code> attribute by endpoint. </para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+        </itemizedlist>
+    </para>
+</section>

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0"
+	xml:id="Identity-Developer-Guide">
+	<title>Cloud Identity Admin Developer Guide</title>
+	<titleabbrev>Cloud Identity Admin DevGuide</titleabbrev>
+	<?rax  pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content" status.bar.text="BETA"?> 
+	<info>
+		<author>
+			<personname>
+				<firstname/>
+				<surname/>
+			</personname>
+			<affiliation>
+				<orgname>Rackspace Cloud</orgname>
+			</affiliation>
+		</author>
+		<copyright>
+			<year>2010</year>
+			<year>2011</year>
+			<holder>Rackspace US, Inc.</holder>
+		</copyright>
+		<releaseinfo>API v2.0 BETA</releaseinfo>
+		<productname>Cloud Identity</productname>
+		<pubdate>2011-12-16</pubdate>
+		<legalnotice role="rs-api">
+			<annotation>
+				<remark>Copyright details are filled in by the template.</remark>
+			</annotation>
+		</legalnotice>
+		<abstract>
+			<para>This document is intended for software developers interested
+				in developing applications that utilize Rackspace's
+				implementation of OpenStack's Keystone Identity
+				Service for authentication. This document also
+				includes details on how to integrate services with
+				Rackspace's implementation of OpenStack's Keystone
+				Identity Service. </para>
+		</abstract>
+		<revhistory>
+			<revision>
+		    <date>2011-12-16</date>
+		    <revdescription>
+		    	<itemizedlist spacing="compact">
+		    		<listitem><para>Initial release for API v2.0.</para></listitem>
+		    	</itemizedlist>
+		    </revdescription>
+		  </revision>
+		</revhistory>
+	</info>
+	<xi:include href="chapters/identity-overview-admin.xml"/>
+	<xi:include href="chapters/identity-concepts.xml"/>
+	<xi:include href="chapters/identity-generalinfo.xml"/>
+	<chapter xml:id="api_operations" role="api-reference">
+		<!-- this chapter is generated from the WADL -->
+		<title>API Operations</title>
+		<xi:include href="chapters/identity-operations-admin.xml"/>
+	</chapter>
+</book>

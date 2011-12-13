@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="Overview-d1e65">
+    <title>Overview</title>
+    <para> This document describes Rackspace's implementation of the
+        OpenStack Keystone Identity Service v2.0. We have named our
+        Keystone implementation the Rackspace Cloud Identity Service
+        v2.0; the identity service performs authentication, generating
+        a token in response to valid credentials, and identification,
+        matching users and their roles. Earlier versions of this API,
+        v1.0 and v1.1, support only authentication and are named
+        Rackspace Cloud Authentication Service; all versions of the
+        API allow clients to obtain tokens that can be used to access
+        resources in the Rackspace Cloud, but only v2.0 is an
+        implementation of OpenStack's Keystone Identity Service. </para>
+    <para>
+        While each version of the API implements different features, 
+        tokens created by any version can be recognized as valid by any other version.
+        For example, if you use v1.1 to generate a token, you can use that token
+        in calls to v2.0.
+    </para>
+    <section xml:id="QuickStart-000">
+        <title>QuickStart</title>
+        <para> To authenticate, submit a <code>POST
+                /v2.0/tokens</code> request, presenting valid
+            Rackspace customer <emphasis>credentials</emphasis> in the
+            message body to a Rackspace <emphasis>authentication
+                endpoint</emphasis>. </para>
+        <para>
+            <emphasis>GET YOUR CREDENTIALS</emphasis>
+        </para>
+        <para> You can use either of two sets of credentials: <itemizedlist>
+                <listitem>
+                    <para>your <code>username</code> and
+                            <code>password</code></para>
+                </listitem>
+                <listitem>
+                    <para>your <code>username</code> and <code>API
+                            key</code></para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            Your <code>username</code> and
+            <code>password</code> are the ones you use to login to the Rackspace control panel.
+            Once you are logged in, you can use the Rackspace control panel to obtain your <code>API key</code>.
+        </para>
+        <para>
+            Use the control panel for the region in which your account is based: 
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>
+                        US-based accounts use the control panel at <link xlink:href="https://manage.rackspacecloud.com/">https://manage.rackspacecloud.com/</link>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para> UK-based accounts use the control panel at
+                            <link
+                            xlink:href="https://lon.manage.rackspacecloud.com/"
+                            >https://lon.manage.rackspacecloud.com/</link>. </para>
+                </listitem>
+            </itemizedlist> 
+        </para>
+        <para>
+            <emphasis>CHOOSE YOUR AUTHENTICATION ENDPOINT</emphasis>
+        </para>
+        <para>
+            Use the authentication endpoint for the region in which your account is based:
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>
+                        US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v2.0/">https://auth.api.rackspacecloud.com/v2.0/</link>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v2.0/">https://lon.auth.api.rackspacecloud.com/v2.0/</link>.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis>SEND YOUR CREDENTIALS TO YOUR AUTHENTICATION
+                ENDPOINT</emphasis>
+        </para>
+        <para> If you know your credentials and your authentication
+            endpoint, and you can issue a <code>POST
+                /v2.0/tokens</code> request in an API call, you have
+            all the basic information you need to use the Rackspace
+            Cloud Identity Service. 
+        </para>
+        <para> You can use <link xlink:href="http://curl.haxx.se/"
+                >cURL</link> to try the authentication process in two
+            steps: get a token; send the token to a service.<orderedlist>
+                <listitem>
+                    <para>Get an authentication token by providing
+                        your username and either your API key or your
+                        password. Here are examples of both
+                        approaches:</para>
+                    <para><emphasis>You can request a token by
+                            providing your username and your API
+                            key.</emphasis></para>
+                    <para>
+                        <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d 
+'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"theUserName", "apiKey":"00a00000a000a0000000a000a00aaa0a" } } }' -H "Content-type: application/json"</literallayout>
+                    </para>
+                    <para><emphasis>You can request a token by
+                            providing your username and your
+                            password.</emphasis></para>
+                    <para>
+                        <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d
+'{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}'-H "Content-type: application/json"</literallayout>
+                    </para>
+                    <para> Successful authentication returns a token
+                        which you can use as evidence that your
+                        identity has already been authenticated. To
+                        use the token, pass it to other services as an
+                            <code>X-Auth-Token</code> header. </para>
+                    <para> Authentication also returns a service
+                        catalog, listing the endpoints you can use for
+                        Cloud services. </para>
+                </listitem>
+                <listitem>
+                    <para>Use the authentication token to send a GET
+                        to a service you would like to use. Here is an
+                        example of passing an authentication token to
+                        the Cloud Files service, using the Cloud Files
+                        service catalog endpoint that was returned
+                        along with the token.</para>
+                    <para><emphasis>You can use a token and a service endpoint to tell a service that your credentials are valid.</emphasis></para>
+                    <para>
+                        <literallayout class="monospaced">curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee
+-H 'X-Auth-Token:vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose</literallayout>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para> The rest of this API Developer Guide provides reference
+            and background information, including sample requests and
+            responses. To learn more about the Cloud Identity Service
+            and this API, a good place to begin is with  the
+            fundamental ideas explained in <xref
+                linkend="Identity-Service-Concepts-e1362"/>.</para>
+    </section>
+    <section xml:id="Intended_Audience-d1e73">
+        <title>Intended Audience</title>
+        <para> This document is intended for software developers
+            interested in developing applications that utilize the
+            Keystone Identity Service API for authentication. The
+            Rackspace Cloud Identity Service, also known as the
+            authentication service or "Auth", allows these developers
+            to obtain an authentication token and a list of regional
+            service endpoints to the various services available in the
+            cloud. </para>
+        <para>
+            To use this Developer Guide most effectively, readers should be familiar with ReSTful web
+            services, HTTP/1.1, and JSON and/or XML serialization formats.
+        </para>
+    </section>
+    <section xml:id="Document_Change_History-d1e85">
+        <title>Document Change History</title>
+        <para>This version of the Developer Guide applies only to v2.0 of the API.
+            The most recent changes are described in the table below: </para>
+	    <?rax revhistory?>
+    </section>
+    <section xml:id="Additional_Resources-d1e130">
+        <title>Additional Resources</title>
+        <para>
+            Descriptive information about this service is also published in its Web Application Description Language (WADL) and XML Schema Definition (XSD). 
+            You are welcome to read this information, but please use the appropriate US-based or UK-based version.
+        </para>
+        <para>
+            Your account may be based in either the US or the UK; this is not determined
+            by your physical location but by the location of the Rackspace retail site which
+            was used to create your account: 
+        </para>
+        <itemizedlist>
+            <listitem>
+                <para>
+                    If your account was
+                    created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
+                    <itemizedlist>
+                        <listitem>
+                            <para>
+                                The US-based WADL is <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl</link>.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                The US-based XSDs are <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd</link> 
+                                and <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd</link>.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>   
+            </listitem>
+            <listitem>
+                <para>
+                    If your account was
+                    created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
+                    <itemizedlist>
+                        <listitem>
+                            <para>
+                                The UK-based WADL is <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl</link>.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                The UK-based XSDs are <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>  
+                                and <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api-common.xsd</link>.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </listitem>
+        </itemizedlist>
+        <para>
+            If you are unsure how your account was created, use the Rackspace contact
+            information at either site to ask for help.
+        </para>
+        <para>To see how the Cloud Authentication Service is used by other Rackspace services, read the API documentation collected 
+            at <link xlink:href="http://docs.rackspacecloud.com/api/">
+                http://docs.rackspacecloud.com/api/</link>.
+        </para>
+        <para>
+            To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
+            does not implement the OpenStack Keystone Identity Service, 
+            read the Rackspace Cloud Authentication Client Developer Guide for API v1.1 
+            at <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
+                http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf</link>.
+        </para>
+        <para>
+            To learn about Keystone, read OpenStack's Keystone documentation 
+            at <link xlink:href="http://keystone.openstack.org/">
+                http://keystone.openstack.org/</link>.
+        </para>
+    </section>
+    <xi:include href="identity-releasenotes-v20-admin.xml"/>
+</chapter>
