@@ -364,7 +364,7 @@
 
     <!--User Operations-->
     <method name="GET" id="getUserByName">
-        <doc xml:lang="EN" title="Get a User by Name">
+        <doc xml:lang="EN" title="Get User by Name">
             <p xmlns="http://www.w3.org/1999/xhtml">
             	Returns detailed information about a specific user, by user name.
             </p>
@@ -388,7 +388,7 @@
         &getFaults;
     </method>
     <method name="GET" id="getUserById">
-        <doc xml:lang="EN" title="Get a User by ID">
+        <doc xml:lang="EN" title="Get User by ID">
             <p xmlns="http://www.w3.org/1999/xhtml">
             	Returns detailed information about a specific user, by user id.
             </p>
@@ -518,7 +518,7 @@
         &getFaults;
     </method>
     <method name="GET" id="listEndpointsForToken">
-        <doc xml:lang="EN" title="List Endpoints for a Token">
+        <doc xml:lang="EN" title="List Endpoints for Token">
             <p xmlns="http://www.w3.org/1999/xhtml">
             	Returns a list of endpoints associated with a specific token.
             </p>
