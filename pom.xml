@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- POM Build file for the Keystone Developer Guide -->
+    <!-- POM Build file for the Cloud Identity (akd Auth 2.0, based on Keystone) Developer Guides: -client-devguide and -admin-devguide -->
     <modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.rackspace.cloud.api.auth</groupId>
@@ -294,14 +294,14 @@
 		  <!-- These parameters apply to pdf and webhelp -->
                     <xincludeSupported>true</xincludeSupported>
                     <sourceDirectory>src/docbkx</sourceDirectory>
-                	<!-- for now, just build auth-client-devguide: deal with the rest later
+                	<!-- for now, just build auth-client-devguide and -admin-devguide: deal with the rest later
                     <includes>
-                    auth-client-devguide.xml,OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
+                    OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
 	                OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
                     </includes>
                     -->
                 	<includes>
-                		auth-client-devguide.xml
+                		auth-client-devguide.xml, auth-admin-devguide.xml
                 	</includes>
                 	<htmlhelpDefaultTopic>QuickStart-000.html</htmlhelpDefaultTopic>
                     <profileSecurity>reviewer</profileSecurity>
