@@ -233,15 +233,25 @@
                     <enableGoogleAnalytics>1</enableGoogleAnalytics>
                     <!-- <googleAnalyticsId>UA-17511903-6</googleAnalyticsId> -->
 
-                    <postProcess>
-		      <!-- Copies the figures to the correct location for webhelp -->
-		      <copy todir="${basedir}/target/docbkx/webhelp/auth-client-devguide/figures">
-			<fileset dir="${basedir}/src/docbkx/figures">
-			  <include name="**/*.png" />
-			  <exclude name="**/*.svg" />
-			</fileset>
+            <postProcess>
+		    <!-- FOR -ADMIN-DEVGUIDE: Copies the figures to the correct location for webhelp --> 	
+		      <copy todir="${basedir}/target/docbkx/webhelp/auth-admin-devguide/figures">
+			  <fileset dir="${basedir}/src/docbkx/figures">
+			    <include name="**/*.png" />
+			    <exclude name="**/*.svg" />
+			  </fileset>
 		      </copy>
-		    </postProcess>
+            </postProcess>
+                	
+            <postProcess>
+            <!-- FOR -CLIENT-DEVGUIDE: Copies the figures to the correct location for webhelp --> 	
+               <copy todir="${basedir}/target/docbkx/webhelp/auth-client-devguide/figures">
+               <fileset dir="${basedir}/src/docbkx/figures">
+                 <include name="**/*.png" />
+                 <exclude name="**/*.svg" />
+               </fileset>
+               </copy>
+            </postProcess>
 
                     	<!-- Copies HTML to a release folder for web site-->   
 
