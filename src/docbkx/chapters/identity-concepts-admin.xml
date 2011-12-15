@@ -7,9 +7,10 @@
     <para>
         The basic function of the authentication service is to validate a client's credentials. If a client offers valid credentials,
         Auth returns a token and a service catalog. The client can use the service catalog to find endpoints for the services it can use.
-        To any of those services, the client can show the token as evidence of having been authenticated.
+        To any of those services, the client can show the token as evidence of having been authenticated. If the service recognizes the client's token as valid, 
+        it can then process the client's request.
     </para>
-    <figure xml:id="filter">
+    <figure xml:id="token-flow">
         <title>A client sends credentials to the Auth service; if they are valid, the Auth service returns a token which can be used
         to identify the client to other services.
         </title>
@@ -19,7 +20,20 @@
             </imageobject>
         </mediaobject>
     </figure>
-    <para> You can see some OpenStack-oriented illustrations of this
+    <para>
+        Once a client has a token, it sends the token along with its request to a service.
+        If the service recognizes the token as valid, it processes the request and sends a response
+    </para>
+    <figure xml:id="token-validate">
+        <title>A client sends a token and a request to a service; if the token is valid, the service processes the request.
+        </title>
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="../figures/auth-token-validate.png" format="PNG" align="center"/>
+            </imageobject>
+        </mediaobject>
+    </figure>
+    <para> You can see some OpenStack-oriented illustrations of these
         idea, showing the OpenStack Keystone identity service
         authenticating for the OpenStack Nova compute service, at
             <link
