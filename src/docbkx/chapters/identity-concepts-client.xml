@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="Identity-Service-Concepts-e1362">
+    <title>Concepts</title>
+    <para>
+        The basic function of the authentication service is to validate a client's credentials. If a client offers valid credentials,
+        Auth returns a token and a service catalog. The client can use the service catalog to find endpoints for the services it can use.
+        To any of those services, the client can show the token as evidence of having been authenticated.
+    </para>
+    <figure xml:id="filter">
+        <title>A client sends credentials to the Auth service; if they are valid, the Auth service returns a token which can be used
+        to identify the client to other services.
+        </title>
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="../figures/auth-token-flow.png" format="PNG" align="center"/>
+            </imageobject>
+        </mediaobject>
+    </figure>
+    <para> You can see some OpenStack-oriented illustrations of this
+        idea, showing the OpenStack Keystone identity service
+        authenticating for the OpenStack Nova compute service, at
+            <link
+            xlink:href="http://docs.openstack.org/trunk/openstack-identity/admin/content/example-flows.html"
+            >http://docs.openstack.org/trunk/openstack-identity/admin/content/example-flows.html</link>.
+        Some of the OpenStack functions illustrated may not be
+        consistent with the privileges available to you as a Rackspace
+        customer; you are very welcome to examine this and other
+        OpenStack publications as general background material, but
+        please rely on Rackspace sources for specific information
+        about what you can do and how you can do it.</para>
+    <para>
+        If the client's authentication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth. 
+    </para>
+    <para>
+        To use the Cloud Authentication Service effectively, you should understand several key concepts:
+    </para>
+    <xi:include href="identity-glossary.xml"/>
+</chapter>

@@ -51,7 +51,7 @@
 		</revhistory>
 	</info>
 	<xi:include href="chapters/identity-overview-admin.xml"/>
-	<xi:include href="chapters/identity-concepts.xml"/>
+	<xi:include href="chapters/identity-concepts-admin.xml"/>
 	<xi:include href="chapters/identity-generalinfo.xml"/>
 	<chapter xml:id="api_operations" role="api-reference">
 		<!-- this chapter is generated from the WADL -->
