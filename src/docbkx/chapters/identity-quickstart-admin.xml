@@ -5,45 +5,25 @@
     xml:id="QuickStart-000">
         <title>QuickStart</title>
         <para> To authenticate, submit a <code>POST
-            /v2.0/tokens</code> request, presenting valid
-            Rackspace customer <emphasis>credentials</emphasis> in the
-            message body to a Rackspace <emphasis>authentication
-                endpoint</emphasis>. </para>
+            /v2.0/tokens</code> request, presenting valid Rackspace
+        service <emphasis>credentials</emphasis> in the message body
+        to a Rackspace <emphasis>authentication endpoint</emphasis>. </para>
         <para>
             <emphasis>GET YOUR CREDENTIALS</emphasis>
         </para>
-        <para> You can use either of two sets of credentials: <itemizedlist>
+        <para> You must use these credentials: <itemizedlist>
             <listitem>
-                <para>your <code>username</code> and
-                    <code>password</code></para>
-            </listitem>
-            <listitem>
-                <para>your <code>username</code> and <code>API
-                    key</code></para>
+                <para>your service's <code>username</code> and
+                        <code>password</code></para>
             </listitem>
         </itemizedlist>
-        </para>
-        <para>
-            Your <code>username</code> and
-            <code>password</code> are the ones you use to login to the Rackspace control panel.
-            Once you are logged in, you can use the Rackspace control panel to obtain your <code>API key</code>.
-        </para>
-        <para>
-            Use the control panel for the region in which your account is based: 
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>
-                        US-based accounts use the control panel at <link xlink:href="https://manage.rackspacecloud.com/">https://manage.rackspacecloud.com/</link>.
-                    </para>
-                </listitem>
-                <listitem>
-                    <para> UK-based accounts use the control panel at
-                        <link
-                            xlink:href="https://lon.manage.rackspacecloud.com/"
-                            >https://lon.manage.rackspacecloud.com/</link>. </para>
-                </listitem>
-            </itemizedlist> 
-        </para>
+    </para>
+        <para> Your service's <code>username</code> and
+            <code>password</code> are the ones the Identity team
+        issued for that service. If you do not have these credentials,
+        submit a ticket to the Nebulous Operations team, asking them
+        to create service credentials and establish a service catalog
+        entry. </para>
         <para>
             <emphasis>CHOOSE YOUR AUTHENTICATION ENDPOINT</emphasis>
         </para>
@@ -77,31 +57,23 @@
             steps: get a token; send the token to a service.<orderedlist>
                 <listitem>
                     <para>Get an authentication token by providing
-                        your username and either your API key or your
-                        password. Here are examples of both
-                        approaches:</para>
+                    your service's username and password. Here is an
+                    example:</para>
                     <para><emphasis>You can request a token by
-                        providing your username and your API
-                        key.</emphasis></para>
-                    <para>
-                        <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d 
-'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"theUserName", "apiKey":"00a00000a000a0000000a000a00aaa0a" } } }' -H "Content-type: application/json"</literallayout>
-                    </para>
-                    <para><emphasis>You can request a token by
-                        providing your username and your
-                        password.</emphasis></para>
+                        providing a username and
+                    password.</emphasis></para>
                     <para>
                         <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d
 '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}'-H "Content-type: application/json"</literallayout>
                     </para>
                     <para> Successful authentication returns a token
-                        which you can use as evidence that your
-                        identity has already been authenticated. To
-                        use the token, pass it to other services as an
+                    which you can use as evidence that your service's
+                    identity has already been authenticated. To use
+                    the token, pass it to other services as an
                         <code>X-Auth-Token</code> header. </para>
                     <para> Authentication also returns a service
-                        catalog, listing the endpoints you can use for
-                        Cloud services. </para>
+                    catalog, listing the endpoints your service can
+                    use for other Cloud services. </para>
                 </listitem>
                 <listitem>
                     <para>Use the authentication token to send a GET
