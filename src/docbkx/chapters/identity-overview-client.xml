@@ -99,8 +99,8 @@
             information at either site to ask for help.
         </para>
         <para>To see how the Cloud Authentication Service is used by other Rackspace services, read the API documentation collected 
-            at <link xlink:href="http://docs.rackspacecloud.com/api/">
-                http://docs.rackspacecloud.com/api/</link>.
+            at <link xlink:href="http://docs.rackspace.com/api/">
+                http://docs.rackspace.com/api/</link>.
         </para>
         <para>
             To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 

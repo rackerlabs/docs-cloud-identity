@@ -49,59 +49,70 @@
             Descriptive information about this service is also published in its Web Application Description Language (WADL) and XML Schema Definition (XSD). 
             You are welcome to read this information, but please use the appropriate US-based or UK-based version.
         </para>
-        <para>
-            Your account may be based in either the US or the UK; this is not determined
-            by your physical location but by the location of the Rackspace retail site which
-            was used to create your account: 
-        </para>
+        <para> A customer's account may be based in either the US or
+            the UK; this is not determined by the customer's physical
+            location but by the location of the Rackspace retail site
+            which was used to create that account: </para>
         <itemizedlist>
             <listitem>
-                <para>
-                    If your account was
-                    created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
-                    <itemizedlist>
+                <para> If an account was created via <link
+                        xlink:href="http://www.rackspacecloud.com"
+                        >http://www.rackspacecloud.com</link>, it is a
+                    US-based account. <itemizedlist>
                         <listitem>
-                            <para>
-                                The US-based WADL is <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl</link>.
+                            <para> The US-based WADL is <link
+                                   xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl"
+                                   >http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl</link>.
                             </para>
                         </listitem>
                         <listitem>
-                            <para>
-                                The US-based XSDs are <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd</link> 
-                                and <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd</link>.
+                            <para> The US-based XSDs are <link
+                                   xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd"
+                                   >http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd</link>
+                                and <link
+                                   xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd"
+                                   >http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
                 </para>   
             </listitem>
             <listitem>
-                <para>
-                    If your account was
-                    created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
-                    <itemizedlist>
+                <para> If an account was created via <link
+                        xlink:href="http:/www.rackspace.co.uk"
+                        >http:/www.rackspace.co.uk</link>, it is a
+                    UK-based account. <itemizedlist>
                         <listitem>
-                            <para>
-                                The UK-based WADL is <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl</link>.
+                            <para> The UK-based WADL is <link
+                                   xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl"
+                                   >http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl</link>.
                             </para>
                         </listitem>
                         <listitem>
-                            <para>
-                                The UK-based XSDs are <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>  
-                                and <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api-common.xsd</link>.
+                            <para> The UK-based XSDs are <link
+                                   xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd"
+                                   >http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>
+                                and <link
+                                   xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd"
+                                   >http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api-common.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
                 </para>
             </listitem>
         </itemizedlist>
-        <para>
-            If you are unsure how your account was created, use the Rackspace contact
-            information at either site to ask for help.
-        </para>
-        <para>To see how the Cloud Authentication Service is used by other Rackspace services, read the API documentation collected 
-            at <link xlink:href="http://docs.rackspacecloud.com/api/">
-                http://docs.rackspacecloud.com/api/</link>.
-        </para>
+        <para> If you are unsure how an account was created, use the
+            Rackspace contact information at either site to ask for
+            help. </para>
+        <para>To see how the Cloud Authentication Service is used by
+            other Rackspace services, read the API documentation
+            collected at <link
+                xlink:href="http://docs.rackspace.com/api/"
+                >http://docs.rackspace.com/api/</link>. This
+            collection includes a Cloud Identity <emphasis>Client</emphasis> API Developer
+            Guide, a <emphasis>client</emphasis>-focused companion to
+            this <emphasis>service</emphasis>-focused Cloud Identity
+            <emphasis>Admin</emphasis> API Developer Guide. </para>
         <para>
             To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
             does not implement the OpenStack Keystone Identity Service, 
