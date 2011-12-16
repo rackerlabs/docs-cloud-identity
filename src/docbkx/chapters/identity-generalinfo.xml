@@ -111,11 +111,25 @@ This operation does not require a request body.</para>'>
 		<calloutlist>
 			<callout arearefs="request.json.user">
 				<para> This is the username you use to login to the Rackspace
-					control panel. </para>
+					Cloud control panel. 
+				</para>
+				<itemizedlist spacing="compact">
+					<listitem>
+						<para>
+							US-based accounts use the control panel at <link xlink:href="https://manage.rackspacecloud.com/">https://manage.rackspacecloud.com/</link>.
+						</para>
+					</listitem>
+					<listitem>
+						<para> UK-based accounts use the control panel at
+							<link
+								xlink:href="https://lon.manage.rackspacecloud.com/"
+								>https://lon.manage.rackspacecloud.com/</link>. </para>
+					</listitem>
+				</itemizedlist>
 			</callout>
 			<callout arearefs="request.json.password">
 				<para> This is the password you use to login to the Rackspace
-					control panel. </para>
+					Cloud control panel. </para>
 			</callout>
 			<callout arearefs="request.json.tenant">
 				<para> <link linkend="Tenant-d1e11">Tenant</link> is an optional specification. 
