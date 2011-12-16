@@ -4,12 +4,12 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Identity-Service-Concepts-e1362">
     <title>Concepts</title>
-    <para>
-        The basic function of the authentication service is to validate a client's credentials. If a client offers valid credentials,
-        Auth returns a token and a service catalog. The client can use the service catalog to find endpoints for the services it can use.
-        To any of those services, the client can show the token as evidence of having been authenticated. If the service recognizes the client's token as valid, 
-        it can then process the client's request.
-    </para>
+    <para> The basic function of the authentication service is to
+        validate a client's credentials. If a client offers valid
+        credentials, Auth returns a token and a service catalog. The
+        client can use the service catalog to find endpoints for the
+        services it can use. To any of those services, the client can
+        show the token as evidence of having been authenticated. </para>
     <figure xml:id="token-flow">
         <title>A client sends credentials to the Auth service; if they are valid, the Auth service returns a token which can be used
         to identify the client to other services.
@@ -20,10 +20,15 @@
             </imageobject>
         </mediaobject>
     </figure>
-    <para>
-        Once a client has a token, it sends the token along with its request to a service.
-        If the service recognizes the token as valid, it processes the request and sends a response
-    </para>
+    <para> After a client has obtained a token from Auth, it sends the
+        token along with its request to a service. The service then
+        asks Auth for confirmation that this is a valid token for this
+        client. If the Auth service recognizes the token as valid, it
+        responds with details describing the token and the client;
+        otherwise, Auth's response simply indicates that the token was
+        not found. After receiving Auth's response, the service can
+        process the client's request or ask the client to retry with a
+        valid token. </para>
     <figure xml:id="token-validate">
         <title>A client sends a token and a request to a service; if the token is valid, the service processes the request.
         </title>
@@ -34,17 +39,18 @@
         </mediaobject>
     </figure>
     <para> You can see some OpenStack-oriented illustrations of these
-        idea, showing the OpenStack Keystone identity service
+        ideas, showing the OpenStack Keystone identity service
         authenticating for the OpenStack Nova compute service, at
             <link
             xlink:href="http://docs.openstack.org/trunk/openstack-identity/admin/content/example-flows.html"
             >http://docs.openstack.org/trunk/openstack-identity/admin/content/example-flows.html</link>.
         Some of the OpenStack functions illustrated may not be
         consistent with the privileges available to you as a Rackspace
-        service administrator; you are very welcome to examine this and other
-        OpenStack publications as general background material, but
-        please rely on Rackspace sources for specific information
-        about what you can do and how you can do it.</para>
+        service administrator; you are very welcome to examine this
+        and other OpenStack publications as general background
+        material, but please rely on Rackspace sources for specific
+        information about what you can do and how you can do
+        it.</para>
     <para>
         If the service's authentication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth. 
     </para>
