@@ -2,31 +2,50 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xml:id="Admin_API_Service_Developer_Operations-d1e1356" version="5.0" role="api-reference">
-	<title>Admin API (Service Developer Operations)</title>
-	<para>The operations described in this chapter allow service developers to get and validate
-		access tokens, manage users, tenants, roles, and service endpoints. </para>
-	<para>Most calls on the Admin API require authentication. The only calls available without
-		authentication are the calls to discover the service (getting version info, WADL contract,
-		dev guide, help, etc…) and the call to authenticate and get a token.</para>
-	<para> Authentication is performed by passing in a valid token in the <code>X-Auth-Token</code>
-		header on the request from the client. Keystone will verify the token has (or belongs to a
-		user that has) the <code>Admin</code> role. </para>
-	<para> See the readme file or administrator guides for how to bootstrap Keystone and create your
-		first administrator. </para>
+	<title>Service Developer Operations</title>
+	<para>The operations described in this chapter allow service
+		developers to get and validate access tokens and to manage
+		users, tenants, roles, and service endpoints. </para>
+	<para>Most calls to the Admin API require authentication. Two kinds
+		of calls are available without authentication: 
+		<itemizedlist spacing="compact">
+			<listitem>
+				<para>
+					calls to discover the service, such as obtaining version info, the WADL contract, and the API Developer Guide
+				 </para>
+			</listitem>
+			<listitem>
+				<para>
+					calls to authenticate and get a token</para>
+			</listitem>
+		</itemizedlist>
+		</para>
+	<para> Authentication is performed by passing a valid token in the
+			<code>X-Auth-Token</code> header of the client's request to the identity service. 
+		If the identity service verifies that the token has (or belongs to a
+		user that has) the <code>Admin</code> role, then administrator-level functions can be performed. </para>
+	<note>
+		<para> For information about creating your first user with the <code>Admin</code> role, 
+			refer to OpenStack's <link xlink:href="http://keystone.openstack.org/configuringservices.html">Configuring Services to Work with Keystone</link> publication at 
+			<link xlink:href="http://keystone.openstack.org/configuringservices.html">http://keystone.openstack.org/configuringservices.html</link>. 
+		</para>
+	</note>
 	<table rules="all">
 		<caption>Authentication Header</caption>
 		<thead>
 			<tr>
 				<td>Header Type</td>
 				<td>Name</td>
-				<td>Value</td>
+				<td>Sample Value</td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td>HTTP/1.1 Request</td>
-				<td>X-Auth-Token</td>
-				<td>txfa8426a08eaf</td>
+				<td><code>X-Auth-Token</code></td>
+				<td>
+					<para> vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz</para>
+				</td>
 			</tr>
 		</tbody>
 	</table>
