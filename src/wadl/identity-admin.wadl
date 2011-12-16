@@ -392,7 +392,7 @@
     <method name="GET" id="getUserById">
         <doc xml:lang="EN" title="Get User by ID">
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Return detailed information about a specific user, by user id.
+            	Return detailed information about a specific user, by user ID.
             </p>
         </doc>
         <response status="200 203">
@@ -413,10 +413,10 @@
     <method name="GET" id="listUserGlobalRoles">
         <doc xml:lang="EN" title="List User Global Roles">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-            	Return global roles for a specific user (excludes tenant roles).
+            	Return global roles for a specific user (excluding tenant roles).
             	</p>            
             <p xmlns="http://www.w3.org/1999/xhtml">Return a list of global roles associated with a specific
-            	    user (excludes tenant roles).</p>
+            	    user (excluding tenant roles).</p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:roles">
@@ -544,7 +544,7 @@
     <method name="GET" id="listRolesForUserOnTenant">
         <doc xml:lang="EN" title="List Roles for User on Tenant">
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Return roles for a specific user within a specific tenant (excludes global roles).
+                Return roles for a specific user within a specific tenant (excluding global roles).
             </p>
         </doc>
         <response status="200 203">
