@@ -49,7 +49,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<para>The following calls are core for the Keystone Admin 2.0 APIs:</para>
+	<para>In the authentication service API v2.0, the following calls
+		require only the core API:</para>
 	<section xml:id="Token_Operations">
 		<title>Token Operations</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">

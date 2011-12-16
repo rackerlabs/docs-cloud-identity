@@ -134,7 +134,7 @@
     <method name="GET" id="getVersionInfo">
         <doc xml:lang="EN" title="Version Details">
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Returns detailed information about this specific version of the API.
+            	Return detailed information about this specific version of the API.
             </p>
         </doc>
         <response status="200 203">
@@ -293,13 +293,15 @@
     <method name="GET" id="validateToken">
         <doc xml:lang="EN" title="Validate Token">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Check that a token is valid and that it belongs to a supplied tenant
-                and return the permissions relevant to a particular client.
+                Check that a token is valid and that it belongs to a supplied tenant;
+                return the permissions relevant to a particular client.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Valid tokens will exist in the
-                <code>/tokens/{tokenId}</code> path and invalid
-                tokens will not. In other words, a client should be prepared to handle an
+                In the
+                <code>/tokens/{tokenId}</code> path,
+                valid tokens exist
+                and invalid
+                tokens do not. A client should be prepared to handle an
                 itemNotFound (<code>404</code>) fault for an
                 invalid token.
             </p>
@@ -332,14 +334,14 @@
         <doc xml:lang="EN" title="Check Token">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
                 Check that a token is valid and that it belongs to a particular tenant
-                (For performance).
+                (abbreviated response).
             </p>
         </doc>
         <request>
             <param name="belongsTo" style="query" required="false" type="xsd:string">
                 <doc xml:lang="EN">
                     <p xmlns="http://www.w3.org/1999/xhtml">
-                        Validates a token has the supplied tenant in scope. (for performance).
+                        Validates a token has the supplied tenant in scope. (abbreviated response).
                     </p>
                     <p xmlns="http://www.w3.org/1999/xhtml">
                         Valid tokens will exist in the
@@ -366,7 +368,7 @@
     <method name="GET" id="getUserByName">
         <doc xml:lang="EN" title="Get User by Name">
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Returns detailed information about a specific user, by user name.
+            	Return detailed information about a specific user, by user name.
             </p>
         </doc>
         <request>
@@ -390,7 +392,7 @@
     <method name="GET" id="getUserById">
         <doc xml:lang="EN" title="Get User by ID">
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Returns detailed information about a specific user, by user id.
+            	Return detailed information about a specific user, by user id.
             </p>
         </doc>
         <response status="200 203">
@@ -411,9 +413,9 @@
     <method name="GET" id="listUserGlobalRoles">
         <doc xml:lang="EN" title="List User Global Roles">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-            	Returns global roles for a specific user (excludes tenant roles).
+            	Return global roles for a specific user (excludes tenant roles).
             	</p>            
-            <p xmlns="http://www.w3.org/1999/xhtml">Returns a list of global roles associated with a specific
+            <p xmlns="http://www.w3.org/1999/xhtml">Return a list of global roles associated with a specific
             	    user (excludes tenant roles).</p>
         </doc>
         <response status="200 203">
@@ -475,7 +477,7 @@
     <method name="GET" id="getTenantByName">
         <doc xml:lang="EN" title="Get Tenants by Name">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-            	Returns detailed information about a tenant, by name.
+            	Return detailed information about a tenant, by name.
             </p>
         </doc>
         <request>
@@ -499,7 +501,7 @@
     <method name="GET" id="getTenantById">
         <doc xml:lang="EN" title="Get Tenants by ID">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-            	Returns detailed information about a tenant, by id.
+            	Return detailed information about a tenant, by ID.
             </p>
         </doc>
         <response status="200 203">
@@ -520,7 +522,7 @@
     <method name="GET" id="listEndpointsForToken">
         <doc xml:lang="EN" title="List Endpoints for Token">
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Returns a list of endpoints associated with a specific token.
+            	Return a list of endpoints associated with a specific token.
             </p>
         </doc>
         <response status="200 203">
@@ -542,7 +544,7 @@
     <method name="GET" id="listRolesForUserOnTenant">
         <doc xml:lang="EN" title="List Roles for User on Tenant">
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Returns roles for a specific user on a specific tenant (excludes global roles).
+                Return roles for a specific user within a specific tenant (excludes global roles).
             </p>
         </doc>
         <response status="200 203">
