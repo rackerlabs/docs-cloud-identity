@@ -93,5 +93,12 @@
 				<wadl:method href="listRolesForUserOnTenant"/>
 			</wadl:resource>
 		</wadl:resources>
+		<important>
+			<para>
+				Rackspace's implementation of the OpenStack Identity Service v2.0 is currently in BETA status
+				and does not yet support <code>GET v2.0/tenants/{tenantId}/users/{user_id}/roles</code>; 
+				a 501 (notImplemented) will be issued in response to this request.
+			</para>
+		</important>
 	</section>
 </section>
