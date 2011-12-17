@@ -211,111 +211,86 @@
                 <version>${doctools.version}</version>
                 <executions>
                     <execution>
-		      <id>g1</id>
+		      <id>g1-pdf-client</id>
                         <goals>
                             <goal>generate-pdf</goal>
                         </goals>
                         <phase>generate-sources</phase>
 			<configuration>
 			  <highlightSource>false</highlightSource>
+			  <includes>auth-client-devguide.xml</includes>						  
 			</configuration>
                     </execution>
                     <execution>
-		      <id>g2</id>
-		      <goals>
-                            <goal>generate-webhelp</goal>
+		      <id>g1-pdf-admin</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
                         </goals>
                         <phase>generate-sources</phase>
-                <configuration>
+			<configuration>
+			  <highlightSource>false</highlightSource>
+			  <includes>auth-admin-devguide.xml</includes>			
+			  <security>internal</security>
+			</configuration>
+                    </execution>
+                    <execution>
+		      <id>g2</id>		      
+		      <goals>
+			<goal>generate-webhelp</goal>
+		      </goals>
+		      <phase>generate-sources</phase>
+		      <configuration>
+			<includes>auth-client-devguide.xml</includes>
 			<!-- These parameters only apply to webhelp -->
-                    <enableDisqus>1</enableDisqus>
-                    <disqusShortname>os-identitydevguide</disqusShortname>
-                    <enableGoogleAnalytics>1</enableGoogleAnalytics>
-                    <!-- <googleAnalyticsId>UA-17511903-6</googleAnalyticsId> -->
-
-            <postProcess>
-		    <!-- FOR -ADMIN-DEVGUIDE: Copies the figures to the correct location for webhelp --> 	
-		      <copy todir="${basedir}/target/docbkx/webhelp/auth-admin-devguide/figures">
-			  <fileset dir="${basedir}/src/docbkx/figures">
-			    <include name="**/*.png" />
-			    <exclude name="**/*.svg" />
-			  </fileset>
-		      </copy>
-            </postProcess>
-                	
-            <postProcess>
-            <!-- FOR -CLIENT-DEVGUIDE: Copies the figures to the correct location for webhelp --> 	
-               <copy todir="${basedir}/target/docbkx/webhelp/auth-client-devguide/figures">
-               <fileset dir="${basedir}/src/docbkx/figures">
-                 <include name="**/*.png" />
-                 <exclude name="**/*.svg" />
-               </fileset>
-               </copy>
-            </postProcess>
-
-                    	<!-- Copies HTML to a release folder for web site-->   
-
-                    	<!-- <copy -->
-                    	<!-- 	todir="${basedir}/target/docbkx/webhelp/api/auth-client-devguide/2.0"> -->
-                    	<!-- 	<fileset -->
-                    	<!-- 		dir="${basedir}/target/docbkx/webhelp/auth-client-devguide"> -->
-                    	<!-- 		<include name="**/*" /> -->
-                    	<!-- 	</fileset> -->
-                    	<!-- </copy> -->
-                        <!--Moves PDF to the needed placement for web site and Google Analytics tracking-->
-                    	<!-- this WAS a move; now it's a copy, because PDF on Wednesday morning is no longer with WebHelp like it was Tuesday morning -->
-                        <!-- <copy failonerror="false" -->
-                        <!-- 	file="${basedir}/target/docbkx/pdf/auth-client-devguide.pdf" -->
-                        <!-- 	tofile="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf"/> -->
-                    	
-                <!-- Moves extension PDF and keeps name of the main dev guide -->
-                <!-- <copy failonerror="false" -->
-                <!-- 	file="${basedir}/target/docbkx/webhelp/api/openstack-identity-service/2.0/auth-client-devguide-2.0.pdf" -->
-                <!-- 	tofile="${basedir}/target/docbkx/webhelp/auth-client-devguide/auth-client-devguide.pdf"/>   	 -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/RAX-KSKEY-service-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSKEY-service-devguide.pdf"/> -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/OS-KSADM-admin-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSADM-admin-devguide.pdf"/> -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/OS-KSCATALOG-admin-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSCATALOG-admin-devguide.pdf"/> -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/>   -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/OS-KSEC2-service-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/OS-KSEC2-service-devguide.pdf"/> -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/RAX-KSGRP-service-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/service/RAX-KSGRP-service-devguide.pdf"/> -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/RAX-KSKEY-admin-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/RAX-KSKEY-admin-devguide.pdf"/> -->
-		<!--         <move failonerror="false" -->
-		<!--           file="${basedir}/target/docbkx/pdf/OS-KSEC2-admin-devguide.pdf" -->
-		<!--           tofile="${basedir}/target/docbkx/webhelp/identitydevguide/admin/OS-KSEC2-admin-devguide.pdf"/> -->
-                    <!-- </postProcess> -->
+			<enableDisqus>1</enableDisqus>
+			<enableGoogleAnalytics>1</enableGoogleAnalytics>
+			<postProcess>
+			  <!-- FOR -CLIENT-DEVGUIDE: Copies the figures to the correct location for webhelp --> 	
+			  <copy todir="${basedir}/target/docbkx/webhelp/auth-client-devguide/figures">
+			    <fileset dir="${basedir}/src/docbkx/figures">
+			      <include name="**/*.png" />
+			      <exclude name="**/*.svg" />
+			    </fileset>
+			  </copy>
+			</postProcess>			  
+		      </configuration>
+		    </execution>
+		    <execution>
+		      <id>g3</id>
+		      <goals>
+			<goal>generate-webhelp</goal>
+		      </goals>
+		      <phase>generate-sources</phase>
+		      <configuration>
+			<includes>auth-admin-devguide.xml</includes>
+			<!-- These parameters only apply to webhelp -->
+			<enableDisqus>intranet</enableDisqus>
+			<enableGoogleAnalytics>0</enableGoogleAnalytics>
+			<feedbackEmail>rose.coste@rackspace.com</feedbackEmail>
+			<security>internal</security>
+			<postProcess>
+			  <!-- FOR -ADMIN-DEVGUIDE: Copies the figures to the correct location for webhelp --> 	
+			  <copy todir="${basedir}/target/docbkx/webhelp/auth-admin-devguide/figures">
+			    <fileset dir="${basedir}/src/docbkx/figures">
+			      <include name="**/*.png" />
+			      <exclude name="**/*.svg" />
+			    </fileset>
+			  </copy>
+			</postProcess>
 		      </configuration>
 		    </execution>
                 </executions>
                 <configuration>
 		  <!-- These parameters apply to pdf and webhelp -->
                     <xincludeSupported>true</xincludeSupported>
-                    <sourceDirectory>src/docbkx</sourceDirectory>
-                	<!-- for now, just build auth-client-devguide and -admin-devguide: deal with the rest later
-                    <includes>
-                    OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
-	                OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
-                    </includes>
-                    -->
-                	<includes>
-                		auth-client-devguide.xml, auth-admin-devguide.xml
-                	</includes>
-                	<htmlhelpDefaultTopic>QuickStart-000.html</htmlhelpDefaultTopic>
-                    <profileSecurity>reviewer</profileSecurity>
-                    <branding>rackspace</branding>
+		    <webhelpDefaultTopic>QuickStart-000.html</webhelpDefaultTopic>
+		    <!-- for now, just build auth-client-devguide and -admin-devguide: deal with the rest later
+			 <includes>
+			 OS-KSADM-admin-devguide.xml,OS-KSCATALOG-admin-devguide.xml,RAX-KSKEY-service-devguide.xml,
+			 OS-KSEC2-service-devguide.xml,RAX-KSGRP-service-devguide.xml,RAX-KSKEY-admin-devguide.xml,OS-KSEC2-admin-devguide.xml
+			 </includes>
+		    -->
+		    <branding>rackspace</branding>
                 </configuration>
             </plugin>
         </plugins>
