@@ -181,9 +181,9 @@
   </chapter>
   <chapter xml:id="chapter-0001">
       <title>Summary of Changes</title>
-      <para>
-          The Rackspace API Key Authentication Admin Extension allows crud/listing operations on <parameter>apikeyCredentials</parameter>. 
-      </para>
+      <para> The Rackspace API Key Authentication Admin Extension
+            (RAX-KSKEY) allows Create, Read, Update, and Delete (CRUD)
+            operations on <parameter>apikeyCredentials</parameter>. </para>
       <section xml:id="NewHeaders-0001">
           <title>New Headers</title>
           <para>None.</para>

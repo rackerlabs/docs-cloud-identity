@@ -185,9 +185,8 @@
   </chapter>
   <chapter xml:id="chapter-0001">
       <title>Summary of Changes</title>
-      <para>
-          Rackspace extensions to Keystone v2.0 API allows authenticate call to also return information about group memberships of the user.
-      </para>
+      <para> The Rackspace Groups Admin Extension
+          (RAX-KSGRP) allows an authentication call to return additional information about a user's group memberships. </para>
       <section xml:id="NewHeaders-0001">
           <title>New Headers</title>
           <para>None.</para>
