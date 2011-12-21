@@ -185,13 +185,14 @@
   </chapter>
   <chapter xml:id="chapter-0001">
       <title>Summary of Changes</title>
-      <para> The Rackspace Groups Admin Extension
-          (RAX-KSGRP) allows an authentication call to return additional information about a user's group memberships. </para>
+      <para> The Rackspace Group Admin Extension (RAX-KSGRP) allows an
+            authentication call to return additional information about
+            a user's group memberships. </para>
       <section xml:id="NewHeaders-0001">
           <title>New Headers</title>
           <para>None.</para>
       </section>
-      <section xml:id="NewFaults0001">
+      <section xml:id="NewFaults-0001">
           <title>New Faults</title>
           <para>None.</para>
       </section>
@@ -199,32 +200,27 @@
           <title>New Resources</title>
           <para>None.</para>
       </section>
-      <section xml:id="NewActions0001">
+      <section xml:id="NewActions-0001">
           <title>New Actions</title>
           <para>None.</para>
       </section>
-      <section xml:id="NewElement0001">
+      <section xml:id="NewElements-0001">
           <title>New Elements</title>
-          <section xml:id="RackExt-0001">
-              <title>
-                  Rackspace extensions to Keystone v2.0 API enabling groups. 
-              </title>
-              <section xml:id="New-Elements-details-0002">
-                  
-                  <title>New Elements</title>
-                  <para>
-                      This extension starts returning groups as a part of response when an authenticate call is made.
-                      The samples of new elements that are defined as a part of this extension are listed below.
-                  </para>
-                  <example>
-                      <title>Groups Sample XML</title>
-                      <programlisting language="xml"><xi:include href="&GROUPSXML;" parse="text"></xi:include></programlisting>
-                  </example>
-                  <example>
-                      <title>Groups Sample JSON</title>
-                      <programlisting language="xml"><xi:include href="&GROUPSJSON;" parse="text"></xi:include></programlisting>
-                  </example>
-              </section>
+          <section xml:id="group-0001">
+              <title>group</title>
+              <para>
+                  This extension starts returning groups as a part of response when an authenticate call is made.
+                  The samples of new elements that are defined as a part of this extension are listed below.
+               </para>
+               <example>
+                  <title>Groups Sample XML</title>
+                  <programlisting language="xml"><xi:include href="&GROUPSXML;" parse="text"></xi:include></programlisting>
+               </example>
+               <example>
+                  <title>Groups Sample JSON</title>
+                  <programlisting language="xml"><xi:include href="&GROUPSJSON;" parse="text"></xi:include></programlisting>
+               </example>
+           </section>
               <section xml:id="Authenticate-d1e1166">
                   <title>Authenticate</title>
                   <para>This extension allows authentication calls to also return information about groups.
@@ -253,8 +249,8 @@
                       Keystone Service and supplying valid credentials.
                   </para>
                   <para>
-                      Client authentication is provided via a ReST interface using the POST method,
-                      with v2.0/tokens supplied as the path. A payload of credentials must be included
+                      Client authentication is provided via a ReST interface using the &POST; method,
+                      with <code>v2.0/tokens</code> supplied as the path. A payload of credentials must be included
                       in the body.
                   </para>
                   <para>
@@ -277,7 +273,6 @@
                  <title>JSON Auth Response that contains Groups</title>
                 <programlisting language="javascript"><xi:include href="&GROUPRESPONSEJSON;" parse="text"><xi:fallback>Yet To Be added</xi:fallback></xi:include></programlisting>
                 </example>
-          </section>
           </section>
           </section>
   </chapter>
