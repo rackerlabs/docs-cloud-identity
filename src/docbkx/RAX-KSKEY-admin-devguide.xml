@@ -69,7 +69,7 @@
         <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>EXT v1.0</releaseinfo>
-      <productname>>Keystone - OpenStack Identity</productname>
+      <productname>>Keystone: OpenStack Identity</productname>
     <pubdate>&PUB_DATE;</pubdate>
     <legalnotice role="rs-api">
         <annotation>
@@ -77,12 +77,11 @@
         </annotation>
     </legalnotice>
     <abstract>
-      <para>
-          This document is intended for service developers interested
-          in using the Rackspace API Key Authentication Admin Extension along with the 
-          Keystone - OpenStack Identity
-          (<abbrev>API</abbrev>).
-      </para>
+      <para> This document is intended for service developers
+                interested in using the Rackspace API Key
+                Authentication Admin Extension along with the
+                OpenStack Keystone Identity Service
+                    (<abbrev>API</abbrev>). </para>
     </abstract>
   </info>
     <chapter xml:id="chapter-0000">
@@ -109,7 +108,7 @@
           <varlistentry>
               <term>Dependencies</term>
               <listitem>
-                  <para>Keystone - OpenStack Identity</para>
+                  <para>OpenStack Keystone Identity Service</para>
                   <para>>&ALIAS; Extension</para>
               </listitem>
           </varlistentry>
@@ -117,10 +116,7 @@
               <term>Doc Link (PDF)</term>
               <listitem>
                   <para>
-                        <link
-                            xlink:href="&CURRENTGUIDE;">
-                            &CURRENTGUIDE;
-                        </link>
+                        <link xlink:href="&CURRENTGUIDE;">&CURRENTGUIDE;</link>
                     </para>
               </listitem>
           </varlistentry>
@@ -128,11 +124,7 @@
               <term>Doc Link (WADL)</term>
               <listitem>
                   <para>
-                      <link
-                          xlink:href="&CURRENTWADL;"
-                          >
-                          &CURRENTWADL;
-                      </link>
+                      <link xlink:href="&CURRENTWADL;">&CURRENTWADL;</link>
                   </para>
               </listitem>
           </varlistentry>
@@ -140,18 +132,15 @@
               <term>Doc Link (XSD)</term>
               <listitem>
                   <para>
-                      <link xlink:href="&EXTENSIONXSD;">
-                          &EXTENSIONXSD;
-                      </link>
+                      <link xlink:href="&EXTENSIONXSD;">&EXTENSIONXSD;</link>
                   </para>
               </listitem>
           </varlistentry>
           <varlistentry>
               <term>Short Description</term>
               <listitem>
-                  <para>
-                      Rackspace extensions to Keystone v2.0 API enabling API Key authentication.
-                  </para>
+                  <para> Rackspace extension to Keystone v2.0 API
+                        enabling API Key authentication. </para>
               </listitem>
           </varlistentry>
       </variablelist>
@@ -212,7 +201,7 @@
           <para>None.</para>
       </section>
       <section xml:id="NewElement0001">
-          <title>New Element</title>
+          <title>New Elements</title>
           <section xml:id="RackExt-0001">
               <title>apikeyCredentials</title>
               <para>This extension allows authentication calls to accept new type of credentials <parameter>apikeyCredentials</parameter>.

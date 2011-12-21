@@ -121,28 +121,22 @@
               <term>Doc Link (PDF)</term>
               <listitem>
                   <para>
-                        <link
-                            xlink:href="&CURRENTGUIDE;">
-                            &CURRENTGUIDE;
-                        </link>
+                        <link xlink:href="&CURRENTGUIDE;">&CURRENTGUIDE;</link>
                     </para>
               </listitem>
           </varlistentry>
           <varlistentry>
               <term>Doc Link (WADL)</term>
               <listitem>
-                  <para>
-                      None, the extension makes no modification to the API WADL.
-                  </para>
+                  <para> None: the extension makes no modification to
+                        the API WADL. </para>
               </listitem>
           </varlistentry>
           <varlistentry>
               <term>Doc Link (XSD)</term>
               <listitem>
                   <para>
-                      <link xlink:href="&EXTENSIONXSD;">
-                          &EXTENSIONXSD;
-                      </link>
+                      <link xlink:href="&EXTENSIONXSD;">&EXTENSIONXSD;</link>
                   </para>
               </listitem>
           </varlistentry>
