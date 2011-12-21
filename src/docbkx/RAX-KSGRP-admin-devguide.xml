@@ -220,12 +220,16 @@
                   <title>Groups Sample JSON</title>
                   <programlisting language="xml"><xi:include href="&GROUPSJSON;" parse="text"></xi:include></programlisting>
                </example>
-           </section>
+          </section>
+      </section>
               <section xml:id="Authenticate-d1e1166">
-                  <title>Authenticate</title>
-                  <para>This extension allows authentication calls to also return information about groups.
-                      The usage of an existing call to authenticate, where it returns groups is illustrated below 
-                  </para>
+                  <title>RAX-KSGRP-admin Extension API
+                    Operations</title>
+                  <para>This extension allows authentication calls to
+                return information about the groups to which a user
+                belongs. In the examples below, the authentication
+                response describes a user's groups after describing
+                the user's roles.</para>
                   <informaltable rules="all">
                       &URI_REFHEAD;
                       <tbody>
@@ -242,8 +246,8 @@
                       (<errorcode>500</errorcode>), serviceUnavailable(<errorcode>503</errorcode>)</simpara>
                   <para>
                       This call will return a token if successful. Each ReST request against other services (or other
-                      calls on Keystone such as the GET /tenants call)
-                      requires the inclusion of a specific authorization token HTTP x-header, defined as X-Auth-Token.
+                      calls on Keystone such as the <code>GET /tenants</code> call)
+                      requires the inclusion of a specific authorization token HTTP x-header, defined as <code>X-Auth-Token</code>.
                       Clients obtain
                       this token, along with the URL to other service APIs, by first authenticating against the
                       Keystone Service and supplying valid credentials.
@@ -258,22 +262,25 @@
                       To access the Keystone Service, you must know URL of the Keystone service.
                   </para>
                   <example>
-                      <title>XML Auth Request using passwordCredentials</title>
+                      <title>Authentication Request Using
+                        passwordCredentials: XML</title>
                       <programlisting language="xml"><xi:include href="&GROUPREQUESTXML;" parse="text"/></programlisting>
                   </example>
                   <example>
-                      <title>JSON Auth Request using passwordCredentials</title>
+                      <title>Authentication Request Using
+                        passwordCredentials: JSON</title>
                       <programlisting language="javascript"><xi:include href="&GROUPREQUESTJSON;" parse="text"/></programlisting>
                   </example>
                   <example>
-                      <title>XML Auth Response that contains Groups</title>
+                      <title>Authentication Response Containing
+                        Groups: XML</title>
                       <programlisting language="xml"><xi:include href="&GROUPRESPONSEXML;" parse="text"><xi:fallback>Yet To Be added</xi:fallback></xi:include></programlisting>
                   </example>
                  <example>
-                 <title>JSON Auth Response that contains Groups</title>
+                 <title>Authentication Response Containing Groups:
+                        JSON</title>
                 <programlisting language="javascript"><xi:include href="&GROUPRESPONSEJSON;" parse="text"><xi:fallback>Yet To Be added</xi:fallback></xi:include></programlisting>
                 </example>
-          </section>
           </section>
   </chapter>
 </book>
