@@ -34,9 +34,9 @@
         </tr>
         </thead>'>
         <!ENTITY NAMESPACE "http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0">
-        <!ENTITY CURRENTGUIDE "/home/yogi/keystone/content/admin/RAX-KSKEY-admin-devguide.pdf">
-        <!ENTITY EXTENSIONXSD "/home/yogi/keystone/content/service/xsd/RAX-KSKEY-credentials.xsd">
-        <!ENTITY CURRENTWADL "https://raw.github.com/openstack/keystone/master/keystone/content/admin/RAX-KSKEY-admin.wadl">
+        <!ENTITY CURRENTGUIDE "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY-admin-devguide.pdf">
+        <!ENTITY EXTENSIONXSD "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-credentials.xsd">
+        <!ENTITY CURRENTWADL "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin.wadl">
         <!ENTITY APIKEYCREDENTIALSREQUESTXML "https://raw.github.com/openstack/keystone/master/keystone/content/common/samples/apiKeyCredentials.xml">
         <!ENTITY APIKEYCREDENTIALSREQUESTJSON "https://raw.github.com/openstack/keystone/master/keystone/content/common/samples/apiKeyCredentials.json">
         <!ENTITY APIKEYCREDENTIALSRESPONSEXML "https://raw.github.com/openstack/keystone/master/keystone/content/common/samples/auth.xml">
