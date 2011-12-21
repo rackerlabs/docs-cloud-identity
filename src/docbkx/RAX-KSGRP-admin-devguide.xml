@@ -34,9 +34,9 @@
         </tr>
         </thead>'>
         <!ENTITY NAMESPACE "http://docs.rackspace.com/identity/api/ext/RAX-KSGROUP/v1.0">
-        <!ENTITY CURRENTGUIDE "https://github.com/openstack/keystone/raw/master/keystone/content/service/RAX-KSGRP-service-devguide.pdf">
-        <!ENTITY EXTENSIONXSD "https://raw.github.com/openstack/keystone/master/keystone/content/service/xsd/RAX-KSGRP-groups.xsd">
-
+        <!ENTITY CURRENTGUIDE "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSGRP/RAX-KSGRP-admin-devguide.pdf">
+        <!ENTITY EXTENSIONXSD "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSGRP/RAX-KSGRP-credentials.xsd">
+        
         <!ENTITY GROUPSXML "https://raw.github.com/openstack/keystone/master/keystone/content/common/samples/RAX-KSGRP-groups.xml">
         <!ENTITY GROUPSJSON "https://raw.github.com/openstack/keystone/master/keystone/content/common/samples/RAX-KSGRP-groups.json">
         <!ENTITY GROUPXML "https://raw.github.com/openstack/keystone/master/keystone/content/common/samples/RAX-KSGRP-group.xml">
