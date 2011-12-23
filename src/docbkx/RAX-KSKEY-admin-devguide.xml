@@ -214,11 +214,13 @@
                     of <parameter>apikeyCredentials</parameter> are
                     illustrated below.</para>
               <example>
-                  <title>apikeyCredentials XML</title>
+                  <title>Authentication with apikeyCredentials
+                        Request: XML</title>
                   <programlisting language="xml"><xi:include href="&APIKEYCREDENTIALSREQUESTXML;" parse="text"/></programlisting>
               </example>
               <example>
-                  <title>apikeyCredentials JSON</title>
+                  <title>Authentication with apikeyCredentials
+                        Request: JSON</title>
                   <programlisting language="javascript"><xi:include href="&APIKEYCREDENTIALSREQUESTJSON;" parse="text"/></programlisting>
               </example>
           </section>
