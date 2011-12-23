@@ -52,8 +52,9 @@
       xmlns:svg="http://www.w3.org/2000/svg"
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
-      version="5.0"  status="draft" xml:id="book-0001">
-    <title>Rackspace API Key Authentication Extension (Admin Operations)</title>
+      version="5.0"  status="draft" xml:id="RAX-KSKEY-0001">
+    <title>RAX-KSKEY Extension Admin Developer Guide</title>
+    <titleabbrev>RAX-KSKEY Admin DevGuide</titleabbrev>
   <info>
     <author>
       <personname>
@@ -69,7 +70,7 @@
         <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>EXT v1.0</releaseinfo>
-      <productname>>Keystone: OpenStack Identity</productname>
+    <productname>RAX-KSKEY Extension</productname>
     <pubdate>&PUB_DATE;</pubdate>
     <legalnotice role="rs-api">
         <annotation>
@@ -84,7 +85,7 @@
                     (<abbrev>API</abbrev>). </para>
     </abstract>
   </info>
-    <chapter xml:id="chapter-0000">
+    <chapter xml:id="About_RAX-KSKEY-0000">
       <title>About This Extension</title>
       <variablelist spacing="compact">
           <varlistentry>
@@ -153,7 +154,7 @@
           <title>Extension Query Response: JSON</title>
           <programlisting language="javascript"><xi:include href="&EXTENSIONQUERYRESPONSEJSON;" parse="text"/></programlisting>
       </example>
-      <section xml:id="Doc-Change-0001">
+      <section xml:id="History-0001">
           <title>Document Change History</title>
           <informaltable rules='all'>
               <thead>
@@ -179,7 +180,7 @@
           </informaltable>
       </section>
   </chapter>
-  <chapter xml:id="chapter-0001">
+  <chapter xml:id="Changes-0001">
       <title>Summary of Changes</title>
       <para> The Rackspace API Key Authentication Admin Extension
             (RAX-KSKEY) allows Create, Read, Update, and Delete (CRUD)
@@ -202,7 +203,7 @@
       </section>
       <section xml:id="NewElements-0001">
           <title>New Elements</title>
-          <section xml:id="apikeyCredentials-0001">
+          <section xml:id="apikeyCredentials-0002">
               <title>apikeyCredentials</title>
               <para>This extension allows authentication calls to
                     accept a new type of credentials:
