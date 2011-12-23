@@ -23,7 +23,7 @@
 
         <!-- Information about the extension -->
         <!ENTITY VERSION  "v1.0">
-        <!ENTITY PUB_DATE "2011-09-13">
+        <!ENTITY PUB_DATE "2011-12-27">
         <!ENTITY ALIAS "RAX-KSKEY">
         <!ENTITY URI_REFHEAD '
         <thead xmlns="http://docbook.org/ns/docbook">
@@ -53,8 +53,8 @@
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
       version="5.0"  status="draft" xml:id="RAX-KSKEY-0001">
-    <title>RAX-KSKEY Extension Admin Developer Guide</title>
-    <titleabbrev>RAX-KSKEY Admin DevGuide</titleabbrev>
+    <title>&ALIAS; Extension Admin Developer Guide</title>
+    <titleabbrev>&ALIAS; Admin DevGuide</titleabbrev>
   <info>
     <author>
       <personname>
@@ -70,7 +70,7 @@
         <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>EXT v1.0</releaseinfo>
-    <productname>RAX-KSKEY Extension</productname>
+    <productname>&ALIAS; Extension</productname>
     <pubdate>&PUB_DATE;</pubdate>
     <legalnotice role="rs-api">
         <annotation>
@@ -84,6 +84,28 @@
                 OpenStack Keystone Identity Service
                     (<abbrev>API</abbrev>). </para>
     </abstract>
+      <revhistory>
+          <revision>
+              <date>2011-12-27</date>
+              <revdescription>
+                  <itemizedlist spacing="compact">
+                      <listitem>
+                          <para>
+                              Standardized for Rackspace-branded publication. />.
+                          </para>
+                      </listitem>
+                   </itemizedlist>
+              </revdescription>
+          </revision>
+          <revision>
+              <date>2011-09-13</date>
+              <revdescription>
+                  <itemizedlist spacing="compact">
+                      <listitem><para>Initial release.</para></listitem>
+                  </itemizedlist>
+              </revdescription>
+          </revision>
+      </revhistory>  
   </info>
     <chapter xml:id="About_RAX-KSKEY-0000">
       <title>About This Extension</title>
@@ -156,34 +178,15 @@
       </example>
       <section xml:id="History-0001">
           <title>Document Change History</title>
-          <informaltable rules='all'>
-              <thead>
-                  <tr>
-                      <td align="center" colspan="1">Revision Date</td>
-                      <td align="center" colspan="4">Summary of Changes</td>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td colspan="1" align="center">Sep. 13, 2011</td>
-                      <td colspan="4">
-                          <itemizedlist spacing="compact">
-                              <listitem>
-                                  <para>
-                                      Initial release.
-                                  </para>
-                              </listitem>
-                          </itemizedlist>
-                      </td>
-                  </tr>
-              </tbody>
-          </informaltable>
+          <para>This version of the Developer Guide applies only to v2.0 of the API.
+              The most recent changes are described in the table below: </para>
+          <?rax revhistory?>
       </section>
   </chapter>
   <chapter xml:id="Changes-0001">
       <title>Summary of Changes</title>
       <para> The Rackspace API Key Authentication Admin Extension
-            (RAX-KSKEY) allows Create, Read, Update, and Delete (CRUD)
+            (&ALIAS;) allows Create, Read, Update, and Delete (CRUD)
             operations on <parameter>apikeyCredentials</parameter>. </para>
       <section xml:id="NewHeaders-0001">
           <title>New Headers</title>
@@ -205,7 +208,7 @@
           <title>New Elements</title>
           <section xml:id="apikeyCredentials-0002">
               <title>apikeyCredentials</title>
-              <para>The RAX-KSKEY extension allows authentication
+              <para>The &ALIAS; extension allows authentication
                     calls to accept a new type of credentials:
                         <parameter>apikeyCredentials</parameter>.
                     These are additional credentials defined to
@@ -228,7 +231,7 @@
       <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           xml:id="Admin_API_Service_Developer_Operations-d1e1357" version="5.0" role="api-reference">
-          <title>RAX-KSKEY-admin Extension API Operations</title>
+          <title>&ALIAS;-admin Extension API Operations</title>
           <table rules="all">
               <caption>Authentication Header</caption>
               <thead>

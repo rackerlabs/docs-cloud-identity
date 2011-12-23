@@ -23,7 +23,7 @@
 
         <!-- Information about the extension -->
         <!ENTITY VERSION  "v1.0">
-        <!ENTITY PUB_DATE "2011-08-26">
+        <!ENTITY PUB_DATE "2011-12-27">
         <!ENTITY ALIAS "RAX-KSGRP">
         <!ENTITY URI_REFHEAD '
         <thead xmlns="http://docbook.org/ns/docbook">
@@ -58,8 +58,8 @@
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
       version="5.0"  status="draft" xml:id="RAX-KSGRP-0001">
-    <title>RAX-KSGRP Extension Admin Developer Guide</title>
-    <titleabbrev>RAX-KSGRP Admin DevGuide</titleabbrev>
+    <title>&ALIAS; Extension Admin Developer Guide</title>
+    <titleabbrev>&ALIAS; Admin DevGuide</titleabbrev>
   <info>
     <author>
       <personname>
@@ -75,7 +75,7 @@
         <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>EXT v1.0</releaseinfo>
-    <productname>RAX-KSGRP Extension</productname>
+    <productname>&ALIAS; Extension</productname>
     <pubdate>&PUB_DATE;</pubdate>
     <legalnotice role="rs-api">
         <annotation>
@@ -88,6 +88,28 @@
                 Extension along with the OpenStack Keystone Identity
                 Service (<abbrev>API</abbrev>). </para>
     </abstract>
+      <revhistory>
+          <revision>
+              <date>2011-12-27</date>
+              <revdescription>
+                  <itemizedlist spacing="compact">
+                      <listitem>
+                          <para>
+                              Standardized for Rackspace-branded publication. />.
+                          </para>
+                      </listitem>
+                  </itemizedlist>
+              </revdescription>
+          </revision>
+          <revision>
+              <date>2011-08-24</date>
+              <revdescription>
+                  <itemizedlist spacing="compact">
+                      <listitem><para>Initial release.</para></listitem>
+                  </itemizedlist>
+              </revdescription>
+          </revision>
+      </revhistory>    
   </info>
     <chapter xml:id="About_RAX-KSGRP-0000">
       <title>About This Extension</title>
@@ -158,33 +180,14 @@
       </example>
       <section xml:id="History-0001">
           <title>Document Change History</title>
-          <informaltable rules='all'>
-              <thead>
-                  <tr>
-                      <td align="center" colspan="1">Revision Date</td>
-                      <td align="center" colspan="4">Summary of Changes</td>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td colspan="1" align="center">Aug. 24, 2011</td>
-                      <td colspan="4">
-                          <itemizedlist spacing="compact">
-                              <listitem>
-                                  <para>
-                                      Initial release.
-                                  </para>
-                              </listitem>
-                          </itemizedlist>
-                      </td>
-                  </tr>
-              </tbody>
-          </informaltable>
+          <para>This version of the Developer Guide applies only to v2.0 of the API.
+              The most recent changes are described in the table below: </para>
+          <?rax revhistory?>
       </section>
   </chapter>
   <chapter xml:id="Changes-0001">
       <title>Summary of Changes</title>
-      <para> The Rackspace Group Admin Extension (RAX-KSGRP) allows an
+      <para> The Rackspace Group Admin Extension (&ALIAS;) allows an
             authentication call to return additional information about
             a user's group memberships. </para>
       <section xml:id="NewHeaders-0001">
@@ -207,7 +210,7 @@
           <title>New Elements</title>
           <section xml:id="group-0002">
               <title>group</title>
-              <para> The RAX-KSGRP extension returns information about
+              <para> The &ALIAS; extension returns information about
                     a user's groups as a part of the response when an
                     authentication call is made. Examples of the new
                     elements that are defined as a part of this
@@ -223,7 +226,7 @@
           </section>
       </section>
               <section xml:id="Authenticate-d1e1166">
-                  <title>RAX-KSGRP-admin Extension API
+                  <title>&ALIAS;-admin Extension API
                     Operations</title>
                   <para>This extension allows authentication calls to
                 return information about the groups to which a user
