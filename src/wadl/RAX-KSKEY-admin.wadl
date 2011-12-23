@@ -147,7 +147,7 @@
     </method>    
 
     <method name="POST" id="updateUserCredential">
-        <doc xml:lang="EN" title="Update user credential">
+        <doc xml:lang="EN" title="Update User Credentials">
             <p xmlns="http://www.w3.org/1999/xhtml">Update Credentials.</p>
         </doc>
         <request>
