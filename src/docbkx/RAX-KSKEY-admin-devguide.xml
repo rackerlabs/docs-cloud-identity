@@ -205,8 +205,8 @@
           <title>New Elements</title>
           <section xml:id="apikeyCredentials-0002">
               <title>apikeyCredentials</title>
-              <para>This extension allows authentication calls to
-                    accept a new type of credentials:
+              <para>The RAX-KSKEY extension allows authentication
+                    calls to accept a new type of credentials:
                         <parameter>apikeyCredentials</parameter>.
                     These are additional credentials defined to
                     support Rackspace-style authentication, using an

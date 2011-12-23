@@ -207,16 +207,17 @@
           <title>New Elements</title>
           <section xml:id="group-0002">
               <title>group</title>
-              <para>
-                  This extension starts returning groups as a part of response when an authenticate call is made.
-                  The samples of new elements that are defined as a part of this extension are listed below.
-               </para>
+              <para> The RAX-KSGRP extension returns information about
+                    a user's groups as a part of the response when an
+                    authentication call is made. Examples of the new
+                    elements that are defined as a part of this
+                    extension are shown below. </para>
                <example>
-                  <title>Groups Sample XML</title>
+                  <title>Groups Response: XML</title>
                   <programlisting language="xml"><xi:include href="&GROUPSXML;" parse="text"></xi:include></programlisting>
                </example>
                <example>
-                  <title>Groups Sample JSON</title>
+                  <title>Groups Response: JSON</title>
                   <programlisting language="xml"><xi:include href="&GROUPSJSON;" parse="text"></xi:include></programlisting>
                </example>
           </section>
@@ -227,7 +228,7 @@
                   <para>This extension allows authentication calls to
                 return information about the groups to which a user
                 belongs. In the examples below, the authentication
-                response describes a user's groups after describing
+                response describes the user's groups after describing
                 the user's roles.</para>
                   <informaltable rules="all">
                       &URI_REFHEAD;
@@ -243,23 +244,24 @@
                   <simpara>&ERROR_CODES; unauthorized (<errorcode>401</errorcode>), userDisabled
                       (<errorcode>403</errorcode>), badRequest (<errorcode>400</errorcode>), identityFault
                       (<errorcode>500</errorcode>), serviceUnavailable(<errorcode>503</errorcode>)</simpara>
-                  <para>
-                      This call will return a token if successful. Each ReST request against other services (or other
-                      calls on Keystone such as the <code>GET /tenants</code> call)
-                      requires the inclusion of a specific authorization token HTTP x-header, defined as <code>X-Auth-Token</code>.
-                      Clients obtain
-                      this token, along with the URL to other service APIs, by first authenticating against the
-                      Keystone Service and supplying valid credentials.
-                  </para>
+                  <para> This call returns a token if successful. The
+                token is stored in a specific HTTP X-header, defined
+                as <code>X-Auth-Token</code>.  Clients obtain a token,
+                along with the URLs for any service APIs available to
+                them, by first authenticating against the Keystone
+                Identity Service. After receiving a token as evidence
+                of authentication, clients must present the token in
+                every ReST request against any service, including the
+                Keystone Identity Service.  </para>
                   <para>
                       Client authentication is provided via a ReST interface using the &POST; method,
                       with <code>v2.0/tokens</code> supplied as the path. A payload of credentials must be included
                       in the body.
                   </para>
-                  <para>
-                      The Keystone Service is a ReSTful web service. It is the entry point to all service APIs.
-                      To access the Keystone Service, you must know URL of the Keystone service.
-                  </para>
+                  <para> The Keystone Identity Service is a ReSTful
+                web service. It is the entry point to all service
+                APIs. To access the Keystone Identity Service, you
+                must know its URL. </para>
                   <example>
                       <title>Authentication Request Using
                         passwordCredentials: XML</title>

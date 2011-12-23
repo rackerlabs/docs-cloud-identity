@@ -148,7 +148,7 @@
 
     <method name="POST" id="updateUserCredential">
         <doc xml:lang="EN" title="Update User Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml">Update Credentials.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Update Credentials</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
