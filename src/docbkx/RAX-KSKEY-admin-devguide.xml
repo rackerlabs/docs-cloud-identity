@@ -91,7 +91,7 @@
                   <itemizedlist spacing="compact">
                       <listitem>
                           <para>
-                              Standardized for Rackspace-branded publication. />.
+                              Standardized for Rackspace-branded publication.
                           </para>
                       </listitem>
                    </itemizedlist>
@@ -109,30 +109,33 @@
   </info>
     <chapter xml:id="About_RAX-KSKEY-0000">
       <title>About This Extension</title>
-      <variablelist spacing="compact">
+      <variablelist spacing="normal">
           <varlistentry>
               <term>Name</term>
               <listitem>
                   <para>Rackspace API Key Authentication Admin Extension</para>
+                  <para> </para>
               </listitem>
           </varlistentry>
           <varlistentry>
               <term>Namespace</term>
               <listitem>
                   <para>&NAMESPACE;</para>
+                  <para> </para>
               </listitem>
           </varlistentry>
           <varlistentry>
               <term>Alias</term>
               <listitem>
                   <para>&ALIAS;</para>
+                  <para> </para>
               </listitem>
           </varlistentry>
           <varlistentry>
               <term>Dependencies</term>
               <listitem>
                   <para>OpenStack Keystone Identity Service</para>
-                  <para>>&ALIAS; Extension</para>
+                  <para> </para>
               </listitem>
           </varlistentry>
           <varlistentry>
@@ -140,7 +143,8 @@
               <listitem>
                   <para>
                         <link xlink:href="&CURRENTGUIDE;">&CURRENTGUIDE;</link>
-                    </para>
+                  </para>
+                  <para> </para>
               </listitem>
           </varlistentry>
           <varlistentry>
@@ -149,6 +153,7 @@
                   <para>
                       <link xlink:href="&CURRENTWADL;">&CURRENTWADL;</link>
                   </para>
+                  <para> </para>
               </listitem>
           </varlistentry>
           <varlistentry>
@@ -157,13 +162,16 @@
                   <para>
                       <link xlink:href="&EXTENSIONXSD;">&EXTENSIONXSD;</link>
                   </para>
+                  <para> </para>
               </listitem>
           </varlistentry>
           <varlistentry>
               <term>Short Description</term>
               <listitem>
-                  <para> Rackspace extension to Keystone v2.0 API
-                        enabling API Key authentication. </para>
+                  <para> Rackspace extension to Keystone v2.0 API,
+                        enabling API Key authentication. 
+                  </para>
+                  <para> </para>
               </listitem>
           </varlistentry>
       </variablelist>
