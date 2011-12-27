@@ -293,7 +293,15 @@
                  <title>Authentication Response Containing Groups:
                         JSON</title>
                 <programlisting language="javascript"><xi:include href="&GROUPRESPONSEJSON;" parse="text"><xi:fallback>Yet To Be added</xi:fallback></xi:include></programlisting>
-                </example>
-          </section>
+                 </example>
+      <section xml:id="User_Operations_RAX_KSGRP">
+          <title>User Operations</title>
+          <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+              <wadl:resource href="RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
+                  <wadl:method href="listUserGroups"/>
+              </wadl:resource>
+          </wadl:resources>
+      </section>
+  </section>
   </chapter>
 </book>
