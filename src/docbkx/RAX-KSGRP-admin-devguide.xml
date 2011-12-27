@@ -239,61 +239,7 @@
                     Operations</title>
                   <para>This extension allows authentication calls to
                 return information about the groups to which a user
-                belongs. In the examples below, the authentication
-                response describes the user's groups after describing
-                the user's roles.</para>
-                  <informaltable rules="all">
-                      &URI_REFHEAD;
-                      <tbody>
-                          <tr>
-                              <td colspan="1"> &POST; </td>
-                              <td colspan="1">/tokens</td>
-                              <td colspan="4">Authenticate to generate a token.</td>
-                          </tr>
-                      </tbody>
-                  </informaltable>
-                  <simpara>&CODES;<returnvalue>200</returnvalue>, <returnvalue>203</returnvalue></simpara>
-                  <simpara>&ERROR_CODES; unauthorized (<errorcode>401</errorcode>), userDisabled
-                      (<errorcode>403</errorcode>), badRequest (<errorcode>400</errorcode>), identityFault
-                      (<errorcode>500</errorcode>), serviceUnavailable(<errorcode>503</errorcode>)</simpara>
-                  <para> This call returns a token if successful. The
-                token is stored in a specific HTTP X-header, defined
-                as <code>X-Auth-Token</code>.  Clients obtain a token,
-                along with the URLs for any service APIs available to
-                them, by first authenticating against the Keystone
-                Identity Service. After receiving a token as evidence
-                of authentication, clients must present the token in
-                every ReST request against any service, including the
-                Keystone Identity Service.  </para>
-                  <para>
-                      Client authentication is provided via a ReST interface using the &POST; method,
-                      with <code>v2.0/tokens</code> supplied as the path. A payload of credentials must be included
-                      in the body.
-                  </para>
-                  <para> The Keystone Identity Service is a ReSTful
-                web service. It is the entry point to all service
-                APIs. To access the Keystone Identity Service, you
-                must know its URL. </para>
-                  <example>
-                      <title>Authentication Request Using
-                        passwordCredentials: XML</title>
-                      <programlisting language="xml"><xi:include href="&GROUPREQUESTXML;" parse="text"/></programlisting>
-                  </example>
-                  <example>
-                      <title>Authentication Request Using
-                        passwordCredentials: JSON</title>
-                      <programlisting language="javascript"><xi:include href="&GROUPREQUESTJSON;" parse="text"/></programlisting>
-                  </example>
-                  <example>
-                      <title>Authentication Response Containing
-                        Groups: XML</title>
-                      <programlisting language="xml"><xi:include href="&GROUPRESPONSEXML;" parse="text"><xi:fallback>Yet To Be added</xi:fallback></xi:include></programlisting>
-                  </example>
-                 <example>
-                 <title>Authentication Response Containing Groups:
-                        JSON</title>
-                <programlisting language="javascript"><xi:include href="&GROUPRESPONSEJSON;" parse="text"><xi:fallback>Yet To Be added</xi:fallback></xi:include></programlisting>
-                 </example>
+                belongs.</para>
       <section xml:id="User_Operations_RAX_KSGRP">
           <title>User Operations</title>
           <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
