@@ -124,4 +124,10 @@
             and this API, a good place to begin is with  the
             fundamental ideas explained in <xref
                 linkend="Identity-Service-Concepts-e1362"/>.</para>
+    <tip>
+        <para> For links to language binding examples you can adapt to
+            work with the Cloud Identity service, visit <link
+                xlink:href="https://github.com/rackspace"
+                >https://github.com/rackspace</link>.</para>
+    </tip>
     </section>

@@ -12,7 +12,7 @@
     </roles>
   </user>
   <serviceCatalog>
-    <service type="compute" name="cloudServers">
+    <service type="compute" name="cloudServersLegacy">
       <endpoint tenantId="1100111" 
                 publicURL="https://servers.api.rackspacecloud.com/v1.0/1100111">
         <version id="1.0" 
