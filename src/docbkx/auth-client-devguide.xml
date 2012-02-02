@@ -52,6 +52,11 @@
 						</listitem>
 						<listitem>
 							<para>
+								Updated "Get Tenants Request with X-Auth-Token" example to show correct endpoint.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
 								Added link to language binding examples in <xref linkend="QuickStart-000"/>.
 							</para>
 						</listitem>
