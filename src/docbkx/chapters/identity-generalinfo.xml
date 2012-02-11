@@ -61,12 +61,12 @@ This operation does not require a request body.</para>'>
 			format can be specified in requests using either by using
 			the <code>Accept</code> header or by adding an
 				<code>.xml</code> or <code>.json</code> extension to
-			the request URI. Note that it is possible for a response
-			to be serialized using a format different from the request
-			(see example below). If no response format is specified,
-			JSON is the default. If conflicting formats are specified
-			using both an <code>Accept</code> header and a query
-			extension, the query extension takes precedence.</para>
+			the request URI. It is possible for a response to be
+			serialized using a format different from the request. If
+			no response format is specified, JSON is the default. If
+			conflicting formats are specified using both an
+				<code>Accept</code> header and a query extension, the
+			query extension takes precedence.</para>
 	  <table rules="all">
 		<caption>Response Types</caption>
 		<thead>
@@ -126,20 +126,27 @@ This operation does not require a request body.</para>'>
 								>https://lon.manage.rackspacecloud.com/</link>. </para>
 					</listitem>
 				</itemizedlist>
+				<para> </para>
 			</callout>
 			<callout arearefs="request.json.password">
 				<para> This is the password you use to login to the Rackspace
-					Cloud control panel. </para>
+				Cloud control panel. </para>
+				<para> </para>
 			</callout>
 			<callout arearefs="request.json.tenant">
-				<para> <link linkend="Tenant-d1e11">Tenant</link> is an optional specification. 
+				<para> Tenant is an optional specification. 
 					Some services use multi-level authentication, with service-specific credentials
 					in addition to vendor-specific credentials. 
 					In such cases, associating a user with a tenant can
 					be a method of passing that additional level of identifying information to the service.
 				</para>
+				<para> </para>
 			</callout>
 		</calloutlist>	
+		<para>
+			A successful authentication response
+			includes a token and a service catalog.
+		</para>
 	  <example>
 		<title>Authentication Response with Headers: XML</title>
 		<programlisting language="xml">
@@ -150,9 +157,9 @@ This operation does not require a request body.</para>'>
 	  			<area xml:id="response.xml.token" units="linecolumn" coords="8 51"/>
 	  			<area xml:id="response.xml.role" units="linecolumn" coords="11 10"/>
 	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="16 18"/>
-	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="18 32"/>
-	  			<area xml:id="response.xml.url" units="linecolumn" coords="19 77"/>
-	  			<area xml:id="response.xml.region" units="linecolumn" coords="25 27"/>
+	  			<area xml:id="response.xml.region" units="linecolumn" coords="18 27"/>
+	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="18 46"/>
+	  			<area xml:id="response.xml.url" units="linecolumn" coords="19 78"/>
 	  		</areaspec>	
 		<programlisting language="xml">
 <xi:include href="../samples/auth.xml" parse="text"/>
@@ -164,14 +171,15 @@ This operation does not require a request body.</para>'>
 				<para> This token can be presented to a service as evidence of authentication.
 					Tokens are valid for a finite duration; a token's default lifespan is twenty-four hours. 
 				</para>
-				<para>
-					The token's <code>expires</code>
-					attribute identifies the time after which the token will automatically become
-					invalid. A token may be manually revoked before the time identified by the
-					<code>expires</code> attribute; <code>expires</code> predicts a token's maximum possible lifespan but does not guarantee that it will reach that lifespan. 
-					Clients are encouraged to cache a
-					token until it expires. 
-				</para>
+				<para> The token's <code>expires</code> attribute denotes the time
+					after which the token will automatically become
+					invalid. A token may be manually revoked before
+					the time identified by the <code>expires</code>
+					attribute; <code>expires</code> predicts a token's
+					maximum possible lifespan but does not guarantee
+					that it will reach that lifespan. Clients are
+					encouraged to cache a token until it expires. </para>
+				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.role">
 				<para> 
@@ -180,13 +188,20 @@ This operation does not require a request body.</para>'>
 					Other users might hold additional roles with different privileges.
 					Roles need not be associated with actual job functions such as Administrator, Operator, Developer, Tester, or Trainer.
 				</para>
+				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.catalog">
-				<para> The service catalog lists the services this user can access.
-				In this example, three services are available: Cloud Servers, Cloud Files Content Distribution Network (CDN), and Cloud Files.
-				The catalog listing for each service provides at least one endpoint URL for that service.
-				Other information, such as regions and versions and tenants, is provided if it's relevant to this user's access to this service.
-				</para>
+				<para> The service catalog lists the services this user can
+					access. In this example, the user can access two
+					compute services (Cloud Servers OpenStack and
+					Cloud Servers) and two object storage services
+					(Cloud Files Content Distribution Network (CDN),
+					and Cloud Files). The catalog listing for each
+					service provides at least one endpoint URL for
+					that service. Other information, such as regions
+					and versions and tenants, is provided if it's
+					relevant to this user's access to this service. </para>
+				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.tenant">
 				<para> 
@@ -195,6 +210,7 @@ This operation does not require a request body.</para>'>
 					In this example, Rackspace's Cloud Servers uses a "Nast ID" as a tenant ID 
 					while the Cloud Files and Cloud Files CDN services use a "Mosso ID".
 				</para>
+				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.url">
 				<para>
@@ -204,17 +220,35 @@ This operation does not require a request body.</para>'>
 					accessible to services within the same region. Access to
 					an internal URL is free of charge.
 				</para>
+				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.region">
-				<para>
-					A service may expose endpoints in different regions.
-					Regional endpoints allow clients to provision resources in
-					a manner that provides high availability.
-					In this example, the endpoints for two of the available services are associated with the
-					"ORD" (Chicago) region; the service catalog entry for Cloud Servers does not identify a region.
-				</para>
+				<para> A service may expose endpoints in different regions.
+					Regional endpoints allow clients to provision
+					resources in a manner that provides high
+					availability.  </para>
+				<para> Some services are not region-specific. These services supply a single
+					non-regional endpoint and do not provide access to internal URLs. </para>
+				<para> </para>
 			</callout>
-		</calloutlist>	
+		</calloutlist>
+		<important>
+			<para> If you are programmatically parsing an authentication
+				response, use service type rather than service name as
+				the basis for determining whether a user has access to
+				a particular kind of service. Service type is stable
+				across all releases; service name is subject to change
+				as the service develops. In the preceding example,
+					<code>type="compute"</code> identifies all the
+				available compute services, one of which is named
+				cloudServers and one of which is named
+				cloudServersOpenStack. Those service names may change
+				in future releases; whatever the compute services are
+				named in the release you are using, you can always
+				recognize them by parsing for
+					<code>type="compute"</code> in the authentication
+				response's service catalog. </para>
+		</important>
 	</section>
 	<section xml:id="Content_Compression-d1e262">
 	  <title>Content Compression</title>

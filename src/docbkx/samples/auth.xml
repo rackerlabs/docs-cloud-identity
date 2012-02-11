@@ -13,7 +13,14 @@
 		</roles>
 	</user>
 	<serviceCatalog>
-		<service type="compute" name="cloudServersLegacy">
+		<service type="compute" name="cloudServersOpenStack">
+			<endpoint region="DFW" tenantId="555666" 
+				publicURL="https://dfw.servers.api.rackspacecloud.com/v2/555666">
+				<version id="2" info="https://dfw.servers.api.rackspacecloud.com/v2/" 
+					list="https://dfw.servers.api.rackspacecloud.com/" />
+			</endpoint>
+		</service>		
+		<service type="compute" name="cloudServers">
 			<endpoint tenantId="555666" 
 				publicURL="https://servers.api.rackspacecloud.com/v1.0/555666">
 				<version id="1.0" info="https://servers.api.rackspacecloud.com/v1.0/" 

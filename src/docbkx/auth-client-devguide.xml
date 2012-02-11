@@ -25,7 +25,7 @@
 		</copyright>
 		<releaseinfo>API v2.0 BETA</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-02-02</pubdate>
+		<pubdate>2012-02-10</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -42,23 +42,28 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2012-02-02</date>
+				<date>2012-02-10</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Updated multiple examples to show cloudServersLegacy rather than cloudServers (Nova) in responses.
-							</para>
+							<para>Updated multiple examples to show
+								cloudServersOpenStack (Nova) in
+								addition to cloudServers in service
+								catalog responses. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated "Get Tenants Request with X-Auth-Token" example to show correct endpoint.
-							</para>
+							<para>Added note in <xref linkend="Request_Response_Types-d1e149"></xref> that service type is 
+								stable across all releases and should be parsed for rather than service name.</para>
 						</listitem>
 						<listitem>
-							<para>
-								Added link to language binding examples in <xref linkend="QuickStart-000"/>.
-							</para>
+							<para>Updated "Get Tenants Request with
+								X-Auth-Token" example to show correct
+								endpoint. </para>
+						</listitem>
+						<listitem>
+							<para>Added link to language binding
+								examples in <xref
+								linkend="QuickStart-000"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
