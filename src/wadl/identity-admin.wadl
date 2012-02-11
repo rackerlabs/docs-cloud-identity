@@ -225,6 +225,11 @@
           </ul>
           You can use whichever valid credentials you prefer. The authentication service's response is not affected by which kind of credentials you use.
         </p>
+        <p xmlns="http://www.w3.org/1999/xhtml">
+           To see authentication requests and responses with annotations explaining key ideas, see the examples
+           in the "Gemeral API Information" chapter's
+           <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html">"Request/Response Types"</a> section.
+        </p>   
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:auth">
@@ -256,16 +261,7 @@
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:access">
-            
-                <!-- I'd link to example marked up with callouts if I could; it might work if production URL hardcoded rather than xml:id within the book, 
-                    but then what happens in docs-beta? Skipping it for now
-                <doc>    
-                <p xmlns="http://www.w3.org/1999/xhtml">
-                    You can see an example of an authentication response in <xref linkend="Request_Response_Types-d1e149"></xref>.
-                </p>    
-                </doc> -->
-            </representation>
-            <representation mediaType="application/xml" element="identity:access">
+            <!-- linking to URL in the public-facing copy since linking directly from the WADL-generated to the hand-coded via source xml:id doesn't work -->
             <!-- I'd link to the auth.xml sample in the hand-coded section if I could, rather than repeating the sample here -->
             <!-- Note: this WADL chapter gets samples from /common/samples/; the rest of the book gets samples from /samples/ -->
             <!-- only 2 duplicates in both sample collections: auth.xml (here), auth-credentials.json -->
@@ -280,6 +276,11 @@
 	          <xsdxt:sample title="Authentication Response: JSON">
 		          <xsdxt:code href="../common/samples/auth.json"/>	
 	          </xsdxt:sample>
+	          <p xmlns="http://www.w3.org/1999/xhtml">
+	              To see authentication requests and responses with annotations explaining key ideas, see the examples
+	              in the "Gemeral API Information" chapter's
+	              <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html">"Request/Response Types"</a> section.
+	          </p>
 	      </doc>
             </representation>
         </response>

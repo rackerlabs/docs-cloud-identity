@@ -157,6 +157,8 @@ This operation does not require a request body.</para>'>
 	  			<area xml:id="response.xml.token" units="linecolumn" coords="8 51"/>
 	  			<area xml:id="response.xml.role" units="linecolumn" coords="11 10"/>
 	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="16 18"/>
+	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="17 27"/>
+	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="17 57"/>
 	  			<area xml:id="response.xml.region" units="linecolumn" coords="18 27"/>
 	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="18 46"/>
 	  			<area xml:id="response.xml.url" units="linecolumn" coords="19 78"/>
@@ -203,6 +205,30 @@ This operation does not require a request body.</para>'>
 					relevant to this user's access to this service. </para>
 				<para> </para>
 			</callout>
+			<callout arearefs="response.xml.servicetype">
+				<para> 
+					The service type attribute identifies services that perform similar functions, whatever those services might be named. 
+					In this example, the services named cloudServers and cloudServersOpenstack are both identified as <code>type="compute"</code>, 
+					identifying them as compute services even though the word "compute" does not appear in their names.
+				</para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.xml.servicename">
+				<para> 
+					The service name attribute identifies each unique service in the catalog.
+					Once a service is created, its name does not change. However, new services of the same service type may be added to the catalog with new names.
+				</para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.xml.region">
+				<para> A service may expose endpoints in different regions.
+					Regional endpoints allow clients to provision
+					resources in a manner that provides high
+					availability.  </para>
+				<para> Some services are not region-specific. These services supply a single
+					non-regional endpoint and do not provide access to internal URLs. </para>
+				<para> </para>
+			</callout>
 			<callout arearefs="response.xml.tenant">
 				<para> 
 					Some services recognize specification of a tenant; if a service does recognize tenants,
@@ -222,29 +248,21 @@ This operation does not require a request body.</para>'>
 				</para>
 				<para> </para>
 			</callout>
-			<callout arearefs="response.xml.region">
-				<para> A service may expose endpoints in different regions.
-					Regional endpoints allow clients to provision
-					resources in a manner that provides high
-					availability.  </para>
-				<para> Some services are not region-specific. These services supply a single
-					non-regional endpoint and do not provide access to internal URLs. </para>
-				<para> </para>
-			</callout>
 		</calloutlist>
 		<important>
 			<para> If you are programmatically parsing an authentication
 				response, use service type rather than service name as
 				the basis for determining whether a user has access to
 				a particular kind of service. Service type is stable
-				across all releases; service name is subject to change
-				as the service develops. In the preceding example,
+				across all releases; new service types may be developed,
+				but existing service types are not renamed.
+				In the preceding example,
 					<code>type="compute"</code> identifies all the
 				available compute services, one of which is named
 				cloudServers and one of which is named
-				cloudServersOpenStack. Those service names may change
+				cloudServersOpenStack. New compute service names may be added 
 				in future releases; whatever the compute services are
-				named in the release you are using, you can always
+				named, you can always
 				recognize them by parsing for
 					<code>type="compute"</code> in the authentication
 				response's service catalog. </para>
