@@ -33,7 +33,7 @@
          </profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<doctools.version>1.0.9</doctools.version>
+		<doctools.version>1.0.10</doctools.version>
 	</properties>
 
 	<dependencies>
@@ -279,7 +279,8 @@
 			     							<exclude name="**/*.svg" />
 			    						</fileset>
 			  						</copy>
-							</postProcess>			  
+							</postProcess>	
+							<socialIcons>1</socialIcons>
 		      			</configuration>
 		    		</execution>
 		    		<execution>
