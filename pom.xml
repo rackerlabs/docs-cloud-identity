@@ -33,6 +33,8 @@
          </profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- document formatting plugin version -->
+		<!-- 1.0.10 enables social icons in HTML output -->
 		<doctools.version>1.0.10</doctools.version>
 	</properties>
 

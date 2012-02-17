@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->
+<!DOCTYPE chapter [
+<!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
+<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
+<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+<!-- Some entities borrowed from HTML -->
 <!ENTITY ndash  "&#x2013;">
 <!ENTITY mdash  "&#x2014;">
 <!ENTITY hellip "&#x2026;">
-
 <!-- Useful for describing APIs -->
 <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
 <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
 <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
 <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 <!ENTITY HEAD    '<command xmlns="http://docbook.org/ns/docbook">HEAD</command>'>
-
-
 <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
 <imageobject>
 <imagedata fileref="img/Check_mark_23x20_02.svg"
@@ -480,7 +481,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			<title>Request with URI Versioning</title>
 			<literallayout class="monospaced">
 GET /v2.0/tenants HTTP/1.1
-Host: auth.api.rackspacecloud.com
+Host: identity.api.rackspacecloud.com
 Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
@@ -539,7 +540,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			<title>Versions List Request</title>
 			<literallayout class="monospaced">
 GET HTTP/1.1
-Host: auth.api.rackspacecloud.com
+Host: identity.api.rackspacecloud.com
 			</literallayout>
 		</example>
 		<simpara>&CODES; <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue></simpara>

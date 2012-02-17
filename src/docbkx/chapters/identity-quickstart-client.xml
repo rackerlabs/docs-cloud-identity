@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
+<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
+<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+]>
 <section xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
@@ -51,14 +56,12 @@
             Use the authentication endpoint for the region in which your account is based:
             <itemizedlist spacing="compact">
                 <listitem>
-                    <para>
-                        US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v2.0/">https://auth.api.rackspacecloud.com/v2.0/</link>.
-                    </para>
+                    <para> US-based accounts authenticate through
+                        <link xlink:href="&ENDPOINT-US;">&ENDPOINT-US;</link>.</para>
                 </listitem>
                 <listitem>
-                    <para>
-                        UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v2.0/">https://lon.auth.api.rackspacecloud.com/v2.0/</link>.
-                    </para>
+                    <para> UK-based accounts authenticate through
+                        <link xlink:href="&ENDPOINT-UK;">&ENDPOINT-UK;</link>.</para>
                 </listitem>
             </itemizedlist>
         </para>
@@ -113,7 +116,7 @@
                     <para><emphasis>You can use a token and a service endpoint to tell a service that your credentials are valid.</emphasis></para>
                     <para>
                         <literallayout class="monospaced">curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee
--H 'X-Auth-Token:vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose</literallayout>
+-H 'X-Auth-Token:11111111-aaaa-2222-bbbb-3333cccc4444' --verbose</literallayout>
                     </para>
                 </listitem>
             </orderedlist>
@@ -121,9 +124,11 @@
         <para> The rest of this API Developer Guide provides reference
             and background information, including sample requests and
             responses. To learn more about the Cloud Identity Service
-            and this API, a good place to begin is with  the
-            fundamental ideas explained in <xref
-                linkend="Identity-Service-Concepts-e1362"/>.</para>
+            and this API, two good places to begin are with  the
+            fundamental ideas explained in 
+            <xref linkend="Identity-Service-Concepts-e1362"/>
+            and the annotated request and response in 
+            <xref linkend="Request_Response_Types-d1e149"/>.</para>
     <tip>
         <para> For links to language binding examples you can adapt to
             work with the Cloud Identity service, visit <link

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossary [
+<!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
+<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
+<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+]>
 <glossary xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
@@ -66,13 +71,13 @@
                     below: </para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>
-                            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v2.0/">https://auth.api.rackspacecloud.com/v2.0/</link>.
-                        </para>
+                        <para> US-based accounts authenticate through<?sbr?>
+                        <link xlink:href="&ENDPOINT-US;">&ENDPOINT-US;</link>. </para>
                     </listitem>
                     <listitem>
                         <para>
-                            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v2.0/">https://lon.auth.api.rackspacecloud.com/v2.0/</link>.
+                            UK-based accounts authenticate through <?sbr?>
+                            <link xlink:href="&ENDPOINT-UK;">&ENDPOINT-UK;</link>.
                         </para>
                     </listitem>
                 </itemizedlist>

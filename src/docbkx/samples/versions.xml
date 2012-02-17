@@ -6,19 +6,19 @@
   <version id="v1.0" status="DEPRECATED" 
           updated="2009-10-09T11:30:00Z">
      <atom:link rel="self"
-             href="http://auth.api.rackspacecloud.com/v1.0/"/>
+             href="http://identity.api.rackspacecloud.com/v1.0/"/>
   </version>
 
   <version id="v1.1" status="CURRENT"
           updated="2010-12-12T18:30:02.25Z">
      <atom:link rel="self"
-             href="http://auth.api.rackspacecloud.com/v1.1/"/>
+             href="http://identity.api.rackspacecloud.com/v1.1/"/>
   </version>
 
   <version id="v2.0" status="BETA"
           updated="2011-05-27T20:22:02.25Z">
      <atom:link rel="self"
-             href="http://auth.api.rackspacecloud.com/v2.0/"/>
+             href="http://identity.api.rackspacecloud.com/v2.0/"/>
   </version>
 
 </versions>
