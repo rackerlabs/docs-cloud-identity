@@ -238,7 +238,9 @@
 						</configuration>
                     </execution>
                 	<execution>
-                	<!-- PDF for RAX-KSKEY-admin-devguide -->	
+                    <!-- 
+                    	SKIP BUILD FOR EXTENSIONS: bad include here is causing all HTML builds to fail 
+                         PDF for RAX-KSKEY-admin-devguide 
                 	<id>g1-pdf-RAX-KSKEY</id>
                 	<goals>
                 		<goal>generate-pdf</goal>
@@ -250,18 +252,19 @@
                 	</configuration>
                 	</execution>
                 	<execution>
-                		<!-- PDF for RAX-KSGRP-admin-devguide -->	
-                		<id>g1-pdf-RAX-KSGRP</id>
-                		<goals>
-                			<goal>generate-pdf</goal>
-                		</goals>
-                		<phase>generate-sources</phase>
-                		<configuration>
-                			<highlightSource>false</highlightSource>
-                			<includes>RAX-KSGRP-admin-devguide.xml</includes>			
-                		</configuration>
+                	  PDF for RAX-KSGRP-admin-devguide 
+                	<id>g1-pdf-RAX-KSGRP</id>
+                	<goals>
+                		<goal>generate-pdf</goal>
+                	</goals>
+                	<phase>generate-sources</phase>
+                	<configuration>
+                		<highlightSource>false</highlightSource>
+                		<includes>RAX-KSGRP-admin-devguide.xml</includes>			
+                	</configuration>
                 	</execution>
                     <execution>
+                    -->
                     <!-- HTML for auth-client-devguide -->
 		      		<id>g2-html-client</id>		      
 		      			<goals>
