@@ -11,7 +11,7 @@
 					base="application/json"
 					type="application/vnd.openstack.identity+json;version=1.0" />
 		</media-types>
-		<atom:link rel="self" href="http://auth.api.rackspacecloud.com/v1.0" />
+		<atom:link rel="self" href="http://identity.api.rackspacecloud.com/v1.0" />
 	</version>
 	<version id="v1.1" status="CURRENT">
 		<media-types>
@@ -22,7 +22,7 @@
 					base="application/json"
 					type="application/vnd.openstack.identity+json;version=1.1" />
 		</media-types>
-		<atom:link rel="self" href="http://auth.api.rackspacecloud.com/v1.1" />
+		<atom:link rel="self" href="http://identity.api.rackspacecloud.com/v1.1" />
 	</version>
 	<version id="v2.0" status="BETA">
 		<media-types>
@@ -33,6 +33,6 @@
 					base="application/json"
 					type="application/vnd.openstack.identity+json;version=2.0" />
 		</media-types>
-		<atom:link rel="self" href="http://auth.api.rackspacecloud.com/v2.0" />
+		<atom:link rel="self" href="http://identity.api.rackspacecloud.com/v2.0" />
 	</version>
 </choices>

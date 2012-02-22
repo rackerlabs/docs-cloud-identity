@@ -423,7 +423,7 @@ This operation does not require a request body.</para>'>
 		<para>
 			The first element of
 			the URI path contains the target version identifier: for example, in 
-			https://auth.api.rackspacecloud.com/v2.0/&hellip;, the API version is 2.0. Other than requests to query for version, 
+			&ENDPOINT-US;&hellip;, the API version is 2.0. Other than requests to query for version, 
 			all requests must contain a target version. 
 		</para>
 	    <para>
@@ -472,7 +472,7 @@ This operation does not require a request body.</para>'>
 			<title>Request with MIME-Type Versioning</title>
 			<literallayout class="monospaced">
 GET /tenants HTTP/1.1
-Host: auth.api.rackspacecloud.com
+Host: identity.api.rackspacecloud.com
 Accept: application/vnd.openstack.identity+xml;version=1.1
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
@@ -568,7 +568,7 @@ Host: identity.api.rackspacecloud.com
 		<para> You can obtain additional detailed information about a
 			specific version by performing a &GET; on the base version
 			URL. For example,
-				<code>https://auth.api.rackspacecloud.com/v1.0/</code>
+				<code>https://identity.api.rackspacecloud.com/v1.0/</code>
 			is a base version URL, in which <code>v1.0</code> is the
 			initial version of the API. Version request URLs should
 			always end with a trailing slash (/). If the slash is
@@ -576,7 +576,7 @@ Host: identity.api.rackspacecloud.com
 				<returnvalue>302</returnvalue> redirection request.
 			Format extensions may be placed after the trailing slash.
 			For example, <code>
-				https://auth.api.rackspacecloud.com/v2.0/.xml</code>
+				&ENDPOINT-US;.xml</code>
 			includes <code>.xml</code> as a format extension. Note
 			that this is a special case that does not hold true for
 			other API requests. In general, requests such as
@@ -586,7 +586,7 @@ Host: identity.api.rackspacecloud.com
 			<title>Version Details Request</title>
 			<literallayout class="monospaced">
 GET HTTP/1.1
-Host: auth.api.rackspacecloud.com/v1.0/
+Host: identity.api.rackspacecloud.com/v1.0/
 			</literallayout>
 		</example>
 		<simpara>&CODES; <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue></simpara>

@@ -6,7 +6,7 @@
     "links": [
       {
         "rel": "self",
-        "href": "http://auth.api.rackspacecloud.com/v2.0/"
+        "href": "http://identity.api.rackspacecloud.com/v2.0/"
       }, {
         "rel": "describedby",
         "type": "application/pdf",
