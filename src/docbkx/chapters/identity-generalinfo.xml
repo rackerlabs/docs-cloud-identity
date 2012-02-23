@@ -93,6 +93,17 @@ This operation does not require a request body.</para>'>
 		  </tr>
 		</tbody>
 	  </table>
+	</section>
+	<section xml:id="Sample_Request_Response-d1e64">
+		<title>Sample Authentication Request and Response</title>
+		<para> The sample request and response in this section illustrate a
+			general case. In your authentication request, use your own
+			credentials rather than the sample values shown here for
+				<code>username</code>, <code>password</code>. and
+				<code>tenantID</code>.  When you authenticate
+			successfully, the response to your authentication request
+			will include a catalog of the services to which you have
+			subscribed rather than the sample values shown here. </para>
 	  <example>
 		<title>Authentication Request with Headers: JSON</title>
 		<programlisting language="xml">
@@ -268,6 +279,88 @@ This operation does not require a request body.</para>'>
 					<code>type="compute"</code> in the authentication
 				response's service catalog. </para>
 		</important>
+		<section xml:id="Sample_Catalog_Workflow-d1e266">
+			<title>Suggested Workflow for Processing a Service Catalog Response</title>
+			<para>
+				When your client issues a successful authentication request, 
+				the Cloud Identity Service responds with a catalog showing the services available to that client, 
+				with one endpoint listed for each available service;
+				you can find an annotated example of such a response at
+				<xref linkend="Sample_Request_Response-d1e64"></xref>.
+			</para>
+			<para> As the client developer, you must decide how your client
+				should use the contents of its service catalog. The
+				first step may be to identify a service to which your
+				client should be connected. Here is one possible
+				workflow for processing the service catalog response
+				to identify available services and their endpoints: </para>
+			<orderedlist>
+			<listitem>
+					<para> 
+						If the service catalog lists only one endpoint, use it.
+						This will connect your client to the only
+						service available to that client.
+					</para>
+				</listitem>
+				<listitem>
+					<para> 
+						If the service catalog lists multiple endpoints,
+						you must establish a process for choosing an endpoint to connect your client to:
+					</para>
+					<orderedlist numeration="loweralpha">
+						<listitem>
+							<para>
+								If the customer has not specified which endpoint to use, 
+								generate an error.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If the customer has specified which endpoint to use,
+								help the customer identify that endpoint from within the catalog:
+							</para>
+							<orderedlist numeration="lowerroman">
+								<listitem>
+									<para>
+										Support filtering by 
+										endpoint name, service name, service type, region name, and version.
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										Support manual specification of an endpoint via a URL parameter. 
+									</para>
+								</listitem>
+							</orderedlist>
+						</listitem>
+					</orderedlist>
+				</listitem>
+			</orderedlist>
+					<para> Authentication endpoints follow the process described
+				above. </para>
+			<para>
+				To connect a client to an endpoint listed as
+					<code>type="compute"</code>, do the following: 
+			</para>
+				<orderedlist>
+					<listitem>
+						<para>
+							Go that compute service's endpoint and use its <code>WWW-Authenticate</code>
+							header to determine what authentication server it uses.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Go to that authentication server and authenticate.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Return to the compute endpoint and proceed with using the compute service.
+						</para>
+					</listitem>
+				</orderedlist>
+		</section>
 	</section>
 	<section xml:id="Content_Compression-d1e262">
 	  <title>Content Compression</title>
