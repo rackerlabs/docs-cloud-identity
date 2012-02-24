@@ -128,7 +128,7 @@
             fundamental ideas explained in 
             <xref linkend="Identity-Service-Concepts-e1362"/>
             and the annotated request and response in 
-            <xref linkend="Request_Response_Types-d1e149"/>.</para>
+            <xref linkend="Sample_Request_Response-d1e64"/>.</para>
     <tip>
         <para> For links to language binding examples you can adapt to
             work with the Cloud Identity service, visit <link

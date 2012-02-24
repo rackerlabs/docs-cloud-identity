@@ -54,8 +54,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<para>In the authentication service API v2.0, the following calls
-		require only the core API:</para>
+	<para>In the authentication service API v2.0, the following calls may
+		require the core API or an extension:</para>
 	<section xml:id="Token_Operations">
 		<title>Token Operations</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -106,5 +106,57 @@
 				a 501 (notImplemented) will be issued in response to this request.
 			</para>
 		</important>
+	</section>
+	<section security="writeronly" xml:id="Endpoint_Template_Operations">
+		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
+		<title>Endpoint Template Operations</title>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplates">
+				<wadl:method href="endpointTemplates"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplates">
+				<wadl:method href="addEndpointTemplate"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplateId">
+				<wadl:method href="getEndpointTemplate"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplateId">
+				<wadl:method href="deleteEndpointTemplate"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
+	<section security="writeronly" xml:id="Endpoint_Operations">
+		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
+		<title>Endpoint Operations</title>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoints">
+				<wadl:method href="listEndpoints"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoints">
+				<wadl:method href="addEndpoint"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoint">
+				<wadl:method href="getEndpoint"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoint">
+				<wadl:method href="deleteEndpoint"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
+	<section xml:id="Secret_Calls">
+		<title>Secret Question and Answer Calls</title>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="RAX-KSQA-admin.wadl#secretqa">
+				<wadl:method href="getUserSecretQA"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-KSQA-admin.wadl#secretqa">
+				<wadl:method href="updateUserSecretQA"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
+	<section security="writeronly" xml:id="Impersonation_Calls">
+		<!-- Impersonation Calls are scheduled for production 2012-04-15; I don't know how they work now -->
+		<title>Impersonation Calls</title>
+		<para>placeholder</para>
 	</section>
 </section>

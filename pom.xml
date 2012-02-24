@@ -196,6 +196,13 @@
         					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
         					<stylesheet>${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl</stylesheet>
         				</transformationSet>
+					<transformationSet>
+                         <dir>src/wadl/openstack-identity-api/src/RAX-GRPADM/RAX-GRPADM.wadl</dir>
+                           <includes>
+                           	   <include>*.wadl</include>
+                           </includes>
+						<stylesheet>${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl</stylesheet>
+                                        </transformationSet>
         			</transformationSets>
         		</configuration>
         		<dependencies>
