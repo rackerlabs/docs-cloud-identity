@@ -49,13 +49,128 @@
 				<td>HTTP/1.1 Request</td>
 				<td><code>X-Auth-Token</code></td>
 				<td>
-					<para> vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz</para>
+					<para> aaaaaaaa-1111-bbbb-2222-ccc3d5e6f777</para>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<para>In the authentication service API v2.0, the following calls may
-		require the core API or an extension:</para>
+	<para>
+		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.
+		If an extension is required, it is included in Rackspace's implementation of the Keystone Identity Service; 
+		issuing the calls as described here will use API extensions as needed.
+	</para>
+	<section xml:id="User_Calls">
+		<title>User Calls</title>
+		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list users -->
+			<!-- list user -->
+			<wadl:resource href="identity-admin.wadl#users">
+				<wadl:method href="getUserByName"/>
+			</wadl:resource>
+			<wadl:resource href="identity-admin.wadl#userid">
+				<wadl:method href="getUserById"/>
+			</wadl:resource>
+			<wadl:resource href="identity-admin.wadl#userRoles">
+				<wadl:method href="listUserGlobalRoles"/>
+			</wadl:resource>
+			<!-- add user -->
+			<wadl:resource href="OS-KSADM-admin.wadl#users">
+				<wadl:method href="addUser"/>
+			</wadl:resource>
+			<!-- update user -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userById">
+				<wadl:method href="updateUser"/>
+			</wadl:resource>
+			<!-- delete user -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userById">
+				<wadl:method href="deleteUser"/>
+			</wadl:resource>
+			<!-- add API key credential -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userCredentials">
+				<wadl:method href="addUserCredential"/>
+			</wadl:resource>
+			<!-- list API key credentials -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userCredentials">
+				<wadl:method href="listCredentials"/>
+			</wadl:resource>
+			<!-- update API key credentials -->
+			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+				<wadl:method href="updateUserCredential"/>
+			</wadl:resource>
+			<!-- delete API key credentials -->
+			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+				<wadl:method href="deleteUserCredential"/>
+			</wadl:resource>
+			<!-- get user's API key credentials -->
+			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+				<wadl:method href="getUserCredential"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
+	<section xml:id="Group_Calls">
+		<title>Group Calls</title>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="listGroups"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="addGroup"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="getGroup"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="updateGroup"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="deleteGroup"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="getUsersForGroup"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="addUserToGroup"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="getGroup"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+				<wadl:method href="removeUserFromGroup"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
+	<section xml:id="Role_Calls">
+		<title>Role Calls</title>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="OS-KSADM-admin.wadl#roles">
+				<wadl:method href="listRoles"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+				<wadl:method href="addUserRole"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSADM-admin.wadl#roleId">
+				<wadl:method href="getRole"/>
+			</wadl:resource>
+			<!-- notes say
+				"No access allowed. Deleting a global role can mess up a lot of stuff.
+				We need to wait until identity:admin and identity:service-admin roles
+				are separated fully (post migration) before doing this."
+			<wadl:resource href="OS-KSADM-admin.wadl#RoleId">
+				<wadl:method href="deleteRole"/>
+			</wadl:resource>
+			-->
+			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+				<wadl:method href="addUserRole"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+				<wadl:method href="deleteUserRole"/>
+			</wadl:resource>
+			<wadl:resource href="OS-KSADM-admin.wadl#users">
+				<wadl:method href="listUsers"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
 	<section xml:id="Token_Operations">
 		<title>Token Operations</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -68,20 +183,6 @@
 			</wadl:resource>
 			<wadl:resource href="identity-admin.wadl#endpointsForToken">
 				<wadl:method href="listEndpointsForToken"/>
-			</wadl:resource>
-		</wadl:resources>
-	</section>
-	<section xml:id="User_Operations">
-		<title>User Operations</title>
-		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="identity-admin.wadl#users">
-				<wadl:method href="getUserByName"/>
-			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#userid">
-				<wadl:method href="getUserById"/>
-			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#userRoles">
-				<wadl:method href="listUserGlobalRoles"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -155,7 +256,8 @@
 		</wadl:resources>
 	</section>
 	<section security="writeronly" xml:id="Impersonation_Calls">
-		<!-- Impersonation Calls are scheduled for production 2012-04-15; I don't know how they work now -->
+		<!-- Impersonation Calls are scheduled for production 2012-04-15; 
+			I don't know which WADL they will come from -->
 		<title>Impersonation Calls</title>
 		<para>placeholder</para>
 	</section>
