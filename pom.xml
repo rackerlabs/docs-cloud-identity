@@ -197,12 +197,13 @@
         					<stylesheet>${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl</stylesheet>
         				</transformationSet>
 					<transformationSet>
-                         <dir>src/wadl/openstack-identity-api/src/RAX-GRPADM/RAX-GRPADM.wadl</dir>
+                   <!-- <dir>src/wadl/openstack-identity-api/src/RAX-GRPADM/RAX-GRPADM.wadl</dir> -->
+						<dir>src/wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM</dir>
                            <includes>
                            	   <include>*.wadl</include>
                            </includes>
 						<stylesheet>${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl</stylesheet>
-                                        </transformationSet>
+                     </transformationSet>
         			</transformationSets>
         		</configuration>
         		<dependencies>
