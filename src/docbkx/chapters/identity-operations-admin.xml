@@ -108,19 +108,26 @@
 	<section xml:id="Group_Calls">
 		<title>Group Calls</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups"/>
+			<wadl:resource href="RAX-GRPADM.wadl#group"/>
+			<wadl:resource href="RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
+				<wadl:method href="listUserGroups"/>
+			</wadl:resource>
+			<wadl:resource href="RAX-GRPADM.wadl#user"/>
+			<wadl:resource href="RAX-GRPADM.wadl#users"/>			
+<!--			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="listGroups"/>
 			</wadl:resource>
 			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="addGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#group">
 				<wadl:method href="getGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#group">
 				<wadl:method href="updateGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#group">
 				<wadl:method href="deleteGroup"/>
 			</wadl:resource>
 			<wadl:resource href="RAX-GRPADM.wadl#groups">
@@ -135,7 +142,7 @@
 			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="removeUserFromGroup"/>
 			</wadl:resource>
-		</wadl:resources>
+-->		</wadl:resources>
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Role Calls</title>
@@ -146,7 +153,7 @@
 			</wadl:resource>
 			<!-- add a role globally -->
 			<wadl:resource href="OS-KSADM-admin.wadl#roles">
-				<wadl:method href="addUserRole"/>
+				<wadl:method href="addRole"/>
 			</wadl:resource>
 			<!-- get a global role -->
 			<wadl:resource href="OS-KSADM-admin.wadl#roleId">
