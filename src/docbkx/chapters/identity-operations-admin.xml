@@ -108,34 +108,34 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	<section security="writeronly" xml:id="Group_Calls">
+	<section xml:id="Group_Calls">
 		<title>Group Calls</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="listGroups"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="addGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="getGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="updateGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="deleteGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="getUsersForGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="addUserToGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="getGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
+			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="removeUserFromGroup"/>
 			</wadl:resource>
 		</wadl:resources>
