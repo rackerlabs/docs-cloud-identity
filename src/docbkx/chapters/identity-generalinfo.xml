@@ -279,6 +279,66 @@ This operation does not require a request body.</para>'>
 					<code>type="compute"</code> in the authentication
 				response's service catalog. </para>
 		</important>
+		<section xml:id="Service_Types-d1e265">
+			<title>Service Types in the Service Catalog</title>
+			<para> As shown at <xref linkend="Sample_Request_Response-d1e64"/>,
+				every service listed in the service catalog is
+				associated with a service type. You can use the
+				service type to recognize services that perform
+				similar functions, whatever those services are named.
+				The following table shows all the available service
+				types and relates them to their corresponding
+				OpenStack projects and those projects' documentation. </para>
+				<table rules="all">
+					<caption>Service Types</caption>
+					<col width="21%"/>
+					<col width="79%"/>
+					<thead>
+						<tr>
+							<th>Service Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>compute</code></td>
+							<td>This service is compatible with the OpenStack Compute (Nova) API 1.1
+								as documented at 
+								<?sbr?>
+								<link xlink:href="http://nova.openstack.org/"
+								>http://nova.openstack.org/</link>. 
+							</td>
+						</tr>
+						<tr>
+							<td><code>identity</code></td>
+							<td>This service is compatible with the
+								OpenStack Keystone API 2.0 
+								as documented at
+								<link xlink:href="http://keystone.openstack.org/"
+									>http://keystone.openstack.org/</link>. 
+							</td>
+						</tr>
+						<tr>
+							<td><code>image-service</code></td>
+							<td>This service is compatible with the
+								OpenStack Glance API 
+								as documented at
+								<link xlink:href="http://glance.openstack.org/"
+									>http://glance.openstack.org/</link>. 
+							</td>
+						</tr>
+						<tr>
+							<td><code>object-store</code></td>
+							<td>This service is compatible with the
+								OpenStack Swift API 
+								as documented at
+								<link xlink:href="http://swift.openstack.org/"
+									>http://swift.openstack.org/</link>. 
+							</td>
+						</tr>
+					</tbody>
+				</table>
+		</section>
 		<section xml:id="Sample_Catalog_Workflow-d1e266">
 			<title>Suggested Workflow for Processing a Service Catalog Response</title>
 			<para>

@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0 BETA</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-02-27</pubdate>
+		<pubdate>2012-03-13</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,14 +46,14 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2012-02-27</date>
+				<date>2012-03-13</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Updated authentication endpoints to &ENDPOINT-US; (for US-based accounts)
-								and &ENDPOINT-UK; (for UK-based accounts). 
-							</para>
+							<para> Updated authentication endpoints to
+								&ENDPOINT-US; (for US-based accounts)
+								and &ENDPOINT-UK; (for UK-based
+								accounts). </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

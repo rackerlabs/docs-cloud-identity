@@ -108,7 +108,7 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	<section xml:id="Group_Calls">
+	<section security="writeronly" xml:id="Group_Calls">
 		<title>Group Calls</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="RAX-GRPADM-admin.wadl#groups">
@@ -160,9 +160,10 @@
 				<wadl:method href="deleteRole"/>
 			</wadl:resource>
 			-->
-			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+			<remark>Rose: I had to comment this out because it's a repeat and caused duplicate ids</remark>
+<!--			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="addUserRole"/>
-			</wadl:resource>
+			</wadl:resource>-->
 			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="deleteUserRole"/>
 			</wadl:resource>
