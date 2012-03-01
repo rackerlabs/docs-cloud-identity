@@ -129,8 +129,8 @@
 			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="addUserToGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
-				<wadl:method href="getGroup"/>
+			<wadl:resource href="RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
+				<wadl:method href="listUserGroups"/>
 			</wadl:resource>
 			<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="removeUserFromGroup"/>
