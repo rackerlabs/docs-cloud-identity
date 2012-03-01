@@ -71,9 +71,6 @@
 			<wadl:resource href="identity-admin.wadl#userid">
 				<wadl:method href="getUserById"/>
 			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#userRoles">
-				<wadl:method href="listUserGlobalRoles"/>
-			</wadl:resource>
 			<!-- add user -->
 			<wadl:resource href="OS-KSADM-admin.wadl#users">
 				<wadl:method href="addUser"/>
@@ -143,15 +140,19 @@
 	<section xml:id="Role_Calls">
 		<title>Role Calls</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list roles -->
 			<wadl:resource href="OS-KSADM-admin.wadl#roles">
 				<wadl:method href="listRoles"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+			<!-- add a role globally -->
+			<wadl:resource href="OS-KSADM-admin.wadl#roles">
 				<wadl:method href="addUserRole"/>
 			</wadl:resource>
+			<!-- get a global role -->
 			<wadl:resource href="OS-KSADM-admin.wadl#roleId">
 				<wadl:method href="getRole"/>
 			</wadl:resource>
+			<!-- delete a role globally -->
 			<!-- notes say
 				"No access allowed. Deleting a global role can mess up a lot of stuff.
 				We need to wait until identity:admin and identity:service-admin roles
@@ -160,15 +161,17 @@
 				<wadl:method href="deleteRole"/>
 			</wadl:resource>
 			-->
-			<remark>Rose: I had to comment this out because it's a repeat and caused duplicate ids</remark>
-<!--			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+			<!-- add a global role to a user -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="addUserRole"/>
-			</wadl:resource>-->
+			</wadl:resource>
+			<!-- delete a global role from a user -->
 			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="deleteUserRole"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSADM-admin.wadl#users">
-				<wadl:method href="listUsers"/>
+			<!-- list global roles available to a user -->
+			<wadl:resource href="identity-admin.wadl#userRoles">
+				<wadl:method href="listUserGlobalRoles"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
