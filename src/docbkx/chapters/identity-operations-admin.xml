@@ -60,7 +60,7 @@
 		issuing the calls as described here will use API extensions as needed.
 	</para>
 	<section xml:id="User_Calls">
-		<title>User Calls</title>
+		<title>Users</title>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
@@ -106,7 +106,7 @@
 		</wadl:resources>
 	</section>
 	<section xml:id="Group_Calls">
-		<title>Group Calls</title>
+		<title>Groups</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="RAX-GRPADM.wadl#groups"/>
 			<wadl:resource href="RAX-GRPADM.wadl#group"/>
@@ -115,7 +115,10 @@
 			</wadl:resource>
 			<wadl:resource href="RAX-GRPADM.wadl#user"/>
 			<wadl:resource href="RAX-GRPADM.wadl#users"/>			
-<!--			<wadl:resource href="RAX-GRPADM.wadl#groups">
+<!--	   Specification of individual calls as below (& the rest of this doc) 
+		   fails here (BUILD SUCCESS, but calls missing from generated output);
+		   above, include all from 4 resources in RAX-GRPADM, plus 1 from RAX-KSGRP 
+				<wadl:resource href="RAX-GRPADM.wadl#groups">
 				<wadl:method href="listGroups"/>
 			</wadl:resource>
 			<wadl:resource href="RAX-GRPADM.wadl#groups">
@@ -145,7 +148,7 @@
 -->		</wadl:resources>
 	</section>
 	<section xml:id="Role_Calls">
-		<title>Role Calls</title>
+		<title>Roles</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list roles -->
 			<wadl:resource href="OS-KSADM-admin.wadl#roles">
@@ -183,7 +186,7 @@
 		</wadl:resources>
 	</section>
 	<section xml:id="Token_Operations">
-		<title>Token Operations</title>
+		<title>Tokens</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tokens">
 				<wadl:method href="authenticate"/>
@@ -198,7 +201,7 @@
 		</wadl:resources>
 	</section>
 	<section xml:id="Tenant_Operations">
-		<title>Tenant Operations</title>
+		<title>Tenants</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tenants">
 				<wadl:method href="listTenants"/>
@@ -220,8 +223,8 @@
 		</important>
 	</section>
 	<section security="writeronly" xml:id="Endpoint_Template_Operations">
-		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
-		<title>Endpoint Template Operations</title>
+		<!-- Endpoint Template Operations are only in Global Auth for now; omit from Cloud Auth book -->
+		<title>Endpoint Templates</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="endpointTemplates"/>
@@ -239,7 +242,7 @@
 	</section>
 	<section security="writeronly" xml:id="Endpoint_Operations">
 		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
-		<title>Endpoint Operations</title>
+		<title>Endpoints</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoints">
 				<wadl:method href="listEndpoints"/>
@@ -256,7 +259,7 @@
 		</wadl:resources>
 	</section>
 	<section xml:id="Secret_Calls">
-		<title>Secret Question and Answer Calls</title>
+		<title>Secret Questions and Answers</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="getUserSecretQA"/>
@@ -269,7 +272,7 @@
 	<section security="writeronly" xml:id="Impersonation_Calls">
 		<!-- Impersonation Calls are scheduled for production 2012-04-15; 
 			I don't know which WADL they will come from -->
-		<title>Impersonation Calls</title>
+		<title>Impersonations</title>
 		<para>placeholder</para>
 	</section>
 </section>
