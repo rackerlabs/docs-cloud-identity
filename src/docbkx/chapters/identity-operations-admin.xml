@@ -61,6 +61,17 @@
 	</para>
 	<section xml:id="User_Calls">
 		<title>Users</title>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>OS-KSADM</code> extension to the
+				core Identity API. 
+				You can learn more about the
+					<code>OS-KSADM</code> extension at
+				<link xlink:href="http://docs.rackspace.com/openstack-extensions/auth/OS-KSADM-admin-devguide/">
+					http://docs.rackspace.com/openstack-extensions/auth/OS-KSADM-admin-devguide/</link>.  
+			</para>
+		</note>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
@@ -185,7 +196,7 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	<section xml:id="Token_Operations">
+	<section xml:id="Token_Calls">
 		<title>Tokens</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tokens">
@@ -200,7 +211,7 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	<section xml:id="Tenant_Operations">
+	<section xml:id="Tenant_Calls">
 		<title>Tenants</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tenants">
@@ -222,7 +233,7 @@
 			</para>
 		</important>
 	</section>
-	<section security="writeronly" xml:id="Endpoint_Template_Operations">
+	<section security="writeronly" xml:id="Endpoint_Template_Calls">
 		<!-- Endpoint Template Operations are only in Global Auth for now; omit from Cloud Auth book -->
 		<title>Endpoint Templates</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -240,7 +251,7 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	<section security="writeronly" xml:id="Endpoint_Operations">
+	<section security="writeronly" xml:id="Endpoint_Calls">
 		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
 		<title>Endpoints</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
