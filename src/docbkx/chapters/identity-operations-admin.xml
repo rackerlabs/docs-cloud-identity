@@ -30,9 +30,9 @@
 		If the identity service verifies that the token has (or belongs to a
 		user that has) the <code>Admin</code> role, then administrator-level functions can be performed. </para>
 	<note>
-		<para> For information about creating your first user with the <code>Admin</code> role, 
-			refer to OpenStack's <link xlink:href="http://keystone.openstack.org/configuringservices.html">Configuring Services to Work with Keystone</link> publication at 
-			<link xlink:href="http://keystone.openstack.org/configuringservices.html">http://keystone.openstack.org/configuringservices.html</link>. 
+		<para>
+			For information about obtaining a service account, contact 
+			<link xlink:href="mailto:auth@lists.rackspace.com">auth@lists.rackspace.com</link>. 
 		</para>
 	</note>
 	<table rules="all">
