@@ -81,7 +81,7 @@
     
     <method name="GET" id="listEndpointTemplates">
         <doc xml:lang="EN" title="List Endpoint Templates">
-            <p xmlns="http://www.w3.org/1999/xhtml">List Endpoint Templates.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">List endpoint templates.</p>
             
         </doc>
         <request>
@@ -105,7 +105,7 @@
     
     <method name="GET" id="getEndpointTemplate">
         <doc xml:lang="EN" title="Get Endpoint Template">
-            <p xmlns="http://www.w3.org/1999/xhtml">Get Endpoint Template.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Get an endpoint template.</p>
             
         </doc>
         <response status="200 203">
@@ -126,7 +126,7 @@
     
     <method name="POST" id="addEndpointTemplate">
         <doc xml:lang="EN" title="Add Endpoint Template">
-            <p xmlns="http://www.w3.org/1999/xhtml">Add Endpoint Template.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Add an endpoint template.</p>
             
             
         </doc>
@@ -163,7 +163,7 @@
     
     <method name="PUT" id="updateEndpointTemplate">
         <doc xml:lang="EN" title="Update Endpoint Template">
-            <p xmlns="http://www.w3.org/1999/xhtml">Update Endpoint Template.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Update an endpoint template.</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplate">
@@ -195,8 +195,8 @@
     </method>
     
     <method name="DELETE" id="deleteEndpointTemplate">
-        <doc xml:lang="EN" title="Delete Endpoint Template.">
-            <p xmlns="http://www.w3.org/1999/xhtml">Delete a Endpoint Template.</p>
+        <doc xml:lang="EN" title="Delete Endpoint Template">
+            <p xmlns="http://www.w3.org/1999/xhtml">Delete an endpoint template.</p>
         </doc>
         <response status="204"/>
         &commonFaults;
@@ -204,8 +204,8 @@
     </method>
     
     <method name="POST" id="addEndpoint">
-        <doc xml:lang="EN" title="Add Endpoint">
-            <p xmlns="http://www.w3.org/1999/xhtml">Add Endpoint to a tenant.</p>
+        <doc xml:lang="EN" title="Add Endpoint to Tenant">
+            <p xmlns="http://www.w3.org/1999/xhtml">Add an endpoint to a tenant.</p>
             
             
         </doc>
@@ -243,8 +243,8 @@
     </method>
     
     <method name="GET" id="listEndpoints">
-        <doc xml:lang="EN" title="List Endpoints">
-            <p xmlns="http://www.w3.org/1999/xhtml">List Endpoints of a Tenant.</p>
+        <doc xml:lang="EN" title="List Endpoints for Tenant">
+            <p xmlns="http://www.w3.org/1999/xhtml">List all endpoints available to a tenant.</p>
             
         </doc>
         <response status="200 203">
@@ -265,7 +265,7 @@
     
     <method name="GET" id="getEndpoint">
         <doc xml:lang="EN" title="Get Endpoint">
-            <p xmlns="http://www.w3.org/1999/xhtml">Get Endpoint of a Tenant.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Get an endpoint available to a tenant.</p>
             
         </doc>
         <response status="200 203">
@@ -285,8 +285,8 @@
     </method>
     
     <method name="DELETE" id="deleteEndpoint">
-        <doc xml:lang="EN" title="Delete Endpoint.">
-            <p xmlns="http://www.w3.org/1999/xhtml">Delete an Endpoint from a Tenant.</p>
+        <doc xml:lang="EN" title="Delete Endpoint from Tenant">
+            <p xmlns="http://www.w3.org/1999/xhtml">Delete an endpoint from a tenant.</p>
         </doc>
         <response status="204"/>
         &commonFaults;
