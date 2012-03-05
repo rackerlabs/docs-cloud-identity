@@ -154,7 +154,7 @@
     <method name="GET" id="listExtensions">
         <doc xml:lang="EN" title="List Extensions">
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Lists supported extensions.
+            	List supported extensions.
             </p>
         </doc>
         <response status="200 203">
@@ -173,7 +173,7 @@
     <method name="GET" id="getExtension">
         <doc xml:lang="EN" title="Get Extension Details">
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Gets details about a specific extension.
+            	Get details about a specific extension.
             </p>
         </doc>
         <response status="200 203">
@@ -192,13 +192,13 @@
 	      Authenticate to generate a token.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-	      This call will return a token if successful. Each ReST request 
+	      This call returns a token if successful. Each ReST request 
                 requires the inclusion of a specific authorization token HTTP x-header, defined as <code>X-Auth-Token</code>.
                 The token must be supplied for calls
                 against other services and for other
                 calls to the authentication service, such as the <code>GET /tenants</code> call.
 	      Clients obtain
-                <code>X-Auth-Token</code> and the URLs to other service APIs by supplying their valid credentials 
+                <code>X-Auth-Token</code> and the URL endpoints for other service APIs by supplying their valid credentials 
                 to the authentication service. 
 	       </p>
 	    <p xmlns="http://www.w3.org/1999/xhtml">
@@ -313,7 +313,7 @@
             <param name="belongsTo" style="query" required="false" type="xsd:string">
                 <doc xml:lang="EN">
                     <p xmlns="http://www.w3.org/1999/xhtml">
-                        Validates that a token has the supplied tenant in scope.
+                        Validate that a token has the supplied tenant in scope.
                     </p>
                 </doc>
             </param>
@@ -344,7 +344,7 @@
             <param name="belongsTo" style="query" required="false" type="xsd:string">
                 <doc xml:lang="EN">
                     <p xmlns="http://www.w3.org/1999/xhtml">
-                        Validates a token has the supplied tenant in scope. (abbreviated response).
+                        Validate that a token has the supplied tenant in scope. (abbreviated response).
                     </p>
                     <p xmlns="http://www.w3.org/1999/xhtml">
                         Valid tokens will exist in the
@@ -354,7 +354,7 @@
                         invalid token.
                     </p>
                     <p xmlns="http://www.w3.org/1999/xhtml">
-                        If `belongsTo` is provided, validates that a token has a specific tenant in scope.
+                        If <code>belongsTo</code> is provided, validates that a token has a specific tenant in scope.
                     </p>
                     <p xmlns="http://www.w3.org/1999/xhtml">
                         No response body is returned for this method.
