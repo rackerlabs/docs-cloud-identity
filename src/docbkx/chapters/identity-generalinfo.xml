@@ -242,12 +242,12 @@ This operation does not require a request body.</para>'>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.tenant">
-				<para> 
-					Some services recognize specification of a tenant; if a service does recognize tenants,
-					the format of the tenant specification is defined only by the service. 
-					In this example, Rackspace's Cloud Servers uses a "Nast ID" as a tenant ID 
-					while the Cloud Files and Cloud Files CDN services use a "Mosso ID".
-				</para>
+				<para> Some services recognize specification of a tenant. If a
+					service does recognize tenants, the format of the
+					tenant specification is defined only by the
+					service; for details about whether and how to
+					specify a tenant, check the documentation for the
+					service you are using.</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.url">

@@ -55,6 +55,23 @@
 								and &ENDPOINT-UK; (for UK-based
 								accounts). </para>
 						</listitem>
+						<listitem>
+							<para>Added new section <xref
+								linkend="Sample_Request_Response-d1e64"
+								/>, focused on interpreting
+								authentication responses. This section
+								includes annotated examples relocated
+								from the "Request/Response Types"
+								section and adds details on service
+								types and recommended workflow.</para>
+						</listitem>
+						<listitem>
+							<para>
+								Expanded list of operations described in 
+								<xref linkend="Admin_API_Service_Developer_Operations-d1e1356"/>.
+								In the same section, added contact info for obtaining a service account.
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
