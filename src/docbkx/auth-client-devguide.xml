@@ -58,12 +58,15 @@
 						<listitem>
 							<para>Added new section <xref
 								linkend="Sample_Request_Response-d1e64"
-							/>, focused on interpreting
+								/>, focused on interpreting
 								authentication responses. This section
 								includes annotated examples relocated
 								from the "Request/Response Types"
 								section and adds details on service
-								types and recommended workflow.</para>
+								types and recommended workflow. In the
+								same section, added a note suggesting
+								service type as the primary value for
+								locating a service.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

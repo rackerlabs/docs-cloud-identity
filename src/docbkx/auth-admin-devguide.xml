@@ -63,7 +63,10 @@
 								includes annotated examples relocated
 								from the "Request/Response Types"
 								section and adds details on service
-								types and recommended workflow.</para>
+								types and recommended workflow. In the
+								same section, added a note suggesting
+								service type as the primary value for
+								locating a service.</para>
 						</listitem>
 						<listitem>
 							<para>
