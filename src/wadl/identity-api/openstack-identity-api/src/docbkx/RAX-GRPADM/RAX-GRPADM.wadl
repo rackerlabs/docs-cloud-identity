@@ -149,8 +149,8 @@
                 required="true" type="xsd:anyURI">
                 <doc xml:lang="EN" title="Location Header">
                     <db:para>
-                        The full URL to the newly created group is
-                        returned via the <db:code>Loctaton</db:code>
+                        The full URL for the newly created group is
+                        returned via the <db:code>Location</db:code>
                         header.
                     </db:para>
                 </doc>
@@ -193,7 +193,7 @@
         &getFaults;
     </method>
     <method id="updateGroup"    name="PUT">
-        <doc xml:lang="EN" title="Update a Group">
+        <doc xml:lang="EN" title="Update Group">
             <db:para role="shortdesc">
                 Update a group.
             </db:para>
@@ -241,9 +241,9 @@
         &getFaults;
     </method>
     <method id="getUsersForGroup" name="GET">
-        <doc xml:lang="EN" title="Get Users For Group">
+        <doc xml:lang="EN" title="Get Users for Group">
             <db:para role="shortdesc">
-                List users for group.
+                List users for a group.
             </db:para>
             <db:para>
                 A list of users belonging to a particular group.
@@ -288,9 +288,9 @@
         &getFaults;
     </method>
     <method id="removeUserFromGroup" name="DELETE">
-        <doc xml:lang="EN" title="Remove User From Group">
+        <doc xml:lang="EN" title="Remove User from Group">
             <db:para role="shortdesc">
-                Remove a user to the group.
+                Remove a user from the group.
             </db:para>
         </doc>
         <response status="204"/>
