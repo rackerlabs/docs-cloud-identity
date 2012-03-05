@@ -51,7 +51,7 @@
     </resources>
     
     <method name="GET" id="listUserGroups">
-        <doc xml:lang="EN" title="List Groups for a User">
+        <doc xml:lang="EN" title="List Groups for User">
             <p xmlns="http://www.w3.org/1999/xhtml">List all the groups for a user.</p>
             
         </doc>
@@ -71,4 +71,3 @@
         &getFaults;
     </method>
    </application> 
-   
