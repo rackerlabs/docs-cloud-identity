@@ -54,8 +54,8 @@
     </resources>
     
     <method name="GET" id="getUserSecretQA">
-        <doc xml:lang="EN" title="Get User SecretQA">
-            <p xmlns="http://www.w3.org/1999/xhtml">Gets a User secret Question and Answer.</p>
+        <doc xml:lang="EN" title="Get User Secret Q&amp;A">
+            <p xmlns="http://www.w3.org/1999/xhtml">Get a secret question and answer for a user.</p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="RAX-KSQA:secretQA">
@@ -73,8 +73,8 @@
         &getFaults;
     </method>
     <method name="PUT" id="updateUserSecretQA">
-        <doc xml:lang="EN" title="Update User SecretQA">
-            <p xmlns="http://www.w3.org/1999/xhtml">Updates a User secret Question and Answer.</p>
+        <doc xml:lang="EN" title="Update User Secret Q&amp;A">
+            <p xmlns="http://www.w3.org/1999/xhtml">Update a secret question and answer for a user.</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSQA:secretQA">
