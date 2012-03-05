@@ -223,6 +223,12 @@ This operation does not require a request body.</para>'>
 					In this example, the services named cloudServers and cloudServersOpenstack are both identified as <code>type="compute"</code>, 
 					identifying them as compute services even though the word "compute" does not appear in their names.
 				</para>
+				<important>
+				<para>Use service type as the primary value for
+					locating a service. If multiple endpoints of the
+					same service type exist in the same region, use
+					service name as the tiebreaker.</para>
+				</important>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.servicename">
@@ -230,6 +236,24 @@ This operation does not require a request body.</para>'>
 					The service name attribute identifies each unique service in the catalog.
 					Once a service is created, its name does not change. However, new services of the same service type may be added to the catalog with new names.
 				</para>
+				<important>
+					<para> If you are programmatically parsing an authentication
+						response, use service type rather than service name as
+						the basis for determining whether a user has access to
+						a particular kind of service. Service type is stable
+						across all releases; new service types may be developed,
+						but existing service types are not renamed.
+						In this example,
+						<code>type="compute"</code> identifies all the
+						available compute services, one of which is named
+						cloudServers and one of which is named
+						cloudServersOpenStack. New compute service names may be added 
+						in future releases; whatever the compute services are
+						named, you can always
+						recognize them by parsing for
+						<code>type="compute"</code> in the authentication
+						response's service catalog. </para>
+				</important>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.region">
@@ -261,24 +285,6 @@ This operation does not require a request body.</para>'>
 				<para> </para>
 			</callout>
 		</calloutlist>
-		<important>
-			<para> If you are programmatically parsing an authentication
-				response, use service type rather than service name as
-				the basis for determining whether a user has access to
-				a particular kind of service. Service type is stable
-				across all releases; new service types may be developed,
-				but existing service types are not renamed.
-				In the preceding example,
-					<code>type="compute"</code> identifies all the
-				available compute services, one of which is named
-				cloudServers and one of which is named
-				cloudServersOpenStack. New compute service names may be added 
-				in future releases; whatever the compute services are
-				named, you can always
-				recognize them by parsing for
-					<code>type="compute"</code> in the authentication
-				response's service catalog. </para>
-		</important>
 		<section xml:id="Service_Types-d1e265">
 			<title>Service Types in the Service Catalog</title>
 			<para> As shown at <xref linkend="Sample_Request_Response-d1e64"/>,
