@@ -9,21 +9,79 @@
 		xml:id="Client_Operations"
 		version="5.0">
 	<title>Client Operations</title>
-	  <para>The operations described in this chapter allow clients to perform
-	  	functions supported by the core authentication service API;
-	  	If any other authentication operations are valid, they require 
-	  	<link linkend="Extensions-d1e688">extensions to the core API</link>.
-	  </para>
-	  <para>
-		In the authentication service API v2.0, the following calls
-		require only the core API:
-	  </para>
+	<para>
+		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.
+		If an extension is required, it is included in Rackspace's implementation of the Keystone Identity Service; 
+		issuing the calls as described here will use API extensions as needed.
+	</para>
+	<section xml:id="User_Calls">
+		<title>Users</title>
+		<para>
+			placeholder
+		</para>
+	</section>
+	<section xml:id="Role_Calls">
+		<title>Roles</title>
+		<para>
+			This call is available to customers who hold either the admin role or the
+			user role.
+		</para>
+		<itemizedlist>
+			<listitem>
+				<para>
+					This call is available to customers who hold either 
+					the admin role (<code>Identity:user-admin</code>) or the
+					user role (<code>Identity:default</code>).
+				</para>
+				</listitem>
+				<listitem>
+					<para>
+						For customers holding the <code>user</code> role,
+						the call is valid only if <code>userID</code> and the <code>customer-user</code> 
+						token have the same value for <code>tenant</code>.
+					</para>
+				</listitem>
+			</itemizedlist>
+			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				<!-- list global roles available to a user -->
+				<wadl:resource href="identity-admin.wadl#userRoles">
+					<wadl:method href="listUserGlobalRoles"/>
+				</wadl:resource>
+			</wadl:resources>
+	</section>
+	<section xml:id="Token_Calls">
+		<title>Tokens</title>
+		<para>
+			This call is available to customers who hold either 
+			the admin role (<code>Identity:user-admin</code>) or the
+			user role (<code>Identity:default</code>).
+		</para>
+		<itemizedlist>
+			<listitem>
+				<para>
+					Customers holding the <code>admin</code> role
+					must authenticate as <code>Identity:user-admin</code>.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Customers holding the <code>user</code> role
+					must authenticate as <code>Identity:default</code>.
+				</para>
+			</listitem>
+		</itemizedlist>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tokens" >
 				<wadl:method href="authenticate"/>
 			</wadl:resource>
+		</wadl:resources>
+	</section>
+	<section xml:id="Tenant_Calls">
+		<title>Tenants</title>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tenants" >
 				<wadl:method href="listTenants"/>
 			</wadl:resource>
 		</wadl:resources>
+	</section>
   </section>
