@@ -51,28 +51,32 @@
 	</section>
 	<section xml:id="Token_Calls">
 		<title>Tokens</title>
-		<para>
-			This call is available to customers who hold either 
-			the admin role (<code>Identity:user-admin</code>) or the
-			user role (<code>Identity:default</code>).
-		</para>
-		<itemizedlist>
-			<listitem>
-				<para>
-					Customers holding the <code>admin</code> role
-					must authenticate as <code>Identity:user-admin</code>.
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					Customers holding the <code>user</code> role
-					must authenticate as <code>Identity:default</code>.
-				</para>
-			</listitem>
-		</itemizedlist>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tokens" >
-				<wadl:method href="authenticate"/>
+				<wadl:method href="authenticate" >
+					<wadl:doc>
+						<para>
+							This call is available to customers who hold either 
+							the admin role (<code>Identity:user-admin</code>) or the
+							user role (<code>Identity:default</code>), if they have
+							authenticated as a holder of either role.
+						</para>
+						<itemizedlist>
+							<listitem>
+								<para>
+									Customers holding the <code>admin</code> role
+									must authenticate as <code>Identity:user-admin</code>.
+								</para>
+							</listitem>
+							<listitem>
+								<para>
+									Customers holding the <code>user</code> role
+									must authenticate as <code>Identity:default</code>.
+								</para>
+							</listitem>
+						</itemizedlist>
+					</wadl:doc>
+				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
