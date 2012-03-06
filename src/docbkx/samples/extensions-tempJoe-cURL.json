@@ -1,0 +1,103 @@
+
+   "_comment" : "no crying in baseball, no comments in JSON; this is invalid, take it away"
+   "_comment" : "2012-02-23 response to curl -H "X-Auth-Token:$UAToken" $CA/v2.0/extensions  -H "Content-type: application/json""
+
+{
+    "extensions": [
+        {
+            "alias": "RAX-KSKEY",
+            "description": "Rackspace extension to OpenStack Identity v2.0 API enabling API Key authentication.",
+            "links": [
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin-devguide.pdf",
+                    "rel": "describedby",
+                    "type": "application/pdf"
+                },
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin.wadl",
+                    "rel": "describedby",
+                    "type": "application/vnd.sun.wadl+xml"
+                }
+            ],
+            "name": "Rackspace API Key Authentication Admin Extension",
+            "namespace": "http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0",
+            "updated": "2011-08-14T13:25:27-06:00"
+        },
+        {
+            "alias": "RAX-KSGRP",
+            "description": "Rackspace extensions to OpenStack Identity v2.0 API enabling groups.",
+            "links": [
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSGRP/RAX-KSGRP-admin-devguide.pdf",
+                    "rel": "describedby",
+                    "type": "application/pdf"
+                },
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSGRP/RAX-KSGRP-admin.wadl",
+                    "rel": "describedby",
+                    "type": "application/vnd.sun.wadl+xml"
+                }
+            ],
+            "name": "Rackspace Keystone Group Extensions",
+            "namespace": "http://docs.rackspace.com/identity/api/ext/RAX-KSGROUP/v1.0",
+            "updated": "2011-08-14T13:25:27-06:00"
+        },
+        {
+            "alias": "RAX-KSQA",
+            "description": "Allows the management of a User's Secret Question and Answer.",
+            "links": [
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSQA/RAX-KSQA-admin-devguide.pdf",
+                    "rel": "describedby",
+                    "type": "application/pdf"
+                },
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSQA/RAX-KSQA-admin.wadl",
+                    "rel": "describedby",
+                    "type": "application/xml"
+                }
+            ],
+            "name": "Rackspace Keystone Secret Question and Answer",
+            "namespace": "http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0",
+            "updated": "2012-01-23T10:40:00-04:00"
+        },
+        {
+            "alias": "RAX-GRPADM",
+            "description": "Allows the management of groups in the identity server.",
+            "links": [
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-GRPADM/RAX-GRPADM.pdf",
+                    "rel": "describedby",
+                    "type": "application/pdf"
+                },
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/RAX-GRPADM/RAX-GRPADM.wadl",
+                    "rel": "describedby",
+                    "type": "application/xml"
+                }
+            ],
+            "name": "Group Admin Extension",
+            "namespace": "http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0",
+            "updated": "2012-01-23T10:40:00-04:00"
+        },
+        {
+            "alias": "OS-KSADM",
+            "description": "Allows the management of Users, Tenants, Roles and Services in the identity server.",
+            "links": [
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/OS-KSADM/OS-KSADM-admin-devguide.pdf",
+                    "rel": "describedby",
+                    "type": "application/pdf"
+                },
+                {
+                    "href": "http://docs.rackspacecloud.com/auth/api/v2.0/OS-KSADM/OS-KSADM-admin.wadl",
+                    "rel": "describedby",
+                    "type": "application/xml"
+                }
+            ],
+            "name": "OpenStack KSADM Extension",
+            "namespace": "http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0",
+            "updated": "2012-01-23T10:40:00-04:00"
+        }
+    ]
+}
