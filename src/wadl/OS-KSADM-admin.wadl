@@ -262,7 +262,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!--User Operations-->
     <method name="GET" id="listUsers">
         <doc xml:lang="EN" title="List Users">
-            <p xmlns="http://www.w3.org/1999/xhtml">List Users</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">List users.</p>
                         
         </doc>
         <response status="200 203">
@@ -395,7 +395,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!--User Roles-->
     <method name="PUT" id="addUserRole">
         <doc xml:lang="EN" title="Add Global Roles to User">
-            <p xmlns="http://www.w3.org/1999/xhtml">Adds a specific global role to a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Add a specific global role to a user.</p>
         </doc>
         <response status="201"/>
         &commonFaults;
@@ -405,7 +405,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="DELETE" id="deleteUserRole">
         <doc xml:lang="EN" title="Delete Global Role from User">
-            <p xmlns="http://www.w3.org/1999/xhtml">Deletes a specific global role from a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Delete a specific global role from a user.</p>
         </doc>
         <response status="204"/>
         &commonFaults;
@@ -416,7 +416,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
         <doc xml:lang="EN" title="Add Credential to User">
-            <p xmlns="http://www.w3.org/1999/xhtml">Adds a credential to a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Add a credential to a user.</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:credential">
@@ -591,7 +591,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="POST" id="addRole">
         <doc xml:lang="EN" title="Add Role">
-            <p xmlns="http://www.w3.org/1999/xhtml">Add a Role.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Add a role.</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:role">
@@ -626,7 +626,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="GET" id="getRoleByName">
         <doc xml:lang="EN" title="Get Role By Name">
-            <p xmlns="http://www.w3.org/1999/xhtml">Get a role by Name.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Get a role by name.</p>
         </doc>
         <request>
             <param name="name" style="query" type="xsd:string" required="true"/>

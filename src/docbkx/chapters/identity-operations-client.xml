@@ -16,9 +16,40 @@
 	</para>
 	<section xml:id="User_Calls">
 		<title>Users</title>
-		<para>
-			placeholder
-		</para>
+		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list users -->
+			<wadl:resource href="OS-KSADM-admin.wadl#users">
+				<wadl:method href="listUsers"/>
+			</wadl:resource>
+			<!-- list user -->
+			<wadl:resource href="identity-admin.wadl#users">
+				<wadl:method href="getUserByName"/>
+			</wadl:resource>
+			<wadl:resource href="identity-admin.wadl#userid">
+				<wadl:method href="getUserById"/>
+			</wadl:resource>
+			<!-- add user -->
+			<wadl:resource href="OS-KSADM-admin.wadl#users">
+				<wadl:method href="addUser"/>
+			</wadl:resource>
+			<!-- update user -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userById">
+				<wadl:method href="updateUser"/>
+			</wadl:resource>
+			<!-- delete user -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userById">
+				<wadl:method href="deleteUser"/>
+			</wadl:resource>
+			<!-- list API key credentials -->
+			<wadl:resource href="OS-KSADM-admin.wadl#userCredentials">
+				<wadl:method href="listCredentials"/>
+			</wadl:resource>
+			<!-- get user's API key credentials -->
+			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+				<wadl:method href="getUserCredential"/>
+			</wadl:resource>
+		</wadl:resources>
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
