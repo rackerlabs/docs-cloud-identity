@@ -35,7 +35,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- document formatting plugin version -->
 		<!-- 1.0.10 enables social icons in HTML output -->
-		<doctools.version>1.0.10</doctools.version>
+		<doctools.version>1.0.12-SNAPSHOT</doctools.version>
 	</properties>
 
 	<dependencies>
@@ -327,6 +327,7 @@
             	<xincludeSupported>true</xincludeSupported>
 		    	<webhelpDefaultTopic>QuickStart-000.html</webhelpDefaultTopic>
 		    	<branding>rackspace</branding>
+<failOnValidationError>no</failOnValidationError>
             </configuration>
             </plugin>
         </plugins>
