@@ -370,6 +370,9 @@
     <!--User Operations-->
     <method name="GET" id="getUserByName">
         <doc xml:lang="EN" title="Get User by Name">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Return detailed information about a specific user, by user name.
+            </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
             	Return detailed information about a specific user, by user name.
             </p>
