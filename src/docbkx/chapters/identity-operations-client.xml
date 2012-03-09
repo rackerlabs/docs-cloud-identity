@@ -53,30 +53,25 @@
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
-		<para>
-			This call is available to customers who hold either the admin role or the
-			user role.
-		</para>
-		<itemizedlist>
-			<listitem>
-				<para>
-					This call is available to customers who hold either 
-					the admin role (<code>Identity:user-admin</code>) or the
-					user role (<code>Identity:default</code>).
-				</para>
-				</listitem>
-				<listitem>
-					<para>
-						For customers holding the <code>user</code> role,
-						the call is valid only if <code>userID</code> and the <code>customer-user</code> 
-						token have the same value for <code>tenant</code>.
-					</para>
-				</listitem>
-			</itemizedlist>
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<!-- list global roles available to a user -->
 				<wadl:resource href="identity-admin.wadl#userRoles">
-					<wadl:method href="listUserGlobalRoles"/>
+					<wadl:method href="listUserGlobalRoles">
+						<wadl:doc>
+							<note>
+									<para>
+										This call is available to customers who hold either 
+										the admin role (<code>Identity:user-admin</code>) or the
+										user role (<code>Identity:default</code>).
+									</para>
+									<para>
+										For customers holding the <code>user</code> role,
+										the call is valid only if <code>userID</code> and the <code>customer-user</code> 
+										token have the same value for <code>tenant</code>.
+									</para>
+							</note>
+						</wadl:doc>
+					</wadl:method>
 				</wadl:resource>
 			</wadl:resources>
 	</section>
@@ -86,6 +81,7 @@
 			<wadl:resource href="identity-admin.wadl#tokens" >
 				<wadl:method href="authenticate" >
 					<wadl:doc>
+						<note>
 						<para>
 							This call is available to customers who hold either 
 							the admin role (<code>Identity:user-admin</code>) or the
@@ -106,6 +102,7 @@
 								</para>
 							</listitem>
 						</itemizedlist>
+						</note>
 					</wadl:doc>
 				</wadl:method>
 			</wadl:resource>
