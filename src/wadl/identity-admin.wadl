@@ -394,6 +394,9 @@
     </method>
     <method name="GET" id="getUserById">
         <doc xml:lang="EN" title="Get User by ID">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Return detailed information about a specific user, by user ID.
+            </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
             	Return detailed information about a specific user, by user ID.
             </p>
