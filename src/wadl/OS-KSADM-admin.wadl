@@ -242,6 +242,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="PUT" id="addRolesToUserOnTenant">
         <doc xml:lang="EN" title="Add Role to User for Tenant">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a specific role to a user for a tenant.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Add a specific role to a user for a tenant.</p>
         </doc>
         <response status="201"/>
@@ -252,6 +253,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="DELETE" id="deleteRoleFromUserOnTenant">
         <doc xml:lang="EN" title="Delete Role from User for Tenant">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a specific role from a user for a tenant.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a specific role from a user for a tenant.</p>
         </doc>
         <response status="204"/>
@@ -262,6 +264,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!--User Operations-->
     <method name="GET" id="listUsers">
         <doc xml:lang="EN" title="List Users">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List users.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">List users.</p>
                         
         </doc>
@@ -284,6 +287,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="POST" id="addUser">
         <doc xml:lang="EN" title="Add User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Add a user.</p>
         </doc>
         <request>
@@ -317,6 +321,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
    
     <method name="POST" id="updateUser">
         <doc xml:lang="EN" title="Update User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Update a user.</p>
         </doc>
         <request>
@@ -350,6 +355,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
    
     <method name="DELETE" id="deleteUser">
         <doc xml:lang="EN" title="Delete User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a user.</p>
         </doc>
         <response status="204"/>
@@ -359,9 +365,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="PUT" id="setUserEnabled">
         <doc xml:lang="EN" title="Enable User">
-            <p xmlns="http://www.w3.org/1999/xhtml">Enable user.</p>
-            
-                         
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Enable a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Enable a user.</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:user">
@@ -395,6 +400,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!--User Roles-->
     <method name="PUT" id="addUserRole">
         <doc xml:lang="EN" title="Add Global Roles to User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a specific global role to a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Add a specific global role to a user.</p>
         </doc>
         <response status="201"/>
@@ -405,6 +411,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="DELETE" id="deleteUserRole">
         <doc xml:lang="EN" title="Delete Global Role from User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a specific global role from a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a specific global role from a user.</p>
         </doc>
         <response status="204"/>
@@ -416,6 +423,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
         <doc xml:lang="EN" title="Add Credential to User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a credential to a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Add a credential to a user.</p>
         </doc>
         <request>
@@ -449,6 +457,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="GET" id="listCredentials">
         <doc xml:lang="EN" title="List Credentials">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">List credentials.</p>
                         
         </doc>
@@ -474,6 +483,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="GET" id="listCredentialsByType">
         <doc xml:lang="EN" title="List Credentials by Type">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials by type.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">List credentials by type.</p>
                         
         </doc>
@@ -499,6 +509,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="POST" id="updateUserCredential">
         <doc xml:lang="EN" title="Update User Credentials">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update user credentials.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Update user credentials.</p>
                         
         </doc>
@@ -533,6 +544,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="DELETE" id="deleteUserCredential">
         <doc xml:lang="EN" title="Delete User Credentials">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete user credentials.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete user credentials.</p>
         </doc>
         <response status="204"/>
@@ -543,6 +555,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="GET" id="getUserCredential">
         <doc xml:lang="EN" title="Get User Credentials">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get user credentials.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Get user credentials.</p>
                         
         </doc>
@@ -565,6 +578,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!--Roles-->
     <method name="GET" id="listRoles">
         <doc xml:lang="EN" title="List Roles">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List roles.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">List roles.</p>
                         
         </doc>
@@ -591,6 +605,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="POST" id="addRole">
         <doc xml:lang="EN" title="Add Role">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a role.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Add a role.</p>
         </doc>
         <request>
@@ -626,6 +641,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="GET" id="getRoleByName">
         <doc xml:lang="EN" title="Get Role By Name">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a role by name.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Get a role by name.</p>
         </doc>
         <request>
@@ -653,6 +669,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="GET" id="getRole">
         <doc xml:lang="EN" title="Get Role">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a role.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Get a role.</p>
         </doc>
         <response status="200 203">
@@ -676,6 +693,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <method name="DELETE" id="deleteRole">
         <doc xml:lang="EN" title="Delete Role">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a role.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a role.</p>
         </doc>
         <response status="204"/>
@@ -686,6 +704,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!-- Service Operations -->
     <method name="GET" id="listServices">
         <doc xml:lang="EN" title="List Services">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List services.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">List services.</p>
         </doc>
         <request>
@@ -709,6 +728,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     </method>
     <method name="GET" id="getServiceByName">
         <doc xml:lang="EN" title="Get Service">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a service by name.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Get a service by name.</p>
         </doc>
         <request>
@@ -731,6 +751,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     </method>
     <method name="GET" id="getService">
         <doc xml:lang="EN" title="Get Service">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a service.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Get a service.</p>
         </doc>
         <response status="200 203">
@@ -750,6 +771,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     </method>
     <method name="POST" id="addService">
         <doc xml:lang="EN" title="Add Service">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a service.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Add a service.</p>
         </doc>
         <request>
@@ -784,6 +806,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     </method>
     <method name="DELETE" id="deleteService">
         <doc xml:lang="EN" title="Delete Service">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a service.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a service.</p>
         </doc>
         <response status="204"/>
