@@ -20,7 +20,7 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
 			<wadl:resource href="OS-KSADM-admin.wadl#users">
-				<wadl:method href="listUsers"/>
+				<wadl:method href="listUsers">
 					<wadl:doc>
 						<note>
 							<para>
@@ -28,40 +28,95 @@
 								a customer holding the admin role (<code>Identity:user-admin</code>),
 								it returns a list of all users for the tenant.
 							</para>
-							<para>
-								If this request is issued by 
-								a customer holding the user role (<code>Identity:default</code>),
-								it returns only the customer who issued the request.
+							<para> If this request is issued by a customer holding the user
+							role (<code>Identity:default</code>), it
+							returns only the customer who issued the
+							request. 
+							<emphasis role="italic">If you 
+								authenticated with the user role, you
+								can see only yourself.</emphasis>
 							</para>
 						</note>
 					</wadl:doc>
+				</wadl:method>
 			</wadl:resource>
 			<!-- list user -->
 			<wadl:resource href="identity-admin.wadl#users">
-				<wadl:method href="getUserByName"/>
+				<wadl:method href="getUserByName">
+					<note>
+						<para>
+							If this request is issued by 
+							a customer holding the admin role (<code>Identity:user-admin</code>),
+							the specific user's information is returned only if that user is associated with the same tenant as the requester's 
+							<code>customer-admin</code> token.
+						</para>
+						<para> If this request is issued by a customer holding the user
+							role (<code>Identity:default</code>), information is returned for only the requester. 
+							<emphasis role="italic">If you 
+								authenticated with the user role, you
+								can see only yourself.</emphasis>
+						</para>
+					</note>
+				</wadl:method>
 			</wadl:resource>
 			<wadl:resource href="identity-admin.wadl#userid">
-				<wadl:method href="getUserById"/>
+				<wadl:method href="getUserById">
+					
+				</wadl:method>
 			</wadl:resource>
 			<!-- add user -->
 			<wadl:resource href="OS-KSADM-admin.wadl#users">
-				<wadl:method href="addUser"/>
+				<wadl:method href="addUser">
+					
+				</wadl:method>
 			</wadl:resource>
 			<!-- update user -->
 			<wadl:resource href="OS-KSADM-admin.wadl#userById">
-				<wadl:method href="updateUser"/>
+				<wadl:method href="updateUser">
+					
+				</wadl:method>
 			</wadl:resource>
 			<!-- delete user -->
 			<wadl:resource href="OS-KSADM-admin.wadl#userById">
-				<wadl:method href="deleteUser"/>
+				<wadl:method href="deleteUser">
+					
+				</wadl:method>
 			</wadl:resource>
 			<!-- list API key credentials -->
 			<wadl:resource href="OS-KSADM-admin.wadl#userCredentials">
-				<wadl:method href="listCredentials"/>
+				<wadl:method href="listCredentials">
+					<wadl:doc>
+						<note>
+							<para>
+								This call is available to customers who hold either 
+								the admin role (<code>Identity:user-admin</code>) or the
+								user role (<code>Identity:default</code>). In either case,
+								the credentials returned are only those of the customer
+								who issued the request.
+								<emphasis role="italic">You
+									can see only yourself.</emphasis>
+							</para>
+						</note>
+					</wadl:doc>
+				</wadl:method>
 			</wadl:resource>
 			<!-- get user's API key credentials -->
 			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
-				<wadl:method href="getUserCredential"/>
+				<wadl:method href="getUserCredential">
+				<wadl:doc>
+					<note>
+						<para>
+							This call is available to customers who hold either 
+							the admin role (<code>Identity:user-admin</code>) or the
+							user role (<code>Identity:default</code>). In either case,
+							the credentials returned are only those of the customer
+							who issued the request.
+							<emphasis role="italic">You
+								can see only yourself.</emphasis>
+						</para>
+					</note>
+				</wadl:doc>
+				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -97,10 +152,11 @@
 					<wadl:doc>
 						<note>
 						<para>
-							This call is available to customers who hold either 
-							the admin role (<code>Identity:user-admin</code>) or the
-							user role (<code>Identity:default</code>), if they have
-							authenticated as a holder of either role.
+							This call is available to customers who 
+							have
+							authenticated as a holder of either 
+							the admin role or the
+							user role.
 						</para>
 						<itemizedlist>
 							<listitem>
@@ -126,7 +182,8 @@
 		<title>Tenants</title>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tenants" >
-				<wadl:method href="listTenants"/>
+				<wadl:method href="listTenants">
+				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
 	</section>

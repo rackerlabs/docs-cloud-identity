@@ -66,7 +66,10 @@
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
         <doc xml:lang="EN" title="Add User Credential">
-            <p xmlns="http://www.w3.org/1999/xhtml">Add Credentials to a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Add credentials to a user.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Add credentials to a user.</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
@@ -99,6 +102,9 @@
 
     <method name="GET" id="listCredentials">
         <doc xml:lang="EN" title="List Credentials">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                List credentials.
+            </p>
             <p xmlns="http://www.w3.org/1999/xhtml">List credentials.</p>
         </doc>
         <request>
@@ -123,8 +129,10 @@
     
     <method name="GET" id="listCredentialsByType">
         <doc xml:lang="EN" title="List Credentials by Type">
-            <p xmlns="http://www.w3.org/1999/xhtml">List credentials by type.</p>
-                        
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                List credentials by type.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">List credentials by type.</p>          
         </doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string"/>
@@ -148,7 +156,10 @@
 
     <method name="POST" id="updateUserCredential">
         <doc xml:lang="EN" title="Update User Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml">Update user credentials</p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Update user credentials.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Update user credentials.</p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
@@ -181,6 +192,9 @@
     
     <method name="DELETE" id="deleteUserCredential">
         <doc xml:lang="EN" title="Delete User Credentials">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Delete user credentials.
+            </p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete user credentials.</p>
         </doc>
         <response status="204"/>
@@ -191,7 +205,10 @@
     
     <method name="GET" id="getUserCredential">
         <doc xml:lang="EN" title="Get User Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml">Get user credentials.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Get user credentials.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Return the API key credentials for this user.</p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">

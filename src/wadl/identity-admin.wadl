@@ -416,10 +416,10 @@
     <method name="GET" id="listUserGlobalRoles">
         <doc xml:lang="EN" title="List User Global Roles">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-            	Return global roles for a specific user (excluding tenant roles).
+            	Return global roles for a specific user.
             	</p>            
             <p xmlns="http://www.w3.org/1999/xhtml">Return a list of global roles associated with a specific
-            	    user (excluding tenant roles).</p>
+            	    user. The list of global roles excludes any tenant roles associated with this user.</p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:roles">
@@ -546,8 +546,12 @@
     
     <method name="GET" id="listRolesForUserOnTenant">
         <doc xml:lang="EN" title="List Roles for User on Tenant">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Return roles for a specific user within a specific tenant.
+            </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Return roles for a specific user within a specific tenant (excluding global roles).
+                Return roles for a specific user within a specific tenant. 
+                The list of roles excludes any global roles associated with this user.
             </p>
         </doc>
         <response status="200 203">
