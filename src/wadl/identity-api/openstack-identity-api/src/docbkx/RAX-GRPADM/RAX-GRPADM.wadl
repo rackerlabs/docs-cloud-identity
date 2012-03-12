@@ -234,6 +234,9 @@
             <db:para role="shortdesc">
                 Delete a group.
             </db:para>
+            <db:para>
+                 You must delete all the members of a group before deleting the group itself.
+            </db:para>
         </doc>
         <response status="204"/>
         <!-- Common, GET -->
