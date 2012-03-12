@@ -370,7 +370,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, 
                specify the user's ID in the request.
-               If you have only the user's name but not the user's ID, use "Get User by Name" to 
+               If you know the user's name but not the user's ID, use "Get User by Name" to 
                obtain complete identifying information about the user.
             </p>
         </doc>
@@ -417,7 +417,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="PUT" id="addUserRole">
         <doc xml:lang="EN" title="Add Global Roles to User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a specific global role to a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Add a specific global role to a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call adds global role to a user.
+                To add a role to a user, specify the role's ID and the user's ID in the request.
+                If you know the role's name but not the role's ID, use "List Roles" to obtain detailed information about available roles.
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+            </p>
         </doc>
         <response status="201"/>
         &commonFaults;
@@ -428,7 +434,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="DELETE" id="deleteUserRole">
         <doc xml:lang="EN" title="Delete Global Role from User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a specific global role from a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Delete a specific global role from a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call deletes a global role from a user.
+                To delete a role from a user, specify the role's ID and the user's ID in the request.
+                If you know the role's name but not the role's ID, use "List Roles" to obtain detailed information about available roles.
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+            </p>
         </doc>
         <response status="204"/>
         &commonFaults;
@@ -440,7 +452,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="POST" id="addUserCredential">
         <doc xml:lang="EN" title="Add Credential to User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a credential to a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Add a credential to a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A password is a credential; you can add a password to a user with this call.
+                To add a credential to a user, specify the user's ID in the request.
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+            </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:credential">
@@ -475,16 +492,21 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         <doc xml:lang="EN" title="List Credentials">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials for all authentication methods.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                To list a user's credentials, 
+                To list a user's credentials for all authentication methods available to that user, 
                 specify the user's ID in the request.
-                If you have only the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
                 obtain complete identifying information about the user.
                 </p>        
         </doc>
+        <!-- 2012-03-12 by Rose Coste per Joe Savak:
+             hide marker & limit: not implemented.
+             used later when this returns credentials for multiple methods of authentication (SMS-text, push notification, RSA-key, etc);
+             today, API key only, so "List All Credentials" = "Get API Key Credentials"
         <request>
             <param name="marker" style="query" required="false" type="xsd:string"/>
             <param name="limit" style="query" required="false" type="xsd:int"/>
         </request>
+        -->
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:credentials">
                 <doc xml:lang="EN">
@@ -599,8 +621,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="GET" id="listRoles">
         <doc xml:lang="EN" title="List Roles">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List roles.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">List roles.</p>
-                        
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call lists the global roles available within a specified service. 
+            </p>    
         </doc>
         <request>
             <param name="serviceId" style="query" required="false" type="xsd:string"/>
@@ -626,7 +649,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="POST" id="addRole">
         <doc xml:lang="EN" title="Add Role">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a role.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Add a role.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call adds a global role. 
+            </p> 
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:role">
@@ -690,7 +715,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="GET" id="getRole">
         <doc xml:lang="EN" title="Get Role">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a role.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Get a role.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call lists detailed information (<code>id</code>, <code>name</code>, <code>description</code>) for a specified role.
+            </p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:role">

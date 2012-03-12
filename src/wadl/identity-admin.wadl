@@ -374,7 +374,7 @@
                 Return detailed information about a specific user, by user name.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                This request returns identifying information the user with the specified user name. 
+                This request returns identifying information about the user with the specified user name. 
                 Identifying information includes the user's email account, username, user ID, and status.
             </p>
         </doc>
@@ -493,9 +493,13 @@
         &getFaults;
     </method>
     <method name="GET" id="getTenantByName">
-        <doc xml:lang="EN" title="Get Tenants by Name">
+        <doc xml:lang="EN" title="Get Tenant by Name">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
             	Return detailed information about a tenant, by name.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+            This request returns identifying information about the tenant with the specified tenant name. 
+            Identifying information includes the tenant's ID, name, description, and status.
             </p>
         </doc>
         <request>
@@ -517,9 +521,13 @@
         &getFaults;
     </method>
     <method name="GET" id="getTenantById">
-        <doc xml:lang="EN" title="Get Tenants by ID">
+        <doc xml:lang="EN" title="Get Tenant by ID">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
             	Return detailed information about a tenant, by ID.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This request returns identifying information about the tenant with the specified tenant ID. 
+                Identifying information includes the tenant's ID, name, description, and status.
             </p>
         </doc>
         <response status="200 203">
@@ -539,8 +547,19 @@
     </method>
     <method name="GET" id="listEndpointsForToken">
         <doc xml:lang="EN" title="List Endpoints for Token">
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
             	Return a list of endpoints associated with a specific token.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call returns a list of endpoints associated with a specific token. 
+                Like the service catalog returned by a successful authentication, you can use this list of endpoints 
+                as the basis of a list of the services available to this user. 
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                To see authentication requests and responses with annotations explaining key ideas, see the examples
+                in the "General API Information" chapter's
+                <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
+                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64">"Sample Authentication Request and Response"</a> section.
             </p>
         </doc>
         <response status="200 203">
@@ -562,11 +581,15 @@
     <method name="GET" id="listRolesForUserOnTenant">
         <doc xml:lang="EN" title="List Roles for User on Tenant">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Return roles for a specific user within a specific tenant.
+                Return roles for a user within a tenant.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Return roles for a specific user within a specific tenant. 
+                This call returns a list of roles for a specified user within a specified tenant. 
                 The list of roles excludes any global roles associated with this user.
+                A tenant is specified by its ID; if you know the tenant's name but do not know its ID, use 
+                "Get Tenant by Name" to obtain detailed information about the tenant.
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
             </p>
         </doc>
         <response status="200 203">

@@ -159,7 +159,12 @@
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
                 Update user credentials.
             </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Update user credentials.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                An API key is a credential; you can update a user's API key with this call.
+                To add a credential to a user, specify the user's ID in the request.
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+            </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
@@ -195,7 +200,12 @@
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
                 Delete user credentials.
             </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Delete user credentials.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                An API key is a credential; you can delete a user's API key with this call.
+                To delete a credential from a user, specify the user's ID in the request.
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+            </p>
         </doc>
         <response status="204"/>
         &commonFaults;

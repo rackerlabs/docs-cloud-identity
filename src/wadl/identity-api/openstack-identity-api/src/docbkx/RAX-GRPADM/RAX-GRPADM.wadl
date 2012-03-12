@@ -124,7 +124,7 @@
         &commonFaults;
     </method>
     <method id="addGroup"    name="POST">
-        <doc xml:lang="EN" title="Add a New Group">
+        <doc xml:lang="EN" title="Add Group">
             <db:para role="shortdesc">
                 Add a new group.
             </db:para>
@@ -197,6 +197,11 @@
             <db:para role="shortdesc">
                 Update a group.
             </db:para>
+            <db:para>
+                Use this call to update the description or name of a specified group.
+                A group is specified by its ID; if you know the group's name but do not know its ID, use 
+                "Get Groups" to obtain detailed information about all groups.
+            </db:para>
         </doc>
         <request>
             <representation mediaType="application/xml" element="grp:group">
@@ -236,6 +241,8 @@
             </db:para>
             <db:para>
                  You must delete all the members of a group before deleting the group itself.
+                 A group is specified by its ID; if you know the group's name but do not know its ID, use 
+                 "Get Groups" to obtain detailed information about all groups.
             </db:para>
         </doc>
         <response status="204"/>
@@ -249,7 +256,9 @@
                 List users for a group.
             </db:para>
             <db:para>
-                A list of users belonging to a particular group.
+                This call lists all the users belonging to the specified group.
+                A group is specified by its ID; if you know the group's name but do not know its ID, use 
+                "Get Groups" to obtain detailed information about all groups.
             </db:para>
         </doc>
         <request>
@@ -284,6 +293,13 @@
             <db:para role="shortdesc">
                 Add a user to the group.
             </db:para>
+            <db:para>
+                This call adds a specified user to a specified group. 
+                A user is specified by its ID; if you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+                A group is specified by its ID; if you know the group's name but do not know its ID, use 
+                "Get Groups" to obtain detailed information about all groups.
+            </db:para>  
         </doc>
         <response status="204"/>
         <!-- Common, GET -->
@@ -295,6 +311,13 @@
             <db:para role="shortdesc">
                 Remove a user from the group.
             </db:para>
+            <db:para>
+                This call deletes a specified user from a specified group. 
+                A user is specified by its ID; if you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+                A group is specified by its ID; if you know the group's name but do not know its ID, use 
+                "Get Groups" to obtain detailed information about all groups.
+            </db:para>  
         </doc>
         <response status="204"/>
         <!-- Common, GET -->
