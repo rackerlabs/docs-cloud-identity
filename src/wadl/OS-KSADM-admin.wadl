@@ -265,8 +265,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="GET" id="listUsers">
         <doc xml:lang="EN" title="List Users">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List users.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">List users.</p>
-                        
+            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users.
+            The list includes identifying information about each user. 
+            Identifying information includes the user's email account, username, user ID, and status.</p> 
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:userss">
@@ -288,7 +289,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="POST" id="addUser">
         <doc xml:lang="EN" title="Add User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Add a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                To add a user, specify the user's <code>email</code> and <code>username</code> values, as well as whether
+                the user's initial status is <code>enabled</code>. 
+                A successful response echoes the requested values and adds a value for <code>id</code>.
+            </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:user">
@@ -322,7 +327,14 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="POST" id="updateUser">
         <doc xml:lang="EN" title="Update User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Update a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                To update a user, specify the user's identifying information 
+                (<code>email</code>, <code>username</code>, <code>id</code>, and status) values, 
+                replacing the current value with a new value where necessary.
+                For example, to change the user's status from disabled to enabled, 
+                specify <code>enabled=true</code>.
+                A successful response echoes the requested values
+            </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:user">
@@ -356,7 +368,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="DELETE" id="deleteUser">
         <doc xml:lang="EN" title="Delete User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Delete a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, 
+               specify the user's ID in the request.
+               If you have only the user's name but not the user's ID, use "Get User by Name" to 
+               obtain complete identifying information about the user.
+            </p>
         </doc>
         <response status="204"/>
         &commonFaults;
@@ -458,8 +474,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="GET" id="listCredentials">
         <doc xml:lang="EN" title="List Credentials">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">List credentials.</p>
-                        
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                To list a user's API key credentials, 
+                specify the user's ID in the request.
+                If you have only the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+                </p>        
         </doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string"/>

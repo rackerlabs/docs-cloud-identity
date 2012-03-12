@@ -374,7 +374,8 @@
                 Return detailed information about a specific user, by user name.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Return detailed information about a specific user, by user name.
+                This request returns identifying information the user with the specified user name. 
+                Identifying information includes the user's email account, username, user ID, and status.
             </p>
         </doc>
         <request>
@@ -401,7 +402,8 @@
                 Return detailed information about a specific user, by user ID.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-            	Return detailed information about a specific user, by user ID.
+                This request returns identifying information about the user with the specified user ID. 
+                Identifying information includes the user's email account, username, user ID, and status.
             </p>
         </doc>
         <response status="200 203">
@@ -424,8 +426,15 @@
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
             	Return global roles for a specific user.
             	</p>            
-            <p xmlns="http://www.w3.org/1999/xhtml">Return a list of global roles associated with a specific
-            	    user. The list of global roles excludes any tenant roles associated with this user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call returns a list of global roles associated with 
+                the user with the specified user ID. If you have only the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+            	For each role listed, the response includes identifying information 
+            	such as the role's ID (such as <code>123</code>), name (such as <code>Admin</code>,
+                and description (such as <code>All Access</code>).
+            	The list of global roles excludes any tenant roles associated with this user.
+            </p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:roles">
