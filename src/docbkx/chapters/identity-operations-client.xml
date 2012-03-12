@@ -4,10 +4,9 @@
 <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
 <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
 ]>
-<section
-		xmlns="http://docbook.org/ns/docbook"
-		xml:id="Client_Operations"
-		version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xml:id="Client_API_Client_Developer_Operations" version="5.0" role="api-reference">
 	<title>Client Operations</title>
 	<para>
 		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.
@@ -16,6 +15,16 @@
 	</para>
 	<section xml:id="User_Calls">
 		<title>Users</title>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>OS-KSADM</code> and <code>RAX-KSKEY</code> extensions to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->

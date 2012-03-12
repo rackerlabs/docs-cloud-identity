@@ -6,7 +6,7 @@
 ]>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xml:id="Admin_API_Service_Developer_Operations-d1e1356" version="5.0" role="api-reference">
+	xml:id="Admin_API_Service_Developer_Operations" version="5.0" role="api-reference">
 	<title>Service Developer Operations</title>
 	<para>The operations described in this chapter allow service
 		developers to get and validate access tokens and to manage
@@ -64,12 +64,11 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>OS-KSADM</code> extension to the
+				provided by the <code>OS-KSADM</code> and <code>RAX-KSKEY</code> extensions to the
 				core Identity API. 
-				You can learn more about the
-					<code>OS-KSADM</code> extension at
-				<link xlink:href="http://docs.rackspace.com/openstack-extensions/auth/OS-KSADM-admin-devguide/">
-					http://docs.rackspace.com/openstack-extensions/auth/OS-KSADM-admin-devguide/</link>.  
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
@@ -121,6 +120,16 @@
 	</section>
 	<section xml:id="Group_Calls">
 		<title>Groups</title>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-GRPADM</code> and <code>RAX-KSGRP</code> extensions to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="RAX-GRPADM.wadl#groups"/>
 			<wadl:resource href="RAX-GRPADM.wadl#group"/>
@@ -163,6 +172,16 @@
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>OS-KSADM</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list roles -->
 			<wadl:resource href="OS-KSADM-admin.wadl#roles">
@@ -239,6 +258,16 @@
 	<section security="writeronly" xml:id="Endpoint_Template_Calls">
 		<!-- Endpoint Template Operations are only in Global Auth for now; omit from Cloud Auth book -->
 		<title>Endpoint Templates</title>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>OS-KSCATALOG</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="endpointTemplates"/>
@@ -257,6 +286,16 @@
 	<section security="writeronly" xml:id="Endpoint_Calls">
 		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
 		<title>Endpoints</title>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>OS-KSCATALOG</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoints">
 				<wadl:method href="listEndpoints"/>
@@ -274,6 +313,16 @@
 	</section>
 	<section xml:id="Secret_Calls">
 		<title>Secret Questions and Answers</title>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-KSQA</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="getUserSecretQA"/>
