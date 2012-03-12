@@ -116,7 +116,7 @@
 					</wadl:doc>
 				</wadl:method>
 			</wadl:resource>
-			<!-- list API key credentials -->
+			<!-- list all credentials -->
 			<wadl:resource href="OS-KSADM-admin.wadl#userCredentials">
 				<wadl:method href="listCredentials">
 					<wadl:doc>

@@ -208,7 +208,12 @@
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
                 Get user credentials.
             </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Return the API key credentials for this user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                To list a user's API key credentials, 
+                specify the user's ID in the request.
+                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                obtain complete identifying information about the user.
+            </p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">

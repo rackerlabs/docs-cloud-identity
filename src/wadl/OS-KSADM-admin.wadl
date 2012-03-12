@@ -473,9 +473,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="GET" id="listCredentials">
         <doc xml:lang="EN" title="List Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials for all authentication methods.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                To list a user's API key credentials, 
+                To list a user's credentials, 
                 specify the user's ID in the request.
                 If you have only the user's name but not the user's ID, use "Get User by Name" to 
                 obtain complete identifying information about the user.
