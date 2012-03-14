@@ -332,10 +332,23 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	<section security="writeronly" xml:id="Impersonation_Calls">
-		<!-- Impersonation Calls are scheduled for production 2012-04-15; 
-			I don't know which WADL they will come from -->
+	<section xml:id="Impersonation_Calls">
+		<!-- Impersonation Calls are scheduled for production 2012-04-15 -->
 		<title>Impersonations</title>
-		<para>placeholder</para>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-GA</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="RAX-GA.wadl#impersonation-tokens">
+				<wadl:method href="impersonateUser"/>
+			</wadl:resource>
+		</wadl:resources>
 	</section>
 </section>

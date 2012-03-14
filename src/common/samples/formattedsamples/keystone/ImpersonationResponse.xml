@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<access xmlns="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0" 
+    xmlns:ns2="http://docs.openstack.org/identity/api/v2.0" 
+    xmlns:ns3="http://www.w3.org/2005/Atom">
+    <token expires="1969-12-31T18:00:00.020-06:00" 
+           id="xxx-yyy-zzz-kwejKId893KJDKJKSKJS"/>
+</access>

@@ -1,0 +1,7 @@
+{
+  "RAX-GA:impersonation" : {
+      "user": {
+          "username": "john.smith"
+      }
+  }
+}

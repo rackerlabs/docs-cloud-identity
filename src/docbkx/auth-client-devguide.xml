@@ -68,6 +68,14 @@
 								service type as the primary value for
 								locating a service.</para>
 						</listitem>
+						<listitem>
+							<para>
+								Expanded list of operations described in 
+								<xref linkend="Client_API_Client_Developer_Operations"/>.
+								In the same section, 
+								added notes on functionality provided by extensions to the core Identity API.
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>

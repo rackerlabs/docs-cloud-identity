@@ -71,8 +71,9 @@
 						<listitem>
 							<para>
 								Expanded list of operations described in 
-								<xref linkend="Admin_API_Service_Developer_Operations-d1e1356"/>.
-								In the same section, added contact info for obtaining a service account.
+								<xref linkend="Admin_API_Service_Developer_Operations"/>.
+								In the same section, added contact info for obtaining a service account 
+								and added notes on functionality provided by extensions to the core Identity API..
 							</para>
 						</listitem>
 					</itemizedlist>

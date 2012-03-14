@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--*******************************************************-->
+<!-- Import Common XML Entities -->
+<!-- -->
+<!-- You can resolve the entites with xmllint -->
+<!-- -->
+<!-- xmllint -noent RAX-GA.wadl -->
+<!--*******************************************************-->
+<!DOCTYPE application [
+<!ENTITY % common SYSTEM "https://raw.github.com/openstack/identity-api/master/openstack-identity-api/src/docbkx/common/common.ent">
+    %common;
+]>
+
+<application xmlns="http://wadl.dev.java.net/2009/02"
+   xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
+   xmlns:RAX-GA="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:db="http://docbook.org/ns/docbook"
+   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
+
+    <grammars>
+        <include href="xsd/api.xsd"/>
+    </grammars>
+
+    <resources base="http://localhost:8080">
+        <resource id="RAX-GA" path="/RAX-GA">
+            <resource id="impersonation-tokens" path="impersonation-tokens">
+                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <doc>A valid authentication token of the impersonator</doc>
+                </param>
+                <method href="#impersonateUser"/>
+            </resource>
+        </resource>
+    </resources>
+
+    <!-- Methods -->
+    <method id="impersonateUser" name="POST">
+        <doc xml:lang="EN" title="Impersonate User">
+            <db:para role="shortdesc">
+                Impersonates a specific user.
+            </db:para>
+        </doc>
+        <request>
+            <!-- 2012-03-13 by Rose Coste
+                samples were called as ../../formattedsamples/keystone/ImpersonationRequest.json 
+                 I changed for consistency with other RAX- samples to
+                 ../common/samples/formattedsamples/keystone/ImpersonationRequest.json
+            -->
+            <representation mediaType="application/xml" element="RAX-GA:impersonation" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ImpersonationRequest.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ImpersonationRequest.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-GA:access">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ImpersonationResponse.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ImpersonationResponse.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+    </method>
+</application>
