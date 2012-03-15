@@ -34,7 +34,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- document formatting plugin version -->
-		<!-- 1.0.10 enables social icons in HTML output -->
+		<!-- 1.0.12-SNAPSHOT improves formatting of WADL-generated sections -->
 		<doctools.version>1.0.12-SNAPSHOT</doctools.version>
 	</properties>
 

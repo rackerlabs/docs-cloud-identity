@@ -335,6 +335,15 @@
 	<section xml:id="Impersonation_Calls">
 		<!-- Impersonation Calls are scheduled for production 2012-04-15 -->
 		<title>Impersonations</title>
+		<figure xml:id="impersonation">
+			<title>A Racker issues one POST with the Racker's own credentials, then a second POST identifying the user to be impersonated.
+			</title>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="../figures/auth-impersonation.png" format="PNG" align="center" />
+				</imageobject>
+			</mediaobject>
+		</figure>
 		<note>
 			<para> 
 				Some of the functionality described in this section is

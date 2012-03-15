@@ -38,7 +38,18 @@
     <method id="impersonateUser" name="POST">
         <doc xml:lang="EN" title="Impersonate User">
             <db:para role="shortdesc">
-                Impersonates a specific user.
+                Impersonate a specific user.
+            </db:para>
+            <db:para>
+                To impersonate a user, you must first authenticate as yourself; 
+                the response to this authentication request will supply you with a current Racker token; you must already hold a service token. 
+                After you are authenticated and holding the necessary privileges,
+                you can issue this impersonation call with your Racker token, identifying the 
+                <code>username</code> you wish to impersonate.
+            </db:para>
+            <db:para>
+                A successful impersonation request returns a token and an expiration time for that token.
+                You can impersonate <code>username</code> by supplying that token in other requests, until the token expires.
             </db:para>
         </doc>
         <request>
