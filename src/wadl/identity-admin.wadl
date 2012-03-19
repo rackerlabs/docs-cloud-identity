@@ -318,7 +318,8 @@
                 </doc>
             </param>
             <!-- Impersonator samples show how RAX-GA extension can request token for impersonator 
-            -->
+            but 
+            2012-03-19 Itari Ighoroje says there is no special request, hide these 
             <representation mediaType="application/xml" >
                 <doc xml:lang="EN" title="Validate Token for Impersonation Request: XML">
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/Impersonator.xml" />
@@ -329,7 +330,7 @@
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/Impersonator.json" />
                 </doc>
             </representation>
-            <!-- 
+            
                  Impersonator samples show how RAX-GA extension can request token for impersonator --> 
         </request>
         <response status="200 203">
