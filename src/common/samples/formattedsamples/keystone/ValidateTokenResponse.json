@@ -13,7 +13,7 @@
           "id":"123",
           "name":"jqsmith",
           "roles":[{
-                     "id":"234",
+                     "id":"123",
                      "name":"compute:admin"
                    },
                    {

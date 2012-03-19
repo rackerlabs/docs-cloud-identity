@@ -3,12 +3,13 @@
     xmlns:RAX-GA="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0">
     <token id="ab48a9efdfedb23ty3494" 
         expires="2010-11-01T03:32:15-05:00">
-        <tenant id="456" name="My Project" />
+        <tenant id="345" 
+            name="My Project" />
     </token>
     <user id="123" 
         username="jqsmith">
         <roles xmlns="http://docs.openstack.org/identity/api/v2.0">
-            <role id="123" name="Admin" />
+            <role id="123" name="compute:admin" />
             <role id="234" name="object-store:admin" />
         </roles>
     </user>
