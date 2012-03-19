@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0 BETA</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-03-13</pubdate>
+		<pubdate>2012-03-19</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,7 +46,7 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2012-03-13</date>
+				<date>2012-03-19</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
@@ -69,11 +69,15 @@
 								locating a service.</para>
 						</listitem>
 						<listitem>
-							<para>
-								Expanded list of operations described in 
-								<xref linkend="Admin_API_Service_Developer_Operations"/>.
-								In the same section, added contact info for obtaining a service account 
-								and added notes on functionality provided by extensions to the core Identity API..
+							<para> Expanded list of operations
+								described in <xref
+								linkend="Admin_API_Service_Developer_Operations"
+								/>. In the same section, added contact
+								info for obtaining a service account,
+								added an illustration of the
+								impersonation process, and added notes
+								on functionality provided by
+								extensions to the core Identity API.
 							</para>
 						</listitem>
 					</itemizedlist>

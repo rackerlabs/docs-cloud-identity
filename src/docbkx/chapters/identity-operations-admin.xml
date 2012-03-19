@@ -224,15 +224,42 @@
 	<section xml:id="Token_Calls">
 		<title>Tokens</title>
 		<para>The operations described in this section allow service developers to get and validate access tokens.</para>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-GA</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tokens">
+				<!-- authenticate -->
 				<wadl:method href="authenticate"/>
 			</wadl:resource>
 			<wadl:resource href="identity-admin.wadl#tokenById">
-				<wadl:method href="validateToken"/>
+				<!-- validate tokem -->
+				<wadl:method href="validateToken">
+				<wadl:doc>
+					<tip>
+						<para>
+							You can use this call to return information about an impersonator:
+							a Racker performing operations on behalf of a user. 
+						</para>
+						<para>
+							For information about how an impersonator can use a validated token,
+							see the "Impersonations" section. 
+						</para>
+					</tip>
+				</wadl:doc>
+				</wadl:method>
+				<!-- check token -->
 				<wadl:method href="checkToken"/>
 			</wadl:resource>
 			<wadl:resource href="identity-admin.wadl#endpointsForToken">
+				<!-- list endpoints for token -->
 				<wadl:method href="listEndpointsForToken"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -249,16 +276,19 @@
 				<wadl:method href="getTenantById"/>
 			</wadl:resource>
 			<wadl:resource href="identity-admin.wadl#userRolesForTenant">
-				<wadl:method href="listRolesForUserOnTenant"/>
+				<wadl:method href="listRolesForUserOnTenant">
+					<wadl:doc>
+						<important>
+							<para>
+								Rackspace's implementation of the OpenStack Identity Service v2.0 is currently in BETA status
+								and does not yet support <code>GET v2.0/tenants/{tenantId}/users/{user_id}/roles</code>; 
+								a 501 (notImplemented) will be issued in response to this request.
+							</para>
+						</important>
+					</wadl:doc>
+				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
-		<important>
-			<para>
-				Rackspace's implementation of the OpenStack Identity Service v2.0 is currently in BETA status
-				and does not yet support <code>GET v2.0/tenants/{tenantId}/users/{user_id}/roles</code>; 
-				a 501 (notImplemented) will be issued in response to this request.
-			</para>
-		</important>
 	</section>
 	<section security="writeronly" xml:id="Endpoint_Template_Calls">
 		<!-- Endpoint Template Operations are only in Global Auth for now; omit from Cloud Auth book -->
@@ -343,6 +373,10 @@
 		<figure xml:id="impersonation">
 			<title>A Racker issues one POST with the Racker's own credentials, then a second POST identifying the user to be impersonated.
 			</title>
+			<!-- this is Joe Savak's drawing, 
+				from https://docs.google.com/a/rackspace.com/drawings/d/1fxomVwZRmWT6NYmhTFwj9VMfQ_NQHLVfpfb6474xnoc/edit 
+			    PNG fits PDF width at 55%, 710x477
+			-->
 			<mediaobject>
 				<imageobject>
 					<imagedata fileref="../figures/auth-impersonation.png" format="PNG" align="center" />
@@ -361,7 +395,16 @@
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="RAX-GA.wadl#impersonation-tokens">
-				<wadl:method href="impersonateUser"/>
+				<wadl:method href="impersonateUser">
+				<wadl:doc>
+					<tip>
+						<para>
+							For information about how an impersonator can obtain a validated token,
+							see the "Validate Token" section. 
+						</para>
+					</tip>
+				</wadl:doc>
+				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
