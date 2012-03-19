@@ -61,6 +61,7 @@
 	</para>
 	<section xml:id="User_Calls">
 		<title>Users</title>
+		<para>The operations described in this section allow service developers to manage users.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
@@ -120,6 +121,7 @@
 	</section>
 	<section xml:id="Group_Calls">
 		<title>Groups</title>
+		<para>The operations described in this section allow service developers to manage groups.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
@@ -172,6 +174,7 @@
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
+		<para>The operations described in this section allow service developers to manage roles.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
@@ -220,6 +223,7 @@
 	</section>
 	<section xml:id="Token_Calls">
 		<title>Tokens</title>
+		<para>The operations described in this section allow service developers to get and validate access tokens.</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tokens">
 				<wadl:method href="authenticate"/>
@@ -235,6 +239,7 @@
 	</section>
 	<section xml:id="Tenant_Calls">
 		<title>Tenants</title>
+		<para>The operations described in this section allow service developers to manage tenants.</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="identity-admin.wadl#tenants">
 				<wadl:method href="listTenants"/>
