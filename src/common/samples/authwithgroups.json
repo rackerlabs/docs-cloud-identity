@@ -6,10 +6,10 @@
         },
         "user":{
             "id":"123",
-            "name":"testName",
+            "name":"theUserName",
             "roles":[{
-            		"id":"234",
-                    "name":"compute:admin"
+            		"id":"3",
+                    "name":"identity:user-admin"
                 },
 				{
                     "id":"235",
@@ -19,7 +19,7 @@
             ],
             "roles_links":[],
             "RAX-KSGRP:groups":[{
-                    "id":"test_global_group_add",
+                    "id":"default",
                     "description":"A description ..."
                 }
             ],

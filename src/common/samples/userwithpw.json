@@ -1,8 +1,8 @@
 {
     "user": {
             "username": "cmarin1subX2", 
-            "email": "cmarin1-sub@blah.com", 
+            "email": "cmarin1-sub@example.com", 
             "enabled": true, 
-            "OS-KSADM:password":"Password7"
+            "OS-KSADM:password":"Password48"
         }
 }

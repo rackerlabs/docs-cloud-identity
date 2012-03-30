@@ -1,6 +1,6 @@
 <user username="cmarin1subX2" 
-    email="cmarin1-sub@blah.com" 
+    email="cmarin1-sub@example.com" 
     enabled="true" 
-    ns1:password="Password7" 
+    ns1:password="Password48" 
     xmlns:ns1="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
     xmlns:ns2="http://docs.openstack.org/identity/api/v2.0" />

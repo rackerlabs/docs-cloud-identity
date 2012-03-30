@@ -2,8 +2,8 @@
 <users xmlns="http://docs.openstack.org/identity/api/v2.0">
     <user xmlns="http://docs.openstack.org/identity/api/v2.0"
           enabled="true" email="john.smith@example.org"
-          username="jqsmith" id="u1000"/>
+          username="jqsmith" id="123456"/>
     <user xmlns="http://docs.openstack.org/identity/api/v2.0"
-          enabled="true" email="john.smith@example.org"
-          username="jqsmith" id="u1001"/>
+          enabled="true" email="john.smith2@example.org"
+          username="jqsmith2" id="1234562"/>
 </users>

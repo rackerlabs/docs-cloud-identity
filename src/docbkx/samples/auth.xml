@@ -27,7 +27,7 @@
 					list="https://servers.api.rackspacecloud.com/" />
 			</endpoint>
 		</service>
-		<service type="object-store" name="cloudFilesCDN">
+		<service type="rax:object-cdn" name="cloudFilesCDN">
 			<endpoint region="ORD" 
 				tenantId="MossoCloudFS_87878787-fdfd-bbad-3f8f-a90007172bad" 
 				publicURL="https://cdn2.clouddrive.com/v1/MossoCloudFS_87878787-fdfd-bbad-3f8f-a90007172bad">
