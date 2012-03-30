@@ -80,6 +80,7 @@
 						<listitem>
 							<para>
 								Added examples of creating a user with a password in <xref linkend="POST_addUser__" />.
+								In the same section, added information that an account can have up to 100 sub-users. 
 							</para>
 						</listitem>
 						<listitem>

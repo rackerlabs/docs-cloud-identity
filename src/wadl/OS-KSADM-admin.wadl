@@ -300,12 +300,15 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 examples shown below.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                If you do not specify a password, one will be generated.
+                If you do not specify a password for the new user, one will be generated.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 If an initial password is generated, it is included in a successful response to this request. 
                 After the user is created, the password cannot be retrieved by any means. 
                 Make note of the password in the response and supply that password to the user.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Within an account, a maximum of 100 sub-users (sub-accounts) can be added.
             </p>
         </doc>
         <request>
