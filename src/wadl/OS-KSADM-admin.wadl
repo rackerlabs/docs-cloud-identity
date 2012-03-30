@@ -294,6 +294,19 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 the user's initial status is <code>enabled</code>. 
                 A successful response echoes the requested values and adds a value for <code>id</code>.
             </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                To add a user and specify an initial password for that user, 
+                include the password in a request resembling the "Add User With Password Request"
+                shown below.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                If you do not specify a password, one will be generated.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                The new user's initial password is included in a successful response to this request. 
+                After the user is created, the password cannot be retrieved by any means. 
+                Make note of the password in the response and supply that password to the user.
+            </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:user">
@@ -304,6 +317,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/userwithoutid.json"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN" title="Add User With Password Request: XML">
+                    <xsdxt:code href="../common/samples/userwithpw.xml"/>
                 </doc>
             </representation>
         </request>

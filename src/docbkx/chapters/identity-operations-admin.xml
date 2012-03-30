@@ -241,7 +241,7 @@
 				<wadl:method href="authenticate"/>
 			</wadl:resource>
 			<wadl:resource href="identity-admin.wadl#tokenById">
-				<!-- validate tokem -->
+				<!-- validate token -->
 				<wadl:method href="validateToken">
 				<wadl:doc>
 					<tip>
