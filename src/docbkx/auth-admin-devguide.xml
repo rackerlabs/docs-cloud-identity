@@ -57,6 +57,21 @@
 								/>. 
 							</para>
 						</listitem>
+						<listitem>
+							<para>
+								Added examples of creating a user with a password in <xref linkend="POST_addUser__" />.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Added examples of changing a user's password in <xref linkend="POST_updateUser__" />.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Added information about sub-users (also known as sub-accounts), including an entry in <xref linkend="Glossary-000" />.
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
