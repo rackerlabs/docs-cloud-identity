@@ -7,12 +7,28 @@
 <section xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-    xml:id="Release_Notes-V11-d1e140">
-    <title>Release Notes for API Version 2.0</title>
-    <annotation>
-        <remark>This is extracted from more detailed Release Guide at https://wiki.mosso.com/display/CT/Auth+v2.0+Release+Guide.</remark>
-    </annotation>
-    <para>Version 2.0 of the Auth API differs from Version 1.1 in
+    xml:id="Release_Notes-d1e140">
+    <title>Release Notes</title>
+    
+    <para>
+        <emphasis role="bold">Version 2.1</emphasis> adds functionality to Version 2.0:
+        <itemizedlist>
+            <listitem>
+                <para><emphasis role="bold">NEW
+                    FEATURES:</emphasis></para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Ability to add multiple users (sub-users) to an
+                            account. This functionality is available
+                            in the US and is coming soon to the UK.
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+        </itemizedlist>
+    </para>
+    
+    <para><emphasis role="bold">Version 2.0</emphasis> of the Auth API differs from Version 1.1 in
         several important ways: 
         <itemizedlist>
             <listitem>
