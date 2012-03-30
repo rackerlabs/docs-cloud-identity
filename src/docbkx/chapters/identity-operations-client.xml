@@ -27,6 +27,11 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
+		<para>
+			When these requests are issued by a sub-user, they act only upon that sub-user. You can learn more about sub-users, also called sub-accounts,
+			in the 
+			<link linkend="Sub-User-d1e20">Glossary</link>.
+		</para>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
