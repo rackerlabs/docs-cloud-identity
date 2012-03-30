@@ -25,11 +25,12 @@
 		<copyright>
 			<year>2010</year>
 			<year>2011</year>
+			<year>2012</year>
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
 		<releaseinfo>API v2.0 BETA</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-03-19</pubdate>
+		<pubdate>2012-03-30</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -45,6 +46,20 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2012-03-30</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Simplified the structure of  
+								<xref linkend="Admin_API_Service_Developer_Operations"
+								/>. 
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2012-03-19</date>
 				<revdescription>
@@ -69,10 +84,10 @@
 								locating a service.</para>
 						</listitem>
 						<listitem>
-							<para> Expanded list of operations
+							<para> Expanded the list of operations
 								described in <xref
 								linkend="Admin_API_Service_Developer_Operations"
-								/>. In the same section, added contact
+								/>. In the same chapter, added contact
 								info for obtaining a service account,
 								added an illustration of the
 								impersonation process, and added notes
@@ -110,9 +125,6 @@
 	<xi:include href="chapters/identity-overview-admin.xml"/>
 	<xi:include href="chapters/identity-concepts-admin.xml"/>
 	<xi:include href="chapters/identity-generalinfo.xml"/>
-	<chapter xml:id="api_operations" role="api-reference">
-		<!-- this chapter is generated from the WADL -->
-		<title>API Operations</title>
-		<xi:include href="chapters/identity-operations-admin.xml"/>
-	</chapter>
+	<!-- this chapter is generated from the WADLs -->
+	<xi:include href="chapters/identity-operations-admin.xml"/>
 </book>

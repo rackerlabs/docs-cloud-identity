@@ -4,10 +4,11 @@
 <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
 <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
 ]>
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+<!-- if role="api-reference" on this chapter, generate table of all operations here -->
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xml:id="Admin_API_Service_Developer_Operations" version="5.0" role="api-reference">
-	<title>Service Developer Operations</title>
+	<title>API Operations for Service Developers</title>
 	<para>The operations described in this chapter allow service
 		developers to get and validate access tokens and to manage
 		users, tenants, roles, and service endpoints. </para>
@@ -348,6 +349,8 @@
 	</section>
 	<section xml:id="Secret_Calls">
 		<title>Secret Questions and Answers</title>
+		<para>The operations described in this section allow service developers to manage 
+			the secret questions and answers that can be used for emergency validation of a user's identity.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
@@ -370,6 +373,8 @@
 	<section xml:id="Impersonation_Calls">
 		<!-- Impersonation Calls are scheduled for production 2012-04-15 -->
 		<title>Impersonations</title>
+		<para>The operations described in this section allow service developers to manage Rackers' impersonations of 
+			users for diagnostic purposes.</para>
 		<figure xml:id="impersonation">
 			<title>A Racker issues one POST with the Racker's own credentials, then a second POST identifying the user to be impersonated.
 			</title>
@@ -408,4 +413,4 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-</section>
+</chapter>

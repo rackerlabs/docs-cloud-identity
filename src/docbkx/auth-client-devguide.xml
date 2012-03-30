@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0 BETA</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-03-13</pubdate>
+		<pubdate>2012-03-30</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,7 +46,7 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2012-03-13</date>
+				<date>2012-03-30</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
@@ -70,9 +70,10 @@
 						</listitem>
 						<listitem>
 							<para>
-								Expanded list of operations described in 
-								<xref linkend="Client_API_Client_Developer_Operations"/>.
-								In the same section, 
+								Expanded the the list of operations described in 
+								<xref linkend="Client_API_Client_Developer_Operations"/> 
+								and simplified its structure.
+								In the same chapter, 
 								added notes on functionality provided by extensions to the core Identity API.
 							</para>
 						</listitem>
@@ -141,9 +142,6 @@
 	<xi:include href="chapters/identity-overview-client.xml"/>
 	<xi:include href="chapters/identity-concepts-client.xml"/>
 	<xi:include href="chapters/identity-generalinfo.xml"/>
-	<chapter xml:id="api_operations" role="api-reference">
-		<!-- this chapter is generated from the WADL -->
-		<title>API Operations</title>
-		<xi:include href="chapters/identity-operations-client.xml"/>
-	</chapter>
+	<!-- this chapter is generated from the WADLs -->
+	<xi:include href="chapters/identity-operations-client.xml"/>
 </book>

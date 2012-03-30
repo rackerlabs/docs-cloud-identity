@@ -974,22 +974,22 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		  <tr align="left">
 			<td>identityFault</td>
 			<td>500, 400</td>
-			<td> &CHECK; </td>
+			<td> YES </td>
 		  </tr>
 			<tr align="left">
 			<td>serviceUnavailable</td>
 			<td>503</td>
-			<td> &CHECK; </td>
+			<td> YES </td>
 		  </tr>
 			<tr align="left">
 			<td>badRequest</td>
 			<td>400</td>
-			<td> &CHECK; </td>
+			<td> YES </td>
 		  </tr>         
 			<tr align="left">
 			<td>unauthorized</td>
 			<td>401</td>
-			<td> &CHECK; </td>
+			<td> YES </td>
 		  </tr>
 			<tr align="left">
 			<td>overLimit</td>
