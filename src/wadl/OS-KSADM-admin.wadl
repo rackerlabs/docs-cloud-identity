@@ -296,7 +296,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 To add a user and specify an initial password for that user, 
-                include the password in a request resembling the "Add User With Password Request"
+                include the password in a request resembling the "Add User with Password Request"
                 examples shown below.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
@@ -320,12 +320,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </doc>
             </representation>
             <representation mediaType="application/xml">
-                <doc xml:lang="EN" title="Add User With Password Request: XML">
+                <doc xml:lang="EN" title="Add User with Password Request: XML">
                     <xsdxt:code href="../common/samples/userwithpw.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN" title="Add User With Password Request: JSON">
+                <doc xml:lang="EN" title="Add User with Password Request: JSON">
                     <xsdxt:code href="../common/samples/userwithpw.json"/>
                 </doc>
             </representation>
@@ -356,7 +356,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 replacing the current value with a new value where necessary.
                 For example, to change the user's status from disabled to enabled, 
                 specify <code>enabled=true</code>.
-                A successful response echoes the requested values
+                A successful response echoes the requested values.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                To update a user's password, 
+                include the new password in a request resembling the "Update User Password Request"
+                examples shown below.
             </p>
         </doc>
         <request>
@@ -416,6 +421,16 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/userwithenabledonly.json"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN" title="Update User Password Request: XML">
+                    <xsdxt:code href="../common/samples/userwithpw.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN" title="Update User Password Request: JSON">
+                    <xsdxt:code href="../common/samples/userwithpw.json"/>
                 </doc>
             </representation>
         </request>
