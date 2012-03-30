@@ -36,11 +36,11 @@
 						<note>
 							<para>
 								If this request is issued by 
-								a customer holding the admin role (<code>Identity:user-admin</code>),
+								a customer holding the admin role (<code>identity:user-admin</code>),
 								it returns a list of all users for the tenant.
 							</para>
 							<para> If this request is issued by a customer holding the user
-							role (<code>Identity:default</code>), it
+							role (<code>identity:default</code>), it
 							returns only the customer who issued the
 							request. 
 							<emphasis role="italic">If you 
@@ -58,12 +58,12 @@
 					<note>
 						<para>
 							If this request is issued by 
-							a customer holding the admin role (<code>Identity:user-admin</code>),
+							a customer holding the admin role (<code>identity:user-admin</code>),
 							the specific user's information is returned only if that user is associated with the same tenant as the requester's 
 							<code>customer-admin</code> token.
 						</para>
 						<para> If this request is issued by a customer holding the user
-							role (<code>Identity:default</code>), information is returned for only the requester. 
+							role (<code>identity:default</code>), information is returned for only the requester. 
 							<emphasis role="italic">If you 
 								authenticated with the user role, you
 								can see only yourself.</emphasis>
@@ -84,8 +84,8 @@
 					<note>
 						<para>
 							This call is available only to customers who hold 
-							the admin role (<code>Identity:user-admin</code>).
-							Using the admin role, you can create a user who holds the user role (<code>Identity:default</code>).
+							the admin role (<code>identity:user-admin</code>).
+							Using the admin role, you can create a user who holds the user role (<code>identity:default</code>).
 						</para>
 					</note>
 					<warning>
@@ -107,7 +107,7 @@
 							<para>
 								Customers who hold 
 								the admin role 
-								can update users who holds the user role (<code>Identity:default</code>) or the admin role (<code>Identity:user-admin</code>) for the same tenant.
+								can update users who holds the user role (<code>identity:default</code>) or the admin role (<code>identity:user-admin</code>) for the same tenant.
 							</para>
 						</note>
 					</wadl:doc>
@@ -120,8 +120,8 @@
 						<note>
 							<para>
 								This call is available only to customers who hold 
-								the admin role (<code>Identity:user-admin</code>).
-								Using the admin role, you can delete a user who holds the user role (<code>Identity:default</code>) for the same tenant.
+								the admin role (<code>identity:user-admin</code>).
+								Using the admin role, you can delete a user who holds the user role (<code>identity:default</code>) for the same tenant.
 							</para>
 						</note>
 					</wadl:doc>
@@ -134,8 +134,8 @@
 						<note>
 							<para>
 								This call is available to customers who hold either 
-								the admin role (<code>Identity:user-admin</code>) or the
-								user role (<code>Identity:default</code>). In either case,
+								the admin role (<code>identity:user-admin</code>) or the
+								user role (<code>identity:default</code>). In either case,
 								the credentials returned are only those of the customer
 								who issued the request.
 								<emphasis role="italic">You
@@ -152,8 +152,8 @@
 					<note>
 						<para>
 							This call is available to customers who hold either 
-							the admin role (<code>Identity:user-admin</code>) or the
-							user role (<code>Identity:default</code>). In either case,
+							the admin role (<code>identity:user-admin</code>) or the
+							user role (<code>identity:default</code>). In either case,
 							the credentials returned are only those of the customer
 							who issued the request.
 							<emphasis role="italic">You
@@ -176,8 +176,8 @@
 							<note>
 									<para>
 										This call is available to customers who hold either 
-										the admin role (<code>Identity:user-admin</code>) or the
-										user role (<code>Identity:default</code>).
+										the admin role (<code>identity:user-admin</code>) or the
+										user role (<code>identity:default</code>).
 									</para>
 									<para>
 										For customers holding the <code>user</code> role,
@@ -209,13 +209,13 @@
 							<listitem>
 								<para>
 									Customers holding the <code>admin</code> role
-									must authenticate as <code>Identity:user-admin</code>.
+									must authenticate as <code>identity:user-admin</code>.
 								</para>
 							</listitem>
 							<listitem>
 								<para>
 									Customers holding the <code>user</code> role
-									must authenticate as <code>Identity:default</code>.
+									must authenticate as <code>identity:default</code>.
 								</para>
 							</listitem>
 						</itemizedlist>
