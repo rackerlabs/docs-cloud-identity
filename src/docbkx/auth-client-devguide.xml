@@ -92,6 +92,11 @@
 								Added information about sub-users (also known as sub-accounts), including an entry in <xref linkend="Glossary-000" />.
 							</para>
 						</listitem>
+						<listitem>
+							<para>
+								Clarified <xref linkend="GET_listCredentials__" /> to say that user passwords cannot be retrieved.
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>

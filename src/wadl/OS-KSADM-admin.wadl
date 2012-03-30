@@ -528,9 +528,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <method name="GET" id="listCredentials">
         <doc xml:lang="EN" title="List Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials for all authentication methods.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials, other than passwords, for all authentication methods.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                To list a user's credentials for all authentication methods available to that user, 
+                A user's password cannot be obtained by this or any other means. 
+                To list a user's non-password credentials for all authentication methods available to that user, 
                 specify the user's ID in the request.
                 If you know the user's name but not the user's ID, use "Get User by Name" to 
                 obtain complete identifying information about the user.
