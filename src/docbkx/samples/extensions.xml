@@ -1,42 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<extensions xmlns="http://docs.openstack.org/common/api/v1.0"
-            xmlns:atom="http://www.w3.org/2005/Atom">
-          
-    <extension  xmlns="http://docs.openstack.org/common/api/v1.0"
-                xmlns:atom="http://www.w3.org/2005/Atom"
-                name="Rackspace API Key Authentication Admin Extension" 
-                namespace="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-                alias="RAX-KSKEY"
-                updated="2011-08-14T13:25:27-06:00">
-                
-                <description>
-                    Rackspace extension to OpenStack Identity v2.0 API enabling API Key authentication.
-                </description>
-                
-                <atom:link rel="describedby" type="application/pdf"
-                           href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin-devguide.pdf"/>
-                
-                <atom:link rel="describedby" type="application/vnd.sun.wadl+xml"
-                           href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin.wadl"/>                        
-    </extension>
-
-    <extension  xmlns="http://docs.openstack.org/common/api/v1.0"
-                xmlns:atom="http://www.w3.org/2005/Atom"
-                name="Rackspace Keystone Group Extensions" 
-                namespace="http://docs.rackspace.com/identity/api/ext/RAX-KSGROUP/v1.0"
-                alias="RAX-KSGRP"
-                updated="2011-08-14T13:25:27-06:00">
-                
-                <description>
-                    Rackspace extensions to OpenStack Identity v2.0 API enabling groups.
-                </description>
-                
-                <atom:link rel="describedby" type="application/pdf"
-                           href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSGRP/RAX-KSGRP-admin-devguide.pdf"/>
-                           
-                <atom:link rel="describedby" type="application/vnd.sun.wadl+xml"
-                           href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSGRP/RAX-KSGRP-admin.wadl"/>
-    </extension>
-
-</extensions>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns5:extensions xmlns:ns1="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+    xmlns:ns2="http://docs.openstack.org/identity/api/v2.0" 
+    xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+    xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+    xmlns:ns5="http://docs.openstack.org/common/api/v1.0" 
+    xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+    xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0" 
+    xmlns:ns8="http://www.w3.org/2005/Atom">
+    
+    <ns5:extension name="Rackspace API Key Authentication Admin Extension" 
+        namespace="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+        alias="RAX-KSKEY" updated="2011-08-14T13:25:27-06:00">
+        <ns5:description>
+            Rackspace extension to OpenStack Identity v2.0 API enabling API Key authentication.
+        </ns5:description>
+        <ns8:link rel="describedby" type="application/xhtml+xml" 
+            href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html"/>
+        <ns8:link rel="describedby" type="application/vnd.sun.wadl+xml" href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSKEY/RAX-KSKEY-admin.wadl"/>
+    </ns5:extension>
+    
+    <ns5:extension name="Rackspace Keystone Group Extensions" 
+        namespace="http://docs.rackspace.com/identity/api/ext/RAX-KSGROUP/v1.0" 
+        alias="RAX-KSGRP" updated="2011-08-14T13:25:27-06:00">
+        <ns5:description>
+            Rackspace extensions to OpenStack Identity v2.0 API enabling groups.
+        </ns5:description>
+        <ns8:link rel="describedby" type="application/xhtml+xml" href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html"/>
+        <ns8:link rel="describedby" type="application/vnd.sun.wadl+xml" href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSGRP/RAX-KSGRP-admin.wadl"/>
+    </ns5:extension>
+    
+    <ns5:extension name="Rackspace Keystone Secret Question and Answer" 
+        namespace="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+        alias="RAX-KSQA" updated="2012-01-23T10:40:00-04:00">
+        <ns5:description>
+            Allows the management of a User's Secret Question and Answer.
+        </ns5:description>
+        <ns8:link rel="describedby" type="application/xhtml+xml" href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html"/>
+        <ns8:link rel="describedby" type="application/xml" href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-KSQA/RAX-KSQA-admin.wadl"/>
+    </ns5:extension>
+    
+    <ns5:extension name="Group Admin Extension" 
+        namespace="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+        alias="RAX-GRPADM" updated="2012-01-23T10:40:00-04:00">
+        <ns5:description>
+            Allows the management of groups in the identity server.
+        </ns5:description>
+        <ns8:link rel="describedby" type="application/xhtml+xml" href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html"/>
+        <ns8:link rel="describedby" type="application/xml" href="http://docs.rackspacecloud.com/auth/api/v2.0/RAX-GRPADM/RAX-GRPADM.wadl"/>
+    </ns5:extension>
+    
+    <ns5:extension name="OpenStack KSADM Extension" 
+        namespace="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+        alias="OS-KSADM" updated="2012-01-23T10:40:00-04:00">
+        <ns5:description>
+            Allows the management of Users, Tenants, Roles and Services in the identity server.
+        </ns5:description>
+        <ns8:link rel="describedby" type="application/xhtml+xml" href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html"/>
+        <ns8:link rel="describedby" type="application/xml" href="http://docs.rackspacecloud.com/auth/api/v2.0/OS-KSADM/OS-KSADM-admin.wadl"/>
+    </ns5:extension>
+    
+</ns5:extensions>
