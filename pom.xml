@@ -34,8 +34,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- document formatting plugin version -->
-		<!-- 1.0.12-SNAPSHOT improves formatting of WADL-generated sections -->
-		<doctools.version>1.0.12-SNAPSHOT</doctools.version>
+		<!-- 1.1.0 supports syntax highlighting in samples -->
+		<doctools.version>1.1.0</doctools.version>
 	</properties>
 
 	<dependencies>
