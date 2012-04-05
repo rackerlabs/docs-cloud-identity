@@ -10,40 +10,6 @@
     xml:id="Release_Notes-d1e140">
     <title>Release Notes</title>
     
-    <para>
-        <emphasis role="bold">Version 2.1</emphasis> adds functionality to Version 2.0:
-        <itemizedlist>
-            <listitem>
-                <para><emphasis role="bold">NEW
-                    FEATURES:</emphasis></para>
-                <itemizedlist>
-                    <listitem>
-                        <para>Ability to add multiple users (sub-users) to an
-                            account. This functionality is available
-                            in the US and is coming soon to the UK.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>Implemented RAX-KSQA and RAX-GRPADM extensions.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>Limited implementation of RAX-KSADM extension's calls to create sub-Users and assign roles.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>Added support for Utility Grid Services.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>Removed ServiceMix dependencies.
-                        </para>
-                    </listitem>
-                </itemizedlist>
-            </listitem>
-        </itemizedlist>
-    </para>
-    
     <para><emphasis role="bold">Version 2.0</emphasis> of the Auth API differs from Version 1.1 in
         several important ways: 
         <itemizedlist>
@@ -75,6 +41,14 @@
                     <listitem>
                         <para> Upon authentication, service catalog returns a separate <code>tenantID</code> attribute by endpoint. </para>
                     </listitem>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Ability to add multiple users (sub-users) to an
+                                account. This functionality is available
+                                in the US and is coming soon to the UK.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
                 </itemizedlist>
             </listitem>
         </itemizedlist>
