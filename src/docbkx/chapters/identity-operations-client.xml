@@ -7,7 +7,7 @@
 <!-- if role="api-reference" on this chapter, generate table of all operations here -->
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xml:id="Client_API_Client_Developer_Operations" version="5.0" role="api-reference">
+	xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Client Developers</title>
 	<para>
 		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.

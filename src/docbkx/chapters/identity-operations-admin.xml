@@ -7,7 +7,7 @@
 <!-- if role="api-reference" on this chapter, generate table of all operations here -->
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xml:id="Admin_API_Service_Developer_Operations" version="5.0" role="api-reference">
+	xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Service Developers</title>
 	<para>The operations described in this chapter allow service
 		developers to get and validate access tokens and to manage

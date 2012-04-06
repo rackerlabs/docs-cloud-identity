@@ -921,6 +921,83 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<programlisting language="javascript"><xi:include href="../samples/ext-getuser.json" parse="text"/></programlisting>
 		</example>
 	</section>
+	
+	<section xml:id="Namespaces-d1e910">
+		<title>Namespaces</title>
+		<para> 
+			The API operations described in <xref
+				linkend="API_Operations"/> are enabled by a
+			combination of the core Identity API and multiple API
+			extensions. You can read more about extensions, including
+			how to request details about all or specific extensions,
+			at <xref linkend="Extensions-d1e688"/>. </para>
+		<para> 
+			Depending upon which operations you perform, you may see
+			evidence of one or several extensions involved in
+			processing your request. The most obvious evidence is the
+			inclusion of namespaces in XML responses; you can identify
+			the extensions involved in processing a request by
+			examining the namespaces shown in the response. 
+		</para>
+		<para>
+			A
+			namespace is a container within which information has a
+			specific meaning; in a different container, the meaning
+			might be different. 
+			Specifying a namespace as the source of a definition is widely used as a way of choosing among multiple available meanings;  
+			context and scope are closely-related ideas.
+		</para>
+		<para>
+			In the example below, 
+			<code>xmlns</code> associates each namespace label (such as <code>ns1</code>) 
+			with a URL (such as <code>http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0</code>).
+			Examining the list of namespaces shows that the core Identity API makes it possible to list
+				<code>credentials</code> and the
+				<code>RAX-KSKEY</code> extension adds to that by
+			making it possible to list a specific kind of credentials,
+				<code>apiKeyCredentials</code>.
+		</para>
+		<example>
+			<title>Multiple Namespaces in an XML Response</title>
+			<programlistingco>
+				<areaspec>
+					<area xml:id="namespace.xml.credentials" units="linecolumn" coords="3 17"/>
+					<area xml:id="namespace.xml.rax-kskey" units="linecolumn" coords="6 85"/>
+					<area xml:id="namespace.xml.apikey" units="linecolumn" coords="12 27"/>
+				</areaspec>	
+				<programlisting language="xml">
+<xi:include href="../samples/namespace-demo.xml" parse="text"/>
+</programlisting>
+			</programlistingco>			
+		</example>
+		<calloutlist>
+			<callout arearefs="namespace.xml.credentials">
+				<para> The core Identity API, defined in <code>ns2</code>,
+					supports <code>&lt;credentials&gt;</code>. 
+				</para>
+				<para> </para>
+			</callout>
+			<callout arearefs="namespace.xml.rax-kskey">
+				<para> The <code>RAX-KSKEY</code> extension is defined in
+						<code>ns3</code>. </para>
+				<para> </para>
+			</callout>
+			<callout arearefs="namespace.xml.apikey">
+				<para> Support for <code>&lt;apiKeyCredentials&gt;</code> is
+					provided by the extension defined as
+						<code>ns3</code>. </para>
+				<para> </para>
+			</callout>
+		</calloutlist>
+		<para> If you are programmatically parsing responses that describe
+			multiple namespaces, you should not assume that the
+			prefixes that identify namespaces are constant. In this
+			example, <code>ns2</code> identifies the namespace for the
+			Identity API and <code>ns3</code> identifies the namespace
+			for the <code>RAX-KSKEY</code> extension; under other
+			circumstances, other prefixes could be associated with
+			those extensions. </para>
+	</section>
 	<section xml:id="Faults-d1e908">
 	  <title>Faults</title>
 	  <para>When an error occurs, the system will return an HTTP error
