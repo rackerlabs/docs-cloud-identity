@@ -14,7 +14,7 @@
         service <emphasis>credentials</emphasis> in the message body
         to a Rackspace <emphasis>authentication endpoint</emphasis>. </para>
         <para>
-            <emphasis>GET YOUR CREDENTIALS</emphasis>
+            <emphasis role="bold">GET YOUR CREDENTIALS</emphasis>
         </para>
         <para> You must use these credentials: <itemizedlist>
             <listitem>
@@ -30,7 +30,7 @@
         to create service credentials and establish a service catalog
         entry. </para>
         <para>
-            <emphasis>CHOOSE YOUR AUTHENTICATION ENDPOINT</emphasis>
+            <emphasis role="bold">CHOOSE YOUR AUTHENTICATION ENDPOINT</emphasis>
         </para>
         <para>
             Use the authentication endpoint for the region in which your account is based:
@@ -48,7 +48,7 @@
             </itemizedlist>
         </para>
         <para>
-            <emphasis>SEND YOUR CREDENTIALS TO YOUR AUTHENTICATION
+            <emphasis role="bold">SEND YOUR CREDENTIALS TO YOUR AUTHENTICATION
                 ENDPOINT</emphasis>
         </para>
         <para> If you know your credentials and your authentication

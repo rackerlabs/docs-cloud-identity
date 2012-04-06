@@ -921,7 +921,6 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<programlisting language="javascript"><xi:include href="../samples/ext-getuser.json" parse="text"/></programlisting>
 		</example>
 	</section>
-	
 	<section xml:id="Namespaces-d1e910">
 		<title>Namespaces</title>
 		<para> 
