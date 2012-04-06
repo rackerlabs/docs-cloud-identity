@@ -100,7 +100,7 @@
 						<listitem>
 							<para>
 								Expanded the the list of operations described in 
-								<xref linkend="Client_API_Client_Developer_Operations"/> 
+								<xref linkend="API_Operations"/> 
 								and simplified its structure.
 								In the same chapter, 
 								added notes on functionality provided by extensions to the core Identity API.

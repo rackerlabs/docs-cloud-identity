@@ -74,7 +74,7 @@
 						<listitem>
 							<para>
 								Simplified the structure of  
-								<xref linkend="Admin_API_Service_Developer_Operations"
+								<xref linkend="API_Operations"
 								/>. 
 							</para>
 						</listitem>
@@ -123,7 +123,7 @@
 						<listitem>
 							<para> Expanded the list of operations
 								described in <xref
-								linkend="Admin_API_Service_Developer_Operations"
+								linkend="API_Operations"
 								/>. In the same chapter, added contact
 								info for obtaining a service account,
 								added an illustration of the
