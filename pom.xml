@@ -324,10 +324,15 @@
                </executions>
             <configuration>
 		  	<!-- These parameters apply to pdf and webhelp -->
+            	<!-- don't fail build for validation errors yet; someday -->
+            	<failOnValidationError>no</failOnValidationError>
+            	<!-- do show better error messages -->
+            	<showXslMessages>true</showXslMessages>
             	<xincludeSupported>true</xincludeSupported>
+            	<!--- open Webhelp at the QuickStart page -->
+            	<!--- change to index.html to open at the front matter: copyright page, list of tables, list of examples -->
 		    	<webhelpDefaultTopic>QuickStart-000.html</webhelpDefaultTopic>
 		    	<branding>rackspace</branding>
-<failOnValidationError>no</failOnValidationError>
             </configuration>
             </plugin>
         </plugins>
