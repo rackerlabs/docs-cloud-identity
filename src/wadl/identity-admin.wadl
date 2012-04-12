@@ -70,8 +70,8 @@
                         credentials.</doc>
                 </param>                
                 <method href="#getUserByName"/>
-                <resource id="userid" path="{user_id}">
-                    <param name="user_id" style="template" type="xsd:string" required="true"/>
+                <resource id="userid" path="{userId}">
+                    <param name="userId" style="template" type="xsd:string" required="true"/>
                     <method href="#getUserById"/>
 
                     <resource id="userRoles" path="roles">
@@ -95,8 +95,8 @@
                     <method href="#getTenantById"/>
 
                     <resource id="usersForTenant" path="users">
-                        <resource id="getTenantUser" path="{user_id}">
-                            <param name="user_id" style="template" type="xsd:string" required="true"/>
+                        <resource id="getTenantUser" path="{userId}">
+                            <param name="userId" style="template" type="xsd:string" required="true"/>
 
                             <resource id="userRolesForTenant" path="roles">
                                 <method href="#listRolesForUserOnTenant"/>
@@ -615,10 +615,21 @@
             <p xmlns="http://www.w3.org/1999/xhtml">
                 This call returns a list of roles for a specified user within a specified tenant. 
                 The list of roles excludes any global roles associated with this user.
-                A tenant is specified by its ID; if you know the tenant's name but do not know its ID, use 
-                "Get Tenant by Name" to obtain detailed information about the tenant.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
-                obtain complete identifying information about the user.
+            </p>
+            <!-- these wannabe-links are generated as plain text; leaving them here to remind me to follow up on this intention
+                 (turned from <db:para> to <p> to try link methods that <db:para> says are invalid: <p> doesn't object, just doesn't do it.
+                 I think they could work as full URLs, such as 
+                 <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getUserByName__">"Get User by Name"</a>,
+                 but that means I can code only for -client- or -admin-, and can only see the result in production, 
+                 rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Users and tenants are specified by their IDs: 
+                if you know the user's name but do not know the user's ID, use 
+                "<link linkend="GET_getUserByName__">Get User by Name</link>"
+                to obtain complete identifying information about the user;
+                if you know the tenant's name but do not know the tenant's ID, use 
+                "<link linkend="GET_getTenantByName__">Get Tenant by Name</link>"
+                to obtain detailed information about the tenant.
             </p>
         </doc>
         <response status="200 203">

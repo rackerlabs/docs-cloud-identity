@@ -40,17 +40,22 @@
 					<wadl:doc>
 						<note>
 							<para>
+								<emphasis role="italic">
+									If you 
+									authenticated with the user role, you
+									can see only yourself.
+								</emphasis>
+							</para>
+							<para>
 								If this request is issued by 
 								a customer holding the admin role (<code>identity:user-admin</code>),
 								it returns a list of all users for the tenant.
 							</para>
-							<para> If this request is issued by a customer holding the user
-							role (<code>identity:default</code>), it
-							returns only the customer who issued the
-							request. 
-							<emphasis role="italic">If you 
-								authenticated with the user role, you
-								can see only yourself.</emphasis>
+							<para> 
+								If this request is issued by a customer holding the user
+								role (<code>identity:default</code>), it
+								returns only the customer who issued the
+								request. 
 							</para>
 						</note>
 					</wadl:doc>
@@ -62,6 +67,13 @@
 					<wadl:doc>
 					<note>
 						<para>
+							<emphasis role="italic">
+								If you 
+								authenticated with the user role, you
+								can see only yourself.
+							</emphasis>
+						</para>
+						<para>
 							If this request is issued by 
 							a customer holding the admin role (<code>identity:user-admin</code>),
 							the specific user's information is returned only if that user is associated with the same tenant as the requester's 
@@ -69,9 +81,6 @@
 						</para>
 						<para> If this request is issued by a customer holding the user
 							role (<code>identity:default</code>), information is returned for only the requester. 
-							<emphasis role="italic">If you 
-								authenticated with the user role, you
-								can see only yourself.</emphasis>
 						</para>
 					</note>
 					</wadl:doc>
@@ -138,13 +147,15 @@
 					<wadl:doc>
 						<note>
 							<para>
+								<emphasis role="italic">You
+									can see only yourself.</emphasis>
+							</para>
+							<para>
 								This call is available to customers who hold either 
 								the admin role (<code>identity:user-admin</code>) or the
 								user role (<code>identity:default</code>). In either case,
 								the credentials returned are only those of the customer
 								who issued the request.
-								<emphasis role="italic">You
-									can see only yourself.</emphasis>
 							</para>
 						</note>
 					</wadl:doc>
@@ -156,13 +167,15 @@
 				<wadl:doc>
 					<note>
 						<para>
+							<emphasis role="italic">You
+								can see only yourself.</emphasis>
+						</para>
+						<para>
 							This call is available to customers who hold either 
 							the admin role (<code>identity:user-admin</code>) or the
 							user role (<code>identity:default</code>). In either case,
 							the credentials returned are only those of the customer
 							who issued the request.
-							<emphasis role="italic">You
-								can see only yourself.</emphasis>
 						</para>
 					</note>
 				</wadl:doc>

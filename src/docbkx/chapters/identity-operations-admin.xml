@@ -256,7 +256,7 @@
 						</para>
 						<para>
 							For information about how an impersonator can use a validated token,
-							see the "Impersonations" section. 
+							see <xref linkend="Impersonation_Calls" />. 
 						</para>
 					</tip>
 				</wadl:doc>
@@ -287,7 +287,7 @@
 						<important>
 							<para>
 								Rackspace's implementation of the OpenStack Identity Service v2.0 is currently in BETA status
-								and does not yet support <code>GET v2.0/tenants/{tenantId}/users/{user_id}/roles</code>; 
+								and does not yet support <code>GET v2.0/tenants/{tenantId}/users/{userId}/roles</code>; 
 								a 501 (notImplemented) will be issued in response to this request.
 							</para>
 						</important>
@@ -410,7 +410,7 @@
 					<tip>
 						<para>
 							For information about how an impersonator can obtain a validated token,
-							see the "Validate Token" section. 
+							see in <xref linkend="GET_validateToken__" />. 
 						</para>
 					</tip>
 				</wadl:doc>

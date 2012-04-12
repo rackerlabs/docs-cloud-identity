@@ -906,7 +906,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<para>
 				Applications should be prepared to ignore response
 				data that contains extension elements. Also,
-				applications should also verify that an extension is
+				applications should verify that an extension is
 				available before submitting an extended request.
 			</para>
 		</important>
@@ -972,19 +972,31 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<calloutlist>
 			<callout arearefs="namespace.xml.credentials">
 				<para> The core Identity API, defined in <code>ns2</code>,
-					supports <code>&lt;credentials&gt;</code>. 
+					supports <code>&lt;credentials&gt;</code>.
+						<emphasis role="italic">This association is
+						valid only within this example; you may see
+						namespaces identified differently in responses
+						that you generate.</emphasis>
 				</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="namespace.xml.rax-kskey">
 				<para> The <code>RAX-KSKEY</code> extension is defined in
-						<code>ns3</code>. </para>
+						<code>ns3</code>. <emphasis role="italic">This
+						association is valid only within this example;
+						you may see namespaces identified differently
+						in responses that you generate.</emphasis>
+				</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="namespace.xml.apikey">
 				<para> Support for <code>&lt;apiKeyCredentials&gt;</code> is
 					provided by the extension defined as
-						<code>ns3</code>. </para>
+						<code>ns3</code>. <emphasis role="italic">This
+						association is valid only within this example;
+						you may see namespaces identified differently
+						in responses that you generate.</emphasis>
+				</para>
 				<para> </para>
 			</callout>
 		</calloutlist>
