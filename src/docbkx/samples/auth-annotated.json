@@ -110,7 +110,7 @@
         },
         "user": {
             "id": "161418",
-            "name": "johndoe",
+            "name": "joeuser",
             "roles": [
                 {
                     "description": "User Admin Role.",

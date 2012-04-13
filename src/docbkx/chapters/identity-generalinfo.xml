@@ -100,7 +100,7 @@ This operation does not require a request body.</para>'>
 			general case. In your authentication request, use your own
 			credentials rather than the sample values shown here for
 				<code>username</code>, <code>password</code>. and
-				<code>tenantID</code>.  When you authenticate
+				<code>tenantId</code>.  When you authenticate
 			successfully, the response to your authentication request
 			will include a catalog of the services to which you have
 			subscribed rather than the sample values shown here. </para>
@@ -166,15 +166,15 @@ This operation does not require a request body.</para>'>
 		</programlisting>
 	  	<programlistingco>
 	  		<areaspec>
-	  			<area xml:id="response.xml.namespaces" units="linecolumn" coords="3 12"/>
-	  			<area xml:id="response.xml.token" units="linecolumn" coords="8 51"/>
-	  			<area xml:id="response.xml.role" units="linecolumn" coords="11 10"/>
-	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="16 18"/>
-	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="17 27"/>
-	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="17 57"/>
-	  			<area xml:id="response.xml.region" units="linecolumn" coords="18 27"/>
-	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="18 46"/>
-	  			<area xml:id="response.xml.url" units="linecolumn" coords="19 78"/>
+	  			<area xml:id="response.xml.namespaces" units="linecolumn" coords="4 12"/>
+	  			<area xml:id="response.xml.token" units="linecolumn" coords="13 15"/>
+	  			<area xml:id="response.xml.role" units="linecolumn" coords="18 20"/>
+	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="23 25"/>
+	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="45 42"/>
+	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="45 61"/>
+	  			<area xml:id="response.xml.region" units="linecolumn" coords="46 40"/>
+	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="46 89"/>
+	  			<area xml:id="response.xml.url" units="linecolumn" coords="47 115"/>
 	  		</areaspec>	
 		<programlisting language="xml">
 <!-- 2012-04-13 new samples emailed by Joe Savak 
@@ -190,17 +190,9 @@ This operation does not require a request body.</para>'>
 				<para>
 					In XML responses only, 
 					a list of namespaces identifies API extensions that add functionality to the core API.
-					You can read more about namespaces at 
+					You can read more about namespaces in 
 					<xref linkend="Namespaces-d1e910"></xref>.
 				</para>
-				<para> The token's <code>expires</code> attribute denotes the time
-					after which the token will automatically become
-					invalid. A token may be manually revoked before
-					the time identified by the <code>expires</code>
-					attribute; <code>expires</code> predicts a token's
-					maximum possible lifespan but does not guarantee
-					that it will reach that lifespan. Clients are
-					encouraged to cache a token until it expires. </para>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.token">
@@ -220,8 +212,9 @@ This operation does not require a request body.</para>'>
 			<callout arearefs="response.xml.role">
 				<para> 
 					Users can be assigned multiple roles, with each role providing specific privileges.
-					In this example, this user can perform only the default role.
-					Other users might hold additional roles with different privileges.
+					In this example, <code>joeuser</code> is the administrative user for the account,
+					holding the fully-privileged <code>identity:user-admin</code> role.
+					Other users might hold other roles with different privileges.
 					Roles need not be associated with actual job functions such as Administrator, Operator, Developer, Tester, or Trainer.
 				</para>
 				<para> </para>
@@ -232,7 +225,9 @@ This operation does not require a request body.</para>'>
 					compute services (Cloud Servers OpenStack and
 					Cloud Servers) and two object storage services
 					(Cloud Files Content Distribution Network (CDN),
-					and Cloud Files). The catalog listing for each
+					and Cloud Files), as well as one database service, one DNS service, one loadbalancing service,
+					and one monitoring service.
+					The catalog listing for each
 					service provides at least one endpoint URL for
 					that service. Other information, such as regions
 					and versions and tenants, is provided if it's
@@ -309,73 +304,162 @@ This operation does not require a request body.</para>'>
 		</calloutlist>
 		<section xml:id="Service_Types-d1e265">
 			<title>Service Types in the Service Catalog</title>
-			<para> As shown at <xref linkend="Sample_Request_Response-d1e64"/>,
-				every service listed in the service catalog is
-				associated with a service type. You can use the
-				service type to recognize services that perform
-				similar functions, whatever those services are named.
-				The following table shows all the available service
-				types and relates them to their corresponding
-				OpenStack projects and those projects' documentation. </para>
-				<table rules="all">
-					<caption>Service Types</caption>
-					<col width="21%"/>
-					<col width="79%"/>
-					<thead>
-						<tr>
-							<th>Service Type</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>compute</code></td>
-							<td>This service is compatible with the OpenStack Compute (Nova) API 1.1
-								as documented at 
-								<?sbr?>
-								<link xlink:href="http://nova.openstack.org/"
-								>http://nova.openstack.org/</link>. 
-							</td>
-						</tr>
-						<tr>
-							<td><code>identity</code></td>
-							<td>This service is compatible with the
-								OpenStack Keystone API 2.0 
-								as documented at
-								<link xlink:href="http://keystone.openstack.org/"
-									>http://keystone.openstack.org/</link>. 
-							</td>
-						</tr>
-						<tr>
-							<td><code>image-service</code></td>
-							<td>This service is compatible with the
-								OpenStack Glance API 
-								as documented at
-								<link xlink:href="http://glance.openstack.org/"
-									>http://glance.openstack.org/</link>. 
-							</td>
-						</tr>
-						<tr>
-							<td><code>object-store</code></td>
-							<td>This service is compatible with the
-								OpenStack Swift API 
-								as documented at
-								<link xlink:href="http://swift.openstack.org/"
-									>http://swift.openstack.org/</link>. 
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<para> As shown in <xref
+					linkend="Sample_Request_Response-d1e64"/>, every
+				service listed in the service catalog is associated
+				with a service type. You can use the service type to
+				recognize services that perform similar functions,
+				whatever those services are named. The following table
+				shows all the available service types and relates them
+				to their corresponding OpenStack projects and those
+				projects' documentation. </para>
+			<annotation>
+				<remark>Cloud Database is only documented at
+					docs-internal for private beta; in that row of the table, 
+					change link to public doc when publicly available.
+				</remark>
+			</annotation>
+			<table rules="all">
+				<caption>Service Types</caption>
+				<col width="24%"/>
+				<col width="76%"/>
+				<thead>
+					<tr>
+						<th>Service Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>compute</code></td>
+						<td>
+							<para> Services of this type are
+								compatible with the OpenStack Compute
+								(Nova) API 1.1 as documented at <link
+								xlink:href="http://nova.openstack.org/"
+								>http://nova.openstack.org/</link>. </para>
+							<para>
+								<emphasis role="italic">Cloud Servers,
+								a Rackspace service of this type,
+								is documented at <link
+								xlink:href="http://docs.rackspace.com/api/"
+								>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
+						<td><code>dnsextension:dns</code></td>
+						<td>
+							<emphasis role="italic">Cloud DNS, a
+								Rackspace service of this type, is
+								documented at <link
+								xlink:href="http://docs.rackspace.com/api/"
+								>http://docs.rackspace.com/api/</link>.</emphasis>
+						</td>
+					</tr>
+					<tr>
+						<td><code>identity</code></td>
+						<td>
+							<para> Services of this type are
+								compatible with the OpenStack Keystone
+								API 2.0 as documented at <link
+								xlink:href="http://keystone.openstack.org/"
+								>http://keystone.openstack.org/</link>. </para>
+							<para>
+								<emphasis role="italic">Cloud
+								Identity, a Rackspace service of
+								this type, is documented at <link
+								xlink:href="http://docs.rackspace.com/api/"
+								>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
+						<td><code>image-service</code></td>
+						<td>
+							<para> Services of this type are
+								compatible with the OpenStack Glance
+								API as documented at <link
+								xlink:href="http://glance.openstack.org/"
+								>http://glance.openstack.org/</link>. </para>
+						</td>
+					</tr>
+					<tr>
+						<td><code>object-store</code></td>
+						<td>
+							<para> Services of this type are
+								compatible with the OpenStack Swift
+								API as documented at <link
+								xlink:href="http://swift.openstack.org/"
+								>http://swift.openstack.org/</link>. </para>
+							<para>
+								<emphasis role="italic">Cloud Files, a
+								Rackspace service of this type, is
+								documented at <link
+								xlink:href="http://docs.rackspace.com/api/"
+								>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
+						<td><code>rax:database</code></td>
+						<td>
+							<para>
+								<emphasis role="italic">Cloud Databases, a Rackspace service 
+								of this type, is available to participants in its <link
+									xlink:href="http://www.rackspace.com/blog/rackspace-cloud-databases-private-beta-new-features-and-global-availability/"
+								>API Private Beta program</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
+						<td><code>rax:load-balancer</code></td>
+						<td>
+							<para>
+								<emphasis role="italic">Cloud Load
+								Balancers, a Rackspace service of
+								this type, is documented at <link
+								xlink:href="http://docs.rackspace.com/api/"
+								>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
+						<td><code>rax:object-cdn</code></td>
+						<td>
+							<para>
+								<emphasis role="italic">Cloud Files, a
+								Rackspace service that supports a
+								Content Distribution Network (CDN),
+								is documented at <link
+								xlink:href="http://docs.rackspace.com/api/"
+								>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
+						<td><code>rax:monitor</code></td>
+						<td>
+							<para>
+								<emphasis role="italic">Cloud
+								Monitoring, a Rackspace service of
+								this type, is documented at <link
+								xlink:href="http://docs.rackspace.com/api/"
+								>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</section>
 		<section xml:id="Sample_Catalog_Workflow-d1e266">
 			<title>Suggested Workflow for Processing a Service Catalog Response</title>
-			<para>
-				When your client issues a successful authentication request, 
-				the Cloud Identity Service responds with a catalog showing the services available to that client, 
-				with one endpoint listed for each available service;
-				you can find an annotated example of such a response at
-				<xref linkend="Sample_Request_Response-d1e64"></xref>.
-			</para>
+			<para> When your client issues a successful authentication request,
+				the Cloud Identity Service responds with a catalog
+				showing the services available to that client, with
+				one endpoint listed for each available service; you
+				can find an annotated example of such a response in
+					<xref linkend="Sample_Request_Response-d1e64"/>. </para>
 			<para> As the client developer, you must decide how your client
 				should use the contents of its service catalog. The
 				first step may be to identify a service to which your
@@ -1029,7 +1113,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			Identity API and <code>ns3</code> identifies the namespace
 			for the <code>RAX-KSKEY</code> extension; under other
 			circumstances, other prefixes could be associated with
-			those extensions. </para>
+			those namespaces. </para>
 	</section>
 	<section xml:id="Faults-d1e908">
 	  <title>Faults</title>

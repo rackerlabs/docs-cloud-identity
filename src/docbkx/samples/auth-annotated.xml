@@ -8,9 +8,11 @@
     xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
     xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0"
     xmlns:ns8="http://www.w3.org/2005/Atom">
-    <ns2:token id="f0bbff6c-c0e7-46d5-b393-c9ddccb66d63" 
+    <ns2:token 
+        id="aaaaa-bbbbb-ccccc-dddd" 
         expires="2012-04-13T13:15:00.000-05:00"/>
-    <ns2:user id="161418" name="johndoe">
+    <ns2:user 
+        id="161418" name="joeuser">
         <ns2:roles>
             <ns2:role id="3" name="identity:user-admin" 
                 description="User Admin Role."/>
