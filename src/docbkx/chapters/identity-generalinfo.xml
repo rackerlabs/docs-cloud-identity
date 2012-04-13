@@ -160,7 +160,7 @@ This operation does not require a request body.</para>'>
 			includes a token and a service catalog.
 		</para>
 	  <example>
-		<title>Authentication Response with Headers: XML</title>
+		<title>Service Catalog in Authentication Response with Headers: XML</title>
 		<programlisting language="xml">
 <xi:include href="../samples/sampleresponseheader.txt" parse="text"/>
 		</programlisting>
@@ -241,10 +241,10 @@ This operation does not require a request body.</para>'>
 					identifying them as compute services even though the word "compute" does not appear in their names.
 				</para>
 				<important>
-				<para>Use service type as the primary value for
-					locating a service. If multiple endpoints of the
-					same service type exist in the same region, use
-					service name as the tiebreaker.</para>
+					<para>Use service type as the primary value for
+						locating a service. If multiple endpoints of the
+						same service type exist in the same region, use
+						service name as the tiebreaker.</para>
 				</important>
 				<para> </para>
 			</callout>
@@ -298,6 +298,136 @@ This operation does not require a request body.</para>'>
 					URL usually incurs traffic charges. Internal URLs are only
 					accessible to services within the same region. Access to
 					an internal URL is free of charge.
+				</para>
+				<para> </para>
+			</callout>
+		</calloutlist>
+		<example>
+			<title>Service Catalog in Authentication Response: JSON</title>
+			<programlistingco>
+				<areaspec>
+					<area xml:id="response.json.token" units="linecolumn" coords="109 8"/>
+					<area xml:id="response.json.role" units="linecolumn" coords="116 12"/>
+					<area xml:id="response.json.catalog" units="linecolumn" coords="5 8"/>
+					<area xml:id="response.json.servicetype" units="linecolumn" coords="106 16"/>
+					<area xml:id="response.json.servicename" units="linecolumn" coords="105 16"/>
+					<area xml:id="response.json.region" units="linecolumn" coords="101 24"/>
+					<area xml:id="response.json.tenant" units="linecolumn" coords="102 24"/>
+					<area xml:id="response.json.url" units="linecolumn" coords="99 24"/>
+				</areaspec>	
+				<programlisting language="javascript">
+<!-- 2012-04-13 new samples emailed by Joe Savak 
+				after expansion of service catalog 
+				to include CDB, CDNS, CLB, CM with new service types; 
+				update table of service types to match -->
+<xi:include href="../samples/auth-annotated.json" parse="text"/>
+		</programlisting>
+			</programlistingco>			
+		</example>
+		<calloutlist>
+			<callout arearefs="response.json.catalog">
+				<para> The service catalog lists the services this user can
+					access. In this example, the user can access two
+					compute services (Cloud Servers OpenStack and
+					Cloud Servers) and two object storage services
+					(Cloud Files Content Distribution Network (CDN),
+					and Cloud Files), as well as one database service, one DNS service, one loadbalancing service,
+					and one monitoring service.
+					The catalog listing for each
+					service provides at least one endpoint URL for
+					that service. Other information, such as regions
+					and versions and tenants, is provided if it's
+					relevant to this user's access to this service. </para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.json.url">
+				<para>
+					An endpoint can be assigned public and internal URLs. A
+					public URL is accessible from anywhere. Access to a public
+					URL usually incurs traffic charges. Internal URLs are only
+					accessible to services within the same region. Access to
+					an internal URL is free of charge.
+				</para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.json.region">
+				<para> A service may expose endpoints in different regions.
+					Regional endpoints allow clients to provision
+					resources in a manner that provides high
+					availability.  </para>
+				<para> Some services are not region-specific. These services supply a single
+					non-regional endpoint and do not provide access to internal URLs. </para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.json.tenant">
+				<para> Some services recognize specification of a tenant. If a
+					service does recognize tenants, the format of the
+					tenant specification is defined only by the
+					service; for details about whether and how to
+					specify a tenant, check the documentation for the
+					service you are using.</para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.json.servicename">
+				<para> 
+					The service name attribute identifies each unique service in the catalog.
+					Once a service is created, its name does not change. However, new services of the same service type may be added to the catalog with new names.
+				</para>
+				<important>
+					<para> If you are programmatically parsing an authentication
+						response, use service type rather than service name as
+						the basis for determining whether a user has access to
+						a particular kind of service. Service type is stable
+						across all releases; new service types may be developed,
+						but existing service types are not renamed.
+						In this example,
+						<code>type="compute"</code> identifies all the
+						available compute services, one of which is named
+						cloudServers and one of which is named
+						cloudServersOpenStack. New compute service names may be added 
+						in future releases; whatever the compute services are
+						named, you can always
+						recognize them by parsing for
+						<code>type="compute"</code> in the authentication
+						response's service catalog. </para>
+				</important>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.json.servicetype">
+				<para> 
+					The service type attribute identifies services that perform similar functions, whatever those services might be named. 
+					In this example, the services named cloudServers and cloudServersOpenstack are both identified as <code>type="compute"</code>, 
+					identifying them as compute services even though the word "compute" does not appear in their names.
+				</para>
+				<important>
+					<para>Use service type as the primary value for
+						locating a service. If multiple endpoints of the
+						same service type exist in the same region, use
+						service name as the tiebreaker.</para>
+				</important>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.json.token">
+				<para> This token can be presented to a service as evidence of authentication.
+					Tokens are valid for a finite duration; a token's default lifespan is twenty-four hours. 
+				</para>
+				<para> The token's <code>expires</code> attribute denotes the time
+					after which the token will automatically become
+					invalid. A token may be manually revoked before
+					the time identified by the <code>expires</code>
+					attribute; <code>expires</code> predicts a token's
+					maximum possible lifespan but does not guarantee
+					that it will reach that lifespan. Clients are
+					encouraged to cache a token until it expires. </para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.json.role">
+				<para> 
+					Users can be assigned multiple roles, with each role providing specific privileges.
+					In this example, <code>joeuser</code> is the administrative user for the account,
+					holding the fully-privileged <code>identity:user-admin</code> role.
+					Other users might hold other roles with different privileges.
+					Roles need not be associated with actual job functions such as Administrator, Operator, Developer, Tester, or Trainer.
 				</para>
 				<para> </para>
 			</callout>
