@@ -538,7 +538,15 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 specify the user's ID in the request.
                 If you know the user's name but not the user's ID, use "Get User by Name" to 
                 obtain complete identifying information about the user.
-                </p>        
+                </p> 
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                API credentials are currently not available for sub-users. Sub-users, also called sub-accounts, are users who  
+                were created by the administrative user.
+                Sub-users can access API features with their password credentials.
+                The administrative user holds the <code>identity:user-admin</code> role,
+                giving it full administrative privileges to manage the account; 
+                sub-users hold the <code>identity:default</code> role and their privileges are limited.
+            </p>
         </doc>
         <!-- 2012-03-12 by Rose Coste per Joe Savak:
              hide marker & limit: not implemented.

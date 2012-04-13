@@ -165,7 +165,8 @@
                     A sub-user can request a list of all users, but the sub-user will be the only user included in that list. 
                 </para>
                 <para>
-                    All users, including sub-users, can authenticate with a combination of their username and API key or their username and password.
+                    All users, including sub-users, can authenticate with a combination of their username and password.
+                    Only administrative users can authenticate with a combination of their username and API key. 
                     Only administrative users can authenticate with a combination of their tenant ID and API key. 
                 </para>
             </glossdef>    
