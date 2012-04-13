@@ -1,0 +1,123 @@
+{
+    "access": {
+        "serviceCatalog": [
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/12345",
+                        "region": "DFW",
+                        "tenantId": "12345",
+                        "versionId": "2",
+                        "versionInfo": "https://dfw.servers.api.rackspacecloud.com/v2",
+                        "versionList": "https://dfw.servers.api.rackspacecloud.com/"
+                    }
+                ],
+                "name": "cloudServersOpenStack",
+                "type": "compute"
+            },
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://ord.databases.api.rackspacecloud.com/v1.0/12345",
+                        "region": "ORD",
+                        "tenantId": "12345"
+                    },
+                    {
+                        "publicURL": "https://dfw.databases.api.rackspacecloud.com/v1.0/12345",
+                        "region": "DFW",
+                        "tenantId": "12345"
+                    }
+                ],
+                "name": "cloudDatabases",
+                "type": "rax:database"
+            },
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://ord.loadbalancers.api.rackspacecloud.com/v1.0/12345",
+                        "region": "ORD",
+                        "tenantId": "645990"
+                    },
+                    {
+                        "publicURL": "https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/12345",
+                        "region": "DFW",
+                        "tenantId": "12345"
+                    }
+                ],
+                "name": "cloudLoadBalancers",
+                "type": "rax:load-balancer"
+            },
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://cdn1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
+                        "region": "DFW",
+                        "tenantId": "MossoCloudFS_aaaa-bbbb-cccc "
+                    }
+                ],
+                "name": "cloudFilesCDN",
+                "type": "rax:object-cdn"
+            },
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://dns.api.rackspacecloud.com/v1.0/12345",
+                        "tenantId": "12345"
+                    }
+                ],
+                "name": "cloudDNS",
+                "type": "dnsextension:dns"
+            },
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://servers.api.rackspacecloud.com/v1.0/12345",
+                        "tenantId": "12345",
+                        "versionId": "1.0",
+                        "versionInfo": "https://servers.api.rackspacecloud.com/v1.0",
+                        "versionList": "https://servers.api.rackspacecloud.com/"
+                    }
+                ],
+                "name": "cloudServers",
+                "type": "compute"
+            },
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://monitoring.api.rackspacecloud.com/v1.0/12345",
+                        "tenantId": "12345"
+                    }
+                ],
+                "name": "cloudMonitoring",
+                "type": "rax:monitor"
+            },
+            {
+                "endpoints": [
+                    {
+                        "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
+                        "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
+                        "region": "DFW",
+                        "tenantId": "MossoCloudFS_aaaa-bbbb-cccc"
+                    }
+                ],
+                "name": "cloudFiles",
+                "type": "object-store"
+            }
+        ],
+        "token": {
+            "expires": "2012-04-13T13:15:00.000-05:00",
+            "id": "aaaaa-bbbbb-ccccc-dddd"
+        },
+        "user": {
+            "id": "161418",
+            "name": "johndoe",
+            "roles": [
+                {
+                    "description": "User Admin Role.",
+                    "id": "3",
+                    "name": "identity:user-admin"
+                }
+            ]
+        }
+    }
+}

@@ -166,6 +166,7 @@ This operation does not require a request body.</para>'>
 		</programlisting>
 	  	<programlistingco>
 	  		<areaspec>
+	  			<area xml:id="response.xml.namespaces" units="linecolumn" coords="3 12"/>
 	  			<area xml:id="response.xml.token" units="linecolumn" coords="8 51"/>
 	  			<area xml:id="response.xml.role" units="linecolumn" coords="11 10"/>
 	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="16 18"/>
@@ -176,11 +177,32 @@ This operation does not require a request body.</para>'>
 	  			<area xml:id="response.xml.url" units="linecolumn" coords="19 78"/>
 	  		</areaspec>	
 		<programlisting language="xml">
-<xi:include href="../samples/auth.xml" parse="text"/>
+<!-- 2012-04-13 new samples emailed by Joe Savak 
+				after expansion of service catalog 
+				to include CDB, CDNS, CLB, CM with new service types; 
+				update table of service types to match -->
+<xi:include href="../samples/auth-annotated.xml" parse="text"/>
 		</programlisting>
 	  	</programlistingco>			
 	  </example>
 		<calloutlist>
+			<callout arearefs="response.xml.namespaces">
+				<para>
+					In XML responses only, 
+					a list of namespaces identifies API extensions that add functionality to the core API.
+					You can read more about namespaces at 
+					<xref linkend="Namespaces-d1e910"></xref>.
+				</para>
+				<para> The token's <code>expires</code> attribute denotes the time
+					after which the token will automatically become
+					invalid. A token may be manually revoked before
+					the time identified by the <code>expires</code>
+					attribute; <code>expires</code> predicts a token's
+					maximum possible lifespan but does not guarantee
+					that it will reach that lifespan. Clients are
+					encouraged to cache a token until it expires. </para>
+				<para> </para>
+			</callout>
 			<callout arearefs="response.xml.token">
 				<para> This token can be presented to a service as evidence of authentication.
 					Tokens are valid for a finite duration; a token's default lifespan is twenty-four hours. 
