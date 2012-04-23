@@ -262,11 +262,11 @@
           <section xml:id="User_Operations_RAX_KSKEY">
               <title>User Operations</title>
               <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                  <wadl:resource href="RAX-KSKEY-admin.wadl#userCredentials">
+                  <wadl:resource href="../wadl/RAX-KSKEY-admin.wadl#userCredentials">
                       <wadl:method href="addUserCredential"/>
                       <wadl:method href="listCredentials"/>
                   </wadl:resource>
-                  <wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+                  <wadl:resource href="../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
                       <wadl:method href="listCredentialsByType"/>
                       <wadl:method href="updateUserCredential"/>
                       <wadl:method href="deleteUserCredential"/>

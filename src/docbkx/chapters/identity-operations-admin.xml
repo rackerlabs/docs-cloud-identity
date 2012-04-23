@@ -81,46 +81,46 @@
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
-			<wadl:resource href="OS-KSADM-admin.wadl#users">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
 				<wadl:method href="listUsers"/>
 			</wadl:resource>
 			<!-- list user -->
-			<wadl:resource href="identity-admin.wadl#users">
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="getUserByName"/>
 			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#userid">
+			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
 				<wadl:method href="getUserById"/>
 			</wadl:resource>
 			<!-- add user -->
-			<wadl:resource href="OS-KSADM-admin.wadl#users">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
 				<wadl:method href="addUser"/>
 			</wadl:resource>
 			<!-- update user -->
-			<wadl:resource href="OS-KSADM-admin.wadl#userById">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
 				<wadl:method href="updateUser"/>
 			</wadl:resource>
 			<!-- delete user -->
-			<wadl:resource href="OS-KSADM-admin.wadl#userById">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
 				<wadl:method href="deleteUser"/>
 			</wadl:resource>
 			<!-- add API key credential -->
-			<wadl:resource href="OS-KSADM-admin.wadl#userCredentials">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
 				<wadl:method href="addUserCredential"/>
 			</wadl:resource>
 			<!-- list API key credentials -->
-			<wadl:resource href="OS-KSADM-admin.wadl#userCredentials">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
 				<wadl:method href="listCredentials"/>
 			</wadl:resource>
 			<!-- update API key credentials -->
-			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
 				<wadl:method href="updateUserCredential"/>
 			</wadl:resource>
 			<!-- delete API key credentials -->
-			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
 				<wadl:method href="deleteUserCredential"/>
 			</wadl:resource>
 			<!-- get user's API key credentials -->
-			<wadl:resource href="RAX-KSKEY-admin.wadl#userCredentialsByType">
+			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
 				<wadl:method href="getUserCredential"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -139,41 +139,41 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="RAX-GRPADM.wadl#groups"/>
-			<wadl:resource href="RAX-GRPADM.wadl#group"/>
-			<wadl:resource href="RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
+			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#groups"/>
+			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#group"/>
+			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
 				<wadl:method href="listUserGroups"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#user"/>
-			<wadl:resource href="RAX-GRPADM.wadl#users"/>			
+			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#user"/>
+			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#users"/>			
 <!--	   Specification of individual calls as below (& the rest of this doc) 
 		   fails here (BUILD SUCCESS, but calls missing from generated output);
 		   above, include all from 4 resources in RAX-GRPADM, plus 1 from RAX-KSGRP 
-				<wadl:resource href="RAX-GRPADM.wadl#groups">
+				<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
 				<wadl:method href="listGroups"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
 				<wadl:method href="addGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#group">
+			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#group">
 				<wadl:method href="getGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#group">
+			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#group">
 				<wadl:method href="updateGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#group">
+			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#group">
 				<wadl:method href="deleteGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
 				<wadl:method href="getUsersForGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
 				<wadl:method href="addUserToGroup"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
+			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
 				<wadl:method href="listUserGroups"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-GRPADM.wadl#groups">
+			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
 				<wadl:method href="removeUserFromGroup"/>
 			</wadl:resource>
 -->		</wadl:resources>
@@ -193,15 +193,15 @@
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list roles -->
-			<wadl:resource href="OS-KSADM-admin.wadl#roles">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
 				<wadl:method href="listRoles"/>
 			</wadl:resource>
 			<!-- add a role globally -->
-			<wadl:resource href="OS-KSADM-admin.wadl#roles">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
 				<wadl:method href="addRole"/>
 			</wadl:resource>
 			<!-- get a global role -->
-			<wadl:resource href="OS-KSADM-admin.wadl#roleId">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
 				<wadl:method href="getRole"/>
 			</wadl:resource>
 			<!-- delete a role globally -->
@@ -209,20 +209,20 @@
 				"No access allowed. Deleting a global role can mess up a lot of stuff.
 				We need to wait until identity:admin and identity:service-admin roles
 				are separated fully (post migration) before doing this."
-			<wadl:resource href="OS-KSADM-admin.wadl#RoleId">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#RoleId">
 				<wadl:method href="deleteRole"/>
 			</wadl:resource>
 			-->
 			<!-- add a global role to a user -->
-			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="addUserRole"/>
 			</wadl:resource>
 			<!-- delete a global role from a user -->
-			<wadl:resource href="OS-KSADM-admin.wadl#userRoleById">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="deleteUserRole"/>
 			</wadl:resource>
 			<!-- list global roles available to a user -->
-			<wadl:resource href="identity-admin.wadl#userRoles">
+			<wadl:resource href="../../wadl/identity-admin.wadl#userRoles">
 				<wadl:method href="listUserGlobalRoles"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -241,11 +241,11 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="identity-admin.wadl#tokens">
+			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
 				<!-- authenticate -->
 				<wadl:method href="authenticate"/>
 			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#tokenById">
+			<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
 				<!-- validate token -->
 				<wadl:method href="validateToken">
 				<wadl:doc>
@@ -264,7 +264,7 @@
 				<!-- check token -->
 				<wadl:method href="checkToken"/>
 			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#endpointsForToken">
+			<wadl:resource href="../../wadl/identity-admin.wadl#endpointsForToken">
 				<!-- list endpoints for token -->
 				<wadl:method href="listEndpointsForToken"/>
 			</wadl:resource>
@@ -274,14 +274,14 @@
 		<title>Tenants</title>
 		<para>The operations described in this section allow service developers to manage tenants.</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="identity-admin.wadl#tenants">
+			<wadl:resource href="../../wadl/identity-admin.wadl#tenants">
 				<wadl:method href="listTenants"/>
 				<wadl:method href="getTenantByName"/>
 			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#tenantById">
+			<wadl:resource href="../../wadl/identity-admin.wadl#tenantById">
 				<wadl:method href="getTenantById"/>
 			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#userRolesForTenant">
+			<wadl:resource href="../../wadl/identity-admin.wadl#userRolesForTenant">
 				<wadl:method href="listRolesForUserOnTenant">
 					<wadl:doc>
 						<important>
@@ -310,16 +310,16 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplates">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="endpointTemplates"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplates">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="addEndpointTemplate"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplateId">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplateId">
 				<wadl:method href="getEndpointTemplate"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpointTemplateId">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplateId">
 				<wadl:method href="deleteEndpointTemplate"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -338,16 +338,16 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoints">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoints">
 				<wadl:method href="listEndpoints"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoints">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoints">
 				<wadl:method href="addEndpoint"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoint">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoint">
 				<wadl:method href="getEndpoint"/>
 			</wadl:resource>
-			<wadl:resource href="OS-KSCATALOG-admin.wadl#endpoint">
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoint">
 				<wadl:method href="deleteEndpoint"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -367,10 +367,10 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="RAX-KSQA-admin.wadl#secretqa">
+			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="getUserSecretQA"/>
 			</wadl:resource>
-			<wadl:resource href="RAX-KSQA-admin.wadl#secretqa">
+			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="updateUserSecretQA"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -404,7 +404,7 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="RAX-GA.wadl#impersonation-tokens">
+			<wadl:resource href="../../wadl/RAX-GA.wadl#impersonation-tokens">
 				<wadl:method href="impersonateUser">
 				<wadl:doc>
 					<tip>
