@@ -40,16 +40,17 @@
                     </listitem>
                     <listitem>
                         <para> Upon authentication, service catalog returns a separate <code>tenantID</code> attribute by endpoint. </para>
-                        <itemizedlist>
-                            <listitem>
-                                <para>Ability to add multiple users (sub-users) to an
-                                    account. This functionality is available
-                                    in the US and is coming soon to the UK.
-                                </para>
-                            </listitem>
-                        </itemizedlist>
                     </listitem>
-                </itemizedlist>
+                    <listitem>
+                        <para>Ability to add multiple users (sub-users) to an
+                            account. This functionality is available
+                            in the US and is coming soon to the UK.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para> Introduction of rate limiting. </para>
+                    </listitem>
+                  </itemizedlist>
             </listitem>
         </itemizedlist>
     </para>
