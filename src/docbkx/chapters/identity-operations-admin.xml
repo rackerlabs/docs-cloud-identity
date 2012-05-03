@@ -309,6 +309,7 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
+		<!-- COMMENTING OUT DRAFT wadl:resources BECAUSE VALIDATION COMPLAINS ABOUT MISSING RESOURCES WITHIN writeronly SECTION
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="endpointTemplates"/>
@@ -323,6 +324,7 @@
 				<wadl:method href="deleteEndpointTemplate"/>
 			</wadl:resource>
 		</wadl:resources>
+		-->
 	</section>
 	<section security="writeronly" xml:id="Endpoint_Calls">
 		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
