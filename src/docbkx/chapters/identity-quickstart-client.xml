@@ -53,7 +53,7 @@
         <para>
             Multiple users (sub-users) can be created for an account but, 
             as explained in 
-            <xref linkend="POST_addUser__" />,
+            <xref linkend="POST_addUser_v2.0_users_" />,
             users created via the API do not have access to the control panel. 
             Control panel access for these users is coming soon.
         </para>

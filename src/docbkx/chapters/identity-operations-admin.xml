@@ -410,7 +410,7 @@
 					<tip>
 						<para>
 							For information about how an impersonator can obtain a validated token,
-							see in <xref linkend="GET_validateToken__" />. 
+							see <xref linkend="GET_validateToken_v2.0_tokens__tokenId__" />. 
 						</para>
 					</tip>
 				</wadl:doc>

@@ -66,7 +66,7 @@
 						<listitem>
 							<para>
 								Linked <xref
-								linkend="QuickStart-000"/> to <xref linkend="POST_addUser__" /> 
+									linkend="QuickStart-000"/> to <xref linkend="POST_addUser_v2.0_users_" /> 
 								with note that sub-users added via API cannot use the
 								control panel. 
 							</para>
@@ -74,7 +74,7 @@
 						<listitem>
 							<para>
 								Updated <xref
-									linkend="GET_listCredentials__"/>
+									linkend="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"/>
 								and 
 								<xref
 									linkend="Sub-User-d1e20"/>
@@ -135,13 +135,13 @@
 						</listitem>
 						<listitem>
 							<para>
-								Added examples of creating a user with a password in <xref linkend="POST_addUser__" />.
+								Added examples of creating a user with a password in <xref linkend="POST_addUser_v2.0_users_" />.
 								In the same section, added information that an account can have up to 100 sub-users. 
 							</para>
 						</listitem>
 						<listitem>
 							<para>
-								Added examples of changing a user's password in <xref linkend="POST_updateUser__" />.
+								Added examples of changing a user's password in <xref linkend="POST_updateUser_v2.0_users__userId__" />.
 							</para>
 						</listitem>
 						<listitem>
@@ -151,7 +151,7 @@
 						</listitem>
 						<listitem>
 							<para>
-								Clarified <xref linkend="GET_listCredentials__" /> to say that user passwords cannot be retrieved.
+								Clarified <xref linkend="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_" /> to say that user passwords cannot be retrieved.
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -190,7 +190,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
-								Added examples of authentication with an API key in <xref linkend="POST_authenticate__"/>.
+								Added examples of authentication with an API key in <xref linkend="POST_authenticate_v2.0_tokens_"/>.
 							</para>
 							</listitem>
 						<listitem>
