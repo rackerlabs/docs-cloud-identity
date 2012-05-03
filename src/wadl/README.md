@@ -5,7 +5,8 @@
 For links to the extensions' live GitHub repos, visit http://red.rackspace.com/display/RED/Source+control+repositories#Sourcecontrolrepositories-Identity.
 
 ----
-These WADLs external samples.
+These WADLs include external samples.
+
 * Most samples included in these WADLS come from **/src/common/samples**.
 * The exception is **RAX-GRPADM.wadl**. Its samples come from **/src/wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/samples**
 * (samples included in non-WADL-generated sections of the book come from **/src/docbkx/samples) **
