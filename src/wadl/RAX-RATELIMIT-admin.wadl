@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 2012-05-04 RLC
+    I created this to describe ratelimiting operations as in http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting. 
+    Because this is "an implementation feature not bound to a contract", it's not provided by an extension nor described by a developer-created WADL.
+    Because the rest of the API Operations section is constructed from WADLs, 
+    if I don't build this the same way it won't be included in things like role="api-reference" summary tables;
+    faking up this WADL so ratelimiting operations will match the rest.
+    *** I copied this from RAX-KSQA because it is small; taking out its traces from <application> & <grammars>, tho I have no replacements. ***
+    *** I have no idea why RAX-KSQA is copyright OpenStack. ***
+-->
+<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+<!--*******************************************************-->
+<!-- Import Common XML Entities -->
+<!-- -->
+<!-- You can resolve the entites with xmllint -->
+<!-- -->
+<!-- xmllint -noent RAX-KSQA-admin.wadl -->
+<!--*******************************************************-->
+<!DOCTYPE application [
+<!ENTITY % common SYSTEM "../common/common.ent">
+%common;
+]>
+<application xmlns="http://wadl.dev.java.net/2009/02"
+    xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
+    xmlns:capi="http://docs.openstack.org/common/api/v1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../common/xsd/api.xsd
+    http://docs.openstack.org/common/api/v1.0 ../common/xsd/api-common.xsd
+    http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd
+    ">
+    
+    <grammars>
+        <include href="../common/xsd/api.xsd"/>
+        <include href="../common/xsd/api-common.xsd"/>
+    </grammars>
+    <!--*******************************************************-->
+    <!-- All Resources -->
+    <!--*******************************************************-->
+    
+    <!-- We should use SSL in production -->
+    <resources base="http://localhost:35357">
+        <resource id="version" path="v2.0">
+            <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                <doc>You need a valid admin token for access.</doc>
+            </param>
+            <resource id="rtadm" path="rtadm">
+                <method href="#getRateLimit"/>
+                <method href="#updateRateLimit"/>
+                <method href="#deleteWhitelistEntry"/>
+                <method href="#addWhitelistEntry"/>
+                <method href="#replaceWhitelist"/>
+            </resource>
+        </resource>
+    </resources>
+    
+    <method name="GET" id="getRateLimit">
+        <doc xml:lang="EN" title="Get User Rate Limits">
+            <p xmlns="http://www.w3.org/1999/xhtml">Get rate limits for a user.</p>
+        </doc>
+        <response status="200 203">
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    <method name="PUT" id="updateRateLimit">
+        <doc xml:lang="EN" title="Update User Rate Limits">
+            <p xmlns="http://www.w3.org/1999/xhtml">Update rate limits for a user.</p>
+        </doc>
+        <response status="200">
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    <method name="DELETE" id="deleteWhitelistEntry">
+        <doc xml:lang="EN" title="Delete Entry from Rate Limit Whitelist">
+            <p xmlns="http://www.w3.org/1999/xhtml">Remove one entry from the whitelist.</p>
+        </doc>
+        <response status="200">
+        </response>
+        &commonFaults;
+    </method>
+    <method name="POST" id="addWhitelistEntry">
+        <doc xml:lang="EN" title="Add Entry to Rate Limit Whitelist">
+            <p xmlns="http://www.w3.org/1999/xhtml">Append one entry to the whitelist.</p>
+        </doc>
+        <response status="200">
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    <method name="PUT" id="replaceWhitelist">
+        <doc xml:lang="EN" title="Replace Rate Limit Whitelist">
+            <p xmlns="http://www.w3.org/1999/xhtml">Replace the entire whitelist.</p>
+        </doc>
+        <response status="200">
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+</application> 
