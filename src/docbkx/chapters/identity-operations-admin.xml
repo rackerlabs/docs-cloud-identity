@@ -423,6 +423,20 @@
 	<section xml:id="Ratelimiting_Calls">
 		<title>Rate Limits</title>
 		<para>The operations described in this section allow service developers to manage rate limits.</para>
+		<figure>
+		<title>
+			After hitting the Auth endpoint, a request hits the rate limiting filter; if the filter determines that rate limits apply, the rate limit module is called.
+		</title>
+		<!-- this is Alex Silva's drawing, 
+				from http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting 
+			    PNG fits PDF width at 85%, 507x389
+			-->
+		<mediaobject>
+			<imageobject>
+				<imagedata fileref="../figures/auth-ratelimiting-flow.png" format="PNG" align="center" />
+			</imageobject>
+		</mediaobject>
+		</figure>
 		<!--- this section comes from 1 WADL: RAX-RATELIMIT-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list rate limit for 1 user -->
