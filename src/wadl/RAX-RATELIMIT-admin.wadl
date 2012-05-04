@@ -60,6 +60,11 @@
             <p xmlns="http://www.w3.org/1999/xhtml">Get rate limits for a user.</p>
         </doc>
         <response status="200 203">
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/ratelimit-list1user-response.json"/>
+                </doc>
+            </representation>
         </response>
         &commonFaults;
         &getFaults;
@@ -68,6 +73,13 @@
         <doc xml:lang="EN" title="Update User Rate Limits">
             <p xmlns="http://www.w3.org/1999/xhtml">Update rate limits for a user.</p>
         </doc>
+        <request>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/ratelimit-update1user-request.json"/>
+                </doc>
+            </representation>
+        </request>
         <response status="200">
         </response>
         &commonFaults;
@@ -85,6 +97,18 @@
         <doc xml:lang="EN" title="Add Entry to Rate Limit Whitelist">
             <p xmlns="http://www.w3.org/1999/xhtml">Append one entry to the whitelist.</p>
         </doc>
+        <request>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/ratelimit-whitelist1user-request.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/ratelimit-whitelist1user-request.json"/>
+                </doc>
+            </representation>
+        </request>
         <response status="200">
         </response>
         &commonFaults;
@@ -94,6 +118,13 @@
         <doc xml:lang="EN" title="Replace Rate Limit Whitelist">
             <p xmlns="http://www.w3.org/1999/xhtml">Replace the entire whitelist.</p>
         </doc>
+        <request>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/ratelimit-whitelist-replace-all-request.xml"/>
+                </doc>
+            </representation>
+        </request>
         <response status="200">
         </response>
         &commonFaults;

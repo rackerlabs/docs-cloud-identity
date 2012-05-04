@@ -1,0 +1,7 @@
+{
+    "rateLimitConfigRepresentation": {
+        "enabled": true,
+        "interval": 40,
+        "threshold": 8
+    }
+}
