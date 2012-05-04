@@ -420,4 +420,31 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	<section xml:id="Ratelimiting_Calls">
+		<title>Rate Limits</title>
+		<para>The operations described in this section allow service developers to manage rate limits.</para>
+		<!--- this section comes from 1 WADLs: RAX-RATELIMIT-admin -->
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list rate limit for 1 user -->
+			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+				<wadl:method href="getRateLimit"/>
+			</wadl:resource>
+			<!-- change rate limit for 1 user -->
+			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+				<wadl:method href="updateRateLimit"/>
+			</wadl:resource>
+			<!-- delete 1 entry from rate limit whitelist -->
+			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+				<wadl:method href="deleteWhitelistEntry"/>
+			</wadl:resource>
+			<!-- add 1 entry to rate limit whitelist -->
+			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+				<wadl:method href="addWhitelistEntry"/>
+			</wadl:resource>
+			<!-- replace entire rate limit whitelist -->
+			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+				<wadl:method href="addWhitelistEntry"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
 </chapter>
