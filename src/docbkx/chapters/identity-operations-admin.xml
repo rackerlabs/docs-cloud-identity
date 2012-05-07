@@ -423,6 +423,71 @@
 	<section xml:id="Ratelimiting_Calls">
 		<title>Rate Limits</title>
 		<para>The operations described in this section allow service developers to manage rate limits.</para>
+		<para>
+			The rate limiting logic is based on a fixed-size bucket algorithm.
+		</para>
+		<para> To configure rate limiting, set three parameters in the auth
+			props file. Optionally, a fourth parameter can be used to
+			exclude (whitelist) some requests so that no rate limits
+			apply to them. 
+			<table rules="all">
+				<caption>Rate Limiting Configuration
+					Parameters</caption>
+				<col width="30%"/>
+				<col width="18%"/>
+				<col width="40%"/>
+				<col width="12%"/>
+				<thead>
+					<tr>
+						<th>Parameter</th>
+						<th>Type</th>
+						<th>Description</th>
+						<th>Default Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>rate.limit.interval.duration</code></td>
+						<td>Integer</td>
+						<td>Size (in seconds) of the time interval
+							within which to limit the number of
+							requests to the maximum defined by
+								<code>rate.limit.threshold</code>.</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td><code>rate.limit.threshold</code></td>
+						<td>Integer</td>
+						<td>Number of requests allowed within the
+							interval defined by
+								<code>rate.limit.interval.duration</code>.</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td><code>rate.limit.enabled</code></td>
+						<td>Boolean</td>
+						<td>Enable (1) or disable (0) all rate
+							limiting functionality.</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td><code>rate.limit.whitelist</code></td>
+						<td>Comma-delimited list</td>
+						<td>List of identifiers for which the rate
+							should not be limited</td>
+						<td><emphasis role="italic"
+							>none</emphasis></td>
+					</tr>
+				</tbody>
+			</table></para>
+		<para> For example, if
+				<code>rate.limit.interval.duration=true</code>,
+				<code>rate.limit.threshold=10</code>, and
+				<code>rate.limit.interval.duration=60</code>, then the
+			service call rate will be limited to 10 requests every 60
+			seconds. Users who issue more than 10 requests per 60
+			seconds must wait until their bucket is cleared.
+		</para>
 		<figure>
 		<title>
 			After hitting the Auth endpoint, a request hits the rate limiting filter; if the filter determines that rate limits apply, the rate limit module is called.
@@ -436,6 +501,23 @@
 				<imagedata fileref="../figures/auth-ratelimiting-flow.png" format="PNG" align="center" />
 			</imageobject>
 		</mediaobject>
+		</figure>
+		<para>
+			Request keys are at the core of the rate limiting functionality. For each request for a resource, 
+			these unique request identifiers relate the request to the user who submitted the request. The key-generation algorithm is illustrated below:
+		</para>
+		<figure>
+			<title> A request key for rate limiting can be generated from an IP
+				address, a header value, or a valid token. </title>
+			<!-- this is Alex Silva's drawing, 
+				from http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting 
+			    PNG fits PDF width at 85%, 701x431
+			-->
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="../figures/auth-ratelimiting-keygeneration-20.png" format="PNG" align="center" />
+				</imageobject>
+			</mediaobject>
 		</figure>
 		<!--- this section comes from 1 WADL: RAX-RATELIMIT-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
