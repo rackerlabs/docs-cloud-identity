@@ -1,6 +1,6 @@
 # This README relates only to the WADLS in documentation for Auth 2.0 (aka Cloud Identity) #
 
-**identity-admin.wadl** describes the core API. Everything else here describes an extension to the core API and is a frozen local copy of a WADL that is maintained alive somewhere else. 
+**identity-admin.wadl** describes the core API. **RAX-RATELIMIT.wadl** describes rate-limiting functions. Everything else here describes an extension to the core API and is a frozen local copy of a WADL that is maintained alive somewhere else. 
 
 For links to the extensions' live GitHub repos, visit http://red.rackspace.com/display/RED/Source+control+repositories#Sourcecontrolrepositories-Identity.
 

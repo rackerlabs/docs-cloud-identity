@@ -121,7 +121,7 @@
 							<para>
 								Customers who hold 
 								the admin role 
-								can update users who holds the user role (<code>identity:default</code>) or the admin role (<code>identity:user-admin</code>) for the same tenant.
+								can update users who hold the user role (<code>identity:default</code>) or the admin role (<code>identity:user-admin</code>) for the same tenant.
 							</para>
 						</note>
 					</wadl:doc>
