@@ -55,7 +55,9 @@
         </resource>
     </resources>
     
-    <method name="GET" id="getRateLimit">
+    <!-- Methods -->
+    
+    <method id="getRateLimit" name="GET" >
         <doc xml:lang="EN" title="Get User Rate Limits">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get rate limits for a user.</p>
         </doc>
@@ -69,7 +71,8 @@
         &commonFaults;
         &getFaults;
     </method>
-    <method name="POST" id="updateRateLimit">
+    
+    <method id="updateRateLimit" name="POST">
         <doc xml:lang="EN" title="Update User Rate Limits">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update rate limits for a user.</p>
         </doc>
@@ -85,21 +88,24 @@
         &commonFaults;
         &postPutFaults;
     </method>
-    <method name="DELETE" id="deleteWhitelistEntry">
+    
+    <method id="deleteWhitelistEntry" name="DELETE">
         <doc xml:lang="EN" title="Delete Entry from Rate Limit Whitelist">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Remove specified entry from the whitelist.</p>
+        </doc>
+        <doc>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                If an entry in the whitelist matches any of the comma-delimited values specified for <code>keys</code>, 
+                that entry will be removed from the whitelist.
+                For example, <code>/rtadm?keys=10.5.55.108,Alex</code> requests removal from the whitelist 
+                of all entries associated with IP address <code>10.5.55.108</code> or userID <code>Alex</code>.
+            </p>
         </doc>
         <request>
             <param name="keys" style="query" required="true" type="xsd:string">
                 <doc xml:lang="EN">
                     <p xmlns="http://www.w3.org/1999/xhtml">
                         Identify which entry to remove.
-                    </p>
-                    <p xmlns="http://www.w3.org/1999/xhtml">
-                        If an entry in the whitelist matches the value of <code>key</code>, 
-                        that entry will be removed from the whitelist.
-                        For example, <code>/rtadm?keys=10.5.55.108,Alex</code> requests removal from the whitelist 
-                        of all entries associated with IP address <code>10.5.55.108</code>or userID <code>Alex</code>.
                     </p>
                 </doc>
             </param>
@@ -108,7 +114,8 @@
         </response>
         &commonFaults;
     </method>
-    <method name="POST" id="addWhitelistEntry">
+    
+    <method id="addWhitelistEntry" name="POST">
         <doc xml:lang="EN" title="Add Entry to Rate Limit Whitelist">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Append one entry to the whitelist.</p>
         </doc>
@@ -129,7 +136,8 @@
         &commonFaults;
         &postPutFaults;
     </method>
-    <method name="PUT" id="replaceWhitelist">
+    
+    <method id="replaceWhitelist" name="PUT">
         <doc xml:lang="EN" title="Replace Rate Limit Whitelist">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Replace the entire whitelist.</p>
         </doc>
@@ -145,4 +153,5 @@
         &commonFaults;
         &postPutFaults;
     </method>
+    
 </application> 
