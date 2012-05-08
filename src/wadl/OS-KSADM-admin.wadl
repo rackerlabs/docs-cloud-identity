@@ -378,6 +378,16 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/user.json"/>
                 </doc>
             </representation>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN" title="Update User Password Request: XML">
+                    <xsdxt:code href="../common/samples/userupdatepw.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN" title="Update User Password Request: JSON">
+                    <xsdxt:code href="../common/samples/userupdatepw.json"/>
+                </doc>
+            </representation>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="identity:user">

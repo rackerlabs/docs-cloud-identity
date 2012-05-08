@@ -1,0 +1,4 @@
+<user username="abc123"  
+    ns1:password="ungu355ab13" 
+    xmlns:ns1="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+    xmlns:ns2="http://docs.openstack.org/identity/api/v2.0" />
