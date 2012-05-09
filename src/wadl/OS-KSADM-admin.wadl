@@ -13,6 +13,7 @@
 ]>
 
 <application xmlns="http://wadl.dev.java.net/2009/02"
+    xmlns:wadl="http://wadl.dev.java.net/2009/02"
 xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
 xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
 xmlns:capi="http://docs.openstack.org/common/api/v1.0"
@@ -501,15 +502,19 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
-        <doc xml:lang="EN" title="Add Credential to User">
+        <wadl:doc xml:lang="EN" title="Add Credential to User" xmlns="http://docbook.org/ns/docbook">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a credential to a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 A password is a credential; you can add a password to a user with this call.
                 To add a credential to a user, specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the user's name but not the user's ID, use 
+                <!-- <link linkend="GET_getUserByName_v2.0_users_">Get User by Name</link> -->
+                <!-- <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/> -->
+                <xref linkend="GET_getUserByName_v2.0_users_" xmlns="http://docbook.org/ns/docbook"></xref>  
+                to 
                 obtain complete identifying information about the user.
             </p>
-        </doc>
+        </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="identity:credential">
                 <doc xml:lang="EN">
