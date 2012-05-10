@@ -508,11 +508,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 A password is a credential; you can add a password to a user with this call.
                 To add a credential to a user, specify the user's ID in the request.
                 If you know the user's name but not the user's ID, use 
-                <!-- <link linkend="GET_getUserByName_v2.0_users_">Get User by Name</link> -->
-                <!-- <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/> -->
-                <xref linkend="GET_getUserByName_v2.0_users_" xmlns="http://docbook.org/ns/docbook"></xref>  
-                to 
-                obtain complete identifying information about the user.
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                to obtain complete identifying information about the user.
             </p>
         </wadl:doc>
         <request>
