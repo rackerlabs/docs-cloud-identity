@@ -364,11 +364,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     </para>
                     <para>
                         "Update User" acts upon the user specified by <code>userId</code>. 
-                        Before attempting to update a user, use "Get User by ID" to obtain the username, email account, and status associated with <code>userId</code>. 
+                        Before attempting to update a user, use 
+                        <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" /> 
+                        to obtain the username, email account, and status associated with <code>userId</code>. 
                         That's Step 1. 
                         Check the returned information carefully; 
                         if you are certain that it describes the user you intend to change, 
-                        proceed with Step 2, updating the user you just read about.
+                        proceed with Step 2, updating the user you just examined.
                     </para>
                 </warning>
             </wadl:doc>
@@ -438,11 +440,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     </para>
                     <para>
                         "Delete User" acts upon the user specified by <code>userId</code>. 
-                        Before attempting to update a user, use "Get User by ID" to obtain the username, email account, and status associated with <code>userId</code>. 
+                        Before attempting to update a user, use 
+                        <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />  
+                        to obtain the username, email account, and status associated with <code>userId</code>. 
                         That's Step 1. 
                         Check the returned information carefully; 
                         if you are certain that it describes the user you intend to change, 
-                        proceed with Step 2, deleting the user you just read about.
+                        proceed with Step 2, deleting the user you just examined.
                     </para>
                 </warning>
             </wadl:doc>

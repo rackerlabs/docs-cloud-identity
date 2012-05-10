@@ -81,6 +81,13 @@
 								along with additional details on sub-users' inheritance of groups from parents. 
 							</para>
 						</listitem>
+						<listitem>
+							<para> 
+								Added suggestion in 
+								<xref linkend="Additional_Resources-d1e130"/>
+								to check wiki pages for additional operational information. 
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>

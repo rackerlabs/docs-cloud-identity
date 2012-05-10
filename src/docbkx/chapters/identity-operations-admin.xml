@@ -77,11 +77,13 @@
 			</para>
 			<para>
 				For example, both "Update User" and "Delete User" act upon the user specified by <code>userId</code>. 
-				Before attempting to update or delete a user, use "Get User by ID" to obtain the username, email account, and status associated with <code>userId</code>. 
+				Before attempting to update or delete a user, use 
+				<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" /> 
+				to obtain the username, email account, and status associated with <code>userId</code>. 
 				That's Step 1. 
 				Check the returned information carefully; 
 				if you are certain that it describes the user you intend to change, 
-				proceed with Step 2, updating or deleting the user you just read about.
+				proceed with Step 2, updating or deleting the user you just examined.
 			</para>
 		</warning>
 		<note>

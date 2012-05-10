@@ -130,6 +130,20 @@
             at <link xlink:href="http://keystone.openstack.org/">
                 http://keystone.openstack.org/</link>.
         </para>
+        <tip>
+            <para>
+                <emphasis role="bold">For Rackspace-internal use
+                    only:</emphasis> Check the Cloud Authentication and Identity wiki pages, beginning at <link
+                    xlink:href="http://red.rackspace.com/display/auth/"
+                    >http://red.rackspace.com/display/auth/</link>,
+                for very current operational information. This wiki
+                also contains some step-by-step guidance on
+                commonly-performed procedures. For example, the <link
+                    xlink:href="http://red.rackspace.com/display/auth/Create+New+Admin+Users+in+Auth"
+                    >Create New Admin Users in Auth</link> page
+                outlines creation of administrative accounts for Auth
+                1.0, 1.1, and 2.0.</para>
+        </tip>
     </section>
     <xi:include href="identity-releasenotes-v20-admin.xml"/>
 </chapter>
