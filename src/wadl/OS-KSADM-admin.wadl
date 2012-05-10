@@ -354,6 +354,24 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="POST" id="updateUser">
         <doc xml:lang="EN" title="Update User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</p>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <warning>
+                    <para>
+                        Before making any change to a user, 
+                        you should confirm that you are changing the user you intend to change. 
+                        You can do this by treating every change as a two-step operation: 
+                        first, check the target of the change; second, make the change.  
+                    </para>
+                    <para>
+                        "Update User" acts upon the user specified by <code>userId</code>. 
+                        Before attempting to update a user, use "Get User by ID" to obtain the username, email account, and status associated with <code>userId</code>. 
+                        That's Step 1. 
+                        Check the returned information carefully; 
+                        if you are certain that it describes the user you intend to change, 
+                        proceed with Step 2, updating the user you just read about.
+                    </para>
+                </warning>
+            </wadl:doc>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 To update a user, specify the user's identifying information 
                 (<code>email</code>, <code>username</code>, <code>id</code>, and status) values, 
@@ -410,6 +428,24 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="DELETE" id="deleteUser">
         <doc xml:lang="EN" title="Delete User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a user.</p>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <warning>
+                    <para>
+                        Before making any change to a user, 
+                        you should confirm that you are changing the user you intend to change. 
+                        You can do this by treating every change as a two-step operation: 
+                        first, check the target of the change; second, make the change.  
+                    </para>
+                    <para>
+                        "Delete User" acts upon the user specified by <code>userId</code>. 
+                        Before attempting to update a user, use "Get User by ID" to obtain the username, email account, and status associated with <code>userId</code>. 
+                        That's Step 1. 
+                        Check the returned information carefully; 
+                        if you are certain that it describes the user you intend to change, 
+                        proceed with Step 2, deleting the user you just read about.
+                    </para>
+                </warning>
+            </wadl:doc>
             <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, 
                specify the user's ID in the request.
                If you know the user's name but not the user's ID, use 
