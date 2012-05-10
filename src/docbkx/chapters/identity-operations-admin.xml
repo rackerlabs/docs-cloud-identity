@@ -65,8 +65,8 @@
 		<para>The operations described in this section allow service developers to manage users.</para>
 		<para>
 			When these requests are issued by a sub-user, they act only upon that sub-user. You can learn more about sub-users, also called sub-accounts,
-			in the 
-			<link linkend="Sub-User-d1e20">Glossary</link>.
+			at 
+			<xref linkend="Sub-Users-d1e910"/>.
 		</para>
 		<warning>
 			<para>

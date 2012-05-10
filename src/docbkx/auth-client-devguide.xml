@@ -50,16 +50,29 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added information about rate
-								limiting <emphasis role="italic"
-									>(details coming)</emphasis>.
+							<para> 
+								Added details to <xref
+									linkend="Namespaces-d1e910"/>,
+								documenting new standards and
+								defaults. 
 							</para>
 						</listitem>
 						<listitem>
-							<para> Added details to <xref
-								linkend="Namespaces-d1e910"/>,
-								documenting new standards and
-								defaults. </para>
+							<para> 
+								For "Update User" and "Delete User" operations, 
+								added suggestion to use 
+								<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />
+								to confirm that the 
+								intended user will be changed. 
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Added 
+								<xref linkend="Sub-Users-d1e910"/>; 
+								moved most of the details from the Sub-User glossary item into that section, 
+								along with additional details on sub-users' inheritance of groups from parents. 
+							</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

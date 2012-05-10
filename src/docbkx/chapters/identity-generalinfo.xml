@@ -1245,6 +1245,55 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			circumstances, other prefixes could be associated with
 			those namespaces. </para>
 	</section>
+	<section xml:id="Sub-Users-d1e910">
+		<title>Sub-Users</title>
+		<para> 
+			When an account is created, it is associated with one user. That user holds the <code>identity:user-admin</code> role,
+			giving it full administrative privileges to manage the account. Exactly one administrative user exists for each account.
+		</para>
+		<para>
+			The account's administrative user can create and manage sub-users, also called sub-accounts. 
+			A sub-user is a child of the administrative user; a sub-user holds the <code>identity:default</code> role. 
+			Each sub-user shares its parent's tenant information, group memberships, and endpoints. 
+		</para>
+		<para>
+			Each sub-user can act only upon itself. 
+			For example, a sub-user can change its own contact information and password, but it cannot make those changes for any other user.
+			A sub-user can request a list of all users, but the sub-user will be the only user included in that list. 
+		</para>
+		<para>
+			All users, including sub-users, can authenticate with a combination of their username and password.
+			Only administrative users can authenticate with a combination of their username and API key. 
+			Only administrative users can authenticate with a combination of their tenant ID and API key. 
+		</para>
+		<para>
+			A sub-user's group memberships matches the group memberships of its parent (the account's administrative user, holding the <code>identity:user-admin</code> role.
+			<itemizedlist>
+				<listitem>
+					<para>
+						When a new sub-user is created, it inherits its parent's groups. 
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						When a parent is assigned to a new group, its sub-users inherit that group. 
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						When a parent is removed from a group, its sub-users are removed, too. 
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						When a service attempts to assign a sub-user to a group, that attempt fails. A 400 error is returned, with the following message:
+						"Cannot add sub-users directly to a group, must assign their parent user." 
+						To assign a sub-user to a group, assign its parent to that group; the sub-user will inherit the new group assignment from its parent.
+					</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+	</section>
 	<section xml:id="Faults-d1e908">
 	  <title>Faults</title>
 	  <para>When an error occurs, the system will return an HTTP error

@@ -150,25 +150,15 @@
         <glossentry xml:id="Sub-User-d1e20">
             <glossterm><emphasis role="bold">Sub-User</emphasis></glossterm>
             <glossdef>
-                <para> 
-                    When an account is created, it is associated with one user. That user holds the <code>identity:user-admin</code> role,
-                    giving it full administrative privileges to manage the account.
-                </para>
-                <para>
-                    The account's administrative user can create and manage sub-users, also called sub-accounts. 
-                    A sub-user is a child of the administrative user; a sub-user holds the <code>identity:default</code> role. 
-                    Each sub-user shares its parent's tenant information and endpoints. 
-                </para>
-                <para>
-                    Each sub-user can act only upon itself. 
-                    For example, a sub-user can change its own contact information and password, but it cannot make those changes for any other user.
-                    A sub-user can request a list of all users, but the sub-user will be the only user included in that list. 
-                </para>
-                <para>
-                    All users, including sub-users, can authenticate with a combination of their username and password.
-                    Only administrative users can authenticate with a combination of their username and API key. 
-                    Only administrative users can authenticate with a combination of their tenant ID and API key. 
-                </para>
+                <para> A sub-user, also called a sub-account, is a
+                child of the account's fully-privileged administrative
+                user. Each account has exactly one administrative
+                user, holding the <code>identity:user-admin</code>
+                role; optionally, one or multiple sub-users can be
+                created, each holding the
+                    <code>identity:default</code> role. Each sub-user
+                shares its parent's tenant information, group
+                memberships, and endpoints. </para>
             </glossdef>    
         </glossentry>
         <glossentry xml:id="Tenant-d1e11">
