@@ -617,12 +617,6 @@
                 This call returns a list of roles for a specified user within a specified tenant. 
                 The list of roles excludes any global roles associated with this user.
             </p>
-            <!-- these wannabe-links are generated as plain text; leaving them here to remind me to follow up on this intention
-                 (turned from <db:para> to <p> to try link methods that <db:para> says are invalid: <p> doesn't object, just doesn't do it.
-                 I think they could work as full URLs, such as 
-                 <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getUserByName__">"Get User by Name"</a>,
-                 but that means I can code only for -client- or -admin-, and can only see the result in production, 
-                 rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Users and tenants are specified by their IDs. 
                 If you know the user's name but not the user's ID, use                  
@@ -630,9 +624,9 @@
                  to                   
                 obtain complete identifying information about the user.
                 If you know the tenant's name but not the tenant's ID, use                  
-                <xref linkend="GET_getTenantByName__" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                <xref linkend="GET_getTenantByName_v2.0_tenants_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
-                obtain complete identifying information about the user.
+                obtain complete identifying information about the tenant.
             </p>
         </doc>
         <response status="200 203">

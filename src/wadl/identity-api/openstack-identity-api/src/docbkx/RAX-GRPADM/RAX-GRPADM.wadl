@@ -198,12 +198,6 @@
             <db:para role="shortdesc">
                 Update a group.
             </db:para>
-            <!-- this wannabe-link is generated as plain text; leaving it here to remind me to follow up on this intention
-                 (turned from <db:para> to <p> to try link methods that <db:para> says are invalid: <p> doesn't object, just doesn't do it.
-                 I think it could work as full URLs, such as 
-                 <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getUserByName__">"Get User by Name"</a>,
-                 but that means I can code only for -client- or -admin-, and can only see the result in production, 
-                 rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Use this call to update the description or name of a specified group.
                 A group is specified by its ID. 
@@ -249,12 +243,6 @@
             <db:para role="shortdesc">
                 Delete a group.
             </db:para>
-            <!-- this wannabe-link is generated as plain text; leaving it here to remind me to follow up on this intention
-                 (turned from <db:para> to <p> to try link methods that <db:para> says are invalid: <p> doesn't object, just doesn't do it.
-                 I think it could work as full URLs, such as 
-                 <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getUserByName__">"Get User by Name"</a>,
-                 but that means I can code only for -client- or -admin-, and can only see the result in production, 
-                 rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
                 You must delete all the members of a group before deleting the group itself.
                 A group is specified by its ID. 
@@ -318,12 +306,6 @@
             <db:para>
                 This call adds a specified user to a specified group. 
             </db:para>
-            <!-- these wannabe-links are generated as plain text; leaving them here to remind me to follow up on this intention
-                 (turned from <db:para> to <p> to try link methods that <db:para> says are invalid: <p> doesn't object, just doesn't do it.
-                 I think they could work as full URLs, such as 
-                 <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getUserByName__">"Get User by Name"</a>,
-                 but that means I can code only for -client- or -admin-, and can only see the result in production, 
-                 rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
                     Users and groups are specified by their IDs. 
                     If you know the user's name but not the user's ID, use                  
