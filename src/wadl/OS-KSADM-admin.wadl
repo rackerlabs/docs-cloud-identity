@@ -412,7 +412,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, 
                specify the user's ID in the request.
-               If you know the user's name but not the user's ID, use "Get User by Name" to 
+               If you know the user's name but not the user's ID, use 
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
+               to 
                obtain complete identifying information about the user.
             </p>
         </doc>
@@ -472,8 +474,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml">
                 This call adds global role to a user.
                 To add a role to a user, specify the role's ID and the user's ID in the request.
-                If you know the role's name but not the role's ID, use "List Roles" to obtain detailed information about available roles.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the role's name but not the role's ID, use 
+                <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref> 
+                to 
+                obtain detailed information about available roles.
+                If you know the user's name but not the user's ID, use 
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
+                to  
                 obtain complete identifying information about the user.
             </p>
         </doc>
@@ -489,8 +496,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml">
                 This call deletes a global role from a user.
                 To delete a role from a user, specify the role's ID and the user's ID in the request.
-                If you know the role's name but not the role's ID, use "List Roles" to obtain detailed information about available roles.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the role's name but not the role's ID, use 
+                <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref> 
+                to 
+                obtain detailed information about available roles.
+                If you know the user's name but not the user's ID, use 
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
+                to 
                 obtain complete identifying information about the user.
             </p>
         </doc>
@@ -510,7 +522,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 If you know the user's name but not the user's ID, use 
                 <!-- <link linkend="GET_getUserByName_v2.0_users_">Get User by Name</link> -->
                 <!-- <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/> -->
-                <xref linkend="GET_getUserByName_v2.0_users_" xmlns="http://docbook.org/ns/docbook"></xref>  
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
                 to 
                 obtain complete identifying information about the user.
             </p>
@@ -551,7 +563,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 A user's password cannot be obtained by this or any other means. 
                 To list a user's non-password credentials for all authentication methods available to that user, 
                 specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the user's name but not the user's ID, use 
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
+                to  
                 obtain complete identifying information about the user.
                 </p> 
             <p xmlns="http://www.w3.org/1999/xhtml">

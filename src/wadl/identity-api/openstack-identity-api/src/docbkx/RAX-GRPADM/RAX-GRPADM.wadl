@@ -206,9 +206,11 @@
                  rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Use this call to update the description or name of a specified group.
-                A group is specified by its ID; if you know the group's name but do not know its ID, use 
-                "<link linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls">Get Groups</link>"
-                to obtain detailed information about all groups.
+                A group is specified by its ID. 
+                If you know the group's name but not the group's ID, use                  
+                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
+                obtain complete identifying information about all groups.
             </p>
         </doc>
         <request>
@@ -255,9 +257,11 @@
                  rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
                 You must delete all the members of a group before deleting the group itself.
-                A group is specified by its ID; if you know the group's name but do not know its ID, use 
-                "<link linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls">Get Groups</link>"
-                to obtain detailed information about all groups.
+                A group is specified by its ID. 
+                If you know the group's name but not the group's ID, use                  
+                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
+                obtain complete identifying information about all groups.
             </p>
         </doc>
         <response status="204"/>
@@ -272,9 +276,11 @@
             </db:para>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 This call lists all the users belonging to the specified group.
-                A group is specified by its ID; if you know the group's name but do not know its ID, use 
-                "<link linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls">Get Groups</link>"
-                to obtain detailed information about all groups.
+                A group is specified by its ID. 
+                If you know the group's name but not the group's ID, use                  
+                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
+                obtain complete identifying information about all groups.
             </p>
         </doc>
         <request>
@@ -319,13 +325,15 @@
                  but that means I can code only for -client- or -admin-, and can only see the result in production, 
                  rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
-                    Users and groups are specified by their IDs: 
-                    if you know the user's name but do not know the user's ID, use 
-                    "<link linkend="GET_getUserByName__">Get User by Name</link>"
-                    to obtain complete identifying information about the user;
-                    if you know the group's name but do not know its ID, use 
-                    "<link linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls">Get Groups</link>"
-                    to obtain detailed information about all groups.
+                    Users and groups are specified by their IDs. 
+                    If you know the user's name but not the user's ID, use                  
+                    <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                     to                   
+                    obtain complete identifying information about the user.
+                    If you know the group's name but not the group's ID, use                  
+                    <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                     to                   
+                    obtain complete identifying information about all groups.
              </p> 
         </doc>
         <response status="204"/>
@@ -340,10 +348,15 @@
             </db:para>
             <db:para>
                 This call deletes a specified user from a specified group. 
-                A user is specified by its ID; if you know the user's name but not the user's ID, use "Get User by Name" to 
+                Users and groups are specified by their IDs. 
+                If you know the user's name but not the user's ID, use                  
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
                 obtain complete identifying information about the user.
-                A group is specified by its ID; if you know the group's name but do not know its ID, use 
-                "Get Groups" to obtain detailed information about all groups.
+                If you know the group's name but not the group's ID, use                  
+                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
+                obtain complete identifying information about all groups.
             </db:para>  
         </doc>
         <response status="204"/>

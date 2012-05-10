@@ -624,13 +624,15 @@
                  but that means I can code only for -client- or -admin-, and can only see the result in production, 
                  rather than moving within whatever book is generated and seeing it in my local or /drafts/ tests -->
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Users and tenants are specified by their IDs: 
-                if you know the user's name but do not know the user's ID, use 
-                "<link linkend="GET_getUserByName__">Get User by Name</link>"
-                to obtain complete identifying information about the user;
-                if you know the tenant's name but do not know the tenant's ID, use 
-                "<link linkend="GET_getTenantByName__">Get Tenant by Name</link>"
-                to obtain detailed information about the tenant.
+                Users and tenants are specified by their IDs. 
+                If you know the user's name but not the user's ID, use                  
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
+                obtain complete identifying information about the user.
+                If you know the tenant's name but not the tenant's ID, use                  
+                <xref linkend="GET_getTenantByName__" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
+                obtain complete identifying information about the user.
             </p>
         </doc>
         <response status="200 203">

@@ -163,7 +163,9 @@
             <p xmlns="http://www.w3.org/1999/xhtml">
                 An API key is a credential; you can update a user's API key with this call.
                 To add a credential to a user, specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the user's name but not the user's ID, use                  
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
                 obtain complete identifying information about the user.
             </p>
         </doc>
@@ -204,7 +206,9 @@
             <p xmlns="http://www.w3.org/1999/xhtml">
                 An API key is a credential; you can delete a user's API key with this call.
                 To delete a credential from a user, specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the user's name but not the user's ID, use                  
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to                   
                 obtain complete identifying information about the user.
             </p>
         </doc>
