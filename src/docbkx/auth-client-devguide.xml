@@ -53,7 +53,7 @@
 							<para> 
 								Added details to <xref
 									linkend="Namespaces-d1e910"/>,
-								documenting new standards and
+								describing new standards and
 								defaults. 
 							</para>
 						</listitem>
@@ -72,6 +72,13 @@
 								<xref linkend="Sub-Users-d1e910"/>; 
 								moved most of the details from the Sub-User glossary item into that section, 
 								along with additional details on sub-users' inheritance of groups from parents. 
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Added 
+								<xref linkend="Limits-d1e909"/>,
+								introducing rate limiting. 
 							</para>
 						</listitem>
 					</itemizedlist>

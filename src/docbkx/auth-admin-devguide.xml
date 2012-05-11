@@ -52,15 +52,9 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> 
-								Added 
-								<xref linkend="Ratelimiting_Calls"/>. 
-							</para>
-						</listitem>
-						<listitem>
-							<para> 
 								Added details to <xref
 								linkend="Namespaces-d1e910"/>,
-								documenting new standards and
+								describing new standards and
 								defaults. 
 							</para>
 						</listitem>
@@ -86,6 +80,16 @@
 								Added suggestion in 
 								<xref linkend="Additional_Resources-d1e130"/>
 								to check wiki pages for additional operational information. 
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Added 
+								<xref linkend="Limits-d1e909"/>,
+								introducing rate limiting,
+								and
+								<xref linkend="Ratelimiting_Calls"/>,
+								describing rate limiting operations. 
 							</para>
 						</listitem>
 					</itemizedlist>
