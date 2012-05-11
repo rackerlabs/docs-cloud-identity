@@ -69,7 +69,7 @@
                     password.</emphasis></para>
                     <para>
                         <literallayout class="monospaced">curl -X POST https://identity.api.rackspacecloud.com/v2.0/tokens -d
-'{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}'-H "Content-type: application/json"</literallayout>
+'{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' -H "Content-type: application/json"</literallayout>
                     </para>
                     <para> Successful authentication returns a token
                     which you can use as evidence that your service's

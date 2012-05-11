@@ -81,6 +81,12 @@
 								introducing rate limiting. 
 							</para>
 						</listitem>
+						<listitem>
+							<para> 
+								Corrected malformed cURL example in
+								<xref linkend="QuickStart-000"/>. 
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
