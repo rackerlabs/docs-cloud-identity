@@ -84,7 +84,8 @@
 						<listitem>
 							<para> 
 								Corrected malformed cURL example in
-								<xref linkend="QuickStart-000"/>. 
+								<xref linkend="QuickStart-000"/>. In the same section,
+								added an introduction to API extensions.
 							</para>
 						</listitem>
 					</itemizedlist>

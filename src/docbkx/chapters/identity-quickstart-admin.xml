@@ -103,4 +103,16 @@
             <xref linkend="Identity-Service-Concepts-e1362"/>
             and the annotated request and response in 
             <xref linkend="Sample_Request_Response-d1e64"/>.</para>
+    <para>
+        Some of the operations described in this API Developer Guide
+        are possible because we have implemented extensions to the core Identity API. 
+        Extensions are particularly relevant to operations on 
+        <link linkend="Group_Calls">Groups</link>,
+        <link linkend="Impersonation_Calls">Impersonations</link>,
+        <link linkend="Role_Calls">Roles</link>, 
+        <link linkend="Secret_Calls">Secret Questions and Answers</link>, 
+        <link linkend="Token_Calls">Tokens</link>, 
+        and
+        <link linkend="User_Calls">Users</link>.
+    </para>
     </section>
