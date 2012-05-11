@@ -8,10 +8,10 @@
 		tokens and service endpoints. The following calls are core Keystone Service APIs in version
 		2.0:</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="identity-admin.wadl#tokens" >
+			<wadl:resource href="../../../../identity-admin.wadl#tokens" >
 				<wadl:method href="authenticate"/>
 			</wadl:resource>
-			<wadl:resource href="identity-admin.wadl#tenants" >
+			<wadl:resource href="../../../../identity-admin.wadl#tenants" >
 				<wadl:method href="listTenants"/>
 			</wadl:resource>
 		</wadl:resources>
