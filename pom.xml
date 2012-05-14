@@ -229,7 +229,11 @@
                         <phase>generate-sources</phase>
 						<configuration>
 			  				<highlightSource>false</highlightSource>
-			  				<includes>auth-client-devguide.xml</includes>						  
+			  				<includes>auth-client-devguide.xml</includes>
+							<!-- if the condition attribute is present in the source, it must have client in it
+								 (<para condition="client">something only for the Client book</para>)
+                                 or the element is stripped -->
+							<profileCondition>client</profileCondition>
 						</configuration>
                     </execution>
                     <execution>
@@ -242,37 +246,14 @@
 						<configuration>
 			  				<highlightSource>false</highlightSource>
 			  				<includes>auth-admin-devguide.xml</includes>			
-			  				<security>internal</security>
+							<!-- if the condition attribute is present in the source, it must have admin in it
+								 (<para condition="admin">something only for the Admin book</para>)
+                                 or the element is stripped -->
+							<profileCondition>admin</profileCondition>
+							<security>internal</security>
 						</configuration>
                     </execution>
                 	<execution>
-                    <!-- 
-                    	SKIP BUILD FOR EXTENSIONS: bad include here is causing all HTML builds to fail 
-                         PDF for RAX-KSKEY-admin-devguide 
-                	<id>g1-pdf-RAX-KSKEY</id>
-                	<goals>
-                		<goal>generate-pdf</goal>
-                	</goals>
-                	<phase>generate-sources</phase>
-                	<configuration>
-                		<highlightSource>false</highlightSource>
-                		<includes>RAX-KSKEY-admin-devguide.xml</includes>			
-                	</configuration>
-                	</execution>
-                	<execution>
-                	  PDF for RAX-KSGRP-admin-devguide 
-                	<id>g1-pdf-RAX-KSGRP</id>
-                	<goals>
-                		<goal>generate-pdf</goal>
-                	</goals>
-                	<phase>generate-sources</phase>
-                	<configuration>
-                		<highlightSource>false</highlightSource>
-                		<includes>RAX-KSGRP-admin-devguide.xml</includes>			
-                	</configuration>
-                	</execution>
-                    <execution>
-                    -->
                     <!-- HTML for auth-client-devguide -->
 		      		<id>g2-html-client</id>		      
 		      			<goals>
@@ -281,6 +262,10 @@
 		      			<phase>generate-sources</phase>
 		      			<configuration>
 							<includes>auth-client-devguide.xml</includes>
+		      				<!-- if the condition attribute is present in the source, it must have client in it
+								 (<para condition="client">something only for the Client book</para>)
+                                 or the element is stripped -->
+		      				<profileCondition>client</profileCondition>
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>1</enableDisqus>
 							<enableGoogleAnalytics>1</enableGoogleAnalytics>
@@ -305,11 +290,15 @@
 		      		<phase>generate-sources</phase>
 		      		<configuration>
 						<includes>auth-admin-devguide.xml</includes>
+		      			<!-- if the condition attribute is present in the source, it must have admin in it
+								 (<para condition="admin">something only for the Admin book</para>)
+                                 or the element is stripped -->
+		      			<profileCondition>admin</profileCondition>
+		      			<security>internal</security>
 						<!-- These parameters only apply to webhelp -->
 						<enableDisqus>intranet</enableDisqus>
 						<enableGoogleAnalytics>0</enableGoogleAnalytics>
 						<feedbackEmail>rose.coste@rackspace.com</feedbackEmail>
-						<security>internal</security>
 						<postProcess>
 			  				<!-- FOR -ADMIN-DEVGUIDE: Copies the figures to the correct location for webhelp --> 	
 			  					<copy todir="${basedir}/target/docbkx/webhelp/auth-admin-devguide/figures">

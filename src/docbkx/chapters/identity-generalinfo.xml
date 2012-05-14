@@ -1314,6 +1314,12 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			The rate limit defaults are likely to change as we gauge realistic levels.  
 			If the default limits change, we'll update this document to reflect the current value.
 		</para>
+		<tip condition="admin">
+			<para>
+				You can read about rate limiting operations in 
+				<xref linkend="Ratelimiting_Calls"></xref>.
+			</para>
+		</tip>
 	</section>
 	<section xml:id="Faults-d1e908">
 	  <title>Faults</title>
