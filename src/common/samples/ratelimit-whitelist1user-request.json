@@ -1,5 +1,5 @@
 {
-    "rateLimitConfigRepresentation": {
+    "rateLimitConfig": {
         "enabled": true,
         "interval": 30,
         "threshold": 5,

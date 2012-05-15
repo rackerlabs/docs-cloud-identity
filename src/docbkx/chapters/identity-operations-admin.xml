@@ -446,17 +446,18 @@
 		<para>
 			The rate limiting logic is based on a fixed-size bucket algorithm.
 		</para>
-		<para> To configure rate limiting, set three parameters in the auth
-			props file. Optionally, a fourth parameter can be used to
-			exclude (whitelist) some requests so that no rate limits
-			apply to them. 
-			<table rules="all">
+		<para> Rate limiting is configured in a database which is accessible
+			via a separate endpoint. To update the rate limiting
+			configuration, change the values of three parameters in
+			the rate limiting database. Optionally, a fourth parameter
+			can be used to exclude (whitelist) some requests so that
+			no rate limits apply to them. <table rules="all">
 				<caption>Rate Limiting Configuration
 					Parameters</caption>
-				<col width="30%"/>
-				<col width="18%"/>
-				<col width="40%"/>
-				<col width="12%"/>
+				<col width="38%"/>
+				<col width="16%"/>
+				<col width="38%"/>
+				<col width="8%"/>
 				<thead>
 					<tr>
 						<th>Parameter</th>
@@ -486,9 +487,9 @@
 					<tr>
 						<td><code>rate.limit.enabled</code></td>
 						<td>Boolean</td>
-						<td>Enable (1) or disable (0) all rate
+						<td>Enable (true) or disable (false) all rate
 							limiting functionality.</td>
-						<td>0</td>
+						<td>false</td>
 					</tr>
 					<tr>
 						<td><code>rate.limit.whitelist</code></td>
@@ -501,7 +502,7 @@
 				</tbody>
 			</table></para>
 		<para> For example, if
-				<code>rate.limit.interval.duration=true</code>,
+				<code>rate.limit.enabled=true</code>,
 				<code>rate.limit.threshold=10</code>, and
 				<code>rate.limit.interval.duration=60</code>, then the
 			service call rate will be limited to 10 requests every 60
@@ -514,7 +515,7 @@
 		</title>
 		<!-- this is Alex Silva's drawing, 
 				from http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting 
-			    PNG fits PDF width at 85%, 507x389
+			    PNG fits PDF width 521x389
 			-->
 		<mediaobject>
 			<imageobject>
@@ -531,14 +532,25 @@
 				address, a header value, or a valid token. </title>
 			<!-- this is Alex Silva's drawing, 
 				from http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting 
-			    PNG fits PDF width at 85%, 701x431
+			    PNG fits PDF width at 521x317
 			-->
 			<mediaobject>
 				<imageobject>
-					<imagedata fileref="../figures/auth-ratelimiting-keygeneration-20.png" format="PNG" align="center" />
+					<imagedata fileref="../figures/auth-ratelimiting-keygeneration-20.png" format="PNG" align="center" scale="85" />
 				</imageobject>
 			</mediaobject>
 		</figure>
+		<note>
+			<para>
+				All API calls are rate limited, including API calls used to update the rate limiting configuration.
+			</para>
+			<para>
+				When a request is denied for rate limits, 30 seconds should pass before the rate limits are reset.
+			</para>
+			<para>
+				When no limit group is specified for a user, that user is assigned to the <code>default</code> group.
+			</para>
+		</note>
 		<!--- this section comes from 1 WADL: RAX-RATELIMIT-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list rate limit for 1 user -->
