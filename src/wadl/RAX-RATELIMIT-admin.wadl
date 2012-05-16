@@ -85,7 +85,7 @@
         <doc>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 The values specified become the current rate limits. 
-                For example, <code>interval</code> is specified as 30, 30 seconds becomes the new interval for the specified user.
+                For example, if <code>interval</code> is specified as 40, 40 seconds becomes the new interval for the specified user.
             </p>
         </doc>
         <request>
