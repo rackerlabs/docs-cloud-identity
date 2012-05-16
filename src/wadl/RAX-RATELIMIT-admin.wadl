@@ -110,18 +110,23 @@
                 The whitelist is the list of exceptions to the rate limit filter.
                 Whitelisting is the process of adding an exception to the rate limit filter.
                 You can add an entry to the whitelist in two ways:
-                <itemizedlist spacing="compact">
-                    <listitem>
-                        <para>
-                            by specifying an IP address
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>
-                            by specifying a <code>username</code> prefixed with <code>user:</code>
-                        </para>
-                    </listitem>
-                </itemizedlist>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                by specifying an IP address
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                by specifying a <code>username</code> prefixed with <code>user:</code>
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>
+                        For example, to whitelist a user named "alex", specify <code>user:alex</code>.
+                    </para>
+                </wadl:doc>
             </p>
         </doc>
         <request>

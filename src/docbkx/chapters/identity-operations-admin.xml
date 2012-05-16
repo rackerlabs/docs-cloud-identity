@@ -511,6 +511,11 @@
 			seconds. Users who issue more than 10 requests per 60
 			seconds must wait until their bucket is cleared.
 		</para>
+		<para>
+			For example, if  
+			<code>rate.limit.whitelist=192.168.1.105,user:alex,192.168.1.243</code>,
+			then two IP addresses and a user named "alex" are whitelisted and therefore not subject to the general rate limits.
+		</para>
 		<figure>
 		<title>
 			After hitting the Auth endpoint, a request hits the rate limiting filter; if the filter determines that rate limits apply, the rate limit module is called.
