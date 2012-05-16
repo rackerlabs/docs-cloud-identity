@@ -103,7 +103,9 @@
             <xref linkend="Identity-Service-Concepts-e1362"/>
             and the annotated request and response in 
             <xref linkend="Sample_Request_Response-d1e64"/>.</para>
-    <para>
+    <para security="writeronly">
+        <!-- added then deleted this preparatory to 2012-05-16 republication; 
+             leaving it hidden while people think -->
         Some of the operations described in this API Developer Guide
         are possible because we have implemented extensions to the core Identity API. 
         Extensions are particularly relevant to operations on 
