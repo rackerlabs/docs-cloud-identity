@@ -451,7 +451,9 @@
 			configuration, change the values of three parameters in
 			the rate limiting database. Optionally, a fourth parameter
 			can be used to exclude (whitelist) some requests so that
-			no rate limits apply to them. <table rules="all">
+			no rate limits apply to them. 
+		</para>
+			<table rules="all">
 				<caption>Rate Limiting Configuration
 					Parameters</caption>
 				<col width="38%"/>
@@ -465,7 +467,7 @@
 						<th>Description</th>
 						<th>Default Value</th>
 					</tr>
-				</thead>
+				</thead>				
 				<tbody>
 					<tr>
 						<td><code>rate.limit.interval.duration</code></td>
@@ -500,7 +502,7 @@
 							>none</emphasis></td>
 					</tr>
 				</tbody>
-			</table></para>
+			</table>
 		<para> For example, if
 				<code>rate.limit.enabled=true</code>,
 				<code>rate.limit.threshold=10</code>, and
@@ -536,7 +538,7 @@
 			-->
 			<mediaobject>
 				<imageobject>
-					<imagedata fileref="../figures/auth-ratelimiting-keygeneration-20.png" format="PNG" align="center" scale="85" />
+					<imagedata fileref="../figures/auth-ratelimiting-keygeneration-20.png" format="PNG" align="center" />
 				</imageobject>
 			</mediaobject>
 		</figure>
@@ -561,13 +563,13 @@
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
 				<wadl:method href="updateRateLimit"/>
 			</wadl:resource>
-			<!-- delete 1 entry from rate limit whitelist -->
-			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
-				<wadl:method href="deleteWhitelistEntry"/>
-			</wadl:resource>
 			<!-- add 1 entry to rate limit whitelist -->
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
 				<wadl:method href="addWhitelistEntry"/>
+			</wadl:resource>
+			<!-- delete 1 entry from rate limit whitelist -->
+			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+				<wadl:method href="deleteWhitelistEntry"/>
 			</wadl:resource>
 			<!-- replace entire rate limit whitelist -->
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">

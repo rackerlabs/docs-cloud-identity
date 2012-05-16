@@ -62,6 +62,11 @@
         <doc xml:lang="EN" title="Get User Rate Limits">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get rate limits for a user.</p>
         </doc>
+        <doc>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                The response body describes the user's current rate limits.
+            </p>
+        </doc>
         <response status="200 203">
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
@@ -77,10 +82,57 @@
         <doc xml:lang="EN" title="Update User Rate Limits">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update rate limits for a user.</p>
         </doc>
+        <doc>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                The values specified become the current rate limits. 
+                For example, <code>interval</code> is specified as 30, 30 seconds becomes the new interval for the specified user.
+            </p>
+        </doc>
         <request>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/ratelimit-update1user-request.json"/>
+                </doc>
+            </representation>
+        </request>
+        <response status="200">
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="addWhitelistEntry" name="POST">
+        <doc xml:lang="EN" title="Add Entry to Rate Limit Whitelist">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Append one entry to the whitelist.</p>
+        </doc>
+        <doc>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                The whitelist is the list of exceptions to the rate limit filter.
+                Whitelisting is the process of adding an exception to the rate limit filter.
+                You can add an entry to the whitelist in two ways:
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            by specifying an IP address
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            by specifying a <code>username</code> prefixed with <code>user:</code>
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/ratelimit-whitelist1user-request.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/ratelimit-whitelist1user-request.json"/>
                 </doc>
             </representation>
         </request>
@@ -116,31 +168,15 @@
         &commonFaults;
     </method>
     
-    <method id="addWhitelistEntry" name="POST">
-        <doc xml:lang="EN" title="Add Entry to Rate Limit Whitelist">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Append one entry to the whitelist.</p>
-        </doc>
-        <request>
-            <representation mediaType="application/xml">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ratelimit-whitelist1user-request.xml"/>
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ratelimit-whitelist1user-request.json"/>
-                </doc>
-            </representation>
-        </request>
-        <response status="200">
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
     <method id="replaceWhitelist" name="PUT">
         <doc xml:lang="EN" title="Replace Rate Limit Whitelist">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Replace the entire whitelist.</p>
+        </doc>
+        <doc>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                The values specified become the entire whitelist. 
+                For example, if IP 10.5.55.108 is specified, it becomes the only IP included in the whitelist.
+            </p>
         </doc>
         <request>
             <representation mediaType="application/xml">
