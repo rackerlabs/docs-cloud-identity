@@ -61,7 +61,7 @@
                     </xsd:documentation>
                 </annotation>
             </enumeration>
-            <enumeration value="image-service">
+            <enumeration value="image">
                 <annotation>
                     <xsd:documentation
                         xml:lang="EN"
@@ -83,9 +83,31 @@
                     </xsd:documentation>
                 </annotation>
             </enumeration>
+            <enumeration value="volume">
+                <annotation>
+                    <xsd:documentation
+                        xml:lang="EN"
+                        xmlns="http://www.w3.org/1999/xhtml">
+                        <p>
+                            The type for a Block-Storage-compatible service.
+                        </p>
+                    </xsd:documentation>
+                </annotation>
+            </enumeration>
+            <enumeration value="ec2">
+                <annotation>
+                    <xsd:documentation
+                        xml:lang="EN"
+                        xmlns="http://www.w3.org/1999/xhtml">
+                        <p>
+                            The type for Amazon's EC2-compatible service.
+                        </p>
+                    </xsd:documentation>
+                </annotation>
+            </enumeration>
         </restriction>
     </simpleType>
-    
+
     <simpleType name="ExtendedService">
         <annotation>
             <xsd:documentation
@@ -97,7 +119,7 @@
             </xsd:documentation>
         </annotation>
         <restriction base="xsd:string">
-            <pattern value="(\w|-)+:\w+"/>
+            <pattern value="(\w|-)+:(\w|-)+"/>
         </restriction>
     </simpleType>
 </schema>
