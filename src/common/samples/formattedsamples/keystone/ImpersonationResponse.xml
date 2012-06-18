@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<access xmlns="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0" 
-    xmlns:ns2="http://docs.openstack.org/identity/api/v2.0" 
-    xmlns:ns3="http://www.w3.org/2005/Atom">
-    <token expires="1969-12-31T18:00:00.020-06:00" 
+<?xml version="1.0" encoding="UTF-8"?>
+<ns4:access 
+    xmlns:ns2="http://www.w3.org/2005/Atom"
+    xmlns:ns3="http://docs.openstack.org/identity/api/v2.0" 
+    xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0">
+    <token expires="2011-09-08T07:00:00.000-05:00" 
            id="xxx-yyy-zzz-kwejKId893KJDKJKSKJS"/>
-</access>
+</ns4:access>
