@@ -230,7 +230,7 @@
            To see authentication requests and responses with annotations explaining key ideas, see the examples
            in the "General API Information" chapter's
            <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
-            <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64">"Sample Authentication Request and Response"</a> section.
+            <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</a> section.
         </p>   
         </doc>
         <request>
