@@ -30,191 +30,13 @@
                 </pluginRepository>                                                                         
             </pluginRepositories>                                                                           
         </profile> 
-         </profiles>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- document formatting plugin version -->
-		<!-- 1.2.0 fixes bugs in syntax highlighting & webhelp search -->
-		<doctools.version>1.2.0</doctools.version>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.1.12</version>
-		</dependency>
-		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jettison</groupId>
-			<artifactId>jettison</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<!-- We need Saxon 9 and clouddocs-maven-plugin here to normalize wadls -->
-		<dependency>
-		  <groupId>net.sourceforge.saxon</groupId>
-		  <artifactId>saxon</artifactId>
-		  <version>9.1.0.8</version>
-		</dependency>
-		<dependency>
-		  <groupId>com.rackspace.cloud.api</groupId>
-		  <artifactId>clouddocs-maven-plugin</artifactId>
-		  <version>${doctools.version}</version>
-		</dependency>
-	</dependencies>
-   <build>
-        <resources>
-            <resource>
-                <directory>target/docbkx/pdf</directory>
-                <excludes>
-                    <exclude>**/*.fo</exclude>
-                </excludes>
-            </resource>
-        </resources>
+     </profiles>
+     <properties>
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <doctools.version>1.3.1</doctools.version>
+     </properties>
+	<build>
         <plugins>
-      <!-- Unpack the wadl normalization xslts -->
-      <plugin>
-      	<groupId>org.apache.maven.plugins</groupId>
-      	<artifactId>maven-dependency-plugin</artifactId>
-      	<executions>
-      	  <execution>
-      	    <id>unpack-shared-resources</id>
-      	    <goals>
-      	      <goal>unpack-dependencies</goal>
-            </goals>
-            <phase>generate-sources</phase>
-            <configuration>
-              <outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
-              <includeGroupIds>com.rackspace.cloud.api</includeGroupIds>
-              <includeArtifactIds>clouddocs-maven-plugin</includeArtifactIds>
-              <!-- <includeClassifiers>ns-resources</includeClassifiers> -->
-              <excludeTransitive>true</excludeTransitive>
-	      <includes>**/normalizeWadl/*.xsl</includes>
-            </configuration>
-          </execution>
-      	</executions>
-      </plugin>
-      <!-- Normalize the wadl -->
-      <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-antrun-plugin</artifactId>
-	<version>1.5</version>
-	<executions>
-	  <execution>
-	    <id>ant</id>
-	  	<!-- Rose: Uncomment the following line and comment the corresponding one below to normalize the wadls from github instead of the local ones -->
-<!--	    <phase>generate-sources</phase>-->
-	    <configuration>
-	      <target>
-		<java
-		    jar="${net.sourceforge.saxon:saxon:jar}"
-		    fork="true">
-		  <arg value="-u"/>
-		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/identity-admin.wadl"/>
-		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
-		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/identity-admin.wadl"/>
-		</java>
-		<java
-		    jar="${net.sourceforge.saxon:saxon:jar}"
-		    fork="true">
-		  <arg value="-u"/>
-		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/OS-KSADM-admin.wadl"/>
-		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
-		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/OS-KSADM-admin.wadl"/>
-		</java>
-
-		<java
-		    jar="${net.sourceforge.saxon:saxon:jar}"
-		    fork="true">
-		  <arg value="-u"/>
-		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/OS-KSCATALOG-admin.wadl"/>
-		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
-		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/OS-KSCATALOG-admin.wadl"/>
-		</java>
-
-		<java
-		    jar="${net.sourceforge.saxon:saxon:jar}"
-		    fork="true">
-		  <arg value="-u"/>
-		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/RAX-KSKEY-admin.wadl"/>
-		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
-		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/RAX-KSKEY-admin.wadl"/>
-		</java>
-
-		<java
-		    jar="${net.sourceforge.saxon:saxon:jar}"
-		    fork="true">
-		  <arg value="-u"/>
-		  <arg value="-s:https://raw.github.com/openstack/keystone/master/keystone/content/admin/OS-KSEC2-admin.wadl"/>
-		  <arg value="-xsl:${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl"/>
-		  <arg value="-o:${project.build.directory}/generated-resources/xml/xslt/OS-KSEC2-admin.wadl"/>
-		</java>
-	      </target>
-	    </configuration>
-	    <goals>
-	      <goal>run</goal>
-	    </goals>
-	  </execution>
-	</executions>
-      </plugin>
-        	
-        	<!-- Run the normalize wadl xslts on the source wadl files -->
-        	<plugin>
-        		<groupId>org.codehaus.mojo</groupId>
-        		<artifactId>xml-maven-plugin</artifactId>
-        		<executions>
-        			<execution>
-        				<goals>
-        					<goal>transform</goal>
-        				</goals>
-        				<!-- Rose: Comment the following line and uncomment the corresponding one above to normalize the wadls from github instead of the local ones -->
-        				<phase>generate-sources</phase>
-        			</execution>
-        		</executions>
-        		<configuration>
-        			<transformationSets>
-        				<transformationSet>
-        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-        					<!-- Add wadls to be normalized below       -->
-        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-        					<dir>src/wadl</dir>
-        					<includes>
-        						<include>*.wadl</include>
-            				</includes>
-        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-        					<!-- Add wadls to be normalized above       -->
-        					<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-        					<stylesheet>${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl</stylesheet>
-        				</transformationSet>
-					<transformationSet>
-                   <!-- <dir>src/wadl/openstack-identity-api/src/RAX-GRPADM/RAX-GRPADM.wadl</dir> -->
-						<dir>src/wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM</dir>
-                           <includes>
-                           	   <include>*.wadl</include>
-                           </includes>
-						<stylesheet>${project.build.directory}/generated-resources/cloud/normalizeWadl/normalizeWadl.xsl</stylesheet>
-                     </transformationSet>
-        			</transformationSets>
-        		</configuration>
-        		<dependencies>
-        			<dependency>
-        				<groupId>net.sf.saxon</groupId>
-        				<artifactId>saxon</artifactId>
-        				<version>8.7</version>
-        			</dependency>
-        		</dependencies>
-        	</plugin> 
-        	
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
@@ -322,6 +144,7 @@
             	<!--- change to index.html to open at the front matter: copyright page, list of tables, list of examples -->
 		    	<webhelpDefaultTopic>QuickStart-000.html</webhelpDefaultTopic>
 		    	<branding>rackspace</branding>
+<security>external</security>
             </configuration>
             </plugin>
         </plugins>
