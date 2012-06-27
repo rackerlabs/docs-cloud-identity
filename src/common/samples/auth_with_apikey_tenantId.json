@@ -3,6 +3,7 @@
         "RAX-KSKEY:apiKeyCredentials": {
             "username": "jsmith",
             "apiKey": "aaaaa-bbbbb-ccccc-12345678"
-        }
+        },
+        "tenantId": "1234567"
     }
 }

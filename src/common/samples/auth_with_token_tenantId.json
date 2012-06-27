@@ -1,0 +1,8 @@
+{
+    "auth": {
+        "tenantId": "12345678",
+        "token": {
+            "id": "vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz"
+        }
+    }
+}
