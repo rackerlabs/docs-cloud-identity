@@ -16,7 +16,7 @@
         </title>
         <mediaobject>
             <imageobject>
-                <imagedata fileref="../figures/auth-token-flow.png" format="PNG" align="center"/>
+                <imagedata fileref="../figures/auth-keystone-identity-manager.png" format="PNG" align="center"/>
             </imageobject>
         </mediaobject>
     </figure>
@@ -29,15 +29,6 @@
         not found. After receiving Auth's response, the service can
         process the client's request or ask the client to retry with a
         valid token. </para>
-    <figure xml:id="token-validate">
-        <title>A client sends a token and a request to a service; if the token is valid, the service processes the request.
-        </title>
-        <mediaobject>
-            <imageobject>
-                <imagedata fileref="../figures/auth-token-validate.png" format="PNG" align="center"/>
-            </imageobject>
-        </mediaobject>
-    </figure>
     <para> You can see some OpenStack-oriented illustrations of these
         ideas, showing the OpenStack Keystone identity service
         authenticating for the OpenStack Nova compute service, at

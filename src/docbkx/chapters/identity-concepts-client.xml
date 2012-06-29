@@ -20,7 +20,7 @@
         </title>
         <mediaobject>
             <imageobject>
-                <imagedata fileref="../figures/auth-token-flow.png" format="PNG" align="center"/>
+                <imagedata fileref="../figures/auth-keystone-identity-manager.png" format="PNG" align="center"/>
             </imageobject>
         </mediaobject>
     </figure>
