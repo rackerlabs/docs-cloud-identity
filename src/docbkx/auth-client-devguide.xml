@@ -56,6 +56,12 @@
 						</listitem>
 						<listitem>
 							<para> 
+								Updated illustration in <xref
+									linkend="Identity-Service-Concepts-e1362"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
 								Repaired broken link to <xref
 									linkend="Sample_Request_Response-d1e64"/>.
 							</para>
