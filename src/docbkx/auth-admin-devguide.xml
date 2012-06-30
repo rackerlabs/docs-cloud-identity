@@ -57,6 +57,13 @@
 						</listitem>
 						<listitem>
 							<para> 
+								Expanded explanation and examples in <xref
+									linkend="POST_impersonateUser_RAX-GA_impersonation-tokens_"/>, 
+								showing use of <code>expire-in-seconds</code>.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
 								Updated illustration in <xref
 									linkend="Identity-Service-Concepts-e1362"/>.
 							</para>

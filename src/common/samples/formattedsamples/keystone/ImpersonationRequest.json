@@ -1,7 +1,7 @@
 {
   "RAX-GA:impersonation" : {
       "user": {
-          "username": "john.smith"
+          "username": "jane.customer"
       },
       "expire-in-seconds": 10800
      }
