@@ -41,36 +41,36 @@
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
                 Impersonate a specific user.
             </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            <para xmlns="http://docbook.org/ns/docbook">
                 To impersonate a user, you must first authenticate as yourself. 
                 The response to this authentication request will supply you with a current Racker token; you must already hold a service token. 
                 After you are authenticated and holding the necessary privileges,
                 you can issue this impersonation call with your Racker token, identifying the 
                 <code>username</code> you wish to impersonate.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            </para>
+            <para xmlns="http://docbook.org/ns/docbook">
                 You can specify the number of seconds you want the impersonation to remain valid. 
-                For example, <code xmlns="http://docbook.org/ns/docbook"><expire-in-seconds>10800</expire-in-seconds></code> 
+                For example, <code>&lt;expire-in-seconds&gt;10800&lt;/expire-in-seconds&gt;</code> 
                 asks for 10,800 seconds (180 minutes, or 3 hours) of impersonation.
                 Whether or not you requested a specific expiration time, your impersonation period will be limited.
                 The response to your impersonation request will include the time at which the impersonation becomes invalid.
-            </p>
+            </para>
             <itemizedlist xmlns="http://docbook.org/ns/docbook">
                     <listitem>
                         <para>
-                            In an impersonation request, ask for time as a number of seconds.
+                            In an impersonation <emphasis>request</emphasis>, express your request for time as a number of seconds.
                         </para>
                     </listitem>
                     <listitem>
                         <para>
-                            In an impersonation response, the expiration time granted to you is expressed as a timestamp.
+                            In an impersonation <emphasis>response</emphasis>, the expiration time granted to you is expressed as a timestamp.
                         </para>
                     </listitem>
             </itemizedlist>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            <para xmlns="http://docbook.org/ns/docbook">
                 A successful impersonation request returns a token and an expiration time for that token.
                 You can impersonate <code>username</code> by supplying that token in other requests, until the token expires.
-            </p>
+            </para>
         </doc>
         <request>
             <!-- 2012-03-13 by Rose Coste
