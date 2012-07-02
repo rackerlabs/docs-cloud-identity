@@ -110,30 +110,38 @@
             Rackspace contact information at either site to ask for
             help. </para>
         <para>
-            If you have a suggestion about any Rackspace product or service, including this one, 
-            please share it at <link xlink:href="http://feedback.rackspacecloud.com/">feedback.rackspacecloud.com</link>.
+            In addition to this API documentation and its related WADLs and XSDs, 
+            you might find relevant information in several other places:
         </para>
-        <para>To see how the Cloud Authentication Service is used by
-            other Rackspace services, read the API documentation
-            collected at <link
-                xlink:href="http://docs.rackspace.com/api/"
-                >docs.rackspace.com</link>. This
-            collection includes a Cloud Identity <emphasis>Client</emphasis> API Developer
-            Guide, a <emphasis>client</emphasis>-focused companion to
-            this <emphasis>service</emphasis>-focused Cloud Identity
-            <emphasis>Admin</emphasis> API Developer Guide. </para>
-        <para>
-            To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
-            does not implement the OpenStack Keystone Identity Service, 
-            read the Rackspace Cloud Authentication Client Developer Guide for API v1.1 
-            at <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
-                http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf</link>.
-        </para>
-        <para>
-            To learn about Keystone, read OpenStack's Keystone documentation 
-            at <link xlink:href="http://keystone.openstack.org/">
-                keystone.openstack.org/</link>.
-        </para>
+        <itemizedlist>
+            <listitem>
+                <para>To see how the Cloud Authentication Service is
+                    used by another Rackspace service, read that
+                    service's API documentation at <link
+                        xlink:href="http://docs.rackspace.com/api/">
+                        docs.rackspace.com</link>. You might also
+                    find useful articles and tutorials in the Rackspace Knowledge Center at <link 
+                        xlink:href="http://www.rackspace.com/knowledge_center/">
+                        rackspace.com/knowledge_center/</link>.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
+                    does not implement the OpenStack Keystone Identity Service, 
+                    read the Rackspace Cloud Authentication Client Developer Guide for API v1.1 
+                    at <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
+                        http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf</link>.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    To learn about Keystone, read OpenStack's Keystone documentation 
+                    at <link xlink:href="http://keystone.openstack.org/">
+                        keystone.openstack.org</link>.
+                </para>
+            </listitem>
+        </itemizedlist>
         <tip>
             <para>
                 <emphasis role="bold">For Rackspace-internal use
@@ -143,11 +151,15 @@
                 for very current operational information. This wiki
                 also contains some step-by-step guidance on
                 commonly-performed procedures. For example, the <link
-                    xlink:href="http://red.rackspace.com/display/auth/Create+New+Admin+Users+in+Auth"
+                    xlink:href="http://one.rackspace.com/display/auth/Create+New+Admin+Users+in+Auth"
                     >Create New Admin Users in Auth</link> page
                 outlines creation of administrative accounts for Auth
                 1.0, 1.1, and 2.0.</para>
         </tip>
+        <para>
+            If you have a suggestion about any Rackspace product or service, including this one, 
+            please share it at <link xlink:href="http://feedback.rackspacecloud.com/">feedback.rackspacecloud.com</link>.
+        </para>
     </section>
     <xi:include href="identity-releasenotes-v20-admin.xml"/>
 </chapter>

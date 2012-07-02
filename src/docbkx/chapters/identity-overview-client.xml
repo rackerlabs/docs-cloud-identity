@@ -104,24 +104,41 @@
             information at either site to ask for help.
         </para>
         <para>
+            In addition to this API documentation and its related WADLs and XSDs, 
+            you might find relevant information in several other places:
+        </para>
+        <itemizedlist>
+            <listitem>
+                <para>To see how the Cloud Authentication Service is
+                    used by another Rackspace service, read that
+                    service's API documentation at <link
+                        xlink:href="http://docs.rackspace.com/api/">
+                        docs.rackspace.com</link>. You might also
+                    find useful articles and tutorials in the Rackspace Knowledge Center at <link 
+                        xlink:href="http://www.rackspace.com/knowledge_center/">
+                        rackspace.com/knowledge_center/</link>.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
+                    does not implement the OpenStack Keystone Identity Service, 
+                    read the Rackspace Cloud Authentication Client Developer Guide for API v1.1 
+                    at <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
+                        http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf</link>.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    To learn about Keystone, read OpenStack's Keystone documentation 
+                    at <link xlink:href="http://keystone.openstack.org/">
+                        keystone.openstack.org</link>.
+                </para>
+            </listitem>
+        </itemizedlist>
+        <para>
             If you have a suggestion about any Rackspace product or service, including this one, 
-            please share it at <link xlink:href="http://feedback.rackspacecloud.com/"></link>.
-        </para>
-        <para>To see how the Cloud Authentication Service is used by other Rackspace services, read the API documentation collected 
-            at <link xlink:href="http://docs.rackspace.com/api/">
-                http://docs.rackspace.com/api/</link>.
-        </para>
-        <para>
-            To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but 
-            does not implement the OpenStack Keystone Identity Service, 
-            read the Rackspace Cloud Authentication Client Developer Guide for API v1.1 
-            at <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
-                http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf</link>.
-        </para>
-        <para>
-            To learn about Keystone, read OpenStack's Keystone documentation 
-            at <link xlink:href="http://keystone.openstack.org/">
-                http://keystone.openstack.org/</link>.
+            please share it at <link xlink:href="http://feedback.rackspacecloud.com/">feedback.rackspacecloud.com</link>.
         </para>
     </section>
     <xi:include href="identity-releasenotes-v20-client.xml"/>

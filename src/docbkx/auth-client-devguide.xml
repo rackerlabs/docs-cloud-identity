@@ -61,6 +61,12 @@
 							</para>
 						</listitem>
 						<listitem>
+							<para>
+								Restructured and expanded <xref linkend="Additional_Resources-d1e130"/>,
+								adding links to Rackspace Knowledge Center and customer feedback site.
+							</para>
+						</listitem>
+						<listitem>
 							<para> 
 								Repaired broken link to <xref
 									linkend="Sample_Request_Response-d1e64"/>.
