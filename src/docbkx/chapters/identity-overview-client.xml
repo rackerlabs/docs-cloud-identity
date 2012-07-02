@@ -103,6 +103,10 @@
             If you are unsure how your account was created, use the Rackspace contact
             information at either site to ask for help.
         </para>
+        <para>
+            If you have a suggestion about any Rackspace product or service, including this one, 
+            please share it at <link xlink:href="http://feedback.rackspacecloud.com/"></link>.
+        </para>
         <para>To see how the Cloud Authentication Service is used by other Rackspace services, read the API documentation collected 
             at <link xlink:href="http://docs.rackspace.com/api/">
                 http://docs.rackspace.com/api/</link>.

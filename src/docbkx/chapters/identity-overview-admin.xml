@@ -109,11 +109,15 @@
         <para> If you are unsure how an account was created, use the
             Rackspace contact information at either site to ask for
             help. </para>
+        <para>
+            If you have a suggestion about any Rackspace product or service, including this one, 
+            please share it at <link xlink:href="http://feedback.rackspacecloud.com/">feedback.rackspacecloud.com</link>.
+        </para>
         <para>To see how the Cloud Authentication Service is used by
             other Rackspace services, read the API documentation
             collected at <link
                 xlink:href="http://docs.rackspace.com/api/"
-                >http://docs.rackspace.com/api/</link>. This
+                >docs.rackspace.com</link>. This
             collection includes a Cloud Identity <emphasis>Client</emphasis> API Developer
             Guide, a <emphasis>client</emphasis>-focused companion to
             this <emphasis>service</emphasis>-focused Cloud Identity
@@ -128,14 +132,14 @@
         <para>
             To learn about Keystone, read OpenStack's Keystone documentation 
             at <link xlink:href="http://keystone.openstack.org/">
-                http://keystone.openstack.org/</link>.
+                keystone.openstack.org/</link>.
         </para>
         <tip>
             <para>
                 <emphasis role="bold">For Rackspace-internal use
                     only:</emphasis> Check the Cloud Authentication and Identity wiki pages, beginning at <link
-                    xlink:href="http://red.rackspace.com/display/auth/"
-                    >http://red.rackspace.com/display/auth/</link>,
+                    xlink:href="https://one.rackspace.com/display/auth/"
+                    >one.rackspace.com/display/auth/</link>,
                 for very current operational information. This wiki
                 also contains some step-by-step guidance on
                 commonly-performed procedures. For example, the <link
