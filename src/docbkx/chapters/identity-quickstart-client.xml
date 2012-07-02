@@ -137,7 +137,10 @@
             fundamental ideas explained in 
             <xref linkend="Identity-Service-Concepts-e1362"/>
             and the annotated request and response in 
-            <xref linkend="Sample_Request_Response-d1e64"/>.</para>
+            <xref linkend="Sample_Request_Response-d1e64"/>.
+            To see examples of authentication using several kinds of credentials, read 
+            <xref linkend="POST_authenticate_v2.0_tokens_"/>.
+        </para>
     <para security="writeronly">
         <!-- added then deleted this preparatory to 2012-05-16 republication; 
              leaving it hidden while people think -->
