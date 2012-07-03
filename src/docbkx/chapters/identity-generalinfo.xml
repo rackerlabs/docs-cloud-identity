@@ -443,12 +443,6 @@ This operation does not require a request body.</para>'>
 				shows all the available service types and relates them
 				to their corresponding OpenStack projects and those
 				projects' documentation. </para>
-			<annotation>
-				<remark>Cloud Database is only documented at
-					docs-internal for private beta; in that row of the table, 
-					change link to public doc when publicly available.
-				</remark>
-			</annotation>
 			<table rules="all">
 				<caption>Service Types</caption>
 				<col width="24%"/>
@@ -536,9 +530,10 @@ This operation does not require a request body.</para>'>
 						<td>
 							<para>
 								<emphasis role="italic">Cloud Databases, a Rackspace service 
-								of this type, is available to participants in its <link
-									xlink:href="http://www.rackspace.com/blog/rackspace-cloud-databases-private-beta-new-features-and-global-availability/"
-								>API Private Beta program</link>.</emphasis>
+									of this type, is
+									documented at <link
+										xlink:href="http://docs.rackspace.com/api/"
+										>http://docs.rackspace.com/api/</link>.</emphasis>
 							</para>
 						</td>
 					</tr>
@@ -812,7 +807,7 @@ This operation does not require a request body.</para>'>
 		<para> The identity API uses a URI versioning scheme. </para>
 		<important>
 			<para>Rackspace's implementation of the OpenStack Keystone Identity
-				Service v2.0 is currently in BETA status and does not
+				Service v2.0 does not
 				yet support MIME-type versioning. </para>
 		</important>
 		<para>

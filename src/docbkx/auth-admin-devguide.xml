@@ -10,7 +10,7 @@
 	xml:id="Identity-Developer-Guide">
 	<title>Cloud Identity Admin Developer Guide</title>
 	<titleabbrev>Cloud Identity Admin DevGuide</titleabbrev>
-	<?rax  pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs-beta.rackspace.com/auth/api/v2.0/auth-admin-devguide/content" status.bar.text="BETA"?> 
+	<?rax  pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content"?> 
 	<?rax status.bar.text="RAX INTERNAL"?>
 	<info>
 		<author>
@@ -28,7 +28,7 @@
 			<year>2012</year>
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
-		<releaseinfo>API v2.0 BETA</releaseinfo>
+		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
 		<pubdate>2012-07-11</pubdate>
 		<legalnotice role="rs-api">
@@ -87,6 +87,11 @@
 							<para> 
 								Repaired broken link to <xref
 									linkend="Sample_Request_Response-d1e64"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Updated <xref linkend="Service_Types-d1e265"/> to provide link to publicly-available documentation on Cloud Databases.
 							</para>
 						</listitem>
 					</itemizedlist>
