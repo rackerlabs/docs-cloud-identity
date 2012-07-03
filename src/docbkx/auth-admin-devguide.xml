@@ -57,8 +57,7 @@
 						</listitem>
 						<listitem>
 							<para> 
-								Expanded explanation and examples in <xref
-									linkend="POST_impersonateUser_RAX-GA_impersonation-tokens_"/>, 
+								Expanded explanation and examples in <xref linkend="POST_impersonateUser_RAX-GA_impersonation-tokens_"/>, 
 								showing use of <code>expire-in-seconds</code>.
 							</para>
 						</listitem>
@@ -72,6 +71,16 @@
 							<para>
 								Restructured and expanded <xref linkend="Additional_Resources-d1e130"/>,
 								adding links to Rackspace Knowledge Center and customer feedback site.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Added <xref linkend="Statuses-d1e808"/>, listing all possible account statuses.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Updated <xref linkend="Faults-d1e908"/> to show that the overLimit fault can occur with any request.
 							</para>
 						</listitem>
 						<listitem>

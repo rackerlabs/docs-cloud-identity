@@ -68,6 +68,16 @@
 						</listitem>
 						<listitem>
 							<para> 
+								Added <xref linkend="Statuses-d1e808"/>, listing all possible account statuses.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Updated <xref linkend="Faults-d1e908"/> to show that the overLimit fault can occur with any request.
+							</para>
+						</listitem>	
+						<listitem>
+							<para> 
 								Repaired broken link to <xref
 									linkend="Sample_Request_Response-d1e64"/>.
 							</para>

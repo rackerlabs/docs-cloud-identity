@@ -1294,6 +1294,101 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</itemizedlist>
 		</para>
 	</section>
+	<section xml:id="Statuses-d1e808">
+		<title>Statuses</title>
+		<para>
+			As you work with the Identity API, you may encounter two kinds of information identified as <code>status</code>:
+		</para>
+		<itemizedlist>
+			<listitem>
+				<para>
+					Multiple versions of the API exist. Each API version is marked with a <code>status</code>; you can use that status to help you choose which version of the API to execute. 
+					You can learn more about API versions in 
+					<xref linkend="Versions-d1e472"></xref>.
+				</para>
+			</listitem>
+			<listitem>
+				<para> Every account is marked with a <code>status</code>; based
+					on that status, users associated with the account
+					may be allowed or forbidden to perform certain
+					operations. You can learn more about account
+					statuses in this section. </para>
+			</listitem>
+		</itemizedlist>
+		<para>
+			The status of an account can change based on the account's activity. 
+			At any given time, every account has exactly one current status.
+		</para>
+		<para> The following is a list of possible account statuses. </para>
+		<table rules="all">
+			<caption>Account Statuses</caption>
+			<thead>
+				<tr>
+					<td>Status Name</td>
+					<td>Status Value</td>
+					<td>Notes</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align="left">
+					<td>NEW</td>
+					<td>1</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>PENDAPPROVAL</td>
+					<td>2</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>ACTIVE</td>
+					<td>3</td>
+					<td> </td>
+				</tr>         
+				<tr align="left">
+					<td>DENIED</td>
+					<td>4</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>DELINQUENT</td>
+					<td>5</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>SUSPENDED</td>
+					<td>6</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>AUPVIOLATION</td>
+					<td>7</td>
+					<td>This account is in violation of Rackspace's Acceptable Use
+						Policy (AUP).</td>
+				</tr>
+				<tr align="left">
+					<td>CLOSED</td>
+					<td>8</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>UNVERIFIED</td>
+					<td>9</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>PENDINGMIGRATION</td>
+					<td>10</td>
+					<td> </td>
+				</tr>
+				<tr align="left">
+					<td>TERMINATED</td>
+					<td>11</td>
+					<td> </td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
 	<section xml:id="Limits-d1e909">
 		<title>Limits</title>
 		<para>
@@ -1316,7 +1411,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</para>
 		<tip condition="admin">
 			<para>
-				You can read about rate limiting operations in 
+				You can learn about rate limiting operations in 
 				<xref linkend="Ratelimiting_Calls"></xref>.
 			</para>
 		</tip>
@@ -1367,7 +1462,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		  <tr>
 			<td>Fault Element</td>
 			<td>Associated Error Codes</td>
-			<td>Expected in All Requests</td>
+			<td>Expected in All Requests?</td>
 		  </tr>
 		</thead>
 		<tbody>
@@ -1394,7 +1489,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<tr align="left">
 				<td><link linkend="Limits-d1e909">overLimit</link></td>
 			<td>413</td>
-			<td/>
+			<td> YES</td>
 		  </tr>
 			<tr align="left">
 			<td>userDisabled</td>
