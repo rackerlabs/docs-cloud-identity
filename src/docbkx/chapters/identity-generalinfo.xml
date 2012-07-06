@@ -166,15 +166,15 @@ This operation does not require a request body.</para>'>
 		</programlisting>
 	  	<programlistingco>
 	  		<areaspec>
-	  			<area xml:id="response.xml.namespaces" units="linecolumn" coords="4 12"/>
-	  			<area xml:id="response.xml.token" units="linecolumn" coords="13 15"/>
-	  			<area xml:id="response.xml.role" units="linecolumn" coords="18 20"/>
-	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="23 25"/>
-	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="45 42"/>
-	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="45 61"/>
-	  			<area xml:id="response.xml.region" units="linecolumn" coords="46 40"/>
-	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="46 89"/>
-	  			<area xml:id="response.xml.url" units="linecolumn" coords="47 115"/>
+	  			<area xml:id="response.xml.namespaces" units="linecolumn" coords="4 8"/>
+	  			<area xml:id="response.xml.token" units="linecolumn" coords="13 11"/>
+	  			<area xml:id="response.xml.role" units="linecolumn" coords="18 16"/>
+	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="23 21"/>
+	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="45 37"/>
+	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="45 56"/>
+	  			<area xml:id="response.xml.region" units="linecolumn" coords="46 35"/>
+	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="46 83"/>
+	  			<area xml:id="response.xml.url" units="linecolumn" coords="48 114"/>
 	  		</areaspec>	
 		<programlisting language="xml">
 <!-- 2012-04-13 new samples emailed by Joe Savak 
