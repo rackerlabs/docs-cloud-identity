@@ -78,6 +78,11 @@
 						</listitem>	
 						<listitem>
 							<para> 
+								Standardized user roles as <code>user-admin</code> and <code>user-default</code>.
+							</para>
+						</listitem>	
+						<listitem>
+							<para> 
 								Repaired broken link to <xref
 									linkend="Sample_Request_Response-d1e64"/>.
 							</para>

@@ -77,7 +77,7 @@
 							If this request is issued by 
 							a customer holding the admin role (<code>identity:user-admin</code>),
 							the specific user's information is returned only if that user is associated with the same tenant as the requester's 
-							<code>customer-admin</code> token.
+							<code>user-admin</code> token.
 						</para>
 						<para> If this request is issued by a customer holding the user
 							role (<code>identity:default</code>), information is returned for only the requester. 
@@ -199,7 +199,7 @@
 									</para>
 									<para>
 										For customers holding the <code>user</code> role,
-										the call is valid only if <code>userID</code> and the <code>customer-user</code> 
+										the call is valid only if <code>userID</code> and the <code>user-default</code> 
 										token have the same value for <code>tenant</code>.
 									</para>
 							</note>
