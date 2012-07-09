@@ -212,76 +212,107 @@
 	      To access the authentication service, you must know its URL.
 	    </p>
         <p xmlns="http://www.w3.org/1999/xhtml">
-          You can authenticate by providing any of several kinds of credentials:
-          <ul>
-              <li>
-                  <p>username and API key</p>
-              </li>
-              <li>
-                  <p>username, API key and tenant (Tenant ID or Tenant Name) *</p>
-              </li>
-              <li>
-                  <p>username and password</p>
-              </li>
-              <li>
-                  <p>username, password and tenant (Tenant ID or Tenant Name) *</p>
-              </li>
-              <li>
-                  <p>token</p>
-              </li>
-          </ul>
+            You can authenticate by providing any of several kinds of credentials:
+            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+              <itemizedlist spacing="compact">
+                  <listitem>
+                      <para>
+                          username and API key
+                      </para>
+                  </listitem>
+                  <listitem>
+                      <para>
+                          username, API key, and tenant ID
+                      </para>
+                  </listitem>
+                  <listitem>
+                      <para>
+                          username, API key, and tenant name
+                      </para>
+                  </listitem>
+                  <listitem>
+                      <para>
+                          username and password
+                      </para>
+                  </listitem>
+                  <listitem>
+                      <para>
+                          username, password and tenant ID
+                      </para>
+                  </listitem>
+                  <listitem>
+                      <para>
+                          username, password and tenant name
+                      </para>
+                  </listitem>
+                  <listitem>
+                      <para>
+                          token
+                      </para>
+                  </listitem>
+              </itemizedlist>
+            </wadl:doc>
           You can use whichever valid credentials you prefer. 
           Unless you specify a tenant, the authentication service's response is not affected by which kind of credentials you use.
-          * If you specify a tenant, the <code>Service Catalog</code> will only include endpoints to which the specified tenant has access.
+          <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <important>
+              <para>
+                  If you specify a tenant, the <code>Service Catalog</code> returned to you will include only endpoints to which that tenant has access. 
+              </para>
+            </important>
+          </wadl:doc>
         </p>
         <p xmlns="http://www.w3.org/1999/xhtml">            
            To see authentication requests and responses with annotations explaining key ideas, see the examples
            in the "General API Information" chapter's
            <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
             <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</a> section.
-        </p>   
+        </p>
+        <p xmlns="http://www.w3.org/1999/xhtml">
+           The examples below demonstrate authentication with several kinds of credentials.
+        </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:auth">
 	      <doc>
-              <xsdxt:sample title="Authenticate with API Key Request: XML">
+	          <xsdxt:sample title="Authenticate (with API Key Credential) Request: XML">
                   <xsdxt:code href="../common/samples/auth_with_apikey.xml"/>
               </xsdxt:sample>
-	          <xsdxt:sample title="Authenticate with API Key Request with Tenant ID: XML">
+	          <xsdxt:sample title="Authenticate (with API Key and Tenant ID Credentials) Request: XML">
 	              <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.xml"/>
 	          </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Username Request: XML">
+	          <xsdxt:sample title="Authenticate (with Username and Password Credentials) Request: XML">
                   <xsdxt:code href="../common/samples/auth_credentials.xml"/>
               </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Username Request with Tenant ID: XML">
+	          <xsdxt:sample title="Authenticate (with Username, Password, and Tenant ID Credentials) Request: XML">
 	              <xsdxt:code href="../common/samples/auth_credentials_tenantId.xml"/>
 	          </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Token Request with Tenant ID: XML">
+	          <xsdxt:sample title="Authenticate (with Token and Tenant ID Credentials) Request: XML">
                 <xsdxt:code href="../common/samples/auth_with_token_tenantId.xml"/>
               </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Token Request with Tenant Name: XML">
+              <xsdxt:sample title="Authenticate (with Token and Tenant Name Credentials) Request: XML">
 				<xsdxt:code href="../common/samples/auth_with_token_tenantName.xml"/>
 	          </xsdxt:sample>
 	      </doc>
 	    </representation>
         <representation mediaType="application/json">
 	      <doc>
-              <xsdxt:sample title="Authenticate with API Key Request: JSON">   
+	          <xsdxt:sample title="Authenticate (with API Key Credential) Request: JSON">   
                   <xsdxt:code href="../common/samples/auth_with_apikey.json"/>
               </xsdxt:sample>
-	          <xsdxt:sample title="Authenticate with API Key Request with Tenant ID: JSON">   
+	          <xsdxt:sample title="Authenticate (with API Key and Tenant ID Credentials) Request: JSON">   
 	              <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.json"/>
 	          </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Username Request: JSON">
+	          <xsdxt:sample title="Authenticate (with Username and Password Credentials) Request: JSON">
                 <xsdxt:code href="../common/samples/auth_credentials.json"/>
               </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Username Request with Tenant ID: JSON">
+	          <xsdxt:sample title="Authenticate (with Username, Password, and Tenant ID Credentials) Request: JSON">
 				<xsdxt:code href="../common/samples/auth_credentials_tenantId.json"/>
 	          </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Token Request with Tenant ID: JSON">   
+	          <xsdxt:sample title="Authenticate (with Token and Tenant ID Credentials) Request: JSON">   
                 <xsdxt:code href="../common/samples/auth_with_token_tenantId.json"/>
               </xsdxt:sample>
-              <xsdxt:sample title="Authenticate with Token Request with Tenant Name: JSON">   
+	          <xsdxt:sample title="Authenticate (with Token and Tenant Name Credentials) Request: JSON">   
 				<xsdxt:code href="../common/samples/auth_with_token_tenantName.json"/>
 	          </xsdxt:sample>
 	      </doc>
