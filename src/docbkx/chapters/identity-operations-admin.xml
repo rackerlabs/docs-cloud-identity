@@ -260,6 +260,11 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
+		<important>
+			<para>
+				The RAX-GA extension will soon be renamed to RAX-AUTH.
+			</para>
+		</important>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
 				<!-- authenticate -->
@@ -425,6 +430,11 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
+		<important>
+			<para>
+				The RAX-GA extension will soon be renamed to RAX-AUTH.
+			</para>
+		</important>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-GA.wadl#impersonation-tokens">
 				<wadl:method href="impersonateUser">
