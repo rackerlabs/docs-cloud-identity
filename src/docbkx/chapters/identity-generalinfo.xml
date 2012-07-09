@@ -1417,26 +1417,82 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			response code denoting the type of error. The system
 			returns additional information about the fault in the body
 			of the response. </para>
-	  <example>
-		<title>Fault Response: XML</title>
-		<programlisting language="xml">
-<xi:include href="../samples/identity_fault.xml" parse="text"/>
-</programlisting>
-	  </example>
-	  <example>
-		<title>Fault Response: JSON</title>
-		<programlisting language="javascript">
-<xi:include href="../samples/identity_fault.json" parse="text"/>
-</programlisting>
-	  </example>
+			<para>The following table lists possible fault types along with
+			their associated error codes. </para>
+			<table rules="all">
+				<caption>Fault Types</caption>
+				<thead>
+					<tr>
+						<td>Fault Element</td>
+						<td>Associated Error Codes</td>
+						<td>Expected in All Requests?</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr align="left">
+						<td>identityFault</td>
+						<td>500, 400</td>
+						<td> YES </td>
+					</tr>
+					<tr align="left">
+						<td>serviceUnavailable</td>
+						<td>503</td>
+						<td> YES </td>
+					</tr>
+					<tr align="left">
+						<td>badRequest</td>
+						<td>400</td>
+						<td> YES </td>
+					</tr>
+					<tr align="left">
+						<td>unauthorized</td>
+						<td>401</td>
+						<td> YES </td>
+					</tr>
+					<tr align="left">
+						<td><link linkend="Limits-d1e909"
+								>overLimit</link></td>
+						<td>413</td>
+						<td> YES</td>
+					</tr>
+					<tr align="left">
+						<td>userDisabled</td>
+						<td>403</td>
+						<td/>
+					</tr>
+					<tr align="left">
+						<td>forbidden</td>
+						<td>403</td>
+						<td/>
+					</tr>
+					<tr align="left">
+						<td>itemNotFound</td>
+						<td>404</td>
+						<td/>
+					</tr>
+					<tr align="left">
+						<td>tenantConflict</td>
+						<td>409</td>
+						<td/>
+					</tr>
+				</tbody>
+			</table>
+			<para>The root element of the fault may change depending on the
+			type of error. From an XML schema perspective, all API
+			faults are extensions of the base fault type,
+				<type>identityFault</type>. When working with a system
+			that binds XML to actual classes, use
+				<type>identityFault</type> as a catch-all if there is
+			no interest in distinguishing between individual fault
+			types; for example, you may need to do this if you are
+			working with JAXB. </para>
 	  <para>The error code is returned in the body of the response. The
 			message section returns a human-readable message. The
 			details section is optional and may contain useful
 			information for tracking down an error. For example, a
 			stack trace may be provided. </para>
-	  <para>The root element of the fault may change depending on the
-			type of error. The following is an example of an
-				<code>itemNotFound</code> error. </para>
+	  <para> The following are examples of an <code>itemNotFound</code>
+			error. </para>
 	  <example>
 		<title>Item Not Found Fault: XML</title>
 		<programlisting language="xml">
@@ -1449,71 +1505,6 @@ Host: identity.api.rackspacecloud.com/v1.0/
 <xi:include href="../samples/item_not_found.json" parse="text"/>
 </programlisting>
 	  </example>
-	  <para> The following is a list of possible fault types along with their associated error
-		codes. </para>
-	  <table rules="all">
-		<caption>Fault Types</caption>
-		<thead>
-		  <tr>
-			<td>Fault Element</td>
-			<td>Associated Error Codes</td>
-			<td>Expected in All Requests?</td>
-		  </tr>
-		</thead>
-		<tbody>
-		  <tr align="left">
-			<td>identityFault</td>
-			<td>500, 400</td>
-			<td> YES </td>
-		  </tr>
-			<tr align="left">
-			<td>serviceUnavailable</td>
-			<td>503</td>
-			<td> YES </td>
-		  </tr>
-			<tr align="left">
-			<td>badRequest</td>
-			<td>400</td>
-			<td> YES </td>
-		  </tr>         
-			<tr align="left">
-			<td>unauthorized</td>
-			<td>401</td>
-			<td> YES </td>
-		  </tr>
-			<tr align="left">
-				<td><link linkend="Limits-d1e909">overLimit</link></td>
-			<td>413</td>
-			<td> YES</td>
-		  </tr>
-			<tr align="left">
-			<td>userDisabled</td>
-			<td>403</td>
-			<td/>
-		  </tr>
-			<tr align="left">
-			<td>forbidden</td>
-			<td>403</td>
-			<td/>
-		  </tr>
-			<tr align="left">
-			<td>itemNotFound</td>
-			<td>404</td>
-			<td/>
-		  </tr>
-			<tr align="left">
-			<td>tenantConflict</td>
-			<td>409</td>
-			<td/>
-		  </tr>
-		</tbody>
-	  </table>
-	  <para>From an XML schema perspective, all API faults are extensions
-			of the base fault type, <type>identityFault</type>. When
-			working with a system that binds XML to actual classes,
-			use <type>identityFault</type> as a catch-all if there is
-			no interest in distinguishing between individual fault
-			types; for example, you may need to do this if you are
-			working with JAXB. </para>
+	  <para> </para>
 	</section>
     </chapter>
