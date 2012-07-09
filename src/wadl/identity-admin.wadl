@@ -275,10 +275,10 @@
         <request>
             <representation mediaType="application/xml" element="identity:auth">
 	      <doc>
-	          <xsdxt:sample title="Authenticate (with API Key Credential) Request: XML">
+	          <xsdxt:sample title="Authenticate (with Username and API Key Credentials) Request: XML">
                   <xsdxt:code href="../common/samples/auth_with_apikey.xml"/>
               </xsdxt:sample>
-	          <xsdxt:sample title="Authenticate (with API Key and Tenant ID Credentials) Request: XML">
+	          <xsdxt:sample title="Authenticate (with Username, API Key, and Tenant ID Credentials) Request: XML">
 	              <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.xml"/>
 	          </xsdxt:sample>
 	          <xsdxt:sample title="Authenticate (with Username and Password Credentials) Request: XML">
@@ -287,20 +287,20 @@
 	          <xsdxt:sample title="Authenticate (with Username, Password, and Tenant ID Credentials) Request: XML">
 	              <xsdxt:code href="../common/samples/auth_credentials_tenantId.xml"/>
 	          </xsdxt:sample>
-	          <xsdxt:sample title="Authenticate (with Token and Tenant ID Credentials) Request: XML">
+	          <xsdxt:sample title="Authenticate (with Tenant ID and Token Credentials) Request: XML">
                 <xsdxt:code href="../common/samples/auth_with_token_tenantId.xml"/>
               </xsdxt:sample>
-              <xsdxt:sample title="Authenticate (with Token and Tenant Name Credentials) Request: XML">
+              <xsdxt:sample title="Authenticate (with Tenant Name and Token Credentials) Request: XML">
 				<xsdxt:code href="../common/samples/auth_with_token_tenantName.xml"/>
 	          </xsdxt:sample>
 	      </doc>
 	    </representation>
         <representation mediaType="application/json">
 	      <doc>
-	          <xsdxt:sample title="Authenticate (with API Key Credential) Request: JSON">   
+	          <xsdxt:sample title="Authenticate (with Username and API Key Credentials) Request: JSON">   
                   <xsdxt:code href="../common/samples/auth_with_apikey.json"/>
               </xsdxt:sample>
-	          <xsdxt:sample title="Authenticate (with API Key and Tenant ID Credentials) Request: JSON">   
+	          <xsdxt:sample title="Authenticate (with Username, API Key, and Tenant ID Credentials) Request: JSON">   
 	              <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.json"/>
 	          </xsdxt:sample>
 	          <xsdxt:sample title="Authenticate (with Username and Password Credentials) Request: JSON">
@@ -309,10 +309,10 @@
 	          <xsdxt:sample title="Authenticate (with Username, Password, and Tenant ID Credentials) Request: JSON">
 				<xsdxt:code href="../common/samples/auth_credentials_tenantId.json"/>
 	          </xsdxt:sample>
-	          <xsdxt:sample title="Authenticate (with Token and Tenant ID Credentials) Request: JSON">   
+	          <xsdxt:sample title="Authenticate (with Tenant ID and Token Credentials) Request: JSON">   
                 <xsdxt:code href="../common/samples/auth_with_token_tenantId.json"/>
               </xsdxt:sample>
-	          <xsdxt:sample title="Authenticate (with Token and Tenant Name Credentials) Request: JSON">   
+	          <xsdxt:sample title="Authenticate (with Tenant Name and Token Credentials) Request: JSON">   
 				<xsdxt:code href="../common/samples/auth_with_token_tenantName.json"/>
 	          </xsdxt:sample>
 	      </doc>

@@ -2,7 +2,7 @@
 <auth>
   <apiKeyCredentials
     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-    username="jsmith"
+    username="demoauthor"
     apiKey="aaaaa-bbbbb-ccccc-12345678"
     tenantId="1100111" />
 </auth>
