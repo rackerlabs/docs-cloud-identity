@@ -11,7 +11,7 @@
 	<title>Cloud Identity Admin Developer Guide</title>
 	<titleabbrev>Cloud Identity Admin DevGuide</titleabbrev>
 	<?rax  pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content"?> 
-	<?rax status.bar.text="RAX INTERNAL"?>
+	<?rax status.bar.text.font.size="80px" status.bar.text="RAX INTERNAL"?>
 	<info>
 		<author>
 			<personname>
