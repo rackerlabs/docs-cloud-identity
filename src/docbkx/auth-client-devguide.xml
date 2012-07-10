@@ -73,6 +73,11 @@
 						</listitem>
 						<listitem>
 							<para> 
+								Added <xref linkend="Endpoints-d1e180"/>, showing recommended and legacy authentication endpoints.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
 								Updated <xref linkend="Faults-d1e908"/> to show that the overLimit fault can occur with any request.
 							</para>
 						</listitem>	

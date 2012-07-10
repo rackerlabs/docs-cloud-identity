@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+]>
+<section xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="Endpoints-d1e180">
+    <title>Alternate Authentication Endpoints</title>
+    <para> You can use the current Cloud Identity authentication endpoints with earlier versions of
+        the API. All versions of the API, including legacy Identity contracts, are available if you
+        authenticate at a current endpoint and specify an API version.  Whichever version of the API
+        you choose, you must use the endpoint designated for your US-based or UK-based
+        account.</para>
+    <para> Rackspace recommends that you authenticate at one of the following Cloud Identity
+        endpoints: 
+        <table rules="all">
+            <caption>Recommended Authentication Endpoints</caption>
+            <col width="9%"/>
+            <col width="21%"/>
+            <col width="22%"/>
+            <col width="48%"/>
+            <thead>
+                <tr>
+                    <th>Cloud Identity Version</th>
+                    <th>Endpoint for US-Based Accounts</th>
+                    <th>Endpoint for UK-Based Accounts</th>
+                    <th>Documentation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>v1.0</td>
+                    <td>
+                        <link xlink:href="https://identity.api.rackspacecloud.com/v1"
+                            >https://identity.api.rackspacecloud.com/v1</link>
+                    </td>
+                    <td>
+                        <link xlink:href="https://lon.identity.api.rackspacecloud.com/v1"
+                            >https://lon.identity.api.rackspacecloud.com/v1</link>
+                    </td>
+                    <td>No standalone documentation is available for Auth 1.0, but you can see
+                        Auth1.0 in use in <link
+                            xlink:href="http://docs.rackspace.com/servers/api/v1.0/cs-devguide/content/Authentication-d1e506.html"
+                            >First Generation Cloud Servers™ Developer Guide - API v1.0: Section
+                            3.1, Authentication</link>
+                    </td>
+                </tr>
+                <tr>
+                    <td>v1.1</td>
+                    <td>
+                        <link xlink:href="https://identity.api.rackspacecloud.com/v1.1"
+                            >https://identity.api.rackspacecloud.com/v1.1</link>
+                    </td>
+                    <td>
+                        <link xlink:href="https://lon.identity.api.rackspacecloud.com/v1.1"
+                            >https://lon.identity.api.rackspacecloud.com/v1.1</link>
+                    </td>
+                    <td>
+                        <link
+                            xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide/content/index.html"
+                            >Cloud Authentication Client Developer Guide - API v1.1</link>
+                    </td>
+                </tr>
+                <tr>
+                    <td>v2.0</td>
+                    <td>
+                        <link xlink:href="https://identity.api.rackspacecloud.com/v2.0"
+                            >https://identity.api.rackspacecloud.com/v2.0</link>
+                    </td>
+                    <td>
+                        <link xlink:href="https://lon.identity.api.rackspacecloud.com/v2.0"
+                            >https://lon.identity.api.rackspacecloud.com/v2.0</link>
+                    </td>
+                    <td>
+                        <link
+                            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html"
+                            >Cloud Identity Client Developer Guide - API v2.0</link>
+                    </td>
+                </tr>
+            </tbody>
+        </table></para>
+    
+    <para> Alternatively, versions 1.0 and 1.1 are supported by the following legacy
+        endpoints: 
+    </para>
+    <table rules="all">
+        <caption>Legacy Authentication Endpoints</caption>
+        <col width="9%"/>
+        <col width="21%"/>
+        <col width="22%"/>
+        <col width="48%"/>
+        <thead>
+            <tr>
+                <th>Cloud Identity Version</th>
+                <th>Endpoint for US-Based Accounts</th>
+                <th>Endpoint for UK-Based Accounts</th>
+                <th>Documentation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>v1.0</td>
+                <td>
+                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0"
+                        >https://auth.api.rackspacecloud.com/v1.0</link>
+                </td>
+                <td>
+                    <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.0"
+                        >https://lon.auth.api.rackspacecloud.com/v1.0</link>
+                </td>
+                <td>No standalone documentation is available for Auth 1.0, but you can see
+                    Auth1.0 in use in <link
+                        xlink:href="http://docs.rackspace.com/servers/api/v1.0/cs-devguide/content/Authentication-d1e506.html"
+                        >First Generation Cloud Servers™ Developer Guide - API v1.0: Section
+                        3.1, Authentication</link>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.1</td>
+                <td>
+                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.1"
+                        >https://auth.api.rackspacecloud.com/v1.1</link>
+                </td>
+                <td>
+                    <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1"
+                        >https://lon.auth.api.rackspacecloud.com/v1.1</link>
+                </td>
+                <td>
+                    <link
+                        xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide/content/index.html"
+                        >Cloud Authentication Client Developer Guide - API v1.1</link>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

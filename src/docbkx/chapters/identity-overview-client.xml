@@ -141,5 +141,6 @@
             please share it at <link xlink:href="http://feedback.rackspacecloud.com/">feedback.rackspacecloud.com</link>.
         </para>
     </section>
+    <xi:include href="identity-endpoints.xml"/>
     <xi:include href="identity-releasenotes-v20-client.xml"/>
 </chapter>
