@@ -48,13 +48,13 @@
 							</para>
 							<para>
 								If this request is issued by 
-								a customer holding the admin role (<code>identity:user-admin</code>),
+								a user holding the admin role (<code>identity:user-admin</code>),
 								it returns a list of all users for the tenant.
 							</para>
 							<para> 
-								If this request is issued by a customer holding the user
+								If this request is issued by a user holding the user
 								role (<code>identity:default</code>), it
-								returns only the customer who issued the
+								returns only the user who issued the
 								request. 
 							</para>
 						</note>
@@ -75,11 +75,11 @@
 						</para>
 						<para>
 							If this request is issued by 
-							a customer holding the admin role (<code>identity:user-admin</code>),
+							a user holding the admin role (<code>identity:user-admin</code>),
 							the specific user's information is returned only if that user is associated with the same tenant as the requester's 
 							<code>user-admin</code> token.
 						</para>
-						<para> If this request is issued by a customer holding the user
+						<para> If this request is issued by a user holding the user
 							role (<code>identity:default</code>), information is returned for only the requester. 
 						</para>
 					</note>
@@ -96,11 +96,12 @@
 				<wadl:method href="addUser">
 				<wadl:doc>
 					<note>
-						<para>
-							This call is available only to customers who hold 
-							the admin role (<code>identity:user-admin</code>).
-							Using the admin role, you can create a user who holds the user role (<code>identity:default</code>).
-						</para>
+						<para> This call is available only to users who hold the admin
+								role
+								(<code>identity:user-admin</code>).
+								Using the admin role, you can create a
+								user who holds the user role
+								(<code>identity:default</code>). </para>
 					</note>
 					<warning>
 						<para>
@@ -118,11 +119,12 @@
 				<wadl:method href="updateUser">
 					<wadl:doc>
 						<note>
-							<para>
-								Customers who hold 
-								the admin role 
-								can update users who hold the user role (<code>identity:default</code>) or the admin role (<code>identity:user-admin</code>) for the same tenant.
-							</para>
+							<para> Users who hold the admin role can update users who hold
+								the user role
+								(<code>identity:default</code>) or
+								the admin role
+								(<code>identity:user-admin</code>)
+								for the same tenant. </para>
 						</note>
 					</wadl:doc>
 				</wadl:method>
@@ -132,11 +134,13 @@
 				<wadl:method href="deleteUser">
 					<wadl:doc>
 						<note>
-							<para>
-								This call is available only to customers who hold 
-								the admin role (<code>identity:user-admin</code>).
-								Using the admin role, you can delete a user who holds the user role (<code>identity:default</code>) for the same tenant.
-							</para>
+							<para> This call is available only to users who hold the admin
+								role
+								(<code>identity:user-admin</code>).
+								Using the admin role, you can delete a
+								user who holds the user role
+								(<code>identity:default</code>) for
+								the same tenant. </para>
 						</note>
 					</wadl:doc>
 				</wadl:method>
@@ -150,13 +154,14 @@
 								<emphasis role="italic">You
 									can see only yourself.</emphasis>
 							</para>
-							<para>
-								This call is available to customers who hold either 
-								the admin role (<code>identity:user-admin</code>) or the
-								user role (<code>identity:default</code>). In either case,
-								the credentials returned are only those of the customer
-								who issued the request.
-							</para>
+							<para> This call is available to users who hold either the
+								admin role
+								(<code>identity:user-admin</code>)
+								or the user role
+								(<code>identity:default</code>). In
+								either case, the credentials returned
+								are only those of the user who issued
+								the request. </para>
 						</note>
 					</wadl:doc>
 				</wadl:method>
@@ -170,13 +175,14 @@
 							<emphasis role="italic">You
 								can see only yourself.</emphasis>
 						</para>
-						<para>
-							This call is available to customers who hold either 
-							the admin role (<code>identity:user-admin</code>) or the
-							user role (<code>identity:default</code>). In either case,
-							the credentials returned are only those of the customer
-							who issued the request.
-						</para>
+						<para> This call is available to users who hold either the admin
+								role
+								(<code>identity:user-admin</code>) or
+								the user role
+								(<code>identity:default</code>). In
+								either case, the credentials returned
+								are only those of the user who issued
+								the request. </para>
 					</note>
 				</wadl:doc>
 				</wadl:method>
@@ -192,16 +198,16 @@
 					<wadl:method href="listUserGlobalRoles">
 						<wadl:doc>
 							<note>
-									<para>
-										This call is available to customers who hold either 
-										the admin role (<code>identity:user-admin</code>) or the
-										user role (<code>identity:default</code>).
-									</para>
-									<para>
-										For customers holding the <code>user</code> role,
-										the call is valid only if <code>userID</code> and the <code>user-default</code> 
-										token have the same value for <code>tenant</code>.
-									</para>
+									<para> This call is available to users who hold either the
+								admin role
+								(<code>identity:user-admin</code>)
+								or the user role
+								(<code>identity:default</code>). </para>
+									<para> For users holding the <code>user</code> role, the call
+								is valid only if <code>userID</code>
+								and the <code>user-default</code>
+								token have the same value for
+								<code>tenant</code>. </para>
 							</note>
 						</wadl:doc>
 					</wadl:method>
@@ -216,25 +222,19 @@
 				<wadl:method href="authenticate" >
 					<wadl:doc>
 						<note>
-						<para>
-							This call is available to customers who 
-							have
-							authenticated as a holder of either 
-							the admin role or the
-							user role.
-						</para>
+						<para> This call is available to users who have authenticated as
+								a holder of either the admin role or
+								the user role. </para>
 						<itemizedlist>
 							<listitem>
-								<para>
-									Customers holding the <code>admin</code> role
-									must authenticate as <code>identity:user-admin</code>.
-								</para>
+								<para> Users holding the <code>admin</code> role must
+								authenticate as
+								<code>identity:user-admin</code>. </para>
 							</listitem>
 							<listitem>
-								<para>
-									Customers holding the <code>user</code> role
-									must authenticate as <code>identity:default</code>.
-								</para>
+								<para> Users holding the <code>user</code> role must
+								authenticate as
+								<code>identity:default</code>. </para>
 							</listitem>
 						</itemizedlist>
 						</note>

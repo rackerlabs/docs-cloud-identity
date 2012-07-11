@@ -96,6 +96,11 @@
 						</listitem>
 						<listitem>
 							<para> 
+								Standardized references to "user" and "customer", since it is possible to have a user, such as a Racker, who is not a customer.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
 								Repaired broken link to <xref
 									linkend="Sample_Request_Response-d1e64"/>.
 							</para>

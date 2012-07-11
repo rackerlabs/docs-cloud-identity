@@ -606,16 +606,13 @@ This operation does not require a request body.</para>'>
 					</para>
 					<orderedlist numeration="loweralpha">
 						<listitem>
-							<para>
-								If the customer has not specified which endpoint to use, 
-								generate an error.
-							</para>
+							<para> If the user has not specified which endpoint to use,
+								generate an error. </para>
 						</listitem>
 						<listitem>
-							<para>
-								If the customer has specified which endpoint to use,
-								help the customer identify that endpoint from within the catalog:
-							</para>
+							<para> If the user has specified which endpoint to use, help
+								the user identify that endpoint from
+								within the catalog: </para>
 							<orderedlist numeration="lowerroman">
 								<listitem>
 									<para>
