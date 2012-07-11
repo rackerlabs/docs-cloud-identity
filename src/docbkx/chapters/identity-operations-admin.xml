@@ -274,6 +274,11 @@
 				<!-- validate token -->
 				<wadl:method href="validateToken">
 				<wadl:doc>
+					<important>
+						<para>
+							The RAX-GA extension will soon be renamed to RAX-AUTH.
+						</para>
+					</important>
 					<tip>
 						<para>
 							You can use this call to return information about an impersonator:
@@ -439,6 +444,11 @@
 			<wadl:resource href="../../wadl/RAX-GA.wadl#impersonation-tokens">
 				<wadl:method href="impersonateUser">
 				<wadl:doc>
+					<important>
+						<para>
+							The RAX-GA extension will soon be renamed to RAX-AUTH.
+						</para>
+					</important>
 					<tip>
 						<para>
 							For information about how an impersonator can obtain a validated token,
