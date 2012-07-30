@@ -253,18 +253,13 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>RAX-GA</code> extension to the
+				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
 				You can learn more about API extensions at
 				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
-		<important>
-			<para>
-				The RAX-GA extension will soon be renamed to RAX-AUTH.
-			</para>
-		</important>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
 				<!-- authenticate -->
@@ -274,11 +269,6 @@
 				<!-- validate token -->
 				<wadl:method href="validateToken">
 				<wadl:doc>
-					<important>
-						<para>
-							The RAX-GA extension will soon be renamed to RAX-AUTH.
-						</para>
-					</important>
 					<tip>
 						<para>
 							You can use this call to return information about an impersonator:
@@ -428,27 +418,17 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>RAX-GA</code> extension to the
+				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
 				You can learn more about API extensions at
 				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
-		<important>
-			<para>
-				The RAX-GA extension will soon be renamed to RAX-AUTH.
-			</para>
-		</important>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/RAX-GA.wadl#impersonation-tokens">
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#impersonation-tokens">
 				<wadl:method href="impersonateUser">
 				<wadl:doc>
-					<important>
-						<para>
-							The RAX-GA extension will soon be renamed to RAX-AUTH.
-						</para>
-					</important>
 					<tip>
 						<para>
 							For information about how an impersonator can obtain a validated token,

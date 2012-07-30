@@ -42,7 +42,7 @@
         list="https://cdn2.clouddrive.com/"/>
       </endpoint>
     </service>
-    <service type="dnsextension:dns" name="cloudDNS">
+    <service type="rax:dns" name="cloudDNS">
       <endpoint tenantId="1100111" 
                 publicURL="https://dns.api.rackspacecloud.com/v1.0/1100111"/>
     </service>

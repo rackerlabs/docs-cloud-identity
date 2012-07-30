@@ -66,7 +66,7 @@
                     }
                 ],
                 "name": "cloudDNS",
-                "type": "dnsextension:dns"
+                "type": "rax:dns"
             },
             {
                 "endpoints": [

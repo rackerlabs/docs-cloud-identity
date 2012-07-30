@@ -23,7 +23,7 @@
            ]
        },
        
-       "RAX-GA:impersonator":{
+       "RAX-AUTH:impersonator":{
             "id":"567",
             "name":"impersonator.joe",
             "roles":[{

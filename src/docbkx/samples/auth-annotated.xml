@@ -60,7 +60,7 @@
                     list="https://dfw.servers.api.rackspacecloud.com/"/>
             </endpoint>
         </service>
-        <service type="dnsextension:dns" name="cloudDNS">
+        <service type="rax:dns" name="cloudDNS">
             <endpoint tenantId="12345"
                 publicURL="https://dns.api.rackspacecloud.com/v1.0/12345"/>
         </service>

@@ -4,7 +4,7 @@
 <!-- -->
 <!-- You can resolve the entites with xmllint -->
 <!-- -->
-<!-- xmllint -noent RAX-GA.wadl -->
+<!-- xmllint -noent RAX-AUTH.wadl -->
 <!--*******************************************************-->
 <!DOCTYPE application [
 <!ENTITY % common SYSTEM "https://raw.github.com/openstack/identity-api/master/openstack-identity-api/src/docbkx/common/common.ent">
@@ -14,7 +14,7 @@
 <application xmlns="http://wadl.dev.java.net/2009/02"
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
    xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
-   xmlns:RAX-GA="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0"
+   xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    xmlns:db="http://docbook.org/ns/docbook"
@@ -25,7 +25,7 @@
     </grammars>
 
     <resources base="http://localhost:8080">
-        <resource id="RAX-GA" path="/RAX-GA">
+        <resource id="RAX-AUTH" path="/RAX-AUTH">
             <resource id="impersonation-tokens" path="impersonation-tokens">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token of the impersonator</doc>
@@ -78,7 +78,7 @@
                  I changed for consistency with other RAX- samples to
                  ../common/samples/formattedsamples/keystone/ImpersonationRequest.json
             -->
-            <representation mediaType="application/xml" element="RAX-GA:impersonation" >
+            <representation mediaType="application/xml" element="RAX-AUTH:impersonation" >
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/ImpersonationRequest.xml" />
                 </doc>
@@ -90,7 +90,7 @@
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-GA:access">
+            <representation mediaType="application/xml" element="RAX-AUTH:access">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/ImpersonationResponse.xml" />
                 </doc>

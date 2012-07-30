@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-07-11</pubdate>
+		<pubdate>2012-07-31</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -45,6 +45,18 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2012-07-31</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para> 
+								Updated <xref linkend="Service_Types-d1e265"/> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. 
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2012-07-11</date>
 				<revdescription>

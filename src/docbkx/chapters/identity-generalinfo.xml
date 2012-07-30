@@ -472,16 +472,6 @@ This operation does not require a request body.</para>'>
 						</td>
 					</tr>
 					<tr>
-						<td><code>dnsextension:dns</code></td>
-						<td>
-							<emphasis role="italic">Cloud DNS, a
-								Rackspace service of this type, is
-								documented at <link
-								xlink:href="http://docs.rackspace.com/api/"
-								>http://docs.rackspace.com/api/</link>.</emphasis>
-						</td>
-					</tr>
-					<tr>
 						<td><code>identity</code></td>
 						<td>
 							<para> Services of this type are
@@ -538,6 +528,18 @@ This operation does not require a request body.</para>'>
 						</td>
 					</tr>
 					<tr>
+						<td><code>rax:dns</code></td>
+						<td>
+							<para>
+								<emphasis role="italic">Cloud DNS, a
+									Rackspace service of this type, is
+									documented at <link
+										xlink:href="http://docs.rackspace.com/api/"
+										>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
 						<td><code>rax:load-balancer</code></td>
 						<td>
 							<para>
@@ -550,6 +552,18 @@ This operation does not require a request body.</para>'>
 						</td>
 					</tr>
 					<tr>
+						<td><code>rax:monitor</code></td>
+						<td>
+							<para>
+								<emphasis role="italic">Cloud
+									Monitoring, a Rackspace service of
+									this type, is documented at <link
+										xlink:href="http://docs.rackspace.com/api/"
+										>http://docs.rackspace.com/api/</link>.</emphasis>
+							</para>
+						</td>
+					</tr>
+					<tr>
 						<td><code>rax:object-cdn</code></td>
 						<td>
 							<para>
@@ -557,18 +571,6 @@ This operation does not require a request body.</para>'>
 								Rackspace service that supports a
 								Content Distribution Network (CDN),
 								is documented at <link
-								xlink:href="http://docs.rackspace.com/api/"
-								>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>rax:monitor</code></td>
-						<td>
-							<para>
-								<emphasis role="italic">Cloud
-								Monitoring, a Rackspace service of
-								this type, is documented at <link
 								xlink:href="http://docs.rackspace.com/api/"
 								>http://docs.rackspace.com/api/</link>.</emphasis>
 							</para>

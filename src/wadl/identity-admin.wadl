@@ -375,7 +375,7 @@
                     </p>
                 </doc>
             </param>
-            <!-- Impersonator samples show how RAX-GA extension can request token for impersonator 
+            <!-- Impersonator samples show how RAX-AUTH extension can request token for impersonator 
             but 
             2012-03-19 Itari Ighoroje says there is no special request, hide these 
             <representation mediaType="application/xml" >
@@ -389,7 +389,7 @@
                 </doc>
             </representation>
             
-                 Impersonator samples show how RAX-GA extension can request token for impersonator --> 
+                 Impersonator samples show how RAX-AUTH extension can request token for impersonator --> 
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:access">
@@ -402,7 +402,7 @@
 		<xsdxt:code href="../common/samples/validatetoken.json"/>
 	      </doc>
 	    </representation>
-        <!-- Validate Token Response samples show how RAX-GA extension can describe impersonator 
+        <!-- Validate Token Response samples show how RAX-AUTH extension can describe impersonator 
         -->
             <representation mediaType="application/xml" >
                 <doc xml:lang="EN" title="Validate Token for Impersonation Response: XML">
@@ -415,7 +415,7 @@
                 </doc>
             </representation>
          <!-- 
-              Validate Token Response samples show how RAX-GA extension can describe impersonator -->   
+              Validate Token Response samples show how RAX-AUTH extension can describe impersonator -->   
         </response>
         &commonFaults;
         &getFaults;

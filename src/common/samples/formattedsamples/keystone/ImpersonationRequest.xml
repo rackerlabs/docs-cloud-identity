@@ -2,7 +2,7 @@
 <impersonation 
     xmlns:ns2="http://www.w3.org/2005/Atom"
     xmlns:ns3="http://docs.openstack.org/identity/api/v2.0" 
-    xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0">
+    xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
     <user username="jane.customer"/>
     <expire-in-seconds>10800</expire-in-seconds>
 </impersonation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <access xmlns="http://docs.openstack.org/identity/api/v2.0"
-    xmlns:RAX-GA="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0">
+    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
     <token id="ab48a9efdfedb23ty3494" 
         expires="2010-11-01T03:32:15-05:00">
         <tenant id="345" 
@@ -13,11 +13,11 @@
             <role id="234" name="object-store:admin" />
         </roles>
     </user>
-    <RAX-GA:impersonator id="567" 
+    <RAX-AUTH:impersonator id="567" 
         username="impersonator.joe">
         <roles xmlns="http://docs.openstack.org/identity/api/v2.0">
             <role id="123" name="Racker" />
             <role id="234" name="object-store:admin" />
         </roles>
-    </RAX-GA:impersonator>
+    </RAX-AUTH:impersonator>
 </access>

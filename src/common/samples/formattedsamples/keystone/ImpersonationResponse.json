@@ -1,5 +1,5 @@
 {
-  "RAX-GA:access": {
+  "RAX-AUTH:access": {
       "token": {
           "id": "xxx-yyy-zzz-kwejKId893KJDKJKSKJS",
           "expires": "2011-09-08T07:00:00.000-05:00"

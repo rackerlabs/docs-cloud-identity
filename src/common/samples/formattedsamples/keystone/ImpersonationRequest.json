@@ -1,5 +1,5 @@
 {
-  "RAX-GA:impersonation" : {
+  "RAX-AUTH:impersonation" : {
       "user": {
           "username": "jane.customer"
       },

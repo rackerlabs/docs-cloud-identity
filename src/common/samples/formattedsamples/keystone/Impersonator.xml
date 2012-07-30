@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <impersonator 
-    xmlns="http://docs.rackspace.com/identity/api/ext/RAX-GA/v1.0"
+    xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
     id="345" 
     username="impersonator.joe">
     <roles xmlns="http://docs.openstack.org/identity/api/v2.0">
