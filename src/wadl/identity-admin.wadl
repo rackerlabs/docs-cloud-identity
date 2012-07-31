@@ -465,12 +465,12 @@
                 Identifying information includes the user's email account, username, user ID, status, and default region.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Default region, indicated by <code>RAX-AUTH:defaultRegion</code>, 
+                Default region, indicated by <code>defaultRegion</code>, 
                 associates this user with a specific regional datacenter: typical values include DFW, ORD and LON.  
                 A blank value is also acceptable, indicating that no default region has been assigned for this user. 
                 If a default region has been assigned for this user 
                 and a service in this user's service catalog is available in multiple regions, 
-                the user will obtain the service from the region specified by <code>RAX-AUTH:defaultRegion</code>.
+                the user will obtain the service from the region specified by <code>defaultRegion</code>.
                 You can see examples of services available in multiple regions 
                 in the "General API Information" chapter's
                 <!-- linking from this WADL-generated section to hand-coded section -->
@@ -478,17 +478,19 @@
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 When a user creates a new cloud server via the <a href="http://mycloud.rackspace.com/">
-                Cloud Control Panel</a>, the region specified by <code>RAX-AUTH:defaultRegion</code> is  
+                Cloud Control Panel</a>, the region specified by <code>defaultRegion</code> is  
                 visible on the control panel but the region cannot currently be changed there.
                 To change the association of a user with a default region,
                 use 
-                <xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" /> 
+                <xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title"/> 
                 as you would to change any other descriptive information about the user.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 In the examples below, 
-                no value is specified for <code>RAX-AUTH:defaultRegion</code>, 
-                so this user is not associated with a specific region.
+                <code>defaultRegion</code> is specified as <code>DFW</code>:
+                when this user has a choice between consuming a service in the <code>DFW</code> region 
+                and consuming the same service in any other region, 
+                the user will consume the service in <code>DFW</code>.
             </p>
         </doc>
         <request>
@@ -519,12 +521,12 @@
                 Identifying information includes the user's email account, username, user ID, status, and default region.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Default region, indicated by <code>RAX-AUTH:defaultRegion</code>, 
+                Default region, indicated by <code>defaultRegion</code>, 
                 associates this user with a specific regional datacenter: typical values include DFW, ORD and LON.  
                 A blank value is also acceptable, indicating that no default region has been assigned for this user. 
                 If a default region has been assigned for this user 
                 and a service in this user's service catalog is available in multiple regions, 
-                the user will obtain the service from the region specified by <code>RAX-AUTH:defaultRegion</code>.
+                the user will obtain the service from the region specified by <code>defaultRegion</code>.
                 You can see examples of services available in multiple regions 
                 in the "General API Information" chapter's
                 <!-- linking from this WADL-generated section to hand-coded section -->
@@ -532,17 +534,19 @@
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 When a user creates a new cloud server via the <a href="http://mycloud.rackspace.com/">
-                    Cloud Control Panel</a>, the region specified by <code>RAX-AUTH:defaultRegion</code> is 
+                    Cloud Control Panel</a>, the region specified by <code>defaultRegion</code> is 
                 visible on the control panel but the region cannot currently be changed there.
                 To change the association of a user with a default region,
                 use 
-                <xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" /> 
+                <xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title"/> 
                 as you would to change any other descriptive information about the user.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 In the examples below, 
-                no value is specified for <code>RAX-AUTH:defaultRegion</code>, 
-                so this user is not associated with a specific region.
+                <code>defaultRegion</code> is specified as <code>DFW</code>:
+                when this user has a choice between consuming a service in the <code>DFW</code> region 
+                and consuming the same service in any other region, 
+                the user will consume the service in <code>DFW</code>.
             </p>
         </doc>
         <response status="200 203">
