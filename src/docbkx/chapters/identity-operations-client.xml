@@ -104,12 +104,14 @@
 								(<code>identity:default</code>). </para>
 					</note>
 					<warning>
-						<para>
-							If you use this <code>POST /users</code> call to create a user, 
-							that user will have access to APIs but will not have access to the Control Panel. 
-							Control Panel access is provided to the account's admin user; 
-							the admin user is the user who initiated the account by completing the Sign-Up process.
-						</para>
+						<para> If you use this <code>POST /users</code> call to create a
+								user, that user will have access to
+								APIs but will not have access to the
+								Cloud Control Panel. Cloud Control
+								Panel access is provided to the
+								account's admin user; the admin user
+								is the user who initiated the account
+								by completing the Sign-Up process. </para>
 					</warning>
 				</wadl:doc>
 				</wadl:method>

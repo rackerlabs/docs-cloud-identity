@@ -63,6 +63,15 @@
 								Updated <xref linkend="Service_Types-d1e265"/> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. 
 							</para>
 						</listitem>
+						<listitem>
+							<para> 
+								Simplified references to the Cloud Control Panel, showing that all users 
+								have access to the 
+								Cloud Control
+								Panel at <link xlink:href="http://mycloud.rackspace.com/"
+									>http://mycloud.rackspace.com/</link>. 
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>

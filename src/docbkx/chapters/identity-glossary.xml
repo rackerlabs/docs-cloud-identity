@@ -19,8 +19,12 @@
                     authentication <link linkend="Token-d1e13">token</link> which will be recognized by
                     the <link linkend="Service-d1e09">services</link>
                     in your <link linkend="Service_Catalog-d1e10">service catalog</link>. To find or generate your
-                    API key, login to the Rackspace control
-                    panel.</para>
+                    API key, login to the Rackspace
+                    Cloud Control Panel
+                    at
+                    <link
+                        xlink:href="http://mycloud.rackspace.com/"
+                        >http://mycloud.rackspace.com/</link>.</para>
             </glossdef>    
         </glossentry> 
         <glossentry xml:id="Authentication-d1e01">

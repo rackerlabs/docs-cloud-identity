@@ -28,27 +28,12 @@
             </listitem>
         </itemizedlist>
         </para>
-        <para>
-            Your <code>username</code> and
-            <code>password</code> are the ones you use to login to the Rackspace control panel.
-            Once you are logged in, you can use the Rackspace control panel to obtain your <code>API key</code>.
-        </para>
-        <para>
-            Use the control panel for the region in which your account is based: 
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>
-                        US-based accounts use the control panel at <link xlink:href="https://manage.rackspacecloud.com/">https://manage.rackspacecloud.com/</link>.
-                    </para>
-                </listitem>
-                <listitem>
-                    <para> UK-based accounts use the control panel at
-                        <link
-                            xlink:href="https://lon.manage.rackspacecloud.com/"
-                            >https://lon.manage.rackspacecloud.com/</link>. </para>
-                </listitem>
-            </itemizedlist> 
-        </para>
+        <para> Your <code>username</code> and <code>password</code>
+        are the ones you use to login to the Rackspace Cloud Control
+        Panel at <link xlink:href="http://mycloud.rackspace.com/"
+            >http://mycloud.rackspace.com/</link>. Once you are logged
+        in, you can use the Cloud Control Panel to obtain your
+            <code>API key</code>. </para>
     <important>
         <para>
             Multiple users (sub-users) can be created for an account but, 

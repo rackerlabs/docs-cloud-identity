@@ -66,6 +66,15 @@
 					</listitem>
 					<listitem>
 						<para> 
+							Simplified references to the Cloud Control Panel, showing that all users 
+							have access to the 
+							Cloud Control
+							Panel at <link xlink:href="http://mycloud.rackspace.com/"
+								>http://mycloud.rackspace.com/</link>. 
+						</para>
+					</listitem>
+					<listitem>
+						<para> 
 							Renamed RAX-GA extension to RAX-AUTH. 
 						</para>
 					</listitem>
