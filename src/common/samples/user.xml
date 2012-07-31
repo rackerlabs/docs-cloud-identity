@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <user xmlns="http://docs.openstack.org/identity/api/v2.0"
+      "RAX-AUTH:defaultRegion": ""
       enabled="true" email="john.smith@example.org"
       username="jqsmith" id="123456"/>

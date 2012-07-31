@@ -52,12 +52,21 @@
 				<itemizedlist spacing="compact">
 					<listitem>
 						<para> 
-							Renamed RAX-GA extension to RAX-AUTH. 
+							Added information about <code>defaultRegion</code> for 
+							<xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" />, 
+							<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />, 
+							and 
+							<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" />. 
 						</para>
 					</listitem>
 					<listitem>
 						<para> 
 							Updated <xref linkend="Service_Types-d1e265"/> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. 
+						</para>
+					</listitem>
+					<listitem>
+						<para> 
+							Renamed RAX-GA extension to RAX-AUTH. 
 						</para>
 					</listitem>
 				</itemizedlist>		

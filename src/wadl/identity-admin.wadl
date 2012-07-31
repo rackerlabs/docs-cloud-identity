@@ -266,7 +266,7 @@
            To see authentication requests and responses with annotations explaining key ideas, see the examples
            in the "General API Information" chapter's
            <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
-            <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</a> section.
+            <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64">"Sample Authentication Request and Response"</a> section.
         </p>
         <p xmlns="http://www.w3.org/1999/xhtml">
            The examples below demonstrate authentication with several kinds of credentials.
@@ -462,7 +462,33 @@
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 This request returns identifying information about the user with the specified user name. 
-                Identifying information includes the user's email account, username, user ID, and status.
+                Identifying information includes the user's email account, username, user ID, status, and default region.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Default region, indicated by <code>RAX-AUTH:defaultRegion</code>, 
+                associates this user with a specific regional datacenter: typical values include DFW, ORD and LON.  
+                A blank value is also acceptable, indicating that no default region has been assigned for this user. 
+                If a default region has been assigned for this user 
+                and a service in this user's service catalog is available in multiple regions, 
+                the user will obtain the service from the region specified by <code>RAX-AUTH:defaultRegion</code>.
+                You can see examples of services available in multiple regions 
+                in the "General API Information" chapter's
+                <!-- linking from this WADL-generated section to hand-coded section -->
+                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64">"Sample Authentication Request and Response"</a> section.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                When a user creates a new cloud server via the <a href="http://mycloud.rackspace.com/">
+                Cloud Control Panel</a>, the region specified by <code>RAX-AUTH:defaultRegion</code> is  
+                visible on the control panel but the region cannot currently be changed there.
+                To change the association of a user with a default region,
+                use 
+                <xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" /> 
+                as you would to change any other descriptive information about the user.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                In the examples below, 
+                no value is specified for <code>RAX-AUTH:defaultRegion</code>, 
+                so this user is not associated with a specific region.
             </p>
         </doc>
         <request>
@@ -489,8 +515,34 @@
                 Return detailed information about a specific user, by user ID.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                This request returns identifying information about the user with the specified user ID. 
-                Identifying information includes the user's email account, username, user ID, and status.
+                This request returns identifying information about the user with the specified user name. 
+                Identifying information includes the user's email account, username, user ID, status, and default region.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Default region, indicated by <code>RAX-AUTH:defaultRegion</code>, 
+                associates this user with a specific regional datacenter: typical values include DFW, ORD and LON.  
+                A blank value is also acceptable, indicating that no default region has been assigned for this user. 
+                If a default region has been assigned for this user 
+                and a service in this user's service catalog is available in multiple regions, 
+                the user will obtain the service from the region specified by <code>RAX-AUTH:defaultRegion</code>.
+                You can see examples of services available in multiple regions 
+                in the "General API Information" chapter's
+                <!-- linking from this WADL-generated section to hand-coded section -->
+                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64">"Sample Authentication Request and Response"</a> section.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                When a user creates a new cloud server via the <a href="http://mycloud.rackspace.com/">
+                    Cloud Control Panel</a>, the region specified by <code>RAX-AUTH:defaultRegion</code> is 
+                visible on the control panel but the region cannot currently be changed there.
+                To change the association of a user with a default region,
+                use 
+                <xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" /> 
+                as you would to change any other descriptive information about the user.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                In the examples below, 
+                no value is specified for <code>RAX-AUTH:defaultRegion</code>, 
+                so this user is not associated with a specific region.
             </p>
         </doc>
         <response status="200 203">

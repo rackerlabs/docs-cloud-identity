@@ -1,5 +1,6 @@
 {
   "user": {
+    "RAX-AUTH:defaultRegion": ""
     "id": "123456",
     "username": "jqsmith",
     "email": "john.smith@example.org",

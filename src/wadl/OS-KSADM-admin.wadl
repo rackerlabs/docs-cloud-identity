@@ -376,7 +376,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             </wadl:doc>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 To update a user, specify the user's identifying information 
-                (<code>email</code>, <code>username</code>, <code>id</code>, and status) values, 
+                (<code>email</code>, <code>username</code>, <code>id</code>, <code>defaultRegion</code>, and status) values, 
                 replacing the current value with a new value where necessary.
                 For example, to change the user's status from disabled to enabled, 
                 specify <code>enabled=true</code>.
