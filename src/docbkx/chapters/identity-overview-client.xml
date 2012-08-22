@@ -9,6 +9,13 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Overview-d1e65">
     <title>Overview</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	<raxm:type>concept</raxm:type>
+	<raxm:product version="v2.0">auth</raxm:product>
+	<raxm:priority>1</raxm:priority>
+      </raxm:metadata> 
+    </info>
     <para> This document describes Rackspace's implementation of the
         OpenStack Keystone Identity Service v2.0. We have named our
         Keystone implementation the Rackspace Cloud Identity Service

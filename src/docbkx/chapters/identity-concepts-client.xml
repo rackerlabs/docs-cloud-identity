@@ -9,6 +9,13 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Identity-Service-Concepts-e1362">
     <title>Concepts</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">	
+	<raxm:type>concept</raxm:type>
+	<raxm:product version="v2.0">auth</raxm:product>
+	<raxm:priority>1</raxm:priority>
+      </raxm:metadata> 
+    </info>
     <para>
         The basic function of the authentication service is to validate a client's credentials. If a client offers valid credentials,
         Auth returns a token and a service catalog. The client can use the service catalog to find endpoints for the services it can use.

@@ -9,6 +9,13 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Client Developers</title>
+	<info>
+	  <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	    <raxm:type>apiref</raxm:type>
+	    <raxm:product version="v2.0">auth</raxm:product>
+	    <raxm:priority>1</raxm:priority>
+	  </raxm:metadata> 
+	</info>
 	<para>
 		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.
 		If an extension is required, it is included in Rackspace's implementation of the Keystone Identity Service; 

@@ -45,6 +45,13 @@ This operation does not require a request body.</para>'>
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Overview-Keystone-API-d1e62">
          <title>General API Information</title>
+	<info>
+	  <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	    <raxm:type>concept</raxm:type>
+	    <raxm:product version="v2.0">auth</raxm:product>
+	    <raxm:priority>1</raxm:priority>
+	  </raxm:metadata> 
+	</info>
         <para>The authentication service allows clients to obtain
 		tokens that can be used to access cloud services such as those
 		provided by Rackspace and OpenStack. </para>
