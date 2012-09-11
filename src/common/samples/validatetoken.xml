@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<access xmlns="http://docs.openstack.org/identity/api/v2.0">
-	<token id="ab48a9efdfedb23ty3494" expires="2010-11-01T03:32:15-05:00">
+<access 
+	xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+	xmlns="http://docs.openstack.org/identity/api/v2.0">
+	<token id="ab48a9efdfedb23ty3494" 
+		expires="2010-11-01T03:32:15-05:00">
 		<tenant id="345" name="My Project" />
 	</token>
-	<user id="123" username="jqsmith">
+	<user
+		xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+		id="123" username="testuser" rax-auth:defaultRegion="DFW">
 		<roles xmlns="http://docs.openstack.org/identity/api/v2.0">
 			<role id="123" name="compute:admin" />
 			<role id="234" name="object-store:admin" />

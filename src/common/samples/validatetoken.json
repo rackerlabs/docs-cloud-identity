@@ -9,8 +9,9 @@
             }
         },
         "user":{
+            "RAX-AUTH:defaultRegion": "DFW",
             "id":"123",
-            "name":"jqsmith",
+            "name":"testuser",
             "roles":[{
                     "id":"123",
                     "name":"compute:admin"

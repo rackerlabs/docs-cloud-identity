@@ -30,7 +30,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-09-04</pubdate>
+		<pubdate>2012-09-11</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -47,13 +47,21 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2012-09-04</date>
+				<date>2012-09-11</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
-								Repaired broken link to <xref
-									linkend="Sample_Request_Response-d1e64"/>.
+								Repaired broken link to 
+								<xref linkend="Sample_Request_Response-d1e64"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Updated samples to show <code>defaultRegion</code> in  
+								<xref linkend="Sample_Request_Response-d1e64"/> 
+								and 
+								<xref linkend="GET_validateToken_v2.0_tokens__tokenId__"/>. 
 							</para>
 						</listitem>
 					</itemizedlist>
