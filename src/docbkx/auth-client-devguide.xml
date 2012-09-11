@@ -51,8 +51,10 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
-								Repaired broken link to <xref
-								linkend="Sample_Request_Response-d1e64"/>.
+								Repaired broken link from 
+								<xref linkend="POST_authenticate_v2.0_tokens_"/>
+								to 
+								<xref linkend="Sample_Request_Response-d1e64"/>.
 							</para>
 						</listitem>
 						<listitem>

@@ -52,12 +52,14 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
-								Repaired broken link to 
+								Repaired broken link from 
+								<xref linkend="POST_authenticate_v2.0_tokens_"/>
+								to 
 								<xref linkend="Sample_Request_Response-d1e64"/>.
 							</para>
 						</listitem>
 						<listitem>
-							<para> 
+							<para>
 								Updated samples to show <code>defaultRegion</code> in  
 								<xref linkend="Sample_Request_Response-d1e64"/> 
 								and 
