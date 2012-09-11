@@ -153,10 +153,14 @@ This operation does not require a request body.</para>'>
 				<para> </para>
 			</callout>
 		</calloutlist>	
-		<para>
-			A successful authentication response
-			includes a token and a service catalog.
-		</para>
+		<para> A successful authentication response includes a token and a
+			service catalog. For each service in the service catalog,
+			only relevant details are returned, so the description of
+			one service may include a different set of details than
+			the description of another service. For example, some
+			services' endpoints may be associated with a default
+			region; if there is no default region for that endpoint,
+				<code>region</code> is omitted. </para>
 	  <example>
 		<title>Service Catalog in Authentication Response with Headers: XML</title>
 		<programlisting language="xml">
@@ -168,11 +172,11 @@ This operation does not require a request body.</para>'>
 	  			<area xml:id="response.xml.token" units="linecolumn" coords="13 11"/>
 	  			<area xml:id="response.xml.role" units="linecolumn" coords="18 16"/>
 	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="23 21"/>
-	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="45 37"/>
-	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="45 56"/>
-	  			<area xml:id="response.xml.region" units="linecolumn" coords="46 35"/>
-	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="46 83"/>
-	  			<area xml:id="response.xml.url" units="linecolumn" coords="48 114"/>
+	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="48 37"/>
+	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="48 56"/>
+	  			<area xml:id="response.xml.region" units="linecolumn" coords="49 35"/>
+	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="49 83"/>
+	  			<area xml:id="response.xml.url" units="linecolumn" coords="51 114"/>
 	  		</areaspec>	
 		<programlisting language="xml">
 <!-- 2012-04-13 new samples emailed by Joe Savak 
