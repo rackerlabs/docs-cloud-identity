@@ -81,14 +81,14 @@
                         providing your username and your API
                         key.</emphasis></para>
                     <para>
-                        <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d 
+                        <literallayout class="monospaced">curl -X POST https://identity.api.rackspacecloud.com/v2.0/tokens -d
 '{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"theUserName", "apiKey":"00a00000a000a0000000a000a00aaa0a" } } }' -H "Content-type: application/json"</literallayout>
                     </para>
                     <para><emphasis>You can request a token by
                         providing your username and your
                         password.</emphasis></para>
                     <para>
-                        <literallayout class="monospaced">curl -X POST https://auth.api.rackspacecloud.com/v2.0/tokens -d
+                        <literallayout class="monospaced">curl -X POST https://identity.api.rackspacecloud.com/v2.0/tokens -d
 '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' -H "Content-type: application/json"</literallayout>
                     </para>
                     <para> Successful authentication returns a token
