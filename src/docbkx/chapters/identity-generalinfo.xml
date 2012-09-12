@@ -315,15 +315,15 @@ This operation does not require a request body.</para>'>
 			<title>Service Catalog in Authentication Response: JSON</title>
 			<programlistingco>
 				<areaspec>
-					<area xml:id="response.json.token" units="linecolumn" coords="109 8"/>
-					<area xml:id="response.json.role" units="linecolumn" coords="116 12"/>
-					<area xml:id="response.json.catalog" units="linecolumn" coords="5 8"/>
-					<area xml:id="response.json.servicetype" units="linecolumn" coords="106 16"/>
-					<area xml:id="response.json.servicename" units="linecolumn" coords="105 16"/>
-					<area xml:id="response.json.region" units="linecolumn" coords="101 24"/>
-					<area xml:id="response.json.tenant" units="linecolumn" coords="102 24"/>
-					<area xml:id="response.json.url" units="linecolumn" coords="99 24"/>
+					<area xml:id="response.json.catalog" units="linecolumn" coords="4 28"/>
+					<area xml:id="response.json.url" units="linecolumn" coords="8 92"/>
+					<area xml:id="response.json.region" units="linecolumn" coords="9 41"/>
+					<area xml:id="response.json.tenant" units="linecolumn" coords="10 45"/>
+					<area xml:id="response.json.servicename" units="linecolumn" coords="24 49"/>
+					<area xml:id="response.json.servicetype" units="linecolumn" coords="25 34"/>				
+					<area xml:id="response.json.token" units="linecolumn" coords="127 19"/>
 					<area xml:id="response.json.userdefault" units="linecolumn" coords="132 41"/>
+					<area xml:id="response.json.role" units="linecolumn" coords="135 23"/>
 				</areaspec>	
 				<programlisting language="javascript">
 <xi:include href="../samples/auth-annotated.json" parse="text"/>
