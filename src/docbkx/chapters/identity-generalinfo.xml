@@ -323,12 +323,9 @@ This operation does not require a request body.</para>'>
 					<area xml:id="response.json.region" units="linecolumn" coords="101 24"/>
 					<area xml:id="response.json.tenant" units="linecolumn" coords="102 24"/>
 					<area xml:id="response.json.url" units="linecolumn" coords="99 24"/>
+					<area xml:id="response.json.userdefault" units="linecolumn" coords="132 41"/>
 				</areaspec>	
 				<programlisting language="javascript">
-<!-- 2012-04-13 new samples emailed by Joe Savak 
-				after expansion of service catalog 
-				to include CDB, CDNS, CLB, CM with new service types; 
-				update table of service types to match -->
 <xi:include href="../samples/auth-annotated.json" parse="text"/>
 		</programlisting>
 			</programlistingco>			
@@ -437,6 +434,15 @@ This operation does not require a request body.</para>'>
 					holding the fully-privileged <code>identity:user-admin</code> role.
 					Other users might hold other roles with different privileges.
 					Roles need not be associated with actual job functions such as Administrator, Operator, Developer, Tester, or Trainer.
+				</para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.xml.userdefault">
+				<para> 
+					Users can be assigned a default region so that, when there is a choice between multiple endpoints associated with a 
+					service in the user's catalog, the endpoint for the user's default region will be selected if it is available.
+					In this example, the user's default region is <code>DFW</code> and several of the services in the user's catalog offer endpoints in that region and the 
+					<code>ORD</code> region; this user's work will be directed to the <code>DFW</code> region whenever possible.
 				</para>
 				<para> </para>
 			</callout>

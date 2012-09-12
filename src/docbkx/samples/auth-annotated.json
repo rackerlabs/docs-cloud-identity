@@ -3,6 +3,14 @@
         "serviceCatalog": [
             {
                 "endpoints": [
+                   {
+                        "publicURL": "https://ord.servers.api.rackspacecloud.com/v2/12345",
+                        "region": "ORD",
+                        "tenantId": "12345",
+                        "versionId": "2",
+                        "versionInfo": "https://ord.servers.api.rackspacecloud.com/v2",
+                        "versionList": "https://ord.servers.api.rackspacecloud.com/"
+                    }
                     {
                         "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/12345",
                         "region": "DFW",
@@ -54,6 +62,11 @@
                         "region": "DFW",
                         "tenantId": "MossoCloudFS_aaaa-bbbb-cccc "
                     }
+                    {
+                        "publicURL": "https://cdn2.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
+                        "region": "ORD",
+                        "tenantId": "MossoCloudFS_aaaa-bbbb-cccc "
+                    }
                 ],
                 "name": "cloudFilesCDN",
                 "type": "rax:object-cdn"
@@ -99,6 +112,12 @@
                         "region": "DFW",
                         "tenantId": "MossoCloudFS_aaaa-bbbb-cccc"
                     }
+                                        {
+                        "internalURL": "https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
+                        "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
+                        "region": "ORD",
+                        "tenantId": "MossoCloudFS_aaaa-bbbb-cccc"
+                    }
                 ],
                 "name": "cloudFiles",
                 "type": "object-store"
@@ -109,6 +128,7 @@
             "id": "aaaaa-bbbbb-ccccc-dddd"
         },
         "user": {
+        "RAX-AUTH:defaultRegion": "DFW",
             "id": "161418",
             "name": "joeuser",
             "roles": [
