@@ -170,19 +170,17 @@ This operation does not require a request body.</para>'>
 	  		<areaspec>
 	  			<area xml:id="response.xml.namespaces" units="linecolumn" coords="4 8"/>
 	  			<area xml:id="response.xml.token" units="linecolumn" coords="13 11"/>
-	  			<area xml:id="response.xml.role" units="linecolumn" coords="18 16"/>
-	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="23 21"/>
-	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="48 37"/>
-	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="48 56"/>
-	  			<area xml:id="response.xml.region" units="linecolumn" coords="49 35"/>
-	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="49 83"/>
-	  			<area xml:id="response.xml.url" units="linecolumn" coords="51 114"/>
+	  			<area xml:id="response.xml.userdefault" units="linecolumn" coords="18 67"/>
+	  			<area xml:id="response.xml.role" units="linecolumn" coords="19 16"/>
+	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="24 21"/>
+	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="49 37"/>
+	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="49 56"/>
+	  			<area xml:id="response.xml.region" units="linecolumn" coords="50 35"/>
+	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="50 83"/>
+	  			<area xml:id="response.xml.url" units="linecolumn" coords="52 114"/>
 	  		</areaspec>	
 		<programlisting language="xml">
-<!-- 2012-04-13 new samples emailed by Joe Savak 
-				after expansion of service catalog 
-				to include CDB, CDNS, CLB, CM with new service types; 
-				update table of service types to match -->
+<?db-font-size 95% ?>
 <xi:include href="../samples/auth-annotated.xml" parse="text"/>
 		</programlisting>
 	  	</programlistingco>			
@@ -209,6 +207,15 @@ This operation does not require a request body.</para>'>
 					maximum possible lifespan but does not guarantee
 					that it will reach that lifespan. Clients are
 					encouraged to cache a token until it expires. </para>
+				<para> </para>
+			</callout>
+			<callout arearefs="response.xml.userdefault">
+				<para> 
+					Users can be assigned a default region so that, when there is a choice between multiple endpoints associated with a 
+					service in the user's catalog, the endpoint for the user's default region will be selected if it is available.
+					In this example, the user's default region is <code>DFW</code> and several of the services in the user's catalog offer endpoints in that region and the 
+					<code>ORD</code> region; this user's work will be directed to the <code>DFW</code> region whenever possible.
+				</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.role">
