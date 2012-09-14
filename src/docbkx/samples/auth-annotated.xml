@@ -13,7 +13,7 @@
         expires="2012-04-13T13:15:00.000-05:00"/>
     <user
         xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-        id="161418" name="joeuser" rax-auth:defaultRegion="DFW">
+        id="161418" name="demoauthor" rax-auth:defaultRegion="DFW">
         <roles>
             <role id="3" name="identity:user-admin" 
                 description="User Admin Role."/>

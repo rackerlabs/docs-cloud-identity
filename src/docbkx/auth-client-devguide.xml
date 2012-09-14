@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-09-12</pubdate>
+		<pubdate>2012-09-14</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,7 +46,7 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2012-09-12</date>
+				<date>2012-09-14</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
@@ -66,7 +66,9 @@
 						<listitem>
 							<para> 
 								Updated samples to show <code>defaultRegion</code> in  
-								<xref linkend="Sample_Request_Response-d1e64"/>. 
+								<xref linkend="Sample_Request_Response-d1e64"/>
+								and 
+								<xref linkend="POST_authenticate_v2.0_tokens_"/>. 
 							</para>
 						</listitem>
 					</itemizedlist>

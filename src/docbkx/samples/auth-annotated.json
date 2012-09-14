@@ -130,7 +130,7 @@
         "user": {
         "RAX-AUTH:defaultRegion": "DFW",
             "id": "161418",
-            "name": "joeuser",
+            "name": "demoauthor",
             "roles": [
                 {
                     "description": "User Admin Role.",

@@ -320,20 +320,21 @@
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:access">
-            <!-- linking to URL in the public-facing copy since linking directly from the WADL-generated to the hand-coded via source xml:id doesn't work -->
-            <!-- I'd link to the auth.xml sample in the hand-coded section if I could, rather than repeating the sample here -->
-            <!-- Note: this WADL chapter gets samples from /common/samples/; the rest of the book gets samples from /samples/ -->
-            <!-- only 2 duplicates in both sample collections: auth.xml (here), auth-credentials.json -->
+            <!-- Note: WADLs generally get samples from /common/samples/ while the rest of the book gets samples from /docbkx/samples/ -->
+            <!-- tired of trying to maintain synch between /common/samples/auth.xml & .json and /docbkx/samples/auth-annotated.xml & .json -->
+            <!-- (showing same sample responses in Ch 3 & Ch 4, annotated with callouts in Ch 3 only) -->
+            <!-- for these 2 samples only, this Ch 4 WADL reuses the samples shown in Ch3 -->
+            <!-- now I can stop losing synch -->
 	      <doc>
 	          <xsdxt:sample title="Authentication Response: XML">
-		          <xsdxt:code href="../common/samples/auth.xml"/>
+		          <xsdxt:code href="../docbkx/samples/auth-annotated.xml"/>
 	          </xsdxt:sample>
 	      </doc>
 	    </representation>
             <representation mediaType="application/json">
 	      <doc>
 	          <xsdxt:sample title="Authentication Response: JSON">
-		          <xsdxt:code href="../common/samples/auth.json"/>	
+		          <xsdxt:code href="../docbkx/samples/auth-annotated.json"/>	
 	          </xsdxt:sample>
 	          <p xmlns="http://www.w3.org/1999/xhtml">            
 	              To see authentication requests and responses with annotations explaining key ideas, see the examples
