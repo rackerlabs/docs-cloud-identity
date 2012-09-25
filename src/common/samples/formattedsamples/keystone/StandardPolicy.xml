@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy xmlns="http://docs.rackspace.com/identity/policy/v1.0">
+     <rule>
+          <subject roles="default"/>
+          <capabilities>
+               <capability id="v2.0/OS-KSCATALOG/endpointTemplates/32/capabilities/create-server"/>
+               <capability id="v2.0/OS-KSCATALOG/endpointTemplates/32/capabilities/get-servers"/>
+               <capability id="v2.0/OS-KSCATALOG/endpointTemplates/32/capabilities/get-server"/>
+               <capability id="v2.0/OS-KSCATALOG/endpointTemplates/32/capabilities/update-server"/>
+               <capability id="v2.0/OS-KSCATALOG/endpointTemplates/32/capabilities/stop-server"/>
+          </capabilities>
+     </rule>
+     <rule>
+          <subject id="jbryce"/>
+          <capabilities>
+               <capability id="v2.0/OS-KSCATALOG/endpointTemplates/32/capabilities/get-server"/>
+          </capabilities>
+     </rule>
+</policy>

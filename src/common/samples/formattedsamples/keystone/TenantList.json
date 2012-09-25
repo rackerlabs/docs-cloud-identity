@@ -1,0 +1,18 @@
+{
+  "tenants": [
+    {
+      "id": "5784574",
+      "enabled": true,
+      "display-name": "Star Wars",
+      "description": "Used to manage the Star Wars games",
+      "name": "star_wars"
+    },
+    {
+      "id": "Mosso_73843_FS",
+      "enabled": true,
+      "display-name": "Star Wars",
+      "description": "Used to manage the pictures for Start Wars",
+      "name": "start_wars_pictures"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies algorithm="if-false-deny"
+     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:identity="http://docs.openstack.org/identity/api/v2.0" xmlns:ns3="http://www.w3.org/2005/Atom">
+     <policy enabled="true" global="false" id="2" name="nova policy" type="nova-json-policy-format"/>
+     <policy enabled="true" global="false" id="122"
+          name="admin policies" type="standard-policy-format"/>
+</policies>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://docs.openstack.org/identity/api/v2.0" xmlns:ns2="http://www.w3.org/2005/Atom">
+     <endpoint
+          adminURL="https://dfw.servers.api.rackspacecloud.com/v2/2882983"
+          id="4"
+          internalURL="https://dfw.servers.api.rackspacecloud.com/v2/2882983"
+          name="cloudServersOpenStack"
+          publicURL="https://dfw.servers.api.rackspacecloud.com/v2/2882983"
+          region="DFW" tenantId="2882983" type="compute">
+          <version id="1"
+               info="https://dfw.servers.api.rackspacecloud.com/v2" list="https://dfw.servers.api.rackspacecloud.com"/>
+     </endpoint>
+     <endpoint id="5"
+          internalURL="https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee"
+          name="cloudFiles"
+          publicURL="https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee"
+          region="ORD"
+          tenantId="MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee" type="objectStore">
+          <version id="1"
+               info="https://storage101.ord1.clouddrive.com/v1" list="https://storage101.ord1.clouddrive.com"/>
+     </endpoint>
+</endpoints>

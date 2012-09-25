@@ -1,0 +1,21 @@
+{
+  "RAX-AUTH:domains": [
+    {
+      "id": "9883948",
+      "enabled": true,
+      "description": "A very good customer",
+      "name": "GCorp"
+    },
+    {
+      "id": "111",
+      "enabled": true,
+      "description": "High profile",
+      "name": "Azuri"
+    },
+    {
+      "id": "222",
+      "enabled": true,
+      "name": "GCorp"
+    }
+  ]
+}

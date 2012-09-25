@@ -1,0 +1,19 @@
+{
+  "policy": [
+    {
+      "subject": {
+        "roles": [
+          "featureTester"
+        ],
+        "groups": [
+          "PreferredCustomer BetaCustomer"
+        ]
+      },
+      "capabilities": [
+        {
+          "id": "*/feature/*"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy xmlns="http://docs.rackspace.com/identity/policy/v1.0">
+     <rule>
+          <subject groups="PreferredCustomer BetaCustomer" roles="featureTester"/>
+          <capabilities>
+               <capability id="*/feature/*"/>
+          </capabilities>
+     </rule>
+</policy>

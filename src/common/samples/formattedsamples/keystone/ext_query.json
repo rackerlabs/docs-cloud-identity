@@ -1,0 +1,22 @@
+{
+    "extension": [
+        {
+            "name": "Rackspace Auth Extension",
+            "namespace": "http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0",
+            "alias": "RAX-AUTH", 
+            "updated": "2011-03-11T10:40:00-04:00", 
+            "description": "A set of Rackspace auth apis that allows for a variety of extensions and capabilities e.g impersonation."
+             links": [
+                {
+                    "rel": "describedby", "type": "application/pdf", "href": "http://docs.rackspacecloud.com/identity/
+api/ext/rax-auth/RAX-AUTH.pdf"
+                }, 
+                {
+                    "rel": "describedby", "type": "application/xml", "href": "http://docs.rackspacecloud.com/identity/
+api/ext/rax-auth/RAX-AUTH.wadl"
+                }
+            ]
+        }
+      ]
+}
+

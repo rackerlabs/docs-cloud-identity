@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy
+     blob="{context_is_admin: [[role:admin]],admin_or_owner: [[is_admin:True], [project_id:%(project_id)s]],default: [[rule:admin_or_owner]]}"
+     enabled="true" global="false" name="nova policy"
+     type="nova-json-policy-format"
+     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:identity="http://docs.openstack.org/identity/api/v2.0" xmlns:ns3="http://www.w3.org/2005/Atom">
+     <description>This is policy defined for all users of the nova api</description>
+</policy>

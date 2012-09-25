@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://docs.openstack.org/identity/api/v2.0" xmlns:ns2="http://www.w3.org/2005/Atom">
+     <user email="john.smith@example.org" enabled="true" id="123456" username="jqsmith"/>
+     <user email="mike.turner@example.org" enabled="true" id="388493" username="miketurner"/>
+     <user email="poe.joe@object.org" enabled="false" id="938439" username="poejo"/>
+</users>

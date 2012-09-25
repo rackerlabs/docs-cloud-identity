@@ -1,0 +1,9 @@
+{
+  "user": {
+    "RAX-AUTH:domainId": "5473387",
+    "id": "123456",
+    "enabled": true,
+    "username": "jqsmith",
+    "email": "john.smith@example.org"
+  }
+}

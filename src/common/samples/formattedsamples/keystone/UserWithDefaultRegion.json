@@ -1,0 +1,9 @@
+{
+  "user": {
+    "id": "123456",
+    "enabled": true,
+    "username": "jqsmith",
+    "email": "john.smith@example.org",
+    "RAX-AUTH:defaultRegion": "ORD"
+  }
+}

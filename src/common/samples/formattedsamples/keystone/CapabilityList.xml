@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<capabilities
+     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:identity="http://docs.openstack.org/identity/api/v2.0" xmlns:ns3="http://www.w3.org/2005/Atom">
+     <capability action="GET" id="get_servers" name="get_servers" url="/servers"/>
+     <capability action="GET" id="get_server" name="get_server" url="/servers/{serverId}"/>
+     <capability action="POST" id="stop_server" name="stop_server" url="/servers/{serverId}/stop"/>
+</capabilities>
