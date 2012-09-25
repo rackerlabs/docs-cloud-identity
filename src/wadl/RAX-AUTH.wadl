@@ -286,7 +286,7 @@
     <method id="getDomain" name="GET">
         <doc xml:lang="EN" title="Get a Domain">
             <db:para role="shortdesc">
-                Gets a domain.
+                Get a domain.
             </db:para>
         </doc>
         <response status="200">
@@ -308,7 +308,7 @@
     <method id="updateDomain" name="PUT">
         <doc xml:lang="EN" title="Update a Domain">
             <db:para role="shortdesc">
-                Updates a domain.
+                Update a domain.
             </db:para>
         </doc>
         <request>
@@ -332,10 +332,10 @@
     <method id="createDomain" name="POST">
         <doc xml:lang="EN" title="Create a Domain">
             <db:para role="shortdesc">
-                Creates a domain.
+                Create a domain.
             </db:para>
             <db:para>
-                Clients must specify the domain id in the request body.
+                Clients must specify the domain ID in the request body.
             </db:para>
         </doc>
         <request>
@@ -352,7 +352,7 @@
         </request>
         <response status="201">
             <param name="Location" style="header" type="xsd:string" required="true">
-                <doc>Location to the uri of the newly created domain</doc>
+                <doc>Location of the URI of the newly-created domain</doc>
             </param>
         </response>
         <response status="409" >
@@ -364,13 +364,12 @@
     </method>
     
     <method id="deleteDomain" name="DELETE">
-        <doc xml:lang="EN" title="Deletes a Domain">
+        <doc xml:lang="EN" title="Delete a Domain">
             <db:para role="shortdesc">
-                Deletes a domain.
+                Delete a domain.
             </db:para>
             <db:para>
-                This request will only succeed if there are no entities that exist in this domain e.g users, tenants. A client
-                will have to remove all entities from this domain, before this operation will be allowed.
+                This operation fails unless no entities such as users and tenants exist in this domain. Only an empty domain can be deleted.
             </db:para>
         </doc>
         <response status="204" />
@@ -387,7 +386,7 @@
         <request>
             <param name="enabled" style="query" type="xsd:string">
                 <doc>
-                    Allows us to filter enabled or un-enabled users. Values are "true" or "false".
+                    Allows us to filter enabled or un-enabled users. Valid values are "true" and "false".
                 </doc>
             </param>
         </request>
@@ -413,8 +412,8 @@
                 Add a user to a domain.
             </db:para>
             <db:para>
-                A user can only exist in one domain at a time. So when you add a user to a domain, the user is automatically removed
-                from their prior domain.
+                A user can exist in only one domain at a time. When you add a user to a domain, the user is automatically removed
+                from any prior domain.
             </db:para>
         </doc>
         <response status="204" />
@@ -432,7 +431,7 @@
         <request>
             <param name="enabled" style="query" type="xsd:string">
                 <doc>
-                    Allows us to filter enabled or un-enabled tenants. Valid values are <code>true</code>true" and <code>false</code>.
+                    Allows us to filter enabled or un-enabled tenants. Valid values are "true" and "false".
                 </doc>
             </param>
         </request>
