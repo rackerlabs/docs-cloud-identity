@@ -427,6 +427,12 @@
             <db:para role="shortdesc">
                 Get tenants in a domain.
             </db:para>
+            <db:para>
+                Tenants can be used to create logical organization within a domain.
+                For example, 
+                an entertainment business might use two tenants to separately identify resources
+                related to two kinds of activity: game downloads and movie downloads.
+            </db:para>
         </doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
@@ -457,8 +463,8 @@
                 Add a tenant to a domain.
             </db:para>
             <db:para>
-                A tenant can only exist in one domain at a time. So when you add a tenant to a domain, it is automatically removed
-                from their prior domain.
+                A tenant can only exist in one domain at a time. When you add a tenant to a domain, the tenant is automatically removed
+                from any prior domain.
             </db:para>
         </doc>
         <response status="204" />
@@ -470,7 +476,7 @@
     <method id="removeTenantFromDomain" name="DELETE">
         <doc xml:lang="EN" title="Remove Tenant from Domain">
             <db:para role="shortdesc">
-                Removes a tenant from a domain.
+                Remove a tenant from a domain.
             </db:para>
         </doc>
         <response status="204" />
@@ -485,9 +491,9 @@
                 Sets the services which restrict the default regions a user can set.
             </db:para>
             <db:para>
-                A user has the ability to modify their default region. This default region needs to be restricted. The regions of the services
-                set by this api are what is used to restrict the user's choice. For example, if the openstackNova service had a region of
-                "ORD", and that service is set using this method, any user that has that service in their catalog will only be able to set their default
+                A user has the ability to modify their default region. This default region must be restricted. The regions of the services
+                set by this API are what is used to restrict the user's choice. For example, if the <code>openstackNova</code> service had a region of
+                "ORD", and that service is set using this method, any user with the <code>openstackNova</code> service in their catalog will only be able to set their default
                 region to "ORD".
             </db:para>
         </doc>
@@ -537,7 +543,8 @@
                 Gets a list of accesible domains.
             </db:para>
             <db:para>
-                The operation returns a list of domains for which the user has access. Users have access to domains by having a role on a tenant that exists in the domain.
+                The operation returns a list of domains to which the user has access. 
+                A user has access to a domains if the user has a role in a tenant that exists in the domain.
             </db:para>
         </doc>
         <response status="200">
@@ -559,7 +566,7 @@
     <method id="getAccesibleDomainEndpointsForUser" name="GET">
         <doc xml:lang="EN" title="Get Accessible Domain Endpoints">
             <db:para role="shortdesc">
-                Gets endpoints for user restricted by domain.
+                Get endpoints for a user restricted by domain.
             </db:para>
         </doc>
         <response status="200">
@@ -581,10 +588,11 @@
     <method id="getAccessibleDomainsForToken" name="GET">
         <doc xml:lang="EN" title="Get Accessible Domains">
             <db:para role="shortdesc">
-                Gets a list of accessible domains.
+                Get a list of accessible domains.
             </db:para>
             <db:para>
-                The operation returns a list of domains for which the supplied token provides access. Tokens have access to domains by the token having access to a tenant that exists in the domain.
+                The operation returns a list of domains for which the supplied token provides access. 
+                A token has access to a domain if the token has access to a tenant that exists in the domain.
             </db:para>
         </doc>
         <response status="200">
@@ -606,7 +614,7 @@
     <method id="getDomainEndpointsForToken" name="GET">
         <doc xml:lang="EN" title="Get Accesible Domain Endpoints">
             <db:para role="shortdesc">
-                Gets endpoints for token restricted by domain.
+                Get endpoints for token restricted by domain.
             </db:para>
         </doc>
         <response status="200">
@@ -628,7 +636,7 @@
     <method id="getDomainEndpoints" name="GET">
         <doc xml:lang="EN" title="Get Endpoints for Domain">
             <db:para role="shortdesc">
-                Gets endpoints restricted to a domain.
+                Get endpoints restricted to a domain.
             </db:para>
         </doc>
         <response status="200">
@@ -650,7 +658,7 @@
     <method id="getPolicies" name="GET">
         <doc xml:lang="EN" title="Gets all Policies">
             <db:para role="shortdesc">
-                Gets all Policies.
+                Get all Policies.
             </db:para>
         </doc>
         <response status="200">
@@ -672,7 +680,7 @@
     <method id="createPolicy" name="POST">
         <doc xml:lang="EN" title="Create a Policy">
             <db:para role="shortdesc">
-                Creates a policy.
+                Create a policy.
             </db:para>
         </doc>
         <request>
@@ -719,9 +727,9 @@
     </method>
     
     <method id="updatePolicy" name="PUT">
-        <doc xml:lang="EN" title="Updates a Policy">
+        <doc xml:lang="EN" title="Update a Policy">
             <db:para role="shortdesc">
-                Updates a Policy.
+                Update a Policy.
             </db:para>
         </doc>
         <request>
@@ -742,12 +750,12 @@
     </method>
     
     <method id="deletePolicy" name="DELETE">
-        <doc xml:lang="EN" title="Deletes a Policy">
+        <doc xml:lang="EN" title="Delete a Policy">
             <db:para role="shortdesc">
-                Deletes a policy.
+                Delete a policy.
             </db:para>
             <db:para>
-                A policy can only be deleted if it not tied to any entity.
+                A policy can only be deleted if it is not tied to any entity.
             </db:para>
         </doc>
         <response status="204" />
@@ -759,7 +767,7 @@
     <method id="getEndpointTemplatePolicies" name="GET">
         <doc xml:lang="EN" title="Get Policies">
             <db:para role="shortdesc">
-                Gets all Policies for Endpoint Template.
+                Get all policies for endpoint template.
             </db:para>
         </doc>
         <response status="200">
@@ -781,10 +789,10 @@
     <method id="updateEndpointTemplatePolicies" name="PUT">
         <doc xml:lang="EN" title="Update Policies">
             <db:para role="shortdesc">
-                Updates all Policies for Endpoint Template.
+                Update all policies for endpoint template
             </db:para>
              <db:para>
-                This api allows clients update all the policies for an endpoint template at once.
+                This allows clients to update all the policies for an endpoint template at once.
             </db:para>
         </doc>
         <request>
@@ -807,7 +815,7 @@
     <method id="addPolicyToEndpointTemplate" name="PUT">
         <doc xml:lang="EN" title="Add Policy">
             <db:para role="shortdesc">
-                Adds a Policy to an Endpoint Template.
+                Add a Policy to an endpoint template.
             </db:para>
         </doc>
         <response status="204" />
@@ -819,7 +827,7 @@
     <method id="removePolicyFromEndpointTemplate" name="DELETE">
         <doc xml:lang="EN" title="Remove Policy">
             <db:para role="shortdesc">
-                Removes a Policy from an Endpoint Template.
+                Remove a policy from an endpoint template.
             </db:para>
         </doc>
         <response status="204" />
@@ -831,7 +839,7 @@
     <method id="getCapabilities" name="GET">
         <doc xml:lang="EN" title="Get Capabilities">
             <db:para role="shortdesc">
-                Gets the Capabilities for an Endpoint Template.
+                Get the capabilities for an endpoint template.
             </db:para>
         </doc>
         <response status="200">
@@ -853,11 +861,11 @@
     <method id="updateCapabilities" name="PUT">
         <doc xml:lang="EN" title="Update Capabilities">
             <db:para role="shortdesc">
-                Updates the Capabilities for an Endpoint Template.
+                Update the capabilities for an endpoint template.
             </db:para>
             <db:para>
-                Any capabilities that currently existed for this Endpoint Template will be overriden. There will be future support to update capabilities by specifying
-                a wadl as the payload. A wadl contains all the capabilities that can exist for a service.
+                Any capabilities that previously existed for this endpoint template will be overridden. There will be future support to update capabilities by specifying
+                a WADL as the payload. A WADL contains all the capabilities that can exist for a service.
             </db:para>
         </doc>
         <request status="200">
@@ -881,7 +889,7 @@
     <method id="removeCapabilities" name="DELETE">
         <doc xml:lang="EN" title="Remove Capabilities">
             <db:para role="shortdesc">
-                Removes Capabilities from an Endpoint Template.
+                Remove capabilities from an endpoint template.
             </db:para>
         </doc>
         <response status="204" />
@@ -893,7 +901,7 @@
     <method id="getCapability" name="GET">
         <doc xml:lang="EN" title="Get a Capability">
             <db:para role="shortdesc">
-                Gets a Capability.
+                Get a capability.
             </db:para>
         </doc>
         <response status="200">

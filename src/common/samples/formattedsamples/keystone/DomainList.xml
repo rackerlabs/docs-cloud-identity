@@ -2,11 +2,11 @@
 <domains
     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
     xmlns:identity="http://docs.openstack.org/identity/api/v2.0" xmlns:ns3="http://www.w3.org/2005/Atom">
-    <domain enabled="true" id="9883948" name="GCorp">
+    <domain enabled="true" id="9883948" name="Example">
         <description>A very good customer</description>
     </domain>
     <domain enabled="true" id="111" name="Azuri">
         <description>High profile</description>
     </domain>
-    <domain enabled="true" id="222" name="GCorp"/>
+    <domain enabled="true" id="222" name="Example"/>
 </domains>

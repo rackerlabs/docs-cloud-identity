@@ -3,16 +3,16 @@
     {
       "id": "5784574",
       "enabled": true,
-      "display-name": "Star Wars",
-      "description": "Used to manage the Star Wars games",
-      "name": "star_wars"
+      "display-name": "Game Downloads",
+      "description": "Used to manage downloads of games",
+      "name": "downloads_games"
     },
     {
       "id": "Mosso_73843_FS",
       "enabled": true,
-      "display-name": "Star Wars",
-      "description": "Used to manage the pictures for Start Wars",
-      "name": "start_wars_pictures"
+      "display-name": "Movie Downloads",
+      "description": "Used to manage downloads of movies",
+      "name": "downloads_movies"
     }
   ]
 }

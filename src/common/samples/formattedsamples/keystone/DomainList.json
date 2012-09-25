@@ -4,7 +4,7 @@
       "id": "9883948",
       "enabled": true,
       "description": "A very good customer",
-      "name": "GCorp"
+      "name": "Example"
     },
     {
       "id": "111",
@@ -15,7 +15,7 @@
     {
       "id": "222",
       "enabled": true,
-      "name": "GCorp"
+      "name": "Example"
     }
   ]
 }
