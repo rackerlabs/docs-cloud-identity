@@ -30,7 +30,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-09-14</pubdate>
+		<pubdate>2012-09-27</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,6 +46,19 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2012-09-27</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Added <xref linkend="Domain_Calls"/>,
+								documenting use of domains to establish administrative boundaries.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2012-09-14</date>
 				<revdescription>
