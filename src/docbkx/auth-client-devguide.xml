@@ -389,7 +389,7 @@
 		  </revision>
 		</revhistory>
 		<raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-		  <raxm:displayname>API Developer Guide</raxm:displayname>
+		  <raxm:displayname>API Developer Guide, v2.0</raxm:displayname>
 		  <raxm:product version="v2.0">auth</raxm:product>
 		  <raxm:priority>20</raxm:priority>
 		</raxm:metadata> 
