@@ -13,12 +13,6 @@
 <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
 <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 <!ENTITY HEAD    '<command xmlns="http://docbook.org/ns/docbook">HEAD</command>'>
-<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-<imageobject>
-<imagedata fileref="img/Check_mark_23x20_02.svg"
-format="SVG" scale="60"/>
-</imageobject>
-</inlinemediaobject>'>
 <!ENTITY CODES       'Normal Response Code(s):'>
 <!ENTITY ERROR_CODES 'Error Response Code(s):'>
 <!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">

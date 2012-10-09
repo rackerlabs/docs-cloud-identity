@@ -17,11 +17,8 @@
         to identify the client to other services.
         </title>
         <mediaobject>
-            <imageobject role="fo">
+            <imageobject>
                 <imagedata scale="75" fileref="../figures/auth-keystone-identity-manager.png" format="PNG" align="center"/>
-            </imageobject>
-            <imageobject role="html">
-                <imagedata fileref="../figures/auth-keystone-identity-manager.png" format="PNG" align="center"/>
             </imageobject>
         </mediaobject>
     </figure>
