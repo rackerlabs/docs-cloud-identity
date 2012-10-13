@@ -102,33 +102,26 @@
     </method>
     
     <method id="addWhitelistEntry" name="POST">
-        <doc xml:lang="EN" title="Add Entry to Rate Limit Whitelist">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Append one entry to the whitelist.</p>
-        </doc>
-        <doc>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                The whitelist is the list of exceptions to the rate limit filter.
+      <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add Entry to Rate Limit Whitelist">
+            <para role="shortdesc">Append one entry to the whitelist.</para>
+	    <para>The whitelist is the list of exceptions to the rate limit filter.
                 Whitelisting is the process of adding an exception to the rate limit filter.
                 You can add an entry to the whitelist in two ways:
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>
-                                by specifying an IP address
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>
-                                by specifying a <code>username</code> prefixed with <code>user:</code>
-                            </para>
-                        </listitem>
-                    </itemizedlist>
-                    <para>
-                        For example, to whitelist a user named "alex", specify <code>user:alex</code>.
-                    </para>
-                </wadl:doc>
-            </p>
-        </doc>
+		<itemizedlist spacing="compact">
+		  <listitem>
+		    <para>
+		      by specifying an IP address
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      by specifying a <code>username</code> prefixed with <code>user:</code>
+		    </para>
+		  </listitem>
+		</itemizedlist>
+	    </para>
+	    <para>For example, to whitelist a user named "alex", specify <code>user:alex</code>.</para>
+      </wadl:doc>
         <request>
             <representation mediaType="application/xml">
                 <doc xml:lang="EN">

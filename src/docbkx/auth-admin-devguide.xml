@@ -136,7 +136,7 @@
 						</listitem>
 						<listitem>
 							<para> 
-								Expanded explanation and examples in <xref linkend="POST_impersonateUser_RAX-AUTH_impersonation-tokens_"/>, 
+								Expanded explanation and examples in <xref linkend="POST_impersonateUser_v2.0_RAX-AUTH_impersonation-tokens_"/>, 
 								showing use of <code>expire-in-seconds</code>.
 							</para>
 						</listitem>

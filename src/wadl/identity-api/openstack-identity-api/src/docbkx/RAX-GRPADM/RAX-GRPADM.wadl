@@ -202,7 +202,7 @@
                 Use this call to update the description or name of a specified group.
                 A group is specified by its ID. 
                 If you know the group's name but not the group's ID, use                  
-                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.
             </p>
@@ -247,7 +247,7 @@
                 You must delete all the members of a group before deleting the group itself.
                 A group is specified by its ID. 
                 If you know the group's name but not the group's ID, use                  
-                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.
             </p>
@@ -266,7 +266,7 @@
                 This call lists all the users belonging to the specified group.
                 A group is specified by its ID. 
                 If you know the group's name but not the group's ID, use                  
-                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.
             </p>
@@ -313,7 +313,7 @@
                      to                   
                     obtain complete identifying information about the user.
                     If you know the group's name but not the group's ID, use                  
-                    <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                    <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                      to                   
                     obtain complete identifying information about all groups.
              </p> 
@@ -336,7 +336,7 @@
                  to                   
                 obtain complete identifying information about the user.
                 If you know the group's name but not the group's ID, use                  
-                <xref linkend="GET_listGroups__Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.
             </db:para>  
