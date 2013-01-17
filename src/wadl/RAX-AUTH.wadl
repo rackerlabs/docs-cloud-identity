@@ -488,14 +488,16 @@
     <method id="setDefaultRegionServices" name="PUT">
         <doc xml:lang="EN" title="Set Default Region Services">
             <db:para role="shortdesc">
-                Sets the services which restrict the default regions a user can set.
+                Sets the list of services that restrict the default regions their users can set.
             </db:para>
-            <db:para>
-                A user has the ability to modify their default region. This default region must be restricted. The regions of the services
-                set by this API are what is used to restrict the user's choice. For example, if the <code>openstackNova</code> service had a region of
-                "ORD", and that service is set using this method, any user with the <code>openstackNova</code> service in their catalog will only be able to set their default
-                region to "ORD".
-            </db:para>
+            <para xmlns="http://docbook.org/ns/docbook">
+                A user can modify their default region, but only within limits. 
+                Those limits are imposed by the services in the user's service catalog. 
+                Each service specifies the default region for its users. 
+                For example, if the <code>openstackNova</code> service sets its default region to <code>ORD</code>, then 
+                any user whose service catalog includes the <code>openstackNova</code> service can only set their default
+                region to <code>ORD</code>.
+            </para>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:impersonation" >
@@ -518,7 +520,7 @@
     <method id="getDefaultRegionServices" name="GET">
         <doc xml:lang="EN" title="Get Default Region Services">
             <db:para role="shortdesc">
-                Gets the services which restrict the default regions a user can set.
+                Gets the list of services that restrict the default regions their users can set.
             </db:para>
         </doc>
         <response status="200">

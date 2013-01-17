@@ -62,7 +62,6 @@
 	</para>
 	<section xml:id="User_Calls">
 		<title>Users</title>
-		<!-- 2013-01-17 add B-27885 here -->
 		<para>The operations described in this section allow service developers to manage users.</para>
 		<para>
 			When these requests are issued by a sub-user, they act only upon that sub-user. You can learn more about sub-users, also called sub-accounts,
@@ -90,7 +89,7 @@
 		<note>
 			<para> Some of the functionality described in this section is
 				provided by the <code>OS-KSADM</code>,
-					<code>RAX-AUTH</code>, and<code>RAX-KSKEY</code>
+					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code>
 				extensions to the core Identity API. You can learn
 				more about API extensions at <link
 					xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/"
@@ -169,37 +168,7 @@
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#user"/>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#users"/>			
-<!--	   Specification of individual calls as below (& the rest of this doc) 
-		   fails here (BUILD SUCCESS, but calls missing from generated output);
-		   above, include all from 4 resources in RAX-GRPADM, plus 1 from RAX-KSGRP 
-				<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
-				<wadl:method href="listGroups"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
-				<wadl:method href="addGroup"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#group">
-				<wadl:method href="getGroup"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#group">
-				<wadl:method href="updateGroup"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#group">
-				<wadl:method href="deleteGroup"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
-				<wadl:method href="getUsersForGroup"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
-				<wadl:method href="addUserToGroup"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
-				<wadl:method href="listUserGroups"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-GRPADM.wadl#groups">
-				<wadl:method href="removeUserFromGroup"/>
-			</wadl:resource>
--->		</wadl:resources>
+		</wadl:resources>
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
@@ -692,7 +661,39 @@
 				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
-		<!-- NEW SECTION ON POLICIES -->
-		<!-- 2013-01-17 add B-30133 here -->
 	</section>
+		<!-- NEW SECTION ON REGIONS -->
+		<section xml:id="Region_Calls">
+			<title>Regions</title>
+			<para>The operations described in this section allow service developers to manage the regions associated with services.</para>
+			<note>
+				<para> 
+					Some of the functionality described in this section is
+					provided by the <code>RAX-AUTH</code> extension to the
+					core Identity API. 
+					You can learn more about API extensions at
+					<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+						https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				</para>
+			</note>
+			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- -->
+			<!-- 2013-01-17 add B-27885 here -->
+			<!-- list default region for a service -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#default-region-services">
+				<wadl:method href="getDefaultRegionServices">
+				</wadl:method>
+			</wadl:resource>
+			<!-- specify default region for a service -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#default-region-services">
+				<wadl:method href="setDefaultRegionServices">
+				</wadl:method>
+			</wadl:resource>
+			<!-- 2013-01-17 end B-27885 -->
+			<!-- -->
+			</wadl:resources>
+		</section>
+		
+		<!-- 2013-01-17 add B-30133 here -->
+
 </chapter>
