@@ -26,11 +26,12 @@
 			<year>2010</year>
 			<year>2011</year>
 			<year>2012</year>
+			<year>2013</year>
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-09-27</pubdate>
+		<pubdate>2013-01-17</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,6 +47,18 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-01-17</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Added RAX-AUTH features to be listed here soon.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2012-09-27</date>
 				<revdescription>

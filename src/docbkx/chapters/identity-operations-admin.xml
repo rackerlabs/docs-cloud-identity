@@ -62,6 +62,7 @@
 	</para>
 	<section xml:id="User_Calls">
 		<title>Users</title>
+		<!-- 2013-01-17 add B-27885 here -->
 		<para>The operations described in this section allow service developers to manage users.</para>
 		<para>
 			When these requests are issued by a sub-user, they act only upon that sub-user. You can learn more about sub-users, also called sub-accounts,
@@ -123,10 +124,12 @@
 				<wadl:method href="deleteUser">
 				</wadl:method>
 			</wadl:resource>
+			<!-- 2013-01-17 add B-28686 here: add community forum credential -->
 			<!-- add API key credential -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
 				<wadl:method href="addUserCredential"/>
 			</wadl:resource>
+			<!-- 2013-01-17 add B-30777 here -->
 			<!-- list API key credentials -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
 				<wadl:method href="listCredentials"/>
@@ -212,11 +215,14 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			
 			<!-- list roles -->
+			<!-- 2013-01-17 add B-33138 here -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
 				<wadl:method href="listRoles"/>
 			</wadl:resource>
 			<!-- add a role globally -->
+			<!-- 2013-01-17 add B-39060 here -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
 				<wadl:method href="addRole"/>
 			</wadl:resource>
@@ -249,6 +255,7 @@
 	</section>
 	<section xml:id="Token_Calls">
 		<title>Tokens</title>
+		<!-- 2013-01-17 add B-35060 here -->
 		<para>The operations described in this section allow service developers to get and validate access tokens.</para>
 		<note>
 			<para> 
@@ -375,6 +382,7 @@
 		</wadl:resources>
 	</section>
 	<section xml:id="Secret_Calls">
+		<!-- 2013-01-17 add B-34501 here -->
 		<title>Secret Questions and Answers</title>
 		<para>The operations described in this section allow service developers to manage 
 			the secret questions and answers that can be used for emergency validation of a user's identity.</para>
@@ -399,6 +407,7 @@
 	</section>
 	<section xml:id="Impersonation_Calls">
 		<!-- Impersonation Calls are scheduled for production 2012-04-15 -->
+		<!-- 2013-01-17 add B-31199 here -->
 		<title>Impersonations</title>
 		<para>The operations described in this section allow service developers to manage Rackers' impersonations of 
 			users for diagnostic purposes.</para>
@@ -583,6 +592,9 @@
 		</wadl:resources>
 	</section>
 	<section xml:id="Domain_Calls">
+		<!-- 2013-01-17 add B-31135 here -->
+		<!-- 2013-01-17 add B-28687 here -->
+		<!-- 2013-01-17 add B-32492 here or add as 4.11 Domain Trusts -->
 		<title>Domains</title>
 		<para>The operations described in this section allow service developers to manage domains.</para>
 		<para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.</para>
@@ -634,6 +646,7 @@
 				</wadl:method>
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId}/endpoints -->
+			<!-- 2013-01-17 add B-31136 here -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain_endpoints">
 				<wadl:method href="getDomainEndpoints">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
@@ -679,5 +692,7 @@
 				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
+		<!-- NEW SECTION ON POLICIES -->
+		<!-- 2013-01-17 add B-30133 here -->
 	</section>
 </chapter>
