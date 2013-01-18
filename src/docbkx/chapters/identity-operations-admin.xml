@@ -358,7 +358,7 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>RAX-KSQA</code> extension to the
+				provided by the <code>RAX-AUTH</code> and <code>RAX-KSQA</code> extensions to the
 				core Identity API. 
 				You can learn more about API extensions at
 				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
@@ -369,8 +369,29 @@
 			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="getUserSecretQA"/>
 			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
+				<wadl:method href="getUserSecretQAs"/>
+			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="updateUserSecretQA"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
+				<wadl:method href="saveUserSecretQA"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#questions">
+				<wadl:method href="getQuestions"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#question">
+				<wadl:method href="getQuestion"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#questions">
+				<wadl:method href="createQuestion"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#question">
+				<wadl:method href="updateQuestion"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#question">
+				<wadl:method href="deleteQuestion"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>

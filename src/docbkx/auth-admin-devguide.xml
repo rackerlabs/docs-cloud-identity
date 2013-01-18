@@ -53,6 +53,11 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
+								Expanded <xref linkend="Secret_Calls"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
 								Added <xref linkend="Region_Calls"/>.
 							</para>
 						</listitem>

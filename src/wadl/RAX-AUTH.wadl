@@ -24,18 +24,50 @@
     </grammars>
     <!-- 2012-03-13 by Rose Coste
       ++ adding IMPERSONATION-related content to Auth 2.0 Admin DevGuide ++
-                samples were called as ../../formattedsamples/keystone/ImpersonationRequest.json 
+                samples were included as ../../formattedsamples/keystone/ 
                  I changed for consistency with other RAX- samples to
-                 ../common/samples/formattedsamples/keystone/ImpersonationRequest.json
+                 ../common/samples/formattedsamples/keystone/
             -->
     <!-- 2012-09-25 by Rose Coste
       ++ adding DOMAIN-related content to Auth 2.0 Admin DevGuide ++
-                samples were called as ../formattedsamples/Domain.xml 
+                samples were included as ../formattedsamples/ 
                  I changed for consistency with other RAX- samples to
-                 ../common/samples/formattedsamples/keystone/Domain.xml
+                 ../common/samples/formattedsamples/keystone/
+            -->
+    <!-- 2013-01-17 by Rose Coste
+      ++ adding SECRETQA-related content to Auth 2.0 Admin DevGuide ++
+                samples were included as ../formattedsamples/ 
+                 I changed for consistency with other RAX- samples to
+                 ../common/samples/formattedsamples/keystone/
             -->
     <resources base="http://localhost:8080">
         <resource id="version" path="/v2.0">
+            
+            <resource id="add_user_secretqa" path="users/{userId}/RAX-AUTH/secretqas">
+                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <doc>A valid authentication token</doc>
+                </param>
+                <param name="userId" type="xsd:string" style="template" required="true"/>
+                <method href="#saveUserSecretQA" />
+                <method href="#getUserSecretQAs" />
+            </resource>
+            <resource id="secretqa" path="secretqa">
+                <resource id="questions" path="questions">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <method href="#getQuestions" />
+                    <method href="#createQuestion"/>
+                    
+                    <resource id="question" path="{questionId}">
+                        <param name="questionId" type="xsd:string" style="template" required="true"/>
+                        <method href="#getQuestion"/>
+                        <method href="#updateQuestion"/>
+                        <method href="#deleteQuestion"/>
+                    </resource>
+                </resource>
+            </resource>
+            
             <resource id="reset_apikey_credentials" path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
@@ -43,6 +75,7 @@
                 <param name="userId" type="xsd:string" style="template" required="true"/>
                 <method href="#resetUserAPIKeyCredentials" />
             </resource>
+            
             <resource id="user_accessible_domains" path="users/{userId}/RAX-AUTH/domains">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
@@ -196,10 +229,185 @@
     </resources>
 
     <!-- Methods -->
+    
+    <method id="getUserSecretQAs" name="GET">
+        <doc xml:lang="EN" title="Get User Secret Q&amp;A List">
+            <db:para role="shortdesc">
+                Get a list of secret questions and answers for a user.
+            </db:para>
+            <db:para>
+                The operation returns a list of questions and answers for a user.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:secretqa">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/SecretQAList.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/SecretQAList.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    <method id="saveUserSecretQA" name="POST">
+        <doc xml:lang="EN" title="Create a Secret Q&amp;A">
+            <db:para role="shortdesc">
+                Create a secret question and answer for a user.
+            </db:para>
+            <db:para>
+                Clients must specify the question ID, question, and answer in the request body.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:secretqa" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/SecretQAForSave.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/SecretQAForSave.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="200" />
+        <response status="409" >
+            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/json"/>
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="getQuestions" name="GET">
+        <doc xml:lang="EN" title="Get Questions">
+            <db:para role="shortdesc">
+                Get a list of questions.
+            </db:para>
+            <db:para>
+                The operation returns a list of questions.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:questions">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionList.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionList.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="getQuestion" name="GET">
+        <doc xml:lang="EN" title="Get a Question">
+            <db:para role="shortdesc">
+                Get a question.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:question">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="updateQuestion" name="PUT">
+        <doc xml:lang="EN" title="Update a Question">
+            <db:para role="shortdesc">
+                Update a question.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:question" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="204" />
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="createQuestion" name="POST">
+        <doc xml:lang="EN" title="Create a Question">
+            <db:para role="shortdesc">
+                Create a question.
+            </db:para>
+            <db:para>
+                Clients must specify the question name in the request body.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:question" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionForCreate.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionForCreate.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="201">
+            <param name="Location" style="header" type="xsd:string" required="true">
+                <doc>Location of the URI for the newly-created question</doc>
+            </param>
+        </response>
+        <response status="409" >
+            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/json"/>
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="deleteQuestion" name="DELETE">
+        <doc xml:lang="EN" title="Delete a Question">
+            <db:para role="shortdesc">
+                Delete a question.
+            </db:para>
+            <db:para>
+                This request will only succeed if the question is not assigned to any users. The question must be
+                removed from any users before this operation will be allowed.
+            </db:para>
+        </doc>
+        <response status="204" />
+        &commonFaults;
+        &getFaults;
+    </method>
+    
      <method id="resetUserAPIKeyCredentials" name="POST">
         <doc xml:lang="EN" title="Reset User APIKey">
             <db:para role="shortdesc">
-                Resets a user API Key
+                Reset a user's API Key
             </db:para>
         </doc>
         <response status="200">
@@ -491,7 +699,7 @@
                 Sets the list of services that restrict the default regions their users can set.
             </db:para>
             <para xmlns="http://docbook.org/ns/docbook">
-                A user can modify their default region, but only within limits. 
+                Users can modify their own default regions, but only within limits. 
                 Those limits are imposed by the services in the user's service catalog. 
                 Each service specifies the default region for its users. 
                 For example, if the <code>openstackNova</code> service sets its default region to <code>ORD</code>, then 
@@ -542,7 +750,7 @@
     <method id="getAccessibleDomainsForUser" name="GET">
         <doc xml:lang="EN" title="Get Accessible Domains">
             <db:para role="shortdesc">
-                Gets a list of accesible domains.
+                Gets a list of accessible domains.
             </db:para>
             <db:para>
                 The operation returns a list of domains to which the user has access. 
