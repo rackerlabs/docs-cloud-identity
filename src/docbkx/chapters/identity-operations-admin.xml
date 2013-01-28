@@ -354,7 +354,7 @@
 		<!-- 2013-01-17 add B-34501 here -->
 		<title>Secret Questions and Answers</title>
 		<para>The operations described in this section allow service developers to manage 
-			the secret questions and answers that can be used for emergency validation of a user's identity.</para>
+			secret questions and answers. Secret questions and answers can be used to identify a user to a support Racker via telephone.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
