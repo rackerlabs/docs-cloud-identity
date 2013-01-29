@@ -31,7 +31,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-01-17</pubdate>
+		<pubdate>2013-01-29</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -47,6 +47,28 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-01-29</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Added examples demonstrating different format of <code>expires</code> for US and UK endpoints in <xref linkend="POST_authenticate_v2.0_tokens_"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Improved introductory text for <xref linkend="Secret_Calls"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Repaired broken links to annotated sample response.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2013-01-17</date>
 				<revdescription>
