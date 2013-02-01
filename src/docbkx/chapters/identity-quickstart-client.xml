@@ -135,9 +135,9 @@
         <link linkend="User_Calls">Users</link>.
     </para>
     <tip>
-        <para> For links to language binding examples you can adapt to
-            work with the Cloud Identity service, visit <link
-                xlink:href="https://github.com/rackspace"
-                >https://github.com/rackspace</link>.</para>
+        <para> For language binding examples you can adapt to
+            work with the Cloud Identity service, see our Software Development Kits at <link
+                xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
+                >http://docs.rackspace.com/sdks/guide/content/intro.html</link>.</para>
     </tip>
     </section>

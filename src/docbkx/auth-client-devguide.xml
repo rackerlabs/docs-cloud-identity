@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-01-29</pubdate>
+		<pubdate>2012-02-01</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,12 +46,17 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2013-01-29</date>
+				<date>2013-02-01</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
 								Added examples demonstrating different format of <code>expires</code> for US and UK endpoints in <xref linkend="POST_authenticate_v2.0_tokens_"/>.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Updated QuickStart page to provide link to Software Development Kits.
 							</para>
 						</listitem>
 					</itemizedlist>
