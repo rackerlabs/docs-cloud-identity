@@ -41,6 +41,12 @@
                  I changed for consistency with other RAX- samples to
                  ../common/samples/formattedsamples/keystone/
             -->
+    <!-- 2013-02-07 by Rose Coste
+      ++ adding POLICY-related content to Auth 2.0 Admin DevGuide ++
+                samples were included as ../formattedsamples/ 
+                 I changed for consistency with other RAX- samples to
+                 ../common/samples/formattedsamples/keystone/
+            -->
     <resources base="http://localhost:8080">
         <resource id="version" path="/v2.0">
             
@@ -199,32 +205,6 @@
                     </resource>
                 </resource>
                 
-                <!--
-                <resource id="policy_sets" path="policy-sets">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <doc>A valid authentication token. </doc>
-                    </param>
-                    <method href="#getPolicySets" />
-                    <method href="#createPolicySet" />
-                    
-                    <resource id="policy_set" path="{policySetId}">
-                        <param name="policySetId" type="xsd:string" style="template" required="true"/>
-                        <method href="#getPolicySet" />
-                        <method href="#updatePolicySet" />
-                        <method href="#deletePolicySet" />
-                        
-                        <resource id="policy_set_policies" path="policies">
-                            <method href="#getPolicySetPolicies" />
-                            
-                            <resource id="policy_set_policy" path="{policyId}">
-                                <param name="policyId" type="xsd:string" style="template" required="true"/>
-                                <method href="#addPolicyToPolicySet" />
-                                <method href="#deletePolicyFromPolicySet" />
-                            </resource>
-                        </resource>
-                    </resource>
-                </resource>
-                -->
             </resource>
         </resource>
     </resources>
