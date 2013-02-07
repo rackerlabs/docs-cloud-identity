@@ -14,6 +14,7 @@
 <application xmlns="http://wadl.dev.java.net/2009/02"
    xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+   xmlns:policy="http://docs.rackspace.com/identity/policy/v1.0"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    xmlns:db="http://docbook.org/ns/docbook"
