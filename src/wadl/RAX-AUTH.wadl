@@ -42,14 +42,24 @@
                  ../common/samples/formattedsamples/keystone/
             -->
     <!-- 2013-02-07 by Rose Coste
-      ++ adding POLICY-related content to Auth 2.0 Admin DevGuide ++
-                samples were included as ../formattedsamples/ 
-                 I changed for consistency with other RAX- samples to
-                 ../common/samples/formattedsamples/keystone/
+      ++ adding new RESOURCES and METHODS to synch this writer-maintained RAX-AUTH with developer-maintained RAX-AUTH 
+         at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl       
             -->
+    
+    <!-- ======================================================================================= -->
+    <!-- Resources -->
+    <!-- ======================================================================================= -->
+    
     <resources base="http://localhost:8080">
         <resource id="version" path="/v2.0">
             
+            <!-- TOKENS resource(s) -->
+            <resource id="tokens" path="tokens">
+                <method href="#authenticateAsRacker" />
+            </resource>
+            
+            <!-- ADD_USER_SECRETQA resource(s) -->
+            <!-- see also SECRETQA below -->
             <resource id="add_user_secretqa" path="users/{userId}/RAX-AUTH/secretqas">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
@@ -58,23 +68,8 @@
                 <method href="#saveUserSecretQA" />
                 <method href="#getUserSecretQAs" />
             </resource>
-            <resource id="secretqa" path="secretqa">
-                <resource id="questions" path="questions">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <doc>A valid authentication token</doc>
-                    </param>
-                    <method href="#getQuestions" />
-                    <method href="#createQuestion"/>
-                    
-                    <resource id="question" path="{questionId}">
-                        <param name="questionId" type="xsd:string" style="template" required="true"/>
-                        <method href="#getQuestion"/>
-                        <method href="#updateQuestion"/>
-                        <method href="#deleteQuestion"/>
-                    </resource>
-                </resource>
-            </resource>
             
+            <!-- RESET_APIKEY_CREDENTIALS resource(s) -->
             <resource id="reset_apikey_credentials" path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
@@ -83,50 +78,58 @@
                 <method href="#resetUserAPIKeyCredentials" />
             </resource>
             
+            <!-- USER_ACCESSIBLE_DOMAINS resource(s) -->
             <resource id="user_accessible_domains" path="users/{userId}/RAX-AUTH/domains">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
                 <param name="userId" type="xsd:string" style="template" required="true"/>
                 <method href="#getAccessibleDomainsForUser" />
-                     
+                
                 <resource id="user_accessible_domain" path="{domainId}">
                      <param name="domainId" type="xsd:string" style="template" required="true"/>
+                    
                      <resource id="user_accessible_domain_endpoints" path="endpoints">
                          <method href="#getAccesibleDomainEndpointsForUser" />
                      </resource>
                 </resource>
             </resource>
             
-            <resource id="endpoint_template" path="OS-KSCATALOG/endpointTemplates/{endpointTemplateId}">
+            <!-- ENDPOINT_TEMPLATES resource(s) -->
+            <resource id="endpoint_templates" path="OS-KSCATALOG/endpointTemplates">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
-                <param name="endpointTemplateId" type="xsd:string" style="template" required="true"/>
+                <method href="#getEndpointTemplates" />
                 
-                <resource id="endpoint_template_policy_management_policies" path="RAX-AUTH/policies">
-                    <method href="#getEndpointTemplatePolicies" />
-                    <method href="#updateEndpointTemplatePolicies" />
+                <resource id="endpoint_template" path="{endpointTemplateId}">
+                    <param name="endpointTemplateId" type="xsd:string" style="template" required="true"/>
                     
-                    <resource id="endpoint_template_policy_management_policy" path="{policyId}">
-                        <param name="policyId" type="xsd:string" style="template" required="true"/>
-                        <method href="#addPolicyToEndpointTemplate" />
-                        <method href="#removePolicyFromEndpointTemplate"/>
-                    </resource>
-                </resource>
-                
-                <resource id="endpoint_template_capabilities" path="RAX-AUTH/capabilities">
-                    <method href="#getCapabilities" />
-                    <method href="#updateCapabilities" />
-                    <method href="#removeCapabilities" />
-                    <resource id="endpoint_template_capability" path="{capabilityId}">
-                        <param name="capabilityId" type="xsd:string" style="template" required="true"/>
-                        <method href="#getCapability" />
+                    <resource id="endpoint_template_policies" path="RAX-AUTH/policies">
+                        <method href="#getEndpointTemplatePolicies" />
+                        <method href="#updateEndpointTemplatePolicies" />
+                        
+                        <resource id="endpoint_template_policy" path="{policyId}">
+                            <param name="policyId" type="xsd:string" style="template" required="true"/>
+                            <method href="#addPolicyToEndpointTemplate" />
+                            <method href="#removePolicyFromEndpointTemplate"/>
+                        </resource>
                     </resource>
                 </resource>
             </resource>
+                   
+            <!-- USERS_WITH_ROLE resource(s) -->
+            <resource id="users_with_role" path="OS-KSADM/roles/{roleId}/RAX-AUTH/users">
+                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <doc>A valid authentication token</doc>
+                </param>
+                <param name="roleId" type="xsd:string" style="template" required="true"/>
+                <method href="#listUsersWithRole"/>
+            </resource>
             
+            <!-- RAX-AUTH resource(s) -->
             <resource id="RAX-AUTH" path="RAX-AUTH">
+                
                 <resource id="impersonation-tokens" path="impersonation-tokens">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token for the impersonator</doc>
@@ -146,6 +149,7 @@
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token</doc>
                     </param>
+                    <method href="#getDomains" />
                     <method href="#createDomain"/>
                     
                     <resource id="domain" path="{domainId}">
@@ -177,26 +181,15 @@
                         </resource>
                     </resource>
                 </resource>
-                
-                <resource id="token_accessible_domains" path="domains">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <doc>A valid authentication token. </doc>
-                    </param>
-                    <method href="#getAccessibleDomainsForToken" />
-                    <resource id="token_accessible_domain" path="{domainId}">
-                        <param name="domainId" type="xsd:string" style="template" required="true"/>
-                        <resource id="token_accessible_domain_endpoints" path="endpoints">
-                            <method href="#getDomainEndpointsForToken" />
-                        </resource>
-                    </resource>
-                </resource>
-                
+                              
+                <!-- POLICIES resource(s) -->
                 <resource id="policies" path="policies">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token. </doc>
                     </param>
                     <method href="#getPolicies" />
                     <method href="#createPolicy" />
+                    
                     <resource id="policy" path="{policyId}">
                         <param name="policyId" type="xsd:string" style="template" required="true"/>
                         <method href="#getPolicy" />
@@ -205,11 +198,68 @@
                     </resource>
                 </resource>
                 
+                <!-- REGIONS resource(s) -->
+                <resource id="regions" path="regions">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <method href="#getRegions" />
+                    <method href="#createRegion"/>
+                    
+                    <resource id="region" path="{regionId}">
+                        <param name="regionId" type="xsd:string" style="template" required="true"/>
+                        <method href="#getRegion"/>
+                        <method href="#updateRegion"/>
+                        <method href="#deleteRegion"/>
+                    </resource>
+                </resource>
+                
+                <!-- see also ADD_USER_SECRETQA above -->
+                <resource id="secretqa" path="secretqa">
+                    
+                    <resource id="questions" path="questions">
+                        <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                            <doc>A valid authentication token</doc>
+                        </param>
+                        <method href="#getQuestions" />
+                        <method href="#createQuestion"/>
+                        <resource id="question" path="{questionId}">
+                            <param name="questionId" type="xsd:string" style="template" required="true"/>
+                            <method href="#getQuestion"/>
+                            <method href="#updateQuestion"/>
+                            <method href="#deleteQuestion"/>
+                        </resource>
+                    </resource>
+                </resource>
+                
+                <!-- SERVICE_APIS resource(s) -->
+                <resource id="service_apis" path="service-apis">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <method href="#getServiceApis" />
+                    
+                    <resource id="service_api_capabilities" path="{type}/{version}/capabilities">
+                        <param name="type" type="xsd:string" style="template" required="true">
+                            <doc>The service type e.g compute, object-store, rax-dns. </doc>
+                        </param>
+                        <param name="version" type="xsd:string" style="template" required="true">
+                            <doc>The service version e.g v1, v2.0, ...</doc>
+                        </param>
+                        
+                        <method href="#getCapabilities" />
+                        <method href="#updateCapabilities" />
+                        <method href="#removeCapabilities" />
+                    </resource>
+                </resource>
+                
             </resource>
         </resource>
     </resources>
-
+    
+    <!-- ======================================================================================= -->
     <!-- Methods -->
+    <!-- ======================================================================================= -->
     
     <method id="getUserSecretQAs" name="GET">
         <doc xml:lang="EN" title="Get User Secret Q&amp;A List">
