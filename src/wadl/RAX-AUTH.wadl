@@ -43,7 +43,8 @@
             -->
     <!-- 2013-02-07 by Rose Coste
       ++ adding new RESOURCES and METHODS & deleting unused & reordering to synch this writer-maintained RAX-AUTH with developer-maintained RAX-AUTH 
-         at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl       
+         at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl  
+         For 15 new samples supporting added METHODS, include as ../common/samples/formattedsamples/keystone/
             -->
     
     <!-- ======================================================================================= -->
@@ -720,12 +721,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domains">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/DomainList.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/DomainList.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.json" />
                 </doc>
             </representation>
         </response>
@@ -781,12 +782,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/UserList.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/UserList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/UserList.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/UserList.json" />
                 </doc>
             </representation>
         </response>
@@ -916,7 +917,7 @@
         <response status="200">
             <representation mediaType="application/xml" element="xsd:string">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/PolicyBlob.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/PolicyBlob.xml" />
                 </doc>
             </representation>
         </response>
@@ -1005,12 +1006,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:serviceApis">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/ServiceApiList.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ServiceApiList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/ServiceApiList.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ServiceApiList.json" />
                 </doc>
             </representation>
         </response>
@@ -1092,12 +1093,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:regions">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/RegionList.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RegionList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/RegionList.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RegionList.json" />
                 </doc>
             </representation>
         </response>
@@ -1114,12 +1115,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:region">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/Region.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Region.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/Region.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Region.json" />
                 </doc>
             </representation>
         </response>
@@ -1136,12 +1137,12 @@
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:region" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/Region.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Region.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/Region.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Region.json" />
                 </doc>
             </representation>
         </request>
@@ -1163,18 +1164,18 @@
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:region" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/Region.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Region.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/Region.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Region.json" />
                 </doc>
             </representation>
         </request>
         <response status="201">
             <param name="Location" style="header" type="xsd:string" required="true">
-                <doc>Location to the uri of the newly created region</doc>
+                <doc>Location of the URI of the newly created region</doc>
             </param>
         </response>
         <response status="409" >
@@ -1351,12 +1352,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/EndpointTemplateList.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointTemplateList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/EndpointTemplateList.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointTemplateList.json" />
                 </doc>
             </representation>
         </response>
@@ -1373,34 +1374,34 @@
         <request>
             <representation mediaType="application/xml" element="identity:AuthenticationRequest" >
                 <doc xml:lang="EN" title="Racker SSO Authentication Request: XML">
-                    <xsdxt:code href="../formattedsamples/RackerSSOAuthenticationRequest.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RackerSSOAuthenticationRequest.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN" title="Racker SSO Authentication Request: JSON">
-                    <xsdxt:code href="../formattedsamples/RackerSSOAuthenticationRequest.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RackerSSOAuthenticationRequest.json" />
                 </doc>
             </representation>
             <representation mediaType="application/xml" element="identity:AuthenticationRequest" >
                 <doc xml:lang="EN" title="Racker RSA Token Authentication Request: XML">
-                    <xsdxt:code href="../formattedsamples/RackerRSATokenAuthenticationRequest.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RackerRSATokenAuthenticationRequest.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN" title="Racker RSA Token Authentication Request: JSON">
-                    <xsdxt:code href="../formattedsamples/RackerRSATokenAuthenticationRequest.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RackerRSATokenAuthenticationRequest.json" />
                 </doc>
             </representation>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="identity:access" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/RackerAuthenticationResponse.xml" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RackerAuthenticationResponse.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN" >
-                    <xsdxt:code href="../formattedsamples/RackerAuthenticationResponse.json" />
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/RackerAuthenticationResponse.json" />
                 </doc>
             </representation>
         </response>
