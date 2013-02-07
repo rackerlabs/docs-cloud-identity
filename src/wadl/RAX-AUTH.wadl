@@ -42,7 +42,7 @@
                  ../common/samples/formattedsamples/keystone/
             -->
     <!-- 2013-02-07 by Rose Coste
-      ++ adding new RESOURCES and METHODS to synch this writer-maintained RAX-AUTH with developer-maintained RAX-AUTH 
+      ++ adding new RESOURCES and METHODS & deleting unused & reordering to synch this writer-maintained RAX-AUTH with developer-maintained RAX-AUTH 
          at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl       
             -->
     

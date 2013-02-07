@@ -1,0 +1,20 @@
+{
+  "RAX-AUTH:serviceApis": [
+    {
+      "type": "compute",
+      "version": "1.0"
+    },
+    {
+      "type": "compute",
+      "version": "2.0"
+    },
+    {
+      "type": "object-store",
+      "version": "2.0"
+    },
+    {
+      "type": "rax:customer",
+      "version": "1"
+    }
+  ]
+}

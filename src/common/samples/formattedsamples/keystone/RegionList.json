@@ -1,0 +1,14 @@
+{
+  "RAX-AUTH:regions": [
+    {
+      "enabled": true,
+      "isDefault": true,
+      "name": "DFW"
+    },
+    {
+      "enabled": true,
+      "isDefault": false,
+      "name": "ORD"
+    }
+  ]
+}

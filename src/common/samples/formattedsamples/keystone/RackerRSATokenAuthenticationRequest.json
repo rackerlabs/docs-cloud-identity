@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "RAX-AUTH:domain": {
+      "name": "Rackspace"
+    },
+    "RAX-AUTH:rsaCredentials": {
+      "tokenKey": "8723984574",
+      "username": "jqsmith"
+    }
+  }
+}

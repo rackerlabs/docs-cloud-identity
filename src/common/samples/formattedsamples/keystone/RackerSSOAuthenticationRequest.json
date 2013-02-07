@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "RAX-AUTH:domain": {
+      "name": "Rackspace"
+    },
+    "passwordCredentials": {
+      "username": "jqsmith",
+      "password": "mypassword"
+    }
+  }
+}
