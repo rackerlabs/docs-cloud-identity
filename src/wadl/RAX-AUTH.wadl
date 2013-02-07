@@ -285,6 +285,7 @@
         &commonFaults;
         &getFaults;
     </method>
+    
     <method id="saveUserSecretQA" name="POST">
         <doc xml:lang="EN" title="Create a Secret Q&amp;A">
             <db:para role="shortdesc">
@@ -313,126 +314,6 @@
         </response>
         &commonFaults;
         &postPutFaults;
-    </method>
-    
-    <method id="getQuestions" name="GET">
-        <doc xml:lang="EN" title="Get Questions">
-            <db:para role="shortdesc">
-                Get a list of questions.
-            </db:para>
-            <db:para>
-                The operation returns a list of questions.
-            </db:para>
-        </doc>
-        <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:questions">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionList.xml" />
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionList.json" />
-                </doc>
-            </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
-    <method id="getQuestion" name="GET">
-        <doc xml:lang="EN" title="Get a Question">
-            <db:para role="shortdesc">
-                Get a question.
-            </db:para>
-        </doc>
-        <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:question">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.xml" />
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.json" />
-                </doc>
-            </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
-    <method id="updateQuestion" name="PUT">
-        <doc xml:lang="EN" title="Update a Question">
-            <db:para role="shortdesc">
-                Update a question.
-            </db:para>
-        </doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:question" >
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.xml" />
-                </doc>
-            </representation>
-            <representation mediaType="application/json" >
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.json" />
-                </doc>
-            </representation>
-        </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
-    <method id="createQuestion" name="POST">
-        <doc xml:lang="EN" title="Create a Question">
-            <db:para role="shortdesc">
-                Create a question.
-            </db:para>
-            <db:para>
-                Clients must specify the question name in the request body.
-            </db:para>
-        </doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:question" >
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionForCreate.xml" />
-                </doc>
-            </representation>
-            <representation mediaType="application/json" >
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionForCreate.json" />
-                </doc>
-            </representation>
-        </request>
-        <response status="201">
-            <param name="Location" style="header" type="xsd:string" required="true">
-                <doc>Location of the URI for the newly-created question</doc>
-            </param>
-        </response>
-        <response status="409" >
-            <representation mediaType="application/xml" element="identity:identityFault"/>
-            <representation mediaType="application/json"/>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
-    <method id="deleteQuestion" name="DELETE">
-        <doc xml:lang="EN" title="Delete a Question">
-            <db:para role="shortdesc">
-                Delete a question.
-            </db:para>
-            <db:para>
-                This request will only succeed if the question is not assigned to any users. The question must be
-                removed from any users before this operation will be allowed.
-            </db:para>
-        </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
     </method>
     
      <method id="resetUserAPIKeyCredentials" name="POST">
@@ -825,48 +706,26 @@
         &commonFaults;
         &getFaults;
     </method>
-    
-    <method id="getAccessibleDomainsForToken" name="GET">
-        <doc xml:lang="EN" title="Get Accessible Domains">
+     
+    <method id="getDomains" name="GET">
+        <doc xml:lang="EN" title="Get Domains">
             <db:para role="shortdesc">
-                Get a list of accessible domains.
+                Gets a list of domains.
             </db:para>
             <db:para>
-                The operation returns a list of domains for which the supplied token provides access. 
-                A token has access to a domain if the token has access to a tenant that exists in the domain.
+                The operation returns a list of domains for which the supplied token provides access. Tokens have access to domains by the token having access to a tenant that exists in the domain.
+                If the token belongs to an admin user, a list of all domains may be returned.
             </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domains">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.xml" />
+                    <xsdxt:code href="../formattedsamples/DomainList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.json" />
-                </doc>
-            </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
-    <method id="getDomainEndpointsForToken" name="GET">
-        <doc xml:lang="EN" title="Get Accesible Domain Endpoints">
-            <db:para role="shortdesc">
-                Get endpoints for token restricted by domain.
-            </db:para>
-        </doc>
-        <response status="200">
-            <representation mediaType="application/xml" element="identity:endpoints">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointList.xml" />
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointList.json" />
+                    <xsdxt:code href="../formattedsamples/DomainList.json" />
                 </doc>
             </representation>
         </response>
@@ -889,6 +748,45 @@
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointList.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="listUsersWithRole" name="GET">
+        <doc xml:lang="EN" title="Get Users with Role">
+            <db:para role="shortdesc">
+                Get users with role.
+            </db:para>
+        </doc>
+        <request>
+            <param name="enabled" style="query" type="xsd:string">
+                <doc>
+                    Allows us to filter enabled or un-enabled users. Values are "true" or "false".
+                </doc>
+            </param>
+            <param name="marker" style="query" type="xsd:string">
+                <doc>
+                    Allows us to page through list of users.
+                </doc>
+            </param>
+            <param name="limit" style="query" type="xsd:int">
+                <doc>
+                    Allows us to set size of page when paging through list of users.
+                </doc>
+            </param>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="identity:users">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/UserList.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/UserList.json" />
                 </doc>
             </representation>
         </response>
@@ -1005,6 +903,27 @@
         &postPutFaults;
     </method>
     
+    <method id="getPolicyBlob" name="GET">
+        <doc xml:lang="EN" title="Get Detailed Policy Content">
+            <db:para role="shortdesc">
+                Gets a policy content.
+            </db:para>
+            <db:para>
+                The representation of the policy is different from the authors perspective, and the policy enforcers perspective.
+                This API is intended for policy enforcers, which gives clear, fully detailed, non verbose descriptions of the policy.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="xsd:string">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/PolicyBlob.xml" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
     <method id="getEndpointTemplatePolicies" name="GET">
         <doc xml:lang="EN" title="Get Policies">
             <db:para role="shortdesc">
@@ -1077,6 +996,28 @@
         &postPutFaults;
     </method>
     
+    <method id="getServiceApis" name="GET">
+        <doc xml:lang="EN" title="Get Service Apis">
+            <db:para role="shortdesc">
+                Gets a list of service apis.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:serviceApis">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/ServiceApiList.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/ServiceApiList.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
     <method id="getCapabilities" name="GET">
         <doc xml:lang="EN" title="Get Capabilities">
             <db:para role="shortdesc">
@@ -1138,26 +1079,337 @@
         &getFaults;
         &postPutFaults;
     </method>
-    
-    <method id="getCapability" name="GET">
-        <doc xml:lang="EN" title="Get a Capability">
+     
+    <method id="getRegions" name="GET">
+        <doc xml:lang="EN" title="Get Regions">
             <db:para role="shortdesc">
-                Get a capability.
+                Gets a list of regions.
+            </db:para>
+            <db:para>
+                The operation returns a list of regions.
             </db:para>
         </doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:capability">
+            <representation mediaType="application/xml" element="RAX-AUTH:regions">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Capability.xml" />
+                    <xsdxt:code href="../formattedsamples/RegionList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Capability.json" />
+                    <xsdxt:code href="../formattedsamples/RegionList.json" />
                 </doc>
             </representation>
         </response>
         &commonFaults;
         &getFaults;
     </method>
+    
+    <method id="getRegion" name="GET">
+        <doc xml:lang="EN" title="Get a Region">
+            <db:para role="shortdesc">
+                Gets a region.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:region">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/Region.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/Region.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="updateRegion" name="PUT">
+        <doc xml:lang="EN" title="Update a Region">
+            <db:para role="shortdesc">
+                Updates a region.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:region" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/Region.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/Region.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="204" />
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="createRegion" name="POST">
+        <doc xml:lang="EN" title="Create a Region">
+            <db:para role="shortdesc">
+                Creates a region.
+            </db:para>
+            <db:para>
+                Clients must specify the region name in the request body.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:region" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/Region.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/Region.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="201">
+            <param name="Location" style="header" type="xsd:string" required="true">
+                <doc>Location to the uri of the newly created region</doc>
+            </param>
+        </response>
+        <response status="409" >
+            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/json"/>
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="deleteRegion" name="DELETE">
+        <doc xml:lang="EN" title="Delete a Region">
+            <db:para role="shortdesc">
+                Deletes a region.
+            </db:para>
+            <db:para>
+                This request will only succeed if the region default is set to false. The default value must be
+                false before this operation will be allowed.
+            </db:para>
+        </doc>
+        <response status="204" />
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="getQuestions" name="GET">
+        <doc xml:lang="EN" title="Get Questions">
+            <db:para role="shortdesc">
+                Get a list of questions.
+            </db:para>
+            <db:para>
+                The operation returns a list of questions.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:questions">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionList.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionList.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="getQuestion" name="GET">
+        <doc xml:lang="EN" title="Get a Question">
+            <db:para role="shortdesc">
+                Get a question.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:question">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="updateQuestion" name="PUT">
+        <doc xml:lang="EN" title="Update a Question">
+            <db:para role="shortdesc">
+                Update a question.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:question" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Question.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="204" />
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="createQuestion" name="POST">
+        <doc xml:lang="EN" title="Create a Question">
+            <db:para role="shortdesc">
+                Create a question.
+            </db:para>
+            <db:para>
+                Clients must specify the question name in the request body.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:question" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionForCreate.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/formattedsamples/keystone/QuestionForCreate.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="201">
+            <param name="Location" style="header" type="xsd:string" required="true">
+                <doc>Location of the URI for the newly-created question</doc>
+            </param>
+        </response>
+        <response status="409" >
+            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/json"/>
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    
+    <method id="deleteQuestion" name="DELETE">
+        <doc xml:lang="EN" title="Delete a Question">
+            <db:para role="shortdesc">
+                Delete a question.
+            </db:para>
+            <db:para>
+                This request will only succeed if the question is not assigned to any users. The question must be
+                removed from any users before this operation will be allowed.
+            </db:para>
+        </doc>
+        <response status="204" />
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="getEndpointTemplates" name="GET">
+        <doc xml:lang="EN" title="Get Endpoint Templates">
+            <db:para role="shortdesc">
+                Get users in a domain.
+            </db:para>
+        </doc>
+        <request>
+            <param name="serviceId" style="query" type="xsd:string">
+                <doc>
+                    Allows us to filter by service id.
+                </doc>
+            </param>
+            <param name="type" style="query" type="xsd:string">
+                <doc>
+                    Allows us to filter by type. e.g compute, object-store, rax:dns
+                </doc>
+            </param>
+            <param name="version" style="query" type="xsd:string">
+                <doc>
+                    Allows us to filter by version.
+                </doc>
+            </param>
+            <param name="region" style="query" type="xsd:string">
+                <doc>
+                    Allows us to filter by region.
+                </doc>
+            </param>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="identity:users">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/EndpointTemplateList.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/EndpointTemplateList.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="authenticateAsRacker" name="POST">
+        <doc xml:lang="EN" title="Authenticate as Racker">
+            <db:para role="shortdesc">
+                Authenticate as Racker.
+            </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="identity:AuthenticationRequest" >
+                <doc xml:lang="EN" title="Racker SSO Authentication Request: XML">
+                    <xsdxt:code href="../formattedsamples/RackerSSOAuthenticationRequest.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN" title="Racker SSO Authentication Request: JSON">
+                    <xsdxt:code href="../formattedsamples/RackerSSOAuthenticationRequest.json" />
+                </doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:AuthenticationRequest" >
+                <doc xml:lang="EN" title="Racker RSA Token Authentication Request: XML">
+                    <xsdxt:code href="../formattedsamples/RackerRSATokenAuthenticationRequest.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN" title="Racker RSA Token Authentication Request: JSON">
+                    <xsdxt:code href="../formattedsamples/RackerRSATokenAuthenticationRequest.json" />
+                </doc>
+            </representation>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="identity:access" >
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../formattedsamples/RackerAuthenticationResponse.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <doc xml:lang="EN" >
+                    <xsdxt:code href="../formattedsamples/RackerAuthenticationResponse.json" />
+                </doc>
+            </representation>
+        </response>
+        <response status="409" >
+            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/json"/>
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    
 </application>
