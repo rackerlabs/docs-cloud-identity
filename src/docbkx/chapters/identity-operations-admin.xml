@@ -98,7 +98,7 @@
 					>
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>. </para>
 		</note>
-		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
+		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin & RAX-AUTH -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
@@ -125,7 +125,6 @@
 				<wadl:method href="deleteUser">
 				</wadl:method>
 			</wadl:resource>
-			<!-- 2013-01-17 add B-28686 here: add community forum credential -->
 			<!-- add API key credential -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
 				<wadl:method href="addUserCredential"/>
@@ -147,6 +146,11 @@
 			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
 				<wadl:method href="getUserCredential"/>
 			</wadl:resource>
+			<!-- reset user's API key credentials -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#reset_apikey_credentials" >
+				<wadl:method href="resetUserAPIKeyCredentials"/>
+			</wadl:resource>
+			
 		</wadl:resources>
 	</section>
 	
