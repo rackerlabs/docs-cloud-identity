@@ -61,6 +61,11 @@
 								Added <xref linkend="Service_API_Calls"/>.
 							</para>
 						</listitem>
+						<listitem>
+							<para>
+								Added authentication as a Racker to <xref linkend="Token_Calls"/>.
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
