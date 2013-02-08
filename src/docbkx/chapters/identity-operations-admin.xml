@@ -60,6 +60,8 @@
 		If an extension is required, it is included in Rackspace's implementation of the Keystone Identity Service; 
 		issuing the calls as described here will use API extensions as needed.
 	</para>
+	
+	<!-- USERS -->
 	<section xml:id="User_Calls">
 		<title>Users</title>
 		<para>The operations described in this section allow service developers to manage users.</para>
@@ -147,6 +149,8 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<!-- GROUPS -->
 	<section xml:id="Group_Calls">
 		<title>Groups</title>
 		<para>The operations described in this section allow service developers to manage groups.</para>
@@ -170,6 +174,8 @@
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#users"/>			
 		</wadl:resources>
 	</section>
+	
+	<!-- ROLES -->
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
 		<para>The operations described in this section allow service developers to manage roles.</para>
@@ -184,14 +190,11 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			
 			<!-- list roles -->
-			<!-- 2013-01-17 add B-33138 here -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
 				<wadl:method href="listRoles"/>
 			</wadl:resource>
 			<!-- add a role globally -->
-			<!-- 2013-01-17 add B-39060 here -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
 				<wadl:method href="addRole"/>
 			</wadl:resource>
@@ -222,9 +225,10 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<!-- TOKENS -->
 	<section xml:id="Token_Calls">
 		<title>Tokens</title>
-		<!-- 2013-01-17 add B-35060 here -->
 		<para>The operations described in this section allow service developers to get and validate access tokens.</para>
 		<note>
 			<para> 
@@ -266,6 +270,8 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<!-- TENANTS -->
 	<section xml:id="Tenant_Calls">
 		<title>Tenants</title>
 		<para>The operations described in this section allow service developers to manage tenants.</para>
@@ -292,6 +298,7 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
 	<section security="writeronly" xml:id="Endpoint_Template_Calls">
 		<!-- Endpoint Template Operations are only in Global Auth for now; omit from Cloud Auth book -->
 		<title>Endpoint Templates</title>
@@ -322,6 +329,7 @@
 		</wadl:resources>
 		-->
 	</section>
+	
 	<section security="writeronly" xml:id="Endpoint_Calls">
 		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
 		<title>Endpoints</title>
@@ -350,8 +358,9 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<!-- SECRETS -->
 	<section xml:id="Secret_Calls">
-		<!-- 2013-01-17 add B-34501 here -->
 		<title>Secret Questions and Answers</title>
 		<para>The operations described in this section allow service developers to manage 
 			secret questions and answers. Secret questions and answers can be used to identify a user to a support Racker via telephone.</para>
@@ -395,9 +404,9 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<!-- IMPERSONATIONS -->
 	<section xml:id="Impersonation_Calls">
-		<!-- Impersonation Calls are scheduled for production 2012-04-15 -->
-		<!-- 2013-01-17 add B-31199 here -->
 		<title>Impersonations</title>
 		<para>The operations described in this section allow service developers to manage Rackers' impersonations of 
 			users for diagnostic purposes.</para>
@@ -439,6 +448,8 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<!-- RATE LIMITING -->
 	<section xml:id="Ratelimiting_Calls">
 		<title>Rate Limits</title>
 		<para>The operations described in this section allow service developers to manage rate limits.</para>
@@ -581,10 +592,8 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
 	<section xml:id="Domain_Calls">
-		<!-- 2013-01-17 add B-31135 here -->
-		<!-- 2013-01-17 add B-28687 here -->
-		<!-- 2013-01-17 add B-32492 here or add as 4.11 Domain Trusts -->
 		<title>Domains</title>
 		<para>The operations described in this section allow service developers to manage domains.</para>
 		<para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.</para>
@@ -636,7 +645,6 @@
 				</wadl:method>
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId}/endpoints -->
-			<!-- 2013-01-17 add B-31136 here -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain_endpoints">
 				<wadl:method href="getDomainEndpoints">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
@@ -683,23 +691,22 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-		<!-- NEW SECTION ON REGIONS -->
-		<section xml:id="Region_Calls">
-			<title>Regions</title>
-			<para>The operations described in this section allow service developers to manage the regions associated with services.</para>
-			<note>
-				<para> 
-					Some of the functionality described in this section is
-					provided by the <code>RAX-AUTH</code> extension to the
-					core Identity API. 
-					You can learn more about API extensions at
-					<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-						https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
-				</para>
-			</note>
-			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<!-- -->
-			<!-- 2013-01-17 add B-27885 here -->
+	
+	<!-- REGIONS -->
+	<section xml:id="Region_Calls">
+		<title>Regions</title>
+		<para>The operations described in this section allow service developers to manage the regions associated with services.</para>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-AUTH</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+				https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list default region for a service -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#default-region-services">
 				<wadl:method href="getDefaultRegionServices">
@@ -710,11 +717,52 @@
 				<wadl:method href="setDefaultRegionServices">
 				</wadl:method>
 			</wadl:resource>
-			<!-- 2013-01-17 end B-27885 -->
-			<!-- -->
 			</wadl:resources>
 		</section>
+	
+	<!-- POLICIES -->
+	<section xml:id="Policy_Calls">
+		<title>Policies</title>
+		<para>The operations described in this section allow service developers to manage policies.</para>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-AUTH</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- get policies; create policy -->
+			<!-- get/update/delete policy -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#policies" />
+			<!-- get/update/delete policy -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#policy" />
+		</wadl:resources>
+	</section>
 		
-		<!-- 2013-01-17 add B-30133 here -->
-
+	<!-- SERVICE APIS -->
+	<section xml:id="Service_API_Calls">
+		<title>Service APIs</title>
+		<para>The operations described in this section allow service developers to manage service APIs and their capabilities.</para>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-AUTH</code> extension to the
+				core Identity API. 
+				You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list available service APIs -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#service_apis" />
+			<!-- get/update/remove capabilities of service APIs -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#service_api_capabilities" />
+		</wadl:resources>
+	</section>
+	
 </chapter>

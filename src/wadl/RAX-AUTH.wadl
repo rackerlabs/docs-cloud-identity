@@ -796,7 +796,7 @@
     </method>
     
     <method id="getPolicies" name="GET">
-        <doc xml:lang="EN" title="Gets all Policies">
+        <doc xml:lang="EN" title="Get All Policies">
             <db:para role="shortdesc">
                 Get all Policies.
             </db:para>
@@ -998,9 +998,9 @@
     </method>
     
     <method id="getServiceApis" name="GET">
-        <doc xml:lang="EN" title="Get Service Apis">
+        <doc xml:lang="EN" title="Get Service APIs">
             <db:para role="shortdesc">
-                Gets a list of service apis.
+                Gets a list of service APIs.
             </db:para>
         </doc>
         <response status="200">
@@ -1047,11 +1047,15 @@
                 Update the capabilities for an endpoint template.
             </db:para>
             <db:para>
-                Any capabilities that previously existed for this endpoint template will be overridden. There will be future support to update capabilities by specifying
+                Any capabilities that previously existed for this endpoint template will be overridden. 
+                There will be future support to update capabilities by specifying
                 a WADL as the payload. A WADL contains all the capabilities that can exist for a service.
             </db:para>
         </doc>
-        <request status="200">
+        <!-- this said <request status="200"> but how does that work?
+        turned it into response so oXygen & I will stop flagging it red, 
+        but check what was intended here -->
+            <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.xml" />
@@ -1062,7 +1066,7 @@
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.json" />
                 </doc>
             </representation>
-        </request>
+        </response>
         <response status="204" />
         &commonFaults;
         &getFaults;
