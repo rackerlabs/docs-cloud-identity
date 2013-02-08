@@ -215,6 +215,7 @@
                     </resource>
                 </resource>
                 
+                <!-- SECRETS resource(s) -->
                 <!-- see also ADD_USER_SECRETQA above -->
                 <resource id="secretqa" path="secretqa">
                     

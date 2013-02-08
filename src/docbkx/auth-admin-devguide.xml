@@ -63,12 +63,18 @@
 						</listitem>
 						<listitem>
 							<para>
-								Added authentication as a Racker to <xref linkend="Token_Calls"/>.
+								In <xref linkend="User_Calls"/>, added resetting API key credentials,
+								listing accessible domains, and listing domain endpoints.
 							</para>
 						</listitem>
 						<listitem>
 							<para>
-								Added resetting API key credentials to <xref linkend="User_Calls"/>.
+								In <xref linkend="Domain_Calls"/>, added getting a list of domains.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								In <xref linkend="Token_Calls"/>, added authentication as a Racker.
 							</para>
 						</listitem>
 					</itemizedlist>
