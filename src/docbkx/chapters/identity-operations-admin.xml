@@ -771,6 +771,12 @@
 	<section xml:id="Service_API_Calls">
 		<title>Service APIs</title>
 		<para>The operations described in this section allow service developers to manage service APIs and their capabilities.</para>
+		<important>
+			<para>
+				As of February 8, 2013, these Service API operations are planned but not implemented. 
+				For more information, contact Joe Savak or Angela Molock.
+			</para>
+		</important>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
