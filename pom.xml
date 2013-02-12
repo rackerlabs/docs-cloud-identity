@@ -31,6 +31,8 @@
 	      <!-- These parameters only apply to webhelp -->
 	      <enableDisqus>1</enableDisqus>
 	      <enableGoogleAnalytics>1</enableGoogleAnalytics>
+	      <!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
+	      <sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 	    </configuration>
 	  </execution>
 	  <execution>
@@ -51,6 +53,8 @@
 	      <enableDisqus>intranet</enableDisqus>
 	      <enableGoogleAnalytics>0</enableGoogleAnalytics>
 	      <feedbackEmail>rose.coste@rackspace.com</feedbackEmail>
+	      <!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
+	      <sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 	    </configuration>
 	  </execution>
 	</executions>
@@ -65,6 +69,8 @@
 	  <webhelpDefaultTopic>QuickStart-000.html</webhelpDefaultTopic>
 	  <branding>rackspace</branding>
 	  <security>external</security>
+	  <!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
+	  <sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 	</configuration>
       </plugin>
       <plugin>
