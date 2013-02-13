@@ -764,6 +764,10 @@
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#policies" />
 			<!-- get/update/delete policy -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#policy" />
+			<!-- get complete content (blob) of a policy -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#policyBlob" >
+				<wadl:method href="getPolicyBlob" />
+			</wadl:resource>
 		</wadl:resources>
 	</section>
 		
