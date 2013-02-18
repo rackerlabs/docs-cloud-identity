@@ -71,7 +71,7 @@
 	  <security>external</security>
 	  <!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
 	  <sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
-	  <publicationNotificationEmails>rose.coste@rackspace.com,joe.savak@rackspace.com</publicationNotificationEmails>	  
+		<publicationNotificationEmails>rose.coste@rackspace.com,renee.rendon@rackspace.com,joe.savak@rackspace.com</publicationNotificationEmails>	  
 	</configuration>
       </plugin>
       <plugin>
