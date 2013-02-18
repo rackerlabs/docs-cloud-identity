@@ -1049,18 +1049,19 @@
     <method id="updateCapabilities" name="PUT">
         <doc xml:lang="EN" title="Update Capabilities">
             <db:para role="shortdesc">
-                Update the capabilities for an endpoint template.
+                Update the capabilities for a Service API.
             </db:para>
             <db:para>
                 Any capabilities that previously existed for this endpoint template will be overridden. 
                 There will be future support to update capabilities by specifying
-                a WADL as the payload. A WADL contains all the capabilities that can exist for a service.
+                a WADL as the payload. A WADL describes all the capabilities that can exist for a service.
             </db:para>
         </doc>
-        <!-- this said <request status="200"> but how does that work?
-        turned it into response so oXygen & I will stop flagging it red, 
-        but check what was intended here -->
-            <response status="200">
+        <!-- 
+          in https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl,
+          this says <request status="200"> but how does that work? try again as <request>
+         -->
+            <request>
             <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.xml" />
@@ -1071,7 +1072,7 @@
                     <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.json" />
                 </doc>
             </representation>
-        </response>
+        </request>
         <response status="204" />
         &commonFaults;
         &getFaults;
