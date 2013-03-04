@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2012-02-01</pubdate>
+		<pubdate>2013-03-04</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -45,6 +45,19 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-03-04</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Added commas to JSON code sample in <xref linkend="Sample_Request_Response-d1e64"/>   
+								Added a link to Community in <xref linkend="Additional_Resources-d1e130"/>
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2013-02-01</date>
 				<revdescription>
