@@ -566,7 +566,7 @@
                 visible on the control panel but the region cannot currently be changed there.
                 To change the association of a user with a default region,
                 use 
-                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__">Update Users</a> 
+                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html">Update Users</a> 
                 as you would to change any other descriptive information about the user.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">

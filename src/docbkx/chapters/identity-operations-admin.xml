@@ -104,7 +104,7 @@
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
 				<wadl:method href="listUsers"/>
 			</wadl:resource>
-			<!-- list user -->
+			<!-- get user by name -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="getUserByName"/>
 			</wadl:resource>

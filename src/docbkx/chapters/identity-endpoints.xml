@@ -69,7 +69,7 @@
                 <td>Documentation</td>
                 <td> No standalone documentation is available for Auth
                     1.0, but you can see Auth1.0 in use in <link
-                        xlink:href="http://docs.rackspace.com/servers/api/v1.0/cs-devguide/content/Authentication-d1e506.html"
+                        xlink:href="http://docs.rackspace.com/servers/api/v1.0/cs-devguide/content/auth.html"
                         >First Generation Cloud Servers™ Developer
                         Guide - API v1.0: Section 3.1,
                         Authentication</link>
