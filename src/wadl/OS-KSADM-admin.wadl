@@ -760,6 +760,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/roles.json"/>
                 </doc>
             </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/roles-domain-users.json"/>
+                </doc>
+            </representation>
         </response>
         &commonFaults;
         &getFaults;

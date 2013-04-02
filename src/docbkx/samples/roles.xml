@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<roles xmlns="http://docs.openstack.org/identity/api/v2.0">
-  <role id="identity:admin" description="Admin Role." />
-  <role id="identity:default" description="Default Role." />
-</roles>
