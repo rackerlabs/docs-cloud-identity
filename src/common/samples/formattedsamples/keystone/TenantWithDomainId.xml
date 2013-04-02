@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tenant RAX-AUTH:domainId="9883948" display-name="Star Wars"
-     enabled="true" id="5784574" name="star_wars"
-     xmlns="http://docs.openstack.org/identity/api/v2.0"
-     xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" xmlns:ns2="http://www.w3.org/2005/Atom">
-     <description>Used to manage the Star Wars games</description>
-</tenant>

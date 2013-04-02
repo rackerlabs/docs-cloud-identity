@@ -1,8 +1,0 @@
-{
-  "RAX-AUTH:capability": {
-    "id": "get_servers",
-    "name": "get_servers",
-    "action": "GET",
-    "url": "/servers"
-  }
-}

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<policy xmlns="http://docs.rackspace.com/identity/policy/v1.0">
-     <rule>
-          <subject roles="nova:admin admin"/>
-          <capabilities>
-               <capability id="*"/>
-          </capabilities>
-     </rule>
-</policy>
