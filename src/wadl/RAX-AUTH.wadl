@@ -1033,12 +1033,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.xml" />
+                    <xsdxt:code href="../common/samples/CapabilityList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.json" />
+                    <xsdxt:code href="../common/samples/CapabilityList.json" />
                 </doc>
             </representation>
         </response>
@@ -1064,12 +1064,12 @@
             <request>
             <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.xml" />
+                    <xsdxt:code href="../common/samples/CapabilityList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/CapabilityList.json" />
+                    <xsdxt:code href="../common/samples/CapabilityList.json" />
                 </doc>
             </representation>
         </request>
