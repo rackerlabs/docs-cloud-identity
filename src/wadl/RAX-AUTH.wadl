@@ -418,12 +418,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domain">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Domain.xml" />
+                    <xsdxt:code href="../common/samples/Domain.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Domain.json" />
+                    <xsdxt:code href="../common/samples/Domain.json" />
                 </doc>
             </representation>
         </response>
@@ -440,12 +440,12 @@
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:domain" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Domain.xml" />
+                    <xsdxt:code href="../common/samples/Domain.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Domain.json" />
+                    <xsdxt:code href="../common/samples/Domain.json" />
                 </doc>
             </representation>
         </request>
@@ -467,12 +467,12 @@
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:domain" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Domain.xml" />
+                    <xsdxt:code href="../common/samples/Domain.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Domain.json" />
+                    <xsdxt:code href="../common/samples/Domain.json" />
                 </doc>
             </representation>
         </request>
@@ -628,12 +628,12 @@
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:impersonation" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DefaultRegionServices.xml" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DefaultRegionServices.json" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.json" />
                 </doc>
             </representation>
         </request>
@@ -652,12 +652,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:impersonation" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DefaultRegionServices.xml" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DefaultRegionServices.json" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.json" />
                 </doc>
             </representation>
         </response>
@@ -678,12 +678,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domains">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.xml" />
+                    <xsdxt:code href="../common/samples/DomainList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.json" />
+                    <xsdxt:code href="../common/samples/DomainList.json" />
                 </doc>
             </representation>
         </response>
@@ -700,12 +700,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="identity:endpoints">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointList.xml" />
+                    <xsdxt:code href="../common/samples/EndpointList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointList.json" />
+                    <xsdxt:code href="../common/samples/EndpointList.json" />
                 </doc>
             </representation>
         </response>
@@ -726,12 +726,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domains">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.xml" />
+                    <xsdxt:code href="../common/samples/DomainList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/DomainList.json" />
+                    <xsdxt:code href="../common/samples/DomainList.json" />
                 </doc>
             </representation>
         </response>
@@ -748,12 +748,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="identity:endpoints">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointList.xml" />
+                    <xsdxt:code href="../common/samples/EndpointList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointList.json" />
+                    <xsdxt:code href="../common/samples/EndpointList.json" />
                 </doc>
             </representation>
         </response>
@@ -1362,12 +1362,12 @@
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointTemplateList.xml" />
+                    <xsdxt:code href="../common/samples/EndpointTemplateList.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/EndpointTemplateList.json" />
+                    <xsdxt:code href="../common/samples/EndpointTemplateList.json" />
                 </doc>
             </representation>
         </response>
