@@ -408,12 +408,12 @@
             2012-03-19 Itari Ighoroje says there is no special request, hide these 
             <representation mediaType="application/xml" >
                 <doc xml:lang="EN" title="Validate Token for Impersonation Request: XML">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Impersonator.xml" />
+                    <xsdxt:code href="../common/samples/Impersonator.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN" title="Validate Token for Impersonation Request: JSON">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/Impersonator.json" />
+                    <xsdxt:code href="../common/samples/Impersonator.json" />
                 </doc>
             </representation>
             
@@ -434,12 +434,12 @@
         -->
             <representation mediaType="application/xml" >
                 <doc xml:lang="EN" title="Validate Token for Impersonation Response: XML">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ValidateTokenResponse.xml" />
+                    <xsdxt:code href="../common/samples/ValidateTokenResponse.xml" />
                 </doc>
             </representation>
             <representation mediaType="application/json" >
                 <doc xml:lang="EN" title="Validate Token for Impersonation Response: JSON">
-                    <xsdxt:code href="../common/samples/formattedsamples/keystone/ValidateTokenResponse.json" />
+                    <xsdxt:code href="../common/samples/ValidateTokenResponse.json" />
                 </doc>
             </representation>
          <!-- 
