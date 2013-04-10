@@ -157,6 +157,10 @@
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#reset_apikey_credentials" >
 				<wadl:method href="resetUserAPIKeyCredentials"/>
 			</wadl:resource>
+			<!-- list users who are Admin user? -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins" >
+				<wadl:method href="getUserAdminsForUser"/>
+			</wadl:resource>
 			
 		</wadl:resources>
 	</section>

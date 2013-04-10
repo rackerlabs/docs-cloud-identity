@@ -247,7 +247,7 @@
                     
                     <resource id="service_api_capabilities" path="{type}/{version}/capabilities">
                         <param name="type" type="xsd:string" style="template" required="true">
-                            <doc>The service type e.g compute, object-store, rax-dns. </doc>
+                            <doc>The service type e.g. compute, object-store, rax-dns. </doc>
                         </param>
                         <param name="version" type="xsd:string" style="template" required="true">
                             <doc>The service version e.g v1, v2.0, ...</doc>
@@ -257,6 +257,15 @@
                         <method href="#updateCapabilities" />
                         <method href="#removeCapabilities" />
                     </resource>
+                </resource>
+                
+                <!-- USER_USER_ADMINS resource(s) -->
+                <resource id="user_user_admins" path="users/{userId}/RAX-AUTH/admins">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <param name="userId" type="xsd:string" style="template" required="true"/>
+                    <method href="#getUserAdminsForUser" />
                 </resource>
                 
             </resource>
@@ -793,6 +802,28 @@
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/UserList.json" />
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method id="getUserAdminsForUser" name="GET">
+        <doc xml:lang="EN" title="Get User Admins for a User">
+            <db:para role="shortdesc">
+                Get user admins for a user.
+            </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="identity:users">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/UserAdminList.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/UserAdminList.json" />
                 </doc>
             </representation>
         </response>
