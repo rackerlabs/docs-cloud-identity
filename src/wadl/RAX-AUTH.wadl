@@ -814,6 +814,13 @@
             <db:para role="shortdesc">
                 Get user admins for a user.
             </db:para>
+            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users.
+                This request is designed to allow users within an account identified as 
+                user-admins and sub-users (identity: user-admin and / or identity: default respectively) 
+                to identify the administrator / point of contact of their account in the event that they 
+                have questions or need assistance regarding user and/or role management. This request 
+                provides identifying information about the administrator which includes the domain name, 
+                domain ID, email address, status, user ID and user name.</p>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
