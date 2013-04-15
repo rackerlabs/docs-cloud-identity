@@ -265,7 +265,7 @@
                         <doc>A valid authentication token</doc>
                     </param>
                     <param name="userId" type="xsd:string" style="template" required="true"/>
-                    <method href="#getUserAdminsForUser" />
+                    <method href="#listUserAdmins" />
                 </resource>
                 
             </resource>
@@ -809,10 +809,10 @@
         &getFaults;
     </method>
     
-    <method id="getUserAdminsForUser" name="GET">
-        <doc xml:lang="EN" title="Get User Admins for a User">
+    <method id="listUserAdmins" name="GET">
+        <doc xml:lang="EN" title="List User Admins">
             <db:para role="shortdesc">
-                Get user admins for a user.
+                List user admins.
             </db:para>
             <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users.
                 This request is designed to allow users within an account identified as 
