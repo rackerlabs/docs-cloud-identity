@@ -265,7 +265,7 @@
                         <doc>A valid authentication token</doc>
                     </param>
                     <param name="userId" type="xsd:string" style="template" required="true"/>
-                    <method href="#listUserAdmins" />
+                    <method href="#getUserAdmin" />
                 </resource>
                 
             </resource>
@@ -809,17 +809,17 @@
         &getFaults;
     </method>
     
-    <method id="listUserAdmins" name="GET">
-        <doc xml:lang="EN" title="List User Admins">
+    <method id="getUserAdmin" name="GET">
+        <doc xml:lang="EN" title="Get User Admin">
             <db:para role="shortdesc">
-                List user admins.
+                Get user admin.
             </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users.
-                This request is designed to allow users within an account identified as 
-                user-admins and sub-users (identity: user-admin and / or identity: default respectively) 
-                to identify the administrator / point of contact of their account in the event that they 
+            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a single user.
+                The request allows users within an account who are 
+                user-admins (identity: user-admin) or sub-users (identity: default) 
+                to locate the administrator/point of contact of their account if they 
                 have questions or need assistance regarding user and/or role management. This request 
-                provides identifying information about the administrator which includes the domain name, 
+                provides identifying information about the administrator including domain name, 
                 domain ID, email address, status, user ID and user name.</p>
         </doc>
         <response status="200">

@@ -159,7 +159,7 @@
 			</wadl:resource>
 			<!-- list users who are Admin user? -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins" >
-				<wadl:method href="listUserAdmins"/>
+				<wadl:method href="getUserAdmin"/>
 			</wadl:resource>
 			
 		</wadl:resources>

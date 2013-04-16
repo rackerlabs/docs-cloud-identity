@@ -1,10 +1,12 @@
 {
     "users": [
         {
-            "id": "123456",
+            "RAX-AUTH:defaultRegion": "",
+            "RAX-AUTH:domainId": "12345",
+            "email": "userAdmin@rack.com",
             "enabled": true,
-            "username": "jqsmith",
-            "email": "john.smith@example.org"
+            "id": "10022879",
+            "username": "JuserAdmin"
         }
     ]
 }
