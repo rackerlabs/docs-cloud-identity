@@ -31,7 +31,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-04-17</pubdate>
+		<pubdate>2013-04-22</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -48,12 +48,24 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2013-04-22</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Added <xref linkend="Role_Based_Access_Control-d1e808"/>.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2013-04-17</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
-								In <xref linkend="User_Calls"/>, added call to get user administrators.
+								Added <xref linkend="GET_getUserAdmin_v2.0_RAX-AUTH_users__userId__RAX-AUTH_admins_" xrefstyle="select: title" />
 							</para>
 						</listitem>
 					</itemizedlist>

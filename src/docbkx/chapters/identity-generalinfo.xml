@@ -1515,4 +1515,199 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	  </example>
 	  <para> </para>
 	</section>
+	<section xml:id="Role_Based_Access_Control-d1e808">
+		<title>Role Based Access Control</title>
+		<para>
+			Role Based Access Control (RBAC) restricts service access to authorized 
+			users. RBAC allows customers to specify which users have access to different actions 
+			within their deployment based on roles defined by Rackspace. The customer assigns the
+			permission to perform certain operations in their deployment, like adding or deleting 
+			servers, to specific roles.
+		</para>
+		<para>
+			RBAC is available to all Open Cloud Services with an API. Not all services will 
+			include it on launch date, but we expect all services to have this in the near 
+			future. 
+		</para>
+		<note>
+			<para>RBAC is an opt-in feature for our customers. It must be activated 
+				by the <link linkend="Account_Admin-dle808">Account Admin user</link> for the account. </para>
+		</note>
+		<section xml:id="RBAC_Roles-dle808">
+			<title>Description of Roles</title>
+			<para> "Role” describes the categories of users on an account. Each
+				role receives different levels of access and action.
+				By assigning roles to users and using RBAC, customers can more safely allow
+				multiple users to complete tasks, but limit risk by
+				ensuring that users do not have access or permissions
+				beyond their training or level of control. RBAC also allows the customer to 
+				modify access by role, rather than by individual user, ensuring streamlined and 
+				efficient access management. Rackspace’s RBAC solution offers three roles 
+				subordinate to the <link linkend="Account_Admin-dle808">Account Admin user</link>: 
+				admin, creator, and observer. <table
+					frame="void">
+					<caption>Rackspace RBAC Roles</caption>
+					<col width="20%"/>
+					<col width="80%"/>
+					<thead>
+						<tr>
+							<th>Role</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>admin</td>
+							<td>Can create, access, modify, and delete
+								assets across a given product
+								line</td>
+						</tr>
+						<tr>
+							<td>creator</td>
+							<td>Can create, access, and modify assets
+								for a given product.  Cannot delete
+								assets.</td>
+						</tr>
+						<tr>
+							<td>observer</td>
+							<td>Can  view given assets, where access
+								is granted. Read-only role.</td>
+						</tr>
+					</tbody>
+				</table><important>
+					<para xml:id="Account_Admin-dle808"> The Account Admin (one per account) is
+						designated by the customer as the Primary
+						contact. Only the Account Admin
+						(identity:user-admin) can create a sub-user
+						for the purpose of assigning roles and
+						granting privileges through RBAC. The Account
+						Admin cannot hold any additional roles, as
+						they already have full access to all
+						capabilities by default. </para>
+				</important>
+			</para>
+		</section>
+		<section xml:id="RBAC_Included_Now-dle808">
+			<title>Services That Include RBAC at This Time</title>
+			<para>
+				<itemizedlist>
+					<listitem>
+						<para>
+							Next-Generation Cloud Control
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud Files
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud Databases
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud DNS
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud Load Balancers
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud Monitoring as a Service
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud Block Storage
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud Control Panel
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Reach
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<section xml:id="RBAC_Included_Later-dle808">
+			<title>Services That Will Include RBAC in Near
+				Future</title>
+			<para>
+				<itemizedlist>
+					<listitem>
+						<para>
+							Cloud Backup
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Big Data
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Checkmate
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Utility Grid
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Any new service with an API
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<section xml:id="RBAC_Not_Included-dle808">
+			<title>Services That Will Not Include RBAC</title>
+			<para>
+				<itemizedlist>
+					<listitem>
+						<para>
+							First Gen Servers
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Classic Control Panel
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							My Rackspace
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Cloud Sites
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							CDN
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							RackConnect
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+	</section>
     </chapter>
