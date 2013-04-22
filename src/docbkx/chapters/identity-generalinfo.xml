@@ -1540,14 +1540,17 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<title>Description of Roles</title>
 			<para> "Role” describes the categories of users on an account. Each
 				role receives different levels of access and action.
-				By assigning roles to users and using RBAC, customers can more safely allow
-				multiple users to complete tasks, but limit risk by
-				ensuring that users do not have access or permissions
-				beyond their training or level of control. RBAC also allows the customer to 
-				modify access by role, rather than by individual user, ensuring streamlined and 
-				efficient access management. Rackspace’s RBAC solution offers three roles 
-				subordinate to the <link linkend="Account_Admin-dle808">Account Admin user</link>: 
-				admin, creator, and observer. <table
+				By assigning roles to users and using RBAC, customers
+				can allow multiple users to complete tasks more
+				safely, and limit risk by ensuring that users do not
+				have access or permissions beyond their training or
+				level of control. RBAC also allows the customer to
+				modify access by role, rather than by individual user,
+				ensuring streamlined and efficient access management.
+				Rackspace’s RBAC solution offers three roles
+				subordinate to the <link
+					linkend="Account_Admin-dle808">Account Admin
+					user</link>: admin, creator, and observer. <table
 					frame="void">
 					<caption>Rackspace RBAC Roles</caption>
 					<col width="20%"/>
@@ -1568,24 +1571,24 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						<tr>
 							<td>creator</td>
 							<td>Can create, access, and modify assets
-								for a given product.  Cannot delete
+								for a given product. Cannot delete
 								assets.</td>
 						</tr>
 						<tr>
 							<td>observer</td>
-							<td>Can  view given assets, where access
-								is granted. Read-only role.</td>
+							<td>Can view given assets, where access is
+								granted. Read-only role.</td>
 						</tr>
 					</tbody>
 				</table><important>
-					<para xml:id="Account_Admin-dle808"> The Account Admin (one per account) is
-						designated by the customer as the Primary
-						contact. Only the Account Admin
-						(identity:user-admin) can create a sub-user
-						for the purpose of assigning roles and
-						granting privileges through RBAC. The Account
-						Admin cannot hold any additional roles, as
-						they already have full access to all
+					<para xml:id="Account_Admin-dle808"> The Account
+						Admin (one per account) is designated by the
+						customer as the Primary contact. Only the
+						Account Admin (identity:user-admin) can create
+						a sub-user for the purpose of assigning roles
+						and granting privileges through RBAC. The
+						Account Admin cannot hold any additional
+						roles, as they already have full access to all
 						capabilities by default. </para>
 				</important>
 			</para>
@@ -1685,7 +1688,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				(Note: need to add links to each of these - ccl)
 				<itemizedlist>
 					<listitem>
-						<para>List Users</para>
+						<para><xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" /></para>
 					</listitem>
 					<listitem>
 						<para>Add User to Group</para>
