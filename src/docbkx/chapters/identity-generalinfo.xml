@@ -1530,8 +1530,11 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			future. 
 		</para>
 		<note>
-			<para>RBAC is an opt-in feature for our customers. It must be activated 
-				by the <link linkend="Account_Admin-dle808">Account Admin user</link> for the account. </para>
+			<para>RBAC is an opt-in feature for our customers. It must be
+				activated by the <link linkend="Account_Admin-dle808"
+					>Account Admin user</link> for the account. To opt
+				in, use the control panel or call your support phone
+				number.</para>
 		</note>
 		<section xml:id="RBAC_Roles-dle808">
 			<title>Description of Roles</title>
@@ -1639,46 +1642,13 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</itemizedlist>
 			</para>
 		</section>
-		<section xml:id="RBAC_Included_Later-dle808">
-			<title>Services That Will Include RBAC in Near
-				Future</title>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para>
-							Cloud Backup
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Big Data
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Checkmate
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Utility Grid
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Any new service with an API
-						</para>
-					</listitem>
-				</itemizedlist>
-			</para>
-		</section>
 		<section xml:id="RBAC_Not_Included-dle808">
-			<title>Services That Will Not Include RBAC</title>
+			<title>Services That Do Not Include RBAC</title>
 			<para>
 				<itemizedlist>
 					<listitem>
 						<para>
-							First Gen Servers
+							First Generation Cloud Servers
 						</para>
 					</listitem>
 					<listitem>
@@ -1705,6 +1675,29 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						<para>
 							RackConnect
 						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<section xml:id="RBAC_API_Calls-dle808">
+			<title>RBAC API Calls</title>
+			<para>
+				(Note: need to add links to each of these - ccl)
+				<itemizedlist>
+					<listitem>
+						<para>List Users</para>
+					</listitem>
+					<listitem>
+						<para>Add User to Group</para>
+					</listitem>
+					<listitem>
+						<para>Add Role</para>
+					</listitem>
+					<listitem>
+						<para>Add Global Roles to User</para>
+					</listitem>
+					<listitem>
+						<para>Delete Global Roles from User</para>
 					</listitem>
 				</itemizedlist>
 			</para>
