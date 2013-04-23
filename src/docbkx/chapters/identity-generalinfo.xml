@@ -1691,16 +1691,21 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						<para><xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" /></para>
 					</listitem>
 					<listitem>
-						<para>Add User to Group</para>
+						<para><link
+							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/PUT_addUserToGroup_v2.0_RAX-GRPADM_groups__groupId__users__userId__Group_Calls.html">Add
+							User to Group</link></para>
 					</listitem>
 					<listitem>
-						<para>Add Role</para>
+						<para><link
+							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html">Add Role</link></para>
 					</listitem>
 					<listitem>
-						<para>Add Global Roles to User</para>
+						<para><link
+							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">Add Global Roles to User</link></para>
 					</listitem>
 					<listitem>
-						<para>Delete Global Roles from User</para>
+						<para><link
+							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">Delete Global Roles from User</link></para>
 					</listitem>
 				</itemizedlist>
 			</para>

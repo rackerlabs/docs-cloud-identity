@@ -31,7 +31,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-04-22</pubdate>
+		<pubdate>2013-04-29</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -48,13 +48,13 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2013-04-22</date>
+				<date>2013-04-29</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added <xref linkend="Role_Based_Access_Control-d1e808"/>.
-							</para>
+							<para> Added <xref
+								linkend="Role_Based_Access_Control-d1e808"
+								/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
