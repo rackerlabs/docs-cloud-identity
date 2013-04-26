@@ -31,7 +31,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-04-29</pubdate>
+		<pubdate>2013-04-17</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -47,7 +47,8 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
-			<revision>
+			<revision security="internal" condition="rbac">
+				<!-- remove condition=rbac attribute once it has been published for a few weeks and all is good.  see 3.11 for more details -->
 				<date>2013-04-29</date>
 				<revdescription>
 					<itemizedlist spacing="compact">

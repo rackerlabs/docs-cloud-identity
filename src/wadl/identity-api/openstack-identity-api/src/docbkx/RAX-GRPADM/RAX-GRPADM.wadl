@@ -310,13 +310,13 @@
                     Users and groups are specified by their IDs. 
                     If you know the user's name but not the user's ID, use                  
                     <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
-                     to                   
-                    obtain complete identifying information about the user.
-                    If you know the group's name but not the group's ID, use                  
+                     to obtain complete identifying information about the user. If you know the group's name but not the group's ID, use                  
                     <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
-                     to                   
-                    obtain complete identifying information about all groups.
+                     to obtain complete identifying information about all groups.
              </p> 
+            <db:para>
+                Sub-users inherit the groups assigned to the user-admin.  This enables client code built around rate-limit groups to be more stable.
+            </db:para>
         </doc>
         <response status="204"/>
         <!-- Common, GET -->

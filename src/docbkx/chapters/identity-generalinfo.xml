@@ -1515,8 +1515,15 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	  </example>
 	  <para> </para>
 	</section>
-	<section xml:id="Role_Based_Access_Control-d1e808">
+	<section xml:id="Role_Based_Access_Control-d1e808" security="internal" condition="rbac">
 		<title>Role Based Access Control</title>
+		<annotation>
+			<remark>
+				"Once this has been published for a little while, rbac made visible, we can remove the condition=rbac attribute here and in the revision notes.
+				We'll also remove the profileCondition=rbac line from the pom.xml.   At that point, RBAC info will always be visible internally, whcih is what we want.
+				For now, we leave the condition=rbac in place, since we don't want it showing up anywhere until the dev team is ready to launch.
+			</remark>
+		</annotation>
 		<para>
 			Role Based Access Control (RBAC) restricts service access to authorized 
 			users. RBAC allows customers to specify which users have access to different actions 
@@ -1685,7 +1692,6 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<section xml:id="RBAC_API_Calls-dle808">
 			<title>RBAC API Calls</title>
 			<para>
-				(Note: need to add links to each of these - ccl)
 				<itemizedlist>
 					<listitem>
 						<para><xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" /></para>
@@ -1697,7 +1703,15 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					</listitem>
 					<listitem>
 						<para><link
+							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listRoles_v2.0_OS-KSADM_roles_.html">List Roles</link></para>
+					</listitem>
+					<listitem>
+						<para><link
 							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html">Add Role</link></para>
+					</listitem>
+					<listitem>
+						<para><link
+							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getRole_v2.0_OS-KSADM_roles__roleId__.html">Get Role</link></para>
 					</listitem>
 					<listitem>
 						<para><link
@@ -1706,6 +1720,10 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<listitem>
 						<para><link
 							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">Delete Global Roles from User</link></para>
+					</listitem>
+					<listitem>
+						<para><link
+							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listUserGlobalRoles_v2.0_users__userId__roles_.html">List User Global Roles</link></para>
 					</listitem>
 				</itemizedlist>
 			</para>
