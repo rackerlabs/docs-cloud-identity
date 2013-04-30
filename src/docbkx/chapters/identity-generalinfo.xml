@@ -1532,16 +1532,13 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			servers, to specific roles.
 		</para>
 		<para>
-			RBAC is available to all Open Cloud Services with an API. Not all services will 
-			include it on launch date, but we expect all services to have this in the near 
-			future. 
+			RBAC is available to all Open Cloud Services with an API. 
 		</para>
 		<note>
 			<para>RBAC is an opt-in feature for our customers. It must be
 				activated by the <link linkend="Account_Admin-dle808"
-					>Account Admin user</link> for the account. To opt
-				in, use the control panel or call your support phone
-				number.</para>
+					>Account Admin user</link> for the account using the API, the control panel or 
+				    by phone (customer support).</para>
 		</note>
 		<section xml:id="RBAC_Roles-dle808">
 			<title>Description of Roles</title>

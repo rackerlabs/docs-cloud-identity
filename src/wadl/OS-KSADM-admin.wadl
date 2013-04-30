@@ -521,6 +521,40 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 to obtain complete identifying information about the user. Only the service-admin manages role assignment.  When the service-admin assigns the role to an user-admin account (identity:user-admin), 
                 the role is propagated to sub-users (identity:default).
             </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Table:  Global Role Categories</p>
+            <table border="1" xmlns="http://www.w3.org/1999/xhtml">
+                <tr>
+                    <th>Global Role Category</th>
+                    <th>Description</th>
+                    <th>Assigned By</th>
+                    <th>Assigned To</th>
+                    <th>Visible To</th>
+                    <th>Examples</th>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>System-level roles required for user to function properly</td>
+                    <td>identity:admin, identity:service-admin</td>                    
+                    <td>identity:user-admin, identity:default</td>
+                    <td>identity:admin, identity:service-admin</td>
+                    <td>rack_connect, rax_managed</td>
+                </tr>                <tr>
+                    <td>1000</td>
+                    <td>These product roles used to identify user capabilities pertaining to a particular product (RBAC)</td>
+                    <td>identity:user-admin</td>                    
+                    <td>identity:default</td>
+                    <td>all users</td>
+                    <td>nova:admin, nova:observer</td>
+                </tr>
+                <tr>
+                    <td>2000</td>
+                    <td>Undefined</td>
+                    <td>identity:default</td>                    
+                    <td>n/a</td>
+                    <td>n/a</td>
+                    <td>n/a</td>
+                </tr>
+            </table>
         </doc>
         <response status="201"/>
         &commonFaults;
