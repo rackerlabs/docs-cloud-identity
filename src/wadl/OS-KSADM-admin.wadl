@@ -518,43 +518,50 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 To add a role to a user, specify the role's ID and the user's ID in the request.
                 If you know the role's name but not the role's ID, use <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref> 
                 to obtain detailed information about available roles. If you know the user's name but not the user's ID, use <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
-                to obtain complete identifying information about the user. Only the service-admin manages role assignment.  When the service-admin assigns the role to an user-admin account (identity:user-admin), 
-                the role is propagated to sub-users (identity:default).
+                to obtain complete identifying information about the user. When the service-admin assigns a Category 500 role to an user-admin account (identity:user-admin), 
+                the role is propagated to sub-users (identity:default).  See Global Role Categories table below  to learn more about roles, who assigns them, and who uses them.
             </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Table:  Global Role Categories</p>
-            <table border="1" xmlns="http://www.w3.org/1999/xhtml">
-                <tr>
-                    <th>Global Role Category</th>
-                    <th>Description</th>
-                    <th>Assigned By</th>
-                    <th>Assigned To</th>
-                    <th>Visible To</th>
-                    <th>Examples</th>
-                </tr>
-                <tr>
-                    <td>500</td>
-                    <td>System-level roles required for user to function properly</td>
-                    <td>identity:admin, identity:service-admin</td>                    
-                    <td>identity:user-admin, identity:default</td>
-                    <td>identity:admin, identity:service-admin</td>
-                    <td>rack_connect, rax_managed</td>
-                </tr>                <tr>
-                    <td>1000</td>
-                    <td>These product roles used to identify user capabilities pertaining to a particular product (RBAC)</td>
-                    <td>identity:user-admin</td>                    
-                    <td>identity:default</td>
-                    <td>all users</td>
-                    <td>nova:admin, nova:observer</td>
-                </tr>
-                <tr>
-                    <td>2000</td>
-                    <td>Undefined</td>
-                    <td>identity:default</td>                    
-                    <td>n/a</td>
-                    <td>n/a</td>
-                    <td>n/a</td>
-                </tr>
-            </table>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <table rules="all">
+                    <caption>Global Role Categories</caption>
+                    <thead>
+                        <tr>
+                            <th>Global Role Category</th>
+                            <th>Description</th>
+                            <th>Assigned By</th>
+                            <th>Assigned To</th>
+                            <th>Visible To</th>
+                            <th>Examples</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>500</td>
+                        <td>System-level roles required for user to function properly</td>
+                        <td>identity:admin, identity:service-admin</td>                    
+                        <td>identity:user-admin, identity:default</td>
+                        <td>identity:admin, identity:service-admin</td>
+                        <td>rack_connect, rax_managed</td>
+                    </tr>                <tr>
+                        <td>1000</td>
+                        <td>These product roles used to identify user capabilities pertaining to a particular product (RBAC)</td>
+                        <td>identity:user-admin</td>                    
+                        <td>identity:default</td>
+                        <td>all users</td>
+                        <td>nova:admin, nova:observer</td>
+                    </tr>
+                    <tr>
+                        <td>2000</td>
+                        <td>Undefined</td>
+                        <td>identity:default</td>                    
+                        <td>n/a</td>
+                        <td>n/a</td>
+                        <td>n/a</td>
+                    </tr>
+                </table>
+            </wadl:doc>
         </doc>
         <response status="201"/>
         &commonFaults;
