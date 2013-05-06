@@ -1532,7 +1532,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			servers, to specific roles.
 		</para>
 		<para>
-			RBAC is available to all Open Cloud Services with an API. 
+			RBAC is available to all Open Cloud customers. 
 		</para>
 		<note>
 			<para>RBAC is an opt-in feature for our customers. It must be
@@ -1589,7 +1589,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						Admin (one per account) is designated by the
 						customer as the Primary contact. Only the
 						Account Admin (identity:user-admin) can create
-						a sub-user for the purpose of assigning roles
+						a user (identity:default) for the purpose of assigning roles
 						and granting privileges through RBAC. The
 						Account Admin cannot hold any additional
 						roles, as they already have full access to all
@@ -1695,16 +1695,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					</listitem>
 					<listitem>
 						<para><link
-							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/PUT_addUserToGroup_v2.0_RAX-GRPADM_groups__groupId__users__userId__Group_Calls.html">Add
-							User to Group</link></para>
-					</listitem>
-					<listitem>
-						<para><link
 							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listRoles_v2.0_OS-KSADM_roles_.html">List Roles</link></para>
-					</listitem>
-					<listitem>
-						<para><link
-							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html">Add Role</link></para>
 					</listitem>
 					<listitem>
 						<para><link
