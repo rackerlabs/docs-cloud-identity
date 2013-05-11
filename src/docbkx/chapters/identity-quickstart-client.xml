@@ -29,8 +29,8 @@
         </itemizedlist>
         </para>
         <para> Your <code>username</code> and <code>password</code>
-        are the ones you use to login to the Rackspace Cloud Control
-        Panel at <link xlink:href="http://mycloud.rackspace.com/"
+        are the ones you use to login to the Cloud Control Panel at
+            <link xlink:href="http://mycloud.rackspace.com/"
             >http://mycloud.rackspace.com/</link>. Once you are logged
         in, you can use the Cloud Control Panel to obtain your
             <code>API key</code>. </para>
