@@ -1527,8 +1527,8 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<para>
 			Role Based Access Control (RBAC) restricts service access to authorized 
 			users. RBAC allows customers to specify which users have access to different actions 
-			within their deployment based on roles defined by Rackspace. The customer assigns the
-			permission to perform certain operations in their deployment, like adding or deleting 
+			within their account based on roles defined by Rackspace. The customer assigns the
+			permission to perform certain operations in their account, like adding or deleting 
 			servers, to specific roles.
 		</para>
 		<para>
@@ -1548,10 +1548,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				can allow multiple users to complete tasks more
 				safely, and limit risk by ensuring that users do not
 				have access or permissions beyond their training or
-				level of control. RBAC also allows the customer to
-				modify access by role, rather than by individual user,
-				ensuring streamlined and efficient access management.
-				Rackspace’s RBAC solution offers several roles
+				level of control. Rackspace’s RBAC solution offers several roles
 				subordinate to the <link
 					linkend="Account_Admin-dle808">Account Admin
 					user</link>. admin or observer (for both single 
@@ -1561,36 +1558,43 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<table
 					frame="void">
 					<caption>Rackspace RBAC Roles</caption>
-					<col width="25%"/>
-					<col width="75%"/>
+					<col width="20%"/>
+					<col width="65%"/>
+					<col width="15%"/>
 					<thead>
 						<tr>
 							<th>Role</th>
 							<th>Description</th>
+							<th>Example Role</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Cross-product:admin</td>
+							<td>Full Access</td>
 							<td>Can create, access, modify, and delete assets.
 								Full Access given to current and future products.</td>
+							<td>admin</td>
 						</tr>
 						<tr>
-							<td>Cross-product:observer</td>
+							<td>Read-only Access</td>
 							<td>Can view given assets, where access is granted. 
-								Read-only access given to current and future products.</td>
+								Read-only Access given to current and future products.</td>
+							<td>observer</td>
 						</tr>
 						<tr>
 							<td>Product:admin</td>
 							<td>Can create, access, modify, and delete assets.</td>
+							<td>nova:admin</td>
 						</tr>
 						<tr>
 							<td>Product:creator</td>
 							<td>Can create, access, and modify assets. Cannot delete assets.</td>
+							<td>cloudFiles:creator</td>
 						</tr>
 						<tr>
 							<td>Product:observer</td>
 							<td>Can view given assets, where access is granted. Read-only role.</td>
+							<td>cdb:observer</td>
 						</tr>
 					</tbody>
 				</table>
@@ -1605,95 +1609,6 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						roles, as they already have full access to all
 						capabilities by default. </para>
 				</important>
-			</para>
-		</section>
-		<section xml:id="RBAC_Included_Now-dle808">
-			<title>Services That Include RBAC at This Time</title>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para>
-							Next-Generation Cloud Control
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud Files
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud Databases
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud DNS
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud Load Balancers
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud Monitoring as a Service
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud Block Storage
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud Control Panel
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Reach
-						</para>
-					</listitem>
-				</itemizedlist>
-			</para>
-		</section>
-		<section xml:id="RBAC_Not_Included-dle808">
-			<title>Services That Do Not Include RBAC</title>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para>
-							First Generation Cloud Servers
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Classic Control Panel
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							My Rackspace
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Cloud Sites
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							CDN
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							RackConnect
-						</para>
-					</listitem>
-				</itemizedlist>
 			</para>
 		</section>
 		<section xml:id="RBAC_API_Calls-dle808">

@@ -104,12 +104,15 @@
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
 				<wadl:method href="listUsers"/>
 			</wadl:resource>
-			<!-- get user by name -->
+			<!-- get user by name (and id and email) -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="getUserByName"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
 				<wadl:method href="getUserById"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
+				<wadl:method href="getUserByEmail"/>
 			</wadl:resource>
 			<!-- add user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
