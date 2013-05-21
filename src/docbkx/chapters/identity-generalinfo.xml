@@ -1551,14 +1551,18 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				level of control. RBAC also allows the customer to
 				modify access by role, rather than by individual user,
 				ensuring streamlined and efficient access management.
-				Rackspace’s RBAC solution offers three roles
+				Rackspace’s RBAC solution offers several roles
 				subordinate to the <link
 					linkend="Account_Admin-dle808">Account Admin
-					user</link>: admin, creator, and observer. <table
+					user</link>. admin or observer (for both single 
+				product and cross-product scope), and creator 
+				(for single product only).  In both single and cross-product 
+				roles, the user will only have access to designated products.
+				<table
 					frame="void">
 					<caption>Rackspace RBAC Roles</caption>
-					<col width="20%"/>
-					<col width="80%"/>
+					<col width="25%"/>
+					<col width="75%"/>
 					<thead>
 						<tr>
 							<th>Role</th>
@@ -1567,24 +1571,30 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					</thead>
 					<tbody>
 						<tr>
-							<td>admin</td>
-							<td>Can create, access, modify, and delete
-								assets across a given product
-								line</td>
+							<td>Cross-product:admin</td>
+							<td>Can create, access, modify, and delete assets.
+								Full Access given to current and future products.</td>
 						</tr>
 						<tr>
-							<td>creator</td>
-							<td>Can create, access, and modify assets
-								for a given product. Cannot delete
-								assets.</td>
+							<td>Cross-product:observer</td>
+							<td>Can view given assets, where access is granted. 
+								Read-only access given to current and future products.</td>
 						</tr>
 						<tr>
-							<td>observer</td>
-							<td>Can view given assets, where access is
-								granted. Read-only role.</td>
+							<td>Product:admin</td>
+							<td>Can create, access, modify, and delete assets.</td>
+						</tr>
+						<tr>
+							<td>Product:creator</td>
+							<td>Can create, access, and modify assets. Cannot delete assets.</td>
+						</tr>
+						<tr>
+							<td>Product:observer</td>
+							<td>Can view given assets, where access is granted. Read-only role.</td>
 						</tr>
 					</tbody>
-				</table><important>
+				</table>
+				<important>
 					<para xml:id="Account_Admin-dle808"> The Account
 						Admin (one per account) is designated by the
 						customer as the Primary contact. Only the
