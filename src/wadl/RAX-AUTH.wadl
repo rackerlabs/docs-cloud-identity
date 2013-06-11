@@ -7,7 +7,7 @@
 <!-- xmllint -noent RAX-AUTH.wadl -->
 <!--*******************************************************-->
 <!DOCTYPE application [
-<!ENTITY % common SYSTEM "https://github.com/openstack/identity-api/raw/master/openstack-identity-api/src/docbkx/common/common.ent">
+<!ENTITY % common SYSTEM "../common/common.ent">
     %common;
 ]>
 
