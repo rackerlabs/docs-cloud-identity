@@ -55,7 +55,7 @@
                             valid credentials.</doc>
 			        </param>
                     <param name="tokenId" style="template" type="xsd:string" required="true"/>
-                    <param name="belongsTo" style="query" type="xsd:string" required="false"/>
+                    <method href="#revokeToken"/>
                     <method href="#validateToken"/>
                     <method href="#checkToken"/>
                     <resource id="endpointsForToken" path="endpoints">
@@ -196,12 +196,10 @@
             <p xmlns="http://www.w3.org/1999/xhtml">
 	      This call returns a token if successful. Each ReST request 
                 requires the inclusion of a specific authorization token HTTP x-header, defined as <code>X-Auth-Token</code>.
-                The token must be supplied for calls
-                against other services and for other
+                The token must be supplied for calls against other services and for other
                 calls to the authentication service, such as the <code>GET /tenants</code> call.
-	      Clients obtain
-                <code>X-Auth-Token</code> and the URL endpoints for other service APIs by supplying their valid credentials 
-                to the authentication service. 
+	      Clients obtain <code>X-Auth-Token</code> and the URL endpoints for other service APIs 
+                by supplying their valid credentials to the authentication service. 
 	       </p>
 	    <p xmlns="http://www.w3.org/1999/xhtml">
 	      Client authentication is provided via a ReST interface using the POST method,
@@ -479,6 +477,21 @@
             </param>
         </request>
         <response status="200 203"/>
+        &commonFaults;
+        &getFaults;
+    </method>
+    <method name="DELETE" id="revokeToken">
+        <doc xml:lang="EN" title="Revoke Token">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+                Revoke token.
+            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                This call revokes a token, returning code <code>204</code> if successful and 
+                <code>404</code> if token in URI is invalid.
+            </p>
+        </doc>
+        <!-- no request or response body-->
+        <response status="204"/>
         &commonFaults;
         &getFaults;
     </method>

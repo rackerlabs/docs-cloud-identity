@@ -203,7 +203,9 @@
         &commonFaults;
         &getFaults;
     </method>
-    
+   
+    <!-- EndPoints -->
+   
     <method name="POST" id="addEndpoint">
         <doc xml:lang="EN" title="Add Endpoint to Tenant">
             <p xmlns="http://www.w3.org/1999/xhtml">Add an endpoint to a tenant.</p>

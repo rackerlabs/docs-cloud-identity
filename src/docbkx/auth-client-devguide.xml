@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-03-04</pubdate>
+		<pubdate>2013-06-24</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -45,6 +45,19 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-06-24</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para> 
+								Removed references to deprecated endpoint v1 
+								<xref linkend="Endpoints-d1e180" />. 
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2013-03-04</date>
 				<revdescription>
@@ -64,7 +77,8 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>
-								Added examples demonstrating different format of <code>expires</code> for US and UK endpoints in <xref linkend="POST_authenticate_v2.0_tokens_"/>.
+								Added examples demonstrating different format of <code>expires</code> for 
+								US and UK endpoints in <xref linkend="POST_authenticate_v2.0_tokens_"/>.
 							</para>
 						</listitem>
 						<listitem>
@@ -89,8 +103,7 @@
 						</listitem>
 						<listitem>
 							<para>
-								Corrected endpoint used in samples in 
-								<xref linkend="QuickStart-000"/>.
+								Corrected endpoint used in samples in <xref linkend="QuickStart-000"/>.
 							</para>
 						</listitem>
 						<listitem>

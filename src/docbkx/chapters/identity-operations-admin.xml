@@ -220,15 +220,10 @@
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
 				<wadl:method href="getRole"/>
 			</wadl:resource>
-			<!-- delete a role globally -->
-			<!-- notes say
-				"No access allowed. Deleting a global role can mess up a lot of stuff.
-				We need to wait until identity:admin and identity:service-admin roles
-				are separated fully (post migration) before doing this."
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#RoleId">
+			<!-- delete a global role -->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
 				<wadl:method href="deleteRole"/>
 			</wadl:resource>
-			-->
 			<!-- add a global role to a user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="addUserRole"/>
@@ -236,6 +231,10 @@
 			<!-- delete a global role from a user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="deleteUserRole"/>
+			</wadl:resource>
+			<!-- list users with role -->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleIdRAXAUTHUsers">
+				<wadl:method href="getUsersWithRole"/>
 			</wadl:resource>
 			<!-- list global roles available to a user -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#userRoles">
@@ -281,6 +280,8 @@
 				</wadl:method>
 				<!-- check token -->
 				<wadl:method href="checkToken"/>
+				<!-- revoke token -->
+				<wadl:method href="revokeToken"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#endpointsForToken">
 				<!-- list endpoints for token -->
@@ -298,6 +299,20 @@
 		<title>Tenants</title>
 		<para>The operations described in this section allow service developers to manage tenants.</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#tenants">
+				<wadl:method href="addTenant"/>
+				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#tenantById">
+					<wadl:method href="updateTenant"/>
+					<wadl:method href="deleteTenant"/>
+					<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#usersForTenant">
+						<wadl:method href="listUsersForTenant"/>
+						<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userSpecificRoleForTenant">
+							<wadl:method href="addRolesToUserOnTenant"/>
+							<wadl:method href="deleteRoleFromUserOnTenant"/>
+						</wadl:resource>
+					</wadl:resource>
+				</wadl:resource>
+			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tenants">
 				<wadl:method href="listTenants"/>
 				<wadl:method href="getTenantByName"/>
@@ -321,8 +336,8 @@
 		</wadl:resources>
 	</section>
 	
-	<section security="writeronly" xml:id="Endpoint_Template_Calls">
-		<!-- Endpoint Template Operations are only in Global Auth for now; omit from Cloud Auth book -->
+	<!-- ENDPOINT TEMPLATES -->
+	<section xml:id="Endpoint_Template_Calls">
 		<title>Endpoint Templates</title>
 		<note>
 			<para> 
@@ -334,10 +349,10 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
-		<!-- COMMENTING OUT DRAFT wadl:resources BECAUSE VALIDATION COMPLAINS ABOUT MISSING RESOURCES WITHIN writeronly SECTION
+		 
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
-				<wadl:method href="endpointTemplates"/>
+				<wadl:method href="listEndpointTemplates"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="addEndpointTemplate"/>
@@ -349,18 +364,17 @@
 				<wadl:method href="deleteEndpointTemplate"/>
 			</wadl:resource>
 		</wadl:resources>
-		-->
+		
 	</section>
 	
-	<section security="writeronly" xml:id="Endpoint_Calls">
-		<!-- Endpoint Operations are only in Global Auth for now; omit from Cloud Auth book -->
+	<!-- ENDPOINTS -->
+	<section xml:id="Endpoint_Calls">
 		<title>Endpoints</title>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSCATALOG</code> extension to the
-				core Identity API. 
-				You can learn more about API extensions at
+				core Identity API. You can learn more about API extensions at
 				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
@@ -781,7 +795,8 @@
 	<!-- SERVICE APIS -->
 	<section xml:id="Service_API_Calls">
 		<title>Service APIs</title>
-		<para>The operations described in this section allow service developers to manage service APIs and their capabilities.</para>
+		<para>The operations described in this section allow service developers to manage service APIs 
+			and their capabilities.</para>
 		<important>
 			<para>
 				As of February 8, 2013, these Service API operations are planned but not implemented. 
@@ -790,10 +805,8 @@
 		</important>
 		<note>
 			<para> 
-				Some of the functionality described in this section is
-				provided by the <code>RAX-AUTH</code> extension to the
-				core Identity API. 
-				You can learn more about API extensions at
+				Some of the functionality described in this section is provided by the <code>RAX-AUTH</code> 
+				extension to the core Identity API.  You can learn more about API extensions at
 				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
@@ -806,4 +819,32 @@
 		</wadl:resources>
 	</section>
 	
+	<!-- SERVICE OPERATIONS -->
+	<section xml:id="Service_Calls">
+		<title>Service Operations</title>
+		<para>The operations described in this section allow service developers to manage services.  These
+		services correspond to the OpenStack Keystone services.</para>
+		<note>
+			<para> 
+				The functionality described in this section is provided by the <code>OS-KSADM</code> 
+				extension to the core Identity API.  You can learn more about API extensions at
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+			</para>
+		</note>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#services">
+				<wadl:method href="listServices"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#services">
+				<wadl:method href="addService"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#serviceId">
+				<wadl:method href="getService"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#serviceId">
+				<wadl:method href="deleteService"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
 </chapter>

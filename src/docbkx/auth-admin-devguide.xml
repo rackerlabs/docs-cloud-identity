@@ -31,31 +31,51 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-04-17</pubdate>
+		<pubdate>2013-06-24</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
 			</annotation>
 		</legalnotice>
 		<abstract>
-			<para>This document is intended for software developers interested
-				in developing applications that utilize Rackspace's
-				implementation of OpenStack's Keystone Identity
-				Service for authentication. This document also
-				includes details on how to integrate services with
-				Rackspace's implementation of OpenStack's Keystone
-				Identity Service. </para>
+			<para>
+				This document is intended for software developers interested in developing applications 
+				that utilize Rackspace's implementation of OpenStack's Keystone Identity Service for 
+				authentication. This document also includes details on how to integrate services with
+				Rackspace's implementation of OpenStack's Keystone Identity Service. 
+			</para>
 		</abstract>
 		<revhistory>
-			<revision security="internal" condition="rbac">
+			<revision security="internal">
 				<!-- remove condition=rbac attribute once it has been published for a few weeks and all is good.  see 3.11 for more details -->
-				<date>2013-04-29</date>
+				<date>2013-06-24</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <xref
-								linkend="Role_Based_Access_Control-d1e808"
-								/>. </para>
+							<para> 
+								Added <xref linkend="Role_Based_Access_Control-d1e808" />. 
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Removed references to deprecated endpoint v1 
+								<xref linkend="Endpoints-d1e180" />. 
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Including several API calls from KSCATALOG and KSADM Openstack APIs including:
+								Delete Role; List Services; Add, Get, and Delete Service; List Endpoint 
+								Templates; Add, Get, and Delete Endpoint Templates; List Endpoints; Add, Get,
+								and List Templates; Get Users with Role; Add, Update, and Delete Tenants; List 
+								Users for Tenant; Add Role to User for Tenant, Delete Role from User for Tenant. 
+							</para>
+						</listitem>
+						<listitem>
+							<para> 
+								Included/corrected other new or missing API calls including: Reset API Key;
+								Revoke Token;Get User by Email.
+							</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

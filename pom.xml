@@ -49,7 +49,6 @@
 		   or the element is stripped -->
 	      <profileCondition>admin</profileCondition>
 	      <security>internal</security>
-	      <profileCondition>rbac</profileCondition>
 	      <!-- These parameters only apply to webhelp -->
 	      <enableDisqus>intranet</enableDisqus>
 	      <enableGoogleAnalytics>0</enableGoogleAnalytics>

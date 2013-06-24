@@ -336,6 +336,15 @@
             <db:para role="shortdesc">
                 Reset a user's API Key
             </db:para>
+            <!--<para xmlns="http://docbook.org/ns/docbook">-->
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                We recommend that you routinely reset passwords and API keys. This API key reset call 
+                will return the new API key for the user account. Unlike updating the password, the 
+                API key reset does not revoke existing tokens. The 
+                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-external/content/DELETE_revokeToken_v2.0_tokens__tokenId__.html">
+                "Revoke Token"</a> call can be used to revoke a token.
+            </p>
+            <!--</para>-->
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">

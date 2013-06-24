@@ -62,8 +62,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <resource id="user-OS-KSADM" path="OS-KSADM">
                         <resource id="enabled" path="enabled">
                             <method href="#setUserEnabled"/>
-                        </resource>
-                        
+                        </resource>              
                         <resource id="userCredentials" path="credentials">
                             <method href="#addUserCredential"/>
                             <method href="#listCredentials"/>
@@ -79,7 +78,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             </resource>
 
             <resource id="tenants" path="tenants">
-<method href="#addTenant"/>
+                <method href="#addTenant"/>
                 <resource id="tenantById" path="{tenantId}">
                     <param name="tenantId" style="template" type="xsd:string"/>
                     <method href="#updateTenant"/>
@@ -111,8 +110,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         <param name="roleId" style="template" type="xsd:string"/>
                         <method href="#getRole"/>
                         <method href="#deleteRole"/>
+                        <resource id="roleIdRAXAUTHUsers" path="RAX-AUTH/users">
+                            <method href="#getUsersWithRole"/>
+                        </resource>
                     </resource>
                 </resource>
+                
                 <resource id="services" path="services">
                     <method href="#listServices"/>
                     <method href="#addService"/>
@@ -600,7 +603,6 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &getFaults;
     </method>
     
-    
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
         <wadl:doc xml:lang="EN" title="Add Credential to User" xmlns="http://docbook.org/ns/docbook">
@@ -667,7 +669,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         </doc>
         <!-- 2012-03-12 by Rose Coste per Joe Savak:
              hide marker & limit: not implemented.
-             used later when this returns credentials for multiple methods of authentication (SMS-text, push notification, RSA-key, etc);
+             used later when this returns credentials for multiple methods of authentication 
+             (SMS-text, push notification, RSA-key, etc);
              today, API key only, so "List All Credentials" = "Get API Key Credentials"
         <request>
             <param name="marker" style="query" required="false" type="xsd:string"/>
@@ -884,7 +887,6 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &getFaults;
     </method>
 
-
     <method name="GET" id="getRole">
         <doc xml:lang="EN" title="Get Role">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a role.</p>
@@ -921,6 +923,42 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &getFaults;
     </method>
 
+    <method name="GET" id="getUsersWithRole">
+        <doc xml:lang="EN" title="Get Users With Role">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get users with role.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Get users with role.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">This operation does not require a request body.</p>
+        </doc>
+        <request>
+            <param name="enabled" style="query" required="false" type="xsd:string">
+                <doc>
+                    Allows you to filter enabled or un-enabled users.  Values are "true"
+                    or "false".
+                </doc>
+            </param>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <doc>Allows you to page through list.</doc>
+            </param>
+            <param name="limit" style="query" required="false" type="xsd:int">
+                <doc>Allows you to set page size for paging through list.</doc>
+            </param>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="identity:roles">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userswithroles.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userswithroles.json"/>
+                </doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &getFaults;
+    </method>
+   
     <!-- Service Operations -->
     <method name="GET" id="listServices">
         <doc xml:lang="EN" title="List Services">
@@ -946,6 +984,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &commonFaults;
         &getFaults;
     </method>
+    
     <method name="GET" id="getServiceByName">
         <doc xml:lang="EN" title="Get Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a service by name.</p>
@@ -969,6 +1008,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &commonFaults;
         &getFaults;
     </method>
+    
     <method name="GET" id="getService">
         <doc xml:lang="EN" title="Get Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a service.</p>
@@ -989,6 +1029,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &commonFaults;
         &getFaults;
     </method>
+    
     <method name="POST" id="addService">
         <doc xml:lang="EN" title="Add Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a service.</p>
@@ -1024,6 +1065,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &postPutFaults;
         &getFaults;
     </method>
+    
     <method name="DELETE" id="deleteService">
         <doc xml:lang="EN" title="Delete Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a service.</p>
@@ -1033,4 +1075,5 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         &commonFaults;
         &getFaults;
     </method>
+
 </application>
