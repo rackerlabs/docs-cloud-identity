@@ -47,7 +47,6 @@
 		</abstract>
 		<revhistory>
 			<revision security="internal">
-				<!-- remove condition=rbac attribute once it has been published for a few weeks and all is good.  see 3.11 for more details -->
 				<date>2013-06-24</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
