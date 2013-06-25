@@ -52,7 +52,7 @@
 	      <!-- These parameters only apply to webhelp -->
 	      <enableDisqus>intranet</enableDisqus>
 	      <enableGoogleAnalytics>0</enableGoogleAnalytics>
-	      <feedbackEmail>rose.coste@rackspace.com,cat;lookabaugh@rackspace.com,renee.rendon@rackspace.com</feedbackEmail>
+	      <feedbackEmail>rose.coste@rackspace.com,cat.lookabaugh@rackspace.com,renee.rendon@rackspace.com</feedbackEmail>
 	      <!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
 	      <sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 	    </configuration>
