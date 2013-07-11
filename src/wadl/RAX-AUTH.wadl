@@ -128,6 +128,15 @@
                 <method href="#listUsersWithRole"/>
             </resource>
             
+            <!-- USER_USER_ADMINS resource(s) -->
+            <resource id="user_user_admins" path="users/{userId}/RAX-AUTH/admins">
+                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <doc>A valid authentication token</doc>
+                </param>
+                <param name="userId" type="xsd:string" style="template" required="true"/>
+                <method href="#getUserAdmin" />
+            </resource>
+            
             <!-- RAX-AUTH resource(s) -->
             <resource id="RAX-AUTH" path="RAX-AUTH">
                 
@@ -258,17 +267,9 @@
                         <method href="#removeCapabilities" />
                     </resource>
                 </resource>
-                
-                <!-- USER_USER_ADMINS resource(s) -->
-                <resource id="user_user_admins" path="users/{userId}/RAX-AUTH/admins">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <doc>A valid authentication token</doc>
-                    </param>
-                    <param name="userId" type="xsd:string" style="template" required="true"/>
-                    <method href="#getUserAdmin" />
-                </resource>
-                
+
             </resource>
+
         </resource>
     </resources>
     
@@ -362,7 +363,7 @@
         &getFaults;
         &postPutFaults;
     </method>
-    -->
+    
     <method id="impersonateUser" name="POST">
         <doc xml:lang="EN" title="Impersonate User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
