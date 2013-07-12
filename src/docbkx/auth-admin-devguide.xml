@@ -56,6 +56,12 @@
 								<xref linkend="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_" xrefstyle="select: title" />
 							</para>
 						</listitem>
+						<listitem>
+							<para>
+								Corrected credential listing (adding tenant ID to token) for
+								<xref linkend="POST_authenticate_v2.0_tokens_" xrefstyle="select: title" />
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>

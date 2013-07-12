@@ -246,7 +246,7 @@
                   </listitem>
                   <listitem>
                       <para>
-                          token
+                          token and tenant ID
                       </para>
                   </listitem>
               </itemizedlist>
