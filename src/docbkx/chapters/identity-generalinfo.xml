@@ -1420,134 +1420,128 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</tip>
 	</section>
 	<section xml:id="Faults-d1e908">
-	  <title>Faults</title>
-	  <para>When an error occurs, the system returns an HTTP error
-			response code denoting the type of error. The system
-			returns additional information about the fault in the body
-			of the response. </para>
-			<para>The following table lists possible fault types along with
-			their associated error codes. </para>
-			<table rules="all">
-				<caption>Fault Types</caption>
-				<thead>
-					<tr>
-						<td>Fault Element</td>
-						<td>Associated Error Codes</td>
-						<td>Expected in All Requests?</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr align="left">
-						<td>identityFault</td>
-						<td>500, 400</td>
-						<td> YES </td>
-					</tr>
-					<tr align="left">
-						<td>serviceUnavailable</td>
-						<td>503</td>
-						<td> YES </td>
-					</tr>
-					<tr align="left">
-						<td>badRequest</td>
-						<td>400</td>
-						<td> YES </td>
-					</tr>
-					<tr align="left">
-						<td>unauthorized</td>
-						<td>401</td>
-						<td> YES </td>
-					</tr>
-					<tr align="left">
-						<td><link linkend="Limits-d1e909"
-								>overLimit</link></td>
-						<td>413</td>
-						<td> YES</td>
-					</tr>
-					<tr align="left">
-						<td>userDisabled</td>
-						<td>403</td>
-						<td/>
-					</tr>
-					<tr align="left">
-						<td>forbidden</td>
-						<td>403</td>
-						<td/>
-					</tr>
-					<tr align="left">
-						<td>itemNotFound</td>
-						<td>404</td>
-						<td/>
-					</tr>
-					<tr align="left">
-						<td>tenantConflict</td>
-						<td>409</td>
-						<td/>
-					</tr>
-				</tbody>
-			</table>
-			<para>The root element of the fault may change depending on the
-			type of error. From an XML schema perspective, all API
-			faults are extensions of the base fault type,
-				<type>identityFault</type>. When working with a system
-			that binds XML to actual classes, use
-				<type>identityFault</type> as a catch-all if there is
-			no interest in distinguishing between individual fault
-			types; for example, you may need to do this if you are
-			working with JAXB. </para>
-	  <para>The error code is returned in the body of the response. The
-			message section returns a human-readable message. The
-			details section is optional and may contain useful
-			information for tracking down an error. For example, a
-			stack trace may be provided. </para>
-	  <para> The following are examples of an <code>itemNotFound</code>
-			error. </para>
-	  <example>
-		<title>Item Not Found Fault: XML</title>
-		<programlisting language="xml">
-<xi:include href="../samples/item_not_found.xml" parse="text"/>
-</programlisting>
-	  </example>
-	  <example>
-		<title>Item Not Found Fault: JSON</title>
-		<programlisting language="javascript">
-<xi:include href="../samples/item_not_found.json" parse="text"/>
-</programlisting>
-	  </example>
-	  <para> </para>
+		<title>Faults</title>
+		<para>
+			When an error occurs, the system returns an HTTP error response code denoting the type of error. The system 
+			returns additional information about the fault in the body of the response. 
+		</para>
+		<para>
+			The following table lists possible fault types along with their associated error codes. 
+		</para>
+		<table rules="all">
+			<caption>Fault Types</caption>
+			<thead>
+				<tr>
+					<td>Fault Element</td>
+					<td>Associated Error Codes</td>
+					<td>Expected in All Requests?</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align="left">
+					<td>identityFault</td>
+					<td>500, 400</td>
+					<td> YES </td>
+				</tr>
+				<tr align="left">
+					<td>serviceUnavailable</td>
+					<td>503</td>
+					<td> YES </td>
+				</tr>
+				<tr align="left">
+					<td>badRequest</td>
+					<td>400</td>
+					<td> YES </td>
+				</tr>
+				<tr align="left">
+					<td>unauthorized</td>
+					<td>401</td>
+					<td> YES </td>
+				</tr>
+				<tr align="left">
+					<td><link linkend="Limits-d1e909"
+							>overLimit</link></td>
+					<td>413</td>
+					<td> YES</td>
+				</tr>
+				<tr align="left">
+					<td>userDisabled</td>
+					<td>403</td>
+					<td/>
+				</tr>
+				<tr align="left">
+					<td>forbidden</td>
+					<td>403</td>
+					<td/>
+				</tr>
+				<tr align="left">
+					<td>itemNotFound</td>
+					<td>404</td>
+					<td/>
+				</tr>
+				<tr align="left">
+					<td>tenantConflict</td>
+					<td>409</td>
+					<td/>
+				</tr>
+			</tbody>
+		</table>
+		<para>
+			The root element of the fault may change depending on the type of error. From an XML schema perspective, all
+			API faults are extensions of the base fault type, <type>identityFault</type>. When working with a system 
+			that binds XML to actual classes, use <type>identityFault</type> as a catch-all if there is no interest in 
+			distinguishing between individual fault types; for example, you may need to do this if you are working with 
+			JAXB. 
+		</para>
+  		<para>
+  			The error code is returned in the body of the response. The message section returns a human-readable message.
+  			The details section is optional and may contain useful information for tracking down an error. For example, 
+  			a stack trace may be provided. 
+  		</para>
+  		<para> 
+  			The following are examples of an <code>itemNotFound</code> error. 
+  		</para>
+		<example>
+			<title>Item Not Found Fault: XML</title>
+			<programlisting language="xml">
+				<xi:include href="../samples/item_not_found.xml" parse="text"/>
+			</programlisting>
+		</example>
+		<example>
+			<title>Item Not Found Fault: JSON</title>
+			<programlisting language="javascript">
+				<xi:include href="../samples/item_not_found.json" parse="text"/>
+			</programlisting>
+		</example>
 	</section>
 	<section xml:id="Role_Based_Access_Control-d1e808" security="internal">
 		<title>Role Based Access Control</title>
 		<para>
-			Role Based Access Control (RBAC) restricts service access to authorized 
-			users. RBAC allows customers to specify which users have access to different actions 
-			within their account based on roles defined by Rackspace. The customer assigns the
-			permission to perform certain operations in their account, like adding or deleting 
+			Role Based Access Control (RBAC) restricts service access to authorized  users. RBAC allows customers to specify 
+			which users have access to different actions  within their account based on roles defined by Rackspace. The 
+			customer assigns the permission to perform certain operations in their account, like adding or deleting 
 			servers, to specific roles.
 		</para>
 		<para>
 			RBAC is available to all Open Cloud customers. 
 		</para>
 		<note>
-			<para>RBAC is an opt-in feature for our customers. It must be
-				activated by the <link linkend="Account_Admin-dle808"
-					>Account Admin user</link> for the account using the API, the control panel or 
-				    by phone (customer support).</para>
+			<para>
+				RBAC is an opt-in feature for our customers. It must be activated by the 
+				<link linkend="Account_Owner-dle808">Account Owner user</link> for the account using the API, the control 
+				panel or by phone (customer support).
+			</para>
 		</note>
 		<section xml:id="RBAC_Roles-dle808">
 			<title>Description of Roles</title>
-			<para> "Role” describes the categories of users on an account. Each
-				role receives different levels of access and action.
-				By assigning roles to users and using RBAC, customers
-				can allow multiple users to complete tasks more
-				safely, and limit risk by ensuring that users do not
-				have access or permissions beyond their training or
-				level of control. Rackspace’s RBAC solution offers several roles
-				subordinate to the <link
-					linkend="Account_Admin-dle808">Account Admin
-					user</link>. admin or observer (for both single 
-				product and cross-product scope), and creator 
-				(for single product only).  In both single and cross-product 
-				roles, the user will only have access to designated products.
+			<para> 
+				"Role” describes the categories of users on an account. Each role receives different levels of access and 
+				action. By assigning roles to users and using RBAC, customers can allow multiple users to complete tasks 
+				more safely, and limit risk by ensuring that users do not have access or permissions beyond their training 
+				or level of control. Rackspace’s RBAC solution offers several roles subordinate to the 
+				<link linkend="Account_Owner-dle808">Account Owner user</link>: admin or observer (for both single product 
+				and cross-product scope), and creator  (for single product only).  In both single and cross-product  roles, 
+				the user will only have access to designated products.
 				<table
 					frame="void">
 					<caption>Rackspace RBAC Roles</caption>
@@ -1592,12 +1586,48 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					</tbody>
 				</table>
 				<important>
-					<para xml:id="Account_Admin-dle808"> The Account Admin (one per account) is designated 
-						by the customer as the Primary contact. Only the Account Admin (identity:user-admin)
-						can create a user (identity:default) for the purpose of assigning roles and 
-						granting privileges through RBAC. The Account Admin cannot hold any additional
-						roles, as they already have full access to all capabilities by default. </para>
+					<para xml:id="Account_Owner-dle808"> The Account Owner (one per account) is designated by the customer 
+						as the Primary contact. Only the Account Owner (identity:user-admin) can create a user 
+						(identity:default) for the purpose of assigning roles and granting privileges through RBAC. The 
+						Account Owner cannot hold any additional roles, as they already have full access to all capabilities
+						by default. </para>
 				</important>
+			</para>
+		</section>
+		<section xml:id="RBAC_Role_Conflict-dle808">
+			<title>RBAC Global vs. Product Roles in the Control Panel</title>
+			<para> 
+				The API user may set global and product-specific roles that on the surface, appear to conflict. When this 
+				happens, the more permissive role wins.  For example, if a user has both global observer role and product-specific 
+				admin role, the product admin role overrides the global observer role for the specified product. All other 
+				products stay observer only.  The admin role is the more permissive one, providing more authority, so it takes
+				precedence.
+			</para>
+			<para>
+				The following table shows two examples of the resolution of apparently conflicting user roles:
+			</para>
+			<para>
+				<informaltable rules="all">		
+					<thead>
+						<tr align="center">
+							<td>Permission Configuration</td>
+							<td>Control Panel View of Permission</td>
+							<td>Can User Perform Product Admin Functions in Control Panel?</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Global Observer and Next-gen Servers Admin</td>
+							<td>Looks like user has only global observer role.</td>
+							<td>Yes, but only for Next-gen Servers.  Rest of products are observer only.</td>
+						</tr>
+						<tr>
+							<td>Global Admin and Next-gen Servers Observer</td>
+							<td>Looks like user has only global admin role.</td>
+							<td>Yes, for all.  The Next-gen Servers observer role is ignored.</td>
+						</tr>
+					</tbody>
+				</informaltable>
 			</para>
 		</section>
 		<section xml:id="RBAC_API_Calls-dle808">
