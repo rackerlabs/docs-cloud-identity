@@ -151,18 +151,13 @@
                 </para>
             </glossdef>    
         </glossentry> 
-        <glossentry xml:id="Sub-User-d1e20">
-            <glossterm><emphasis role="bold">Sub-User</emphasis></glossterm>
+        <glossentry xml:id="Account-User-d1e20">
+            <glossterm><emphasis role="bold">Account User</emphasis></glossterm>
             <glossdef>
-                <para> A sub-user, also called a sub-account, is a
-                child of the account's fully-privileged administrative
-                user. Each account has exactly one administrative
-                user, holding the <code>identity:user-admin</code>
-                role; optionally, one or multiple sub-users can be
-                created, each holding the
-                    <code>identity:default</code> role. Each sub-user
-                shares its parent's tenant information, group
-                memberships, and endpoints. </para>
+                <para> An account user, also called a sub-account, is a child of the account's fully-privileged administrative
+                user. Each account has exactly one administrative user, holding the <code>identity:user-admin</code>
+                role; optionally, one or more account users can be created, each holding the <code>identity:default</code> role.
+                Each account user shares its parent's tenant information, group memberships, and endpoints. </para>
             </glossdef>    
         </glossentry>
         <glossentry xml:id="Tenant-d1e11">

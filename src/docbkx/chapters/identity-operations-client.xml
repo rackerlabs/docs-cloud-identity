@@ -35,9 +35,8 @@
 			</para>
 		</note>
 		<para>
-			When these requests are issued by a sub-user, they act only upon that sub-user. You can learn more about sub-users, also called sub-accounts,
-			at 
-			<xref linkend="Sub-Users-d1e910"/>.
+			When these requests are issued by an account user, they act only upon that account user. You can learn more about
+			account users, also called sub-accounts, at <xref linkend="Account-Users-d1e910"/>.
 		</para>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -48,21 +47,16 @@
 						<note>
 							<para>
 								<emphasis role="italic">
-									If you 
-									authenticated with the user role, you
-									can see only yourself.
+									If you  authenticated with the user role, you can see only yourself.
 								</emphasis>
 							</para>
 							<para>
-								If this request is issued by 
-								a user holding the admin role (<code>identity:user-admin</code>),
+								If this request is issued by  a user holding the admin role (<code>identity:user-admin</code>),
 								it returns a list of all users for the tenant.
 							</para>
 							<para> 
-								If this request is issued by a user holding the user
-								role (<code>identity:default</code>), it
-								returns only the user who issued the
-								request. 
+								If this request is issued by a user holding the user role (<code>identity:default</code>), it
+								returns only the user who issued the request. 
 							</para>
 						</note>
 					</wadl:doc>
@@ -75,19 +69,16 @@
 					<note>
 						<para>
 							<emphasis role="italic">
-								If you 
-								authenticated with the user role, you
-								can see only yourself.
+								If you  authenticated with the user role, you can see only yourself.
 							</emphasis>
 						</para>
 						<para>
-							If this request is issued by 
-							a user holding the admin role (<code>identity:user-admin</code>),
-							the specific user's information is returned only if that user is associated with the same tenant as the requester's 
-							<code>user-admin</code> token.
+							If this request is issued by  a user holding the admin role (<code>identity:user-admin</code>),
+							the specific user's information is returned only if that user is associated with the same tenant as the 
+							requester's  <code>user-admin</code> token.
 						</para>
-						<para> If this request is issued by a user holding the user
-							role (<code>identity:default</code>), information is returned for only the requester. 
+						<para> If this request is issued by a user holding the user role (<code>identity:default</code>), 
+							information is returned for only the requester. 
 						</para>
 					</note>
 					</wadl:doc>
@@ -103,22 +94,14 @@
 				<wadl:method href="addUser">
 				<wadl:doc>
 					<note>
-						<para> This call is available only to users who hold the admin
-								role
-								(<code>identity:user-admin</code>).
-								Using the admin role, you can create a
-								user who holds the user role
-								(<code>identity:default</code>). </para>
+						<para> This call is available only to users who hold the admin role (<code>identity:user-admin</code>).
+								Using the admin role, you can create a user who holds the user role (<code>identity:default</code>). </para>
 					</note>
 					<warning>
-						<para> If you use this <code>POST /users</code> call to create a
-								user, that user will have access to
-								APIs but will not have access to the
-								Cloud Control Panel. Cloud Control
-								Panel access is provided to the
-								account's admin user; the admin user
-								is the user who initiated the account
-								by completing the Sign-Up process. </para>
+						<para> If you use this <code>POST /users</code> call to create a user, that user will have access to
+								APIs but will not have access to the Cloud Control Panel. Cloud Control Panel access is provided to 
+								the account's admin user; the admin user is the user who initiated the account by completing the 
+								Sign-Up process. </para>
 					</warning>
 				</wadl:doc>
 				</wadl:method>
@@ -128,12 +111,8 @@
 				<wadl:method href="updateUser">
 					<wadl:doc>
 						<note>
-							<para> Users who hold the admin role can update users who hold
-								the user role
-								(<code>identity:default</code>) or
-								the admin role
-								(<code>identity:user-admin</code>)
-								for the same tenant. </para>
+							<para> Users who hold the admin role can update users who hold the user role (<code>identity:default</code>) or
+								the admin role (<code>identity:user-admin</code>) for the same tenant. </para>
 						</note>
 					</wadl:doc>
 				</wadl:method>
@@ -143,13 +122,9 @@
 				<wadl:method href="deleteUser">
 					<wadl:doc>
 						<note>
-							<para> This call is available only to users who hold the admin
-								role
-								(<code>identity:user-admin</code>).
-								Using the admin role, you can delete a
-								user who holds the user role
-								(<code>identity:default</code>) for
-								the same tenant. </para>
+							<para> This call is available only to users who hold the admin role (<code>identity:user-admin</code>).
+								Using the admin role, you can delete a user who holds the user role (<code>identity:default</code>) 
+								for the same tenant. </para>
 						</note>
 					</wadl:doc>
 				</wadl:method>
@@ -160,17 +135,11 @@
 					<wadl:doc>
 						<note>
 							<para>
-								<emphasis role="italic">You
-									can see only yourself.</emphasis>
+								<emphasis role="italic">You can see only yourself.</emphasis>
 							</para>
-							<para> This call is available to users who hold either the
-								admin role
-								(<code>identity:user-admin</code>)
-								or the user role
-								(<code>identity:default</code>). In
-								either case, the credentials returned
-								are only those of the user who issued
-								the request. </para>
+							<para> This call is available to users who hold either the admin role
+								(<code>identity:user-admin</code>) or the user role (<code>identity:default</code>). In
+								either case, the credentials returned are only those of the user who issued the request. </para>
 						</note>
 					</wadl:doc>
 				</wadl:method>

@@ -1210,88 +1210,94 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</example>
 		<calloutlist>
 			<callout arearefs="namespace.xml.credentials">
-				<para> The core Identity API, defined in <code>ns2</code>,
-					supports <code>&lt;credentials&gt;</code>.
-						<emphasis role="italic">This association is
-						valid only within this example; you may see
-						namespaces identified differently in responses
-						that you generate.</emphasis>
+				<para> The core Identity API, defined in <code>ns2</code>, supports <code>&lt;credentials&gt;</code>.
+						<emphasis role="italic">This association is valid only within this example; you may see
+						namespaces identified differently in responses that you generate.</emphasis>
 				</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="namespace.xml.rax-kskey">
-				<para> The <code>RAX-KSKEY</code> extension is defined in
-						<code>ns3</code>. <emphasis role="italic">This
-						association is valid only within this example;
-						you may see namespaces identified differently
+				<para> The <code>RAX-KSKEY</code> extension is defined in <code>ns3</code>. <emphasis role="italic">This
+						association is valid only within this example; you may see namespaces identified differently
 						in responses that you generate.</emphasis>
 				</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="namespace.xml.apikey">
-				<para> Support for <code>&lt;apiKeyCredentials&gt;</code> is
-					provided by the extension defined as
-						<code>ns3</code>. <emphasis role="italic">This
-						association is valid only within this example;
-						you may see namespaces identified differently
-						in responses that you generate.</emphasis>
+				<para> Support for <code>&lt;apiKeyCredentials&gt;</code> is provided by the extension defined as
+						<code>ns3</code>. <emphasis role="italic">This association is valid only within this example;
+						you may see namespaces identified differently in responses that you generate.</emphasis>
 				</para>
 				<para> </para>
 			</callout>
 		</calloutlist>
-		<para> If you are programmatically parsing responses that describe
-			multiple namespaces, you should not assume that the
-			prefixes that identify namespaces are constant. In this
-			example, <code>ns2</code> identifies the namespace for the
-			Identity API and <code>ns3</code> identifies the namespace
-			for the <code>RAX-KSKEY</code> extension; under other
-			circumstances, other prefixes could be associated with
-			those namespaces. </para>
+		<para> If you are programmatically parsing responses that describe multiple namespaces, you should not assume that the
+			prefixes that identify namespaces are constant. In this example, <code>ns2</code> identifies the namespace for the
+			Identity API and <code>ns3</code> identifies the namespace for the <code>RAX-KSKEY</code> extension; under other
+			circumstances, other prefixes could be associated with those namespaces. </para>
 	</section>
-	<section xml:id="Sub-Users-d1e910">
-		<title>Sub-Users</title>
+	<section xml:id="Account-Users-d1e910">
+		<title>Account Users</title>
 		<para> 
 			When an account is created, it is associated with one user. That user holds the <code>identity:user-admin</code> role,
 			giving it full administrative privileges to manage the account. Exactly one administrative user exists for each account.
 		</para>
 		<para>
-			The account's administrative user can create and manage sub-users, also called sub-accounts. 
-			A sub-user is a child of the administrative user; a sub-user holds the <code>identity:default</code> role. 
-			Each sub-user shares its parent's tenant information, group memberships, and endpoints. 
-		</para>
-		<para>
-			Each sub-user can act only upon itself. 
-			For example, a sub-user can change its own contact information and password, but it cannot make those changes for any other user.
-			A sub-user can request a list of all users, but the sub-user will be the only user included in that list. 
-		</para>
-		<para>
-			All users, including sub-users, can authenticate with a combination of their username and password.
-			Only administrative users can authenticate with a combination of their username and API key. 
-			Only administrative users can authenticate with a combination of their tenant ID and API key. 
-		</para>
-		<para>
-			A sub-user's group memberships matches the group memberships of its parent (the account's administrative user, holding the <code>identity:user-admin</code> role.
+			The account's administrative user can create and manage account users, also called sub-accounts. Each account user:
 			<itemizedlist>
 				<listitem>
 					<para>
-						When a new sub-user is created, it inherits its parent's groups. 
+						is a child of the administrative user
 					</para>
 				</listitem>
 				<listitem>
 					<para>
-						When a parent is assigned to a new group, its sub-users inherit that group. 
+						holds the <code>identity:default</code> role
 					</para>
 				</listitem>
 				<listitem>
 					<para>
-						When a parent is removed from a group, its sub-users are removed, too. 
+						shares its parent's tenant information, group memberships, and endpoints
+					</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+		<para>
+			Each account user can act only upon itself. For example, an account user can change its own contact information and 
+			password, but it cannot make those changes for any other user. Also an account user can request a list of all users, 
+			but the list will only include the requesting account user.
+		</para>
+		<para>
+			All users, including account users, can authenticate with a combination of their username and password.
+			Only administrative users can authenticate either with a combination of their username and API key or with a combination 
+			of their tenant ID and API key. 
+		</para>
+		<para>
+			An account user's group memberships matches the group memberships of its parent (the account's administrative user, 
+			with the <code>identity:user-admin</code> role).
+			<itemizedlist>
+				<listitem>
+					<para>
+						When a new account user is created, it inherits its parent's groups. 
 					</para>
 				</listitem>
 				<listitem>
 					<para>
-						When a service attempts to assign a sub-user to a group, that attempt fails. A <errorcode>400</errorcode> error is returned, with the following message:
+						When a parent is assigned to a new group, its account users inherit that group. 
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						When a parent is removed from a group, its account users are removed, too. 
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						When a service attempts to assign an account user to a group, that attempt fails. A 
+						<errorcode>400</errorcode> error is returned, with the following message:
 						"Cannot add sub-users directly to a group, must assign their parent user." 
-						To assign a sub-user to a group, assign its parent to that group; the sub-user will inherit the new group assignment from its parent.
+						To assign an account user to a group, assign its parent to that group; the account user will inherit the 
+						new group assignment from its parent.
 					</para>
 				</listitem>
 			</itemizedlist>
@@ -1587,7 +1593,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</table>
 				<important>
 					<para xml:id="Account_Owner-dle808"> The Account Owner (one per account) is designated by the customer 
-						as the Primary contact. Only the Account Owner (identity:user-admin) can create a user 
+						as the Primary contact. Only the Account Owner (identity:user-admin) can create an account user 
 						(identity:default) for the purpose of assigning roles and granting privileges through RBAC. The 
 						Account Owner cannot hold any additional roles, as they already have full access to all capabilities
 						by default. </para>
@@ -1624,7 +1630,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						<tr>
 							<td>Global Admin and Next-gen Servers Observer</td>
 							<td>Looks like user has only global admin role.</td>
-							<td>Yes, for all.  The Next-gen Servers observer role is ignored.</td>
+							<td>Yes, for all. The Next-gen Servers observer role is ignored.</td>
 						</tr>
 					</tbody>
 				</informaltable>

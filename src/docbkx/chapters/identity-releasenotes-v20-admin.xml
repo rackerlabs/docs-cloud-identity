@@ -42,8 +42,7 @@
                         <para> Upon authentication, service catalog returns a separate <code>tenantID</code> attribute by endpoint. </para>
                     </listitem>
                     <listitem>
-                        <para>Ability to add multiple users (sub-users) to an
-                            account. This functionality is available
+                        <para>Ability to add multiple users (account users) to an account. This functionality is available
                             in the US and is coming soon to the UK.
                         </para>
                     </listitem>

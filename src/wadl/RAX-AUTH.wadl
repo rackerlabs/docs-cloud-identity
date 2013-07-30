@@ -826,7 +826,7 @@
             </db:para>
             <p xmlns="http://www.w3.org/1999/xhtml">This request returns a single user.
                 The request allows users within an account who are 
-                user-admins (identity: user-admin) or sub-users (identity: default) 
+                user-admins (identity: user-admin) or account users (identity: default) 
                 to locate the administrator/point of contact of their account if they 
                 have questions or need assistance regarding user and/or role management. This request 
                 provides identifying information about the administrator including domain name, 

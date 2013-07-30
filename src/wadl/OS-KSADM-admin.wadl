@@ -316,7 +316,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 Make note of the password in the response and supply that password to the user.
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Within an account, a maximum of 100 sub-users (sub-accounts) can be added.
+                Within an account, a maximum of 100 account users (sub-accounts) can be added.
             </p>
         </doc>
         <request>
@@ -659,12 +659,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 obtain complete identifying information about the user.
                 </p> 
             <p xmlns="http://www.w3.org/1999/xhtml">
-                API credentials are currently not available for sub-users. Sub-users, also called sub-accounts, are users who  
-                were created by the administrative user.
-                Sub-users can access API features with their password credentials.
-                The administrative user holds the <code>identity:user-admin</code> role,
-                giving it full administrative privileges to manage the account; 
-                sub-users hold the <code>identity:default</code> role and their privileges are limited.
+                API credentials are currently not available for account users. Account users, also called sub-accounts, are users 
+                who were created by the administrative user. Account users can access API features with their password credentials.
+                The administrative user holds the <code>identity:user-admin</code> role, giving it full administrative privileges 
+                to manage the account.  Account users hold the <code>identity:default</code> role and their privileges are limited.
             </p>
         </doc>
         <!-- 2012-03-12 by Rose Coste per Joe Savak:

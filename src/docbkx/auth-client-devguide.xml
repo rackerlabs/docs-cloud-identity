@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-07-25</pubdate>
+		<pubdate>2013-07-30</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -45,6 +45,18 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-07-30</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Replaced "sub-user" with "account users" everywhere.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2013-07-25</date>
 				<revdescription>
@@ -239,10 +251,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> 
-								Added details to <xref
-									linkend="Namespaces-d1e910"/>,
-								describing new standards and
-								defaults. 
+								Added details to <xref linkend="Namespaces-d1e910"/>, describing new standards and defaults. 
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -254,32 +263,26 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> 
-								For "Update User" and "Delete User" operations, 
-								added suggestion to use 
+								For "Update User" and "Delete User" operations,  added suggestion to use 
 								<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />
-								to confirm that the 
-								intended user will be changed. 
+								to confirm that the  intended user will be changed. 
 							</para>
 						</listitem>
 						<listitem>
 							<para> 
-								Added 
-								<xref linkend="Sub-Users-d1e910"/>; 
-								moved most of the details from the Sub-User glossary item into that section, 
-								along with additional details on sub-users' inheritance of groups from parents. 
+								Added  <xref linkend="Account-Users-d1e910"/>; 
+								moved most of the details from the Account User glossary item into that section, 
+								along with additional details on account users' inheritance of groups from parents. 
 							</para>
 						</listitem>
 						<listitem>
 							<para> 
-								Added 
-								<xref linkend="Limits-d1e909"/>,
-								introducing rate limiting. 
+								Added  <xref linkend="Limits-d1e909"/>, introducing rate limiting. 
 							</para>
 						</listitem>
 						<listitem>
 							<para> 
-								Corrected malformed cURL example in
-								<xref linkend="QuickStart-000"/>. In the same section,
+								Corrected malformed cURL example in <xref linkend="QuickStart-000"/>. In the same section,
 								added an introduction to API extensions.
 							</para>
 						</listitem>
@@ -297,39 +300,27 @@
 						</listitem>
 						<listitem>
 							<para>
-								Added <xref
-								linkend="Namespaces-d1e910"
-							/>, introducing the idea of namespaces
-								and relating it to the idea of 
-								<link linkend="Extensions-d1e688">API extensions</link>.
+								Added <xref linkend="Namespaces-d1e910"/>, introducing the idea of namespaces
+								and relating it to the idea of  <link linkend="Extensions-d1e688">API extensions</link>.
 							</para>
 						</listitem>
 						<listitem>
 							<para>
-								Linked <xref
-									linkend="QuickStart-000"/> to <xref linkend="POST_addUser_v2.0_users_" /> 
-								with note that sub-users added via API cannot use the
-								control panel. 
+								Linked <xref linkend="QuickStart-000"/> to <xref linkend="POST_addUser_v2.0_users_" /> 
+								with note that account users added via API cannot use the control panel. 
 							</para>
 						</listitem>
 						<listitem>
 							<para>
-								Updated <xref
-									linkend="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"/>
-								and 
-								<xref
-									linkend="Sub-User-d1e20"/>
-								to state that 
-								sub-users must authenticate
+								Updated <xref linkend="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"/>
+								and  <xref linkend="Account-User-d1e20"/> to state that account users must authenticate
 								with their passwords. 
 							</para>
 						</listitem>
 						<listitem>
 							<para>
-								Added an annotated JSON example in <xref
-									linkend="Sample_Request_Response-d1e64"/>.  
-								In the same section, 
-								updated the annotated XML example to show new service types. 
+								Added an annotated JSON example in <xref linkend="Sample_Request_Response-d1e64"/>.  
+								In the same section,  updated the annotated XML example to show new service types. 
 							</para>
 						</listitem>
 						<listitem>
@@ -377,7 +368,7 @@
 						<listitem>
 							<para>
 								Added examples of creating a user with a password in <xref linkend="POST_addUser_v2.0_users_" />.
-								In the same section, added information that an account can have up to 100 sub-users. 
+								In the same section, added information that an account can have up to 100 account users. 
 							</para>
 						</listitem>
 						<listitem>
@@ -387,7 +378,7 @@
 						</listitem>
 						<listitem>
 							<para>
-								Added information about sub-users (also known as sub-accounts), including an entry in <xref linkend="Glossary-000" />.
+								Added information about account users (also known as sub-accounts), including an entry in <xref linkend="Glossary-000" />.
 							</para>
 						</listitem>
 						<listitem>

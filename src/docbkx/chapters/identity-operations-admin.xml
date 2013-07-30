@@ -66,36 +66,29 @@
 		<title>Users</title>
 		<para>The operations described in this section allow service developers to manage users.</para>
 		<para>
-			When these requests are issued by a sub-user, they act only upon that sub-user. You can learn more about sub-users, also called sub-accounts,
-			at 
-			<xref linkend="Sub-Users-d1e910"/>.
+			When these requests are issued by an account user, they act only upon that account user. You can learn more about 
+			account users, also called sub-accounts, at <xref linkend="Account-Users-d1e910"/>.
 		</para>
 		<warning>
 			<para>
-				Before making any change to a user, 
-				you should confirm that you are changing the user you intend to change. 
-				You can do this by treating every change as a two-step operation: 
-				first, check the target of the change; second, make the change.  
+				Before making any change to a user, you should confirm that you are changing the user you intend to change. 
+				You can do this by treating every change as a two-step operation: first, check the target of the change; second, 
+				make the change.  
 			</para>
 			<para>
 				For example, both "Update User" and "Delete User" act upon the user specified by <code>userId</code>. 
 				Before attempting to update or delete a user, use 
 				<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" /> 
 				to obtain the username, email account, and status associated with <code>userId</code>. 
-				That's Step 1. 
-				Check the returned information carefully; 
-				if you are certain that it describes the user you intend to change, 
-				proceed with Step 2, updating or deleting the user you just examined.
+				That's Step 1.  Check the returned information carefully;  if you are certain that it describes the user you intend 
+				to change, proceed with Step 2, updating or deleting the user you just examined.
 			</para>
 		</warning>
 		<note>
-			<para> Some of the functionality described in this section is
-				provided by the <code>OS-KSADM</code>,
-					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code>
-				extensions to the core Identity API. You can learn
-				more about API extensions at <link
-					xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/"
-					>
+			<para> Some of the functionality described in this section is provided by the <code>OS-KSADM</code>,
+					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code> extensions to the core Identity API. You can learn
+				more about API extensions at 
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>. </para>
 		</note>
 		<!--- this section comes from 4 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin & RAX-AUTH -->
