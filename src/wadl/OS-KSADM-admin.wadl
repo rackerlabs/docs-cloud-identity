@@ -12,15 +12,12 @@
 %common;
 ]>
 
-<application xmlns="http://wadl.dev.java.net/2009/02"
-xmlns:wadl="http://wadl.dev.java.net/2009/02"
-xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
-xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-xmlns:capi="http://docs.openstack.org/common/api/v1.0"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
-xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../common/xsd/api.xsd
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
+    xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
+    xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+    xmlns:capi="http://docs.openstack.org/common/api/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../common/xsd/api.xsd
 http://docs.openstack.org/common/api/v1.0 ../common/xsd/api-common.xsd
 http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd
 http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.xsd
@@ -29,7 +26,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <grammars>
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
-        <include href="../common/xsd/OS-KSADM.xsd" />
+        <include href="../common/xsd/OS-KSADM.xsd"/>
     </grammars>
     <!--*******************************************************-->
     <!-- All Resources -->
@@ -58,16 +55,17 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                             </resource>
                         </resource>
                     </resource>
-                    
+
                     <resource id="user-OS-KSADM" path="OS-KSADM">
                         <resource id="enabled" path="enabled">
                             <method href="#setUserEnabled"/>
-                        </resource>              
+                        </resource>
                         <resource id="userCredentials" path="credentials">
                             <method href="#addUserCredential"/>
                             <method href="#listCredentials"/>
                             <resource id="userCredentialsByType" path="{credential-type}">
-                                <param name="credentialType" style="template" type="OS-KSADM:extensibleCredentialsType" required="true"/>
+                                <param name="credentialType" style="template" type="OS-KSADM:extensibleCredentialsType"
+                                    required="true"/>
                                 <method href="#updateUserCredential"/>
                                 <method href="#deleteUserCredential"/>
                                 <method href="#getUserCredential"/>
@@ -97,14 +95,14 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                                 </resource>
                             </resource>
                         </resource>
-                   </resource>
+                    </resource>
                 </resource>
             </resource>
 
             <resource id="role-service-OS-KSADM" path="OS-KSADM">
                 <resource id="roles" path="roles">
-                 <method href="#getRoleByName"/>
-                 <method href="#listRoles"/>
+                    <method href="#getRoleByName"/>
+                    <method href="#listRoles"/>
                     <method href="#addRole"/>
                     <resource id="roleId" path="{roleId}">
                         <param name="roleId" style="template" type="xsd:string"/>
@@ -115,7 +113,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         </resource>
                     </resource>
                 </resource>
-                
+
                 <resource id="services" path="services">
                     <method href="#listServices"/>
                     <method href="#addService"/>
@@ -137,9 +135,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!-- Tenant Operations -->
     <method name="POST" id="addTenant">
         <doc xml:lang="EN" title="Add Tenant">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Create a tenant.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Create a tenant. </p>
             <p xmlns="http://www.w3.org/1999/xhtml">Create a tenant.</p>
         </doc>
         <request>
@@ -165,16 +161,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/tenant.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
+        </response> &commonFaults; &postPutFaults; </method>
 
     <method name="POST" id="updateTenant">
         <doc xml:lang="EN" title="Update Tenant">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Update a tenant.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Update a tenant. </p>
             <p xmlns="http://www.w3.org/1999/xhtml">Update a tenant.</p>
         </doc>
         <request>
@@ -200,29 +191,19 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/tenant.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method name="DELETE" id="deleteTenant">
         <doc xml:lang="EN" title="Delete Tenant">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Deletes a tenant.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Deletes a tenant. </p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a tenant.</p>
         </doc>
-        <response status="204"/>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <method name="GET" id="listUsersForTenant">
         <doc xml:lang="EN" title="List Users for Tenant">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List all the users for a tenant.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">List all the users for a tenant.</p>
-                        
         </doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string"/>
@@ -239,44 +220,34 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/users.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method name="PUT" id="addRolesToUserOnTenant">
         <doc xml:lang="EN" title="Add Role to User for Tenant">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a specific role to a user for a tenant.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Add a specific role to a user for a tenant.</p>
         </doc>
-        <response status="201"/>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
+        <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="DELETE" id="deleteRoleFromUserOnTenant">
         <doc xml:lang="EN" title="Delete Role from User for Tenant">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a specific role from a user for a tenant.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a specific role from a user for a tenant.</p>
         </doc>
-        <response status="204"/>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <!--User Operations-->
     <method name="GET" id="listUsers">
         <doc xml:lang="EN" title="List Users">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List users.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users.
-            The list includes identifying information about each user. 
-            Identifying information includes the user's email account, username, user ID, and status. 
+            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users. The list includes identifying
+                information about each user. Identifying information includes the user's email account, username, user ID,
+                and status. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> To find the user with the authority to modify account permissions, refer
+                to <a xmlns="http://www.w3.org/1999/xhtml"
+                    href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_.html"
+                    >"Get User Admin."</a>
             </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-            To find the user with the authority to modify account permissions, refer to 
-                <a xmlns="http://www.w3.org/1999/xhtml" href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_RAX-AUTH_users__userId__RAX-AUTH_admins_.html">"Get User Admin."</a> 
-            </p> 
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:userss">
@@ -289,36 +260,35 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/users.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method name="POST" id="addUser">
         <doc xml:lang="EN" title="Add User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                To add a user, specify the user's <code>email</code> and <code>username</code> values, as well as whether
-                the user's initial status is <code>enabled</code>. 
-                A successful response echoes the requested values and adds a value for <code>id</code>.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                To add a user and specify an initial password for that user, 
-                include the password in a request resembling the "Add User with Password Request"
-                examples shown below.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                If you do not specify a password for the new user, one will be generated.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                If an initial password is generated, it is included in a successful response to this request. 
-                After the user is created, the password cannot be retrieved by any means. 
-                Make note of the password in the response and supply that password to the user.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                Within an account, a maximum of 100 account users (sub-accounts) can be added.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> To add a user, specify the user's <code>email</code> and
+                    <code>username</code> values, as well as whether the user's initial status is <code>enabled</code>. A
+                successful response echoes the requested values and adds a value for <code>id</code>. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> To add a user and specify an initial password for that user, include the
+                password in a request resembling the "Add User with Password Request" examples shown below. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> If you do not specify a password for the new user, one will be
+                generated. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> If an initial password is generated, it is included in a successful
+                response to this request. After the user is created, the password cannot be retrieved by any means. Make note
+                of the password in the response and supply that password to the user. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> Within an account, a maximum of 100 account users (sub-accounts) can be
+                added. </p>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <para security="internal">
+                    The user is assigned the default region based on which region was set as “isDefault”:true during the 
+                    creation of the region. The user can change their default region through the 
+                    <a xmlns="http://www.w3.org/1999/xhtml" 
+                        href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_updateUser_v2.0_users__userId__.html"
+                        >"Update User "</a> API call, but they are restricted to changing it only to one of their regions 
+                    listed in the service catalog for the CloudServersOpenStack service.
+                </para>
+            </wadl:doc>
         </doc>
+
         <request>
             <representation mediaType="application/xml" element="identity:user">
                 <doc xml:lang="EN">
@@ -352,48 +322,33 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/user.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-   
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method name="POST" id="updateUser">
         <doc xml:lang="EN" title="Update User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</p>
             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                 <warning>
-                    <para>
-                        Before making any change to a user, 
-                        you should confirm that you are changing the user you intend to change. 
-                        You can do this by treating every change as a two-step operation: 
-                        first, check the target of the change; second, make the change.  
-                    </para>
-                    <para>
-                        "Update User" acts upon the user specified by <code>userId</code>. 
-                        Before attempting to update a user, use 
-                        <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" /> 
-                        to obtain the username, email account, and status associated with <code>userId</code>. 
-                        That's Step 1. 
-                        Check the returned information carefully; 
-                        if you are certain that it describes the user you intend to change, 
-                        proceed with Step 2, updating the user you just examined.
-                    </para>
+                    <para> Before making any change to a user, you should confirm that you are changing the user you intend
+                        to change. You can do this by treating every change as a two-step operation: first, check the target
+                        of the change; second, make the change. </para>
+                    <para> "Update User" acts upon the user specified by <code>userId</code>. Before attempting to update a
+                        user, use <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/> to obtain
+                        the username, email account, and status associated with <code>userId</code>. That's Step 1. Check the
+                        returned information carefully; if you are certain that it describes the user you intend to change,
+                        proceed with Step 2, updating the user you just examined. </para>
                 </warning>
             </wadl:doc>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                To update a user, specify the user's identifying information 
-                (<code>email</code>, <code>username</code>, <code>id</code>, <code>defaultRegion</code>, and status) values, 
-                replacing the current value with a new value where necessary.
-                For example, to change the user's status from disabled to enabled, 
-                specify <code>enabled=true</code>.
-                A successful response echoes the requested values.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                To update a user's password, 
-                include the new password in a request resembling the "Update User Password Request"
-                examples shown below.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> To update a user, specify the user's identifying information
+                    (<code>email</code>, <code>username</code>, <code>id</code>, <code>defaultRegion</code>, and status)
+                values, replacing the current value with a new value where necessary. For example, to change the user's
+                status from disabled to enabled, specify <code>enabled=true</code>. A successful response echoes the
+                requested values. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> To update a user's password, include the new password in a request
+                resembling the "Update User Password Request" examples shown below. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> You can change a user's default region, but you are restricted to 
+                changing it to one of their regions listed in the service catalog for the CloudServersOpenStack 
+                service. </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:user">
@@ -428,48 +383,30 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/user.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
-   
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
+
     <method name="DELETE" id="deleteUser">
         <doc xml:lang="EN" title="Delete User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a user.</p>
             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                 <warning>
-                    <para>
-                        Before making any change to a user, 
-                        you should confirm that you are changing the user you intend to change. 
-                        You can do this by treating every change as a two-step operation: 
-                        first, check the target of the change; second, make the change.  
-                    </para>
-                    <para>
-                        "Delete User" acts upon the user specified by <code>userId</code>. 
-                        Before attempting to update a user, use 
-                        <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />  
-                        to obtain the username, email account, and status associated with <code>userId</code>. 
-                        That's Step 1. 
-                        Check the returned information carefully; 
-                        if you are certain that it describes the user you intend to change, 
-                        proceed with Step 2, deleting the user you just examined.
-                    </para>
+                    <para> Before making any change to a user, you should confirm that you are changing the user you intend
+                        to change. You can do this by treating every change as a two-step operation: first, check the target
+                        of the change; second, make the change. </para>
+                    <para> "Delete User" acts upon the user specified by <code>userId</code>. Before attempting to update a
+                        user, first use <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/> to
+                        obtain the username, email account, and status associated with <code>userId</code>. That's Step 1.
+                        Check the returned information carefully; if you are certain that it describes the user you intend to
+                        change, proceed with Step 2, deleting the user you just examined. </para>
                 </warning>
             </wadl:doc>
-            <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, 
-               specify the user's ID in the request.
-               If you know the user's name but not the user's ID, use 
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
-               to 
-               obtain complete identifying information about the user.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, specify the user's ID in the request. If you know the
+                user's name but not the user's ID, use
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                to obtain complete identifying information about the user. </p>
         </doc>
-        <response status="204"/>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <method name="PUT" id="setUserEnabled">
         <doc xml:lang="EN" title="Enable User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Enable a user.</p>
@@ -480,7 +417,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/userwithenabledonly.xml"/>
                 </doc>
-                <param name="user" style="plain" path="/" type="OS-KSADM:UserWithOnlyEnabled"/></representation>
+                <param name="user" style="plain" path="/" type="OS-KSADM:UserWithOnlyEnabled"/>
+            </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/userwithenabledonly.json"/>
@@ -508,27 +446,21 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/user.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <!--User Roles-->
     <method name="PUT" id="addUserRole">
         <doc xml:lang="EN" title="Add Global Roles to User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a specific global role to a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                This call adds global role to a user.
-                To add a role to a user, specify the role's ID and the user's ID in the request.
-                If you know the role's name but not the role's ID, use <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref> 
-                to obtain detailed information about available roles. If you know the user's name but not the user's ID, use <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
-                to obtain complete identifying information about the user. When the service-admin assigns a role to an user-admin account (identity:user-admin), 
-                the role is propagated to users (identity:default).  
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                See Global Role Categories table below to learn more about roles, who assigns them, and who uses them.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call adds global role to a user. To add a role to a user, specify
+                the role's ID and the user's ID in the request. If you know the role's name but not the role's ID, use
+                <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                to obtain detailed information about available roles. If you know the user's name but not the user's ID, use
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                to obtain complete identifying information about the user. When the service-admin assigns a role to an
+                user-admin account (identity:user-admin), the role is propagated to users (identity:default). </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> See Global Role Categories table below to learn more about roles, who
+                assigns them, and who uses them. </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <table rules="all">
@@ -552,14 +484,15 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         <tr>
                             <td>500</td>
                             <td>System-level roles required for user to function properly</td>
-                            <td>identity:admin, identity:service-admin</td>                    
+                            <td>identity:admin, identity:service-admin</td>
                             <td>identity:user-admin, identity:default</td>
                             <td>identity:admin, identity:service-admin</td>
                             <td>rack_connect, rax_managed</td>
-                        </tr>                <tr>
+                        </tr>
+                        <tr>
                             <td>1000</td>
                             <td>These product roles used to identify user capabilities for a particular product (RBAC)</td>
-                            <td>identity:user-admin</td>                    
+                            <td>identity:user-admin</td>
                             <td>identity:default</td>
                             <td>all users</td>
                             <td>nova:admin, nova:observer</td>
@@ -567,7 +500,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         <tr>
                             <td>2000</td>
                             <td>Undefined</td>
-                            <td>identity:default</td>                    
+                            <td>identity:default</td>
                             <td>n/a</td>
                             <td>n/a</td>
                             <td>n/a</td>
@@ -576,46 +509,35 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </wadl:doc>
             </p>
         </doc>
-        <response status="201"/>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
-    
+        <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
+
     <method name="DELETE" id="deleteUserRole">
         <doc xml:lang="EN" title="Delete Global Role from User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a specific global role from a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                This call deletes a global role from a user. To delete a role from a user, specify the role's ID and the user's ID in the request.
-                If you know the role's name but not the role's ID, use 
-                <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref> 
-                to obtain detailed information about available roles. If you know the user's name but not the user's ID, use 
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call deletes a global role from a user. To delete a role from a
+                user, specify the role's ID and the user's ID in the request. If you know the role's name but not the role's
+                ID, use
+                <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                to obtain detailed information about available roles. If you know the user's name but not the user's ID, use
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">     
-                This allows the user-admin (identity:user-admin) to manage non-protected role assignment for users (identity:default), granting 
-                and revoking access at will. Some roles like identity:rack_connect and identity:rax_managed cannot be managed by 
-                customers to prevent them from revoking privileges unintentionally.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> This allows the user-admin (identity:user-admin) to manage non-protected
+                role assignment for users (identity:default), granting and revoking access at will. Some roles like
+                identity:rack_connect and identity:rax_managed cannot be managed by customers to prevent them from revoking
+                privileges unintentionally. </p>
         </doc>
-        <response status="204"/>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
         <wadl:doc xml:lang="EN" title="Add Credential to User" xmlns="http://docbook.org/ns/docbook">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a credential to a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                A password is a credential; you can add a password to a user with this call.
-                To add a credential to a user, specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use 
-                <!-- <link linkend="GET_getUserByName_v2.0_users_">Get User by Name</link> -->
+            <p xmlns="http://www.w3.org/1999/xhtml"> A password is a credential; you can add a password to a user with this
+                call. To add a credential to a user, specify the user's ID in the request. If you know the user's name but
+                not the user's ID, use <!-- <link linkend="GET_getUserByName_v2.0_users_">Get User by Name</link> -->
                 <!-- <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/> -->
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
-                to obtain complete identifying information about the user.
-            </p>
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                to obtain complete identifying information about the user. </p>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="identity:credential">
@@ -640,30 +562,22 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="GET" id="listCredentials">
         <doc xml:lang="EN" title="List Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials, other than passwords, for all authentication methods.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                A user's password cannot be obtained by this or any other means. 
-                To list a user's non-password credentials for all authentication methods available to that user, 
-                specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use 
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>  
-                to  
-                obtain complete identifying information about the user.
-                </p> 
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                API credentials are currently not available for account users. Account users, also called sub-accounts, are users 
-                who were created by the administrative user. Account users can access API features with their password credentials.
-                The administrative user holds the <code>identity:user-admin</code> role, giving it full administrative privileges 
-                to manage the account.  Account users hold the <code>identity:default</code> role and their privileges are limited.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials, other than passwords, for all
+                authentication methods.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> A user's password cannot be obtained by this or any other means. To list
+                a user's non-password credentials for all authentication methods available to that user, specify the user's
+                ID in the request. If you know the user's name but not the user's ID, use
+                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                to obtain complete identifying information about the user. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> API credentials are currently not available for account users. Account
+                users, also called sub-accounts, are users who were created by the administrative user. Account users can
+                access API features with their password credentials. The administrative user holds the
+                    <code>identity:user-admin</code> role, giving it full administrative privileges to manage the account.
+                Account users hold the <code>identity:default</code> role and their privileges are limited. </p>
         </doc>
         <!-- 2012-03-12 by Rose Coste per Joe Savak:
              hide marker & limit: not implemented.
@@ -686,16 +600,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/credentials-response-apikey-nopw.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method name="GET" id="listCredentialsByType">
         <doc xml:lang="EN" title="List Credentials by Type">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List credentials by type.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">List credentials by type.</p>
-                        
         </doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string"/>
@@ -712,16 +622,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/credentials.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
+        </response> &commonFaults; &getFaults; </method>
 
     <method name="POST" id="updateUserCredential">
         <doc xml:lang="EN" title="Update User Credentials">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update user credentials.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Update user credentials.</p>
-                        
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:credential">
@@ -746,28 +652,19 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
+
     <method name="DELETE" id="deleteUserCredential">
         <doc xml:lang="EN" title="Delete User Credentials">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete user credentials.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete user credentials.</p>
         </doc>
-        <response status="204"/>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &postPutFaults; &getFaults; </method>
+
     <method name="GET" id="getUserCredential">
         <doc xml:lang="EN" title="Get User Credentials">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get user credentials.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Get user credentials.</p>
-                        
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:credential">
@@ -780,18 +677,14 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <!--Roles-->
     <method name="GET" id="listRoles">
         <doc xml:lang="EN" title="List Roles">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List roles.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                This call lists the global roles available within a specified service. 
-            </p>    
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call lists the global roles available within a specified service.
+            </p>
         </doc>
         <request>
             <param name="serviceId" style="query" required="false" type="xsd:string"/>
@@ -814,18 +707,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/roles-domain-users.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
+        </response> &commonFaults; &getFaults; </method>
 
     <method name="POST" id="addRole">
         <doc xml:lang="EN" title="Add Role">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a role.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                This call adds a newly created global role (with user-assigned Rackspace capabilities), 
-                allowing the customer to tailor user roles to his or her business needs. 
-            </p> 
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call adds a newly created global role (with user-assigned Rackspace
+                capabilities), allowing the customer to tailor user roles to his or her business needs. </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:role">
@@ -852,11 +740,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </doc>
                 <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="GET" id="getRoleByName">
         <doc xml:lang="EN" title="Get Role By Name">
@@ -879,18 +763,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </doc>
                 <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="GET" id="getRole">
         <doc xml:lang="EN" title="Get Role">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a role.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                This call lists detailed information (<code>id</code>, <code>name</code>, <code>description</code>) for a specified role.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call lists detailed information (<code>id</code>,
+                <code>name</code>, <code>description</code>) for a specified role. </p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:role">
@@ -905,21 +784,14 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </doc>
                 <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
+
     <method name="DELETE" id="deleteRole">
         <doc xml:lang="EN" title="Delete Role">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a role.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a role.</p>
         </doc>
-        <response status="204"/>
-        &commonFaults;
-        &getFaults;
-    </method>
+        <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method name="GET" id="getUsersWithRole">
         <doc xml:lang="EN" title="Get Users With Role">
@@ -929,10 +801,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         </doc>
         <request>
             <param name="enabled" style="query" required="false" type="xsd:string">
-                <doc>
-                    Allows you to filter enabled or un-enabled users.  Values are "true"
-                    or "false".
-                </doc>
+                <doc> Allows you to filter enabled or un-enabled users. Values are "true" or "false". </doc>
             </param>
             <param name="marker" style="query" required="false" type="xsd:string">
                 <doc>Allows you to page through list.</doc>
@@ -952,11 +821,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/userswithroles.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-   
+        </response> &commonFaults; &getFaults; </method>
+
     <!-- Service Operations -->
     <method name="GET" id="listServices">
         <doc xml:lang="EN" title="List Services">
@@ -978,11 +844,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/services.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method name="GET" id="getServiceByName">
         <doc xml:lang="EN" title="Get Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a service by name.</p>
@@ -1002,11 +865,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/service.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method name="GET" id="getService">
         <doc xml:lang="EN" title="Get Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get a service.</p>
@@ -1023,11 +883,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <xsdxt:code href="../common/samples/service.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method name="POST" id="addService">
         <doc xml:lang="EN" title="Add Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a service.</p>
@@ -1058,20 +915,13 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </doc>
                 <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; &getFaults; </method>
+
     <method name="DELETE" id="deleteService">
         <doc xml:lang="EN" title="Delete Service">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a service.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Delete a service.</p>
         </doc>
-        <response status="204"/>
-        &commonFaults;
-        &getFaults;
-    </method>
+        <response status="204"/> &commonFaults; &getFaults; </method>
 
 </application>

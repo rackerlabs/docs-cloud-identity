@@ -11,14 +11,11 @@
     %common;
 ]>
 
-<application xmlns="http://wadl.dev.java.net/2009/02"
-   xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
-   xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-   xmlns:policy="http://docs.rackspace.com/identity/policy/v1.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-   xmlns:db="http://docbook.org/ns/docbook"
-   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
+    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+    xmlns:policy="http://docs.rackspace.com/identity/policy/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:db="http://docbook.org/ns/docbook"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
 
     <grammars>
         <include href="../xsd/RAX-AUTH.xsd"/>
@@ -46,19 +43,19 @@
          at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl  
          For 15 new samples supporting added METHODS, include as ../common/samples/formattedsamples/keystone/
             -->
-    
+
     <!-- ======================================================================================= -->
     <!-- Resources -->
     <!-- ======================================================================================= -->
-    
+
     <resources base="http://localhost:8080">
         <resource id="version" path="/v2.0">
-            
+
             <!-- TOKENS resource(s) -->
             <resource id="tokens" path="tokens">
-                <method href="#authenticateAsRacker" />
+                <method href="#authenticateAsRacker"/>
             </resource>
-            
+
             <!-- ADD_USER_SECRETQA resource(s) -->
             <!-- see also SECRETQA below -->
             <resource id="add_user_secretqa" path="users/{userId}/RAX-AUTH/secretqas">
@@ -66,59 +63,60 @@
                     <doc>A valid authentication token</doc>
                 </param>
                 <param name="userId" type="xsd:string" style="template" required="true"/>
-                <method href="#saveUserSecretQA" />
-                <method href="#getUserSecretQAs" />
+                <method href="#saveUserSecretQA"/>
+                <method href="#getUserSecretQAs"/>
             </resource>
-            
+
             <!-- RESET_APIKEY_CREDENTIALS resource(s) -->
-            <resource id="reset_apikey_credentials" path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
+            <resource id="reset_apikey_credentials"
+                path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
                 <param name="userId" type="xsd:string" style="template" required="true"/>
-                <method href="#resetUserAPIKeyCredentials" />
+                <method href="#resetUserAPIKeyCredentials"/>
             </resource>
-            
+
             <!-- USER_ACCESSIBLE_DOMAINS resource(s) -->
             <resource id="user_accessible_domains" path="users/{userId}/RAX-AUTH/domains">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
                 <param name="userId" type="xsd:string" style="template" required="true"/>
-                <method href="#getAccessibleDomainsForUser" />
-                
+                <method href="#getAccessibleDomainsForUser"/>
+
                 <resource id="user_accessible_domain" path="{domainId}">
-                     <param name="domainId" type="xsd:string" style="template" required="true"/>
-                    
-                     <resource id="user_accessible_domain_endpoints" path="endpoints">
-                         <method href="#getAccesibleDomainEndpointsForUser" />
-                     </resource>
+                    <param name="domainId" type="xsd:string" style="template" required="true"/>
+
+                    <resource id="user_accessible_domain_endpoints" path="endpoints">
+                        <method href="#getAccesibleDomainEndpointsForUser"/>
+                    </resource>
                 </resource>
             </resource>
-            
+
             <!-- ENDPOINT_TEMPLATES resource(s) -->
             <resource id="endpoint_templates" path="OS-KSCATALOG/endpointTemplates">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
-                <method href="#getEndpointTemplates" />
-                
+                <method href="#getEndpointTemplates"/>
+
                 <resource id="endpoint_template" path="{endpointTemplateId}">
                     <param name="endpointTemplateId" type="xsd:string" style="template" required="true"/>
-                    
+
                     <resource id="endpoint_template_policies" path="RAX-AUTH/policies">
-                        <method href="#getEndpointTemplatePolicies" />
-                        <method href="#updateEndpointTemplatePolicies" />
-                        
+                        <method href="#getEndpointTemplatePolicies"/>
+                        <method href="#updateEndpointTemplatePolicies"/>
+
                         <resource id="endpoint_template_policy" path="{policyId}">
                             <param name="policyId" type="xsd:string" style="template" required="true"/>
-                            <method href="#addPolicyToEndpointTemplate" />
+                            <method href="#addPolicyToEndpointTemplate"/>
                             <method href="#removePolicyFromEndpointTemplate"/>
                         </resource>
                     </resource>
                 </resource>
             </resource>
-                   
+
             <!-- USERS_WITH_ROLE resource(s) -->
             <resource id="users_with_role" path="OS-KSADM/roles/{roleId}/RAX-AUTH/users">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
@@ -127,26 +125,26 @@
                 <param name="roleId" type="xsd:string" style="template" required="true"/>
                 <method href="#listUsersWithRole"/>
             </resource>
-            
+
             <!-- USER_USER_ADMINS resource(s) -->
             <resource id="user_user_admins" path="users/{userId}/RAX-AUTH/admins">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
                 <param name="userId" type="xsd:string" style="template" required="true"/>
-                <method href="#getUserAdmin" />
+                <method href="#getUserAdmin"/>
             </resource>
-            
+
             <!-- RAX-AUTH resource(s) -->
             <resource id="RAX-AUTH" path="RAX-AUTH">
-                
+
                 <resource id="impersonation-tokens" path="impersonation-tokens">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token for the impersonator</doc>
                     </param>
                     <method href="#impersonateUser"/>
                 </resource>
-                
+
                 <resource id="default-region-services" path="default-region/services">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token</doc>
@@ -154,89 +152,91 @@
                     <method href="#getDefaultRegionServices"/>
                     <method href="#setDefaultRegionServices"/>
                 </resource>
-                
+
                 <resource id="domains" path="domains">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token</doc>
                     </param>
-                    <method href="#getDomains" />
+                    <method href="#getDomains"/>
                     <method href="#createDomain"/>
-                    
+
                     <resource id="domain" path="{domainId}">
                         <param name="domainId" type="xsd:string" style="template" required="true"/>
                         <method href="#getDomain"/>
                         <method href="#updateDomain"/>
                         <method href="#deleteDomain"/>
-                        
+
                         <resource id="domain_users" path="users">
                             <method href="#getDomainUsers"/>
-                            
+
                             <resource id="domain_user" path="{userId}">
                                 <param name="userId" type="xsd:string" style="template" required="true"/>
                                 <method href="#addUserToDomain"/>
                             </resource>
                         </resource>
-                        
+
                         <resource id="domain_tenants" path="tenants">
                             <method href="#getDomainTenants"/>
-                            
+
                             <resource id="domain_tenant" path="{tenantId}">
                                 <param name="tenantId" type="xsd:string" style="template" required="true"/>
                                 <method href="#addTenantToDomain"/>
                             </resource>
                         </resource>
-                        
+
                         <resource id="domain_endpoints" path="endpoints">
-                            <method href="#getDomainEndpoints" />
+                            <method href="#getDomainEndpoints"/>
                         </resource>
                     </resource>
                 </resource>
-                              
+
                 <!-- POLICIES resource(s) -->
                 <resource id="policies" path="policies">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token. </doc>
                     </param>
-                    <method href="#getPolicies" />
-                    <method href="#createPolicy" />
-                    
+                    <method href="#getPolicies"/>
+                    <method href="#createPolicy"/>
+
                     <resource id="policy" path="{policyId}">
                         <param name="policyId" type="xsd:string" style="template" required="true"/>
-                        <method href="#getPolicy" />
-                        <method href="#updatePolicy" />
-                        <method href="#deletePolicy" />
-   
+                        <method href="#getPolicy"/>
+                        <method href="#updatePolicy"/>
+                        <method href="#deletePolicy"/>
+
                         <resource id="policyBlob" path="blob_detail">
-                            <method href="#getPolicyBlob" />
+                            <method href="#getPolicyBlob"/>
                         </resource>
                     </resource>
                 </resource>
-                
+
                 <!-- REGIONS resource(s) -->
                 <resource id="regions" path="regions">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token</doc>
                     </param>
-                    <method href="#getRegions" />
+                    <method href="#getRegions"/>
                     <method href="#createRegion"/>
-                    
+
                     <resource id="region" path="{regionId}">
-                        <param name="regionId" type="xsd:string" style="template" required="true"/>
+                        <param name="regionId" type="xsd:string" style="template" required="true">
+                            <doc>Region ID</doc>
+                        </param>
                         <method href="#getRegion"/>
                         <method href="#updateRegion"/>
                         <method href="#deleteRegion"/>
                     </resource>
                 </resource>
-                
+
                 <!-- SECRETS resource(s) -->
                 <!-- see also ADD_USER_SECRETQA above -->
                 <resource id="secretqa" path="secretqa">
-                    
+
                     <resource id="questions" path="questions">
                         <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                             <doc>A valid authentication token</doc>
                         </param>
-                        <method href="#getQuestions" />
+                        <method href="#getQuestions"/>
                         <method href="#createQuestion"/>
                         <resource id="question" path="{questionId}">
                             <param name="questionId" type="xsd:string" style="template" required="true"/>
@@ -246,14 +246,14 @@
                         </resource>
                     </resource>
                 </resource>
-                
+
                 <!-- SERVICE_APIS resource(s) -->
                 <resource id="service_apis" path="service-apis">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token</doc>
                     </param>
-                    <method href="#getServiceApis" />
-                    
+                    <method href="#getServiceApis"/>
+
                     <resource id="service_api_capabilities" path="{type}/{version}/capabilities">
                         <param name="type" type="xsd:string" style="template" required="true">
                             <doc>The service type e.g. compute, object-store, rax-dns. </doc>
@@ -261,237 +261,186 @@
                         <param name="version" type="xsd:string" style="template" required="true">
                             <doc>The service version e.g v1, v2.0, ...</doc>
                         </param>
-                        
-                        <method href="#getCapabilities" />
-                        <method href="#updateCapabilities" />
-                        <method href="#removeCapabilities" />
+
+                        <method href="#getCapabilities"/>
+                        <method href="#updateCapabilities"/>
+                        <method href="#removeCapabilities"/>
                     </resource>
                 </resource>
 
             </resource>
-
         </resource>
     </resources>
-    
+
     <!-- ======================================================================================= -->
     <!-- Methods -->
     <!-- ======================================================================================= -->
-    
+
     <method id="getUserSecretQAs" name="GET">
         <doc xml:lang="EN" title="Get User Secret Q&amp;A List">
-            <db:para role="shortdesc">
-                Get a list of secret questions and answers for a user.
-            </db:para>
-            <db:para>
-                The operation returns a list of questions and answers for a user.
-            </db:para>
+            <db:para role="shortdesc"> Get a list of secret questions and answers for a user. </db:para>
+            <db:para> The operation returns a list of questions and answers for a user. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:secretqa">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/SecretQAList.xml" />
+                    <xsdxt:code href="../common/samples/SecretQAList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/SecretQAList.json" />
+                    <xsdxt:code href="../common/samples/SecretQAList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="saveUserSecretQA" name="POST">
         <doc xml:lang="EN" title="Create a Secret Q&amp;A">
-            <db:para role="shortdesc">
-                Create a secret question and answer for a user.
-            </db:para>
-            <db:para>
-                Clients must specify the question ID, question, and answer in the request body.
-            </db:para>
+            <db:para role="shortdesc"> Create a secret question and answer for a user. </db:para>
+            <db:para> Clients must specify the question ID, question, and answer in the request body. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:secretqa" >
+            <representation mediaType="application/xml" element="RAX-AUTH:secretqa">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/SecretQAForSave.xml" />
+                    <xsdxt:code href="../common/samples/SecretQAForSave.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/SecretQAForSave.json" />
+                    <xsdxt:code href="../common/samples/SecretQAForSave.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="200" />
-        <response status="409" >
+        <response status="200"/>
+        <response status="409">
             <representation mediaType="application/xml" element="identity:identityFault"/>
             <representation mediaType="application/json"/>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
-     <method id="resetUserAPIKeyCredentials" name="POST">
+        </response> &commonFaults; &postPutFaults; </method>
+
+    <method id="resetUserAPIKeyCredentials" name="POST">
         <doc xml:lang="EN" title="Reset User APIKey">
-            <db:para role="shortdesc">
-                Reset a user's API Key
-            </db:para>
+            <db:para role="shortdesc"> Reset a user's API Key </db:para>
             <!--<para xmlns="http://docbook.org/ns/docbook">-->
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                We recommend that you routinely reset passwords and API keys. This API key reset call 
-                will return the new API key for the user account. Unlike updating the password, the 
-                API key reset does not revoke existing tokens. The 
-                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-external/content/DELETE_revokeToken_v2.0_tokens__tokenId__.html">
-                "Revoke Token"</a> call can be used to revoke a token.
-            </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> We recommend that you routinely reset passwords and API keys. This API
+                key reset call will return the new API key for the user account. Unlike updating the password, the API key
+                reset does not revoke existing tokens. The <a
+                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-external/content/DELETE_revokeToken_v2.0_tokens__tokenId__.html"
+                    > "Revoke Token"</a> call can be used to revoke a token. </p>
             <!--</para>-->
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ResetAPIKey.xml" />
+                    <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ResetAPIKey.json" />
+                    <xsdxt:code href="../common/samples/ResetAPIKey.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="impersonateUser" name="POST">
         <doc xml:lang="EN" title="Impersonate User">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Impersonate a specific user.
-            </p>
-            <para xmlns="http://docbook.org/ns/docbook">
-                To impersonate a user, you must first authenticate as yourself. 
-                The response to this authentication request will supply you with a current Racker token; you must already hold a service token. 
-                After you are authenticated and holding the necessary privileges,
-                you can issue this impersonation call with your Racker token, identifying the 
-                <code>username</code> you wish to impersonate.
-            </para>
-            <para xmlns="http://docbook.org/ns/docbook">
-                You can specify the number of seconds you want the impersonation to remain valid. 
-                For example, <code>&lt;expire-in-seconds&gt;10800&lt;/expire-in-seconds&gt;</code> 
-                asks for 10,800 seconds (180 minutes, or 3 hours) of impersonation.
-                Whether or not you requested a specific expiration time, your impersonation period will be limited.
-                The response to your impersonation request will include the time at which the impersonation becomes invalid.
-            </para>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Impersonate a specific user. </p>
+            <para xmlns="http://docbook.org/ns/docbook"> To impersonate a user, you must first authenticate as yourself. The
+                response to this authentication request will supply you with a current Racker token; you must already hold a
+                service token. After you are authenticated and holding the necessary privileges, you can issue this
+                impersonation call with your Racker token, identifying the <code>username</code> you wish to impersonate. </para>
+            <para xmlns="http://docbook.org/ns/docbook"> You can specify the number of seconds you want the impersonation to
+                remain valid. For example, <code>&lt;expire-in-seconds&gt;10800&lt;/expire-in-seconds&gt;</code> asks for
+                10,800 seconds (180 minutes, or 3 hours) of impersonation. Whether or not you requested a specific expiration
+                time, your impersonation period will be limited. The response to your impersonation request will include the
+                time at which the impersonation becomes invalid. </para>
             <itemizedlist xmlns="http://docbook.org/ns/docbook">
                 <listitem>
-                    <para>
-                        In an impersonation <emphasis>request</emphasis>, express your request for time as a number of seconds.
-                    </para>
+                    <para> In an impersonation <emphasis>request</emphasis>, express your request for time as a number of
+                        seconds. </para>
                 </listitem>
                 <listitem>
-                    <para>
-                        In an impersonation <emphasis>response</emphasis>, the expiration time granted to you is expressed as a timestamp.
-                    </para>
+                    <para> In an impersonation <emphasis>response</emphasis>, the expiration time granted to you is expressed
+                        as a timestamp. </para>
                 </listitem>
             </itemizedlist>
-            <para xmlns="http://docbook.org/ns/docbook">
-                A successful impersonation request returns a token and an expiration time for that token.
-                You can impersonate <code>username</code> by supplying that token in other requests, until the token expires.
-            </para>
+            <para xmlns="http://docbook.org/ns/docbook"> A successful impersonation request returns a token and an expiration
+                time for that token. You can impersonate <code>username</code> by supplying that token in other requests,
+                until the token expires. </para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:impersonation" >
+            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ImpersonationRequest.xml" />
+                    <xsdxt:code href="../common/samples/ImpersonationRequest.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ImpersonationRequest.json" />
+                    <xsdxt:code href="../common/samples/ImpersonationRequest.json"/>
                 </doc>
             </representation>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:access">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ImpersonationResponse.xml" />
+                    <xsdxt:code href="../common/samples/ImpersonationResponse.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ImpersonationResponse.json" />
+                    <xsdxt:code href="../common/samples/ImpersonationResponse.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>   
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="getDomain" name="GET">
         <doc xml:lang="EN" title="Get a Domain">
-            <db:para role="shortdesc">
-                Get a domain.
-            </db:para>
+            <db:para role="shortdesc"> Get a domain. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domain">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Domain.xml" />
+                    <xsdxt:code href="../common/samples/Domain.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Domain.json" />
+                    <xsdxt:code href="../common/samples/Domain.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="updateDomain" name="PUT">
         <doc xml:lang="EN" title="Update a Domain">
-            <db:para role="shortdesc">
-                Update a domain.
-            </db:para>
+            <db:para role="shortdesc"> Update a domain. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:domain" >
+            <representation mediaType="application/xml" element="RAX-AUTH:domain">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Domain.xml" />
+                    <xsdxt:code href="../common/samples/Domain.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Domain.json" />
+                    <xsdxt:code href="../common/samples/Domain.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="createDomain" name="POST">
         <doc xml:lang="EN" title="Create a Domain">
-            <db:para role="shortdesc">
-                Create a domain.
-            </db:para>
-            <db:para>
-                Clients must specify the domain ID in the request body.
-            </db:para>
+            <db:para role="shortdesc"> Create a domain. </db:para>
+            <db:para> Clients must specify the domain ID in the request body. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:domain" >
+            <representation mediaType="application/xml" element="RAX-AUTH:domain">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Domain.xml" />
+                    <xsdxt:code href="../common/samples/Domain.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Domain.json" />
+                    <xsdxt:code href="../common/samples/Domain.json"/>
                 </doc>
             </representation>
         </request>
@@ -500,391 +449,282 @@
                 <doc>Location of the URI of the newly-created domain</doc>
             </param>
         </response>
-        <response status="409" >
+        <response status="409">
             <representation mediaType="application/xml" element="identity:identityFault"/>
             <representation mediaType="application/json"/>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; </method>
+
     <method id="deleteDomain" name="DELETE">
         <doc xml:lang="EN" title="Delete a Domain">
-            <db:para role="shortdesc">
-                Delete a domain.
-            </db:para>
-            <db:para>
-                This operation fails unless no entities such as users and tenants exist in this domain. Only an empty domain can be deleted.
-            </db:para>
+            <db:para role="shortdesc"> Delete a domain. </db:para>
+            <db:para> This operation fails unless no entities such as users and tenants exist in this domain. Only an empty
+                domain can be deleted. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <method id="getDomainUsers" name="GET">
         <doc xml:lang="EN" title="Get Users in Domain">
-            <db:para role="shortdesc">
-                Get users in a domain.
-            </db:para>
+            <db:para role="shortdesc"> Get users in a domain. </db:para>
         </doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
-                <doc>
-                    Allows us to filter enabled or un-enabled users. Valid values are "true" and "false".
-                </doc>
+                <doc> Allows us to filter enabled or un-enabled users. Valid values are "true" and "false". </doc>
             </param>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserList.xml" />
+                    <xsdxt:code href="../common/samples/UserList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserList.json" />
+                    <xsdxt:code href="../common/samples/UserList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="addUserToDomain" name="PUT">
         <doc xml:lang="EN" title="Add User to Domain">
-            <db:para role="shortdesc">
-                Add a user to a domain.
-            </db:para>
-            <db:para>
-                A user can exist in only one domain at a time. When you add a user to a domain, the user is automatically removed
-                from any prior domain.
-            </db:para>
+            <db:para role="shortdesc"> Add a user to a domain. </db:para>
+            <db:para> A user can exist in only one domain at a time. When you add a user to a domain, the user is
+                automatically removed from any prior domain. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="getDomainTenants" name="GET">
         <doc xml:lang="EN" title="Get Tenants in Domain">
-            <db:para role="shortdesc">
-                Get tenants in a domain.
-            </db:para>
-            <db:para>
-                Tenants can be used to create logical organization within a domain.
-                For example, 
-                an entertainment business might use two tenants to separately identify resources
-                related to two kinds of activity: game downloads and movie downloads.
-            </db:para>
+            <db:para role="shortdesc"> Get tenants in a domain. </db:para>
+            <db:para> Tenants can be used to create logical organization within a domain. For example, an entertainment
+                business might use two tenants to separately identify resources related to two kinds of activity: game
+                downloads and movie downloads. </db:para>
         </doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
-                <doc>
-                    Allows us to filter enabled or un-enabled tenants. Valid values are "true" and "false".
-                </doc>
+                <doc> Allows us to filter enabled or un-enabled tenants. Valid values are "true" and "false". </doc>
             </param>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="identity:tenants">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/TenantList.xml" />
+                    <xsdxt:code href="../common/samples/TenantList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/TenantList.json" />
+                    <xsdxt:code href="../common/samples/TenantList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="addTenantToDomain" name="PUT">
         <doc xml:lang="EN" title="Add Tenant to Domain">
-            <db:para role="shortdesc">
-                Add a tenant to a domain.
-            </db:para>
-            <db:para>
-                A tenant can only exist in one domain at a time. When you add a tenant to a domain, the tenant is automatically removed
-                from any prior domain.
-            </db:para>
+            <db:para role="shortdesc"> Add a tenant to a domain. </db:para>
+            <db:para> A tenant can only exist in one domain at a time. When you add a tenant to a domain, the tenant is
+                automatically removed from any prior domain. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="removeTenantFromDomain" name="DELETE">
         <doc xml:lang="EN" title="Remove Tenant from Domain">
-            <db:para role="shortdesc">
-                Remove a tenant from a domain.
-            </db:para>
+            <db:para role="shortdesc"> Remove a tenant from a domain. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="setDefaultRegionServices" name="PUT">
         <doc xml:lang="EN" title="Set Default Region Services">
-            <db:para role="shortdesc">
-                Sets the list of services that restrict the default regions their users can set.
-            </db:para>
-            <para xmlns="http://docbook.org/ns/docbook">
-                Users can modify their own default regions, but only within limits. 
-                Those limits are imposed by the services in the user's service catalog. 
-                Each service specifies the default region for its users. 
-                For example, if the <code>openstackNova</code> service sets its default region to <code>ORD</code>, then 
-                any user whose service catalog includes the <code>openstackNova</code> service can only set their default
-                region to <code>ORD</code>.
-            </para>
+            <db:para role="shortdesc"> Sets the list of services that restrict the default regions their users can set. </db:para>
+            <para xmlns="http://docbook.org/ns/docbook"> Users can modify their own default regions, but only within limits.
+                Those limits are imposed by the services in the user's service catalog. Each service specifies the default
+                region for its users. For example, if the <code>openstackNova</code> service sets its default region to
+                    <code>ORD</code>, then any user whose service catalog includes the <code>openstackNova</code> service can
+                only set their default region to <code>ORD</code>. </para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:impersonation" >
+            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DefaultRegionServices.xml" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DefaultRegionServices.json" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="getDefaultRegionServices" name="GET">
         <doc xml:lang="EN" title="Get Default Region Services">
-            <db:para role="shortdesc">
-                Gets the list of services that restrict the default regions their users can set.
+            <db:para role="shortdesc"> Gets the list of services that restrict the default regions their users can set.
             </db:para>
         </doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:impersonation" >
+            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DefaultRegionServices.xml" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DefaultRegionServices.json" />
+                    <xsdxt:code href="../common/samples/DefaultRegionServices.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getAccessibleDomainsForUser" name="GET">
         <doc xml:lang="EN" title="Get Accessible Domains">
-            <db:para role="shortdesc">
-                Gets a list of accessible domains.
-            </db:para>
-            <db:para>
-                The operation returns a list of domains to which the user has access. 
-                A user has access to a domains if the user has a role in a tenant that exists in the domain.
-            </db:para>
+            <db:para role="shortdesc"> Gets a list of accessible domains. </db:para>
+            <db:para> The operation returns a list of domains to which the user has access. A user has access to a domains if
+                the user has a role in a tenant that exists in the domain. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domains">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DomainList.xml" />
+                    <xsdxt:code href="../common/samples/DomainList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DomainList.json" />
+                    <xsdxt:code href="../common/samples/DomainList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getAccesibleDomainEndpointsForUser" name="GET">
         <doc xml:lang="EN" title="Get Accessible Domain Endpoints">
-            <db:para role="shortdesc">
-                Get endpoints for a user restricted by domain.
-            </db:para>
+            <db:para role="shortdesc"> Get endpoints for a user restricted by domain. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="identity:endpoints">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointList.xml" />
+                    <xsdxt:code href="../common/samples/EndpointList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointList.json" />
+                    <xsdxt:code href="../common/samples/EndpointList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-     
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getDomains" name="GET">
         <doc xml:lang="EN" title="Get Domains">
-            <db:para role="shortdesc">
-                Gets a list of domains.
-            </db:para>
-            <db:para>
-                The operation returns a list of domains for which the supplied token provides access. Tokens have access to domains by the token having access to a tenant that exists in the domain.
-                If the token belongs to an admin user, a list of all domains may be returned.
-            </db:para>
+            <db:para role="shortdesc"> Gets a list of domains. </db:para>
+            <db:para> The operation returns a list of domains for which the supplied token provides access. Tokens have
+                access to domains by the token having access to a tenant that exists in the domain. If the token belongs to
+                an admin user, a list of all domains may be returned. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:domains">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DomainList.xml" />
+                    <xsdxt:code href="../common/samples/DomainList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DomainList.json" />
+                    <xsdxt:code href="../common/samples/DomainList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getDomainEndpoints" name="GET">
         <doc xml:lang="EN" title="Get Endpoints for Domain">
-            <db:para role="shortdesc">
-                Get endpoints restricted to a domain.
-            </db:para>
+            <db:para role="shortdesc"> Get endpoints restricted to a domain. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="identity:endpoints">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointList.xml" />
+                    <xsdxt:code href="../common/samples/EndpointList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointList.json" />
+                    <xsdxt:code href="../common/samples/EndpointList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="listUsersWithRole" name="GET">
         <doc xml:lang="EN" title="Get Users with Role">
-            <db:para role="shortdesc">
-                Get users with role.
-            </db:para>
+            <db:para role="shortdesc"> Get users with role. </db:para>
         </doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
-                <doc>
-                    Allows us to filter enabled or un-enabled users. Values are "true" or "false".
-                </doc>
+                <doc> Allows us to filter enabled or un-enabled users. Values are "true" or "false". </doc>
             </param>
             <param name="marker" style="query" type="xsd:string">
-                <doc>
-                    Allows us to page through list of users.
-                </doc>
+                <doc> Allows us to page through list of users. </doc>
             </param>
             <param name="limit" style="query" type="xsd:int">
-                <doc>
-                    Allows us to set size of page when paging through list of users.
-                </doc>
+                <doc> Allows us to set size of page when paging through list of users. </doc>
             </param>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserList.xml" />
+                    <xsdxt:code href="../common/samples/UserList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserList.json" />
+                    <xsdxt:code href="../common/samples/UserList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getUserAdmin" name="GET">
         <doc xml:lang="EN" title="Get User Admin">
-            <db:para role="shortdesc">
-                Get user admin.
-            </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a single user.
-                The request allows users within an account who are 
-                user-admins (identity: user-admin) or account users (identity: default) 
-                to locate the administrator/point of contact of their account if they 
-                have questions or need assistance regarding user and/or role management. This request 
-                provides identifying information about the administrator including domain name, 
-                domain ID, email address, status, user ID and user name.</p>
+            <db:para role="shortdesc"> Get user admin. </db:para>
+            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a single user. The request allows users within an
+                account who are user-admins (identity: user-admin) or account users (identity: default) to locate the
+                administrator/point of contact of their account if they have questions or need assistance regarding user
+                and/or role management. This request provides identifying information about the administrator including
+                domain name, domain ID, email address, status, user ID and user name.</p>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserAdminList.xml" />
+                    <xsdxt:code href="../common/samples/UserAdminList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserAdminList.json" />
+                    <xsdxt:code href="../common/samples/UserAdminList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getPolicies" name="GET">
         <doc xml:lang="EN" title="Get All Policies">
-            <db:para role="shortdesc">
-                Get all Policies.
-            </db:para>
+            <db:para role="shortdesc"> Get all Policies. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:policies">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/PolicyList.xml" />
+                    <xsdxt:code href="../common/samples/PolicyList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/PolicyList.json" />
+                    <xsdxt:code href="../common/samples/PolicyList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="createPolicy" name="POST">
         <doc xml:lang="EN" title="Create a Policy">
-            <db:para role="shortdesc">
-                Create a policy.
-            </db:para>
+            <db:para role="shortdesc"> Create a policy. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:policy" >
+            <representation mediaType="application/xml" element="RAX-AUTH:policy">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UpdatePolicy.xml" />
+                    <xsdxt:code href="../common/samples/UpdatePolicy.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UpdatePolicy.json" />
+                    <xsdxt:code href="../common/samples/UpdatePolicy.json"/>
                 </doc>
             </representation>
         </request>
@@ -892,342 +732,250 @@
             <param name="Location" style="header" type="xsd:string" required="true">
                 <doc>Location of the URI of the newly-created policy</doc>
             </param>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; </method>
+
     <method id="getPolicy" name="GET">
         <doc xml:lang="EN" title="Get a Policy">
-            <db:para role="shortdesc">
-                Gets a policy.
-            </db:para>
+            <db:para role="shortdesc"> Gets a policy. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:policy">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Policy.xml" />
+                    <xsdxt:code href="../common/samples/Policy.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Policy.json" />
+                    <xsdxt:code href="../common/samples/Policy.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="updatePolicy" name="PUT">
         <doc xml:lang="EN" title="Update a Policy">
-            <db:para role="shortdesc">
-                Update a Policy.
-            </db:para>
+            <db:para role="shortdesc"> Update a Policy. </db:para>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:policy">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UpdatePolicy.xml" />
+                    <xsdxt:code href="../common/samples/UpdatePolicy.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UpdatePolicy.json" />
+                    <xsdxt:code href="../common/samples/UpdatePolicy.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <method id="deletePolicy" name="DELETE">
         <doc xml:lang="EN" title="Delete a Policy">
-            <db:para role="shortdesc">
-                Delete a policy.
-            </db:para>
-            <db:para>
-                A policy can only be deleted if it is not tied to any entity.
-            </db:para>
+            <db:para role="shortdesc"> Delete a policy. </db:para>
+            <db:para> A policy can only be deleted if it is not tied to any entity. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="getPolicyBlob" name="GET">
         <doc xml:lang="EN" title="Get Detailed Policy Content">
-            <db:para role="shortdesc">
-                Gets a policy content.
-            </db:para>
-            <db:para>
-                The representation of the policy is different from the author's perspective and the policy enforcer's perspective.
-                This API is intended for policy enforcers; it gives clear, fully detailed, non-verbose descriptions of the policy.
-            </db:para>
+            <db:para role="shortdesc"> Gets a policy content. </db:para>
+            <db:para> The representation of the policy is different from the author's perspective and the policy enforcer's
+                perspective. This API is intended for policy enforcers; it gives clear, fully detailed, non-verbose
+                descriptions of the policy. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="xsd:string">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/PolicyBlob.xml" />
+                    <xsdxt:code href="../common/samples/PolicyBlob.xml"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getEndpointTemplatePolicies" name="GET">
         <doc xml:lang="EN" title="Get Policies">
-            <db:para role="shortdesc">
-                Get all policies for endpoint template.
-            </db:para>
+            <db:para role="shortdesc"> Get all policies for endpoint template. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:policies">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/PolicyList.xml" />
+                    <xsdxt:code href="../common/samples/PolicyList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/PolicyList.json" />
+                    <xsdxt:code href="../common/samples/PolicyList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="updateEndpointTemplatePolicies" name="PUT">
         <doc xml:lang="EN" title="Update Policies">
-            <db:para role="shortdesc">
-                Update all policies for endpoint template
-            </db:para>
-             <db:para>
-                This allows clients to update all the policies for an endpoint template at once.
-            </db:para>
+            <db:para role="shortdesc"> Update all policies for endpoint template </db:para>
+            <db:para> This allows clients to update all the policies for an endpoint template at once. </db:para>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:policies">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UpdatePolicyList.xml" />
+                    <xsdxt:code href="../common/samples/UpdatePolicyList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UpdatePolicyList.json" />
+                    <xsdxt:code href="../common/samples/UpdatePolicyList.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <method id="addPolicyToEndpointTemplate" name="PUT">
         <doc xml:lang="EN" title="Add Policy">
-            <db:para role="shortdesc">
-                Add a Policy to an endpoint template.
-            </db:para>
+            <db:para role="shortdesc"> Add a Policy to an endpoint template. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="removePolicyFromEndpointTemplate" name="DELETE">
         <doc xml:lang="EN" title="Remove Policy">
-            <db:para role="shortdesc">
-                Remove a policy from an endpoint template.
-            </db:para>
+            <db:para role="shortdesc"> Remove a policy from an endpoint template. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="getServiceApis" name="GET">
         <doc xml:lang="EN" title="Get Service APIs">
-            <db:para role="shortdesc">
-                Gets a list of service APIs.
-            </db:para>
+            <db:para role="shortdesc"> Gets a list of service APIs. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:serviceApis">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ServiceApiList.xml" />
+                    <xsdxt:code href="../common/samples/ServiceApiList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/ServiceApiList.json" />
+                    <xsdxt:code href="../common/samples/ServiceApiList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getCapabilities" name="GET">
         <doc xml:lang="EN" title="Get Capabilities">
-            <db:para role="shortdesc">
-                Get the capabilities for an endpoint template.
-            </db:para>
+            <db:para role="shortdesc"> Get the capabilities for an endpoint template. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/CapabilityList.xml" />
+                    <xsdxt:code href="../common/samples/CapabilityList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/CapabilityList.json" />
+                    <xsdxt:code href="../common/samples/CapabilityList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="updateCapabilities" name="PUT">
         <doc xml:lang="EN" title="Update Capabilities">
-            <db:para role="shortdesc">
-                Update the capabilities for a Service API.
-            </db:para>
-            <db:para>
-                Any capabilities that previously existed for this endpoint template will be overridden. 
-                There will be future support to update capabilities by specifying
-                a WADL as the payload. A WADL describes all the capabilities that can exist for a service.
-            </db:para>
+            <db:para role="shortdesc"> Update the capabilities for a Service API. </db:para>
+            <db:para> Any capabilities that previously existed for this endpoint template will be overridden. There will be
+                future support to update capabilities by specifying a WADL as the payload. A WADL describes all the
+                capabilities that can exist for a service. </db:para>
         </doc>
         <!-- 
           in https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl,
           this says <request status="200"> but how does that work? try again as <request>
          -->
-            <request>
+        <request>
             <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/CapabilityList.xml" />
+                    <xsdxt:code href="../common/samples/CapabilityList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/CapabilityList.json" />
+                    <xsdxt:code href="../common/samples/CapabilityList.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="removeCapabilities" name="DELETE">
         <doc xml:lang="EN" title="Remove Capabilities">
-            <db:para role="shortdesc">
-                Remove capabilities from an endpoint template.
-            </db:para>
+            <db:para role="shortdesc"> Remove capabilities from an endpoint template. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-     
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="getRegions" name="GET">
         <doc xml:lang="EN" title="Get Regions">
-            <db:para role="shortdesc">
-                Gets a list of regions.
-            </db:para>
-            <db:para>
-                The operation returns a list of regions.
-            </db:para>
+            <db:para role="shortdesc"> Gets a list of regions. </db:para>
+            <db:para> The operation returns a list of regions. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:regions">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/RegionList.xml" />
+                    <xsdxt:code href="../common/samples/RegionList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/RegionList.json" />
+                    <xsdxt:code href="../common/samples/RegionList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getRegion" name="GET">
         <doc xml:lang="EN" title="Get a Region">
-            <db:para role="shortdesc">
-                Gets a region.
-            </db:para>
+            <db:para role="shortdesc"> Gets a region. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:region">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Region.xml" />
+                    <xsdxt:code href="../common/samples/Region.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Region.json" />
+                    <xsdxt:code href="../common/samples/Region.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="updateRegion" name="PUT">
         <doc xml:lang="EN" title="Update a Region">
-            <db:para role="shortdesc">
-                Updates a region.
-            </db:para>
+            <db:para role="shortdesc"> Updates a region. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:region" >
+            <representation mediaType="application/xml" element="RAX-AUTH:region">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Region.xml" />
+                    <xsdxt:code href="../common/samples/Region.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Region.json" />
+                    <xsdxt:code href="../common/samples/Region.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="createRegion" name="POST">
         <doc xml:lang="EN" title="Create a Region">
-            <db:para role="shortdesc">
-                Creates a region.
-            </db:para>
-            <db:para>
-                Clients must specify the region name in the request body.
-            </db:para>
+            <db:para role="shortdesc"> Creates a region. </db:para>
+            <db:para> Clients must specify the region name in the request body. </db:para>
+            <db:para> Clients must specify whether or not the region is default in the request body. When a user is created,
+                they are assigned the default region based on which region is set as “isDefault”:true. This is used to assist
+                Next Gen Compute capacity by suggesting to new users that they provision where we want them to. The user can
+                change their default region through the update user API call, but they are restricted to changing it only to
+                one of their regions listed in the service catalog for the CloudServersOpenStack service. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:region" >
+            <representation mediaType="application/xml" element="RAX-AUTH:region">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Region.xml" />
+                    <xsdxt:code href="../common/samples/Region.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Region.json" />
+                    <xsdxt:code href="../common/samples/Region.json"/>
                 </doc>
             </representation>
         </request>
@@ -1236,118 +984,86 @@
                 <doc>Location of the URI of the newly created region</doc>
             </param>
         </response>
-        <response status="409" >
+        <response status="409">
             <representation mediaType="application/xml" element="identity:identityFault"/>
             <representation mediaType="application/json"/>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; </method>
+
     <method id="deleteRegion" name="DELETE">
         <doc xml:lang="EN" title="Delete a Region">
-            <db:para role="shortdesc">
-                Deletes a region.
-            </db:para>
-            <db:para>
-                This request will only succeed if the region default is set to false. The default value must be
-                false before this operation will be allowed.
-            </db:para>
+            <db:para role="shortdesc"> Deletes a region. </db:para>
+            <db:para> This request will only succeed if the region default is set to false. The default value must be false
+                before this operation will be allowed. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <method id="getQuestions" name="GET">
         <doc xml:lang="EN" title="Get Questions">
-            <db:para role="shortdesc">
-                Get a list of questions.
-            </db:para>
-            <db:para>
-                The operation returns a list of questions.
-            </db:para>
+            <db:para role="shortdesc"> Get a list of questions. </db:para>
+            <db:para> The operation returns a list of questions. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:questions">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/QuestionList.xml" />
+                    <xsdxt:code href="../common/samples/QuestionList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/QuestionList.json" />
+                    <xsdxt:code href="../common/samples/QuestionList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="getQuestion" name="GET">
         <doc xml:lang="EN" title="Get a Question">
-            <db:para role="shortdesc">
-                Get a question.
-            </db:para>
+            <db:para role="shortdesc"> Get a question. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:question">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Question.xml" />
+                    <xsdxt:code href="../common/samples/Question.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Question.json" />
+                    <xsdxt:code href="../common/samples/Question.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="updateQuestion" name="PUT">
         <doc xml:lang="EN" title="Update a Question">
-            <db:para role="shortdesc">
-                Update a question.
-            </db:para>
+            <db:para role="shortdesc"> Update a question. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:question" >
+            <representation mediaType="application/xml" element="RAX-AUTH:question">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Question.xml" />
+                    <xsdxt:code href="../common/samples/Question.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/Question.json" />
+                    <xsdxt:code href="../common/samples/Question.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-        &postPutFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+
     <method id="createQuestion" name="POST">
         <doc xml:lang="EN" title="Create a Question">
-            <db:para role="shortdesc">
-                Create a question.
-            </db:para>
-            <db:para>
-                Clients must specify the question name in the request body.
-            </db:para>
+            <db:para role="shortdesc"> Create a question. </db:para>
+            <db:para> Clients must specify the question name in the request body. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:question" >
+            <representation mediaType="application/xml" element="RAX-AUTH:question">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/QuestionForCreate.xml" />
+                    <xsdxt:code href="../common/samples/QuestionForCreate.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/QuestionForCreate.json" />
+                    <xsdxt:code href="../common/samples/QuestionForCreate.json"/>
                 </doc>
             </representation>
         </request>
@@ -1356,119 +1072,91 @@
                 <doc>Location of the URI for the newly-created question</doc>
             </param>
         </response>
-        <response status="409" >
+        <response status="409">
             <representation mediaType="application/xml" element="identity:identityFault"/>
             <representation mediaType="application/json"/>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; </method>
+
     <method id="deleteQuestion" name="DELETE">
         <doc xml:lang="EN" title="Delete a Question">
-            <db:para role="shortdesc">
-                Delete a question.
-            </db:para>
-            <db:para>
-                This request will only succeed if the question is not assigned to any users. The question must be
-                removed from any users before this operation will be allowed.
-            </db:para>
+            <db:para role="shortdesc"> Delete a question. </db:para>
+            <db:para> This request will only succeed if the question is not assigned to any users. The question must be
+                removed from any users before this operation will be allowed. </db:para>
         </doc>
-        <response status="204" />
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        <response status="204"/> &commonFaults; &getFaults; </method>
+
     <method id="getEndpointTemplates" name="GET">
         <doc xml:lang="EN" title="Get Endpoint Templates">
-            <db:para role="shortdesc">
-                Get users in a domain.
-            </db:para>
+            <db:para role="shortdesc"> Get users in a domain. </db:para>
         </doc>
         <request>
             <param name="serviceId" style="query" type="xsd:string">
-                <doc>
-                    Allows us to filter by service id.
-                </doc>
+                <doc> Allows us to filter by service id. </doc>
             </param>
             <param name="type" style="query" type="xsd:string">
-                <doc>
-                    Allows us to filter by type. e.g compute, object-store, rax:dns
-                </doc>
+                <doc> Allows us to filter by type. e.g compute, object-store, rax:dns </doc>
             </param>
             <param name="version" style="query" type="xsd:string">
-                <doc>
-                    Allows us to filter by version.
-                </doc>
+                <doc> Allows us to filter by version. </doc>
             </param>
             <param name="region" style="query" type="xsd:string">
-                <doc>
-                    Allows us to filter by region.
-                </doc>
+                <doc> Allows us to filter by region. </doc>
             </param>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="identity:users">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointTemplateList.xml" />
+                    <xsdxt:code href="../common/samples/EndpointTemplateList.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointTemplateList.json" />
+                    <xsdxt:code href="../common/samples/EndpointTemplateList.json"/>
                 </doc>
             </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="authenticateAsRacker" name="POST">
         <doc xml:lang="EN" title="Authenticate as Racker">
-            <db:para role="shortdesc">
-                Authenticate as Racker.
-            </db:para>
+            <db:para role="shortdesc"> Authenticate as Racker. </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="identity:AuthenticationRequest" >
+            <representation mediaType="application/xml" element="identity:AuthenticationRequest">
                 <doc xml:lang="EN" title="Racker SSO Authentication Request: XML">
-                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml" />
+                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN" title="Racker SSO Authentication Request: JSON">
-                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.json" />
+                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.json"/>
                 </doc>
             </representation>
-            <representation mediaType="application/xml" element="identity:AuthenticationRequest" >
+            <representation mediaType="application/xml" element="identity:AuthenticationRequest">
                 <doc xml:lang="EN" title="Racker RSA Token Authentication Request: XML">
-                    <xsdxt:code href="../common/samples/RackerRSATokenAuthenticationRequest.xml" />
+                    <xsdxt:code href="../common/samples/RackerRSATokenAuthenticationRequest.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <doc xml:lang="EN" title="Racker RSA Token Authentication Request: JSON">
-                    <xsdxt:code href="../common/samples/RackerRSATokenAuthenticationRequest.json" />
+                    <xsdxt:code href="../common/samples/RackerRSATokenAuthenticationRequest.json"/>
                 </doc>
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:access" >
+            <representation mediaType="application/xml" element="identity:access">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/RackerAuthenticationResponse.xml" />
+                    <xsdxt:code href="../common/samples/RackerAuthenticationResponse.xml"/>
                 </doc>
             </representation>
-            <representation mediaType="application/json" >
-                <doc xml:lang="EN" >
-                    <xsdxt:code href="../common/samples/RackerAuthenticationResponse.json" />
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/RackerAuthenticationResponse.json"/>
                 </doc>
             </representation>
         </response>
-        <response status="409" >
+        <response status="409">
             <representation mediaType="application/xml" element="identity:identityFault"/>
             <representation mediaType="application/json"/>
-        </response>
-        &commonFaults;
-        &postPutFaults;
-    </method>
-    
+        </response> &commonFaults; &postPutFaults; </method>
+
 </application>

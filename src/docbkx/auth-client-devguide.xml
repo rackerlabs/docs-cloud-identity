@@ -29,7 +29,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-07-30</pubdate>
+		<pubdate>2013-08-05</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -45,6 +45,28 @@
 				Identity Service. </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-08-05</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Corrected update json user request and response (<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" />)
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Updated Update User to reflect default region (<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" />)
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								fixed broken link (<xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" />)
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2013-07-30</date>
 				<revdescription>

@@ -745,6 +745,31 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list regions -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#regions">
+				<wadl:method href="getRegions">
+				</wadl:method>
+			</wadl:resource>
+			<!-- create region -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#regions">
+				<wadl:method href="createRegion">
+				</wadl:method>
+			</wadl:resource>
+			<!-- get region -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#region">
+				<wadl:method href="getRegion">
+				</wadl:method>
+			</wadl:resource>
+			<!-- update region -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#region">
+				<wadl:method href="updateRegion">
+				</wadl:method>
+			</wadl:resource>
+			<!-- delete region -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#region">
+				<wadl:method href="deleteRegion">
+				</wadl:method>
+			</wadl:resource>
 			<!-- list default region for a service -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#default-region-services">
 				<wadl:method href="getDefaultRegionServices">
@@ -755,7 +780,7 @@
 				<wadl:method href="setDefaultRegionServices">
 				</wadl:method>
 			</wadl:resource>
-			</wadl:resources>
+		</wadl:resources>
 		</section>
 	
 	<!-- POLICIES -->
