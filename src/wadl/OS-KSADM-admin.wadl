@@ -715,6 +715,15 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml"> This call adds a newly created global role (with user-assigned Rackspace
                 capabilities), allowing the customer to tailor user roles to his or her business needs. </p>
         </doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">     
+            <note>
+                <para>
+                    Roles added by this call are by default visible to customers. If you would like the role to be service-managed 
+                    or visible only to services, please open a NEB ticket for Cloud Nebulous Operations using 
+                    <link xlink:href="https://jira.mosso.com">https://jira.mosso.com</link>
+                </para>
+            </note>   
+        </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="identity:role">
                 <doc xml:lang="EN">

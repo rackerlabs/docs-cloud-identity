@@ -31,7 +31,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-08-05</pubdate>
+		<pubdate>2013-08-09</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,6 +46,18 @@
 			</para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-08-09</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								Added visibility note to <xref linkend="POST_addRole_v2.0_OS-KSADM_roles_" xrefstyle="select: title" />.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2013-08-05</date>
 				<revdescription>
