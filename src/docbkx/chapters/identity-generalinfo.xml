@@ -1529,15 +1529,17 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			servers, to specific roles.
 		</para>
 		<para>
-			RBAC is available to all Open Cloud customers. 
+			RBAC is available to all Open Cloud customers and is an opt-in feature for our customers. It must be activated by 
+			the <link linkend="Account_Owner-dle808">Account Owner user</link> for the account by using the API, the Control 
+			Panel or by phone (customer support).
 		</para>
-		<note>
+		<warning>
 			<para>
-				RBAC is an opt-in feature for our customers. It must be activated by the 
-				<link linkend="Account_Owner-dle808">Account Owner user</link> for the account using the API, the control 
-				panel or by phone (customer support).
+				Customer may self-manage role administration via the Rackspace Cloud Control panel or API. When making privilege 
+				changes with Role-Based Access Control, there may be a delay before the implementation of changes, including 
+				self-managed changes.
 			</para>
-		</note>
+		</warning>
 		<section xml:id="RBAC_Roles-dle808">
 			<title>Description of Roles</title>
 			<para> 
@@ -1564,7 +1566,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<tbody>
 						<tr>
 							<td>Full Access</td>
-							<td>Can create, read, update, and delete assets for multiple products.
+							<td>Can create, read, update, and delete assets for multiple products, where access is granted.
 								Full Access given to current and future products.</td>
 							<td>admin</td>
 						</tr>
@@ -1576,12 +1578,13 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						</tr>
 						<tr>
 							<td>Product:admin</td>
-							<td>Can create, read, update, and delete assets for a given product.</td>
+							<td>Can create, read, update, and delete assets for a given product, where access is granted.</td>
 							<td>nova:admin</td>
 						</tr>
 						<tr>
 							<td>Product:creator</td>
-							<td>Can create, read, and update assets for a given product. Cannot delete assets.</td>
+							<td>Can create, read, and update assets for a given product, where access is granted. Cannot 
+								delete resources.</td>
 							<td>cloudFiles:creator</td>
 						</tr>
 						<tr>
