@@ -9,6 +9,7 @@
   <packaging>jar</packaging>
   <name>Cloud Identity v2.0 Docs</name>
   <build>
+    <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
 	<groupId>com.rackspace.cloud.api</groupId>
