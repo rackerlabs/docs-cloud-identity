@@ -1,6 +1,9 @@
 /target
 /.project
 
+# NetBeans user build actions
+nbactions.xml
+
 # Folder view configuration files                                                                                                                                                                                                                                             
 .DS_Store
 Desktop.ini
