@@ -1520,13 +1520,14 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</programlisting>
 		</example>
 	</section>
-	<section xml:id="Role_Based_Access_Control-d1e808" security="internal">
+	<section xml:id="Role_Based_Access_Control-d1e808">
 		<title>Role Based Access Control</title>
 		<para>
-			Role Based Access Control (RBAC) restricts service access to authorized  users. RBAC allows customers to specify 
-			which users have access to different actions  within their account based on roles defined by Rackspace. The 
-			customer assigns the permission to perform certain operations in their account, like adding or deleting 
-			servers, to specific roles.
+			Role Based Access Control (RBAC) restricts access to the capabilities of Rackspace Cloud services to authorized 
+			users only. RBAC enables Rackspace Cloud customers to specify which account users of their Cloud account have 
+			access to which product API service capabilities, based on roles defined by Rackspace. The permissions to perform 
+			certain operations in the product API – create, read, update, delete – are assigned to specific roles. The account 
+			owner user assigns these roles, either multiproduct (global) or custom (product-specific), to account users. 
 		</para>
 		<para>
 			RBAC is available to all Open Cloud customers and is an opt-in feature for our customers. It must be activated by 
@@ -1535,21 +1536,20 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</para>
 		<warning>
 			<para>
-				Customer may self-manage role administration via the Rackspace Cloud Control panel or API. When making privilege 
-				changes with Role-Based Access Control, there may be a delay before the implementation of changes, including 
-				self-managed changes.
+				The customer may self-manage role administration via the Rackspace Cloud Control panel or API. When making RBAC
+				privilege, there may be a delay before the implementation of changes, including self-managed changes.
 			</para>
 		</warning>
 		<section xml:id="RBAC_Roles-dle808">
 			<title>Description of Roles</title>
 			<para> 
 				"Role” describes the categories of users on an account. Each role receives different levels of access and 
-				action. By assigning roles to users and using RBAC, customers can allow multiple users to complete tasks 
-				more safely, and limit risk by ensuring that users do not have access or permissions beyond their training 
-				or level of control. Rackspace’s RBAC solution offers several roles subordinate to the 
-				<link linkend="Account_Owner-dle808">Account Owner user</link>: admin or observer (for both single product 
-				and cross-product scope), and creator  (for single product only).  In both single and cross-product  roles, 
-				the user will only have access to designated products.
+				action. By assigning roles to users and using RBAC, customers can allow multiple users to complete tasks more 
+				safely, and limit risk by ensuring that users do not have access or permissions beyond their training or level 
+				of control. Rackspace’s RBAC solution offers several roles subordinate to the 
+				<link linkend="Account_Owner-dle808">Account Owner</link>: admin or observer (for both custom and multiproduct 
+				scope), and creator  (for custom scope only).  In both custom and multiproduct roles, the user will only have
+				access to designated products.
 				<table
 					frame="void">
 					<caption>Rackspace RBAC Roles</caption>
@@ -1565,75 +1565,76 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					</thead>
 					<tbody>
 						<tr>
-							<td>Full Access</td>
-							<td>Can create, read, update, and delete assets for multiple products, where access is granted.
-								Full Access given to current and future products.</td>
+							<td>admin (full access)</td>
+							<td>This role provides Create, Read, Update, and Delete permissions in all products, where access 
+								is granted. Full access  is given to current and future products, as they become RBAC-enabled.</td>
 							<td>admin</td>
 						</tr>
 						<tr>
-							<td>Read-only Access</td>
-							<td>Can view given assets for multiple products, where access is granted. 
-								Read-only Access given to current and future products.</td>
+							<td>observer (read-only access)</td>
+							<td>This role provides Read permission in all products, where access is granted. 
+								Read-only access is given to current and future products, as they become RBAC-enabled.</td>
 							<td>observer</td>
 						</tr>
 						<tr>
-							<td>Product:admin</td>
-							<td>Can create, read, update, and delete assets for a given product, where access is granted.</td>
+							<td>product:admin</td>
+							<td>This role provides Create, Read, Update, and Delete permissions for a specified product, where 
+								access is granted.</td>
 							<td>nova:admin</td>
 						</tr>
 						<tr>
-							<td>Product:creator</td>
-							<td>Can create, read, and update assets for a given product, where access is granted. Cannot 
-								delete resources.</td>
+							<td>product:creator</td>
+							<td>This role provides Create, Read, and Update permissions for a specified product, where access 
+								is granted. The user cannot delete resources.</td>
 							<td>cloudFiles:creator</td>
 						</tr>
 						<tr>
-							<td>Product:observer</td>
-							<td>Can view given assets for a given product, where access is granted. Read-only role.</td>
+							<td>product:observer</td>
+							<td>This role provides Read permission for a specified product, where access is granted.</td>
 							<td>cdb:observer</td>
 						</tr>
 					</tbody>
 				</table>
 				<important>
-					<para xml:id="Account_Owner-dle808"> The Account Owner (one per account) is designated by the customer 
-						as the Primary contact. Only the Account Owner (identity:user-admin) can create an account user 
+					<para xml:id="Account_Owner-dle808"> The account owner (one per account) is designated by the customer 
+						as the Primary contact. Only the account owner (identity:user-admin) can create an account user 
 						(identity:default) for the purpose of assigning roles and granting privileges through RBAC. The 
-						Account Owner cannot hold any additional roles, as they already have full access to all capabilities
-						by default. </para>
+						account owner cannot hold any additional roles, as they already have full access to all capabilities.</para>
 				</important>
 			</para>
 		</section>
 		<section xml:id="RBAC_Role_Conflict-dle808">
-			<title>RBAC Global vs. Product Roles in the Control Panel</title>
-			<para> 
-				The API user may set global and product-specific roles that on the surface, appear to conflict. When this 
-				happens, the more permissive role wins.  For example, if a user has both global observer role and product-specific 
-				admin role, the product admin role overrides the global observer role for the specified product. All other 
-				products stay observer only.  The admin role is the more permissive one, providing more authority, so it takes
-				precedence.
-			</para>
+			<title>Resolving Conflicts Between RBAC Multiproduct (Global) vs. Custom (Product) Roles</title>
+			<para> The account owner can set roles for both multiproduct and custom (product-specific) scope, and it is important to
+				understand how any potential conflicts among these roles are resolved. When two roles appear to conflict, the
+				role that provides the more extensive permissions takes precedence. Therefore, admin roles take precedence
+				over observer roles, because admin roles provide more permissions. </para>
 			<para>
-				The following table shows two examples of the resolution of apparently conflicting user roles:
+				The following table shows two examples of how potential conflicts between user roles in the Control Panel are resolved:
 			</para>
 			<para>
 				<informaltable rules="all">		
 					<thead>
 						<tr align="center">
 							<td>Permission Configuration</td>
-							<td>Control Panel View of Permission</td>
-							<td>Can User Perform Product Admin Functions in Control Panel?</td>
+							<td>View of Permission in the Control Panel </td>
+							<td>Can the User Perform Product Admin Functions in the Control Panel?</td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Global Observer and Next-gen Servers Admin</td>
-							<td>Looks like user has only global observer role.</td>
-							<td>Yes, but only for Next-gen Servers.  Rest of products are observer only.</td>
+							<td>User is assigned the following roles: multiproduct <emphasis role="bold">observer</emphasis> and product <emphasis
+								role="bold">admin</emphasis></td>
+							<td>Appears that the user has only the multiproduct <emphasis role="bold">observer</emphasis> role</td>
+							<td>Yes, for specified product only. The user has the <emphasis role="bold">observer</emphasis> role for the rest of
+								the products.</td>
 						</tr>
 						<tr>
-							<td>Global Admin and Next-gen Servers Observer</td>
-							<td>Looks like user has only global admin role.</td>
-							<td>Yes, for all. The Next-gen Servers observer role is ignored.</td>
+							<td>User is assigned the following roles: multiproduct <emphasis role="bold">admin</emphasis> and product <emphasis
+								role="bold">observer</emphasis></td>
+							<td>Appears that the user has only the multiproduct <emphasis role="bold">admin</emphasis> role</td>
+							<td>Yes, for all of the products. The specified product <emphasis role="bold">observer</emphasis> role is
+								ignored.</td>
 						</tr>
 					</tbody>
 				</informaltable>
@@ -1648,23 +1649,28 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					</listitem>
 					<listitem>
 						<para><link
-							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listRoles_v2.0_OS-KSADM_roles_.html">List Roles</link></para>
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listRoles_v2.0_OS-KSADM_roles_.html">
+							List Roles</link></para>
 					</listitem>
 					<listitem>
 						<para><link
-							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getRole_v2.0_OS-KSADM_roles__roleId__.html">Get Role</link></para>
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getRole_v2.0_OS-KSADM_roles__roleId__.html">
+							Get Role</link></para>
 					</listitem>
 					<listitem>
 						<para><link
-							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">Add Global Roles to User</link></para>
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
+							Add Role to User</link></para>
 					</listitem>
 					<listitem>
 						<para><link
-							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">Delete Global Roles from User</link></para>
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
+							Delete Role from User</link></para>
 					</listitem>
 					<listitem>
 						<para><link
-							xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listUserGlobalRoles_v2.0_users__userId__roles_.html">List User Global Roles</link></para>
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listUserGlobalRoles_v2.0_users__userId__roles_.html">
+							List User Roles</link></para>
 					</listitem>
 				</itemizedlist>
 			</para>

@@ -2,8 +2,12 @@
 <users xmlns="http://docs.openstack.org/identity/api/v2.0">
     <user xmlns="http://docs.openstack.org/identity/api/v2.0"
           enabled="true" email="john.smith@example.org"
-          username="jqsmith" id="123456"/>
+          username="jqsmith" id="123456"
+          rax-auth:defaultRegion="SYD"
+          rax-auth:domainId="5830280"/>
     <user xmlns="http://docs.openstack.org/identity/api/v2.0"
           enabled="true" email="john.smith2@example.org"
-          username="jqsmith2" id="1234562"/>
+          username="jqsmith2" id="1234562"
+          rax-auth:defaultRegion="SYD"
+          rax-auth:domainId="5830280"/>
 </users>

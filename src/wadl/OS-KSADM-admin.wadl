@@ -451,21 +451,21 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
 
     <!--User Roles-->
     <method name="PUT" id="addUserRole">
-        <doc xml:lang="EN" title="Add Global Roles to User">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a specific global role to a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This call adds global role to a user. To add a role to a user, specify
+        <doc xml:lang="EN" title="Add Roles to User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Add a specific multiproduct or custom (product-specific) role to a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call adds a role to a user. To add a role to a user, specify
                 the role's ID and the user's ID in the request. If you know the role's name but not the role's ID, use
                 <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain detailed information about available roles. If you know the user's name but not the user's ID, use
                 <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. When the service-admin assigns a role to an
-                user-admin account (identity:user-admin), the role is propagated to users (identity:default). </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> See Global Role Categories table below to learn more about roles, who
+                account owner (identity:user-admin), the role is propagated to users (identity:default). </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> See Role Categories table below to learn more about roles, who
                 assigns them, and who uses them. </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <table rules="all">
-                        <caption>Global Role Categories</caption>
+                        <caption>Role Categories</caption>
                         <col width="10%"/>
                         <col width="30%"/>
                         <col width="15%"/>
@@ -474,7 +474,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         <col width="15%"/>
                         <thead>
                             <tr>
-                                <th>Global Role Category</th>
+                                <th>Role Category</th>
                                 <th>Description</th>
                                 <th>Assigned By</th>
                                 <th>Assigned To</th>
@@ -511,18 +511,18 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             </p>
         </doc>
         <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
-
+    
     <method name="DELETE" id="deleteUserRole">
-        <doc xml:lang="EN" title="Delete Global Role from User">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a specific global role from a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This call deletes a global role from a user. To delete a role from a
+        <doc xml:lang="EN" title="Delete Role from User">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a multiproduct or custom (product-specific) role from a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call deletes a role from a user. To delete a role from a
                 user, specify the role's ID and the user's ID in the request. If you know the role's name but not the role's
                 ID, use
                 <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain detailed information about available roles. If you know the user's name but not the user's ID, use
                 <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This allows the user-admin (identity:user-admin) to manage non-protected
+            <p xmlns="http://www.w3.org/1999/xhtml"> This allows the account owner (identity:user-admin) to manage non-protected
                 role assignment for users (identity:default), granting and revoking access at will. Some roles like
                 identity:rack_connect and identity:rax_managed cannot be managed by customers to prevent them from revoking
                 privileges unintentionally. </p>

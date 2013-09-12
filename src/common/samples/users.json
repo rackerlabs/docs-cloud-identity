@@ -3,13 +3,17 @@
             "id":"123456",
             "username":"jqsmith",
             "email":"john.smith@example.org",
-            "enabled":true
+            "enabled":true,
+            "RAX-AUTH:defaultRegion": "SYD",
+            "RAX-AUTH:domainId": "5830280"
         },
         {
             "id":"1234562",
             "username":"jqsmith2",
             "email":"john.smith2@example.org",
-            "enabled":true
+            "enabled":true,
+            "RAX-AUTH:defaultRegion": "SYD",
+            "RAX-AUTH:domainId": "5830280"
         }
     ],
     "users_links":[]

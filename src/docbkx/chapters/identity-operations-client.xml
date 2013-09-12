@@ -85,9 +85,10 @@
 				</wadl:method>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
-				<wadl:method href="getUserById">
-					
-				</wadl:method>
+				<wadl:method href="getUserById"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
+				<wadl:method href="getUserByEmail"/>
 			</wadl:resource>
 			<!-- add user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
@@ -175,6 +176,22 @@
 		<title>Roles</title>
 		<para>The operations described in this section allow clients to manage roles.</para>
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				<!-- list roles -->
+				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
+					<wadl:method href="listRoles"/>
+				</wadl:resource>
+				<!-- get a global role -->
+				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
+					<wadl:method href="getRole"/>
+				</wadl:resource>
+				<!-- add a global role to a user -->
+				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
+					<wadl:method href="addUserRole"/>
+				</wadl:resource>
+				<!-- delete a global role from a user -->
+				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
+					<wadl:method href="deleteUserRole"/>
+				</wadl:resource>
 				<!-- list global roles available to a user -->
 				<wadl:resource href="../../wadl/identity-admin.wadl#userRoles">
 					<wadl:method href="listUserGlobalRoles">

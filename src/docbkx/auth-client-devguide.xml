@@ -46,6 +46,46 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2013-09-12</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								RBAC: Changed account admin user to account owner.  Changed some occurrences of global to multi-product.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								RBAC: Exposed sections 3.11, 4.3.5, 4.3.6: 
+								(<xref linkend="Role_Based_Access_Control-d1e808" xrefstyle="select: title" />,
+								 <xref linkend="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__" xrefstyle="select: title" />, and 
+								 <xref linkend="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__" xrefstyle="select: title" />).
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Added domain id to: <xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" />
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Added domain id to: <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" />
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Added domain id to: <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Added <xref linkend="GET_getUserByEmail_v2.0_users_" xrefstyle="select: title" />
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2013-08-05</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
