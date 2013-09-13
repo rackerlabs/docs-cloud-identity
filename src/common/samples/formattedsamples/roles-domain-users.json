@@ -1,4 +1,5 @@
-"roles": [
+{
+ "roles": [
  {
  "description": "Admin Role.", 
  "id": "1", 
@@ -34,4 +35,6 @@
  "id": "2", 
  "name": "identity:default", 
  "serviceId": "bde1268ebabeeabb70a0e702a4626977c331d5c4"
- },
+ }
+ ]
+}
