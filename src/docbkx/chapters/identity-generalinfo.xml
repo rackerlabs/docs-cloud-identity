@@ -1648,29 +1648,34 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						<para><xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" /></para>
 					</listitem>
 					<listitem>
-						<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listRoles_v2.0_OS-KSADM_roles_.html">
-							List Roles</link></para>
+						<para><xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" /></para>
+<!--						<para><link
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_listRoles_v2.0_OS-KSADM_roles_.html">
+							List Roles</link></para>-->
 					</listitem>
 					<listitem>
-						<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getRole_v2.0_OS-KSADM_roles__roleId__.html">
-							Get Role</link></para>
+						<para><xref linkend="GET_getRole_v2.0_OS-KSADM_roles__roleId__" xrefstyle="select: title" /></para>
+						<!--<para><link
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getRole_v2.0_OS-KSADM_roles__roleId__.html">
+							Get Role</link></para>-->
 					</listitem>
 					<listitem>
-						<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
-							Add Role to User</link></para>
+						<para><xref linkend="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__" xrefstyle="select: title" /></para>
+						<!--<para><link
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
+							Add Role to User</link></para>-->
 					</listitem>
 					<listitem>
-						<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
-							Delete Role from User</link></para>
+						<para><xref linkend="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__" xrefstyle="select: title" /></para>
+						<!--<para><link
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
+							Delete Role from User</link></para>-->
 					</listitem>
 					<listitem>
-						<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listUserGlobalRoles_v2.0_users__userId__roles_.html">
-							List User Roles</link></para>
+						<para><xref linkend="GET_listUserGlobalRoles_v2.0_users__userId__roles_" xrefstyle="select: title" /></para>
+						<!--<para><link
+							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_listUserGlobalRoles_v2.0_users__userId__roles_.html">
+							List User Roles</link></para>-->
 					</listitem>
 				</itemizedlist>
 			</para>

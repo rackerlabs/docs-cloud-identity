@@ -31,7 +31,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-08-12</pubdate>
+		<pubdate>2013-09-13</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -47,7 +47,7 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2013-09-12</date>
+				<date>2013-09-13</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
