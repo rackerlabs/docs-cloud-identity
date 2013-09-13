@@ -82,6 +82,11 @@
 								Added <xref linkend="GET_getUserByEmail_v2.0_users_" xrefstyle="select: title" />
 							</para>
 						</listitem>
+						<listitem>
+							<para>
+								Fixed some erroneous examples.
+							</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
