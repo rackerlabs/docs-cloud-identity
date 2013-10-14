@@ -31,7 +31,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-09-13</pubdate>
+		<pubdate>2013-10-14</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -46,6 +46,14 @@
 			</para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2013-10-14</date>
+				<revdescription>
+					<para>
+						Added note that this call works for internal users only <xref linkend="GET_listRolesForUserOnTenant_v2.0_tenants__tenantId__users__userId__roles_" xrefstyle="select: title" />
+					</para>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2013-09-13</date>
 				<revdescription>

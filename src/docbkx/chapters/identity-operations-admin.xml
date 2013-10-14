@@ -319,8 +319,8 @@
 						<important>
 							<para>
 								Rackspace's implementation of the OpenStack Identity Service v2.0 
-								does not yet support <code>GET v2.0/tenants/{tenantId}/users/{userId}/roles</code>; 
-								a 501 (notImplemented) will be issued in response to this request.
+								supports <code>GET v2.0/tenants/{tenantId}/users/{userId}/roles</code>
+								for internal users only.  Customers will not have access to this call.
 							</para>
 						</important>
 					</wadl:doc>
