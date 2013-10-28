@@ -4,191 +4,151 @@
 <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
 <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
 ]>
-<glossary xmlns="http://docbook.org/ns/docbook"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-    xml:id="Glossary-000">
-        <title>Glossary</title>
-        <glossentry xml:id="APIkey-d1e02">
-            <glossterm><emphasis role="bold">API Key</emphasis></glossterm>
-            <glossdef>
-                <para> Your API Key is a unique alphanumeric
-                    identifier associated with your account. You can
-                    use your API key as an authentication credential,
-                    paired with your username, to generate an
-                    authentication <link linkend="Token-d1e13">token</link> which will be recognized by
-                    the <link linkend="Service-d1e09">services</link>
-                    in your <link linkend="Service_Catalog-d1e10">service catalog</link>. To find or generate your
-                    API key, login to the Rackspace
-                    Cloud Control Panel
-                    at
-                    <link
-                        xlink:href="http://mycloud.rackspace.com/"
-                        >http://mycloud.rackspace.com/</link>.</para>
-            </glossdef>    
-        </glossentry> 
-        <glossentry xml:id="Authentication-d1e01">
-            <glossterm><emphasis role="bold">Authentication</emphasis></glossterm>
-            <glossdef>
-                <para> 
-                    Authentication is the act or process of confirming the identity of a
-                    <link linkend="User-d1e15">user</link> or the truth of a claim. 
-                    The authentication service confirms that an incoming request is being made by the user
-                    who claims to be making the request.
-                    It does this by validating a set of claims that the user makes.
-                    These claims are initially in the form of a set of <link linkend="Credentials-d1e03">credentials</link>.
-                    After initial confirmation based on credentials, 
-                    the authentication service issues a <link linkend="Token-d1e13">token</link> to the user; 
-                    when making subsequent requests,
-                    the user can provide the token 
-                    as evidence that the user's identity has already been authenticated.
-                </para>
-            </glossdef>    
-        </glossentry>  
-        <glossentry xml:id="Credentials-d1e03">
-            <glossterm><emphasis role="bold">Credentials</emphasis></glossterm>
-            <glossdef>
-                <para> 
-                    Credentials are data that belong to and identify a specific <link linkend="User-d1e15">user</link>.
-                    Because credentials are assumed to be known by only one user, users who present valid
-                    credentials are assumed to have proven that they are who they say they are.
-                    Examples of credentials include:
-                    <itemizedlist spacing="compact">
-                        <listitem><para>a matching username and password</para></listitem>
-                        <listitem><para>a matching username and API key</para></listitem>
-                        <listitem><para>a unique token</para></listitem>
-                    </itemizedlist>
-                </para>
-            </glossdef>    
-        </glossentry> 
-        <glossentry xml:id="Endpoint-d1e05">
-            <glossterm><emphasis role="bold">Endpoint</emphasis></glossterm>
-            <glossdef>
-                <para> An endpoint is an entry point to an API. The
-                    endpoint is defined as a set of base URLs. API
-                    operations are defined relative to these URLs. An
-                    API may offer several regional endpoints for a
-                    single API. Rackspace provides two authentication
-                    endpoints: one for US-based accounts and one for
-                    UK-based accounts. To use v2.0 of the API for
-                    authentication, specify the API version as shown
-                    below: </para>
-                <itemizedlist spacing="compact">
+<glossary xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Glossary-000">
+    <title>Glossary</title>
+    <glossentry xml:id="APIkey-d1e02">
+        <glossterm><emphasis role="bold">API Key</emphasis></glossterm>
+        <glossdef>
+            <para> Your API Key is a unique alphanumeric identifier associated with your account. You can use your API key as
+                an authentication credential, paired with your username, to generate an authentication
+                <link linkend="Token-d1e13">token</link> which will be recognized by the
+                <link linkend="Service-d1e09">services</link> in your
+                <link linkend="Service_Catalog-d1e10">service catalog</link>. To find or generate your API key, login to the
+                Rackspace Cloud Control Panel at
+                <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com/</link>.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Authentication-d1e01">
+        <glossterm><emphasis role="bold">Authentication</emphasis></glossterm>
+        <glossdef>
+            <para> Authentication is the act or process of confirming the identity of a
+                <link linkend="User-d1e15">user</link> or the truth of a claim. The authentication service confirms that an
+                incoming request is being made by the user who claims to be making the request. It does this by validating a
+                set of claims that the user makes. These claims are initially in the form of a set of
+                <link linkend="Credentials-d1e03">credentials</link>. After initial confirmation based on credentials, the
+                authentication service issues a <link linkend="Token-d1e13">token</link> to the user; when making subsequent
+                requests, the user can provide the token as evidence that the user's identity has already been authenticated.
+            </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Credentials-d1e03">
+        <glossterm><emphasis role="bold">Credentials</emphasis></glossterm>
+        <glossdef>
+            <para> Credentials are data that belong to and identify a specific <link linkend="User-d1e15">user</link>.
+                Because credentials are assumed to be known by only one user, users who present valid credentials are assumed
+                to have proven that they are who they say they are. Examples of credentials include: <itemizedlist
+                    spacing="compact">
                     <listitem>
-                        <para> US-based accounts authenticate through<?sbr?>
+                        <para>a matching username and password</para>
+                    </listitem>
+                    <listitem>
+                        <para>a matching username and API key</para>
+                    </listitem>
+                    <listitem>
+                        <para>a unique token</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Endpoint-d1e05">
+        <glossterm><emphasis role="bold">Endpoint</emphasis></glossterm>
+        <glossdef>
+            <para> An endpoint is an entry point to an API. The endpoint is defined as a set of base URLs. API operations are
+                defined relative to these URLs. An API may offer several regional endpoints for a single API. Rackspace
+                provides two authentication endpoints: one for US-based accounts and one for UK-based accounts. To use v2.0
+                of the API for authentication, specify the API version as shown below: </para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para> US-based accounts authenticate through<?sbr?>
                         <link xlink:href="&ENDPOINT-US;">&ENDPOINT-US;</link>. </para>
-                    </listitem>
-                    <listitem>
-                        <para>
-                            UK-based accounts authenticate through <?sbr?>
-                            <link xlink:href="&ENDPOINT-UK;">&ENDPOINT-UK;</link>.
-                        </para>
-                    </listitem>
-                </itemizedlist>
-                <para>
-                    Your account may be based in either the US or the UK; this is not determined
-                    by your physical location but by the location of the Rackspace retail site which
-                    was used to create your account: 
-                </para>
-                <itemizedlist spacing="compact">
-                    <listitem>
-                        <para>
-                            If your account was
-                            created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
-                        </para>   
-                    </listitem>
-                    <listitem>
-                        <para>
-                            If your account was
-                            created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
-                        </para>
-                    </listitem>
-                </itemizedlist>
-                <para>
-                    If you are unsure how your account was created, use the Rackspace contact
-                    information at either site to ask for help.
-                </para>
-            </glossdef>    
-        </glossentry>
-        <glossentry xml:id="Role-d1e07">
-            <glossterm><emphasis role="bold">Role</emphasis></glossterm>
-            <glossdef>
-                <para> 
-                    A role is a personality that a <link linkend="User-d1e15">user</link> assumes when performing a specific set of operations.
-                    A role includes a set of rights and privileges. 
-                    A user assuming a role inherits
-                    the rights and privileges associated with the role.
-                    A <link linkend="Token-d1e13">token</link> that is issued to a user includes the list of roles the user 
-                    can assume. When a user calls a <link linkend="Service-d1e09">service</link>, that service determines how to interpret a user's roles.
-                    A role that grants access to a list of operations or resources within one service 
-                    may grant access to a completely different list when interpreted by a different service.
-                </para>
-            </glossdef>    
-        </glossentry> 
-        <glossentry xml:id="Service-d1e09">
-            <glossterm><emphasis role="bold">Service</emphasis></glossterm>
-            <glossdef>
-                <para> 
-                    A service provides
-                    one or more <link linkend="Endpoint-d1e05">endpoints</link> through which <link linkend="User-d1e15">users</link> 
-                    can access resources and perform
-                    operations.
-                    Examples of OpenStack services include Compute (Nova), Object Storage (Swift), and Image Service (Glance). 
-                </para>
-            </glossdef>    
-        </glossentry> 
-        <glossentry xml:id="Service_Catalog-d1e10">
-            <glossterm><emphasis role="bold">Service Catalog</emphasis></glossterm>
-            <glossdef>
-                <para> 
-                    Your service catalog is the list of services available to you, as returned along with your authentication 
-                    <link linkend="Token-d1e13">token</link> and an expiration date for that token.
-                    All the services in your service catalog should recognize your token as valid until it expires.
-                </para>
-                <para>
-                    The catalog listing for each service provides at least one endpoint URL for that service. 
-                    Other information, such as regions and versions and tenants, is provided if it's relevant to your access to this service.
-                </para>
-            </glossdef>    
-        </glossentry> 
-        <glossentry xml:id="Account-User-d1e20">
-            <glossterm><emphasis role="bold">Account User</emphasis></glossterm>
-            <glossdef>
-                <para> An account user, which holds the <code>identity:default</code> role, is a child of exactly one fully-privileged account 
-                    owner, which holds the <code>identity:user-admin</code>. An account owner can have many account users, which each share 
-                    the account owner's tenant information, group memberships, and endpoints. </para>
-            </glossdef>    
-        </glossentry>
-        <glossentry xml:id="Tenant-d1e11">
-            <glossterm><emphasis role="bold">Tenant</emphasis></glossterm>
-            <glossdef>
-                <para> 
-                    A tenant is a container used to group or isolate resources and/or identity
-                    objects. Depending on the service operator, a tenant may map to a customer,
-                    account, organization, or project.
-                </para>
-            </glossdef>    
-        </glossentry> 
-        <glossentry xml:id="Token-d1e13">
-            <glossterm><emphasis role="bold">Token</emphasis></glossterm>
-            <glossdef> 
-                <para>
-                    A token is an opaque string that represents an authorization to access cloud
-                    resources. Tokens may be revoked at any time and are valid for a finite duration. 
-                </para>
-            </glossdef>
-        </glossentry>
-        <glossentry xml:id="User-d1e15">
-            <glossterm><emphasis role="bold">User</emphasis></glossterm>
-            <glossdef>
-                <para> 
-                    A user is a digital representation of a person, system, or service who consumes cloud services.
-                    Users have credentials and may be assigned tokens; based on these credentials and tokens, 
-                    the authentication service validates that incoming requests are being made by the user
-                    who claims to be making the request, and that the user has the right to access the requested resources. 
-                    Users may be directly assigned to a particular tenant and
-                    behave as if they are contained within that tenant. 
-                </para>
-            </glossdef>    
-        </glossentry> 
-    </glossary>
+                </listitem>
+                <listitem>
+                    <para> UK-based accounts authenticate through <?sbr?>
+                        <link xlink:href="&ENDPOINT-UK;">&ENDPOINT-UK;</link>. </para>
+                </listitem>
+            </itemizedlist>
+            <para> Your account may be based in either the US or the UK; this is not determined by your physical location but
+                by the location of the Rackspace retail site which was used to create your account: </para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para> If your account was created via
+                        <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a
+                        US-based account. </para>
+                </listitem>
+                <listitem>
+                    <para> If your account was created via
+                        <link xlink:href="http://www.rackspace.co.uk">http://www.rackspace.co.uk</link>, it is a UK-based
+                        account. </para>
+                </listitem>
+            </itemizedlist>
+            <para> If you are unsure how your account was created, use the Rackspace contact information at either site to
+                ask for help. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Role-d1e07">
+        <glossterm><emphasis role="bold">Role</emphasis></glossterm>
+        <glossdef>
+            <para> A role is a personality that a <link linkend="User-d1e15">user</link> assumes when performing a specific
+                set of operations. A role includes a set of rights and privileges. A user assuming a role inherits the rights
+                and privileges associated with the role. A <link linkend="Token-d1e13">token</link> that is issued to a user
+                includes the list of roles the user can assume. When a user calls a
+                <link linkend="Service-d1e09">service</link>, that service determines how to interpret a user's roles. A role
+                that grants access to a list of operations or resources within one service may grant access to a completely
+                different list when interpreted by a different service. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Service-d1e09">
+        <glossterm><emphasis role="bold">Service</emphasis></glossterm>
+        <glossdef>
+            <para> A service provides one or more <link linkend="Endpoint-d1e05">endpoints</link> through which
+                <link linkend="User-d1e15">users</link> can access resources and perform operations. Examples of OpenStack
+                services include Compute (Nova), Object Storage (Swift), and Image Service (Glance). </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Service_Catalog-d1e10">
+        <glossterm><emphasis role="bold">Service Catalog</emphasis></glossterm>
+        <glossdef>
+            <para> Your service catalog is the list of services available to you, as returned along with your authentication
+                <link linkend="Token-d1e13">token</link> and an expiration date for that token. All the services in your
+                service catalog should recognize your token as valid until it expires. </para>
+            <para> The catalog listing for each service provides at least one endpoint URL for that service. Other
+                information, such as regions and versions and tenants, is provided if it's relevant to your access to this
+                service. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Account-User-d1e20">
+        <glossterm><emphasis role="bold">Account User</emphasis></glossterm>
+        <glossdef>
+            <para> An account user, which holds the <code>identity:default</code> role, is a child of exactly one
+                fully-privileged account owner, which holds the <code>identity:user-admin</code>. An account owner can have
+                many account users, which each share the account owner's tenant information, group memberships, and
+                endpoints. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Tenant-d1e11">
+        <glossterm><emphasis role="bold">Tenant</emphasis></glossterm>
+        <glossdef>
+            <para> A tenant is a container used to group or isolate resources and/or identity objects. Depending on the
+                service operator, a tenant may map to a customer, account, organization, or project. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="Token-d1e13">
+        <glossterm><emphasis role="bold">Token</emphasis></glossterm>
+        <glossdef>
+            <para> A token is an opaque string that represents an authorization to access cloud resources. Tokens may be
+                revoked at any time and are valid for a finite duration. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="User-d1e15">
+        <glossterm><emphasis role="bold">User</emphasis></glossterm>
+        <glossdef>
+            <para> A user is a digital representation of a person, system, or service who consumes cloud services. Users have
+                credentials and may be assigned tokens; based on these credentials and tokens, the authentication service
+                validates that incoming requests are being made by the user who claims to be making the request, and that the
+                user has the right to access the requested resources. Users may be directly assigned to a particular tenant
+                and behave as if they are contained within that tenant. </para>
+        </glossdef>
+    </glossentry>
+</glossary>
