@@ -46,14 +46,17 @@
                     account. <itemizedlist>
                         <listitem>
                             <para> The US-based WADL is
-                                <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl</link>.
+                                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth.wadl">
+                                    http://docs.rackspace.com/auth/api/v2.0/auth.wadl</link>.
                             </para>
                         </listitem>
                         <listitem>
                             <para> The US-based XSDs are
-                                <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api.xsd</link>
+                                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/common/xsd/api.xsd">
+                                    http://docs.rackspace.com/auth/api/v2.0/common/xsd/api.xsd</link>
                                 and
-                                <link xlink:href="http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd">http://docs.rackspacecloud.com/auth/api/v2.0/common/xsd/api-common.xsd</link>.
+                                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/common/xsd/api-common.xsd">
+                                    http://docs.rackspace.com/auth/api/v2.0/common/xsd/api-common.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -61,17 +64,21 @@
             </listitem>
             <listitem>
                 <para> If an account was created via
-                    <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account. <itemizedlist>
+                    <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account. 
+                    <itemizedlist>
                         <listitem>
                             <para> The UK-based WADL is
-                                <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl">http://docs.rackspacecloud.com/auth/api/uk/v2.0/auth.wadl</link>.
+                                <link xlink:href="http://docs.rackspace.com/auth/api/uk/v2.0/auth.wadl">
+                                    http://docs.rackspace.com/auth/api/uk/v2.0/auth.wadl</link>.
                             </para>
                         </listitem>
                         <listitem>
                             <para> The UK-based XSDs are
-                                <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>
+                                <link xlink:href="http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api.xsd">
+                                    http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>
                                 and
-                                <link xlink:href="http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api.xsd">http://docs.rackspacecloud.com/auth/api/uk/v2.0/common/xsd/api-common.xsd</link>.
+                                <link xlink:href="http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api.xsd">
+                                    http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api-common.xsd</link>.
                             </para>
                         </listitem>
                     </itemizedlist>
