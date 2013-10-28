@@ -88,8 +88,8 @@
 			<para> Some of the functionality described in this section is provided by the <code>OS-KSADM</code>,
 					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code> extensions to the core Identity API. You can learn
 				more about API extensions at 
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>. </para>
+				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/v2.0/src/docbkx/">
+					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/v2.0/src/docbkx/</link>. </para>
 		</note>
 		<!--- this section comes from 4 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin & RAX-AUTH -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
