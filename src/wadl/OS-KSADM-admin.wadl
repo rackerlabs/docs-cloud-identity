@@ -287,6 +287,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         >"Update User "</a> API call, but they are restricted to changing it only to one of their regions 
                     listed in the service catalog for the CloudServersOpenStack service.
                 </para>
+                <note><para>If you attempt to add a user who already exists, an <errorcode>HHTP error 409</errorcode> results.</para></note>
             </wadl:doc>
         </doc>
 

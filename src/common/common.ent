@@ -25,6 +25,10 @@
             <representation mediaType="application/xml" element="identity:badMethod"/>
             <representation mediaType="application/json"/>
         </response>
+        <response status="409" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="identity:conflict"/>
+            <representation mediaType="application/json"/>
+        </response>
         <response status="413" xmlns="http://wadl.dev.java.net/2009/02">
             <representation mediaType="application/xml" element="identity:overLimit"/>
             <representation mediaType="application/json"/>
