@@ -417,7 +417,7 @@
                 user name. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> This request returns identifying information about the user with the
                 specified user name. Identifying information includes the user's email account, username, user ID, status,
-                and default region. </p>
+                default region, and domain id </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> Default region, indicated by <code>defaultRegion</code>, associates this
                 user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
                 acceptable, indicating that no default region has been assigned for this user. If a default region has been
@@ -426,20 +426,25 @@
                 services available in multiple regions in the "General API Information" chapter's <!-- linking from this WADL-generated section to hand-coded section -->
                 <a
                     href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
-                    >"Sample Authentication Request and Response"</a> section. </p>
+                    > "Sample Authentication Request and Response"</a> section. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> When a user creates a new cloud server via the <a
                     href="http://mycloud.rackspace.com/"> Cloud Control Panel</a>, the region specified by
                     <code>defaultRegion</code> is visible on the control panel but the region cannot currently be changed
                 there. To change the association of a user with a default region, use <a
                     href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html"
-                    >Update Users</a> as you would to change any other descriptive information about the user. </p>
+                    > Update Users</a> as you would to change any other descriptive information about the user. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> In the examples below, <code>defaultRegion</code> is specified as
                     <code>DFW</code>: when this user has a choice between consuming a service in the <code>DFW</code> region
-                and consuming the same service in any other region, the user will consume the service in <code>DFW</code>.
-            </p>
+                and consuming the same service in any other region, the user will consume the service in <code>DFW</code>. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> Domain ID, indicated by <code>domainId</code>, associates this user with
+                a specific domain which was assigned when the user was created or updated. A domain establishes an
+                administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
+                Generally, a domainId is the same as the primary tenant id of your cloud account.</p>
         </doc>
         <request>
-            <param name="name" style="query" type="xsd:string" required="true"/>
+            <param name="name" style="query" type="xsd:string" required="true">
+                <doc>A user's name.</doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:user">
@@ -459,7 +464,7 @@
                 user ID. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> This request returns identifying information about the user with the
                 specified user name. Identifying information includes the user's email account, username, user ID, status,
-                and default region. </p>
+                default region, and domain id. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> Default region, indicated by <code>defaultRegion</code>, associates this
                 user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
                 acceptable, indicating that no default region has been assigned for this user. If a default region has been
@@ -479,6 +484,10 @@
                     <code>DFW</code>: when this user has a choice between consuming a service in the <code>DFW</code> region
                 and consuming the same service in any other region, the user will consume the service in <code>DFW</code>.
             </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> Domain ID, indicated by <code>domainId</code>, associates this user with
+                a specific domain which was assigned when the user was created or updated. A domain establishes an
+                administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
+                Generally, a domainId is the same as the primary tenant id of your cloud account.</p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:user">
@@ -499,7 +508,7 @@
                 user email. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> This request returns one or more sets of identifying information about
                 the user with the specified user email. Identifying information includes the user's email account, username,
-                user ID, status, domain, creation date, update date, and default region. </p>
+                user ID, status, domain, creation date, update date, default region, and domain id </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> Default region, indicated by <code>defaultRegion</code>, associates this
                 user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
                 acceptable, indicating that no default region has been assigned for this user. If a default region has been
@@ -519,9 +528,15 @@
                     <code>ORD</code>: when this user has a choice between consuming a service in the <code>ORD</code> region
                 and consuming the same service in any other region, the user will consume the service in <code>ORD</code>.
             </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> Domain ID, indicated by <code>domainId</code>, associates this user with
+                a specific domain which was assigned when the user was created or updated. A domain establishes an
+                administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
+                Generally, a domainId is the same as the primary tenant id of your cloud account.</p>
         </doc>
         <request>
-            <param name="email" style="query" type="xsd:string" required="true"/>
+            <param name="email" style="query" type="xsd:string" required="true">
+                <doc>A user's email address.</doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml">

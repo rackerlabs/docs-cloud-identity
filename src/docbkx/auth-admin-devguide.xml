@@ -6,11 +6,10 @@
 ]>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
-	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0"
-	xml:id="Identity-Developer-Guide">
+	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" xml:id="Identity-Developer-Guide">
 	<title>Cloud Identity Admin Developer Guide</title>
 	<titleabbrev>Cloud Identity Admin DevGuide</titleabbrev>
-	<?rax  pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content"?> 
+	<?rax pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content"?>
 	<?rax status.bar.text.font.size="80px" status.bar.text="RAX INTERNAL"?>
 	<info>
 		<author>
@@ -38,12 +37,10 @@
 			</annotation>
 		</legalnotice>
 		<abstract>
-			<para>
-				This document is intended for software developers interested in developing applications 
-				that utilize Rackspace's implementation of OpenStack's Keystone Identity Service for 
-				authentication. This document also includes details on how to integrate services with
-				Rackspace's implementation of OpenStack's Keystone Identity Service. 
-			</para>
+			<para> This document is intended for software developers interested in developing applications that utilize
+				Rackspace's implementation of OpenStack's Keystone Identity Service for authentication. This document also
+				includes details on how to integrate services with Rackspace's implementation of OpenStack's Keystone
+				Identity Service. </para>
 		</abstract>
 		<revhistory>
 			<revision>
@@ -51,19 +48,34 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Updated many RAX-AUTH operations to have consistent examples. Added Impersonation and Federation.
-							</para>
+							<para> Updated many RAX-AUTH operations to have consistent examples. Added Impersonation and
+								Federation. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Corrected json response in <xref linkend="GET_listUserGlobalRoles_v2.0_users__userId__roles_Role_Calls"/>.
-							</para>
+							<para> Corrected json response in
+								<xref linkend="GET_listUserGlobalRoles_v2.0_users__userId__roles_Role_Calls"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added simple definitions to many operation parameter tables.
-							</para>
+							<para> Added simple definitions to many operation parameter tables. </para>
+						</listitem>
+						<listitem>
+							<para> Mentioned that elements not being updated in
+								<xref linkend="POST_updateUser_v2.0_users__userId__User_Calls"/> do not need to be included
+								in request body. </para>
+						</listitem>
+						<listitem>
+							<para> Added some examples of what a service is, since you can filter on serviceId in
+								<xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_Role_Calls"/>. </para>
+						</listitem>
+						<listitem>
+							<para> Removed Category Role table from 
+								<xref linkend="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"/>. </para>
+						</listitem>
+						<listitem>
+							<para> Added information about domain ID to  
+								<xref linkend="GET_getUserByName_v2.0_users_User_Calls"/>,
+								<xref linkend="GET_getUserById_v2.0_users__userId__User_Calls"/>, and
+								<xref linkend="GET_getUserByEmail_v2.0_users_User_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -73,9 +85,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added error to <xref linkend="POST_addUser_v2.0_users_User_Calls"/>.
-							</para>
+							<para> Added error to <xref linkend="POST_addUser_v2.0_users_User_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -86,10 +96,8 @@
 					<itemizedlist spacing="compact">
 
 						<listitem>
-							<para>
-								Updated samples to RAcker token authentication in  
-								<xref linkend="GET_validateToken_v2.0_tokens__tokenId__"/>.
-							</para>
+							<para> Updated samples to RAcker token authentication in
+								<xref linkend="GET_validateToken_v2.0_tokens__tokenId__"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -99,9 +107,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> 
-								Corrected links to endpoint documentation 
-								<xref linkend="Additional_Resources-d1e130" />. 
+							<para> Corrected links to endpoint documentation <xref linkend="Additional_Resources-d1e130"/>.
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -110,8 +116,8 @@
 			<revision>
 				<date>2013-10-14</date>
 				<revdescription>
-					<para>
-						Added note that this call works for internal users only <xref linkend="GET_listRolesForUserOnTenant_v2.0_tenants__tenantId__users__userId__roles_" xrefstyle="select: title" />
+					<para> Added note that this call works for internal users only
+						<xref linkend="GET_listRolesForUserOnTenant_v2.0_tenants__tenantId__users__userId__roles_" xrefstyle="select: title"/>
 					</para>
 				</revdescription>
 			</revision>
@@ -120,35 +126,31 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								RBAC: Changed account admin user to account owner and changed sub-accout to account user.  Changed some 
-								occurrences of global to multi-product. Changed some links to the external doc instead of internal doc.
+							<para> RBAC: Changed account admin user to account owner and changed sub-accout to account user.
+								Changed some occurrences of global to multi-product. Changed some links to the external doc
+								instead of internal doc. </para>
+						</listitem>
+						<listitem>
+							<para> Added domain id to: <xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para>
-								Added domain id to: <xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" />
+							<para> Added domain id to:
+								<xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para>
-								Added domain id to: <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" />
+							<para> Added domain id to:
+								<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para>
-								Added domain id to: <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />
+							<para> Added domain id to:
+								<xref linkend="GET_getUserByEmail_v2.0_users_" xrefstyle="select: title"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para>
-								Added domain id to: <xref linkend="GET_getUserByEmail_v2.0_users_" xrefstyle="select: title" />
-							</para>
-						</listitem>
-						<listitem>
-							<para>
-								Fixed some erroneous examples.
-							</para>
+							<para> Fixed some erroneous examples. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -158,14 +160,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Updated <xref linkend="Role_Based_Access_Control-d1e808" /> to include warning about potential delays. 
-							</para>
+							<para> Updated <xref linkend="Role_Based_Access_Control-d1e808"/> to include warning about
+								potential delays. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated <xref linkend="RBAC_Roles-dle808" /> to be consistent with K.C. articles. 
-							</para>
+							<para> Updated <xref linkend="RBAC_Roles-dle808"/> to be consistent with K.C. articles. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -175,9 +174,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added visibility note to <xref linkend="POST_addRole_v2.0_OS-KSADM_roles_" xrefstyle="select: title" />.
-							</para>
+							<para> Added visibility note to
+								<xref linkend="POST_addRole_v2.0_OS-KSADM_roles_" xrefstyle="select: title"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -187,28 +185,22 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Corrected update json user request and response (<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" />)
-							</para>
+							<para> Corrected update json user request and response
+								(<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title"/>) </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added Region calls (<xref linkend="Region_Calls" xrefstyle="select: title" />)
-							</para>
+							<para> Added Region calls (<xref linkend="Region_Calls" xrefstyle="select: title"/>) </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated Add User to reflect default region (<xref linkend="POST_addUser_v2.0_users_" xrefstyle="select: title" />)
-							</para>
+							<para> Updated Add User to reflect default region
+								(<xref linkend="POST_addUser_v2.0_users_" xrefstyle="select: title"/>) </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated Update User to reflect default region (<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" />)
-							</para>
+							<para> Updated Update User to reflect default region
+								(<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title"/>) </para>
 						</listitem>
 						<listitem>
-							<para>
-								fixed broken link (<xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" />)
+							<para> fixed broken link (<xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title"/>)
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -219,9 +211,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Replaced "sub-user" with "account users" everywhere.
-							</para>
+							<para> Replaced "sub-user" with "account users" everywhere. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -231,14 +221,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added discussion of apparent role conflicts in rbac
-							</para>
+							<para> Added discussion of apparent role conflicts in rbac </para>
 						</listitem>
 						<listitem>
-							<para>
-								Corrected json example for impersonate user API call.
-							</para>
+							<para> Corrected json example for impersonate user API call. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -248,9 +234,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Corrected json example for add endpoint to tenant.
-							</para>
+							<para> Corrected json example for add endpoint to tenant. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -260,15 +244,13 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Corrected URI path for 
-								<xref linkend="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_" xrefstyle="select: title" />
+							<para> Corrected URI path for
+								<xref linkend="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_" xrefstyle="select: title"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para>
-								Corrected credential listing (adding tenant ID to token) for
-								<xref linkend="POST_authenticate_v2.0_tokens_" xrefstyle="select: title" />
+							<para> Corrected credential listing (adding tenant ID to token) for
+								<xref linkend="POST_authenticate_v2.0_tokens_" xrefstyle="select: title"/>
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -279,30 +261,21 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> 
-								Added <xref linkend="Role_Based_Access_Control-d1e808" />. 
-							</para>
+							<para> Added <xref linkend="Role_Based_Access_Control-d1e808"/>. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Removed references to deprecated endpoint v1 
-								<xref linkend="Endpoints-d1e180" />. 
-							</para>
+							<para> Removed references to deprecated endpoint v1 <xref linkend="Endpoints-d1e180"/>. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Including several API calls from KSCATALOG and KSADM Openstack APIs including:
-								Delete Role; List Services; Add, Get, and Delete Service; List Endpoint 
-								Templates; Add, Get, and Delete Endpoint Templates; List Endpoints; Add, Get,
-								and List Templates; Get Users with Role; Add, Update, and Delete Tenants; List 
-								Users for Tenant; Add Role to User for Tenant, Delete Role from User for Tenant. 
-							</para>
+							<para> Including several API calls from KSCATALOG and KSADM Openstack APIs including: Delete
+								Role; List Services; Add, Get, and Delete Service; List Endpoint Templates; Add, Get, and
+								Delete Endpoint Templates; List Endpoints; Add, Get, and List Templates; Get Users with Role;
+								Add, Update, and Delete Tenants; List Users for Tenant; Add Role to User for Tenant, Delete
+								Role from User for Tenant. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Included/corrected other new or missing API calls including: Reset API Key;
-								Revoke Token;Get User by Email.
-							</para>
+							<para> Included/corrected other new or missing API calls including: Reset API Key; Revoke
+								Token;Get User by Email. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -312,8 +285,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added <xref linkend="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_" xrefstyle="select: title" />
+							<para> Added
+								<xref linkend="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_" xrefstyle="select: title"/>
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -324,14 +297,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								In <xref linkend="Additional_Resources-d1e130"/>, repaired broken links.
-							</para>
+							<para> In <xref linkend="Additional_Resources-d1e130"/>, repaired broken links. </para>
 						</listitem>
 						<listitem>
-							<para>
-								In <xref linkend="Endpoints-d1e180"/>, repaired broken links.
-							</para>
+							<para> In <xref linkend="Endpoints-d1e180"/>, repaired broken links. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -339,16 +308,13 @@
 			<revision>
 				<date>2013-02-18</date>
 				<revdescription>
-					<itemizedlist  spacing="compact">
+					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								In <xref linkend="Additional_Resources-d1e130"/>, added a link to the Rackspace
-								Open Cloud Community.
-							</para>
+							<para> In <xref linkend="Additional_Resources-d1e130"/>, added a link to the Rackspace Open Cloud
+								Community. </para>
 						</listitem>
 						<listitem>
-							<para>
-								In <xref linkend="Service_API_Calls"/>,  expanded Update Capabilities to add request body.
+							<para> In <xref linkend="Service_API_Calls"/>, expanded Update Capabilities to add request body.
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -359,9 +325,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								In <xref linkend="Policy_Calls"/>, added call to get detailed policy content.
-							</para>
+							<para> In <xref linkend="Policy_Calls"/>, added call to get detailed policy content. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -371,30 +335,20 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added <xref linkend="Policy_Calls"/>.
-							</para>
+							<para> Added <xref linkend="Policy_Calls"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added <xref linkend="Service_API_Calls"/>.
-							</para>
+							<para> Added <xref linkend="Service_API_Calls"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								In <xref linkend="User_Calls"/>, added resetting API key credentials,
-								listing accessible domains, and listing domain endpoints.
-							</para>
+							<para> In <xref linkend="User_Calls"/>, added resetting API key credentials, listing accessible
+								domains, and listing domain endpoints. </para>
 						</listitem>
 						<listitem>
-							<para>
-								In <xref linkend="Domain_Calls"/>, added getting a list of domains.
-							</para>
+							<para> In <xref linkend="Domain_Calls"/>, added getting a list of domains. </para>
 						</listitem>
 						<listitem>
-							<para>
-								In <xref linkend="Token_Calls"/>, added authentication as a Racker.
-							</para>
+							<para> In <xref linkend="Token_Calls"/>, added authentication as a Racker. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -404,19 +358,14 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added examples demonstrating different format of <code>expires</code> for US and UK endpoints in <xref linkend="POST_authenticate_v2.0_tokens_"/>.
-							</para>
+							<para> Added examples demonstrating different format of <code>expires</code> for US and UK
+								endpoints in <xref linkend="POST_authenticate_v2.0_tokens_"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Improved introductory text for <xref linkend="Secret_Calls"/>.
-							</para>
+							<para> Improved introductory text for <xref linkend="Secret_Calls"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Repaired broken links to annotated sample response.
-							</para>
+							<para> Repaired broken links to annotated sample response. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -426,14 +375,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Expanded <xref linkend="Secret_Calls"/>.
-							</para>
+							<para> Expanded <xref linkend="Secret_Calls"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added <xref linkend="Region_Calls"/>.
-							</para>
+							<para> Added <xref linkend="Region_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -443,10 +388,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Added <xref linkend="Domain_Calls"/>,
-								documenting use of domains to establish administrative boundaries.
-							</para>
+							<para> Added <xref linkend="Domain_Calls"/>, documenting use of domains to establish
+								administrative boundaries. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -456,115 +399,88 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Repaired broken link from 
-								<xref linkend="POST_authenticate_v2.0_tokens_"/>
-								to  <xref linkend="Sample_Request_Response-d1e64"/>.
-							</para>
+							<para> Repaired broken link from <xref linkend="POST_authenticate_v2.0_tokens_"/> to
+								<xref linkend="Sample_Request_Response-d1e64"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated samples to show <code>defaultRegion</code> in  
-								<xref linkend="Sample_Request_Response-d1e64"/> 
-								and <xref linkend="GET_validateToken_v2.0_tokens__tokenId__"/>
-								and <xref linkend="POST_authenticate_v2.0_tokens_"/>. 
-							</para>
+							<para> Updated samples to show <code>defaultRegion</code> in
+								<xref linkend="Sample_Request_Response-d1e64"/> and
+								<xref linkend="GET_validateToken_v2.0_tokens__tokenId__"/> and
+								<xref linkend="POST_authenticate_v2.0_tokens_"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
 			<revision>
-			<date>2012-07-31</date>
-			<revdescription>
-				<itemizedlist spacing="compact">
-					<listitem>
-						<para> 
-							Added information about <code>defaultRegion</code> for 
-							<xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" />, 
-							<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />, 
-							and <xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title" />. 
-						</para>
-					</listitem>
-					<listitem>
-						<para> 
-							Updated <xref linkend="Service_Types-d1e265"/> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. 
-						</para>
-					</listitem>
-					<listitem>
-						<para> 
-							Simplified references to the Cloud Control Panel, showing that all customers have access to the 
-							Cloud Control Panel at <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com/</link>. 
-						</para>
-					</listitem>
-					<listitem>
-						<para> 
-							Renamed RAX-GA extension to RAX-AUTH. 
-						</para>
-					</listitem>
-				</itemizedlist>		
-			</revdescription>
-		</revision>
+				<date>2012-07-31</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para> Added information about <code>defaultRegion</code> for
+								<xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/>,
+								<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/>, and
+								<xref linkend="POST_updateUser_v2.0_users__userId__" xrefstyle="select: title"/>. </para>
+						</listitem>
+						<listitem>
+							<para> Updated <xref linkend="Service_Types-d1e265"/> and supporting examples to show
+									<code>rax:dns</code>as the service type for Cloud DNS. </para>
+						</listitem>
+						<listitem>
+							<para> Simplified references to the Cloud Control Panel, showing that all customers have access
+								to the Cloud Control Panel at
+								<link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com/</link>.
+							</para>
+						</listitem>
+						<listitem>
+							<para> Renamed RAX-GA extension to RAX-AUTH. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2012-07-11</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> 
-								Removed "BETA" designation. 
-							</para>
+							<para> Removed "BETA" designation. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Expanded explanation and examples in <xref linkend="POST_authenticate_v2.0_tokens_"/>, 
-								showing use of tenant name and tenant ID as authentication credentials.
-							</para>
+							<para> Expanded explanation and examples in <xref linkend="POST_authenticate_v2.0_tokens_"/>,
+								showing use of tenant name and tenant ID as authentication credentials. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Expanded explanation and examples in <xref linkend="POST_impersonateUser_v2.0_RAX-AUTH_impersonation-tokens_"/>, 
-								showing use of <code>expire-in-seconds</code>.
-							</para>
+							<para> Expanded explanation and examples in
+								<xref linkend="POST_impersonateUser_v2.0_RAX-AUTH_impersonation-tokens_"/>, showing use of
+									<code>expire-in-seconds</code>. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Updated illustration in <xref linkend="Identity-Service-Concepts-e1362"/>.
-							</para>
+							<para> Updated illustration in <xref linkend="Identity-Service-Concepts-e1362"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Restructured and expanded <xref linkend="Additional_Resources-d1e130"/>,
-								adding links to Rackspace Knowledge Center and customer feedback site.
-							</para>
+							<para> Restructured and expanded <xref linkend="Additional_Resources-d1e130"/>, adding links to
+								Rackspace Knowledge Center and customer feedback site. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Added <xref linkend="Statuses-d1e808"/>, listing all possible account statuses.
-							</para>
+							<para> Added <xref linkend="Statuses-d1e808"/>, listing all possible account statuses. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Added <xref linkend="Endpoints-d1e180"/>, showing recommended and legacy authentication endpoints.
-							</para>
+							<para> Added <xref linkend="Endpoints-d1e180"/>, showing recommended and legacy authentication
+								endpoints. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Updated <xref linkend="Faults-d1e908"/> to show that the overLimit fault can occur with any request.
-							</para>
+							<para> Updated <xref linkend="Faults-d1e908"/> to show that the overLimit fault can occur with
+								any request. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Standardized references to "user" and "customer", since it is possible to have a user, such as a Racker, who is not a customer.
-							</para>
+							<para> Standardized references to "user" and "customer", since it is possible to have a user,
+								such as a Racker, who is not a customer. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Repaired broken link to <xref linkend="Sample_Request_Response-d1e64"/>.
-							</para>
+							<para> Repaired broken link to <xref linkend="Sample_Request_Response-d1e64"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated <xref linkend="Service_Types-d1e265"/> to provide link to publicly-available documentation on Cloud Databases.
-							</para>
+							<para> Updated <xref linkend="Service_Types-d1e265"/> to provide link to publicly-available
+								documentation on Cloud Databases. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -575,9 +491,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> 
-								Added details to <xref linkend="Namespaces-d1e910"/>, describing new standards and defaults. 
-							</para>
+							<para> Added details to <xref linkend="Namespaces-d1e910"/>, describing new standards and
+								defaults. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -587,37 +502,26 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> 
-								For "Update User" and "Delete User" operations,  added suggestion to use 
-								<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" />
-								to confirm that the intended user will be changed. 
-							</para>
+							<para> For "Update User" and "Delete User" operations, added suggestion to use
+								<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/> to confirm
+								that the intended user will be changed. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Added 
-								<xref linkend="Account-Users-d1e910"/>; 
-								moved most of the details from the Account User glossary item into that section, 
-								along with additional details on account users' inheritance of groups from parents. 
-							</para>
+							<para> Added <xref linkend="Account-Users-d1e910"/>; moved most of the details from the Account
+								User glossary item into that section, along with additional details on account users'
+								inheritance of groups from parents. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Added suggestion in <xref linkend="Additional_Resources-d1e130"/>
-								to check wiki pages for additional operational information. 
-							</para>
+							<para> Added suggestion in <xref linkend="Additional_Resources-d1e130"/> to check wiki pages for
+								additional operational information. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Added <xref linkend="Limits-d1e909"/>, introducing rate limiting,
-								and <xref linkend="Ratelimiting_Calls"/>, describing rate limiting operations. 
-							</para>
+							<para> Added <xref linkend="Limits-d1e909"/>, introducing rate limiting, and
+								<xref linkend="Ratelimiting_Calls"/>, describing rate limiting operations. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Corrected malformed cURL example in <xref linkend="QuickStart-000"/>. In the same section,
-								added an introduction to API extensions.
-							</para>
+							<para> Corrected malformed cURL example in <xref linkend="QuickStart-000"/>. In the same section,
+								added an introduction to API extensions. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -627,33 +531,23 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Updated twenty code samples, primarily to demonstrate use of namespaces.
-							</para>
+							<para> Updated twenty code samples, primarily to demonstrate use of namespaces. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added <xref linkend="Namespaces-d1e910"/>, introducing the idea of namespaces
-								and relating it to the idea of <link linkend="Extensions-d1e688">API extensions</link>.
-							</para>
+							<para> Added <xref linkend="Namespaces-d1e910"/>, introducing the idea of namespaces and relating
+								it to the idea of <link linkend="Extensions-d1e688">API extensions</link>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated <xref linkend="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"/>
-								and  <xref linkend="Account-User-d1e20"/> to state that account users must authenticate
-								with their passwords. 
-							</para>
+							<para> Updated <xref linkend="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"/>
+								and <xref linkend="Account-User-d1e20"/> to state that account users must authenticate with
+								their passwords. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added an annotated JSON example in <xref linkend="Sample_Request_Response-d1e64"/>.  
-								In the same section, updated the annotated XML example to show new service types. 
-							</para>
+							<para> Added an annotated JSON example in <xref linkend="Sample_Request_Response-d1e64"/>. In the
+								same section, updated the annotated XML example to show new service types. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Updated <xref linkend="Service_Types-d1e265"/> to show new service types. 
-							</para>
+							<para> Updated <xref linkend="Service_Types-d1e265"/> to show new service types. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -663,28 +557,20 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								Simplified the structure of  
-								<xref linkend="API_Operations"
-								/>. 
-							</para>
+							<para> Simplified the structure of <xref linkend="API_Operations"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added examples of creating a user with a password in <xref linkend="POST_addUser_v2.0_users_" />. 
-								In the same section, added information that an account can have up to 100 account users. 
-							</para>
+							<para> Added examples of creating a user with a password in
+								<xref linkend="POST_addUser_v2.0_users_"/>. In the same section, added information that an
+								account can have up to 100 account users. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added examples of changing a user's password in <xref linkend="POST_updateUser_v2.0_users__userId__" />.
-							</para>
+							<para> Added examples of changing a user's password in
+								<xref linkend="POST_updateUser_v2.0_users__userId__"/>. </para>
 						</listitem>
 						<listitem>
-							<para>
-								Added information about account users (also known as sub-accounts), including an entry in 
-								<xref linkend="Glossary-000" />.
-							</para>
+							<para> Added information about account users (also known as sub-accounts), including an entry in
+								<xref linkend="Glossary-000"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -694,22 +580,21 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated authentication endpoints to &ENDPOINT-US; (for US-based accounts) and &ENDPOINT-UK; 
-								(for UK-based accounts). </para>
+							<para> Updated authentication endpoints to &ENDPOINT-US; (for US-based accounts) and
+								&ENDPOINT-UK; (for UK-based accounts). </para>
 						</listitem>
 						<listitem>
 							<para>Added <xref linkend="Sample_Request_Response-d1e64"/>, focused on interpreting
-								authentication responses. This section includes annotated examples relocated
-								from the "Request/Response Types" section and adds details on service
-								types and recommended workflow. In the same section, added a note suggesting
-								service type as the primary value for locating a service.</para>
+								authentication responses. This section includes annotated examples relocated from the
+								"Request/Response Types" section and adds details on service types and recommended workflow.
+								In the same section, added a note suggesting service type as the primary value for locating a
+								service.</para>
 						</listitem>
 						<listitem>
 							<para> Expanded the list of operations described in <xref linkend="API_Operations"/>. In the same
 								chapter, added contact info for obtaining a service account, added an illustration of the
-								impersonation process, and added notes on functionality provided by extensions to the core Identity 
-								API.
-							</para>
+								impersonation process, and added notes on functionality provided by extensions to the core
+								Identity API. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -719,27 +604,31 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated multiple examples to show cloudServersOpenStack (Nova) in addition to cloudServers in 
-								service catalog responses. </para>
+							<para>Updated multiple examples to show cloudServersOpenStack (Nova) in addition to cloudServers
+								in service catalog responses. </para>
 						</listitem>
-						<listitem><para>Improved XML and JSON examples of Validate Token response.</para></listitem>
+						<listitem>
+							<para>Improved XML and JSON examples of Validate Token response.</para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
 			<revision>
-		    <date>2011-12-16</date>
-		    <revdescription>
-		    	<itemizedlist spacing="compact">
-		    		<listitem><para>Initial release for API v2.0.</para></listitem>
-		    	</itemizedlist>
-		    </revdescription>
-		  </revision>
+				<date>2011-12-16</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Initial release for API v2.0.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 		</revhistory>
 		<raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-		  <raxm:displayname>API Admin Developer Guide, v2.0</raxm:displayname>
-		  <raxm:product version="v2.0">auth</raxm:product>
-		  <raxm:priority>15</raxm:priority>
-		</raxm:metadata> 
+			<raxm:displayname>API Admin Developer Guide, v2.0</raxm:displayname>
+			<raxm:product version="v2.0">auth</raxm:product>
+			<raxm:priority>15</raxm:priority>
+		</raxm:metadata>
 	</info>
 	<xi:include href="chapters/identity-overview-admin.xml"/>
 	<xi:include href="chapters/identity-concepts-admin.xml"/>

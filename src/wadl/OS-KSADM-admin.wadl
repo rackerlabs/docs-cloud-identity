@@ -363,16 +363,27 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </warning>
             </wadl:doc>
             </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> To update a user, specify the user's identifying information
-                    (<code>email</code>, <code>username</code>, <code>id</code>, <code>defaultRegion</code>, and status)
-                values, replacing the current value with a new value where necessary. For example, to change the user's
-                status from disabled to enabled, specify <code>enabled=true</code>. A successful response echoes the
-                requested values. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml"> 
+                To update user information, specify any, or all, of the user's identifying data in the request body
+                (<code>email</code>, <code>username</code>, <code>id</code>, <code>defaultRegion</code>, and <code>status</code>),
+                replacing the current value with a new value. You don't need to include any data that is not being updated. For 
+                example, to change the user's status from disabled to enabled, specify <code>enabled=true</code>. A successful 
+                response echoes the requested values.</p>
             <p xmlns="http://www.w3.org/1999/xhtml"> To update a user's password, include the new password in a request
                 resembling the "Update User Password Request" examples shown below. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> You can change a user's default region, but you are restricted to 
                 changing it to one of their regions listed in the service catalog for the CloudServersOpenStack 
                 service. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <tip>
+                        <para>Only include in the request body those user data elements that you wish to modify.  If you only need to 
+                            update the user's email, for example, don't include the other body parameters like 
+                            <parameter>id</parameter>, <parameter>enabled</parameter>, or <parameter>rax-auth:domainId</parameter>.
+                        </para>
+                    </tip>
+                </wadl:doc>
+            </p>
         </doc>
         <request>
             <representation mediaType="application/xml" element="identity:user">
@@ -485,7 +496,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. When the service-admin assigns a role to an
                 account owner (identity:user-admin), the role is propagated to users (identity:default). </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> See Role Categories table below to learn more about roles, who
+            <!--<p xmlns="http://www.w3.org/1999/xhtml"> See Role Categories table below to learn more about roles, who
                 assigns them, and who uses them. </p>
             <p xmlns="http://www.w3.org/1999/xhtml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -533,7 +544,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         </tr>
                     </table>
                 </wadl:doc>
-            </p>
+            </p>-->
         </doc>
         <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
     
@@ -713,7 +724,8 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="GET" id="listRoles">
         <doc xml:lang="EN" title="List Roles">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List roles.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This call lists the global roles available within a specified service.
+            <p xmlns="http://www.w3.org/1999/xhtml"> This call lists the global roles available within a specified service 
+                (like nova, or glance).
             </p>
         </doc>
         <request>

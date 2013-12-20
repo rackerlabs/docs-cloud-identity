@@ -64,6 +64,26 @@
 								Added simple definitions to many operation parameter tables.
 							</para>
 						</listitem>
+						<listitem>
+							<para>
+								Mentioned that elements not being updated in <xref linkend="POST_updateUser_v2.0_users__userId__User_Calls"/>
+								do not need to be included in request body.
+							</para>
+						</listitem>
+						<listitem>
+							<para> Added some examples of what a service is, since you can filter on serviceId in
+								<xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_Role_Calls"/>. </para>
+						</listitem>
+						<listitem>
+							<para> Removed Category Role table from 
+								<xref linkend="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"/>. </para>
+						</listitem>
+						<listitem>
+							<para> Added information about domain ID to  
+								<xref linkend="GET_getUserByName_v2.0_users_User_Calls"/>,
+								<xref linkend="GET_getUserById_v2.0_users__userId__User_Calls"/>, and
+								<xref linkend="GET_getUserByEmail_v2.0_users_User_Calls"/>. </para>
+						</listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
