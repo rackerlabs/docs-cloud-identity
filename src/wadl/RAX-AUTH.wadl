@@ -12,7 +12,7 @@
 ]>
 
 <application xmlns="http://wadl.dev.java.net/2009/02" xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
-    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:policy="http://docs.rackspace.com/identity/policy/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:db="http://docbook.org/ns/docbook"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
@@ -20,6 +20,10 @@
     <grammars>
         <include href="../xsd/RAX-AUTH.xsd"/>
     </grammars>
+    <!-- 2012-12-13 by Cat Lookabaugh
+      ++ adding and updating multiple operations based on 
+      https://service-contracts.corp.rackspace.com:9443/snapshots/globalauth-keystone-extensions/site/
+            -->
     <!-- 2012-03-13 by Rose Coste
       ++ adding IMPERSONATION-related content to Auth 2.0 Admin DevGuide ++
                 samples were included as ../../formattedsamples/keystone/ 
@@ -62,7 +66,9 @@
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
-                <param name="userId" type="xsd:string" style="template" required="true"/>
+                <param name="userId" style="template" type="xsd:string" required="true">
+                    <doc>A user ID assigned by system when user is added.</doc>
+                </param>
                 <method href="#saveUserSecretQA"/>
                 <method href="#getUserSecretQAs"/>
             </resource>
@@ -73,7 +79,9 @@
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
-                <param name="userId" type="xsd:string" style="template" required="true"/>
+                <param name="userId" style="template" type="xsd:string" required="true">
+                    <doc>A user ID assigned by system when user is added.</doc>
+                </param>
                 <method href="#resetUserAPIKeyCredentials"/>
             </resource>
 
@@ -82,11 +90,15 @@
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
-                <param name="userId" type="xsd:string" style="template" required="true"/>
+                <param name="userId" style="template" type="xsd:string" required="true">
+                    <doc>A user ID assigned by system when user is added.</doc>
+                </param>
                 <method href="#getAccessibleDomainsForUser"/>
 
                 <resource id="user_accessible_domain" path="{domainId}">
-                    <param name="domainId" type="xsd:string" style="template" required="true"/>
+                    <param name="domainId" type="xsd:string" style="template" required="true">
+                        <doc>A domain ID.</doc>
+                    </param>
 
                     <resource id="user_accessible_domain_endpoints" path="endpoints">
                         <method href="#getAccesibleDomainEndpointsForUser"/>
@@ -102,14 +114,18 @@
                 <method href="#getEndpointTemplates"/>
 
                 <resource id="endpoint_template" path="{endpointTemplateId}">
-                    <param name="endpointTemplateId" type="xsd:string" style="template" required="true"/>
+                    <param name="endpointTemplateId" type="xsd:string" style="template" required="true">
+                        <doc>An endpoint template Id</doc>
+                    </param>
 
                     <resource id="endpoint_template_policies" path="RAX-AUTH/policies">
                         <method href="#getEndpointTemplatePolicies"/>
                         <method href="#updateEndpointTemplatePolicies"/>
 
                         <resource id="endpoint_template_policy" path="{policyId}">
-                            <param name="policyId" type="xsd:string" style="template" required="true"/>
+                            <param name="policyId" type="xsd:string" style="template" required="true">
+                                <doc>A policy Id</doc>
+                            </param>
                             <method href="#addPolicyToEndpointTemplate"/>
                             <method href="#removePolicyFromEndpointTemplate"/>
                         </resource>
@@ -122,7 +138,9 @@
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
-                <param name="roleId" type="xsd:string" style="template" required="true"/>
+                <param name="roleId" type="xsd:string" style="template" required="true">
+                    <doc>A role Id</doc>
+                </param>
                 <method href="#listUsersWithRole"/>
             </resource>
 
@@ -131,7 +149,9 @@
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <doc>A valid authentication token</doc>
                 </param>
-                <param name="userId" type="xsd:string" style="template" required="true"/>
+                <param name="userId" style="template" type="xsd:string" required="true">
+                    <doc>The user ID assigned by system when user is added.</doc>
+                </param>
                 <method href="#getUserAdmin"/>
             </resource>
 
@@ -143,6 +163,10 @@
                         <doc>A valid authentication token for the impersonator</doc>
                     </param>
                     <method href="#impersonateUser"/>
+                </resource>
+                
+                <resource id="federation" path="saml-tokens">
+                    <method href="#getTokenBySAML"/>
                 </resource>
 
                 <resource id="default-region-services" path="default-region/services">
@@ -161,7 +185,9 @@
                     <method href="#createDomain"/>
 
                     <resource id="domain" path="{domainId}">
-                        <param name="domainId" type="xsd:string" style="template" required="true"/>
+                        <param name="domainId" type="xsd:string" style="template" required="true">
+                            <doc>A domain ID.</doc>
+                        </param>
                         <method href="#getDomain"/>
                         <method href="#updateDomain"/>
                         <method href="#deleteDomain"/>
@@ -170,7 +196,9 @@
                             <method href="#getDomainUsers"/>
 
                             <resource id="domain_user" path="{userId}">
-                                <param name="userId" type="xsd:string" style="template" required="true"/>
+                                <param name="userId" style="template" type="xsd:string" required="true">
+                                    <doc>A user ID assigned by system when user is added.</doc>
+                                </param>
                                 <method href="#addUserToDomain"/>
                             </resource>
                         </resource>
@@ -179,7 +207,9 @@
                             <method href="#getDomainTenants"/>
 
                             <resource id="domain_tenant" path="{tenantId}">
-                                <param name="tenantId" type="xsd:string" style="template" required="true"/>
+                                <param name="tenantId" type="xsd:string" style="template" required="true">
+                                    <doc>A tenant, or account, ID.</doc>
+                                </param>
                                 <method href="#addTenantToDomain"/>
                             </resource>
                         </resource>
@@ -199,7 +229,9 @@
                     <method href="#createPolicy"/>
 
                     <resource id="policy" path="{policyId}">
-                        <param name="policyId" type="xsd:string" style="template" required="true"/>
+                        <param name="policyId" type="xsd:string" style="template" required="true">
+                            <doc>A policy Id</doc>
+                        </param>
                         <method href="#getPolicy"/>
                         <method href="#updatePolicy"/>
                         <method href="#deletePolicy"/>
@@ -220,7 +252,7 @@
 
                     <resource id="region" path="{regionId}">
                         <param name="regionId" type="xsd:string" style="template" required="true">
-                            <doc>Region ID</doc>
+                            <doc>A region Id</doc>
                         </param>
                         <method href="#getRegion"/>
                         <method href="#updateRegion"/>
@@ -239,7 +271,9 @@
                         <method href="#getQuestions"/>
                         <method href="#createQuestion"/>
                         <resource id="question" path="{questionId}">
-                            <param name="questionId" type="xsd:string" style="template" required="true"/>
+                            <param name="questionId" type="xsd:string" style="template" required="true">
+                                <doc>A question Id</doc>
+                            </param>
                             <method href="#getQuestion"/>
                             <method href="#updateQuestion"/>
                             <method href="#deleteQuestion"/>
@@ -329,7 +363,7 @@
             <!--</para>-->
         </doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
+            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
                 </doc>

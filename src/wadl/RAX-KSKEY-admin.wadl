@@ -43,7 +43,9 @@
             </param>            
             <resource id="users" path="users">
                 <resource id="userById" path="{userId}">
-                    <param name="userId" style="template" required="true" type="xsd:string"/>
+                    <param name="userId" style="template" type="xsd:string" required="true">
+                        <doc>The user ID assigned by system when user is added.</doc>
+                    </param>
                     <resource id="user-OS-KSADM" path="OS-KSADM">
                         <resource id="userCredentials" path="credentials">
                             <method href="#addUserCredential"/>
@@ -109,8 +111,12 @@
             <p xmlns="http://www.w3.org/1999/xhtml">List credentials.</p>
         </doc>
         <request>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit" style="query" required="false" type="xsd:int"/>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <doc> Allows us to page through list of users. </doc>
+            </param>
+            <param name="limit" style="query" required="false" type="xsd:int">
+                <doc> Allows us to set size of page when paging through list of users. </doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:credentials">
@@ -136,8 +142,12 @@
             <p xmlns="http://www.w3.org/1999/xhtml">List credentials by type.</p>          
         </doc>
         <request>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit" style="query" required="false" type="xsd:int"/>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <doc> Allows us to page through list of users. </doc>
+            </param>
+            <param name="limit" style="query" required="false" type="xsd:int">
+                <doc> Allows us to set size of page when paging through list of users. </doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:credentials">

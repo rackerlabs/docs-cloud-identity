@@ -1,7 +1,7 @@
 {
   "RAX-AUTH:impersonation": {
       "user": {
-          "username": "jane.customer"
+          "username": "john.smith"
       },
       "expire-in-seconds": 10800
      }

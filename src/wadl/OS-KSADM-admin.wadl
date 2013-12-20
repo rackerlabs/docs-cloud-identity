@@ -43,14 +43,18 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <method href="#listUsers"/>
                 <method href="#addUser"/>
                 <resource id="userById" path="{userId}">
-                    <param name="userId" style="template" required="true" type="xsd:string"/>
+                    <param name="userId" style="template" type="xsd:string" required="true">
+                        <doc>A user ID assigned by system when user is added.</doc>
+                    </param>
                     <method href="#updateUser"/>
                     <method href="#deleteUser"/>
 
                     <resource id="userRoles" path="roles">
                         <resource id="user-roles-OS-KSADM" path="OS-KSADM">
                             <resource id="userRoleById" path="{roleId}">
-                                <param name="roleId" style="template" type="xsd:string"/>
+                                <param name="roleId" type="xsd:string" style="template" required="true">
+                                    <doc>A role Id</doc>
+                                </param>
                                 <method href="#addUserRole"/>
                                 <method href="#deleteUserRole"/>
                             </resource>
@@ -66,7 +70,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                             <method href="#listCredentials"/>
                             <resource id="userCredentialsByType" path="{credential-type}">
                                 <param name="credentialType" style="template" type="OS-KSADM:extensibleCredentialsType"
-                                    required="true"/>
+                                    required="true">
+                                    <doc>A credential type</doc>
+                                </param>
                                 <method href="#updateUserCredential"/>
                                 <method href="#deleteUserCredential"/>
                                 <method href="#getUserCredential"/>
@@ -79,17 +85,23 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <resource id="tenants" path="tenants">
                 <method href="#addTenant"/>
                 <resource id="tenantById" path="{tenantId}">
-                    <param name="tenantId" style="template" type="xsd:string"/>
+                    <param name="tenantId" style="template" type="xsd:string" required="true">
+                        <doc>A tenant Id</doc>
+                    </param>
                     <method href="#updateTenant"/>
                     <method href="#deleteTenant"/>
                     <resource id="usersForTenant" path="users">
                         <method href="#listUsersForTenant"/>
                         <resource id="userForTenant" path="{userId}">
-                            <param name="userId" style="template" type="xsd:string"/>
+                            <param name="userId" style="template" type="xsd:string" required="true">
+                                <doc>A user ID assigned by system when user is added.</doc>
+                            </param>
                             <resource id="userRolesForTenant" path="roles">
                                 <resource id="tenant-user-role-OS-KSADM" path="OS-KSADM">
                                     <resource id="userSpecificRoleForTenant" path="{roleId}">
-                                        <param name="roleId" style="template" type="xsd:string"/>
+                                        <param name="roleId" style="template" type="xsd:string" required="true">
+                                            <doc>A role Id</doc>
+                                        </param>
                                         <method href="#addRolesToUserOnTenant"/>
                                         <method href="#deleteRoleFromUserOnTenant"/>
                                     </resource>
@@ -106,7 +118,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <method href="#listRoles"/>
                     <method href="#addRole"/>
                     <resource id="roleId" path="{roleId}">
-                        <param name="roleId" style="template" type="xsd:string"/>
+                        <param name="roleId" style="template" type="xsd:string">
+                            <doc>A role Id</doc>
+                        </param>
                         <method href="#getRole"/>
                         <method href="#deleteRole"/>
                         <resource id="roleIdRAXAUTHUsers" path="RAX-AUTH/users">
@@ -120,7 +134,9 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                     <method href="#addService"/>
                     <method href="#getServiceByName"/>
                     <resource id="serviceId" path="{serviceId}">
-                        <param name="serviceId" style="template" type="xsd:string"/>
+                        <param name="serviceId" style="template" type="xsd:string">
+                            <doc> A service id. </doc>
+                        </param>
                         <method href="#getService"/>
                         <method href="#deleteService"/>
                     </resource>
@@ -207,8 +223,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml">List all the users for a tenant.</p>
         </doc>
         <request>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit" style="query" required="false" type="xsd:int"/>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <doc> Allows us to page through list of users. </doc>
+            </param>
+            <param name="limit" style="query" required="false" type="xsd:int">
+                <doc> Allows us to set size of page when paging through list of users. </doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:users">
@@ -329,6 +349,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="POST" id="updateUser">
         <doc xml:lang="EN" title="Update User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                 <warning>
                     <para> Before making any change to a user, you should confirm that you are changing the user you intend
@@ -341,6 +362,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         proceed with Step 2, updating the user you just examined. </para>
                 </warning>
             </wadl:doc>
+            </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> To update a user, specify the user's identifying information
                     (<code>email</code>, <code>username</code>, <code>id</code>, <code>defaultRegion</code>, and status)
                 values, replacing the current value with a new value where necessary. For example, to change the user's
@@ -390,6 +412,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="DELETE" id="deleteUser">
         <doc xml:lang="EN" title="Delete User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a user.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">
             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                 <warning>
                     <para> Before making any change to a user, you should confirm that you are changing the user you intend
@@ -397,11 +420,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                         of the change; second, make the change. </para>
                     <para> "Delete User" acts upon the user specified by <code>userId</code>. Before attempting to update a
                         user, first use <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/> to
-                        obtain the username, email account, and status associated with <code>userId</code>. That's Step 1.
+                        obtain the user name, email account, and status associated with <code>userId</code>. That's Step 1.
                         Check the returned information carefully; if you are certain that it describes the user you intend to
                         change, proceed with Step 2, deleting the user you just examined. </para>
                 </warning>
             </wadl:doc>
+            </p>
             <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, specify the user's ID in the request. If you know the
                 user's name but not the user's ID, use
                 <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
@@ -610,8 +634,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml">List credentials by type.</p>
         </doc>
         <request>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit" style="query" required="false" type="xsd:int"/>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <doc> Allows us to page through list of users. </doc>
+            </param>
+            <param name="limit" style="query" required="false" type="xsd:int">
+                <doc> Allows us to set size of page when paging through list of users. </doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:credentials">
@@ -689,9 +717,15 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             </p>
         </doc>
         <request>
-            <param name="serviceId" style="query" required="false" type="xsd:string"/>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit" style="query" required="false" type="xsd:int"/>
+            <param name="serviceId" style="query" required="false" type="xsd:string">
+                <doc> Allows us to filter by service id. </doc>
+            </param>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <doc> Allows us to page through list of users. </doc>
+            </param>
+            <param name="limit" style="query" required="false" type="xsd:int">
+                <doc> Allows us to set size of page when paging through list of users. </doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:roles">
@@ -743,13 +777,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.xml"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.json"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
@@ -766,13 +798,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.xml"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.json"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
@@ -787,13 +817,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.xml"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.json"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
@@ -841,8 +869,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
             <p xmlns="http://www.w3.org/1999/xhtml">List services.</p>
         </doc>
         <request>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit" style="query" required="false" type="xsd:int"/>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <doc> Allows us to page through list of users. </doc>
+            </param>
+            <param name="limit" style="query" required="false" type="xsd:int">
+                <doc> Allows us to set size of page when paging through list of users. </doc>
+            </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="OS-KSADM:services">
@@ -918,13 +950,11 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/service.xml"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/service.json"/>
                 </doc>
-                <param name="Location" type="xsd:anyURI" style="header"/>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
