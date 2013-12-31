@@ -1,0 +1,5 @@
+{
+    "RAX-AUTH:multiFactor": {
+        "enable": true
+    }
+}

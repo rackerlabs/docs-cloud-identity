@@ -1,33 +1,28 @@
 {
-  "endpoints": [
-    {
-      "tenantId": "2882983",
-      "region": "DFW",
-      "id": 4,
-      "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/2882983",
-      "name": "cloudServersOpenStack",
-      "adminURL": "https://dfw.servers.api.rackspacecloud.com/v2/2882983",
-      "type": "compute",
-      "version": {
-        "id": "1",
-        "list": "https://dfw.servers.api.rackspacecloud.com",
-        "info": "https://dfw.servers.api.rackspacecloud.com/v2"
-      },
-      "internalURL": "https://dfw.servers.api.rackspacecloud.com/v2/2882983"
-    },
-    {
-      "tenantId": "MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee",
-      "region": "ORD",
-      "id": 5,
-      "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee",
-      "name": "cloudFiles",
-      "type": "objectStore",
-      "version": {
-        "id": "1",
-        "list": "https://storage101.ord1.clouddrive.com",
-        "info": "https://storage101.ord1.clouddrive.com/v1"
-      },
-      "internalURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee"
-    }
-  ]
+    "OS-KSCATALOG:endpoints": [
+        {
+            "tenantId": "2882983",
+            "region": "DFW",
+            "id": 4,
+            "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/2882983",
+            "name": "cloudServersOpenStack",
+            "adminURL": "https://dfw.servers.api.rackspacecloud.com/v2/2882983",
+            "type": "compute",
+            "versionId": "1",
+            "versionInfo": "https://dfw.servers.api.rackspacecloud.com/v2",
+            "versionList": "https://dfw.servers.api.rackspacecloud.com"
+        },
+        {
+            "tenantId": "MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee",
+            "region": "ORD",
+            "id": 5,
+            "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee",
+            "name": "cloudFiles",
+            "type": "objectStore",
+            "versionId": "1",
+            "versionInfo": "https://storage101.ord1.clouddrive.com/v1",
+            "versionList": "https://storage101.ord1.clouddrive.com",
+            "internalURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee"
+        }
+    ]
 }

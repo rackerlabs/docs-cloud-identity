@@ -284,6 +284,10 @@
 				<!-- authenticate as Racker -->
 				<wadl:method href="authenticateAsRacker"/>
 			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#federation">
+				<!-- federation - get token by SAML -->
+				<wadl:method href="getTokenBySAML"/>
+			</wadl:resource>
 		</wadl:resources>
 	</section>
 	

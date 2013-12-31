@@ -457,6 +457,26 @@
             </representation>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
+    <method id="getDomains" name="GET">
+        <doc xml:lang="EN" title="Get Domains">
+            <db:para role="shortdesc"> Gets a list of domains. </db:para>
+            <db:para> The operation returns a list of domains for which the supplied token provides access. Tokens have
+                access to domains by the token having access to a tenant that exists in the domain. If the token belongs to
+                an admin user, a list of all domains may be returned. </db:para>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:domains">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/DomainList.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/DomainList.json"/>
+                </doc>
+            </representation>
+        </response> &commonFaults; &getFaults; </method>
+    
     <method id="getDomain" name="GET">
         <doc xml:lang="EN" title="Get a Domain">
             <db:para role="shortdesc"> Get a domain. </db:para>
@@ -554,8 +574,8 @@
         <doc xml:lang="EN" title="Get Tenants in Domain">
             <db:para role="shortdesc"> Get tenants in a domain. </db:para>
             <db:para> Tenants can be used to create logical organization within a domain. For example, an entertainment
-                business might use two tenants to separately identify resources related to two kinds of activity: game
-                downloads and movie downloads. </db:para>
+                business might use two tenants to separately identify resources related to two kinds of activity: manage Star Wars
+                games and manage Star Wars pictures.</db:para>
         </doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
@@ -665,30 +685,13 @@
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
-
-    <method id="getDomains" name="GET">
-        <doc xml:lang="EN" title="Get Domains">
-            <db:para role="shortdesc"> Gets a list of domains. </db:para>
-            <db:para> The operation returns a list of domains for which the supplied token provides access. Tokens have
-                access to domains by the token having access to a tenant that exists in the domain. If the token belongs to
-                an admin user, a list of all domains may be returned. </db:para>
-        </doc>
-        <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:domains">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DomainList.xml"/>
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/DomainList.json"/>
-                </doc>
-            </representation>
-        </response> &commonFaults; &getFaults; </method>
-
+    
     <method id="getDomainEndpoints" name="GET">
         <doc xml:lang="EN" title="Get Endpoints for Domain">
             <db:para role="shortdesc"> Get endpoints restricted to a domain. </db:para>
+            <db:para>This operation returns a list of domain endpoints for which the supplied token provides access. If a token 
+                has access to a tenant that exists in the domain, then the token has access to the domain.  If the token belongs 
+                to an admin user, a list of all domain endpoints may be returned. </db:para>
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="identity:endpoints">
@@ -702,7 +705,7 @@
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
-
+    
     <method id="listUsersWithRole" name="GET">
         <doc xml:lang="EN" title="Get Users with Role">
             <db:para role="shortdesc"> Get users with role. </db:para>
@@ -1223,28 +1226,17 @@
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
-                <doc xml:lang="EN" title="Racker SSO Authentication Request: XML">
-                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml"/>
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN" title="Racker SSO Authentication Request: JSON">
-                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.json"/>
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
                 </doc>
             </representation>
         </request>
-        <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointTemplateList.xml"/>
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/EndpointTemplateList.json"/>
-                </doc>
-            </representation>
-        </response> &commonFaults; &getFaults;
+        <response status="204"/> &commonFaults; &getFaults;
     </method>
     
     <method id="createMobilePhone" name="POST">
@@ -1252,19 +1244,25 @@
             <db:para role="shortdesc"> Create a Mobile Phone that can be used for multifactor authentication. </db:para>
         </doc>
         <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.json"/>
+                </doc>
+            </representation>
         </request>
-        <response>
-        </response>
+        <response status="201"/> &commonFaults; &getFaults;
     </method>
     
     <method id="sendVerifyCode" name="POST">
         <doc xml:lang="EN" title="Send Verify Code to a Mobile Phone">
             <db:para role="shortdesc"> Send a verification code to a device to verify the user has possession of the device. </db:para>
         </doc>
-        <request>
-        </request>
-        <response>
-        </response>
+        <response status="202"/> &commonFaults; &getFaults;
     </method>
     
     <method id="verifyDevice" name="POST">
@@ -1272,8 +1270,52 @@
             <db:para role="shortdesc"> Verify that the caller is in possession of the multifactor authentication device. </db:para>
         </doc>
         <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.json"/>
+                </doc>
+            </representation>
         </request>
-        <response>
-        </response>
+        <response status="204"/> &commonFaults; &getFaults;
+    </method>
+    
+    <method id="getTokenBySAML" name="POST">
+        <doc xml:lang="EN" title="Get token by SAML assertion">
+            <db:para role="shortdesc"> Get a token by SAML assertion.</db:para>
+            <db:para>Cloud Identity supports identity federation through the implementation of the SAML 2 protocol. Using this 
+                protocol, you can provide an XML assertion indicating that the identity is already authenticated via a trusted 
+                identity provider. Cloud Identity will return a token in response.</db:para>
+        </doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">     
+            <note>
+                <para>
+                    The request must be formatted as XML, but the response may be either in XML or JSON format.
+                </para>
+            </note>   
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/xml" element="identity:AuthenticationRequest">
+                <doc xml:lang="EN" title="Token SAML Request: XML">
+                    <xsdxt:code href="../common/samples/TokenSAMLReq.xml"/>
+                </doc>
+            </representation>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="identity:access">
+                <doc xml:lang="EN" title="Token SAML Response: XML">
+                    <xsdxt:code href="../common/samples/TokenSAMLRsp.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN" title="Token SAML Response: JSON">
+                    <xsdxt:code href="../common/samples/TokenSAMLRsp.json"/>
+                </doc>
+            </representation>
+        </response> &commonFaults; &postPutFaults;
     </method>
 </application>

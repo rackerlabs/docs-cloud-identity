@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <domains
     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-    xmlns:identity="http://docs.openstack.org/identity/api/v2.0" xmlns:ns3="http://www.w3.org/2005/Atom">
-    <domain enabled="true" id="9883948" name="Example">
+    xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:identity="http://docs.openstack.org/identity/api/v2.0">
+    <domain enabled="true" id="9883948" name="GCorp">
         <description>A very good customer</description>
     </domain>
     <domain enabled="true" id="111" name="Azuri">
         <description>High profile</description>
     </domain>
-    <domain enabled="true" id="222" name="Example"/>
+    <domain enabled="true" id="222" name="GCorp"/>
+    <atom:link
+        href="https://identity.api.rackspaecloud.com/v2.0/RAX-AUTH/domains?marker=27872354&amp;limit=3" rel="prev"/>
+    <atom:link
+        href="https://identity.api.rackspaecloud.com/v2.0/RAX-AUTH/domains?marker=9883948&amp;limit=3" rel="next"/>
 </domains>

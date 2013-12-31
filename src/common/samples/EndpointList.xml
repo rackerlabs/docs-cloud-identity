@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<endpoints xmlns="http://docs.openstack.org/identity/api/v2.0" xmlns:ns2="http://www.w3.org/2005/Atom">
+<endpoints xmlns="http://docs.openstack.org/identity/api/v2.0"
+     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" xmlns:atom="http://www.w3.org/2005/Atom">
      <endpoint
           adminURL="https://dfw.servers.api.rackspacecloud.com/v2/2882983"
           id="4"

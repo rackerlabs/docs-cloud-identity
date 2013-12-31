@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tenants xmlns="http://docs.openstack.org/identity/api/v2.0" xmlns:ns2="http://www.w3.org/2005/Atom">
-     <tenant display-name="Game Downloads" enabled="true" id="5784574" name="downloads_games">
-          <description>Used to manage downloads of games</description>
+<tenants xmlns="http://docs.openstack.org/identity/api/v2.0"
+     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+     <tenant display-name="Star Wars" enabled="true" id="5784574" name="star_wars">
+          <description>Used to manage the Star Wars games</description>
      </tenant>
-     <tenant display-name="Movie Downloads" enabled="true" id="Mosso_73843_FS" name="downloads_movies">
-          <description>Used to manage downloads of movies</description>
+     <tenant display-name="Star Wars" enabled="true" id="Mosso_73843_FS" name="star_wars_pictures">
+          <description>Used to manage the pictures for Star Wars</description>
      </tenant>
 </tenants>
