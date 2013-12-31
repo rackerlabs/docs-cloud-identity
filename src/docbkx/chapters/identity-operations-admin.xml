@@ -865,4 +865,25 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<!-- MULTIFACTOR OPERATIONS -->
+	<section xml:id="Multifactor_Calls">
+		<title>Multifactor Operations</title>
+		<para>The operations described in this section allow service developers to manage multifactor authentication.  Need to
+			add a little more explanation here.</para>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
+				<wadl:method href="updateMultifactorSettings"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-mobile-phones">
+				<wadl:method href="createMobilePhone"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-vcode">
+				<wadl:method href="sendVerifyCode"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-verify">
+				<wadl:method href="verifyDevice"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
 </chapter>

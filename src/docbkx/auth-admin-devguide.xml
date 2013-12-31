@@ -48,8 +48,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated many RAX-AUTH operations to have consistent examples. Added Impersonation and
-								Federation. </para>
+							<para> Updated many RAX-AUTH operations to have consistent examples. Added Multifactor and
+								Federation, internal-only. </para>
 						</listitem>
 						<listitem>
 							<para> Corrected json response in

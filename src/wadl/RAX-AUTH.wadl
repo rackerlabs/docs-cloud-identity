@@ -60,19 +60,80 @@
                 <method href="#authenticateAsRacker"/>
             </resource>
 
-            <!-- ADD_USER_SECRETQA resource(s) -->
-            <!-- see also SECRETQA below -->
-            <resource id="add_user_secretqa" path="users/{userId}/RAX-AUTH/secretqas">
-                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <doc>A valid authentication token</doc>
-                </param>
-                <param name="userId" style="template" type="xsd:string" required="true">
-                    <doc>A user ID assigned by system when user is added.</doc>
-                </param>
-                <method href="#saveUserSecretQA"/>
-                <method href="#getUserSecretQAs"/>
+            <!-- USER ID RAX-AUTH resource(s) -->
+            <resource id="useridRAX" path="users/{userId}/RAX-AUTH">
+                <!-- ADD_USER_SECRETQA resource(s) -->
+                <!-- see also SECRETQA below -->
+                <resource id="add_user_secretqa" path="secretqas">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <param name="userId" style="template" type="xsd:string" required="true">
+                        <doc>A user ID assigned by system when user is added.</doc>
+                    </param>
+                    <method href="#saveUserSecretQA"/>
+                    <method href="#getUserSecretQAs"/>
+                </resource>
+            
+                <!-- USER_USER_ADMINS resource(s) -->
+                <resource id="user_user_admins" path="admins">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <param name="userId" style="template" type="xsd:string" required="true">
+                        <doc>The user ID assigned by system when user is added.</doc>
+                    </param>
+                    <method href="#getUserAdmin"/>
+                </resource>
+            
+                <!-- USER_ACCESSIBLE_DOMAINS resource(s) -->
+                <resource id="user_accessible_domains" path="domains">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <param name="userId" style="template" type="xsd:string" required="true">
+                        <doc>A user ID assigned by system when user is added.</doc>
+                    </param>
+                    <method href="#getAccessibleDomainsForUser"/>
+                    
+                    <resource id="user_accessible_domain" path="{domainId}">
+                        <param name="domainId" type="xsd:string" style="template" required="true">
+                            <doc>A domain ID.</doc>
+                        </param>
+                        
+                        <resource id="user_accessible_domain_endpoints" path="endpoints">
+                            <method href="#getAccesibleDomainEndpointsForUser"/>
+                        </resource>
+                    </resource>
+                </resource>
+                
+                <!-- MULTIFACTOR resource(s) -->
+                <resource id="multifactor" path="multi-factor">
+                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <doc>A valid authentication token</doc>
+                    </param>
+                    <param name="userId" style="template" type="xsd:string" required="true">
+                        <doc>A user ID assigned by system when user is added.</doc>
+                    </param>
+                    <method href="#updateMultifactorSettings"/>
+                    
+                    <resource id="multifactor-mobile-phones" path="mobile-phones">
+                        <method href="#createMobilePhone"/>
+                        <resource id="phoneId" path="{phoneID}">
+                            <param name="phoneId" style="template" type="xsd:string" required="true">
+                                <doc>A phone ID.</doc>
+                            </param>
+                            <resource id="multifactor-vcode" path="verificationcode">
+                                <method href="#sendVerifyCode"/>
+                            </resource>
+                            <resource id="multifactor-verify" path="verify">
+                                <method href="#verifyDevice"/>
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>                
             </resource>
-
+            
             <!-- RESET_APIKEY_CREDENTIALS resource(s) -->
             <resource id="reset_apikey_credentials"
                 path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
@@ -83,27 +144,6 @@
                     <doc>A user ID assigned by system when user is added.</doc>
                 </param>
                 <method href="#resetUserAPIKeyCredentials"/>
-            </resource>
-
-            <!-- USER_ACCESSIBLE_DOMAINS resource(s) -->
-            <resource id="user_accessible_domains" path="users/{userId}/RAX-AUTH/domains">
-                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <doc>A valid authentication token</doc>
-                </param>
-                <param name="userId" style="template" type="xsd:string" required="true">
-                    <doc>A user ID assigned by system when user is added.</doc>
-                </param>
-                <method href="#getAccessibleDomainsForUser"/>
-
-                <resource id="user_accessible_domain" path="{domainId}">
-                    <param name="domainId" type="xsd:string" style="template" required="true">
-                        <doc>A domain ID.</doc>
-                    </param>
-
-                    <resource id="user_accessible_domain_endpoints" path="endpoints">
-                        <method href="#getAccesibleDomainEndpointsForUser"/>
-                    </resource>
-                </resource>
             </resource>
 
             <!-- ENDPOINT_TEMPLATES resource(s) -->
@@ -144,31 +184,23 @@
                 <method href="#listUsersWithRole"/>
             </resource>
 
-            <!-- USER_USER_ADMINS resource(s) -->
-            <resource id="user_user_admins" path="users/{userId}/RAX-AUTH/admins">
-                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <doc>A valid authentication token</doc>
-                </param>
-                <param name="userId" style="template" type="xsd:string" required="true">
-                    <doc>The user ID assigned by system when user is added.</doc>
-                </param>
-                <method href="#getUserAdmin"/>
-            </resource>
-
             <!-- RAX-AUTH resource(s) -->
             <resource id="RAX-AUTH" path="RAX-AUTH">
 
+                <!-- IMPERSONATION resource(s) -->
                 <resource id="impersonation-tokens" path="impersonation-tokens">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token for the impersonator</doc>
                     </param>
                     <method href="#impersonateUser"/>
                 </resource>
-                
+          
+                <!-- FEDERATION resource(s) -->
                 <resource id="federation" path="saml-tokens">
                     <method href="#getTokenBySAML"/>
                 </resource>
 
+                <!-- DEFAUTLT REGIONS resource(s) -->
                 <resource id="default-region-services" path="default-region/services">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token</doc>
@@ -177,6 +209,7 @@
                     <method href="#setDefaultRegionServices"/>
                 </resource>
 
+                <!-- DOMAINS resource(s) -->
                 <resource id="domains" path="domains">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <doc>A valid authentication token</doc>
@@ -301,8 +334,8 @@
                         <method href="#removeCapabilities"/>
                     </resource>
                 </resource>
-
             </resource>
+            
         </resource>
     </resources>
 
@@ -354,13 +387,11 @@
     <method id="resetUserAPIKeyCredentials" name="POST">
         <doc xml:lang="EN" title="Reset User APIKey">
             <db:para role="shortdesc"> Reset a user's API Key </db:para>
-            <!--<para xmlns="http://docbook.org/ns/docbook">-->
             <p xmlns="http://www.w3.org/1999/xhtml"> We recommend that you routinely reset passwords and API keys. This API
                 key reset call will return the new API key for the user account. Unlike updating the password, the API key
                 reset does not revoke existing tokens. The <a
                     href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-external/content/DELETE_revokeToken_v2.0_tokens__tokenId__.html"
                     > "Revoke Token"</a> call can be used to revoke a token. </p>
-            <!--</para>-->
         </doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
@@ -479,13 +510,6 @@
             </representation>
         </request>
         <response status="201">
-            <param name="Location" style="header" type="xsd:string" required="true">
-                <doc>Location of the URI of the newly-created domain</doc>
-            </param>
-        </response>
-        <response status="409">
-            <representation mediaType="application/xml" element="identity:identityFault"/>
-            <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
     <method id="deleteDomain" name="DELETE">
@@ -1192,5 +1216,64 @@
             <representation mediaType="application/xml" element="identity:identityFault"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
-
+    
+    <method id="updateMultifactorSettings" name="POST">
+        <doc xml:lang="EN" title="Update Settings for Multifactor Settings">
+            <db:para role="shortdesc"> Update Settings for Multifactor Settings. </db:para>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+                <doc xml:lang="EN" title="Racker SSO Authentication Request: XML">
+                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN" title="Racker SSO Authentication Request: JSON">
+                    <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.json"/>
+                </doc>
+            </representation>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/EndpointTemplateList.xml"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/EndpointTemplateList.json"/>
+                </doc>
+            </representation>
+        </response> &commonFaults; &getFaults;
+    </method>
+    
+    <method id="createMobilePhone" name="POST">
+        <doc xml:lang="EN" title="Create a Mobile Phone">
+            <db:para role="shortdesc"> Create a Mobile Phone that can be used for multifactor authentication. </db:para>
+        </doc>
+        <request>
+        </request>
+        <response>
+        </response>
+    </method>
+    
+    <method id="sendVerifyCode" name="POST">
+        <doc xml:lang="EN" title="Send Verify Code to a Mobile Phone">
+            <db:para role="shortdesc"> Send a verification code to a device to verify the user has possession of the device. </db:para>
+        </doc>
+        <request>
+        </request>
+        <response>
+        </response>
+    </method>
+    
+    <method id="verifyDevice" name="POST">
+        <doc xml:lang="EN" title="Verify a Device">
+            <db:para role="shortdesc"> Verify that the caller is in possession of the multifactor authentication device. </db:para>
+        </doc>
+        <request>
+        </request>
+        <response>
+        </response>
+    </method>
 </application>

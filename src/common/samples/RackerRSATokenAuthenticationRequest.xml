@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <auth xmlns="http://docs.openstack.org/identity/api/v2.0"
-     xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+     xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+     xmlns:atom="http://www.w3.org/2005/Atom">
      <RAX-AUTH:rsaCredentials tokenKey="8723984574" username="jqsmith"/>
      <RAX-AUTH:domain name="Rackspace"/>
 </auth>
