@@ -173,17 +173,6 @@
                 </resource>
             </resource>
 
-            <!-- USERS_WITH_ROLE resource(s) -->
-            <resource id="users_with_role" path="OS-KSADM/roles/{roleId}/RAX-AUTH/users">
-                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <doc>A valid authentication token</doc>
-                </param>
-                <param name="roleId" type="xsd:string" style="template" required="true">
-                    <doc>A role Id</doc>
-                </param>
-                <method href="#listUsersWithRole"/>
-            </resource>
-
             <!-- RAX-AUTH resource(s) -->
             <resource id="RAX-AUTH" path="RAX-AUTH">
 
@@ -546,7 +535,11 @@
         </doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
-                <doc> Allows us to filter enabled or un-enabled users. Valid values are "true" and "false". </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">     
+                    <para> Allows us to filter enabled or unenabled users. Valid values are <literal>true</literal> or 
+                        <literal>false</literal>.
+                    </para>              
+                </wadl:doc>
             </param>
         </request>
         <response status="200">
@@ -579,7 +572,12 @@
         </doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
-                <doc> Allows us to filter enabled or un-enabled tenants. Valid values are "true" and "false". </doc>
+                <doc>  "true" and "false". </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">     
+                    <para> Allows us to filter enabled or unenabled tenants. Valid values are <literal>true</literal> or 
+                        <literal>false</literal>.
+                    </para>              
+                </wadl:doc>
             </param>
         </request>
         <response status="200">
@@ -702,34 +700,6 @@
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/EndpointList.json"/>
-                </doc>
-            </representation>
-        </response> &commonFaults; &getFaults; </method>
-    
-    <method id="listUsersWithRole" name="GET">
-        <doc xml:lang="EN" title="Get Users with Role">
-            <db:para role="shortdesc"> Get users with role. </db:para>
-        </doc>
-        <request>
-            <param name="enabled" style="query" type="xsd:string">
-                <doc> Allows us to filter enabled or un-enabled users. Values are "true" or "false". </doc>
-            </param>
-            <param name="marker" style="query" type="xsd:string">
-                <doc> Allows us to page through list of users. </doc>
-            </param>
-            <param name="limit" style="query" type="xsd:int">
-                <doc> Allows us to set size of page when paging through list of users. </doc>
-            </param>
-        </request>
-        <response status="200">
-            <representation mediaType="application/xml" element="identity:users">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserList.xml"/>
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/UserList.json"/>
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
@@ -1041,13 +1011,6 @@
             </representation>
         </request>
         <response status="201">
-            <param name="Location" style="header" type="xsd:string" required="true">
-                <doc>Location of the URI of the newly created region</doc>
-            </param>
-        </response>
-        <response status="409">
-            <representation mediaType="application/xml" element="identity:identityFault"/>
-            <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
     <method id="deleteRegion" name="DELETE">
@@ -1224,6 +1187,13 @@
         <doc xml:lang="EN" title="Update Settings for Multifactor Settings">
             <db:para role="shortdesc"> Update Settings for Multifactor Settings. </db:para>
         </doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">     
+            <para> Once you have created a mobile phone for multifactor authentication, have sent the verification code to 
+                that phone, and have verified receipt of the code, this operation enables multifactor authentication for you. To 
+                start using the mobile phone, set the <parameter>enable</parameter> attribute to <literal>true</literal>. To stop 
+                using the mobile phone, set the <parameter>enable</parameter> attribute to <literal>false</literal>.
+            </para>              
+        </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
                 <doc xml:lang="EN">
@@ -1242,6 +1212,8 @@
     <method id="createMobilePhone" name="POST">
         <doc xml:lang="EN" title="Create a Mobile Phone">
             <db:para role="shortdesc"> Create a Mobile Phone that can be used for multifactor authentication. </db:para>
+            <db:para> This operation allows you to indicate what mobile phone number you want to use for multifactor 
+                authentication. </db:para>
         </doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
@@ -1260,7 +1232,9 @@
     
     <method id="sendVerifyCode" name="POST">
         <doc xml:lang="EN" title="Send Verify Code to a Mobile Phone">
-            <db:para role="shortdesc"> Send a verification code to a device to verify the user has possession of the device. </db:para>
+            <db:para role="shortdesc"> Send a verification code to a device to verify the user has possession of the device.</db:para>
+            <db:para> Once you have created the mobile phone for multifactor authentication, this operation sends an SMS message 
+                with the verification code to the mobile phone number you provided. </db:para>
         </doc>
         <response status="202"/> &commonFaults; &getFaults;
     </method>
@@ -1268,7 +1242,9 @@
     <method id="verifyDevice" name="POST">
         <doc xml:lang="EN" title="Verify a Device">
             <db:para role="shortdesc"> Verify that the caller is in possession of the multifactor authentication device. </db:para>
-        </doc>
+            <db:para> Once you have created a mobile phone for multifactor authentication and have sent the verification code to 
+                that phone, this operation allows you to provide the code to the Cloud Identity service to verify that have the
+                phone and have actually received the code. </db:para></doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
                 <doc xml:lang="EN">

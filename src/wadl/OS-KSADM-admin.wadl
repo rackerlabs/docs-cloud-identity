@@ -872,13 +872,17 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         </doc>
         <request>
             <param name="enabled" style="query" required="false" type="xsd:string">
-                <doc> Allows you to filter enabled or un-enabled users. Values are "true" or "false". </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">     
+                    <para> Allows us to filter enabled or unenabled users. Valid values are <literal>true</literal> or 
+                        <literal>false</literal>.
+                    </para>              
+                </wadl:doc>
             </param>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc>Allows you to page through list.</doc>
+                <doc>Allows us to page through list.</doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc>Allows you to set page size for paging through list.</doc>
+                <doc>Allows us to set page size for paging through list.</doc>
             </param>
         </request>
         <response status="200">
