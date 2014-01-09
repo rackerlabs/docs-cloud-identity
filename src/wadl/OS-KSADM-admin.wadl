@@ -224,10 +224,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         </doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc> Allows us to page through list of users. </doc>
+                <doc> Allows us to page through list of users. This is the numeric id of the item to start the list.</doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc> Allows us to set size of page when paging through list of users. </doc>
+                <doc> Allows us to set size of page when paging through list of users. This is the number of items per page.</doc>
             </param>
         </request>
         <response status="200 203">
@@ -666,10 +666,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         </doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc> Allows us to page through list of users. </doc>
+                <doc> Allows us to page through list of users. This is the numeric id of the item to start the list.</doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc> Allows us to set size of page when paging through list of users. </doc>
+                <doc> Allows us to set size of page when paging through list of users. This is the number of items per page.</doc>
             </param>
         </request>
         <response status="200 203">
@@ -753,10 +753,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 <doc> Allows us to filter by service id. </doc>
             </param>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc> Allows us to page through list of users. </doc>
+                <doc> Allows us to page through list of users. This is the numeric id of the item to start the list.</doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc> Allows us to set size of page when paging through list of users. </doc>
+                <doc> Allows us to set size of page when paging through list of users. This is the number of items per page.</doc>
             </param>
         </request>
         <response status="200 203">
@@ -879,10 +879,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 </wadl:doc>
             </param>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc>Allows us to page through list.</doc>
+                <doc> Allows us to page through list of users. This is the numeric id of the item to start the list.</doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc>Allows us to set page size for paging through list.</doc>
+                <doc> Allows us to set size of page when paging through list of users. This is the number of items per page.</doc>
             </param>
         </request>
         <response status="200">
@@ -906,10 +906,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         </doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc> Allows us to page through list of users. </doc>
+                <doc> Allows us to page through list of users. This is the numeric id of the item to start the list.</doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc> Allows us to set size of page when paging through list of users. </doc>
+                <doc> Allows us to set size of page when paging through list of users. This is the number of items per page.</doc>
             </param>
         </request>
         <response status="200 203">
