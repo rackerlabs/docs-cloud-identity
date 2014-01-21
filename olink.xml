@@ -1,0 +1,4 @@
+<books xmlns="http://docs.rackspace.com/olink">
+  <book path="src/docbkx/auth-client-devguide.xml"/>
+  <book path="src/docbkx/auth-admin-devguide.xml"/>
+</books>
