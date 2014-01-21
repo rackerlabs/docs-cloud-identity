@@ -10,11 +10,23 @@
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
-			<!--Clouddocs Maven Plugin 1.7.0 old-->
+		  <plugin>
+		    <groupId>com.rackspace.cloud.api</groupId>
+		    <artifactId>olink-maven-plugin</artifactId>
+		    <version>1.1.0</version>
+		    <executions>
+		      <execution>
+			<phase>initialize</phase>
+			<goals>
+			  <goal>olink</goal>
+			</goals>
+		      </execution>
+		    </executions>
+		  </plugin>
 			<plugin>
 				<groupId>com.rackspace.cloud.api</groupId>
 				<artifactId>clouddocs-maven-plugin</artifactId>
-				<version>1.12.0</version>
+				<version>1.12.2</version>
 				<executions>
 					<!-- HTML for auth-client-devguide -->
 					<execution>		
