@@ -30,7 +30,7 @@
     <!--*******************************************************-->
 
     <!-- We should use SSL in production -->
-    <resources base="http://localhost:35357">
+    <resources base="http://localhost:35357" xml:id="Identity-v2">
         <resource id="version" path="v2.0">
             <method href="#getVersionInfo"/>
 
