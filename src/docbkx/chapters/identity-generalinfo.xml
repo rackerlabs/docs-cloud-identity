@@ -54,6 +54,10 @@ This operation does not require a request body.</para>'>
 			operate against the authentication service should be
 			performed using SSL over HTTP (HTTPS) on TCP port
 			443.</para>
+	<section xml:id="Identity_Service_Concepts">
+		<title>Identity Service Concepts</title>
+		<para/>
+	</section>
 	<section xml:id="Request_Response_Types-d1e149">
 	  <title>Request/Response Types</title>
 	  <para> The Keystone API supports both the JSON and XML data
@@ -811,8 +815,10 @@ This operation does not require a request body.</para>'>
 		</example>
 	</section>
 	<section xml:id="Versions-d1e472">
-		<title>Versions</title>
-		<para> The identity API uses a URI versioning scheme. </para>
+		<title>Contract versions</title>
+		<para>The contracct version denotes the data model and behavior that the API supports.
+			The 
+			The identity API uses a URI versioning scheme. </para>
 		<important>
 			<para>Rackspace's implementation of the OpenStack Keystone Identity
 				Service v2.0 does not
@@ -908,19 +914,34 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			<title>Multiple Choices Response: JSON</title>
 			<programlisting language="javascript"><xi:include href="../samples/choices.json" parse="text"/></programlisting>
 		</example>
-		<para> New features and functionality that do not break API
-			compatibility will be introduced in the current version of
-			the API as <link linkend="Extensions-d1e688"
-				>extensions</link> and the URI will
-			remain unchanged. Features or functionality changes that
-			would disrupt API compatibility will require a new
-			version, which will result in the URI version
-			being updated accordingly. When new API versions are
-			released, older versions will be marked as
-				<code>DEPRECATED</code>. Providers should work with
-			developers and partners to ensure there is adequate time
-			to migrate to the new version before deprecated versions
-			are discontinued. </para>
+		<para>Features or functionality changes that would disrupt API
+			compatibility will require a new version, which will
+			result in the URI version being updated accordingly. When
+			new API versions are released, older versions will be
+			marked as <code>DEPRECATED</code>. Providers should work
+			with developers and partners to ensure there is adequate
+			time to migrate to the new version before deprecated
+			versions are discontinued. <itemizedlist>
+				<listitem>
+					<para> New features and functionality that do not
+						break API compatibility will be introduced in
+						the current version of the API as <link
+							linkend="Extensions-d1e688"
+							>extensions</link> and the URI will remain
+						unchanged. </para>
+				</listitem>
+				<listitem>
+					<para>Features or functionality changes that would
+						disrupt API compatibility will require a new
+						version, which will result in the URI version
+						being updated accordingly. </para>
+				</listitem>
+				<listitem>
+					<para>When new API versions are released, older
+						versions will be marked as
+							<code>DEPRECATED</code>. </para>
+				</listitem>
+			</itemizedlist></para>
 		<para>
 			You can programmatically determine
 			available API versions by performing a &GET; on the
@@ -1162,13 +1183,14 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	</section>
 	<section xml:id="Namespaces-d1e910">
 		<title>Namespaces</title>
-		<para> 
-			The API operations described in <xref
-				linkend="API_Operations"/> are enabled by a
-			combination of the core Identity API and multiple API
-			extensions. You can read more about extensions, including
-			how to request details about all or specific extensions,
-			at <xref linkend="Extensions-d1e688"/>. </para>
+		<para> The API operations described in <olink
+				targetdoc="Identity-Admin-Developer-Guide"
+				targetptr="API_Operations">API Operations for Service
+				Developers</olink> are enabled by a combination of the
+			core Identity API and multiple API extensions. You can
+			read more about extensions, including how to request
+			details about all or specific extensions, at <xref
+				linkend="Extensions-d1e688"/>. </para>
 		<para> 
 			Depending upon which operations you perform, you may see
 			evidence of one or several extensions involved in
@@ -1242,23 +1264,19 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			When an account is created, it is associated with one user. That user holds the <code>identity:user-admin</code> role,
 			giving it full administrative privileges to manage the account. Exactly one administrative user exists for each account.
 		</para>
-		<para>
-			The account's administrative user can create and manage account users, also called sub-accounts. Each account user:
-			<itemizedlist>
+		<para> The account's administrative user can create and manage
+			account users, also called sub-users. Each sub-user: <itemizedlist>
 				<listitem>
-					<para>
-						is a child of the administrative user
+					<para> is a child of the administrative user
 					</para>
 				</listitem>
 				<listitem>
-					<para>
-						holds the <code>identity:default</code> role
-					</para>
+					<para> holds the <code>identity:default</code>
+						role </para>
 				</listitem>
 				<listitem>
-					<para>
-						shares its parent's tenant information, group memberships, and endpoints
-					</para>
+					<para> shares its parent's tenant information,
+						group memberships, and endpoints </para>
 				</listitem>
 			</itemizedlist>
 		</para>
@@ -1419,10 +1437,10 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			If the default limits change, we'll update this document to reflect the current value.
 		</para>
 		<tip condition="admin">
-			<para>
-				You can learn about rate limiting operations in 
-				<xref linkend="Ratelimiting_Calls"></xref>.
-			</para>
+			<para> You can learn about rate limiting operations in <olink
+					targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Ratelimiting_Calls">“Rate
+					Limits”</olink>. </para>
 		</tip>
 	</section>
 	<section xml:id="Faults-d1e908">
@@ -1541,16 +1559,23 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</para>
 		</warning>
 		<section xml:id="RBAC_Roles-dle808">
-			<title>Description of Roles</title>
-			<para> 
-				"Role” describes the categories of users on an account. Each role receives different levels of access and 
-				action. By assigning roles to users and using RBAC, customers can allow multiple users to complete tasks more 
-				safely, and limit risk by ensuring that users do not have access or permissions beyond their training or level 
-				of control. Rackspace’s RBAC solution offers several roles subordinate to the 
-				<link linkend="Account_Owner-dle808">Account Owner</link>: admin or observer (for both custom and multiproduct 
-				scope), and creator  (for custom scope only).  In both custom and multiproduct roles, the user will only have
-				access to designated products.
-				<table
+			<title>Role descriptions</title>
+			<para>
+				<olink targetdoc="identity-glossary.xml"
+					targetptr="Role-dle07">Roles</olink> describe user
+				categories for an account. A role defines the access
+				level and operations that a user can complete.  By
+				assigning roles to users and using RBAC, customers can
+				allow multiple users to view information and complete
+				operations while limiting risk by ensuring that users
+				only have access and permissions within the scope of
+				their training and level of control. Rackspace’s RBAC
+				solution offers several roles subordinate to the <link
+					linkend="Account_Owner-dle808">Account
+					Owner</link>: admin or observer (for both custom
+				and multiproduct scope), and creator (for custom scope
+				only). In both custom and multiproduct roles, the user
+				will only have access to designated products. <table
 					frame="void">
 					<caption>Rackspace RBAC Roles</caption>
 					<col width="20%"/>
@@ -1566,40 +1591,59 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<tbody>
 						<tr>
 							<td>admin (full access)</td>
-							<td>This role provides Create, Read, Update, and Delete permissions in all products, where access 
-								is granted. Full access  is given to current and future products, as they become RBAC-enabled.</td>
+							<td>This role provides Create, Read,
+								Update, and Delete permissions in all
+								products, where access is granted.
+								Full access is given to current and
+								future products, as they become
+								RBAC-enabled.</td>
 							<td>admin</td>
 						</tr>
 						<tr>
 							<td>observer (read-only access)</td>
-							<td>This role provides Read permission in all products, where access is granted. 
-								Read-only access is given to current and future products, as they become RBAC-enabled.</td>
+							<td>This role provides Read permission in
+								all products, where access is granted.
+								Read-only access is given to current
+								and future products, as they become
+								RBAC-enabled.</td>
 							<td>observer</td>
 						</tr>
 						<tr>
 							<td>product:admin</td>
-							<td>This role provides Create, Read, Update, and Delete permissions for a specified product, where 
-								access is granted.</td>
+							<td>This role provides Create, Read,
+								Update, and Delete permissions for a
+								specified product, where access is
+								granted.</td>
 							<td>nova:admin</td>
 						</tr>
 						<tr>
 							<td>product:creator</td>
-							<td>This role provides Create, Read, and Update permissions for a specified product, where access 
-								is granted. The user cannot delete resources.</td>
+							<td>This role provides Create, Read, and
+								Update permissions for a specified
+								product, where access is granted. The
+								user cannot delete resources.</td>
 							<td>cloudFiles:creator</td>
 						</tr>
 						<tr>
 							<td>product:observer</td>
-							<td>This role provides Read permission for a specified product, where access is granted.</td>
+							<td>This role provides Read permission for
+								a specified product, where access is
+								granted.</td>
 							<td>cdb:observer</td>
 						</tr>
 					</tbody>
 				</table>
 				<important>
-					<para xml:id="Account_Owner-dle808"> The account owner (one per account) is designated by the customer 
-						as the Primary contact. Only the account owner (identity:user-admin) can create an account user 
-						(identity:default) for the purpose of assigning roles and granting privileges through RBAC. The 
-						account owner cannot hold any additional roles, as they already have full access to all capabilities.</para>
+					<para xml:id="Account_Owner-dle808"> The account
+						owner (one per account) is designated by the
+						customer as the Primary contact. Only the
+						account owner (identity:user-admin) can create
+						an account user (identity:default) for the
+						purpose of assigning roles and granting
+						privileges through RBAC. The account owner
+						cannot hold any additional roles, as they
+						already have full access to all
+						capabilities.</para>
 				</important>
 			</para>
 		</section>
