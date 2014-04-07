@@ -34,10 +34,12 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
-		<para>
-			When these requests are issued by an account user, they act only upon that account user. You can learn more about
-			account users, also called sub-accounts, at <xref linkend="Account-Users-d1e910"/>.
-		</para>
+		<para> When these requests are issued by an account user, they act
+			only upon that account user. You can learn more about
+			account users, also called sub-accounts, at <olink
+				targetdoc="Identity-Developer-Guide"
+				targetptr="Account-Users-d1e910">“Account
+				Users”</olink>. </para>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->

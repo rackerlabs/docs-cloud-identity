@@ -1,8 +1,11 @@
-
-     <!--
-         A collection of common faults, these are pretty much expected
-         in every request.
-     -->
+<!-- Useful for describing APIs -->
+<!ENTITY GET '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+     
+     
+<!--A collection of common faults, these are pretty much expected in every request.-->
      <!ENTITY commonFaults
            '
         <response xmlns="http://wadl.dev.java.net/2009/02">
@@ -38,9 +41,7 @@
             <representation mediaType="application/json"/>
         </response>
            '>
-      <!--
-          Faults on GET
-      -->
+<!-- Faults on GET-->
      <!ENTITY getFaults
            '
         <response status="404" xmlns="http://wadl.dev.java.net/2009/02">

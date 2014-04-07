@@ -38,13 +38,12 @@
 			</annotation>
 		</legalnotice>
 		<abstract>
-			<para>This document is intended for software developers interested
-				in developing applications that utilize Rackspace's
-				implementation of OpenStack's Keystone Identity
-				Service for authentication. This document also
-				includes details on how to integrate services with
-				Rackspace's implementation of OpenStack's Keystone
-				Identity Service. </para>
+			<para>This Developer Guide is intended for software developers who
+				want to use the Rackspace Cloud Identity Service v2.0
+				API for  identity management and authentication to
+				Rackspace Cloud Services.  Developers will learn how
+				to use the v2.0 API for authentication, identity
+				administration, and access control of </para>
 		</abstract>
 		<revhistory>
 			<revision>

@@ -18,7 +18,7 @@
     </important>
     <para> Rackspace recommends that you authenticate at one of the following Cloud Identity endpoints: </para>
     <table rules="all">
-        <caption>Recommended Authentication Endpoints</caption>
+        <caption>Authentication Endpoints</caption>
         <col width="13%"/>
         <col width="48%"/>
         <col width="48%"/>
@@ -63,40 +63,5 @@
                 </td>
             </tr>
         </tbody>
-    </table>
-    <para> Alternatively, versions 1.1 is supported by the following legacy endpoints: </para>
-    <table rules="all" width="737">
-        <caption>Legacy Authentication Endpoints</caption>
-        <col width="20%"/>
-        <col width="80%"/>
-        <thead>
-            <tr>
-                <th>Resource</th>
-                <th>v1.1</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>US-Based Endpoint</td>
-                <td>
-                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.1">
-                        https://auth.api.rackspacecloud.com/v1.1</link>
-                </td>
-            </tr>
-            <tr>
-                <td>UK-Based Endpoint</td>
-                <td>
-                    <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1">
-                        https://lon.auth.api.rackspacecloud.com/v1.1</link>
-                </td>
-            </tr>
-            <tr>
-                <td>Documentation</td>
-                <td>
-                    <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide/content/index.html">
-                        Cloud Authentication Client Developer Guide - API v1.1</link>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    </table>    
 </section>

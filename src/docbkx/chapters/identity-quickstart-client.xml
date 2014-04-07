@@ -116,24 +116,27 @@
             </orderedlist>
         </para>
         <para> The rest of this API Developer Guide provides reference
-            and background information, including sample requests and
-            responses. To learn more about the Cloud Identity Service
-            and this API, two good places to begin are with  the
-            fundamental ideas explained in 
-            <xref linkend="Identity-Service-Concepts-e1362"/>
-            and the annotated request and response in 
-            <xref linkend="Sample_Request_Response-d1e64"/>.
-            To see examples of authentication using several kinds of credentials, read 
-            <xref linkend="POST_authenticate_v2.0_tokens_"/>.
-        </para>
+        and background information, including sample requests and
+        responses. To learn more about the Cloud Identity Service and
+        this API, two good places to begin are with the fundamental
+        ideas explained in <olink
+            targetdoc="Identity-Admin-Developer-Guide"
+            targetptr="Identity-Service-Concepts-e1362"
+            >Concepts</olink> and the annotated request and response
+        in <olink targetdoc="Identity-Admin-Developer-Guide"
+            targetptr="Sample_Request_Response-d1e64">“Sample
+            Authentication Request and Response”</olink> To see
+        examples of authentication using several kinds of credentials,
+        read <xref linkend="POST_authenticate_v2.0_tokens_"/>. </para>
     <para security="writeronly">
         <!-- added then deleted this preparatory to 2012-05-16 republication; 
              leaving it hidden while people think -->
         Some of the operations described in this API Developer Guide
-        are possible because we have implemented extensions to the core Identity API. 
-        Extensions are particularly relevant to operations on 
-        <link linkend="User_Calls">Users</link>.
-    </para>
+        are possible because we have implemented extensions to the
+        core Identity API. Extensions are particularly relevant to
+        operations on <olink
+            targetdoc="Identity-Admin-Developer-Guide"
+            targetptr="User_Calls">“Users”</olink>. </para>
     <tip>
         <para> For language binding examples you can adapt to
             work with the Cloud Identity service, see our Software Development Kits at <link

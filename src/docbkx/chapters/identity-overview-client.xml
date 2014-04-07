@@ -16,34 +16,49 @@
 	<raxm:priority>1</raxm:priority>
       </raxm:metadata> 
     </info>
-    <para> This document describes Rackspace's implementation of the
-        OpenStack Keystone Identity Service v2.0. We have named our
-        Keystone implementation the Rackspace Cloud Identity Service
-        v2.0; the identity service performs authentication, generating
-        a token in response to valid credentials, and identification,
-        matching users and their roles. Earlier versions of this API,
-        v1.0 and v1.1, support only authentication and are named
-        Rackspace Cloud Authentication Service; all versions of the
-        API allow clients to obtain tokens that can be used to access
-        resources in the Rackspace Cloud, but only v2.0 is an
-        implementation of OpenStack's Keystone Identity Service. </para>
+    <para>The Rackspace Cloud Identity Service v2.0, an implementation
+        of OpenStack Keystone Service v2.0, provides authentication
+        and authorization services for Rackspace Cloud services like
+        Cloud Networks, Cloud Servers, and Cloud Load
+        Balancers.</para>
     <para>
-        While each version of the API implements different features, 
-        tokens created by any version can be recognized as valid by any other version.
-        For example, if you use v1.1 to generate a token, you can use that token
-        in calls to v2.0.
+        <itemizedlist>
+            <listitem>
+                <para>Authentication generates a token in response to
+                    valid credentials submitted by a user, process, or
+                    client. Then, that token is used to confirm
+                    identity when requesting access to systems or
+                    resources defined in the Cloud Identity Service
+                    service catalog.  </para>
+            </listitem>
+            <listitem>
+                <para>Authorization determines the resources and
+                    actions available to a user, client, or process
+                    based on access control capabilities that can be
+                    defined and managed using the Rackspace Cloud
+                    Identity Service.</para>
+            </listitem>
+        </itemizedlist>
     </para>
+    <para>Earlier versions of the Rackspace Identity Service API, v1.0
+        and v1.1 are known as the Rackspace Cloud Authentication
+        service. These versions are not based on the OpenStack
+        Keystone Identity Service and only provide authentication
+        services. </para>
+    <para>Although each version of the API implements different
+        features, you can use tokens generated from any API version to
+        authenticate when making calls to Rackspace Cloud services.
+        For example, if you use the v1.1 API to generate a token, you
+        can use that token in calls to the v2.0 API. </para>
     <xi:include href="identity-quickstart-client.xml"/>
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
-        <para> This document is intended for software developers
-            interested in developing applications that utilize the
-            Keystone Identity Service API for authentication. The
-            Rackspace Cloud Identity Service, also known as the
-            authentication service or "Auth", allows these developers
-            to obtain an authentication token and a list of regional
-            service endpoints to the various services available in the
-            cloud. </para>
+        <para>This Developer Guide is intended for software developers
+            who want to use the Rackspace Cloud Identity Service, an
+            implementation of the OpenStack Keystone Identity Service.
+            Developers can learn how to develop applications that use
+            the Identity Service API for authentication,
+            authorization, and service administration. </para>
         <para>
             To use this Developer Guide most effectively, readers should be familiar with ReSTful web
             services, HTTP/1.1, and JSON and/or XML serialization formats.

@@ -8,7 +8,9 @@
   type="compute"
   name="Compute"
   publicURL="https://service-public.com/v1"
-  internalURL="https://service-internal.com/v1" 
+  internalURL="https://service-internal.com/v1"
+  adminURL="https://service-admin.com/v1"
+  RAX-AUTH:tenantAlias= "{tenant}"
   enabled="true">
   <version
     id="1"

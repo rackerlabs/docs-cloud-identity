@@ -28,6 +28,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
         <include href="../common/xsd/OS-KSADM.xsd"/>
+        <include href="../common/xsd/RAXAUTH.xsd"/>"
     </grammars>
     <!--*******************************************************-->
     <!-- All Resources -->
@@ -298,17 +299,18 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
                 of the password in the response and supply that password to the user. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> Within an account, a maximum of 100 account users (sub-accounts) can be
                 added. </p>
-            <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                <para security="internal">
-                    The user is assigned the default region based on which region was set as “isDefault”:true during the 
-                    creation of the region. The user can change their default region through the 
-                    <a xmlns="http://www.w3.org/1999/xhtml" 
-                        href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_updateUser_v2.0_users__userId__.html"
-                        >"Update User "</a> API call, but they are restricted to changing it only to one of their regions 
-                    listed in the service catalog for the CloudServersOpenStack service.
-                </para>
-                <note><para>If you attempt to add a user who already exists, an <errorcode>HTTP error 409</errorcode> results.</para></note>
-            </wadl:doc>
+            <p security="internal" xmlns="http://www.w3.org/1999/xhtml">
+                    The user is assigned the default region based on which region was set as <code>isDefault:true</code> during the 
+                    creation of the region. Users can change their default region through the 
+                    <a href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_updateUser_v2.0_users__userId__.html">
+                    "Update User "</a> API call, but they can only change it to a region that is listed in  
+                    in the service catalog for the CloudServersOpenStack service.
+                </p>
+        </doc>
+        <doc xmlns="http://docbook.org/ns/docbook">     
+            <note>
+                <p>If you attempt to add a user who already exists, an <errorcode>HTTP error 409</errorcode> results.</p>
+            </note>
         </doc>
 
         <request>
@@ -569,7 +571,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
     
     <method name="DELETE" id="deleteUserRole">
-        <doc xml:lang="EN" title="Delete Role from User">
+        <doc xml:lang="EN" title="Delete Global Role from User">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Delete a multiproduct or custom (product-specific) role from a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml"> This call deletes a role from a user. To delete a role from a
                 user, specify the role's ID and the user's ID in the request. If you know the role's name but not the role's

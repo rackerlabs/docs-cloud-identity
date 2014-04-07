@@ -32,6 +32,18 @@
             </para>
         </glossdef>
     </glossentry>
+    <glossentry>
+        <glossterm><emphasis role="bold">Authorization</emphasis></glossterm>
+        <glossdef>
+            <para>Process that determines the capabilities available
+                to an authenticated user, system or process.
+                Authorization ensures that clients have appropriate
+                access to information and information processing
+                capabilities based on roles and policy-based access
+                control defined by the organization.</para>
+        </glossdef>
+    </glossentry>
+    
     <glossentry xml:id="Credentials-d1e03">
         <glossterm><emphasis role="bold">Credentials</emphasis></glossterm>
         <glossdef>
@@ -51,6 +63,23 @@
                 </itemizedlist>
             </para>
         </glossdef>
+    </glossentry>
+    <glossentry xml:id="EndpointTemplate">
+        <glossterm><emphasis role="bold">Endpoint Template</emphasis></glossterm>
+        <glossdef>
+            <para>Endpoint templates provide a method to define
+                endpoints that apply to many or all tenants without
+                having to create each endpoint on each tenant
+                manually. For example, you can define an endpoint
+                template and set the global attribute to true so that
+                endpoint automatically shows up in the Service catalog
+                for all tenants authorized to use that service. For
+                more information, see <olink
+                    targetdoc="Identity-Admin-Developer-Guide"
+                    targetptr="Endpoint_Template_Calls">“Endpoint
+                    Templates”</olink>.</para>
+        </glossdef>
+      
     </glossentry>
     <glossentry xml:id="Endpoint-d1e05">
         <glossterm><emphasis role="bold">Endpoint</emphasis></glossterm>
@@ -144,11 +173,11 @@
     <glossentry xml:id="User-d1e15">
         <glossterm><emphasis role="bold">User</emphasis></glossterm>
         <glossdef>
-            <para> A user is a digital representation of a person, system, or service who consumes cloud services. Users have
-                credentials and may be assigned tokens; based on these credentials and tokens, the authentication service
+            <para> A user is a digital representation of a person, system, or service who consumes cloud services. 
+                Users have credentials and can be assigned tokens. Based on these credentials and tokens, the authentication service
                 validates that incoming requests are being made by the user who claims to be making the request, and that the
-                user has the right to access the requested resources. Users may be directly assigned to a particular tenant
-                and behave as if they are contained within that tenant. </para>
+                user has the right to access the requested resources. Administrators can directly assign users to a particular tenant so 
+                that the users behave as if they are contained within that tenant.</para>
         </glossdef>
     </glossentry>
 </glossary>

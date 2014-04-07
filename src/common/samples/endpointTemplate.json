@@ -9,6 +9,7 @@
         "versionId":"1",
         "versionInfo":"https://compute.north.public.com/v1/",
         "versionList":"https://compute.north.public.com/",
+        "RAX-AUTH:tenantAlias": "{tenant}",
         "enabled":true
     }
 }

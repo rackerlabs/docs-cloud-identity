@@ -23,6 +23,7 @@
     <grammars>
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
+        <include href="../common/xsd/RAX-AUTH.xsd"/>
     </grammars>
 
     <!--*******************************************************-->
@@ -284,7 +285,7 @@
                         <xsdxt:code href="../docbkx/samples/auth-annotated.xml"/>
                     </xsdxt:sample>
                     <important>
-                        <para> The token's expiration time is formatted differently in the US and UK. </para>
+                        <para>The token's expiration time is formatted differently in the US and UK.</para>
                     </important>
                     <xsdxt:sample title="Authentication Response for UK Endpoint: XML">
                         <xsdxt:code href="../docbkx/samples/auth-UK-time.xml"/>

@@ -65,31 +65,38 @@
 	<section xml:id="User_Calls">
 		<title>Users</title>
 		<para>The operations described in this section allow service developers to manage users.</para>
-		<para>
-			When these requests are issued by an account user, they act only upon that account user. You can learn more about 
-			account users, also called sub-accounts, at <xref linkend="Account-Users-d1e910"/>.
-		</para>
+		<para> When these requests are issued by an account user, they act
+			only upon that account user. You can learn more about
+			account users, also called sub-accounts, at <olink targetdoc="Identity-Admin-Developer-Guide"
+				targetptr="Account-Users-d1e910">“Account
+				Users”</olink>. </para>
 		<warning>
 			<para>
 				Before making any change to a user, you should confirm that you are changing the user you intend to change. 
 				You can do this by treating every change as a two-step operation: first, check the target of the change; second, 
 				make the change.  
 			</para>
-			<para>
-				For example, both "Update User" and "Delete User" act upon the user specified by <code>userId</code>. 
-				Before attempting to update or delete a user, use 
-				<xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title" /> 
-				to obtain the username, email account, and status associated with <code>userId</code>. 
-				That's Step 1.  Check the returned information carefully;  if you are certain that it describes the user you intend 
-				to change, proceed with Step 2, updating or deleting the user you just examined.
-			</para>
+			<para> For example, both "Update User" and "Delete User" act upon
+				the user specified by <code>userId</code>. Before
+				attempting to update or delete a user, use  
+				<link
+					xlink:href= "http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html">Get User Admin</link>
+
+				to obtain the username, email account, and status
+				associated with <code>userId</code>. That's Step 1.
+				Check the returned information carefully; if you are
+				certain that it describes the user you intend to
+				change, proceed with Step 2, updating or deleting the
+				user you just examined. </para>
 		</warning>
 		<note>
-			<para> Some of the functionality described in this section is provided by the <code>OS-KSADM</code>,
-					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code> extensions to the core Identity API. You can learn
-				more about API extensions at 
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/v2.0/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/v2.0/src/docbkx/</link>. </para>
+			<para> Some of the functionality described in this section is
+				provided by the <code>OS-KSADM</code>,
+					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code>
+				extensions to the core Identity API. You can learn
+				more about API extensions in the <link
+					xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html"
+					> OpenStack Extensions documentation</link>.</para>
 		</note>
 		<!--- this section comes from 4 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin & RAX-AUTH -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -169,10 +176,8 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>RAX-GRPADM</code> and <code>RAX-KSGRP</code> extensions to the
-				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				core Identity API. You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+				OpenStack Exstensions documentation</link>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -195,9 +200,8 @@
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSADM</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -245,9 +249,8 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -341,9 +344,8 @@
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSCATALOG</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>.  
 			</para>
 		</note>
 		 
@@ -371,9 +373,8 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSCATALOG</code> extension to the
-				core Identity API. You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				core Identity API. You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -402,9 +403,8 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> and <code>RAX-KSQA</code> extensions to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -461,9 +461,9 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				You can learn more about API extensions in the 
+				<link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation.</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -473,7 +473,9 @@
 					<tip>
 						<para>
 							For information about how an impersonator can obtain a validated token,
-							see <xref linkend="GET_validateToken_v2.0_tokens__tokenId__" />. 
+							see  <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_validateToken_v2.0_tokens__tokenId__Token_Calls.html">
+								Validate Token</link>.
+						
 						</para>
 					</tip>
 				</wadl:doc>
@@ -632,14 +634,11 @@
 		<para>The operations described in this section allow service developers to manage domains.</para>
 		<para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.</para>
 		<note>
-			<para> 
-				Some of the functionality described in this section is
+			<para> Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
-				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
-			</para>
+				core Identity API. You can learn more about API
+				extensions in the  <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>.</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domains">
@@ -743,9 +742,8 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-				https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation.</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -796,9 +794,8 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -828,9 +825,8 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is provided by the <code>RAX-AUTH</code> 
-				extension to the core Identity API.  You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				extension to the core Identity API.  You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation.</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -849,9 +845,8 @@
 		<note>
 			<para> 
 				The functionality described in this section is provided by the <code>OS-KSADM</code> 
-				extension to the core Identity API.  You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				extension to the core Identity API.  You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
+					OpenStack Exstensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -871,7 +866,7 @@
 	</section>
 	
 	<!-- MULTIFACTOR OPERATIONS -->
-	<section xml:id="Multifactor_Calls">
+	<section condition="multifactor" xml:id="Multifactor_Calls">
 		<title>Multifactor Operations</title>
 		<para>The operations described in this section allow service developers to manage multifactor authentication.  To use a 
 			mobile device for multifactor authentication, use the API operations in this section to do the following:</para>

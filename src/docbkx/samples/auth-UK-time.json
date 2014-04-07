@@ -128,7 +128,7 @@
             "id": "aaaaa-bbbbb-ccccc-dddd"
         },
         "user": {
-        "RAX-AUTH:defaultRegion": "DFW",
+            "RAX-AUTH:defaultRegion": "DFW",
             "id": "161418",
             "name": "demoauthor",
             "roles": [
