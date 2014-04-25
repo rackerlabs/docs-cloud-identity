@@ -277,34 +277,16 @@
                 <!-- (showing same sample responses in Ch 3 & Ch 4, annotated with callouts in Ch 3 only) -->
                 <!-- for these 2 samples only, this Ch 4 WADL reuses the samples shown in Ch3 -->
                 <!-- now I can stop losing synch -->
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <important>
-                        <para> The token's expiration time is formatted differently in the US and UK. </para>
-                    </important>
-                    <xsdxt:sample title="Authentication Response for US Endpoint: XML">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">        
+                    <xsdxt:sample title="Authentication Response: XML">
                         <xsdxt:code href="../docbkx/samples/auth-annotated.xml"/>
-                    </xsdxt:sample>
-                    <important>
-                        <para>The token's expiration time is formatted differently in the US and UK.</para>
-                    </important>
-                    <xsdxt:sample title="Authentication Response for UK Endpoint: XML">
-                        <xsdxt:code href="../docbkx/samples/auth-UK-time.xml"/>
-                    </xsdxt:sample>
+                    </xsdxt:sample>               
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <important>
-                        <para> The token's expiration time is formatted differently in the US and UK. </para>
-                    </important>
-                    <xsdxt:sample title="Authentication Response for US Endpoint: JSON">
+                    <xsdxt:sample title="Authentication Response: JSON">
                         <xsdxt:code href="../docbkx/samples/auth-annotated.json"/>
-                    </xsdxt:sample>
-                    <important>
-                        <para> The token's expiration time is formatted differently in the US and UK. </para>
-                    </important>
-                    <xsdxt:sample title="Authentication Response for UK Endpoint: JSON">
-                        <xsdxt:code href="../docbkx/samples/auth-UK-time.json"/>
                     </xsdxt:sample>
                     <p xmlns="http://www.w3.org/1999/xhtml"> To see authentication requests and responses with annotations
                         explaining key ideas, see the examples in the "General API Information" chapter's <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->

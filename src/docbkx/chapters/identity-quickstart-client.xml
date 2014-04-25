@@ -138,9 +138,9 @@
             targetdoc="Identity-Admin-Developer-Guide"
             targetptr="User_Calls">“Users”</olink>. </para>
     <tip>
-        <para> For language binding examples you can adapt to
-            work with the Cloud Identity service, see our Software Development Kits at <link
-                xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
-                >http://docs.rackspace.com/sdks/guide/content/intro.html</link>.</para>
+        <para>You can find language binding examples that can be modified to work with the Cloud
+            Identity service in the <link
+                xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html">Rackspace
+                Software Development Kits</link>.</para>
     </tip>
     </section>

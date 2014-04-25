@@ -127,22 +127,19 @@ This operation does not require a request body.</para>'>
 	  </example>
 		<calloutlist>
 			<callout arearefs="request.json.user">
-				<para> This is the username you use to login to the Rackspace
-					Cloud Control Panel
-					at
-					<link
-						xlink:href="http://mycloud.rackspace.com/"
-						>http://mycloud.rackspace.com/</link>.
-				</para>
+				<para> 
+					This is the username you use to login to the Rackspace
+					Cloud Control Panel at <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com/</link>.</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="request.json.password">
-				<para> This is the password you use to login to the Rackspace
-				Cloud Control Panel. </para>
+				<para>
+					This is the password you use to login to the Rackspace Cloud Control Panel.</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="request.json.tenant">
-				<para> Tenant is an optional specification. 
+				<para> 
+					Tenant is an optional specification. 
 					Some services use multi-level authentication, with service-specific credentials
 					in addition to vendor-specific credentials. 
 					In such cases, associating a user with a tenant can
@@ -151,14 +148,15 @@ This operation does not require a request body.</para>'>
 				<para> </para>
 			</callout>
 		</calloutlist>	
-		<para> A successful authentication response includes a token and a
+		<para>A successful authentication response includes a token and a
 			service catalog. For each service in the service catalog,
-			only relevant details are returned, so the description of
-			one service may include a different set of details than
-			the description of another service. For example, some
-			services' endpoints may be associated with a default
-			region; if there is no default region for that endpoint,
-				<code>region</code> is omitted. </para>
+			only relevant details are returned. Service descriptions
+			vary depending on how the service has been configured. For
+			example, some service endpoints might be associated with a
+			default region. For those services, the <code>region</code> specification is included in the
+			description. If the service endpoint does not have a
+			default region defined, the service description does not
+			include <code>region</code>.</para>
 	  <example>
 		<title>Service Catalog in Authentication Response with Headers: XML</title>
 		<programlisting language="xml">
@@ -194,17 +192,14 @@ This operation does not require a request body.</para>'>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.token">
-				<para> This token can be presented to a service as evidence of authentication.
+				<para>This token can be presented to a service as evidence of authentication.
 					Tokens are valid for a finite duration; a token's default lifespan is twenty-four hours. 
 				</para>
-				<para> The token's <code>expires</code> attribute denotes the time
-					after which the token will automatically become
-					invalid. A token may be manually revoked before
-					the time identified by the <code>expires</code>
-					attribute; <code>expires</code> predicts a token's
-					maximum possible lifespan but does not guarantee
-					that it will reach that lifespan. Clients are
-					encouraged to cache a token until it expires. </para>
+				<para>The token's <code>expires</code> attribute denotes the time after which the token will
+					automatically become invalid. This attribute predicts the maximum lifespan for
+					token validitiy but does not guarantee the token expiration time because a token
+					can be revoked manually before it expires.  Clients are encouraged to cache a
+					token until it expires.</para>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.userdefault">
@@ -227,7 +222,8 @@ This operation does not require a request body.</para>'>
 				<para> </para>
 			</callout>
 			<callout arearefs="response.xml.catalog">
-				<para> The service catalog lists the services this user can
+				<para>
+					The service catalog lists the services this user can
 					access. In this example, the user can access two
 					compute services (Cloud Servers OpenStack and
 					Cloud Servers) and two object storage services
@@ -248,7 +244,8 @@ This operation does not require a request body.</para>'>
 					identifying them as compute services even though the word "compute" does not appear in their names.
 				</para>
 				<important>
-					<para>Use service type as the primary value for
+					<para>
+						Use service type as the primary value for
 						locating a service. If multiple endpoints of the
 						same service type exist in the same region, use
 						service name as the tiebreaker.</para>
@@ -261,11 +258,12 @@ This operation does not require a request body.</para>'>
 					Once a service is created, its name does not change. However, new services of the same service type may be added to the catalog with new names.
 				</para>
 				<important>
-					<para> If you are programmatically parsing an authentication
-						response, use service type rather than service name as
+					<para>
+						When you parse an authentication response programmatically,
+						use <code>service type</code> rather than <code>ervice name</code> as 
 						the basis for determining whether a user has access to
 						a particular kind of service. Service type is stable
-						across all releases; new service types may be developed,
+						across all releases; new service types can be added, 
 						but existing service types are not renamed.
 						In this example,
 						<code>type="compute"</code> identifies all the
@@ -892,7 +890,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 		</example>
 		<note security="writeronly">
 			<para>
-				The MIME-type versioning approach supports the
+				The MIME-type version approach supports the
 				creation of permanent links, because the version
 				scheme is not specified in the URI path. For example, 
 				<code>https://api.identity.openstack.org/tenants/12234</code>
@@ -987,19 +985,17 @@ Host: identity.api.rackspacecloud.com
 		<para> You can obtain additional detailed information about a
 			specific version by performing a &GET; on the base version
 			URL. For example,
-				<code>https://identity.api.rackspacecloud.com/v1.0/</code>
-			is a base version URL, in which <code>v1.0</code> is the
-			initial version of the API. Version request URLs should
-			always end with a trailing slash (/). If the slash is
-			omitted, the server may respond with a
-				<returnvalue>302</returnvalue> redirection request.
-			Format extensions may be placed after the trailing slash.
-			For example, <code>
-				&ENDPOINT-US;.xml</code>
-			includes <code>.xml</code> as a format extension. Note
-			that this is a special case that does not hold true for
-			other API requests. In general, requests such as
-				<code>/tenants.xml</code> and
+				<code>https://identity.api.rackspacecloud.com/v2.0/</code>
+			is a base version URL, in which <code>v2.0</code> is the
+			initial version of the API. All version request URLs end
+			with a trailing slash (/). If the slash is omitted, the
+			server might respond with a <returnvalue>302</returnvalue>
+			redirection request. You can add format extensions after
+			the trailing slash. For example, <code>
+				&ENDPOINT-US;.xml</code> includes <code>.xml</code> as
+			a format extension. Note that this is a special case that
+			does not hold true for other API requests. In general,
+			requests such as <code>/tenants.xml</code> and
 				<code>/tenants/.xml</code> are handled equivalently. </para>
 		<example>
 			<title>Version Details Request</title>
@@ -1027,7 +1023,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</programlisting>
 		</example>
 		<example>
-			<title>Version Details Response: JSON</title>
+			<title>Version details response: JSON</title>
 			<programlisting language="javascript"><xi:include href="../samples/version.json" parse="text"/></programlisting>
 		</example>
 		<para>
@@ -1322,10 +1318,8 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</para>
 	</section>
 	<section xml:id="Statuses-d1e808">
-		<title>Statuses</title>
-		<para>
-			As you work with the Identity API, you may encounter two kinds of information identified as <code>status</code>:
-		</para>
+		<title>API Status</title>
+		<para>Multiple on identified as <code>status</code>: </para>
 		<itemizedlist>
 			<listitem>
 				<para>
@@ -1463,14 +1457,14 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</thead>
 			<tbody>
 				<tr align="left">
-					<td>identityFault</td>
-					<td>500, 400</td>
+					<td>serviceFault</td>
+					<td>500</td>
 					<td> YES </td>
 				</tr>
-				<tr align="left">
+				<tr>
 					<td>serviceUnavailable</td>
 					<td>503</td>
-					<td> YES </td>
+					<td/>
 				</tr>
 				<tr align="left">
 					<td>badRequest</td>
@@ -1510,18 +1504,15 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</tr>
 			</tbody>
 		</table>
-		<para>
-			The root element of the fault may change depending on the type of error. From an XML schema perspective, all
-			API faults are extensions of the base fault type, <type>identityFault</type>. When working with a system 
-			that binds XML to actual classes, use <type>identityFault</type> as a catch-all if there is no interest in 
-			distinguishing between individual fault types; for example, you may need to do this if you are working with 
-			JAXB. 
-		</para>
-  		<para>
-  			The error code is returned in the body of the response. The message section returns a human-readable message.
-  			The details section is optional and may contain useful information for tracking down an error. For example, 
-  			a stack trace may be provided. 
-  		</para>
+		<para> The root element of the fault can change depending on the type of error. From an XML schema
+			perspective, all API faults are extensions of the base fault type,
+				<type>identityFault</type>. When working with a system that binds XML to actual
+			classes, use <type>identityFault</type> as a catch-all if there is no interest in
+			distinguishing between individual fault types; for example, you might need to do this if
+			you are working with JAXB. </para>
+  		<para> The error code is returned in the body of the response. The message section returns a
+			human-readable message. The details section is optional and may contain useful
+			information for tracking down an error. For example, a stack trace might be provided. </para>
   		<para> 
   			The following are examples of an <code>itemNotFound</code> error. 
   		</para>
@@ -1539,113 +1530,129 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</example>
 	</section>
 	<section xml:id="Role_Based_Access_Control-d1e808">
-		<title>Role Based Access Control</title>
-		<para>
-			Role Based Access Control (RBAC) restricts access to the capabilities of Rackspace Cloud services to authorized 
-			users only. RBAC enables Rackspace Cloud customers to specify which account users of their Cloud account have 
-			access to which product API service capabilities, based on roles defined by Rackspace. The permissions to perform 
-			certain operations in the product API – create, read, update, delete – are assigned to specific roles. The account 
-			owner user assigns these roles, either multiproduct (global) or custom (product-specific), to account users. 
-		</para>
-		<para>
-			RBAC is available to all Open Cloud customers and is an opt-in feature for our customers. It must be activated by 
-			the <link linkend="Account_Owner-dle808">Account Owner user</link> for the account by using the API, the Control 
-			Panel or by phone (customer support).
-		</para>
-		<warning>
-			<para>
-				The customer may self-manage role administration via the Rackspace Cloud Control panel or API. When making RBAC
-				privilege, there may be a delay before the implementation of changes, including self-managed changes.
-			</para>
-		</warning>
-		<section xml:id="RBAC_Roles-dle808">
-			<title>Role descriptions</title>
-			<para>
-				<olink targetdoc="identity-glossary.xml"
-					targetptr="Role-dle07">Roles</olink> describe user
-				categories for an account. A role defines the access
-				level and operations that a user can complete.  By
-				assigning roles to users and using RBAC, customers can
-				allow multiple users to view information and complete
-				operations while limiting risk by ensuring that users
-				only have access and permissions within the scope of
-				their training and level of control. Rackspace’s RBAC
-				solution offers several roles subordinate to the <link
-					linkend="Account_Owner-dle808">Account
-					Owner</link>: admin or observer (for both custom
-				and multiproduct scope), and creator (for custom scope
-				only). In both custom and multiproduct roles, the user
-				will only have access to designated products. <table
-					frame="void">
-					<caption>Rackspace RBAC Roles</caption>
-					<col width="20%"/>
-					<col width="65%"/>
-					<col width="15%"/>
-					<thead>
-						<tr>
-							<th>Role</th>
-							<th>Description</th>
-							<th>Example Role</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>admin (full access)</td>
-							<td>This role provides Create, Read,
-								Update, and Delete permissions in all
-								products, where access is granted.
-								Full access is given to current and
-								future products, as they become
-								RBAC-enabled.</td>
-							<td>admin</td>
-						</tr>
-						<tr>
-							<td>observer (read-only access)</td>
-							<td>This role provides Read permission in
-								all products, where access is granted.
-								Read-only access is given to current
-								and future products, as they become
-								RBAC-enabled.</td>
-							<td>observer</td>
-						</tr>
-						<tr>
-							<td>product:admin</td>
-							<td>This role provides Create, Read,
-								Update, and Delete permissions for a
-								specified product, where access is
-								granted.</td>
-							<td>nova:admin</td>
-						</tr>
-						<tr>
-							<td>product:creator</td>
-							<td>This role provides Create, Read, and
-								Update permissions for a specified
-								product, where access is granted. The
-								user cannot delete resources.</td>
-							<td>cloudFiles:creator</td>
-						</tr>
-						<tr>
-							<td>product:observer</td>
-							<td>This role provides Read permission for
-								a specified product, where access is
-								granted.</td>
-							<td>cdb:observer</td>
-						</tr>
-					</tbody>
-				</table>
-				<important>
-					<para xml:id="Account_Owner-dle808"> The account
-						owner (one per account) is designated by the
-						customer as the Primary contact. Only the
-						account owner (identity:user-admin) can create
-						an account user (identity:default) for the
-						purpose of assigning roles and granting
-						privileges through RBAC. The account owner
-						cannot hold any additional roles, as they
-						already have full access to all
-						capabilities.</para>
-				</important>
-			</para>
+		<title>Role-based access control</title>
+		<para>The Rackspace Cloud Identity service provides role-based access control (RBAC) so that
+			customers can restrict access to Cloud services and capabilities to authroized users.
+			RBAC is an opt-in feature available to all Open Cloud customers. The account owner user
+			(identity:user-admin) can activate RBAC by adding users to the account and assigning
+			roles to users via the API, the Cloud Control Panel, or by calling Customer support. </para>
+		<para>Rackspace-defined roles provide specific permissions that determine the services a user can
+			access and the types of operations they can complete. For example, an account owner can
+			assign an administrator role to user accounts that neet to complete create, read,
+			update, and delete operations. Role assignments can be global or custom. Global roles
+			manage access and permissions across multiple API services. Custom roles manage access
+			and permissions on a per-product basis. For both global and custom roles, the user only
+			has access to designated products.  <xref linkend="RBAC_roledesc_table"/> describes the
+			RBAC roles available.</para> 
+		<table frame="void" width="1156" xml:id="RBAC_roledesc_table">
+				<caption>Rackspace RBAC Roles</caption>
+				<col width="16%"/>
+				<col width="7%"/>
+				<col width="69%"/>
+				<col width="9%"/>
+				<thead>
+					<tr>
+						<th>Role</th>
+						<th>Type</th>
+						<th>Role Description</th>
+						<th>Example Role</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>admin (full access)</td>
+						<td>Global</td>
+						<td>The admin role provides Create, Read, Update, and Delete permissions
+							in all Cloud products, where access is granted. Full access is given
+							to current and future products as they become RBAC-enabled. Each
+							account can have only one admin </td>
+						<td>admin</td>
+					</tr>
+					<tr>
+						<td>observer (read-only access)</td>
+						<td>Global</td>
+						<td>The observer role provides Read permission in all products where
+							access is granted. Read-only access is given to current and future
+							products as they become RBAC-enabled.</td>
+						<td>observer</td>
+					</tr>
+					<tr>
+						<td>product:admin</td>
+						<td>Custom</td>
+						<td>The product:admin role provides Create, Read, Update, and Delete
+							permissions for a specified product, where access is granted.</td>
+						<td>nova:admin</td>
+					</tr>
+					<tr>
+						<td>product:creator</td>
+						<td>Custom</td>
+						<td>The product:creator role provides Create, Read, and Update
+							permissions for a specified product, where access is granted. The
+							user cannot delete resources.</td>
+						<td>cloudFiles:creator</td>
+					</tr>
+					<tr>
+						<td>product:observer</td>
+						<td>Custom</td>
+						<td>This product:observer role provides Read permission for a specified
+							product, where access is granted.</td>
+						<td>cdb:observer</td>
+					</tr>
+				</tbody>
+			</table><important>
+				<para xml:id="Account_Owner-dle808">All RBAC roles are subordinate to the account owner user
+				(identity:user-admin) designated by the customer as the primary contact. Only an
+				account owner can create account users (identity:default) and assign RBAC roles. Account owners 
+				cannot hold any additional roles because they already have full access to all services and 
+				capabilities.</para>
+			</important>
+		<section xmlns="http://docbook.org/ns/docbook"
+			xmlns:xi="http://www.w3.org/2001/XInclude"
+			xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+			xml:id="section_assign_roles_3">
+			<title>Assigning Roles to Account Users</title>
+			<para>The account owner (identity:user-admin) can create account users (identity:default) on the
+				account and then assign roles to those users. The roles grant the account users
+				specific permissions for accessing the Cloud services and capabilities. Each account
+				has only one account owner, and that role is assigned by default to any Rackspace
+				Cloud account when the account is created. Account owners cannot hold any additional
+				roles because they already have full access to all services and capabilities.</para>
+			<para>You can assign roles programmatically through the API or by using the Cloud Control panel
+				interface.</para>
+			<para>Use the following API operations to add account users and manage role assignments:</para>
+			<itemizedlist>
+				<listitem>
+					<para>
+						<olink targetdoc="Identity-Admin-Guide" targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
+					</para>
+				</listitem>
+				<listitem>
+					<para><olink targetdoc="Identity-Admin-Guide"
+							targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+							>Assign role to account users</olink></para>
+				</listitem>
+				<listitem>
+					<para><olink targetdoc="Identity-Admin-Developer-Guide"
+						targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+							>“Delete role from account user”</olink></para>
+				</listitem>
+			</itemizedlist>
+			<para>For information about implementing RBAC by using the Cloud
+				Control panel and other RBAC-related topics, see the
+				following Rackspace Knowledge Center articles:</para>
+			<itemizedlist><listitem>
+				<para>
+					<link
+						xlink:href="http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac"
+						>Managing Role-based access control through Cloud Control panel</link>
+				</para>
+			</listitem>
+				<listitem>
+					<para>
+						<link
+							xlink:href="http://www.rackspace.com/knowledge_center/article/getting-started-with-role-based-access-control-rbac-0">Getting Started with Role-based access control (RBAC)</link>
+					</para>
+				</listitem></itemizedlist>
 		</section>
 		<section xml:id="RBAC_Role_Conflict-dle808">
 			<title>Resolving Conflicts Between RBAC Multiproduct (Global) vs. Custom (Product) Roles</title>
@@ -1682,47 +1689,9 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						</tr>
 					</tbody>
 				</informaltable>
-			</para>
-		</section>
-		<section xml:id="RBAC_API_Calls-dle808">
-			<title>RBAC API Calls</title>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para><xref linkend="GET_listUsers_v2.0_users_" xrefstyle="select: title" /></para>
-					</listitem>
-					<listitem>
-						<para><xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" /></para>
-<!--						<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_listRoles_v2.0_OS-KSADM_roles_.html">
-							List Roles</link></para>-->
-					</listitem>
-					<listitem>
-						<para><xref linkend="GET_getRole_v2.0_OS-KSADM_roles__roleId__" xrefstyle="select: title" /></para>
-						<!--<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getRole_v2.0_OS-KSADM_roles__roleId__.html">
-							Get Role</link></para>-->
-					</listitem>
-					<listitem>
-						<para><xref linkend="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__" xrefstyle="select: title" /></para>
-						<!--<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
-							Add Role to User</link></para>-->
-					</listitem>
-					<listitem>
-						<para><xref linkend="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__" xrefstyle="select: title" /></para>
-						<!--<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
-							Delete Role from User</link></para>-->
-					</listitem>
-					<listitem>
-						<para><xref linkend="GET_listUserGlobalRoles_v2.0_users__userId__roles_" xrefstyle="select: title" /></para>
-						<!--<para><link
-							xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_listUserGlobalRoles_v2.0_users__userId__roles_.html">
-							List User Roles</link></para>-->
-					</listitem>
-				</itemizedlist>
-			</para>
+			</para><para>For information about using RBAC with specific products, see the <link
+					xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each
+				product.</para>
 		</section>
 	</section>
     </chapter>

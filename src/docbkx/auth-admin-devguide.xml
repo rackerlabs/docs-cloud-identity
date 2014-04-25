@@ -53,19 +53,19 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated endpoint template
-								documentation to provide definition
-								and add optional parameter TenantAlias
-								to Add endpoint template operation.
-								See the following sections: 
-								<itemizedlist>
-									<listitem>
-										<para><xref
-											linkend="EndpointTemplate"/></para>
-									</listitem>
-									<listitem>
-										<para><xref linkend = "Endpoint_Template_Calls"/></para>
-									</listitem>
+							<para>Updated endpoint template documentation to provide
+								definition and add optional parameter
+								tenantalias to Add endpoint template
+								operation. See the following sections: <itemizedlist>
+								<listitem>
+								<para><xref
+								linkend="EndpointTemplate"/></para>
+								</listitem>
+								<listitem>
+								<para><xref
+								linkend="Endpoint_Template_Calls"
+								/></para>
+								</listitem>
 								</itemizedlist></para>
 						</listitem>
 						</itemizedlist>
@@ -127,11 +127,11 @@
 								operation parameter tables. </para>
 						</listitem>
 						<listitem>
-							<para> Mentioned that elements not being
-								updated in <xref
-								linkend="POST_updateUser_v2.0_users__userId__User_Calls"
-								/> do not need to be included in
-								request body. </para>
+							<para> Mentioned that elements not being updated in <olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
+								>“Users”</olink> do not need to be
+								included in request body.</para>
 						</listitem>
 						<listitem>
 							<para> Added some examples of what a
@@ -263,7 +263,7 @@
 						</listitem>
 						<listitem>
 							<para> Updated <xref
-								linkend="RBAC_Roles-dle808"/> to be
+								linkend="RBAC_roledesc_table"/> to be
 								consistent with K.C. articles. </para>
 						</listitem>
 					</itemizedlist>
@@ -274,10 +274,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added visibility note to <xref
-								linkend="POST_addRole_v2.0_OS-KSADM_roles_"
-								xrefstyle="select: title"/>.
-							</para>
+							<para> Added visibility note to <olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="POST_addRole_v2.0_OS-KSADM_roles_Role_Calls"
+								>“Users”</olink>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -287,11 +287,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected update json user request
-								and response (<xref
-								linkend="POST_updateUser_v2.0_users__userId__"
-								xrefstyle="select: title"/>)
-							</para>
+							<para> Corrected update json user request and response (<olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
+								>“Users”</olink>) </para>
 						</listitem>
 						<listitem>
 							<para> Added Region calls (<xref
@@ -307,11 +306,10 @@
 							</para>
 						</listitem>
 						<listitem>
-							<para> Updated Update User to reflect
-								default region (<xref
-								linkend="POST_updateUser_v2.0_users__userId__"
-								xrefstyle="select: title"/>)
-							</para>
+							<para> Updated Update User to reflect default region (<olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
+								>“Users”</olink>) ) </para>
 						</listitem>
 						<listitem>
 							<para> fixed broken link (<xref
@@ -817,10 +815,10 @@
 								up to 100 account users. </para>
 						</listitem>
 						<listitem>
-							<para> Added examples of changing a user's
-								password in <xref
-								linkend="POST_updateUser_v2.0_users__userId__"
-								/>. </para>
+							<para> Added examples of changing a user's password in <olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
+								>“Update user”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Added information about account
