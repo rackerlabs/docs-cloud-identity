@@ -11,11 +11,11 @@
      </media-types>
 
      <atom:link rel="self"
-         href="http://identity.api.rackspacecloud.com/v2.0/"/>
+         href="https://identity.api.rackspacecloud.com/v2.0/"/>
 
     <atom:link rel="describedby"
                type="application/pdf"
-               href="http://docs.rackspacecloud.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
+               href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
 
     <atom:link rel="describedby"
                type="application/vnd.sun.wadl+xml"

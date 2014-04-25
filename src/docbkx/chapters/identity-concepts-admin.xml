@@ -44,9 +44,7 @@
         material, but please rely on Rackspace sources for specific
         information about what you can do and how you can do
         it.</para>
-    <para>
-        If the service's authentication attempt fails, the authentication service returns <returnvalue>401</returnvalue> unAuth. 
-    </para>
+    <para>If the authentication attempt fails, the authentication service returns <returnvalue>401 unauthorized</returnvalue>.</para>
     <para>
         To use the Cloud Authentication Service effectively, you should understand several key concepts:
     </para>

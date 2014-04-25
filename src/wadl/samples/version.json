@@ -6,15 +6,15 @@
     "links": [
       {
         "rel": "self",
-        "href": "http://identity.api.rackspacecloud.com/v2.0/"
+        "href": "http://identity.api.openstack.org/v2.0/"
       }, {
         "rel": "describedby",
         "type": "application/pdf",
-        "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth-client-devguide-latest.pdf"
+        "href": "http://docs.openstack.org/identity/api/v2.0/identity-latest.pdf"
       }, {
         "rel": "describedby",
         "type": "application/vnd.sun.wadl+xml",
-        "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl"
+        "href": "http://docs.openstack.org/identity/api/v2.0/identity.wadl"
       }
     ],
     "media-types": [
