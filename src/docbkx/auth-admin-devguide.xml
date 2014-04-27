@@ -31,14 +31,14 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-01-14</pubdate>
+		<pubdate>2013-04-27</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
 			</annotation>
 		</legalnotice>
 		<abstract>
-			<para> This document is intended for software developers interested
+			<para>This document is intended for software developers interested
 				in developing applications that use the Rackspace
 				Cloud Identity Service, which is an implementation of
 				OpenStack's Keystone Identity Service for identity
@@ -53,20 +53,21 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated endpoint template documentation to provide
-								definition and add optional parameter
-								tenantalias to Add endpoint template
-								operation. See the following sections: <itemizedlist>
-								<listitem>
-								<para><xref
-								linkend="EndpointTemplate"/></para>
-								</listitem>
-								<listitem>
-								<para><xref
-								linkend="Endpoint_Template_Calls"
-								/></para>
-								</listitem>
-								</itemizedlist></para>
+							<para>Added <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="EndpointTemplate">Endpoint Template</olink> to
+								glossary.</para>
+						</listitem>
+						<listitem>
+							<para>Updated  <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_"
+									>Add endpoint template</olink>call and examples to include
+									<literal>tenantAlias</literal>, an optional parameter that can
+								be used to concatenate a tenant id to an endpoint.  </para>
+						</listitem>
+						<listitem>
+							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Impersonation_Calls">“Impersonations”</olink> flow
+								diagram to reflect current product behavior.</para>
 						</listitem>
 						</itemizedlist>
 				</revdescription>
