@@ -1620,21 +1620,41 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<para>You can assign roles programmatically through the API or by using the Cloud Control panel
 				interface.</para>
 			<para>Use the following API operations to add account users and manage role assignments:</para>
-			<itemizedlist>
+			<itemizedlist condition="client">
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Admin-Guide" targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
+						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_"
+							>Add account user</olink>
+					</para>
+				</listitem>
+				<listitem>
+					<para><olink targetdoc="Identity-Developer-Guide"
+						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__"
+						>Assign role to account users</olink></para>
+				</listitem>
+				<listitem>
+					<para><olink targetdoc="Identity-Developer-Guide"
+						targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+						>Delete role from account user</olink></para>
+				</listitem>
+			</itemizedlist>
+			<itemizedlist condition="admin">
+				<listitem>
+					<para>
+						<olink targetdoc="Identity-Admin-Guide"
+							targetptr="POST_addUser_v2.0_users_"
+							>Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Admin-Guide"
-							targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__"
 							>Assign role to account users</olink></para>
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Admin-Developer-Guide"
 						targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-							>“Delete role from account user”</olink></para>
+							>Delete role from account user</olink></para>
 				</listitem>
 			</itemizedlist>
 			<para>For information about implementing RBAC by using the Cloud
