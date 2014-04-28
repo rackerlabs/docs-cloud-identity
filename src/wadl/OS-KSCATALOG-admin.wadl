@@ -161,9 +161,10 @@
                 </param>
                 <param name="global" style="plain" required="true" path="$.global" type="boolean">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        xml:lang="EN"><para>Determines whether the endpoint template is 
-                            automatically included for every account. If the value is <code>true</code>, 
-                            the endpoint shows up for all tenants. If the value is <code>false</code>, the 
+                        xml:lang="EN">
+                        <para>Determines whether the endpoint template is 
+                            automatically included for every account. If the value is <code>'true'</code>, 
+                            the endpoint shows up for all tenants. If the value is <code>'false'</code>, the 
                             template only shows up when it is added to a tenant manually. 
                         </para></wadl:doc>
                 </param>

@@ -32,7 +32,7 @@
     <section xml:id="Document_Change_History-d1e85">
         <title>Document Change History</title>
         <para>This version of the Developer Guide applies only to v2.0 of the API. The most recent changes are described in
-            the table below: </para>
+            the table below:</para>
         <?rax revhistory?>
     </section>
     <section xml:id="Additional_Resources-d1e130">
