@@ -95,19 +95,24 @@
                 </listitem>
             </orderedlist>
         </para>
-        <para> The rest of this API Developer Guide provides reference
-        and background information, including sample requests and
-        responses. To learn more about the Cloud Identity Service and
-        this API, two good places to begin are with the fundamental
-        ideas explained in <olink
-            targetdoc="Identity-Admin-Developer-Guide"
-            targetptr="Identity-Service-Concepts-e1362"
-            >Concepts</olink> and the annotated request and response
-        in  <olink targetdoc="Identity-Admin-Developer-Guide"
-            targetptr="Sample_Request_Response-d1e64">“Sample
-            Authentication Request and Response”</olink>. To see
-        examples of authentication using several kinds of credentials,
-        read <xref linkend="POST_authenticate_v2.0_tokens_"/>.</para>
+        <para condition="admin"> The rest of this API Developer Guide provides reference and background information,
+        including sample requests and responses. To learn more about the Cloud Identity Service and
+        this API, two good places to begin are with the fundamental ideas explained in <olink
+            targetdoc="Identity-Admin-Developer-Guide" targetptr="Identity-Service-Concepts-e1362"
+            >Concepts</olink> and the annotated request and response in <olink
+            targetdoc="Identity-Admin-Developer-Guide" targetptr="Sample_Request_Response-d1e64"
+            >“Sample Authentication Request and Response”</olink>. To see examples of authentication
+        using several kinds of credentials, read  <olink targetdoc="Identity-Admin-Developer-Guide"
+            targetptr="POST_authenticate_v2.0_tokens_"/>.</para>
+    <para condition="client"> The rest of this API Developer Guide provides reference and background information,
+        including sample requests and responses. To learn more about the Cloud Identity Service and
+        this API, two good places to begin are with the fundamental ideas explained in <olink
+            targetdoc="Identity-Developer-Guide" targetptr="Identity-Service-Concepts-e1362"
+            >Concepts</olink> and the annotated request and response in <olink
+                targetdoc="Identity-Developer-Guide" targetptr="Sample_Request_Response-d1e64"
+                >“Sample Authentication Request and Response”</olink>. To see examples of authentication
+        using several kinds of credentials, read  <olink targetdoc="Identity-Developer-Guide"
+            targetptr="POST_authenticate_v2.0_tokens_"/>.</para>
     <para security="writeronly">
         <!-- added then deleted this preparatory to 2012-05-16 republication; 
              leaving it hidden while people think -->

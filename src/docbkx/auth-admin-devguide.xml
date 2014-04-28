@@ -60,10 +60,9 @@
 						<listitem>
 							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_"
-									>Add endpoint template</olink> call and examples to include
+									>“Add endpoint template</olink> call and examples to include
 									<literal>tenantAlias</literal>, an optional parameter that can
-								be used to concatenate a tenant id string pattern to an endpoint.
-							</para>
+								be used to concatenate a tenant id string pattern to an endpoint. </para>
 						</listitem>
 						<listitem>
 							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -129,11 +128,16 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated RAX-AUTH operation examples
-								in <xref linkend="GET_getQuestions_v2.0_RAX-AUTH_secretqa_questions_Secret_Calls"/>, 
-								<xref linkend="GET_getQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"/>, 
-								<xref linkend="PUT_updateQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"/>, 
-								<xref linkend="POST_createQuestion_v2.0_RAX-AUTH_secretqa_questions_Secret_Calls"/></para>
+							<para> Updated RAX-AUTH operation examples in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Secret_Calls">“Secret Questions and Answers”</olink>,
+									<olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"
+								/>, <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="PUT_updateQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"
+								/>, <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_createQuestion_v2.0_RAX-AUTH_secretqa_questions_Secret_Calls"
+								/></para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -149,8 +153,8 @@
 								internal-only. </para>
 						</listitem>
 						<listitem>
-							<para> Corrected json response in <xref
-								linkend="GET_listUserGlobalRoles_v2.0_users__userId__roles_Role_Calls"
+							<para> Corrected json response in <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_listUserGlobalRoles_v2.0_users__userId__roles_Role_Calls"
 								/>. </para>
 						</listitem>
 						<listitem>
@@ -159,33 +163,29 @@
 						</listitem>
 						<listitem>
 							<para> Mentioned that elements not being updated in <olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
-								>“Users”</olink> do not need to be
-								included in request body.</para>
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
+									>“Update user”</olink> do not need to be included in request
+								body.</para>
 						</listitem>
 						<listitem>
-							<para> Added some examples of what a
-								service is, since you can filter on
-								serviceId in <xref
-								linkend="GET_listRoles_v2.0_OS-KSADM_roles_Role_Calls"
+							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+									>“Secret Questions and Answers”</olink>. </para>
+						</listitem>
+						<listitem>
+							<para> Removed Category Role table from <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
 								/>. </para>
 						</listitem>
 						<listitem>
-							<para> Removed Category Role table from
-								<xref
-								linkend="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-								/>. </para>
-						</listitem>
-						<listitem>
-							<para> Added information about domain ID
-								to <xref
-								linkend="GET_getUserByName_v2.0_users_User_Calls"
-								/>, <xref
-								linkend="GET_getUserById_v2.0_users__userId__User_Calls"
-								/>, and <xref
-								linkend="GET_getUserByEmail_v2.0_users_User_Calls"
-								/>. </para>
+							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserByName_v2.0_users_User_Calls"/>, <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserById_v2.0_users__userId__User_Calls"/>,
+								and <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserByEmail_v2.0_users_User_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -195,9 +195,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added error to <xref
-								linkend="POST_addUser_v2.0_users_User_Calls"
-								/>. </para>
+							<para> Added error to <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_addUser_v2.0_users_User_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -207,10 +206,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated samples to RAcker token
-								authentication in <xref
-								linkend="GET_validateToken_v2.0_tokens__tokenId__"
-								/>. </para>
+							<para> Updated samples to RAcker token authentication in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_validateToken_v2.0_tokens__tokenId__"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -220,10 +218,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected links to endpoint
-								documentation <xref
-								linkend="Additional_Resources-d1e130"
-								/>. </para>
+							<para> Corrected links to endpoint documentation <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Additional_Resources-d1e130">“Additional
+									Resources”</olink> . </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -231,11 +229,10 @@
 			<revision>
 				<date>2013-10-14</date>
 				<revdescription>
-					<para> Added note that this call works for
-						internal users only <xref
-							linkend="GET_listRolesForUserOnTenant_v2.0_tenants__tenantId__users__userId__roles_"
-							xrefstyle="select: title"/>
-					</para>
+					<para> Added note that this call works for internal users only <olink
+							targetdoc="Identity-Admin-Developer-Guide"
+							targetptr="GET_listRolesForUserOnTenant_v2.0_tenants__tenantId__users__userId__roles__"
+							></olink>.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -252,27 +249,24 @@
 								doc. </para>
 						</listitem>
 						<listitem>
-							<para> Added domain id to: <xref
-								linkend="GET_listUsers_v2.0_users_"
-								xrefstyle="select: title"/>
+							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_listUsers_v2.0_users_"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para> Added domain id to: <xref
-								linkend="GET_getUserByName_v2.0_users_"
-								xrefstyle="select: title"/>
+							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserByName_v2.0_users_"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para> Added domain id to: <xref
-								linkend="GET_getUserById_v2.0_users__userId__"
-								xrefstyle="select: title"/>
+							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserById_v2.0_users__userId__"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para> Added domain id to: <xref
-								linkend="GET_getUserByEmail_v2.0_users_"
-								xrefstyle="select: title"/>
+							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserByEmail_v2.0_users_">“Secret Questions and
+									Answers”</olink>
 							</para>
 						</listitem>
 						<listitem>
@@ -287,15 +281,14 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated <xref
-								linkend="Role_Based_Access_Control-d1e808"
-								/> to include warning about potential
-								delays. </para>
+							<para> Updated <olink targetdoc="Identity-Developer-Guide"
+									targetptr="Request_Response_Types-d1e149">“Request/Response
+									Types”</olink> to include warning about potential delays. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <xref
-								linkend="RBAC_roledesc_table"/> to be
-								consistent with K.C. articles. </para>
+							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="RBAC_roledesc_table"
+									>Table 6, “Rackspace RBAC Roles”</olink> to be consistent with
+								Knowledge Center articles. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -324,17 +317,14 @@
 								>“Users”</olink>) </para>
 						</listitem>
 						<listitem>
-							<para> Added Region calls (<xref
-								linkend="Region_Calls"
-								xrefstyle="select: title"/>)
-							</para>
+							<para> Added Region calls (<olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Region_Calls">“Regions”</olink>) </para>
 						</listitem>
 						<listitem>
-							<para> Updated Add User to reflect default
-								region (<xref
-								linkend="POST_addUser_v2.0_users_"
-								xrefstyle="select: title"/>)
-							</para>
+							<para> Updated Add User to reflect default region (<olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_addUser_v2.0_users_">“Secret Questions and
+									Answers”</olink>) </para>
 						</listitem>
 						<listitem>
 							<para> Updated Update User to reflect default region (<olink
@@ -343,10 +333,8 @@
 								>“Users”</olink>) ) </para>
 						</listitem>
 						<listitem>
-							<para> fixed broken link (<xref
-								linkend="GET_listUsers_v2.0_users_"
-								xrefstyle="select: title"/>)
-							</para>
+							<para> fixed broken link (<olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_listUsers_v2.0_users_"/>) </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -393,17 +381,14 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected URI path for <xref
-								linkend="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_"
-								xrefstyle="select: title"/>
-							</para>
+							<para> Corrected URI path for <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_"
+									>“Secret Questions and Answers”</olink>.</para>
 						</listitem>
 						<listitem>
-							<para> Corrected credential listing
-								(adding tenant ID to token) for <xref
-								linkend="POST_authenticate_v2.0_tokens_"
-								xrefstyle="select: title"/>
-							</para>
+							<para> Corrected credential listing (adding tenant ID to token) for <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_authenticate_v2.0_tokens_"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -413,15 +398,14 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <xref
-								linkend="Role_Based_Access_Control-d1e808"
-								/>. </para>
+							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Role_Based_Access_Control-d1e808"></olink>. 
+							</para>
 						</listitem>
 						<listitem>
-							<para> Removed references to deprecated
-								endpoint v1 <xref
-								linkend="Endpoints-d1e180"/>.
-							</para>
+							<para> Removed references to deprecated endpoint v1 <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Endpoints-d1e180">“Authentication Endpoints”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Including several API calls from
@@ -451,9 +435,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <xref
-								linkend="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_"
-								xrefstyle="select: title"/>
+							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_"></olink>
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -543,12 +526,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added examples demonstrating
-								different format of
-								<code>expires</code> for US and UK
-								endpoints in <xref
-								linkend="POST_authenticate_v2.0_tokens_"
-								/>. </para>
+							<para> Added examples demonstrating different format of <code>expires</code> for US and UK
+								endpoints in <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_authenticate_v2.0_tokens_"/>. </para>
 						</listitem>
 						<listitem>
 							<para> Improved introductory text for
@@ -595,21 +575,17 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Repaired broken link from <xref
-								linkend="POST_authenticate_v2.0_tokens_"
-								/> to <xref
-								linkend="Sample_Request_Response-d1e64"
-								/>. </para>
+							<para> Repaired broken link from <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_authenticate_v2.0_tokens_"/> to <xref
+									linkend="Sample_Request_Response-d1e64"/>. </para>
 						</listitem>
 						<listitem>
-							<para> Updated samples to show
-								<code>defaultRegion</code> in <xref
-								linkend="Sample_Request_Response-d1e64"
-								/> and <xref
-								linkend="GET_validateToken_v2.0_tokens__tokenId__"
-								/> and <xref
-								linkend="POST_authenticate_v2.0_tokens_"
-								/>. </para>
+							<para> Updated samples to show <code>defaultRegion</code> in <xref
+									linkend="Sample_Request_Response-d1e64"/> and <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_validateToken_v2.0_tokens__tokenId__"/> and
+									<olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_authenticate_v2.0_tokens_"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -619,24 +595,21 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added information about
-								<code>defaultRegion</code> for
-								<xref
-								linkend="GET_getUserByName_v2.0_users_"
-								xrefstyle="select: title"/>, <xref
-								linkend="GET_getUserById_v2.0_users__userId__"
-								xrefstyle="select: title"/>, and
-								<xref
-								linkend="POST_updateUser_v2.0_users__userId__"
-								xrefstyle="select: title"/>.
-							</para>
+							<para> Added information about <code>defaultRegion</code> for <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserByName_v2.0_users_">“GET user by name”</olink>, 
+								<olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserById_v2.0_users__userId__">“GET user by id"</olink>, 
+								and <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_updateUser_v2.0_users__userId__">“Add user"</olink>
+						    </para>
 						</listitem>
 						<listitem>
-							<para> Updated <xref
-								linkend="Service_Types-d1e265"/>
-								and supporting examples to show
-								<code>rax:dns</code>as the service
-								type for Cloud DNS. </para>
+							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Service_Types-d1e265">“Service Types in the Service
+									Catalog”</olink> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. </para>
 						</listitem>
 						<listitem>
 							<para> Simplified references to the Cloud
@@ -662,20 +635,14 @@
 							<para> Removed "BETA" designation. </para>
 						</listitem>
 						<listitem>
-							<para> Expanded explanation and examples
-								in <xref
-								linkend="POST_authenticate_v2.0_tokens_"
-								/>, showing use of tenant name and
-								tenant ID as authentication
-								credentials. </para>
+							<para> Expanded explanation and examples in <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_authenticate_v2.0_tokens_"/>, showing use of
+								tenant name and tenant ID as authentication credentials. </para>
 						</listitem>
 						<listitem>
-							<para> Expanded explanation and examples
-								in <xref
-								linkend="POST_impersonateUser_v2.0_RAX-AUTH_impersonation-tokens_"
-								/>, showing use of
-								<code>expire-in-seconds</code>.
-							</para>
+							<para> Expanded explanation and examples in <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_impersonateUser_v2.0_RAX-AUTH_impersonation-tokens_"
+								/>, showing use of <code>expire-in-seconds</code>. </para>
 						</listitem>
 						<listitem>
 							<para> Updated illustration in <xref
@@ -690,10 +657,7 @@
 								site. </para>
 						</listitem>
 						<listitem>
-							<para> Added <xref
-								linkend="Statuses-d1e808"/>,
-								listing all possible account statuses.
-							</para>
+							<para> Added Statuses section listing all possible account statuses. </para>
 						</listitem>
 						<listitem>
 							<para> Added <xref
@@ -747,13 +711,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> For "Update User" and "Delete User"
-								operations, added suggestion to use
-								<xref
-								linkend="GET_getUserById_v2.0_users__userId__"
-								xrefstyle="select: title"/> to
-								confirm that the intended user will be
-								changed. </para>
+							<para> For "Update User" and "Delete User" operations, added suggestion to use <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_getUserById_v2.0_users__userId__">“GET user by
+									id”</olink> to confirm that the intended user will be changed. </para>
 						</listitem>
 						<listitem>
 							<para> Added <xref
@@ -805,13 +766,10 @@
 								extensions</link>. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <xref
-								linkend="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
-								/> and <xref
-								linkend="Account-User-d1e20"/> to
-								state that account users must
-								authenticate with their passwords.
-							</para>
+							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
+								/> and <xref linkend="Account-User-d1e20"/> to state that account
+								users must authenticate with their passwords. </para>
 						</listitem>
 						<listitem>
 							<para> Added an annotated JSON example in
@@ -838,12 +796,10 @@
 								linkend="API_Operations"/>. </para>
 						</listitem>
 						<listitem>
-							<para> Added examples of creating a user
-								with a password in <xref
-								linkend="POST_addUser_v2.0_users_"
-								/>. In the same section, added
-								information that an account can have
-								up to 100 account users. </para>
+							<para> Added examples of creating a user with a password in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="POST_addUser_v2.0_users_"/>. In the same section,
+								added information that an account can have up to 100 account users. </para>
 						</listitem>
 						<listitem>
 							<para> Added examples of changing a user's password in <olink

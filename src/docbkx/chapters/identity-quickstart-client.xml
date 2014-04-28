@@ -35,13 +35,10 @@
         in, you can use the Cloud Control Panel to obtain your
             <code>API key</code>. </para>
     <important>
-        <para>
-            Multiple users (account users) can be created for an account but, 
-            as explained in 
-            <xref linkend="POST_addUser_v2.0_users_" />,
-            users created via the API do not have access to the control panel. 
-            Control panel access for these users is coming soon.
-        </para>
+        <para> Multiple users (account users) can be created for an account but, as explained in
+                <olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_"/>,
+            users created via the API do not have access to the control panel. Control panel access
+            for these users is coming soon. </para>
     </important>
         <para>
             <emphasis role="bold">CHOOSE YOUR AUTHENTICATION ENDPOINT</emphasis>
@@ -115,19 +112,15 @@
                 </listitem>
             </orderedlist>
         </para>
-        <para> The rest of this API Developer Guide provides reference
-        and background information, including sample requests and
-        responses. To learn more about the Cloud Identity Service and
-        this API, two good places to begin are with the fundamental
-        ideas explained in <olink
-            targetdoc="Identity-Admin-Developer-Guide"
-            targetptr="Identity-Service-Concepts-e1362"
-            >Concepts</olink> and the annotated request and response
-        in <olink targetdoc="Identity-Admin-Developer-Guide"
-            targetptr="Sample_Request_Response-d1e64">“Sample
-            Authentication Request and Response”</olink> To see
-        examples of authentication using several kinds of credentials,
-        read <xref linkend="POST_authenticate_v2.0_tokens_"/>. </para>
+    <para>The rest of this API Developer Guide provides reference and background information,
+        including sample requests and responses. To learn more about the Cloud Identity Service and
+        this API, two good places to begin are with the fundamental ideas explained in <olink
+            targetdoc="Identity-Developer-Guide" targetptr="Identity-Service-Concepts-e1362"
+            >Concepts</olink> and the annotated request and response in <olink
+            targetdoc="Identity-Developer-Guide" targetptr="Sample_Request_Response-d1e64">“Sample
+            Authentication Request and Response”</olink> To see examples of authentication using
+        several kinds of credentials, read <olink targetdoc="Identity-Developer-Guide"
+            targetptr="Authentication-d1e01">"Authentication"</olink>.</para>
     <para security="writeronly">
         <!-- added then deleted this preparatory to 2012-05-16 republication; 
              leaving it hidden while people think -->
@@ -136,7 +129,7 @@
         core Identity API. Extensions are particularly relevant to
         operations on <olink
             targetdoc="Identity-Admin-Developer-Guide"
-            targetptr="User_Calls">“Users”</olink>. </para>
+            targetptr="User_Calls">“Users”</olink>.</para>
     <tip>
         <para>You can find language binding examples that can be modified to work with the Cloud
             Identity service in the <link
