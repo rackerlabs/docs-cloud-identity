@@ -30,7 +30,13 @@
                     FEATURES:</emphasis></para>
                 <itemizedlist>
                     <listitem>
-                        <para> Introduction of tenants and roles. </para>
+                        <para>Multifactor authentication</para>
+                    </listitem>
+                    <listitem>
+                        <para>Role-based access control</para>
+                    </listitem>
+                    <listitem>
+                        <para>Introduction of tenants and roles. </para>
                     </listitem>
                     <listitem>
                         <para> Service catalog includes service types such as <code>compute</code> and <code>object-store</code>. </para>
@@ -42,9 +48,7 @@
                         <para> Upon authentication, service catalog returns a separate <code>tenantID</code> attribute by endpoint. </para>
                     </listitem>
                     <listitem>
-                        <para>Ability to add multiple users (account users) to an account. This functionality is available
-                            in the US and is coming soon to the UK.
-                        </para>
+                        <para>Ability to add multiple users (account users) to an account.</para>
                     </listitem>
                     <listitem>
                         <para> Introduction of rate limiting. </para>

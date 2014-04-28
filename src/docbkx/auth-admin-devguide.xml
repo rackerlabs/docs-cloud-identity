@@ -229,10 +229,7 @@
 			<revision>
 				<date>2013-10-14</date>
 				<revdescription>
-					<para> Added note that this call works for internal users only <olink
-							targetdoc="Identity-Admin-Developer-Guide"
-							targetptr="GET_listRolesForUserOnTenant_v2.0_tenants__tenantId__users__userId__roles__"
-							></olink>.</para>
+					<para> Added note that the GET Roles for user on tenant call works for internal users only.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -250,24 +247,19 @@
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_listUsers_v2.0_users_"/>
-							</para>
+									targetptr="GET_listUsers_v2.0_users_"/>. </para>
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_"/>
-							</para>
+									targetptr="GET_getUserByName_v2.0_users_"/>.</para>
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__"/>
-							</para>
+									targetptr="GET_getUserById_v2.0_users__userId__"/>.</para>
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByEmail_v2.0_users_">“Secret Questions and
-									Answers”</olink>
-							</para>
+									targetptr="GET_getUserByEmail_v2.0_users_"/>. </para>
 						</listitem>
 						<listitem>
 							<para> Fixed some erroneous examples.
