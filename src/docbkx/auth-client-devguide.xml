@@ -47,6 +47,55 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-04-27</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="EndpointTemplate">Endpoint template</olink> to
+								glossary.</para>
+						</listitem>
+						<listitem>
+							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_"
+								>Add endpoint template</olink> call and examples to include
+								<literal>tenantAlias</literal>, an optional parameter that can
+								be used to concatenate a tenant id string pattern to an endpoint.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Updated sample in <olink
+								targetdoc="Identity-Developer-Guide"
+								targetptr="Versions-d1e472">“Contract versions”</olink> section
+								to reflect current API status for version 1.1 and 2.0.</para>
+						</listitem>
+						<listitem>
+							<para>Updated <olink targetdoc="Identity-Developer-Guide"
+								targetptr="Endpoints-d1e180">“Alternate Authentication
+								Endpoints”</olink> section to remove the Legacy endpoint table
+								that duplicated information in the Authentication endpoints
+								table.</para>
+						</listitem>
+						<listitem>
+							<para>Removed obsolete API status section. Account status values are no
+								longer managed through the Identity API, and the API status values
+								are covered in the <olink targetdoc="Identity-Developer-Guide"
+									targetptr="Versions-d1e472">“Contract versions”</olink>
+								section.</para>
+						</listitem>
+						<listitem>
+							<para>Removed outdated information about differences between US and UK
+								time formats. The system time is in UTC (Coordinated Universal
+								Time) format. </para>
+						</listitem>
+						<listitem>
+							<para>Updated Maven build version from 1.12 to current version,
+								1.15.0.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-01-10</date>
 				<revdescription>
 					<itemizedlist spacing="compact">

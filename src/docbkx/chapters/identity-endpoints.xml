@@ -5,18 +5,17 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Endpoints-d1e180">
-    <title>Alternate Authentication Endpoints</title>
-    <para> 
-        You can use the current Cloud Identity authentication endpoints with earlier versions of the API. 
-        All versions of the API, including legacy Identity contracts, are available if you authenticate 
-        at a current endpoint and specify an API version. 
-    </para>
+    <title>Authentication Endpoints</title>
+    <para>You can use the Rackspace Cloud Identity authentication endpoints from version 1.1 or
+        version 2.0. The legacy v1.1 API endpoint only provides authentication services, but you can
+        use tokens from version 1.1 in version 2.0 API calls.</para>
     <important>
         <para>
             You can use either UK or US endpoints, regardless of where your account was created.
         </para>
     </important>
-    <para> Rackspace recommends that you authenticate at one of the following Cloud Identity endpoints: </para>
+    <para> Rackspace recommends that you authenticate at one of the following Cloud Identity
+        endpoints</para>
     <table rules="all">
         <caption>Authentication Endpoints</caption>
         <col width="13%"/>
@@ -25,41 +24,40 @@
         <thead>
             <tr>
                 <th>Resource</th>
-                <th>v1.1</th>
                 <th>v2.0</th>
+                <th>v1.1</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>US-Based Endpoint</td>
                 <td>
-                    <link xlink:href="https://identity.api.rackspacecloud.com/v1.1">
-                        https://identity.api.rackspacecloud.com/v1.1</link>
-                </td>
-                <td>
                     <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">
                         https://identity.api.rackspacecloud.com/v2.0</link></td>
+                <td><link xlink:href="https://identity.api.rackspacecloud.com/v1.1">
+                        https://identity.api.rackspacecloud.com/v1.1</link>
+                </td>
             </tr>
             <tr>
                 <td>UK-Based Endpoint</td>
                 <td>
-                    <link xlink:href="https://lon.identity.api.rackspacecloud.com/v1.1">
-                        https://lon.identity.api.rackspacecloud.com/v1.1</link>
-                </td>
-                <td>
                     <link xlink:href="https://lon.identity.api.rackspacecloud.com/v2.0">
                         https://lon.identity.api.rackspacecloud.com/v2.0</link>
+                </td>
+                <td><link xlink:href="https://lon.identity.api.rackspacecloud.com/v1.1">
+                        https://lon.identity.api.rackspacecloud.com/v1.1</link>
                 </td>
             </tr>
             <tr>
                 <td>Documentation</td>
                 <td>
-                    <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide/content/index.html">
-                        Cloud Authentication Client Developer Guide - API v1.1</link>
+                    <link
+                        xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html"
+                        > Cloud Identity Client Developer Guide - API v2.0</link>
                 </td>
-                <td>
-                    <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html">
-                        Cloud Identity Client Developer Guide - API v2.0</link>
+                <td><link
+                        xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide/content/index.html"
+                        > Cloud Authentication Client Developer Guide - API v1.1</link>
                 </td>
             </tr>
         </tbody>
