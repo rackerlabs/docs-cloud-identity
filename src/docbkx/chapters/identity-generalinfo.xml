@@ -1530,13 +1530,13 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<itemizedlist condition="client">
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_"
+						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_User_Calls"
 							>Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__"
+						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
 						>Assign role to account users</olink></para>
 				</listitem>
 				<listitem>
@@ -1548,14 +1548,13 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<itemizedlist condition="admin">
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Admin-Guide"
-							targetptr="POST_addUser_v2.0_users_User_Calls"
-							>Add account user</olink>
+						<olink targetdoc="Identity-Admin-Developer-Guide"
+							targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>
-					<para><olink targetdoc="Identity-Admin-Guide"
-						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__"
+					<para><olink targetdoc="Identity-Admin-Developer-Guide"
+						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
 							>Assign role to account users</olink></para>
 				</listitem>
 				<listitem>
@@ -1567,7 +1566,8 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<para>For information about implementing RBAC by using the Cloud
 				Control panel and other RBAC-related topics, see the
 				following Rackspace Knowledge Center articles:</para>
-			<itemizedlist><listitem>
+			<itemizedlist>
+				<listitem>
 				<para>
 					<link
 						xlink:href="http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac"
