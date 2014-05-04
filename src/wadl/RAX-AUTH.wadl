@@ -20,6 +20,25 @@
     <grammars>
         <include href="../xsd/RAX-AUTH.xsd"/>
     </grammars>
+    
+    <!-- 2014-05-04 by Margaret Eker
+      ++ Corrected spelling error in "Get token by SAML assertion" request example. Corrected error in response examples 
+         per QA request: changed "user" value from user-admin to identity:default and updated user example -->
+    
+    <!-- 2013-02-07 by Rose Coste
+      ++ adding new RESOURCES and METHODS & deleting unused & reordering to synch this writer-maintained RAX-AUTH with developer-maintained RAX-AUTH 
+         at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl  
+         For 15 new samples supporting added METHODS, include as ../common/samples/formattedsamples/keystone/
+            -->
+    
+    
+    <!-- 2013-01-17 by Rose Coste
+      ++ adding SECRETQA-related content to Auth 2.0 Admin DevGuide ++
+                samples were included as ../formattedsamples/ 
+                 I changed for consistency with other RAX- samples to
+                 ../common/samples/formattedsamples/keystone/
+            -->
+    
     <!-- 2012-12-13 by Cat Lookabaugh
       ++ adding and updating multiple operations based on 
       https://service-contracts.corp.rackspace.com:9443/snapshots/globalauth-keystone-extensions/site/
@@ -36,17 +55,8 @@
                  I changed for consistency with other RAX- samples to
                  ../common/samples/formattedsamples/keystone/
             -->
-    <!-- 2013-01-17 by Rose Coste
-      ++ adding SECRETQA-related content to Auth 2.0 Admin DevGuide ++
-                samples were included as ../formattedsamples/ 
-                 I changed for consistency with other RAX- samples to
-                 ../common/samples/formattedsamples/keystone/
-            -->
-    <!-- 2013-02-07 by Rose Coste
-      ++ adding new RESOURCES and METHODS & deleting unused & reordering to synch this writer-maintained RAX-AUTH with developer-maintained RAX-AUTH 
-         at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl  
-         For 15 new samples supporting added METHODS, include as ../common/samples/formattedsamples/keystone/
-            -->
+ 
+   
 
     <!-- ======================================================================================= -->
     <!-- Resources -->

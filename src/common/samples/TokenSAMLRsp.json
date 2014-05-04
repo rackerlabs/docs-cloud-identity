@@ -133,9 +133,9 @@
             "name": "john.doe",
             "roles": [
                 {
-                    "description": "User Admin Role.",
+                    "description": "Customer account user",
                     "id": "3",
-                    "name": "identity:user-admin"
+                    "name": "identity:default"
                 }
             ]
         }

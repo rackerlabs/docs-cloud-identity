@@ -40,14 +40,14 @@
           </saml2:Subject>
           <saml2:AuthnStatement AuthnInstant="2013-11-15T16:19:04.055Z">
                <saml2:AuthnContext>
-                    <saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordPotectedTransport
+                    <saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
                     </saml2:AuthnContextClassRef>
                </saml2:AuthnContext>
           </saml2:AuthnStatement>
           <saml2:AttributeStatement>
                <saml2:Attribute Name="roles">
                     <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                         xsi:type="xs:string">identity:user-admin</saml2:AttributeValue>
+                         xsi:type="xs:string">identity:default</saml2:AttributeValue>
                </saml2:Attribute>
                <saml2:Attribute Name="domain">
                     <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

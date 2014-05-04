@@ -1549,7 +1549,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<listitem>
 					<para>
 						<olink targetdoc="Identity-Admin-Guide"
-							targetptr="POST_addUser_v2.0_users_"
+							targetptr="POST_addUser_v2.0_users_User_Calls"
 							>Add account user</olink>
 					</para>
 				</listitem>

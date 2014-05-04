@@ -142,14 +142,9 @@
         </doc>          
         <request>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplate">
-                <doc xml:lang="EN">
+                <wadl:doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/endpointTemplate.xml"/>
-                </doc>               
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/endpointTemplate.json"/>
-                </doc>
+                </wadl:doc>
                 <param name="id" style="plain" required="true" path="$.id" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>A unique ID for the endpoint.</para></wadl:doc>
@@ -242,6 +237,11 @@
                         </para>
                     </wadl:doc>
                 </param>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/endpointTemplate.json"/>
+                </wadl:doc>
             </representation>
         </request>
         <response status="201">

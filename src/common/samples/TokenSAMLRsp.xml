@@ -15,8 +15,8 @@
           xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
           id="161418" name="john.doe" rax-auth:defaultRegion="DFW">
           <roles>
-               <role id="3" name="identity:user-admin"
-                    description="User Admin Role."/>
+               <role id="3" name="identity:default"
+                    description="Customer account user"/>
           </roles>
      </user>
      <serviceCatalog>
