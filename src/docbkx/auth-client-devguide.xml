@@ -47,6 +47,26 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-05-05</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Fixed format for parameter descriptions included in <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_"
+								>“Add endpoint template</olink></para>
+						</listitem>
+						<listitem>
+							<para>Revised <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="Role_Based_Access_Control-d1e808" condition="admin"
+								>“Role-based access control”</olink> sections to consolidate
+								overview and role descriptions, qne add cross-references to Knowledge
+								Center articles.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			
+			<revision>
 				<date>2014-04-27</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
