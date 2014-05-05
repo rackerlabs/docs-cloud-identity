@@ -60,7 +60,7 @@
 							</para>
 						</listitem>
 						<listitem>
-							<para>Revised <olink targetdoc="Identity-Developer-Guide"
+							<para>Revised <olink targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="Role_Based_Access_Control-d1e808"
 									>“Role-based access control”</olink> sections to consolidate
 								overview and role descriptions, and add cross-references to Knowledge
