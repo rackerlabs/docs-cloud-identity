@@ -54,7 +54,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_"
+								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_Token_Calls"
 								>“Get token by SAML assertion"</olink> code samples to correct spelling 
 							    error and role value and description.
 							</para>
