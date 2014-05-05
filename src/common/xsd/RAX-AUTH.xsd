@@ -50,28 +50,34 @@
     <element name="mobilePhone" type="RAX-AUTH:MobilePhone" >
         <annotation>
             <xsd:documentation>
-                <p>A mobile phone represents an mobile phone capable of being used for multifactor.</p>
+                <p>A mobile phone that is available for use with multifactor authentication.
+                The phone has two attributes: a system-assigned id and a phone number.</p>
             </xsd:documentation>
         </annotation>
     </element>
     <element name="mobilePhones" type="RAX-AUTH:MobilePhones" >
         <annotation>
             <xsd:documentation>
-                <p>A mobilePhones represents a list of mobile phone capable of being used for multifactor.</p>
+                <p>A list of mobile phones that can be used for multifactor authentication.</p>
             </xsd:documentation>
         </annotation>
     </element>
     <element name="verificationCode" type="RAX-AUTH:VerificationCode" >
         <annotation>
             <xsd:documentation>
-                <p>A verification code represents a code used for verification of something.</p>
+                <p>A code sent in respone to a verification request during the multifactor authentication. 
+                   process. Users can return the verification code to confirm possession of the 
+                   device that has been configured for multifactor authentication. 
+                
+                   
+                </p>
             </xsd:documentation>
         </annotation>
     </element>
     <element name="multiFactor" type="RAX-AUTH:MultiFactor" >
         <annotation>
             <xsd:documentation>
-                <p>Settings for multifactor authentication.</p>
+                <p>User account settings for multifactor authentication.</p>
             </xsd:documentation>
         </annotation>
     </element>
@@ -129,7 +135,8 @@
         <annotation>
             <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                 <p>
-                    An ID uniquely identifying the device.
+                    A system-generated string that uniquely identifies a device that can be used  
+                    for multifactor authentication.
                 </p>
             </xsd:documentation>
         </annotation>
@@ -144,7 +151,8 @@
                     <annotation>
                         <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                             <p>
-                                The phone number of the mobile phone.
+                                The phone number associated with a mobile phone that has been 
+                                configured for multifactor authentication. 
                             </p>
                         </xsd:documentation>
                     </annotation>
@@ -153,7 +161,7 @@
                     <annotation>
                         <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                             <p>
-                                Whether the device has been verified for the associated user.
+                                A boolean value that indicates whether the device has been verified for the associated user.
                             </p>
                         </xsd:documentation>
                     </annotation>
@@ -173,18 +181,33 @@
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        The code used for verification.
+                        The code used to verify that a user has possesion of the device to be used for 
+                        multifactor authentication.
                     </p>
                 </xsd:documentation>
             </annotation>
         </attribute>
     </complexType>
     <complexType name="MultiFactor">
-        <attribute name="enabled" type="xsd:boolean" use="required">
+        <attribute name="enabled" type="xsd:boolean" use="optional">
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        Whether to enable or disable multi-factor
+                        Boolean value that indicates whether multifactor authentication is enabled an 
+                        account. To disable multifactor temporarily, without deleting the multifactor 
+                        configuration, set <literal>enabled=false</literal>
+                    </p>
+                </xsd:documentation>
+            </annotation>
+        </attribute>
+    <attribute name="unlock" type="xsd:boolean" use="optional">
+            <annotation>
+                <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
+                    <p>
+                        An optional attribute that indicates whether a user account needs to 
+                        be unlocked. If a user account is locked, an administrator can specify  
+                        <literal>unlock=true</literal> to change the status.  If <literal>unlock=false</literal>, 
+                        or the attribute is not specifed, the account lock status is not affected. 
                     </p>
                 </xsd:documentation>
             </annotation>
@@ -206,7 +229,7 @@
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        An ID uniquely identifying the domain.
+                        An ID that uniquely identifyies the domain.
                     </p>
                 </xsd:documentation>
             </annotation>
@@ -224,7 +247,7 @@
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        A boolean indicating if domain is active or not.
+                        A boolean value that indicates whether an account is active.
                     </p>
                 </xsd:documentation>
             </annotation>
@@ -294,7 +317,7 @@
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        A boolean indicating if policy is active or not.
+                        A boolean value that indicates whether a policy is active.
                     </p>
                 </xsd:documentation>
             </annotation>
@@ -303,7 +326,7 @@
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        A boolean indicating if policy is a global policy or not.
+                        A boolean that indiccates whether a policy is global.
                     </p>
                 </xsd:documentation>
             </annotation>
@@ -479,7 +502,7 @@
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        A boolean indicating if region is active or not.
+                        A boolean value that indicates whether a region is specified as the default region.
                     </p>
                 </xsd:documentation>
             </annotation>
@@ -488,7 +511,7 @@
             <annotation>
                 <xsd:documentation xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        A boolean indicating if region is active or not.
+                        A boolean value that indicates whether a region is active.
                     </p>
                 </xsd:documentation>
             </annotation>
