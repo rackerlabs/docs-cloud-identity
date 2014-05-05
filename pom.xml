@@ -65,7 +65,7 @@
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>intranet</enableDisqus>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
-							<feedbackEmail>rose.coste@rackspace.com, margaret.eker@rackspace.com</feedbackEmail>
+							<feedbackEmail>margaret.eker@rackspace.com</feedbackEmail>
 							<!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 						</configuration>
