@@ -51,14 +51,6 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Developer-Guide"
-								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_"
-								>“Get token by SAML assertion"</olink> code samples to correct spelling 
-								error and role value and description.
-							</para>
-						</listitem>
-						
-						<listitem>
 							<para>Revised <olink targetdoc="Identity-Developer-Guide"
 								targetptr="Role_Based_Access_Control-d1e808" 
 								>“Role-based access control”</olink> sections to consolidate
