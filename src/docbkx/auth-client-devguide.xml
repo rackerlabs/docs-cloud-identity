@@ -50,7 +50,7 @@
 				<date>2014-05-05</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
-						<listitem>
+						<listitem security="internal">
 							<para>Updated <olink targetdoc="Identity-Developer-Guide"
 								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_"
 								>“Get token by SAML assertion"</olink> code samples to correct spelling 
