@@ -62,7 +62,7 @@
     <!-- Resources -->
     <!-- ======================================================================================= -->
 
-    <resources base="http://localhost:8080">
+    <resources base="http://localhost:8080" xml:id="Identity-v2">
         <resource id="version" path="/v2.0">
 
             <!-- TOKENS resource(s) -->
