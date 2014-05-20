@@ -35,7 +35,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <!--*******************************************************-->
 
     <!-- We should use SSL in production -->
-    <resources base="http://localhost:35357">
+    <resources base="http://localhost:35357" xml:id="Identity-v2">
         <resource id="version" path="v2.0">
             <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                 <doc>You need a valid admin token for access.</doc>
@@ -369,12 +369,12 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method name="POST" id="updateUser">
-        <doc xml:lang="EN" title="Update User">
+        <doc xml:lang="EN" title="Update User information and password">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</p>
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                 <warning>
-                    <para> Before making any change to a user, you should confirm that you are changing the user you intend
+                    <para>Before making any change to a user, you should confirm that you are changing the user you intend
                         to change. You can do this by treating every change as a two-step operation: first, check the target
                         of the change; second, make the change. </para>
                     <para> "Update User" acts upon the user specified by <code>userId</code>. Before attempting to update a
