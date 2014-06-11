@@ -11,13 +11,13 @@
      </media-types>
 
      <atom:link rel="self"
-                href="http://identity.api.openstack.org/v2.0/"/>
+         href="https://identity.api.rackspacecloud.com/v2.0/"/>
 
     <atom:link rel="describedby"
                type="application/pdf"
-               href="http://docs.openstack.org/identity/api/v2.0/identity-latest.pdf" />
+               href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
 
     <atom:link rel="describedby"
                type="application/vnd.sun.wadl+xml"
-               href="http://docs.openstack.org/identity/api/v2.0/identity.wadl" />
+               href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
 </version>
