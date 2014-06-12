@@ -37,10 +37,11 @@
     <!--*******************************************************-->
     <!-- We should use SSL in production -->
     <resources base="http://localhost:5000">
-        <resource id="versions" path="//">
-            <method href="#getVersions"/>
-        </resource>
-        <resource id="version" type="#VersionDetails" path="v2.0/">
+            <resource id="versions" type="#VersionList" path="//">
+                <method href="#getVersions"/>
+            <resource id="version" type="#VersionDetails" path="v2.0/">
+                <method href="#getVersionInfo"/>      
+            
             <resource id="extensions" type="#ExtensionList"
                 path="extensions">
                 <resource id="extension" path="{alias}">
@@ -107,19 +108,32 @@
                 </resource>
             </resource>
         </resource>
+      </resource>         
     </resources>
 
     <!--***************************************************-->
     <!--               Resource Types                          -->
     <!--*******************************************************-->
 
+    <resource_type id="VersionList">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+            title="List API contract versions">
+            <para role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service endpoint.</para>
+        </wadl:doc>
+        <method href="#getVersions"/>
+    </resource_type>
     <resource_type id="VersionDetails">
-        <method href="#getVersionInfo"/>
+            <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                title="List API contract versions">
+                <para role="shortdesc">Gets detailed information about the
+                    specified version of the Identity Service API.</para>
+            </wadl:doc>
+            <method href="#getVersionInfo"/>
     </resource_type>
     <resource_type id="ExtensionList">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
             title="List Extensions">
-            <para role="shortdesc">Lists supported extensions. </para>
+            <para role="shortdesc">Lists supported extensions.</para>
         </wadl:doc>
         <method href="#listExtensions"/>
     </resource_type>
@@ -128,19 +142,17 @@
     <!--               All Methods                             -->
     <!--*******************************************************-->
 
-    <!-- Version -->
+    <!-- Version operations -->
 
     <method name="GET" id="getVersions">
         <wadl:doc xml:lang="EN" title="List versions"
             xmlns="http://docbook.org/ns/docbook"><para
-                role="shortdesc">Lists information about all Identity service 
-                API versions.</para>
-            <para>
+                role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service endpoint.</para>
+            <para xmlns="http://www.w3.org/1999/xhtml">
                 Use the GET version operation to discover API version information for the Identity service, 
                 links to documentation (PDF, HTML, WADL), and supported media types. You can complete this operation from the  
-                browser by entering the URL for the Identity API service endpoint: https://identity.api.rackspacecloud.com/ for example.
+                browser by entering the URL for the Identity API service endpoint: <a href="https://identity.api.rackspacecloud.com/" /> for example.
             </para>
- 
         </wadl:doc>
         <response status="200">
                 <param name="Versions" style="plain" type="vers:VersionChoiceList" required="true">
@@ -227,11 +239,16 @@
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
-    <!-- Extensions -->
+    
+    <!-- Extensions operations -->
+    
     <method name="GET" id="listExtensions">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
             title="List Extensions">
             <para role="shortdesc">Lists available extensions.</para>
+            <para>The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
+                the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
+                endpoint for information about the extensions available for the specified service.</para>
         </wadl:doc>
         <response status="200 203">
             <param name="next" style="plain" type="xsd:anyURI"
@@ -281,7 +298,9 @@
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
+    
     <!-- Token Operations -->
+    
     <method name="POST" id="authenticate">
         <wadl:doc xml:lang="EN" title="Authenticate"
             xmlns="http://docbook.org/ns/docbook">
@@ -358,7 +377,9 @@
             <representation mediaType="application/json"
                 element="identity:userDisabled"/>
         </response> &commonFaults; &getFaults; </method>
+    
     <!-- Tenant Operations -->
+    
     <method name="GET" id="listTenants">
         <wadl:doc title="List Tenants" xml:lang="EN"
             xmlns="http://docbook.org/ns/docbook">
