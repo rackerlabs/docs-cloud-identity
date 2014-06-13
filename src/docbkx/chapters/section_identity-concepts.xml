@@ -23,24 +23,39 @@
                     automatically assigns a user type and a default role based on the &CIS; system
                     configuration. Users with suffficient access rights and privileges can change
                     user role assighments if required.</para>
-                <para>See the following links for more information: <itemizedlist>
-                    <listitem condition="client"><para><olink targetdoc="Identity-Developer-Guide"
-                        targetptr="Account-Users-d1e910">"Identity users types and default
-                        roles"</olink></para></listitem>
-                        <listitem condition="client">
-                            <para><olink targetdoc="Identity-Developer-Guide"
+                <para>See the following links for more information: 
+                    <itemizedlist condition="client">
+                    <listitem>
+                        <para>
+                            <olink targetdoc="Identity-Developer-Guide"
+                        targetptr="Account-Users-d1e910">"Identity users types and default roles"</olink>
+                        </para>
+                    </listitem>
+                        
+                    <listitem>
+                            <para>
+                                <olink targetdoc="Identity-Developer-Guide"
                                     targetptr="section_assign_roles_3">“Assigning Roles to Account
-                                    Users”</olink></para>
+                                    Users”</olink>
+                            </para>
                         </listitem>
-                        <listitem condition="admin">
-                            <para><olink targetdoc="Identity-Admin-Developer-Guide"
+                   </itemizedlist>
+                   <itemizedlist condition="admin">    
+                        <listitem>
+                            <para>
+                                <olink targetdoc="Identity-Admin-Developer-Guide"
                                     targetptr="Account-Users-d1e910">“Identity user types and
-                                    default roles”</olink></para>
+                                    default roles”</olink>
+                            </para>
                         </listitem>
-                        <listitem condition="admin"><para><olink
+                        <listitem>
+                            <para>
+                                <olink
                                 targetdoc="Identity-Admin-Developer-Guide"
                                 targetptr="section_assign_roles_3">“Assigning Roles to Account
-                                    Users”</olink></para></listitem>
+                                    Users”</olink>
+                            </para>
+                        </listitem>
                     </itemizedlist>
                 </para>
             </listitem>
@@ -49,8 +64,8 @@
             <term>Credentials</term>
             <listitem>
                 <para>Any kind of information that can be used in verifying an identity. For the
-                    &CIS;, credentials might include these types of information: <itemizedlist
-                        spacing="compact">
+                    &CIS;, credentials might include these types of information: 
+                    <itemizedlist spacing="compact">
                         <listitem>
                             <para>a matching username and password</para>
                         </listitem>
@@ -66,14 +81,14 @@
                         <listitem>
                             <para>verified cell phone number or email address</para>
                         </listitem>
-                    </itemizedlist></para>
+                    </itemizedlist>
+                </para>
             </listitem>
         </varlistentry>
         <varlistentry>
             <term>Authentication</term>
             <listitem>
-                <para>The act of passing in <glossterm baseform="Credentials-d1e03"
-                        >credentials</glossterm>, confirming an identity, and returning a token
+                <para>The act of passing in <glossterm baseform="Credentials-d1e03">credentials</glossterm>, confirming an identity, and returning a token
                     representation of the verified identity. In the &CLOUD;, credentials are
                     typically a username and API key.</para>
                 <para>In the &CLOUD;, you authenticate by submitting a POST tokens API request with
