@@ -116,5 +116,70 @@ format="SVG" scale="60"/>
             <representation mediaType="application/json"/>
         </response>
            '>
-      
+           
+    <!ENTITY userByAttrRsp
+        '
+        <param name="RAX-AUTH:defaultRegion" style="plain" type="string" required="false">
+               <doc>
+                   <para xmlns="http://www.w3.org/1999/xhtml">
+                   Provides the ID for the default regional data center associated with the user account, if one exists.
+                   Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para> 
+                   <para xmlns="http://www.w3.org/1999/xhtml">If a user account is associated with a default region, and the service catalog is available in 
+                   multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>. 
+                   For example of services available in multiple regions, see <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">Sample Authentication Request and Response</a></para>
+                   
+                   <para xmlns="http://www.w3.org/1999/xhtml">
+                   Use the <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html">"Update user"</a> API operation to add, remove, or update the defaultRegion setting on an account. 
+                   </para>               
+                </doc>
+            </param>
+            <param name="RAX-AUTH:domain" style="plain" type="xsd:string" required="false">
+                <doc>
+                    <para xmlns="http://www.w3.org/1999/xhtml">
+                    Returns the ID for the domain associated with the user account if one exists. 
+                    A domain represents an administrative boundary for identity management.
+                    </para>
+                </doc>
+            </param>
+            <param name="id" style="plain" type="xsd:string" required="false">
+                <doc>
+                    <para xmlns="http://www.w3.org/1999/xhtml">
+                        Returns the ID for the domain associated with the user account if one exists. 
+                    </para>
+                    <para xmlns="http://www.w3.org/1999/xhtml">
+                        A domain ID associates the user with a specific domain. The association can be 
+                        established during account creation and update operations.
+                    </para>
+                    <para xmlns="http://www.w3.org/1999/xhtml"> 
+                        A domain establishes an administrative boundary for a customer and a container for customer tenants (accounts) and users.
+                        Generally, the <code>domainId</code> value matches the value associated with the primary tenant ID 
+                        for the &CLOUD; account.
+                    </para>
+                </doc>
+            </param>
+            <param name="username" style="plain" type="xsd:string" required="false">
+                <doc>
+                    <para xmlns="http://www.w3.org/1999/xhtml">
+                        The name of the user on the account. 
+                    </para>
+                </doc>
+            </param>
+             <param name="email" style="plain" type="xsd:string" required="false">
+                    <doc>
+                        <para xmlns="http://www.w3.org/1999/xhtml">
+                            Returns the email address on the user account if one has been defined.</para>
+                    </doc>
+             </param>
+                <param name="enabled" style="plain" type="boolean" required="false">
+                    <doc>
+                        <para xmlns="http://www.w3.org/1999/xhtml">
+                            Indicates whether the user can authenticate to the &CIS;. If <code>enabled="false"</code>,
+                            the user cannot authenticate. Typically, the <code>enabled</code> setting is set 
+                            and stored by a backend system integrated with &CIS;. To restore account access, 
+                            work with the &CIS; System and user administrators to resolve any issues on the account.
+                         </para>
+                    </doc>
+                </param>
+                '>
+                
       

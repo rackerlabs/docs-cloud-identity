@@ -36,10 +36,10 @@
     <!--             All Resources                             -->
     <!--*******************************************************-->
     <!-- We should use SSL in production -->
-    <resources base="http://localhost:5000">
+    <resources base="http://localhost:5000" xml:id="identity_common">
             <resource id="versions" type="#VersionList" path="//">
                 <method href="#getVersions"/>
-            <resource id="version" type="#VersionDetails" path="v2.0/">
+            <resource id="version" type="#VersionList" path="v2.0/">
                 <method href="#getVersionInfo"/>      
             
             <resource id="extensions" type="#ExtensionList"
@@ -55,6 +55,12 @@
                 </resource>
             </resource>
             <resource id="tokens" path="tokens">
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="X-AUTH-TOKEN" style="header" required="true"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        ><para>The user name.</para></wadl:doc>
+                </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02"
                     name="username" style="plain" required="true"
                     type="xsd:string">
@@ -122,14 +128,7 @@
         </wadl:doc>
         <method href="#getVersions"/>
     </resource_type>
-    <resource_type id="VersionDetails">
-            <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
-                title="List API contract versions">
-                <para role="shortdesc">Gets detailed information about the
-                    specified version of the Identity Service API.</para>
-            </wadl:doc>
-            <method href="#getVersionInfo"/>
-    </resource_type>
+ 
     <resource_type id="ExtensionList">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
             title="List Extensions">
@@ -177,7 +176,7 @@
                                 <itemizedlist spacing="compact">
                                     <listitem><strong>ALPHA</strong> status describes a new service API. The API
                                         contract might be set, but the API implementaiton
-                                        might not completely comply with the contract. Developers
+                                        might not comply with the contract completely. Developers
                                         are encouraged to begin testing aganst an
                                         ALPHA version to provide feedback.
                                     </listitem>
@@ -226,7 +225,7 @@
             <param name="location" style="plain" type="xsd:anyURI"
                 required="true"
                 path="/capi:version/atom:link[@rel='self']/@href">
-                <link resource_type="#VersionDetails" rel="self"/>
+                <link resource_type="#VersionList" rel="self"/>
             </param>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">

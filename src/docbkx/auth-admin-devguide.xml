@@ -1,14 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book [
-<!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
-<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
-<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+<!-- Created a common entity file to manage all entities for the Identity doc from one place.-->
+<!ENTITY % common SYSTEM "../common/common.ent">
+%common;
 ]>
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+<book xmlns="http://docbook.org/ns/docbook" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" 
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns:wadl="http://wadl.dev.java.net/2009/02"
 	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" xml:id="Identity-Admin-Developer-Guide">
 	<title>Cloud Identity Admin Developer Guide</title>
-	<titleabbrev>Cloud Identity Admin DevGuide</titleabbrev>
+	<titleabbrev>Cloud Identity Admininistrator Guide</titleabbrev>
 	<?rax pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content"?>
 	<?rax status.bar.text.font.size="80px" status.bar.text="RAX INTERNAL"?>
 	<info>
@@ -300,7 +303,7 @@
 									Types”</olink> to include warning about potential delays. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="RBAC_roledesc_table"
+							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="RBAC_roledesc_tbl"
 									>Table 6, “Rackspace RBAC Roles”</olink> to be consistent with
 								Knowledge Center articles. </para>
 						</listitem>
@@ -649,29 +652,29 @@
 							<para> Removed "BETA" designation. </para>
 						</listitem>
 						<listitem>
-							<para> Expanded explanation and examples in <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_authenticate_v2.0_tokens_"/>, showing use of
-								tenant name and tenant ID as authentication credentials. </para>
+							<para>Expanded explanation and examples in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Token_Calls">“Tokens”</olink>, showing use of tenant
+								name and tenant ID as authentication credentials. </para>
 						</listitem>
 						<listitem>
-							<para> Expanded explanation and examples in <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_impersonateUser_v2.0_RAX-AUTH_impersonation-tokens_"
-								/>, showing use of <code>expire-in-seconds</code>. </para>
+							<para>Expanded explanation and examples in <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="Impersonation_Calls"/>, showing use of <code>expire-in-seconds</code>.</para>
 						</listitem>
 						<listitem>
-							<para> Updated illustration in <xref
-								linkend="Identity-Service-Concepts-e1362"
-								/>. </para>
+							<para>Updated illustration in <xref
+								linkend="Identity-Concepts-e1362"/>
+							</para>
 						</listitem>
 						<listitem>
-							<para> Restructured and expanded <xref
+							<para>Restructured and expanded <xref
 								linkend="Additional_Resources-d1e130"
 								/>, adding links to Rackspace
 								Knowledge Center and customer feedback
 								site. </para>
 						</listitem>
 						<listitem>
-							<para> Added Statuses section listing all possible account statuses. </para>
+							<para>Added Statuses section listing all possible account statuses. </para>
 						</listitem>
 						<listitem>
 							<para> Added <xref
@@ -782,7 +785,7 @@
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
-								/> and <xref linkend="Account-User-d1e20"/> to state that account
+							/> and <xref linkend="Account-Users-d1e910"/> to state that account
 								users must authenticate with their passwords. </para>
 						</listitem>
 						<listitem>
@@ -823,9 +826,7 @@
 						</listitem>
 						<listitem>
 							<para> Added information about account
-								users (also known as sub-accounts),
-								including an entry in <xref
-								linkend="Glossary-000"/>. </para>
+								users (also known as sub-accounts)</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -902,7 +903,6 @@
 		</raxm:metadata>
 	</info>
 	<xi:include href="chapters/identity-overview-admin.xml"/>
-	<xi:include href="chapters/identity-concepts-admin.xml"/>
 	<xi:include href="chapters/identity-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-admin.xml"/>

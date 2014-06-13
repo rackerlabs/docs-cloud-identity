@@ -23,6 +23,31 @@
 		      </execution>
 		    </executions>
 		  </plugin>
+			<!-- Add plugin to support glossary term pop-ups -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.rackspace.cloud.api</groupId>
+									<artifactId>glossary</artifactId>
+									<version>1.0.0-SNAPSHOT</version>
+									<outputDirectory>${project.build.directory}/mvn/com.rackspace.cloud.api/glossary</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<plugin>
 				<groupId>com.rackspace.cloud.api</groupId>
 				<artifactId>clouddocs-maven-plugin</artifactId>
@@ -137,15 +162,4 @@
 	<scm>
 		<connection>scm:git:ssh://git@github.rackspace.com:IX/auth-2.0.git</connection>
 	</scm>
-	<distributionManagement>
-		<site>
-			<id>docs-stagging</id>
-			<url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
-		</site>
-		<repository>
-			<id>docs-stagging</id>
-			<name>docs-stagging</name>
-			<url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
-		</repository>
-	</distributionManagement>
 </project>

@@ -28,7 +28,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
         <include href="../common/xsd/OS-KSADM.xsd"/>
-        <include href="../common/xsd/RAXAUTH.xsd"/>"
+        <include href="../common/xsd/RAX-AUTH.xsd"/>"
     </grammars>
     <!--*******************************************************-->
     <!-- All Resources -->

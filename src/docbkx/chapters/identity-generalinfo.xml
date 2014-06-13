@@ -1,39 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter [
-<!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
-<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
-<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
-<!-- Some entities borrowed from HTML -->
-<!ENTITY ndash  "&#x2013;">
-<!ENTITY mdash  "&#x2014;">
-<!ENTITY hellip "&#x2026;">
-<!-- Useful for describing APIs -->
-<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
-<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
-<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
-<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
-<!ENTITY HEAD    '<command xmlns="http://docbook.org/ns/docbook">HEAD</command>'>
-<!ENTITY CODES       'Normal Response Code(s):'>
-<!ENTITY ERROR_CODES 'Error Response Code(s):'>
-<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
-This operation does not require a request body.</para>'>
-<!ENTITY LONG_URI_REFHEAD '
-<thead xmlns="http://docbook.org/ns/docbook">
-<tr>
-<td colspan="1">Verb</td>
-<td colspan="4">URI</td>
-<td colspan="3">Description</td>
-</tr>
-</thead>'>
-<!ENTITY URI_REFHEAD '
-<thead xmlns="http://docbook.org/ns/docbook">
-<tr>
-<td colspan="1">Verb</td>
-<td colspan="1">URI</td>
-<td colspan="4">Description</td>
-</tr>
-</thead>'>
+<!DOCTYPE section [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
 ]>
+
 <chapter xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
@@ -48,56 +18,107 @@ This operation does not require a request body.</para>'>
 	</info>
         <para>The authentication service allows clients to obtain
 		tokens that can be used to access cloud services such as those
-		provided by Rackspace and OpenStack. </para>
+		provided by Rackspace and OpenStack.</para>
 		<para>The authentication service API is implemented using a ReSTful
 			web service interface. All requests to authenticate and
-			operate against the authentication service should be
+			operate against the authentication service should be 
 			performed using SSL over HTTP (HTTPS) on TCP port
 			443.</para>
-	<section xml:id="Identity_Service_Concepts">
-		<title>Identity Service Concepts</title>
-		<para/>
-	</section>
+	<xi:include href="section_identity-concepts.xml"/>
 	<section xml:id="Request_Response_Types-d1e149">
-	  <title>Request/Response Types</title>
-	  <para> The Keystone API supports both the JSON and XML data
-			serialization formats. The request format is specified
-			using the <code>Content-Type</code> header and is required
-			for operations that have a request body. The response
-			format can be specified in requests either by using
-			the <code>Accept</code> header or by adding an
-				<code>.xml</code> or <code>.json</code> extension to
-			the request URI. It is possible for a response to be
-			serialized using a format different from the request. If
-			no response format is specified, JSON is the default. If
-			conflicting formats are specified using both an
-				<code>Accept</code> header and a query extension, the
-			query extension takes precedence.</para>
-	  <table rules="all">
-		<caption>Response Types</caption>
-		<thead>
-		  <tr>
-			<td>Format</td>
-			<td>Accept Header</td>
-			<td>Query Extension</td>
-			<td>Default</td>
-		  </tr>
-		</thead>
-		<tbody>
-		  <tr>
-			<td>JSON</td>
-			<td>application/json</td>
-			<td>.json</td>
-			<td>Yes</td>
-		  </tr>
-		  <tr>
-			<td>XML</td>
-			<td>application/xml</td>
-			<td>.xml</td>
-			<td>No</td>
-		  </tr>
-		</tbody>
-	  </table>
+		<title>Request/Response Types</title>
+		<para>The &CIS; v2 API supports both the JSON and XML data serialization request and response
+			formats. Some operations also support the Atom Syndication Format for responses. If you
+			do not specify a format type, <code>JSON</code> is the default. <xref
+				linkend="Response_Types"/> provides a summary of the available formats.</para>
+
+				<table rules="all" width="884" xml:id="Response_Types">
+			<caption>Supported Request and Response formats</caption>
+			<col width="14%"/>
+			<col width="36%"/>
+			<col width="204pt"/>
+			<col width="18%"/>
+			<col width="80px"/>
+			<thead valign="baseline">
+				<tr>
+					<td>Format</td>
+					<th>Content-Type  header</th>
+					<td>Accept header</td>
+					<td>Query Extension for request URI</td>
+					<td>Default</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>JSON</td>
+					<td><code>Content-Type application/json</code></td>
+					<td><code>application/json</code></td>
+					<td>.json</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td>XML</td>
+					<td><code>Content-Type application/xml</code></td>
+					<td><code>application/xml</code></td>
+					<td>.xml</td>
+					<td>No</td>
+				</tr>
+				<tr>
+					<td>Atom</td>
+					<td/>
+					<td><code>application/atom+xml</code></td>
+					<td>.atom</td>
+					<td>No</td>
+				</tr>
+			</tbody>
+		</table>
+		<variablelist>
+			<varlistentry>
+			<term><code>Content-Type</code> header syntax</term>
+				<listitem>
+					<para>You specify the request format in the <code>Content-Type</code> header. This header is
+					required for operations that have a request body.  The following code sample shows the
+					syntax for the <code>Content-Type</code> header:
+					</para>
+				<para>
+					<programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
+				</para>
+				<para>Where <parameter>format</parameter> is either <literal>json</literal> or <literal>xml</literal>.</para>
+			</listitem>
+		</varlistentry>
+		</variablelist>
+		<para>You can specify the response format using either the <code>Accept</code> header or a
+			query extension:</para>
+		<variablelist>
+			<varlistentry>
+				<term><code>Accept</code> header syntax</term>
+				<listitem>
+					<para>
+						<programlisting>Accept: application/format</programlisting> 
+					</para>
+					<para>Where <code>format</code> can be either <code>json</code> or 
+						<code>xml</code>.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>Query extension syntax</term>
+				<listitem>
+					<para>Add an <code>.xml</code> or <code>.json</code> extension to the request
+						URI. For example, the <code>.xml</code> extension in the following URI
+						request specifies that the response body is returned in XML format.</para>
+					<para>
+						<programlisting>POST /v2/010101/servers.xml</programlisting>
+					</para>
+					<para>
+						If you specify different formats for the Accept header and the query extension, the format
+						specified in the query extension takes precedence. For example, if the query
+						extension is <code>.xml</code> and the Accept header specifies
+						<code>application/json</code>, the response is returned in XML
+						format.
+					</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
 	</section>
 	<section xml:id="Sample_Request_Response-d1e64">
 		<title>Sample Authentication Request and Response</title>
@@ -176,7 +197,6 @@ This operation does not require a request body.</para>'>
 	  			<area xml:id="response.xml.url" units="linecolumn" coords="52 114"/>
 	  		</areaspec>	
 		<programlisting language="xml">
-<?db-font-size 95% ?>
 <xi:include href="../samples/auth-annotated.xml" parse="text"/>
 		</programlisting>
 	  	</programlistingco>			
@@ -815,8 +835,7 @@ This operation does not require a request body.</para>'>
 	<section xml:id="Versions-d1e472">
 		<title>Contract versions</title>
 		<para>The contracct version denotes the data model and behavior that the API supports.
-			The 
-			The identity API uses a URI versioning scheme. </para>
+			The identity API uses a URI versioning scheme.</para>
 		<important>
 			<para>Rackspace's implementation of the OpenStack Keystone Identity
 				Service v2.0 does not
@@ -1040,78 +1059,40 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	</section>
 	<section xml:id="Extensions-d1e688">
 		<title>Extensions</title>
-		<para> The authentication service API is extensible, meaning that the API is structured so that some functions are implemented in the 
-			core API and others are implemented via optional extensions to that core.
-			Extensions
-			serve two purposes: 
-			<itemizedlist>
+		<para>The authentication service API is extensible, meaning that the API is structured so
+			that some functions are implemented in the core API and others are implemented via
+			optional extensions to that core. Extensions serve two purposes:<itemizedlist>
 				<listitem>
-					<para>
-						Extensions allow the introduction of new
-						features in the API without requiring a version change.
-					</para>
+					<para> Extensions allow the introduction of new features in the API without
+						requiring a version change.</para>
 				</listitem>
 				<listitem>
-					<para>
-						Extensions allow the introduction of vendor-specific niche
-						functionality.
+					<para> Extensions allow the introduction of vendor-specific niche functionality.
 					</para>
 				</listitem>
-			</itemizedlist>
-			Every service provider can choose its own set of extensions to the core API.	 
-			Applications can programmatically determine
-			what extensions are available by performing a &GET; on the
-			<code>/extensions</code> URI. Note that this is a versioned request;
-			that is, an extension available in one API version may not
-			be available in another, so a response is only applicable
-			to a specific version. </para>
-		<informaltable rules="all">
-			<thead>
-				<tr>
-					<td colspan="1">Verb</td>
-					<td colspan="2">URI</td>
-					<td colspan="3">Description</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td colspan="1">&GET;</td>
-					<td colspan="2">v2.0/extensions</td>
-					<td colspan="3">Returns a list of available extensions</td>
-				</tr>
-			</tbody>
-		</informaltable>
-		<simpara>&CODES; <returnvalue>200</returnvalue>,
-				<returnvalue>203</returnvalue></simpara>
-		<simpara>&ERROR_CODES; badRequest
-		(<errorcode>400</errorcode>), identityFault (<errorcode>500</errorcode>),
-			serviceUnavailable(<errorcode>503</errorcode>)</simpara>
-		&NO_REQUEST;
-		<para>
-			Each extension is identified by two unique identifiers: a
-			<property>namespace</property> and an
-			<property>alias</property>. 
-			You can use these identifiers to associate an extension with its vendor;
-			in the examples in this section, aliases prefixed <code>RAX-</code> indicate that Rackspace
-			provided these extensions. 
-			Additionally, an extension
-			contains links to documentation in multiple formats.
-		</para>
+			</itemizedlist>Every service provider can choose API extensions to the core API based on
+			service requirements. Applications can programmiatically determine what extensions are
+			available by submitting a GET extensions URI query for the service endpoint URI. Note
+			that this is a versioned request; that is, an extension available in one API version may
+			not be available in another, so a response is only applicable to a specific version. </para>
+		<para>Each extension has two unique identifiers: a <property>namespace</property> and an
+				<property>alias</property>. You can use these identifiers to associate an extension
+			with its vendor; in the examples in this section, aliases prefixed <code>RAX-</code>
+			indicate that Rackspace provided these extensions. Additionally, an extension contains
+			links to documentation in multiple formats. </para>
 		<example>
 			<title>Extensions Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/extensions.xml" parse="text"/>
+			<xi:include href="../samples/extensions.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Extensions Response: JSON</title>
 			<programlisting language="javascript"><xi:include href="../samples/extensions.json" parse="text"/></programlisting>
 		</example>
-		<para> Extensions may also be queried individually by their unique
-			alias. This provides the simplest method of checking
-			whether an extension is available. An unavailable
-			extension will issue an itemNotFound
-				(<errorcode>404</errorcode>) response. </para>
+		<para> Extensions may also be queried individually by their unique alias. This provides the
+			simplest method of checking whether an extension is available. An unavailable extension
+			will issue an itemNotFound (<errorcode>404</errorcode>) response. </para>
 		<informaltable rules="all">
 			<thead>
 				<tr>
@@ -1129,11 +1110,9 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</tbody>
 		</informaltable>
 		<simpara>&CODES; <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue></simpara>
-		<simpara>&ERROR_CODES; itemNotFound
-		(<errorcode>404</errorcode>), badRequest
-		(<errorcode>400</errorcode>), identityFault
-		(<errorcode>500</errorcode>),
-		serviceUnavailable(<errorcode>503</errorcode>)</simpara>
+		<simpara>&ERROR_CODES; itemNotFound (<errorcode>404</errorcode>), badRequest
+				(<errorcode>400</errorcode>), identityFault (<errorcode>500</errorcode>),
+				serviceUnavailable(<errorcode>503</errorcode>)</simpara>
 		&NO_REQUEST;
 		<example>
 			<title>Extension Response: XML</title>
@@ -1145,26 +1124,18 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<title>Extension Response: JSON</title>
 			<programlisting language="javascript"><xi:include href="../samples/extension.json" parse="text"/></programlisting>
 		</example>
-		<para> Extensions may define new data types, parameters, actions,
-			headers, states, and resources. In XML, additional
-			elements and attributes may be defined. These elements
-			must be defined in the extension's namespace. In JSON, the
-			alias must be used. The volumes element in the <xref
-				linkend="UserEXT" xrefstyle="template: Examples %n"/>
-			and <xref linkend="UserEXTJ"
-				xrefstyle="select: labelnumber"/> is defined in the
-				<code>RAX-META</code> namespace. Extended headers are
-			always prefixed with <code>X-</code> followed by the alias
-			and a dash: (<code>X-RAX-META-HEADER1</code>). Parameters
-			must be prefixed with the extension alias followed by a
-			colon. </para>
+		<para> Extensions may define new data types, parameters, actions, headers, states, and
+			resources. In XML, additional elements and attributes may be defined. These elements
+			must be defined in the extension's namespace. In JSON, the alias must be used. The
+			volumes element in the <xref linkend="UserEXT" xrefstyle="template: Examples %n"/> and
+				<xref linkend="UserEXTJ" xrefstyle="select: labelnumber"/> is defined in the
+				<code>RAX-META</code> namespace. Extended headers are always prefixed with
+				<code>X-</code> followed by the alias and a dash: (<code>X-RAX-META-HEADER1</code>).
+			Parameters must be prefixed with the extension alias followed by a colon. </para>
 		<important>
-			<para>
-				Applications should be prepared to ignore response
-				data that contains extension elements. Also,
-				applications should verify that an extension is
-				available before submitting an extended request.
-			</para>
+			<para> Applications should be prepared to ignore response data that contains extension
+				elements. Also, applications should verify that an extension is available before
+				submitting an extended request. </para>
 		</important>
 		<example xml:id="UserEXT">
 			<title>Extended User Response: XML</title>
@@ -1255,67 +1226,169 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			circumstances, other prefixes could be associated with those namespaces. </para>
 	</section>
 	<section xml:id="Account-Users-d1e910">
-		<title>Account Users</title>
-		<para> 
-			When an account is created, it is associated with one user. That user holds the <code>identity:user-admin</code> role,
-			giving it full administrative privileges to manage the account. Exactly one administrative user exists for each account.
+		<title>Identity user types and default roles</title>
+		
+		<para>In the &CLOUD; Users are represented as accounts created for specific individuals.
+			Typically, a user has a password and email asspcoated with the account. When a user is
+			created, the &CIS; automatically assigns a user type and a default role to the account,
+			based on the default &CIS; system configuration. Users with suffficient access rights
+			and privileges can change user role assighments if required. The role defines access
+			rights and permissions for the &CIS; and other &CLOUD; services as shown <link
+				linkend="Identity_tbl_usr"/>
 		</para>
-		<para> The account's administrative user can create and manage
-			account users, also called sub-users. Each sub-user: <itemizedlist>
-				<listitem>
-					<para> is a child of the administrative user
-					</para>
-				</listitem>
-				<listitem>
-					<para> holds the <code>identity:default</code>
-						role </para>
-				</listitem>
-				<listitem>
-					<para> shares its parent's tenant information,
-						group memberships, and endpoints </para>
-				</listitem>
-			</itemizedlist>
-		</para>
-		<para>
-			Each account user can act only upon itself. For example, an account user can change its own contact information and 
-			password, but it cannot make those changes for any other user. Also an account user can request a list of all users, 
-			but the list will only include the requesting account user.
-		</para>
-		<para>
-			All users, including account users, can authenticate with a combination of their username and password.
-			Only administrative users can authenticate either with a combination of their username and API key or with a combination 
-			of their tenant ID and API key. 
-		</para>
-		<para>
-			An account user's group memberships matches the group memberships of its parent (the account's administrative user, 
-			with the <code>identity:user-admin</code> role).
-			<itemizedlist>
-				<listitem>
-					<para>
-						When a new account user is created, it inherits its parent's groups. 
-					</para>
-				</listitem>
-				<listitem>
-					<para>
-						When a parent is assigned to a new group, its account users inherit that group. 
-					</para>
-				</listitem>
-				<listitem>
-					<para>
-						When a parent is removed from a group, its account users are removed, too. 
-					</para>
-				</listitem>
-				<listitem>
-					<para>
-						When a service attempts to assign an account user to a group, that attempt fails. A 
-						<errorcode>400</errorcode> error is returned, with the following message:
-						"Cannot add sub-users directly to a group, must assign their parent user." 
-						To assign an account user to a group, assign its parent to that group; the account user will inherit the 
-						new group assignment from its parent.
-					</para>
-				</listitem>
-			</itemizedlist>
-		</para>
+		<table xml:id="Identity_tbl_usr " rules="all" width="958">
+			<caption>&CIS; Accounts: User types and default role assignments</caption>
+			<col width="15%"/>
+			<col width="17%"/>
+			<col width="686pt"/>
+			<thead>
+				<tr>
+					<th>
+						<para>User type</para>
+					</th>
+					<th>
+						<para>Default role assignment</para>
+					</th>
+					<th>
+						<para>Description</para>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<para>Service administrator</para>
+					</td>
+					<td>
+						<para>identity:service-admin</para>
+					</td>
+					<td>
+						<para>The Service administrator user type is reserved for the &CIS; operations team members.
+							Service administrators hold the
+								<literal>identity:service-admin</literal> role that provides full
+							administrative rights and privileges to manage the Identity service. </para>
+						<para>Service developers that want to update an existing &CLOUD; service or add a new one can
+							contact &CIS; Service Administrators for help integrating their service
+							with the &CIS;. </para>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<para>Administrator</para>
+					</td>
+					<td>
+						<para>identity:admin</para>
+					</td>
+					<td>
+						<para>The Administrator user type is reserved for &CLOUD; services that
+							require access to the &CIS; to validate tokens and retrieve user
+							information.</para>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<para>User Adminisrator</para>
+					</td>
+					<td>
+						<para>identity-user-admin</para>
+					</td>
+					<td>
+						<para>When a &CLOUD; customer account is created, it is associated with one
+							user, the User administrator.</para>
+						<para>The &CIS; automatically assigns the
+								<literal>identity:user-admin</literal> role to the account, giving
+							the User Administrator full administrative privileges to manage the
+							customer account. Exactly one admimistrative user exists for each
+							account. The User Administrator account user can also be referred to as
+							the Account Owner.</para>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<para>Account User</para>
+					</td>
+					<td>
+						<para>identity:default</para>
+					</td>
+					<td>
+						<para>Account users, sometimes called sub-users, are created and managed by
+							User administrators. An account user has these characteristics:</para>
+						<itemizedlist>
+							<listitem>
+								<para>Their account is a child of the User Administrator
+									account.</para>
+							</listitem>
+							<listitem>
+								<para>Hold the <literal>identity:default</literal> role</para>
+							</listitem>
+							<listitem>
+								<para>Share the tenant information, group memberships, and endpoints
+									from the parent User Administrator account.</para>
+							</listitem>
+							<listitem>
+								<para>New user accounts inherit </para>
+							</listitem>
+						</itemizedlist>
+						<para>The <literal>identity:default</literal> role only provides rights and
+							privileges to manage the a user's own account. For example, Account
+							users can update user information and passwords on their own accounts,
+							but they cannot update information on other accounts. An account user
+							can submit a List users request, but the response only returns
+							information about the account owner. </para>
+						<para>Administrators can directly assign sub-users to a particular tenant so
+							that the users behave as if they are contained within that tenant
+						</para>
+					</td>
+				</tr>
+				<tr>
+					<td>User Manager</td>
+					<td>identity:user-manage</td>
+					<td> The User manager is a customer-based user type designated as the
+						administrator for the &CLOUD; account along with the User administrator. A
+						User Administrator can designate a User Manager by updating a Sub-user
+						account to change the role from <literal>identity:default</literal> to
+							<literal>identity:user-manage</literal>the role for the role for an
+						Account user By default, the User-Manager has <literal>user-admin</literal>
+						role with the same access rights and privileges as the User
+						administrotor.</td>
+				</tr>
+			</tbody>
+		</table>
+		<para><?oxy_comment_start author="marg7175" timestamp="20140612T001831-0500" comment="Does the section about valid authentication credentials require update?"?>All<?oxy_comment_end?>
+			users, including account users, can authenticate with a combination of their username
+			and password. Only administrative users can authenticate either with a combination of
+			their username and API key or with a combination of their tenant ID and API key.</para>
+			<note>
+				<para>When managing &amp;CIS; accounts for the User Adiminstrator or the Account user, keep the
+				following points in mind to prevent unexpected changes for any of the Account Users
+				associated with the User Administrator account.
+					<itemizedlist>
+					<listitem>
+						<para> When a new account user is created, it inherits its parent's groups.
+						</para>
+					</listitem>
+					<listitem>
+						<para> When a parent is assigned to a new group, its account users inherit that
+							group. </para>
+					</listitem>
+					<listitem>
+						<para> When a parent is removed from a group, its account users are removed,
+							too. </para>
+					</listitem>
+					<listitem>
+						<para> When a service attempts to assign an account user to a group, that
+							attempt fails. A <errorcode>400</errorcode> error is returned, with the
+							following message: "Cannot add sub-users directly to a group, must assign
+							their parent user." To assign an account user to a group, assign its parent
+							to that group; the account user will inherit the new group assignment from
+							its parent. </para>
+					</listitem>
+					<listitem>
+						<para>Administrators can directly assign Account users to a particular tenant so
+							that the users behave as if they are contained within that tenant.</para>
+					</listitem>
+				</itemizedlist></para>
+			</note> 
 	</section>
 	<section xml:id="Limits-d1e909">
 		<title>Limits</title>
@@ -1437,26 +1510,29 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</example>
 	</section>
 	<section xml:id="Role_Based_Access_Control-d1e808">
-		<title>Role-based access control</title>
-		<para>The Rackspace Cloud Identity service provides role-based access control (RBAC) so that
-			customers can restrict access to Cloud services and capabilities to authroized users.
-			RBAC is an opt-in feature available to all Open Cloud customers. The account owner user
-			(identity:user-admin) can activate RBAC by adding users to the account and assigning
-			roles to users via the API, the Cloud Control Panel, or by calling Customer support. </para>
-		<para>Rackspace-defined roles provide specific permissions that determine the services a user can
-			access and the types of operations they can complete. For example, an account owner can
-			assign an administrator role to user accounts that neet to complete create, read,
-			update, and delete operations. Role assignments can be global or custom. Global roles
-			manage access and permissions across multiple API services. Custom roles manage access
-			and permissions on a per-product basis. For both global and custom roles, the user only
-			has access to designated products.  <xref linkend="RBAC_roledesc_table"/> describes the
+		<title>Role Based Access Control</title>
+		<para>The Rackspace Cloud Identity service provides Role Based Access Control (RBAC) so that
+			customers can restrict access to Cloud services and capabilities to authroized users
+			only. RBAC is an opt-in feature available to all Rackspace Cloud customers. The account
+			owner user (<literal>identity:user-admin</literal>) can activate RBAC by adding users to
+			the account and assigning roles to users via the API, the Cloud Control Panel, or by
+			calling Customer support. </para>
+		
+		<para>
+			Rackspace-defined roles provide specific permissions that determine the services a user can
+			access and the types of operations they can complete. For example, an account owner can assign 
+			an <literal>admin</literal> role to user accounts that require access to create, read, update, and delete 
+			capabilities for all API services included in the service catalog for that account. 
+		</para>
+		
+		<para>
+			Role assignments can be global or custom. Global roles manage access and permissions across 
+			multiple API services. Custom roles manage access and permissions on a per-product basis. 
+			For both global and custom roles, the user has access only to designated products. 
+			<xref linkend="RBAC_roledesc_table"/> describes the
 			RBAC roles available.</para> 
-		<table frame="void" width="1156" xml:id="RBAC_roledesc_table">
-				<caption>Rackspace RBAC Roles</caption>
-				<col width="16%"/>
-				<col width="7%"/>
-				<col width="69%"/>
-				<col width="9%"/>
+		<table rules="all" width="100%" xml:id="RBAC_roledesc_table">
+				<caption>Rackspace Cloud RBAC Roles and Capabilities</caption>
 				<thead>
 					<tr>
 						<th>Role</th>
@@ -1518,14 +1594,18 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
 			xml:id="section_assign_roles_3">
 			<title>Assigning Roles to Account Users</title>
-			<para>The account owner (identity:user-admin) can create account users (identity:default) on the
-				account and then assign roles to those users. The roles grant the account users
-				specific permissions for accessing the Cloud services and capabilities. Each account
-				has only one account owner, and that role is assigned by default to any Rackspace
-				Cloud account when the account is created. Account owners cannot hold any additional
-				roles because they already have full access to all services and capabilities.</para>
-			<para>You can assign roles programmatically through the API or by using the Cloud Control panel
-				interface.</para>
+			<para>The account owner, <literal>identity:user-admin</literal>) can create account users, 
+				<literal>identity:default)</literal> on the account and then assign roles to 
+				those users. The roles grant the account users specific permissions for accessing the 
+				Cloud services and capabilities. Each account has only one account owner, and that role 
+				is assigned by default to any Rackspace Cloud account when the account is created. Account 
+				owners cannot hold any additional roles because they already have full access to all services 
+				and capabilities.
+			</para>
+			<para>
+				You can assign roles programmatically through the API or by using the Cloud Control panel
+				interface.
+			</para>
 			<para>Use the following API operations to add account users and manage role assignments:</para>
 			<itemizedlist condition="client">
 				<listitem>

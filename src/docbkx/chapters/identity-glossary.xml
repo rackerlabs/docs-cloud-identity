@@ -3,14 +3,15 @@
 <!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
 <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
 <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
 ]>
 <glossary xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Glossary-000">
-    <title>Glossary</title>
     <glossentry xml:id="APIkey-d1e02">
         <glossterm><emphasis role="bold">API Key</emphasis></glossterm>
         <glossdef>
-            <para> Your API Key is a unique alphanumeric identifier associated with your account. You can use your API key as
+            <para>Your API Key is a unique alphanumeric identifier associated with your account. You can use your API key as
                 an authentication credential, paired with your username, to generate an authentication
                 <link linkend="Token-d1e13">token</link> which will be recognized by the
                 <link linkend="Service-d1e09">services</link> in your
@@ -22,17 +23,22 @@
     <glossentry xml:id="Authentication-d1e01">
         <glossterm><emphasis role="bold">Authentication</emphasis></glossterm>
         <glossdef>
-            <para> Authentication is the act or process of confirming the identity of a
-                <link linkend="User-d1e15">user</link> or the truth of a claim. The authentication service confirms that an
-                incoming request is being made by the user who claims to be making the request. It does this by validating a
-                set of claims that the user makes. These claims are initially in the form of a set of
-                <link linkend="Credentials-d1e03">credentials</link>. After initial confirmation based on credentials, the
-                authentication service issues a <link linkend="Token-d1e13">token</link> to the user; when making subsequent
-                requests, the user can provide the token as evidence that the user's identity has already been authenticated.
-            </para>
+            <para>Authentication is the process that evaluates a set of claims to confirm the
+                identity of  the user, process, or client presenting the claims. Initially, the
+                claims are presented as a set of <glossterm baseform="Credentials-d1e03">credentials</glossterm>. 
+                After initial confirmation based on these credentials,the authentication service 
+                issues a <glossterm baseform="Token-d1e13"
+                    >token</glossterm>. When making subsequent requests, the user can provide the
+                token as evidence that the user's identity has already been authenticated. </para>
+            <para>In the context of &CLOUD;, you authenticate by issuing a POST tokens API request
+                with valid credentials to the &PRODNAME; endpoint. In response to valid credentials,
+                the service returns an authentication token and a service catalog with information
+                about the &CLOUD; resources that you have permission to access. You can use the
+                authentication token and the service endpoint to use any of the cloud services
+                included in the service catalog.</para>
         </glossdef>
     </glossentry>
-    <glossentry>
+    <glossentry xml:id="Authorization">
         <glossterm><emphasis role="bold">Authorization</emphasis></glossterm>
         <glossdef>
             <para>Process that determines the capabilities available
@@ -47,10 +53,10 @@
     <glossentry xml:id="Credentials-d1e03">
         <glossterm><emphasis role="bold">Credentials</emphasis></glossterm>
         <glossdef>
-            <para> Credentials are data that belong to and identify a specific <link linkend="User-d1e15">user</link>.
-                Because credentials are assumed to be known by only one user, users who present valid credentials are assumed
-                to have proven that they are who they say they are. Examples of credentials include: <itemizedlist
-                    spacing="compact">
+            <para>Credentials are data that belong to and identify a specific user. Because
+                credentials are assumed to be known by only one user, users who present valid
+                credentials are assumed to have proven that they are who they say they are. Examples
+                of credentials include the following:<itemizedlist spacing="compact">
                     <listitem>
                         <para>a matching username and password</para>
                     </listitem>
@@ -60,6 +66,15 @@
                     <listitem>
                         <para>a unique token</para>
                     </listitem>
+                    <listitem>
+                        <para>secret question and answer</para>
+                    </listitem>
+                    <listitem>
+                        <para>digital certificate</para>
+                    </listitem>
+                    <listitem>
+                        <para>fingerprint</para>
+                    </listitem>
                 </itemizedlist>
             </para>
         </glossdef>
@@ -67,17 +82,13 @@
     <glossentry xml:id="EndpointTemplate">
         <glossterm><emphasis role="bold">Endpoint Template</emphasis></glossterm>
         <glossdef>
-            <para>Endpoint templates provide a method to define
-                endpoints that apply to many or all tenants without
-                having to create each endpoint on each tenant
-                manually. For example, you can define an endpoint
-                template and set the global attribute to true so that
-                endpoint automatically shows up in the Service catalog
-                for all tenants authorized to use that service. For
-                more information, see <olink
-                    targetdoc="Identity-Admin-Developer-Guide"
-                    targetptr="Endpoint_Template_Calls">“Endpoint
-                    Templates”</olink>.</para>
+            <para>Endpoint templates provide Cloud Service providers with a method to define
+                endpoints that apply to many or all tenants without having to create each endpoint
+                on each tenant manually. For example, you can define an endpoint template and set
+                the global attribute to true so that endpoint is automatically included in the
+                Service catalog for all tenants authorized to use that service. For more
+                information, see <olink targetdoc="Identity-Admin-Developer-Guide"
+                    targetptr="Endpoint_Template_Calls">“Endpoint Templates”</olink>.</para>
         </glossdef>
       
     </glossentry>
@@ -119,12 +130,14 @@
     <glossentry xml:id="Role-d1e07">
         <glossterm><emphasis role="bold">Role</emphasis></glossterm>
         <glossdef>
-            <para> A role is a personality that a <link linkend="User-d1e15">user</link> assumes when performing a specific
-                set of operations. A role includes a set of rights and privileges. A user assuming a role inherits the rights
-                and privileges associated with the role. A <link linkend="Token-d1e13">token</link> that is issued to a user
-                includes the list of roles the user can assume. When a user calls a
-                <link linkend="Service-d1e09">service</link>, that service determines how to interpret a user's roles. A role
-                that grants access to a list of operations or resources within one service may grant access to a completely
+            <para>A role is a personality that a <glossterm xml:id="User-d1e15">user</glossterm> assumes when performing 
+                a specific set of operations. A role includes a set of
+                rights and privileges. A user assuming a role inherits the rights and privileges
+                associated with the role. In &PRODNAME;, a <glossterm baseform ="Token-d1e13">token</glossterm> 
+                that is issued to a user includes the list of roles the user can
+                assume. When a user calls a <glossterm xml:id="Service-d1e09>service">service</glossterm>, the 
+                service configuration determines how the user roles are interpreted  interpret a user's roles. A role that grants access to a
+                list of operations or resources within one service can grant access to a completely
                 different list when interpreted by a different service. </para>
         </glossdef>
     </glossentry>
@@ -164,20 +177,32 @@
         </glossdef>
     </glossentry>
     <glossentry xml:id="Token-d1e13">
-        <glossterm><emphasis role="bold">Token</emphasis></glossterm>
+        <glossterm><emphasis role="bold">Authentication token</emphasis></glossterm>
         <glossdef>
-            <para> A token is an opaque string that represents an authorization to access cloud resources. Tokens may be
-                revoked at any time and are valid for a finite duration. </para>
+            <para>An authenttication token is a string returned by &PRODNAME; in response to an
+                authentication request submitted with valid credentials.</para>
+            <para>Each authentication token has a scope that determines which services the client
+                can access and an expiration that determines duration of access. In the &CIS;, 
+                the default token expiration value is 24 hours. An Administrator or process can 
+                revoke a token before its expiration if necessary.</para>
+            <para>
+                Each time you make an API request, you must include the authentication token and the API service endpoint. 
+                When the authentication token expires, you must re-authenticate to the &CIS; authentication request to get a new token.
+            </para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="User-d1e15">
         <glossterm><emphasis role="bold">User</emphasis></glossterm>
         <glossdef>
-            <para> A user is a digital representation of a person, system, or service who consumes cloud services. 
-                Users have credentials and can be assigned tokens. Based on these credentials and tokens, the authentication service
-                validates that incoming requests are being made by the user who claims to be making the request, and that the
-                user has the right to access the requested resources. Administrators can directly assign users to a particular tenant so 
-                that the users behave as if they are contained within that tenant.</para>
+            <para>
+                A user is a digital representation of a person, system, or service that uses cloud services. 
+                Users have credentials and can be assigned tokens. Based on these credentials and tokens, 
+                the authentication service validates that incoming requests are being made by the user who 
+                claims to be making the request, and that the user has the right to access the requested resources. 
+            </para>
+            <para>
+                Administrators can directly assign users to a particular tenant so that the users behave as 
+                if they are contained within that tenant.</para>
         </glossdef>
     </glossentry>
 </glossary>

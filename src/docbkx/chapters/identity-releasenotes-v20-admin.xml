@@ -7,8 +7,8 @@
 <section xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-    xml:id="Release_Notes-d1e140">
-    <title>Release Notes</title>
+    xml:id="Release_Notes-APIdiffs">
+    <title>API Contract version changes</title>
     
     <para><emphasis role="bold">Version 2.0</emphasis> of the Auth API differs from Version 1.1 in
         several important ways: 

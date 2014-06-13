@@ -1,26 +1,72 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section [
-<!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
-<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
-<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
 ]>
 <!-- if role="api-reference" on this chapter, generate table of all operations here -->
-<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+<chapter 
+	xmlns="http://docbook.org/ns/docbook" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:wadl="http://wadl.dev.java.net/2009/02""
 	xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Client Developers</title>
-	<info>
-	  <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-	    <raxm:type>apiref</raxm:type>
-	    <raxm:product version="v2.0">auth</raxm:product>
-	    <raxm:priority>1</raxm:priority>
-	  </raxm:metadata> 
-	</info>
 	<para>
 		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.
 		If an extension is required, it is included in Rackspace's implementation of the Keystone Identity Service; 
-		issuing the calls as described here will use API extensions as needed.
+		issuing the calls as described here uses the API extensions as needed.
 	</para>
+	
+	<!--Versions-->
+	
+	<section xml:id="Version_calls">
+		<title>API Contract Version</title>
+		<para xml:id="Versions_ovw">
+			The Rackspace Cloud can support multiple versions of the service API contract. This architecture allows service providers 
+			to develop, test, and deploy new API versions without disrupting service for customers that are using an existing version. 
+			You can use the Version operations to query the API service endpoint for information about the 
+			API version support in your cloud environment.
+		</para>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			
+			<!-- Get all API versions -->
+			
+			<wadl:resource href="../../wadl/identity.wadl#versions">
+				<wadl:method href="#getVersion"/>
+			</wadl:resource>
+		
+			<!-- Get a specific API version -->
+					<wadl:resource href="../../wadl/identity.wadl#versions">
+						<wadl:method href="#getVersion"/>
+					</wadl:resource>
+		</wadl:resources>
+	</section>
+	
+	<!--Extensions-->
+	
+	<section xml:id="Extensions_calls">
+		<title>Extensions</title>
+		<para xml:id="Extensions_ovw">
+			The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
+			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
+			endpoint for information about the extensions available for the specified service.</para>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			
+			<!-- List extensions -->
+			<wadl:resource href="../../wadl/identity.wadl#listExtensions">
+				<wadl:method href="listExtensions"/>
+			</wadl:resource>
+			
+			<!-- Get extensions -->	
+			
+			<wadl:resource href="../../wadl/identity.wadl/#getExtensions">
+				<wadl:method href="getExtension"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
+	
+	<!--User operations-->
+	
 	<section xml:id="User_Calls">
 		<title>Users</title>
 		<para>The operations described in this section allow clients to manage users.</para>

@@ -135,11 +135,22 @@
                     </wadl:doc>
                 </param>
                 <resource id="name">
-                <param name="name" style="query" type="xsd:string"
+                    <param name="name" style="query" type="xsd:string"
                         required="true">
-                        <doc>The user name.</doc>
+                        <wadl:doc
+                            xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN">The user name associated with an account.</wadl:doc>
                     </param>
                     <method href="#getUserByName"/>
+                </resource>
+                <resource id="email">
+                    <param name="email" style="query" type="xsd:string"
+                        required="true">
+                        <wadl:doc
+                            xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN">The email address associated with an account.</wadl:doc>
+                    </param>
+                    <method href="#getUserByEmail"/>
                 </resource>
                 <resource id="userid" path="{user_id}">
                     <param name="user_id" style="template" type="xsd:string" required="true">
@@ -204,7 +215,6 @@
     <!--*******************************************************-->
 
     <!-- Version -->
-    
     <method name="GET" id="getVersionInfo">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Get version details">
@@ -508,57 +518,39 @@
         <request>
             <param name="belongsTo" style="query" required="false" type="xsd:string">
                 <doc xml:lang="EN">
-                    <p xmlns="http://www.w3.org/1999/xhtml"> Validate that a token has the supplied tenant in scope.
-                        (abbreviated response). </p>
-                    <p xmlns="http://www.w3.org/1999/xhtml"> Valid tokens will exist in the <code>/tokens/{tokenId}</code>
+                    <para xmlns="http://www.w3.org/1999/xhtml">Validate a token to determine whether the token provides 
+                        access to the tenant specified in the API service request.
+                        (abbreviated response).</para>
+                    <para xmlns="http://www.w3.org/1999/xhtml"> Valid tokens will exist in the <code>/tokens/{tokenId}</code>
                         path and invalid tokens will not. In other words, a user should expect an itemNotFound
-                            (<code>404</code>) fault for an invalid token. </p>
-                    <p xmlns="http://www.w3.org/1999/xhtml"> If <code>belongsTo</code> is provided, validates that a token
-                        has a specific tenant in scope. </p>
-                    <p xmlns="http://www.w3.org/1999/xhtml"> No response body is returned for this method. </p>
+                            (<code>404</code>) fault for an invalid token.</para>
+                    <para xmlns="http://www.w3.org/1999/xhtml"> If <code>belongsTo</code> is provided, validates that a token
+                        has a specific tenant in scope.</para>
+                    <para xmlns="http://www.w3.org/1999/xhtml"> No response body is returned for this method.</para>
                 </doc>
             </param>
         </request>
         <response status="200 203"/> &commonFaults; &getFaults; </method>
+    
     <method name="DELETE" id="revokeToken">
         <doc xml:lang="EN" title="Revoke Token">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Revoke token. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> This call revokes a token, returning code <code>204</code> if successful
                 and <code>404</code> if token in URI is invalid. </p>
         </doc>
+        
         <!-- no request or response body-->
-        <response status="204"/> &commonFaults; &getFaults; </method>
+        
+        <response status="204"/>&commonFaults; &getFaults;</method>
 
     <!--User Operations-->
+    
     <method name="GET" id="getUserByName">
         <doc xml:lang="EN" title="Get User by Name">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Return detailed information about a specific user, by
-                user name. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This request returns identifying information about the user with the
-                specified user name. Identifying information includes the user's email account, username, user ID, status,
-                default region, and domain id </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> Default region, indicated by <code>defaultRegion</code>, associates this
-                user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
-                acceptable, indicating that no default region has been assigned for this user. If a default region has been
-                assigned for this user and a service in this user's service catalog is available in multiple regions, the
-                user will obtain the service from the region specified by <code>defaultRegion</code>. You can see examples of
-                services available in multiple regions in the "General API Information" chapter's <!-- linking from this WADL-generated section to hand-coded section -->
-                <a
-                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
-                    > "Sample Authentication Request and Response"</a> section. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> When a user creates a new cloud server via the <a
-                    href="http://mycloud.rackspace.com/"> Cloud Control Panel</a>, the region specified by
-                    <code>defaultRegion</code> is visible on the control panel but the region cannot currently be changed
-                there. To change the association of a user with a default region, use <a
-                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html"
-                    > Update Users</a> as you would to change any other descriptive information about the user. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> In the examples below, <code>defaultRegion</code> is specified as
-                    <code>DFW</code>: when this user has a choice between consuming a service in the <code>DFW</code> region
-                and consuming the same service in any other region, the user will consume the service in <code>DFW</code>. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> Domain ID, indicated by <code>domainId</code>, associates this user with
-                a specific domain which was assigned when the user was created or updated. A domain establishes an
-                administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
-                Generally, a domainId is the same as the primary tenant id of your cloud account.</p>
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get detailed account information for a specified user, by
+                user name.</para>
+            <para xmlns="http://www.w3.org/1999/xhtml">This request returns the following information for each account associated 
+                with the  specified user name:  email address, username, user ID, status, default region, and domain id.</para>
         </doc>
         <request>
             <param name="name" style="query" type="xsd:string" required="true">
@@ -566,6 +558,10 @@
             </param>
         </request>
         <response status="200 203">
+            
+            <!-- Pull in shared response parameters by using entity from common.ent file -->
+            
+            &userByAttrRsp; 
             <representation mediaType="application/xml" element="identity:user">
                 <doc>
                     <xsdxt:code href="../common/samples/user.xml"/>
@@ -579,36 +575,15 @@
         </response> &commonFaults; &getFaults; </method>
     <method name="GET" id="getUserById">
         <doc xml:lang="EN" title="Get User by ID">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Return detailed information about a specific user, by
-                user ID. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This request returns identifying information about the user with the
-                specified user name. Identifying information includes the user's email account, username, user ID, status,
-                default region, and domain id. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> Default region, indicated by <code>defaultRegion</code>, associates this
-                user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
-                acceptable, indicating that no default region has been assigned for this user. If a default region has been
-                assigned for this user and a service in this user's service catalog is available in multiple regions, the
-                user will obtain the service from the region specified by <code>defaultRegion</code>. You can see examples of
-                services available in multiple regions in the "General API Information" chapter's <!-- linking from this WADL-generated section to hand-coded section -->
-                <a
-                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
-                    >"Sample Authentication Request and Response"</a> section. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> When a user creates a new cloud server via the <a
-                    href="http://mycloud.rackspace.com/"> Cloud Control Panel</a>, the region specified by
-                    <code>defaultRegion</code> is visible on the control panel but the region cannot currently be changed
-                there. To change the association of a user with a default region, use <a
-                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html"
-                    >Update Users</a> as you would to change any other descriptive information about the user. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> In the examples below, <code>defaultRegion</code> is specified as
-                    <code>DFW</code>: when this user has a choice between consuming a service in the <code>DFW</code> region
-                and consuming the same service in any other region, the user will consume the service in <code>DFW</code>.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> Domain ID, indicated by <code>domainId</code>, associates this user with
-                a specific domain which was assigned when the user was created or updated. A domain establishes an
-                administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
-                Generally, a domainId is the same as the primary tenant id of your cloud account.</p>
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get detailed account information for a specific user, by userid.</para>
+            <para xmlns="http://www.w3.org/1999/xhtml">
+                This request returns the following information for each account associated with the specified user ID: 
+                email address, username, user ID, status, default region, and domain id.</para>
         </doc>
+        
         <response status="200 203">
+            <!-- Pull in shared response parameters by using entity from common.ent file -->
+            &userByAttrRsp;
             <representation mediaType="application/xml" element="identity:user">
                 <doc>
                     <xsdxt:code href="../common/samples/user.xml"/>
@@ -623,34 +598,21 @@
 
     <method name="GET" id="getUserByEmail">
         <doc xml:lang="EN" title="Get User by Email">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Return detailed information about a specific user, by
-                user email. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This request returns one or more sets of identifying information about
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get detailed information about a specific user, by
+                user email.</para>
+            <para xmlns="http://www.w3.org/1999/xhtml">This request returns one or more sets of identifying information about
                 the user with the specified user email. Identifying information includes the user's email account, username,
-                user ID, status, domain, creation date, update date, default region, and domain id </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> Default region, indicated by <code>defaultRegion</code>, associates this
+                user ID, status, domain, creation date, update date, default region, and domain id </para>
+            <para xmlns="http://www.w3.org/1999/xhtml"> Default region, indicated by <code>defaultRegion</code>, associates this
                 user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
                 acceptable, indicating that no default region has been assigned for this user. If a default region has been
                 assigned for this user and a service in this user's service catalog is available in multiple regions, the
                 user will obtain the service from the region specified by <code>defaultRegion</code>. You can see examples of
-                services available in multiple regions in the "General API Information" chapter's <!-- linking from this WADL-generated section to hand-coded section -->
-                <a
-                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
-                    >"Sample Authentication Request and Response"</a> section. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> When a user creates a new cloud server via the <a
-                    href="http://mycloud.rackspace.com/"> Cloud Control Panel</a>, the region specified by
-                    <code>defaultRegion</code> is visible on the control panel but the region cannot currently be changed
-                there. To change the association of a user with a default region, use <a
-                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html"
-                    >Update Users</a> as you would to change any other descriptive information about the user. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> In the examples below, <code>defaultRegion</code> is specified as
-                    <code>ORD</code>: when this user has a choice between consuming a service in the <code>ORD</code> region
-                and consuming the same service in any other region, the user will consume the service in <code>ORD</code>.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> Domain ID, indicated by <code>domainId</code>, associates this user with
-                a specific domain which was assigned when the user was created or updated. A domain establishes an
-                administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
-                Generally, a domainId is the same as the primary tenant id of your cloud account.</p>
+                services available in multiple regions in the "General API Information" chapter's 
+                
+                <!-- linking from this WADL-generated section to hand-coded section -->
+                <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
+                    >"Sample Authentication Request and Response"</a> section.</para>
         </doc>
         <request>
             <param name="email" style="query" type="xsd:string" required="true">
@@ -658,6 +620,10 @@
             </param>
         </request>
         <response status="200 203">
+            
+            <!-- Pull in shared response parameters by using entity from common.ent file -->
+            
+            &userByAttrRsp;
             <representation mediaType="application/xml">
                 <doc>
                     <xsdxt:code href="../common/samples/userbyemailresponse.xml"/>
@@ -672,13 +638,14 @@
 
     <method name="GET" id="listUserGlobalRoles">
         <doc xml:lang="EN" title="List User Global Roles">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Return global roles for a specific user. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml"> This call returns a list of global roles associated with the user with
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Return global roles for a specific user.</para>
+            <para xmlns="http://www.w3.org/1999/xhtml">
+                This call returns a list of global roles associated with the user with
                 the specified user ID. If you have only the user's name but not the user's ID, use "Get User by Name" to
                 obtain complete identifying information about the user. For each role listed, the response includes
                 identifying information such as the role's ID (such as <code>123</code>), name (such as <code>Admin</code>,
                 and description (such as <code>All Access</code>). The list of global roles excludes any tenant roles
-                associated with this user. </p>
+                associated with this user.</para>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:roles">
