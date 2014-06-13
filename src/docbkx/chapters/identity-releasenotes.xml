@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml" version="5.0"
+  xml:id="rackspace-identity-releasenotes">
+  <title>&PRODNAME;™ Release Notes</title>
+  <!--<?rax title.font.size="32px" pdf.url="../../identity-releasenotes-2-latest.pdf" status.bar.text.font.size="40px" status.bar.text="LIMITED AVAILABILITY" canonical.url.base="http://docs.rackspace.com/servers/api/v2/cs-releasenotes/content"?> -->
+  <?rax title.font.size="32px" pdf.url="../../identity-releasenotes-2-latest.pdf" canonical.url.base="http://docs.rackspace.com/identity/api/v2/identity-releasenotes/content"?>
+  <titleabbrev>&PRODNAME;™ Release Notes</titleabbrev>
+  <info>
+    <raxm:metadata xmlns:raxm="http://docs.rackspace.com/identity/V2//metadata">
+      <raxm:type>api</raxm:type>
+      <raxm:product version="v2.0">auth</raxm:product>
+      <raxm:priority>1</raxm:priority>
+    </raxm:metadata> 
+  </info>
+  <info>
+    <author>
+      <personname>
+        <firstname/>
+        <surname/>
+      </personname>
+      <affiliation>
+        <orgname>Rackspace Cloud</orgname>
+      </affiliation>
+    </author>
+    <copyright>
+      <year>2009</year>
+      <year>2010</year>
+      <year>2011</year>
+      <year>2012</year>
+      <year>2013</year>
+      <year>2014</year>
+      <holder>Rackspace US, Inc.</holder>
+    </copyright>
+    <releaseinfo>API v2</releaseinfo>
+    <productname>&PRODNAME;™</productname>
+    <pubdate/>
+    <legalnotice role="rs-api">
+      <annotation>
+        <remark>Copyright details are filled in by the template.</remark>
+      </annotation>
+    </legalnotice>
+    <abstract>
+      <para>This document is intended for software developers who want to develop applications by using the 
+        &PRODNAME;™ <link xlink:href="http://www.rackspace.com/cloud/openstack/">powered by OpenStack</link>. In
+        addition to the core features of the OpenStack Keystone Application Programming Interface (API) v2, Rackspace has
+        deployed certain extensions as permitted by the OpenStack Compute API contract.</para>
+    </abstract>
+    
+    <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+      <raxm:displayname>Release Notes</raxm:displayname>
+      <raxm:product version="v2">identity</raxm:product>
+      <raxm:priority>23</raxm:priority>
+    </raxm:metadata>
+  </info>
+  <preface xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_preface">
+    <title>Preface</title>
+    <para>The next generation Cloud Servers
+      <link xlink:href="http://www.rackspace.com/cloud/openstack/">powered
+        by OpenStack</link> is a fast, reliable,
+      and scalable cloud compute solution without the risk of proprietary lock-in. It provides the core features of the
+      OpenStack Compute API v2 and also deploys certain extensions as permitted by the OpenStack Compute API contract. Some
+      of these extensions are generally available through OpenStack while others implement Rackspace-specific features to
+      meet customers’ expectations and for operational compatibility. The OpenStack Compute API and the Rackspace extensions
+      are known collectively as API v2. </para>
+    <para>This document describes new features, changes, known issues, supported images, and a summary of differences between
+      first generation and next generation Cloud Servers APIs. </para>
+    <para>We welcome feedback, comments, and bug reports at
+      <link xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. </para>
+  </preface>
+  <chapter xml:id="new_images_04182014">
+    <title>API v2 Updates, April 18, 2014</title>
+    <para>This section describes changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New and removed images</emphasis>.<informaltable rules="all" width="566">
+          <col width="20%"/>
+          <col width="30%"/>
+          <col width="20%"/>
+          <col width="20%"/>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Version</th>
+              <th>First Generation Cloud Servers (v1.0)</th>
+              <th>Next Generation Cloud Servers (v2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="2" valign="top">Arch Linux</td>
+              <td>2013.9</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>2014.4</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td rowspan="2" valign="top">CentOS Linux</td>
+              <td>5.9</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>6.4</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td rowspan="2" valign="top">Debian</td>
+              <td>7 (Wheezy)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>7 (Wheezy) (PVHVM)</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td rowspan="4" valign="top">Fedora Linux</td>
+              <td>18 (Spherical Cow)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>19 (Schrodinger's Cat)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>19 (Schrodinger's Cat) (PVHVM Beta)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>20 (Heisenbug)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td rowspan="2" valign="top">FreeBSD</td>
+              <td>9.2</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>10.0</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td rowspan="2" valign="top">Gentoo Linux</td>
+              <td>13.3</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>14.2</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td rowspan="2" valign="top">openSUSE Linux</td>
+              <td>12.3</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>13.1 (PVHVM)</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td rowspan="4" valign="top">Red Hat Enterprise Linux</td>
+              <td>5.5</td>
+              <td>Supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>5.9</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>6.1</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>6.4</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td rowspan="2" valign="top">Scientific Linux</td>
+              <td>6.4</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>6.5</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td rowspan="5" valign="top">Ubuntu Linux</td>
+              <td>11.04 (Natty Narwhal)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>12.10 (Quantal Quetzal)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>12.10 (Quantal Quetzal) (PVHVM)</td>
+              <td>Not supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>14.04 LTS (Trusty Tahr)</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>14.04 LTS (Trusty Tahr) (PVHVM)</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td rowspan="13" valign="top">Windows Server</td>
+              <td>2008 R2 SP1 (without updates)</td>
+              <td>Removed-renamed</td>
+              <td>Removed-renamed</td>
+            </tr>
+            <tr>
+              <td>2008 R2 SP1 (base install without updates)</td>
+              <td>New-name</td>
+              <td>New-name</td>
+            </tr>
+            <tr>
+              <td>2008 R2 SP1 (with updates)</td>
+              <td>Removed-renamed</td>
+              <td>Removed-renamed</td>
+            </tr>
+            <tr>
+              <td>2008 R2 SP1</td>
+              <td>New-name</td>
+              <td>New-name</td>
+            </tr>
+            <tr>
+              <td>2008 R2 SP1 Standard + SQL Server 2008 R2</td>
+              <td>Supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>2008 R2 SP1 (with updates) + SQL Server 2008 R2 SP1 Web</td>
+              <td>Supported</td>
+              <td>Removed</td>
+            </tr>
+            <tr>
+              <td>Windows Server 2008 R2 SP1 + SQL Server 2008 SP1 Standard</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>Windows Server 2008 R2 SP1 + SQL Server 2008 SP1 Web</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>Windows Server 2008 R2 SP1 + SQL Server 2012 SP1 Standard</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>Windows Server 2008 R2 SP1 + SQL Server 2012 SP1 Web</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>Windows Server 2008 R2 SP1 + SharePoint 2010 Foundation with SQL Server 2008 R2 Express</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>Windows Server 2008 R2 SP1 + SharePoint 2010 Foundation with SQL Server 2008 R2 SP1 Standard</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+            <tr>
+              <td>Windows Server 2012 + SharePoint 2013 with SQL Server 2012 SP1 Standard</td>
+              <td>Not supported</td>
+              <td>New</td>
+            </tr>
+          </tbody>
+        </informaltable></para>
+        <para>For complete information about images, see <xref linkend="supported_images"/>.</para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="new_images_02062014">
+    <title>API v2 Updates, February 6, 2014</title>
+    <para>This section describes changes to the API v2. </para>
+    <itemizedlist>
+      <title>Changes</title>
+      <listitem>
+        <para>Updated flavors to latest list, including performance flavors.</para>
+        <para>For API v2, the 15.5GB flavor is now 15GB. See <xref linkend="supported_flavors"/>.</para>
+      </listitem>
+      <listitem>
+        <para>Updated images list removing many old ones and adding new ones.</para>
+        <para>For complete information about images, see <xref linkend="supported_images"/>.</para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="new_images_12172012">
+    <title>API v2 Updates, December 17, 2012</title>
+    <para>This section describes features and changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New and removed images</emphasis>.<informaltable rules="all" width="566">
+            <col width="20%"/>
+            <col width="30%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Version</th>
+                <th>First Generation Cloud Servers (v1.0)</th>
+                <th>Next Generation Cloud Servers (v2)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ubuntu</td>
+                <td>12.10 (Quantal Quetzal)</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>Windows Server</td>
+                <td>2012 + SharePoint Foundation 2013 with SQL Server 2012 Standard </td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+            </tbody>
+          </informaltable></para>
+        <para>For complete information about images, see <xref linkend="supported_images"/>.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Changes</title>
+      <listitem>
+        <para><emphasis role="bold">Changed flavor</emphasis>.</para>
+        <para>For API v2, the 15.5GB flavor is now 15GB. See <xref linkend="supported_flavors"/>.</para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="new_images_101112">
+    <title>API v2 Updates, October 12, 2012</title>
+    <para>This section describes features and changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New and removed images</emphasis>.<informaltable rules="all">
+            <col width="20%"/>
+            <col width="30%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Version</th>
+                <th>First Generation Cloud Servers (v1.0)</th>
+                <th>Next Generation Cloud Servers (v2)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Arch</td>
+                <td>2011.10</td>
+                <td>Supported</td>
+                <td>Removed</td>
+              </tr>
+              <tr>
+                <td>Gentoo</td>
+                <td>11.0</td>
+                <td>Supported</td>
+                <td>Removed</td>
+              </tr>
+              <tr>
+                <td rowspan="8">Windows Server</td>
+
+                <td>2008 R2 SP1 + SharePoint Foundation 2010 SP1 &amp; SQL Server 2008 R2 SP1 Express</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>2008 R2 SP1 + SharePoint Foundation 2010 SP1 &amp; SQL Server 2008 R2 SP1 Std</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+
+              <tr>
+                <td>2012</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>2012 (with updates)</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>2012 (with updates) + SQL Server 2012 Standard</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>2012 (with updates) + SQL Server 2012 Web</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>2012 + SQL Server 2012 Standard</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>2012 + SQL Server 2012 Web</td>
+                <td>Not supported</td>
+                <td>New</td>
+              </tr>
+            </tbody>
+          </informaltable></para>
+        <para>For complete information about images, see <xref linkend="supported_images"/>.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Changes</title>
+      <listitem>
+        <para><emphasis role="bold">Changed flavor</emphasis>.</para>
+        <para>For API v2, the 15.5GB flavor is now 15GB. See <xref linkend="supported_flavors"/>.</para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="images_090512">
+    <title>API v2 Updates, September 5, 2012</title>
+    <para>This section describes features and changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New and removed images</emphasis>.<informaltable rules="all">
+
+            <col width="30%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Version</th>
+                <th>First Generation Cloud Servers (v1.0)</th>
+                <th>Next Generation Cloud Servers (v2)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2" valign="top">Arch</td>
+                <td>2012.08</td>
+                <td>New</td>
+                <td>Not available</td>
+              </tr>
+              <tr>
+                <td>2011.10</td>
+                <td>New</td>
+                <td>Not available</td>
+              </tr>
+              <tr>
+                <td>Centos </td>
+                <td>5.8</td>
+                <td>Available</td>
+                <td>Removed</td>
+              </tr>
+              <tr>
+                <td rowspan="2" valign="top">Gentoo</td>
+                <td>12.3</td>
+                <td>New</td>
+                <td>Not available</td>
+              </tr>
+              <tr>
+                <td>11.0</td>
+                <td>Removed</td>
+                <td>Supported</td>
+              </tr>
+              <tr>
+                <td rowspan="2">openSUSE</td>
+                <td>12.1</td>
+                <td>Not available</td>
+                <td>New</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Supported</td>
+                <td>Removed</td>
+              </tr>
+              <tr>
+                <td>Red Hat Enterprise Linux</td>
+                <td>6.1</td>
+                <td>Removed</td>
+                <td>Supported</td>
+              </tr>
+            </tbody>
+          </informaltable></para>
+        <para>For complete information about images, see <xref linkend="supported_images"/>.</para>
+      </listitem>
+    </itemizedlist>
+
+  </chapter>
+  <chapter xml:id="os-ext-sts">
+    <title>API v2 Updates, August 21, 2012</title>
+    <para>This section describes features and changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>The new extended status extension displays the VM, task, and power statuses for servers.</para>
+
+        <para>The extension displays these statuses in the following fields in the response bodies for the
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/List_Servers-d1e2078.html">list servers</link>
+          and
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/Get_Server_Details-d1e2623.html">get server details</link>
+          calls: </para>
+
+        <table rules="all" width="80%">
+          <caption>Extended Status Extension</caption>
+          <col width="30%"/>
+          <col width="70%"/>
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><literal>OS-EXT-STS:vm_state</literal></td>
+              <td>The virtual machine (VM) status. </td>
+            </tr>
+            <tr>
+              <td><literal>OS-EXT-STS:task_state</literal></td>
+              <td>The task status.</td>
+            </tr>
+            <tr>
+              <td><literal>OS-EXT-STS:power_state</literal></td>
+              <td>The power status. </td>
+            </tr>
+          </tbody>
+        </table>
+        <para>For complete information, see
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/ch_extensions.html#ext_status" xmlns:db="http://docbook.org/ns/docbook">Extended Status
+            Extension</link>.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </chapter>
+  <chapter xml:id="auth_updates">
+    <title>API v2 Updates, August 15, 2012</title>
+    <para>This section describes features and changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New authentication endpoint</emphasis>. </para>
+        <para>To authenticate, you issue a request to the &CIS;, which is an implementation of the OpenStack Keystone
+          Identity Service v2.0. Customers with UK-based accounts can now issue a &POST; <command>/tokens</command> request
+          to the &CIS; at the
+          <link xlink:href="https://lon.identity.api.rackspacecloud.com/v2.0">https://lon.identity.api.rackspacecloud.com/v2.0</link>
+          endpoint to authenticate access to either the &fgCS; or &ngCS; services. </para>
+        <para>In response to valid credentials, an authentication request to the &CIS; v2 returns an authentication token and
+          a service catalog. </para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Both first generation and &ngCS; services now appear in the service catalog</emphasis>. </para>
+        <para>In the service catalog, the Cloud Servers services are named as follows: <informaltable rules="all"
+            width="100%">
+            <col width="25%"/>
+            <col width="75%"/>
+            <thead>
+              <tr>
+                <th>Cloud Servers generation</th>
+                <th>Service name in the catalog</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>First generation</td>
+                <td>
+                  <para><literal>cloudServers</literal></para>
+                  <para>If you use the authentication token to access this service, you can view and perform &fgCS; API
+                    operations against your &fgCS;. </para>
+                </td>
+              </tr>
+              <tr>
+                <td>Next generation</td>
+                <td>
+                  <para><literal>cloudServersOpenStack</literal></para>
+                  <para>If you use the authentication token to access this service, you can view and perform &ngCS; API
+                    operations against your &ngCS;.</para>
+                  <para>Next generation Cloud Servers might show multiple endpoints to enable regional choice. Select the
+                    appropriate endpoint for the region that you want to interact with by examining the
+                      <literal>region</literal> field.</para>
+                </td>
+              </tr>
+            </tbody>
+          </informaltable></para>
+        <para>For detailed information about how to authenticate through the &CIS;, see
+          <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/index.html"><citetitle>Cloud Identity Client Developer Guide
+              v2.0</citetitle></link>.</para>
+      </listitem>
+    </itemizedlist>
+
+
+  </chapter>
+
+  <chapter xml:id="cs_v2_0801_updates">
+    <title>API v2 Updates, August 1, 2012</title>
+    <para>This section describes features and changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New images</emphasis>. <itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">Linux</emphasis>: CentOS 6.3 and FreeBSD 9.</para>
+            </listitem>
+            <listitem>
+              <para><emphasis role="bold">Windows Server 2008</emphasis>: <itemizedlist>
+                  <listitem>
+                    <para>R2 SP1 (with updates)</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 (with updates) + SQL Server 2008 R2 SP1 Standard</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 (with updates) + SQL Server 2008 R2 SP1 Web</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 (with updates) + SQL Server 2012 Standard</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 (with updates) + SQL Server 2012 Web</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 + SQL Server 2008 R2 Standard</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 + SQL Server 2008 R2 Web</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 + SQL Server 2012 Standard</para>
+                  </listitem>
+                  <listitem>
+                    <para>R2 SP1 + SQL Server 2012 Web</para>
+                  </listitem>
+                </itemizedlist></para>
+            </listitem>
+          </itemizedlist></para>
+        <para>See <xref linkend="supported_images"/>.</para>
+      </listitem>
+    </itemizedlist>
+
+
+  </chapter>
+  <chapter xml:id="cs_v2_0709_updates">
+    <title>API v2 Updates, July 9, 2012</title>
+    <para>This section describes features and changes to the API v2. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New authentication endpoint and changes to the service catalog</emphasis>. For detailed
+          information about how to authenticate through the &CIS;, see
+          <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/index.html"><citetitle>Cloud Identity Client Developer Guide
+              v2.0</citetitle></link>.</para>
+      </listitem>
+    </itemizedlist>
+
+
+  </chapter>
+  <chapter xml:id="cs_v2_updates">
+    <title>API v2 Updates, June 13, 2012</title>
+    <para>This section describes features and changes to the API v2, which add to the ones described in
+      <xref linkend="cs-v2"/>. </para>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><emphasis role="bold">New images</emphasis>. <itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">Linux</emphasis>: CentOS 5.8, CentOS 6.2, Fedora 17, and Ubuntu 12.04 LTS.</para>
+            </listitem>
+            <listitem>
+              <para><emphasis role="bold">Windows</emphasis>: Windows 2008 R2 Enterprise 64-bit.</para>
+            </listitem>
+          </itemizedlist></para>
+        <para>See <xref linkend="supported_images"/>.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Removal of the 256MB flavor.</emphasis> The 256 MB flavor has been removed from the next
+          generation Cloud Servers. While these small instances were appropriate in certain cases, they often caused
+          performance problems for applications and placed undue stress on underlying host machines. This change reduces the
+          number of application performance issues and improves the overall Cloud Servers experience.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">vCPU allocations for flavors.</emphasis> Historically, Rackspace offered a vCPU
+          allocation scheme that differed between Linux and Windows instances for the same flavor.  Linux had the potential
+          to use more CPU and was optimized for burst at the expense of performance consistency, while Windows was optimized
+          for CPU consistency trading off burst potential. </para>
+        <para>The next generation Cloud Servers now implements a single vCPU allocation scheme across all operating systems
+          that favors consistent CPU performance while retaining some burst potential. The number of vCPUs is reduced for
+          some flavors and increased for others to simplify Cloud Servers while balancing predictability and value.  For more
+          information, see <xref linkend="supported_images"/>.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Improved instance performance.</emphasis> A customer-reported hardware problem that
+          affected instance performance has been corrected. </para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">OpenStack ready.</emphasis> Rackspace continuously integrates with OpenStack code, which
+          means that you have nearly immediate access to product enhancements from the OpenStack community.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Documentation</title>
+      <listitem>
+        <para><link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-gettingstarted/content/index.html"><citetitle>Next Generation Cloud Servers Getting
+              Started</citetitle></link>.
+          This new guide provides simple exercises that help you quickly get started with next generation Cloud
+          Servers.</para>
+      </listitem>
+    </itemizedlist>
+
+
+  </chapter>
+  <chapter xml:id="cs-v2">
+    <title>API v2, May 1, 2012</title>
+    <itemizedlist>
+      <title>New Features</title>
+
+      <listitem>
+        <para>UUID identifiers. The API v2 uses Open Software Foundation (OSF) Universally Unique IDentifiers (UUIDs) instead
+          of integers for object IDs for images, servers, and so on. The Rackspace Cloud Servers API v1.0 used integer IDs.
+          For example, in the Rackspace Cloud Servers API v1.0, an ID might be <code>2</code>, while in the API v2, an ID
+          might be <code>52415800-8b69-11e0-9b19-734f6f006e54</code>. <note>
+            <para>Although flavors are designed to use UUIDs per the OpenStack Compute API v2 specification, flavors use
+              integer IDs for backward compatibility.</para>
+          </note></para>
+        <para>For information about the OSF UUID standard, see
+          <link xlink:href="http://en.wikipedia.org/wiki/Uuid">Universally
+            unique identifier</link>.</para>
+      </listitem>
+      <listitem>
+        <para>AccessIP. Enables third-party clients to access the server directly through an access address. See
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/Server_Primary_Addresses-d1e2558.html">Server Access Addresses</link>
+          in the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle>. </para>
+      </listitem>
+      <listitem>
+        <para>Rackspace extensions. <itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">Bandwidth stats extension</emphasis>. Shows bandwidth usage statistics for a given
+                audit period.</para>
+            </listitem>
+            <listitem>
+              <para><emphasis role="bold">Disk configuration extension</emphasis>. Enables control of how the disk is
+                partitioned when a server is created, rebuilt, or resized. </para>
+            </listitem>
+            <listitem>
+              <para><emphasis role="bold">Rescue mode extension</emphasis>. Creates a new server with the file system for the
+                specified version of Cloud Servers mounted to fix file system and configuration errors.  </para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis role="bold">Used limits extension</emphasis>. Returns the amount of absolute limit capacity
+                that is currently used. </para>
+            </listitem>
+            <listitem>
+              <para><emphasis role="bold">Volume attachment extension</emphasis>. In conjunction with Cloud Block Storage API
+                operations, you can attach a volume to a server instance, list volume attachments for a server instance, get
+                volume details for a volume attachment, and delete a volume attachment. </para>
+            </listitem>
+
+          </itemizedlist></para>
+        <para>See
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/ch_extensions.html">Rackspace Extensions</link>
+          in the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle>. </para>
+      </listitem>
+      <listitem>
+        <para>Image metadata and metadata management. See
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/MetadataSection.html">Metadata</link>
+          in the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle>. </para>
+      </listitem>
+      <listitem>
+        <para>IPv6 support. When you create a server, an IPv4 address and an IPv6 address block are assigned. The IPv4
+          address and IPv6 address block are used for the public interface (Internet). The IPv4 address is also used for the
+          private interface. </para>
+      </listitem>
+
+    </itemizedlist>
+    <itemizedlist>
+      <title>Changes</title>
+      <listitem>
+        <para>Authentication. Authentication is through the Rackspace Cloud Identity Service, which integrates with the
+          Rackspace infrastructure and is a modification of the OpenStack Keystone authentication specification. See
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/os-auth.html">Authentication</link>
+          in the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle>.</para>
+      </listitem>
+      <listitem>
+        <para>OpenStack Compute API v2. The OpenStack Compute API v2 differs significantly from the Rackspace Cloud Servers
+          API v1.0. See <xref linkend="api_differences"/>.</para>
+      </listitem>
+      <listitem>
+        <para>Rate limit defaults. The defaults for rate limits have changed. You can request Rackspace to either raise or
+          lower the limits as needed. For the current rate limit defaults, see
+          <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/Rate_Limits-d1e862.html">Rate Limits</link>
+          in the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle>.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Known Issues</title>
+      <listitem>
+        <para>Cannot register Red Hat images. Red Hat Network (RHN) registration is required for Red Hat. </para>
+      </listitem>
+
+      <listitem>
+        <para>The following Cloud Servers API v1.0 operations are not yet available in the Cloud Servers API v2:<itemizedlist>
+            <listitem>
+              <para>Adding an IP address to a cloud server</para>
+            </listitem>
+            <listitem>
+              <para>Backup schedules</para>
+            </listitem>
+            <listitem>
+              <para>Shared IPs</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+    </itemizedlist>
+
+    <itemizedlist>
+      <title>Supported Images</title>
+      <listitem>
+        <para>See <xref linkend="supported_images"/>.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Supported Flavors and cVPU Configurations</title>
+      <listitem>
+        <para>See <xref linkend="supported_flavors"/>.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Supported OpenStack Compute API v2 Operations</title>
+      <listitem>
+        <para>All OpenStack Compute API v2 operations are supported except the resize server down operation, which is not
+          supported for Windows Cloud Servers. </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+</book>
