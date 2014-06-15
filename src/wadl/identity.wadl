@@ -333,22 +333,22 @@
     <!-- Token Operations -->
     
     <method name="POST" id="authenticate">
-        <doc xml:lang="EN" title="Authenticate">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Authenticates and generates a
-                token. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Client authentication is provided through a ReST
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Authenticates and generates a
+                token. </para>
+            <para>Client authentication is provided through a ReST
                 interface by using the POST method with v2.0/tokens
                 supplied as the path. Include a payload of credentials
-                in the body.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">The Identity Service is a ReSTful web service. It is
+                in the body.</para>
+            <para>The Identity Service is a ReSTful web service. It is
                 the entry point to all service APIs. To access the
                 Identity Service, you must know the URL of the
-                Identity Service. </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Each ReST request against the Identity Service
+                Identity Service. </para>
+            <para>Each ReST request against the Identity Service
                 requires the X-Auth-Token header. Clients obtain this
                 token, along with the URL to other service APIs, by
                 first authenticating against the Identity Service with
-                valid credentials.
+                valid credentials.<para></para>
                 <table rules="all">
                     <caption>Authenticate Request Attributes</caption>
                      
@@ -382,8 +382,8 @@
                         </tr>
                     </tbody>
                 </table>
-            </p>  
-        </doc>
+            </para>  
+        </wadl:doc>
         <request>
             <representation mediaType="application/json"
                 element="identity:auth">

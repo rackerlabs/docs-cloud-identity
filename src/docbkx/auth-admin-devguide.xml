@@ -381,7 +381,7 @@
 						<listitem>
 							<para> Corrected credential listing (adding tenant ID to token) for <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_authenticate_v2.0_tokens_"/>. </para>
+									targetptr="Token_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -575,11 +575,9 @@
 						</listitem>
 						<listitem>
 							<para> Updated samples to show <code>defaultRegion</code> in <xref
-									linkend="Sample_Request_Response-d1e64"/> and <olink
+									linkend="Sample_Request_Response-d1e64"/> and the <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_validateToken_v2.0_tokens__tokenId__"/> and
-									<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_authenticate_v2.0_tokens_"/>. </para>
+									targetptr="Token_Calls">Token operations</olink>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -699,10 +697,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> For "Update User" and "Delete User" operations, added suggestion to use <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__">“GET user by
-									id”</olink> to confirm that the intended user will be changed. </para>
+							<para> Updated Update user and Delete user operations to add suggestion about using “GET user by
+								id operation to confirm the user before running the update or delete operation. See <olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="User_Calls">.</para>
 						</listitem>
 						<listitem>
 							<para> Added  <olink targetdoc="Identity-Developer-Guide" targetptr="Account-Users-d1e910"
