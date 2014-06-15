@@ -9,13 +9,6 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Overview-Keystone-API-d1e62">
          <title>General API Information</title>
-	<info>
-	  <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-	    <raxm:type>concept</raxm:type>
-	    <raxm:product version="v2.0">auth</raxm:product>
-	    <raxm:priority>1</raxm:priority>
-	  </raxm:metadata> 
-	</info>
         <para>The authentication service allows clients to obtain
 		tokens that can be used to access cloud services such as those
 		provided by Rackspace and OpenStack.</para>
@@ -1001,21 +994,16 @@ Host: identity.api.rackspacecloud.com
 			<title>Versions List Response: JSON</title>
 			<programlisting language="javascript"><xi:include href="../samples/versions.json" parse="text"/></programlisting>
 		</example>
-		<para> You can obtain additional detailed information about a
-			specific version by performing a &GET; on the base version
-			URL. For example,
-				<code>https://identity.api.rackspacecloud.com/v2.0/</code>
-			is a base version URL, in which <code>v2.0</code> is the
-			initial version of the API. All version request URLs end
-			with a trailing slash (/). If the slash is omitted, the
-			server might respond with a <returnvalue>302</returnvalue>
-			redirection request. You can add format extensions after
-			the trailing slash. For example, <code>
-				&ENDPOINT-US;.xml</code> includes <code>.xml</code> as
-			a format extension. Note that this is a special case that
-			does not hold true for other API requests. In general,
-			requests such as <code>/tenants.xml</code> and
-				<code>/tenants/.xml</code> are handled equivalently. </para>
+		<para>You can obtain additional detailed information about a specific version by performing a
+			&GET; on the base version URL. For example,
+				<code>https://identity.api.rackspacecloud.com/v2.0/</code> is a base version URL, in
+			which <code>v2.0</code> is the initial version of the API. All version request URLs end
+			with a trailing slash (/). If the slash is omitted, the server might respond with a
+				<returnvalue>302</returnvalue> redirection request. You can add format extensions
+			after the trailing slash. For example, <code> &ENDPOINT-US;.xml</code> includes
+				<code>.xml</code> as a format extension. Note that this is a special case that does
+			not hold true for other API requests. In general, requests such as
+				<code>/tenants.xml</code> and <code>/tenants/.xml</code> are handled equivalently. </para>
 		<example>
 			<title>Version Details Request</title>
 			<literallayout class="monospaced">
@@ -1610,8 +1598,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<itemizedlist condition="client">
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_User_Calls"
-							>Add account user</olink>
+						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>

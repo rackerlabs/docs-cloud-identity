@@ -41,6 +41,10 @@ format="SVG" scale="60"/>
 <!ENTITY PUT '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
 <!ENTITY POST '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
 <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+<!ENTITY CODES       'Normal Response Code(s):'>
+<!ENTITY ERROR_CODES 'Error Response Code(s):'>
+<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+This operation does not require a request body.</para>'>
      
      
 <!--A collection of common faults, these are pretty much expected in every request.-->

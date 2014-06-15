@@ -59,8 +59,7 @@
 						</listitem>
 						<listitem security="internal">
 							<para>Updated <olink targetdoc="Identity-Developer-Guide"
-								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_"
-								>“Get token by SAML assertion"</olink> code samples to correct spelling 
+								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_">“Get token by SAML assertion"</olink> code samples to correct spelling 
 								error and role value and description.
 							</para>
 						</listitem>
@@ -72,11 +71,6 @@
 				<date>2014-04-27</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
-						<listitem>
-							<para>Added <olink targetdoc="Identity-Developer-Guide"
-								targetptr="EndpointTemplate">Endpoint template</olink> to
-								glossary.</para>
-						</listitem>
 						<listitem>
 							<para>Updated sample in <olink
 								targetdoc="Identity-Developer-Guide"
@@ -147,11 +141,8 @@
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_User_Calls"/>, <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__User_Calls"/>,
-								and <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserByEmail_v2.0_users_User_Calls"/>. </para>
+									targetptr="User_Calls"/>.
+									</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -161,9 +152,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added error to <olink targetdoc="Identity-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users_User_Calls">“Additional
-									Resources”</olink>. </para>
+							<para> Added error to Add user operation in <olink targetdoc="Identity-Developer-Guide"
+									targetptr="User_Calls">“Users”</olink> section. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -202,32 +192,8 @@
 								/>). </para>
 						</listitem>
 						<listitem>
-							<para> Added domain id to: <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_listUsers_v2.0_users_">“List users”</olink>. </para>
-						</listitem>
-						<listitem>
-							<para>
-								Added domain id to: <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_">“List user by name”</olink>
-							</para>
-						</listitem>
-						<listitem>
-							<para>
-								Added domain id to: <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__">“List user by id”</olink>.
-							</para>
-						</listitem>
-						<listitem>
-							<para>
-								Added 
-								<olink targetdoc="Identity-Developer-Guide"
-								targetptr="GET_getUserByEmail_v2.0_users_">“List user by id”</olink>
-							</para>
-						</listitem>
-						<listitem>
-							<para>
-								Fixed some erroneous examples.
-							</para>
+							<para> Added domain id to <olink targetdoc="Identity-Developer-Guide"
+									targetptr="User_Calls">"User operations"</olink> and corrected code samples.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -237,19 +203,18 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected update json user request and response (<olink
+							<para> Corrected Update user json request and response examples (<olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__">“Role-based
-									access control”</olink>).</para>
+									targetptr="User_Calls">“User Calls”</olink>).</para>
 						</listitem>
 						<listitem>
 							<para> Updated Update User to reflect default region (<olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__"/>).</para>
+									targetptr="User_Calls"/>).</para>
 						</listitem>
 						<listitem>
-							<para> Fixed broken link (<olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_listUsers_v2.0_users_"/>).</para>
+							<para> Fixed broken link in List users operation in (<olink targetdoc="Identity-Developer-Guide"
+									targetptr="User_Calls"/>).</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -286,7 +251,8 @@
 							<para> Corrected credential listing (adding tenant ID to token) for <olink
 									targetdoc="Identity-Developer-Guide"
 									targetptr="POST_authenticate_v2.0_tokens_">“Request/Response
-									Types”</olink>.</para>
+									Types”</olink>
+								.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -365,13 +331,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added information about <code>defaultRegion</code> for <olink
+							<para> Added information about <code>defaultRegion</code> to <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_"/>,  <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__"/>and <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__"/>. </para>
+									targetptr="User_Calls"/>.
+									</para>
 						</listitem>
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="Service_Types-d1e265"/>
@@ -397,12 +360,6 @@
 						<listitem>
 							<para> 
 								Removed "BETA" designation. 
-							</para>
-						</listitem>
-						<listitem>
-							<para> 
-								Updated illustration in <xref
-									linkend="Identity-Service-Concepts-e1362"/>.
 							</para>
 						</listitem>
 						<listitem>
@@ -472,11 +429,12 @@
 								that the intended user will be changed. </para>
 						</listitem>
 						<listitem>
-							<para> 
-								Added  <xref linkend="Account-Users-d1e910"/>; 
-								moved most of the details from the Account User glossary item into that section, 
-								along with additional details on account users' inheritance of groups from parents. 
-							</para>
+							<para> Added <xref linkend="Account-Users-d1e910"/>;<olink
+									targetdoc="Identity-Developer-Guide"
+									targetptr="Identity-Concepts-e1362">“Identity concepts”</olink>
+								moved most of the details from the Account User glossary item into
+								that section, along with additional details on account users'
+								inheritance of groups from parents. </para>
 						</listitem>
 						<listitem>
 							<para> 
@@ -572,9 +530,7 @@
 									access control”</olink>. </para>
 						</listitem>
 						<listitem>
-							<para> Added information about account users (also known as sub-accounts), including an entry
-								in <olink targetdoc="Identity-Developer-Guide"
-									targetptr="Glossary-000"/>. </para>
+							<para> Added information about account users (also known as sub-accounts). See </para>
 						</listitem>
 						<listitem>
 							<para> Clarified <olink targetdoc="Identity-Developer-Guide"
@@ -618,9 +574,8 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added examples of authentication with an API key in <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_authenticate_v2.0_tokens_">“Request/Response
-									Types”</olink>. </para>
+									targetdoc="Identity-Developer-Guide" targetptr="Token_Calls"
+									>“Tokens”</olink>. </para>
 							</listitem>
 						<listitem>
 							<para> Added annotations explaining key points in authentication request and response
@@ -652,7 +607,6 @@
 		</raxm:metadata> 
 	</info>
 	<xi:include href="chapters/identity-overview-client.xml"/>
-	<xi:include href="chapters/identity-concepts-client.xml"/>
 	<xi:include href="chapters/identity-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-client.xml"/>

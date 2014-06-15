@@ -8,7 +8,8 @@
 	xmlns="http://docbook.org/ns/docbook" 
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:wadl="http://wadl.dev.java.net/2009/02""
+	xmlns:wadl="http://wadl.dev.java.net/2009/02"
+	xmlns:html="http://www.w3.org/1999/xhtml"
 	xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Client Developers</title>
 	<para>
@@ -19,47 +20,48 @@
 	
 	<!--Versions-->
 	
-	<section xml:id="Version_calls">
+	<section xml:id="Version_operations">
 		<title>API Contract Version</title>
-		<para xml:id="Versions_ovw">
-			The Rackspace Cloud can support multiple versions of the service API contract. This architecture allows service providers 
-			to develop, test, and deploy new API versions without disrupting service for customers that are using an existing version. 
-			You can use the Version operations to query the API service endpoint for information about the 
-			API version support in your cloud environment.
-		</para>
+		<para> The Rackspace Cloud can support multiple versions of the service API contract. This
+			architecture allows service providers to develop, test, and deploy new API versions
+			without disrupting service for customers that are using an existing version. You can use
+			the Version operations to query the API service endpoint for information about the API
+			version support in your cloud environment. </para>
+		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			
 			<!-- Get all API versions -->
 			
 			<wadl:resource href="../../wadl/identity.wadl#versions">
-				<wadl:method href="#getVersion"/>
-			</wadl:resource>
+				<wadl:method href="getVersions"/>
 		
 			<!-- Get a specific API version -->
-					<wadl:resource href="../../wadl/identity.wadl#versions">
-						<wadl:method href="#getVersion"/>
+					<wadl:resource href="../../wadl/identity.wadl#version">
+						<wadl:method href="getVersionInfo"/>
 					</wadl:resource>
+			</wadl:resource>
 		</wadl:resources>
 	</section>
 	
 	<!--Extensions-->
 	
-	<section xml:id="Extensions_calls">
+	<section xml:id="Extensions_operations">
 		<title>Extensions</title>
 		<para xml:id="Extensions_ovw">
 			The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
 			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
 			endpoint for information about the extensions available for the specified service.</para>
+		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			
 			<!-- List extensions -->
-			<wadl:resource href="../../wadl/identity.wadl#listExtensions">
+			<wadl:resource href="../../wadl/identity.wadl#extensions">
 				<wadl:method href="listExtensions"/>
 			</wadl:resource>
 			
 			<!-- Get extensions -->	
 			
-			<wadl:resource href="../../wadl/identity.wadl/#getExtensions">
+			<wadl:resource href="../../wadl/identity.wadl#extension">
 				<wadl:method href="getExtension"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -111,32 +113,14 @@
 				</wadl:method>
 			</wadl:resource>
 			<!-- list user -->
-			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="getUserByName">
-					<wadl:doc>
-					<note>
-						<para>
-							<emphasis role="italic">
-								If you  authenticated with the user role, you can see only yourself.
-							</emphasis>
-						</para>
-						<para>
-							If this request is issued by  a user holding the admin role (<code>identity:user-admin</code>),
-							the specific user's information is returned only if that user is associated with the same tenant as the 
-							requester's  <code>user-admin</code> token.
-						</para>
-						<para> If this request is issued by a user holding the user role (<code>identity:default</code>), 
-							information is returned for only the requester. 
-						</para>
-					</note>
-					</wadl:doc>
-				</wadl:method>
+			<wadl:resource href="../../wadl/identity-admin.wadl#name">
+				<wadl:method href="getUserByName"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
 				<wadl:method href="getUserById"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="getUserByEmail"/>
+				<wadl:method href="#getUserByEmail"/>
 			</wadl:resource>
 			<!-- add user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
@@ -264,32 +248,13 @@
 	<section xml:id="Token_Calls">
 		<title>Tokens</title>
 		<para>The operations described in this section allow clients to get and validate access tokens.</para>
+		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/identity-admin.wadl#tokens" >
+			<wadl:resource href="../../wadl/identity.wadl#tokens" >
 				<!-- authenticate token -->
-				<wadl:method href="authenticate" >
-					<wadl:doc>
-						<note>
-						<para> This call is available to users who have authenticated as
-								a holder of either the admin role or
-								the user role. </para>
-						<itemizedlist>
-							<listitem>
-								<para> Users holding the <code>admin</code> role must
-								authenticate as
-								<code>identity:user-admin</code>. </para>
-							</listitem>
-							<listitem>
-								<para> Users holding the <code>user</code> role must
-								authenticate as
-								<code>identity:default</code>. </para>
-							</listitem>
-						</itemizedlist>
-						</note>
-					</wadl:doc>
-				</wadl:method>
+				<wadl:method href="authenticate"/>				
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
+			<wadl:resource href="../../wadl/identity.wadl#token">
 				<!-- revoke token -->
 				<wadl:method href="revokeToken"/>
 			</wadl:resource>
@@ -299,10 +264,11 @@
 		<title>Tenants</title>
 		<para>The operations described in this section allow clients to manage tenants.</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/identity-admin.wadl#tenants" >
+			<wadl:resource href="../../wadl/identity.wadl#tenants">
 				<wadl:method href="listTenants">
 				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
   </chapter>
+

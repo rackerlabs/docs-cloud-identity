@@ -11,7 +11,7 @@
     <!ENTITY % common  SYSTEM "../common/common.ent">
     %common;
 ]>
-<application xmlns="http://wadl.dev.java.net/2009/02"
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
     xmlns:vers="http://docs.openstack.org/common/api/v1.0"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
@@ -21,7 +21,6 @@
     xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 
                         ../xsd/api.xsd
                         http://docs.openstack.org/common/api/v1.0 
@@ -37,16 +36,24 @@
     <!--*******************************************************-->
     <!-- We should use SSL in production -->
     <resources base="http://localhost:5000" xml:id="identity_common">
+        
+        <!--Versions-->
+        
             <resource id="versions" type="#VersionList" path="//">
                 <method href="#getVersions"/>
-            <resource id="version" type="#VersionList" path="v2.0/">
-                <method href="#getVersionInfo"/>      
-            
-            <resource id="extensions" type="#ExtensionList"
-                path="extensions">
+                
+                <resource id="version" path="v2.0/">
+                <method href="#getVersionInfo"/>
+                </resource>
+            </resource>
+        
+        <!--Extensions-->
+        
+            <resource id="extensions" type="#ExtensionList" path="extensions">
+                <method href="#listExtensions"/>
+                
                 <resource id="extension" path="{alias}">
-                    <param name="alias" style="template" required="true"
-                        type="xsd:string">
+                    <param name="alias" style="template" required="true" type="xsd:string">
                         <doc>
                             <p xmlns="http://www.w3.org/1999/xhtml">The extension name.</p>
                         </doc>
@@ -54,67 +61,91 @@
                     <method href="#getExtension"/>
                 </resource>
             </resource>
-            <resource id="tokens" path="tokens">
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="X-AUTH-TOKEN" style="header" required="true"
+        
+        <!--Tokens-->
+        
+                
+                <resource id="tokens" path="tokens">
+                
+                <param name="X-AUTH-TOKEN" style="header" required="true"
                     type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>The user name.</para></wadl:doc>
+                    <doc>
+                        <p xmlns="http://www.w3.org/1999/xhtml">A valid authentication token.</p>
+                    </doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="username" style="plain" required="true"
+                    name="username" style="query" required="true"
                     type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                            ><para>The user name.</para></wadl:doc>
+                    <doc>
+                        <p xmlns="http://www.w3.org/1999/xhtml">The user name.</p>
+                    </doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02"
                     name="password" style="plain" required="true"
                     type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                            ><para>The password of the
-                        user.</para></wadl:doc>
+                    <doc>
+                        <p xmlns="http://www.w3.org/1999/xhtml">The password of the user.</p>
+                    </doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02"
                     name="tenantName" style="plain" required="false"
                     type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                            ><para>The tenant name.</para></wadl:doc>
+                    <doc>
+                        <p xmlns="http://www.w3.org/1999/xhtml">The tenant name.</p>
+                    </doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02"
                     name="tenantId" style="plain" required="false"
                     type="capi:UUID">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                            ><para>The tenant ID.</para></wadl:doc>
+                    <doc>
+                        <p xmlns="http://www.w3.org/1999/xhtml">>The tenant ID.</p>
+                    </doc>
                 </param>
                 <method href="#authenticate"/>
-
+                    
+                <resource id="token" path="tokens/{tokenId}">
+                    <param name="X-Auth-Token" style="header"
+                        type="xsd:string" required="true">
+                        <doc>
+                            <p xmlns="http://www.w3.org/1999/xhtml">
+                                A valid administrator authentication token.
+                            </p>
+                        </doc>
+                    </param>
+                    <param name="tokenID" style="query" required="true" type="capi:UUID">
+                        <doc>
+                            <p xmlns="http://www.w3.org/1999/xhtml">The ID for the token that you want to delete.</p>
+                        </doc>
+                    </param>
+                    <method href="#revokeToken"/>
+                </resource>
+                    
                 <resource id="tenants" path="tenants">
                     <param name="X-Auth-Token" style="header"
                         type="xsd:string" required="true">
-                        <wadl:doc
-                            xmlns="http://docbook.org/ns/docbook"
-                                ><para>A valid authentication
-                                token.</para></wadl:doc>
+                        <doc>
+                           <p xmlns="http://www.w3.org/1999/xhtml">
+                               A valid authentication token.
+                           </p>
+                        </doc>
                     </param>
                     <param name="marker" style="query"
                         required="false" type="xsd:string">
-                        <wadl:doc
-                            xmlns="http://docbook.org/ns/docbook"
-                                ><para>The ID of the last item in the
-                                previous list.</para></wadl:doc>
+                        <doc>
+                            <p xmlns="http://www.w3.org/1999/xhtml">
+                                The ID of the last item in the
+                                previous list.</p>
+                        </doc>
                     </param>
                     <param name="limit" style="query" required="false"
                         type="xsd:int">
-                        <wadl:doc
-                            xmlns="http://docbook.org/ns/docbook"
-                                ><para>The page size.
-                            </para></wadl:doc>
+                        <doc>
+                            <p xmlns="http://www.w3.org/1999/xhtml">The page size.
+                            </p></doc>
                     </param>
                     <method href="#listTenants"/>
                 </resource>
-            </resource>
-        </resource>
-      </resource>         
+            </resource>      
     </resources>
 
     <!--***************************************************-->
@@ -122,18 +153,17 @@
     <!--*******************************************************-->
 
     <resource_type id="VersionList">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
-            title="List API contract versions">
-            <para role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service endpoint.</para>
-        </wadl:doc>
+        <doc xml:lang="EN" title="List API contract versions">
+            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service endpoint.</p>
+        </doc>
         <method href="#getVersions"/>
+        
     </resource_type>
  
     <resource_type id="ExtensionList">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
-            title="List Extensions">
-            <para role="shortdesc">Lists supported extensions.</para>
-        </wadl:doc>
+        <doc xml:lang="EN" title="List Extensions">
+            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists supported extensions.</p>
+        </doc>
         <method href="#listExtensions"/>
     </resource_type>
 
@@ -144,9 +174,8 @@
     <!-- Version operations -->
 
     <method name="GET" id="getVersions">
-        <wadl:doc xml:lang="EN" title="List versions"
-            xmlns="http://docbook.org/ns/docbook"><para
-                role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service endpoint.</para>
+        <wadl:doc title="List versions">
+            <para xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service endpoint.</para>
             <para xmlns="http://www.w3.org/1999/xhtml">
                 Use the GET version operation to discover API version information for the Identity service, 
                 links to documentation (PDF, HTML, WADL), and supported media types. You can complete this operation from the  
@@ -155,22 +184,25 @@
         </wadl:doc>
         <response status="200">
                 <param name="Versions" style="plain" type="vers:VersionChoiceList" required="true">
-                    <wadl:doc>An array that returns the list of API versions supported by the Rackspace Cloud environment at the specified endpoint.</wadl:doc>
+                    <doc>
+                        <p xmlns="http://www.w3.org/1999/xhtml">An array that returns the list of API versions 
+                            supported by the Rackspace Cloud environment at the specified endpoint.</p>
+                    </doc>
                 </param>
                 <param name="version" style="plain" type="vers:VersionChoice" required="true">
-                        <wadl:doc >
-                            <para xmlns="http://www.w3.org/1999/xhtml">
+                        <doc >
+                            <p xmlns="http://www.w3.org/1999/xhtml">
                                 The <code>version</code> parameter is an array that provides the API version number and 
                                 detailed meta information regarding the status of the current API
-                                version. The description includes an id for the API version, links to both human readable and a machine processable
-                                description of the API service. 
-                            </para>
-                        </wadl:doc>
+                                version. The description includes an id for the API version, links to both human 
+                                readable and a machine processable description of the API service. 
+                            </p>
+                        </doc>
                 </param>
                 
                 <param name="status" style="plain" type="vers:VersionStatus" required="true">
-                        <wadl:doc>
-                            <para xmlns="http://www.w3.org/1999/xhtml">
+                        <doc>
+                            <p xmlns="http://www.w3.org/1999/xhtml">
                                 The <code>status</code> parameter describes the current operational state of
                                 the given service version. Status can be any of the following values:
                                 <itemizedlist spacing="compact">
@@ -197,30 +229,28 @@
                                         discouraged from using or developing against this version.
                                         Use the latest, current version of the API instead.</listitem>
                                 </itemizedlist>
-                            </para>         
-                        </wadl:doc>
+                            </p>         
+                        </doc>
                          </param>
                 <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN">
+                <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/versions.json"/>
-                </wadl:doc>
+                </doc>
             </representation>
             <representation mediaType="application/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN">
+                <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/versions.xml"/>
-                </wadl:doc>
+                </doc>
             </representation>
         </response> &commonFaults; &getFaults;</method>
     
     <method name="GET" id="getVersionInfo">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+        <doc>
             title="Get Version Details">
             <para xmlns="http://www.w3.org/1999/xhtml"
                 role="shortdesc">Gets detailed information about the
                 specified version of the Identity Service API.</para>
-        </wadl:doc>
+        </doc>
         <response status="200 203">
             <param name="location" style="plain" type="xsd:anyURI"
                 required="true"
@@ -242,17 +272,19 @@
     <!-- Extensions operations -->
     
     <method name="GET" id="listExtensions">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+        <doc
             title="List Extensions">
-            <para role="shortdesc">Lists available extensions.</para>
-            <para>The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
+            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists available extensions.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
                 the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
-                endpoint for information about the extensions available for the specified service.</para>
-        </wadl:doc>
+                endpoint for information about the extensions available for the specified service.</p>
+        </doc>
         <response status="200 203">
             <param name="next" style="plain" type="xsd:anyURI"
                 path="/capi:extensions/atom:link[@rel='next']/@href">
-                <doc>Moves to the next item in the list.</doc>
+                <doc>
+                    <p xmlns="http://www.w3.org/1999/xhtml">Moves to the next item in the list.</p>
+                </doc>
                 <link resource_type="#ExtensionList" rel="next"/>
             </param>
             <param name="previous" style="plain" type="xsd:anyURI"
@@ -272,18 +304,18 @@
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
+    
     <method name="GET" id="getExtension">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
-            title="Get Extension Details">
-            <para role="shortdesc">Gets detailed information for a
-                specified extension.</para>
-            <para>Specify the extension alias in the URI.</para>
+        <doc title="Get Extension Details">
+            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Gets detailed information for a
+                specified extension.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Specify the extension alias in the URI.</p>
             <!--     <param name="alias" style="template"
                 type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     ><para>The extension alias.</para> </wadl:doc>
             </param> -->
-        </wadl:doc>
+        </doc>
         <response status="200 203">
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -301,46 +333,57 @@
     <!-- Token Operations -->
     
     <method name="POST" id="authenticate">
-        <wadl:doc xml:lang="EN" title="Authenticate"
-            xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Authenticates and generates a
-                token. </para>
-            <para>Client authentication is provided through a ReST
+        <doc xml:lang="EN" title="Authenticate">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Authenticates and generates a
+                token. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Client authentication is provided through a ReST
                 interface by using the POST method with v2.0/tokens
                 supplied as the path. Include a payload of credentials
-                in the body.</para>
-            <para>The Identity Service is a ReSTful web service. It is
+                in the body.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">The Identity Service is a ReSTful web service. It is
                 the entry point to all service APIs. To access the
                 Identity Service, you must know the URL of the
-                Identity Service. </para>
-            <para>Each ReST request against the Identity Service
+                Identity Service. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Each ReST request against the Identity Service
                 requires the X-Auth-Token header. Clients obtain this
                 token, along with the URL to other service APIs, by
                 first authenticating against the Identity Service with
-                valid credentials.</para>
-            <table rules="all">
-                <caption>Authenticate Request Attributes</caption>
-                <thead>
-                    <tr>
-                        <th>Attribute</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>username</td>
-                        <td>string</td>
-                        <td>Required. The user name.</td></tr>
-                    <tr><td>password</td>
-                        <td>string</td><td>Required. The password of
+                valid credentials.
+                <table rules="all">
+                    <caption>Authenticate Request Attributes</caption>
+                     
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Required. The user name.</td>
+                        </tr>
+                        <tr>
+                            <td>password</td>
+                            <td>string</td>
+                            <td>Required. The password of
                             the user.</td>
-                    </tr>
-                    <tr><td>tenantName</td><td>string</td><td>Optional.
-                            The tenant name.</td></tr>
-                    <tr><td>tenantId</td><td>UUID</td><td>Optional.
-                            The tenant ID.</td></tr></tbody></table>
-        </wadl:doc>
+                        </tr>
+                        <tr>
+                            <td>tenantName</td><td>string</td>
+                            <td>Optional.The tenant name.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>tenantId</td><td>UUID</td>
+                            <td>Optional.The tenant ID.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>  
+        </doc>
         <request>
             <representation mediaType="application/json"
                 element="identity:auth">
@@ -377,12 +420,24 @@
                 element="identity:userDisabled"/>
         </response> &commonFaults; &getFaults; </method>
     
+    <method name="DELETE" id="revokeToken">
+        <doc xml:lang="EN" title="Revoke Token">
+            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Revoke token.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">This call revokes a token, returning a <code>204</code>.
+                message if successful. If the token 
+                and <code>404</code> if token in URI is invalid. </p>
+        </doc>
+        
+        <!-- no request or response body-->
+        
+        <response status="204"/>&commonFaults; &getFaults;</method>
+    
     <!-- Tenant Operations -->
     
     <method name="GET" id="listTenants">
         <wadl:doc title="List Tenants" xml:lang="EN"
             xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Lists tenants. </para>
+            <para role="shortdesc">Lists tenants.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/json"

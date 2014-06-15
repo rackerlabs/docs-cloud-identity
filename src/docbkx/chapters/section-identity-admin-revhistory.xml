@@ -3,8 +3,10 @@
 <!ENTITY % common SYSTEM "../../common/common.ent">
 %common;
 ]>
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Identity-Admin_revhistory">
+<section 
+	xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" 
+    xml:id="Identity-Admin_revhistory">
     <title>&PRODNAME; - Document Change History</title>
     <para>This version of the document replaces and obsoletes all previous versions. Review the
         following table to learn about the most recent changes.</para>
@@ -117,13 +119,7 @@
 							<para> Updated RAX-AUTH operation examples in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="Secret_Calls">“Secret Questions and Answers”</olink>,
-									<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"
-								/>, <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_updateQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"
-								/>, <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_createQuestion_v2.0_RAX-AUTH_secretqa_questions_Secret_Calls"
-								/></para>
+									</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -133,7 +129,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated many RAX-AUTH operations to
+							<para>Updated many RAX-AUTH operations to
 								have consistent examples. Added
 								Multifactor and Federation,
 								internal-only. </para>
@@ -148,17 +144,17 @@
 								operation parameter tables. </para>
 						</listitem>
 						<listitem>
-							<para> Mentioned that elements not being updated in <olink
+							<para> Mentioned that elements not being updated in Update user by userid <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
+									targetptr="User_Calls"
 									>“Update user”</olink> do not need to be included in request
 								body.</para>
 						</listitem>
 						<listitem>
 							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-									>“Secret Questions and Answers”</olink>. </para>
+									targetptr="Role_Calls"
+									>“Role_Calls”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Removed Category Role table from <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -167,11 +163,8 @@
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_User_Calls"/>, <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__User_Calls"/>,
-								and <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByEmail_v2.0_users_User_Calls"/>. </para>
+									targetptr="User_Calls"/>.
+							</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -181,8 +174,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added error to <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users_User_Calls"/>. </para>
+							<para> Added error to Add user <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="User_Calls">"user operation</olink>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -192,7 +185,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated samples to RAcker token authentication in <olink
+							<para> Updated samples to Racker token authentication in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_validateToken_v2.0_tokens__tokenId__"/>. </para>
 						</listitem>

@@ -12,11 +12,15 @@
 %common;
 ]>
 
-<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
+<application xmlns="http://wadl.dev.java.net/2009/02" 
+    xmlns:doc="http://wadl.dev.java.net/2009/02"
+    xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-    xmlns:capi="http://docs.openstack.org/common/api/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:capi="http://docs.openstack.org/common/api/v1.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../common/xsd/api.xsd
 http://docs.openstack.org/common/api/v1.0 ../common/xsd/api-common.xsd
@@ -28,7 +32,7 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
         <include href="../common/xsd/OS-KSADM.xsd"/>
-        <include href="../common/xsd/RAX-AUTH.xsd"/>"
+        <include href="../common/xsd/RAX-AUTH.xsd"/>
     </grammars>
     <!--*******************************************************-->
     <!-- All Resources -->

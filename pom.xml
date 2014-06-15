@@ -99,7 +99,7 @@
 				<configuration>
 					<!-- These parameters apply to pdf and webhelp -->
 					<!-- don't fail build for validation errors yet; someday -->
-					<!-- <failOnValidationError>no</failOnValidationError> -->
+					<!-- <failOnValidationError>no</failOnValidationError>-->
 					<!-- do show better error messages -->
 					<showXslMessages>true</showXslMessages>
 					<!--- open Webhelp at the QuickStart page -->

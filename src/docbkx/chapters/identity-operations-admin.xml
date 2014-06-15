@@ -65,51 +65,56 @@
 		issuing the calls as described here will use API extensions as needed.
 	</para>
 	
-	<!-- Versions call -->
+	<!--Versions-->
 	
-	<section xml:id="Versions_calls">
-		<title>Versions</title>
-		<para xml:id="versions_ovw"></para>
+	<section xml:id="Version_calls">
+		<title>API Contract Version</title>
+		<para xml:id="Versions_ovw">
+			The Rackspace Cloud can support multiple versions of the service API contract. This architecture allows service providers 
+			to develop, test, and deploy new API versions without disrupting service for customers that are using an existing version. 
+			You can use the Version operations to query the API service endpoint for information about the 
+			API version support in your cloud environment.
+		</para>
 		
-		
-		<wadl:resources>				
-			<!-- List versions -->
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			
+			<!-- Get all API versions -->
+			
 			<wadl:resource href="../../wadl/identity.wadl#versions">
-				<wadl:method href="#listExtensions"/>
+				<wadl:method href="#getVersion"/>
 			</wadl:resource>
 			
-			<!-- Get specific version -->	
-			
-			<wadl:resource href="../../wadl/identity.wadl#version">
-				<wadl:method href="#getVersionInfo"/>
+			<!-- Get a specific API version -->
+			<wadl:resource href="../../wadl/identity.wadl#versions">
+				<wadl:method href="#getVersion"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-		
 	
-	
-	
-	<!--Extensions -->
+	<!--Extensions-->
 	
 	<section xml:id="Extensions_calls">
 		<title>Extensions</title>
-		<para xml:id="extensions_ovw">The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
+		<para xml:id="Extensions_ovw">
+			The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
 			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
-			endpoint for information about the extensions included in the specified service.</para>
+			endpoint for information about the extensions available for the specified service.</para>
 		
-		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">				
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			
 			<!-- List extensions -->
 			<wadl:resource href="../../wadl/identity.wadl#extensions">
 				<wadl:method href="#listExtensions"/>
 			</wadl:resource>
 			
-			<!-- Get extension -->	
+			<!-- Get extensions -->	
 			
-			<wadl:resource href="../../wadl/identity.wadl#extensions">
+			<wadl:resource href="../../wadl/identity.wadl#extension">
 				<wadl:method href="#getExtension"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
 	
 	<!-- USERS -->
 	<section xml:id="User_Calls">
@@ -148,7 +153,7 @@
 					> OpenStack Extensions documentation</link>.</para>
 		</note>
 		<!--- this section comes from 4 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin & RAX-AUTH -->
-		<wadl:resources>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
 				<wadl:method href="listUsers"/>
@@ -213,7 +218,6 @@
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins" >
 				<wadl:method href="getUserAdmin"/>
 			</wadl:resource>
-			
 		</wadl:resources>
 	</section>
 	

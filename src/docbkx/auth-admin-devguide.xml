@@ -4,7 +4,8 @@
 <!ENTITY % common SYSTEM "../common/common.ent">
 %common;
 ]>
-<book xmlns="http://docbook.org/ns/docbook" 
+<book 
+	xmlns="http://docbook.org/ns/docbook" 
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:xi="http://www.w3.org/2001/XInclude" 
 	xmlns:svg="http://www.w3.org/2000/svg"
@@ -153,16 +154,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated RAX-AUTH operation examples in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Secret_Calls">“Secret Questions and Answers”</olink>,
-									<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"
-								/>, <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_updateQuestion_v2.0_RAX-AUTH_secretqa_questions__questionId__Secret_Calls"
-								/>, <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_createQuestion_v2.0_RAX-AUTH_secretqa_questions_Secret_Calls"
-								/></para>
+							<para>Updated <olink targetdoc="Identity-Developer-Guide" targetptr="User_Calls">“User
+									operations</olink> to add new parameters from RAX-AUTH
+								extension. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -206,11 +200,7 @@
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_User_Calls"/>, <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__User_Calls"/>,
-								and <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByEmail_v2.0_users_User_Calls"/>. </para>
+								targetptr="User_Calls"/></para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -271,20 +261,8 @@
 								doc. </para>
 						</listitem>
 						<listitem>
-							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_listUsers_v2.0_users_"/>. </para>
-						</listitem>
-						<listitem>
-							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_"/>.</para>
-						</listitem>
-						<listitem>
-							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__"/>.</para>
-						</listitem>
-						<listitem>
-							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByEmail_v2.0_users_"/>. </para>
+							<para> Added domain id to 
+								<olink targetdoc="Identity-Developer-Guide" targetptr="User_Calls">“User operations”</olink>.</para>
 						</listitem>
 						<listitem>
 							<para> Fixed some erroneous examples.
@@ -330,8 +308,7 @@
 						<listitem>
 							<para> Corrected update json user request and response (<olink
 								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
-								>“Users”</olink>) </para>
+								targetptr="User_Calls">“User operations”</olink>) </para>
 						</listitem>
 						<listitem>
 							<para> Added Region calls (<olink targetdoc="Identity-Admin-Developer-Guide"
@@ -344,14 +321,13 @@
 									Answers”</olink>) </para>
 						</listitem>
 						<listitem>
-							<para> Updated Update User to reflect default region (<olink
+							<para> Updated Update User operation to reflect default region (<olink
 								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
-								>“Users”</olink>) ) </para>
+								targetptr="User_Calls">“User operations”</olink>) ) </para>
 						</listitem>
 						<listitem>
-							<para> fixed broken link (<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_listUsers_v2.0_users_"/>) </para>
+							<para>Fixed broken link (<olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="User_Calls"/>) </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -544,8 +520,9 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added examples demonstrating different format of <code>expires</code> for US and UK
-								endpoints in <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_authenticate_v2.0_tokens_"/>. </para>
+								endpoints in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Token_Calls">“Tokens”</olink>.</para>
 						</listitem>
 						<listitem>
 							<para> Improved introductory text for
@@ -592,9 +569,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Repaired broken link from <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_authenticate_v2.0_tokens_"/> to <xref
-									linkend="Sample_Request_Response-d1e64"/>. </para>
+							<para> Repaired broken link in <olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="Token_Calls">“Tokens”</olink>.</para>
 						</listitem>
 						<listitem>
 							<para> Updated samples to show <code>defaultRegion</code> in <xref
@@ -613,14 +590,8 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added information about <code>defaultRegion</code> for <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_">“GET user by name”</olink>, 
-								<olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__">“GET user by id"</olink>, 
-								and <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__">“Add user"</olink>
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="User_Calls">“User operations”</olink>
 						    </para>
 						</listitem>
 						<listitem>
@@ -734,12 +705,10 @@
 									id”</olink> to confirm that the intended user will be changed. </para>
 						</listitem>
 						<listitem>
-							<para> Added <xref
-								linkend="Account-Users-d1e910"/>;
-								moved most of the details from the
-								Account User glossary item into that
-								section, along with additional details
-								on account users' inheritance of
+							<para> Added  <olink targetdoc="Identity-Developer-Guide" targetptr="Account-Users-d1e910"
+									>“Identity user types and default roles”</olink>moved most of
+								the details from the Account User glossary item into that section,
+								along with additional details on account users' inheritance of
 								groups from parents. </para>
 						</listitem>
 						<listitem>
@@ -813,16 +782,16 @@
 								linkend="API_Operations"/>. </para>
 						</listitem>
 						<listitem>
-							<para> Added examples of creating a user with a password in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users_"/>. In the same section,
-								added information that an account can have up to 100 account users. </para>
+							<para> Updated Add user operation with example of creating a user with a password in <olink
+									targetdoc="Identity-Developer-Guide" targetptr="User_Calls"
+									>“User operations”</olink>. In the same section, added
+								information that an account can have up to 100 account users. </para>
 						</listitem>
 						<listitem>
-							<para> Added examples of changing a user's password in <olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
-								>“Update user”</olink>. </para>
+							<para> Updated Add user operation with example of creating a user with a password in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="User_Calls">“User
+									operations”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Added information about account
