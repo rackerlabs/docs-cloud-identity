@@ -474,8 +474,11 @@
 							<para> Updated <olink targetdoc="Identity-Developer-Guide"
 									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
 								/> and <olink targetdoc="Identity-Developer-Guide"
-									targetptr="Account-User-d1e20"/> to state that account users
-								must authenticate with their passwords. </para>
+									targetptr="Account-User-d1e20"/><olink
+									targetdoc="Identity-Developer-Guide"
+									targetptr="Account-Users-d1e910">“Identity user types and
+									default roles”</olink> to state that account users must
+								authenticate with their passwords. </para>
 						</listitem>
 						<listitem>
 							<para> Added an annotated JSON example in <olink targetdoc="Identity-Developer-Guide"

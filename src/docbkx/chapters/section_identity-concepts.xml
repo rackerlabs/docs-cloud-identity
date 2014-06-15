@@ -15,14 +15,15 @@
             <listitem>
                 <para>A user is a digital representation of a person, system, or service that uses
                     &CLOUD; services. Users have credentials and can be assigned tokens. Based on
-                    these credentials and tokens,the authentication service validates that incoming
-                    requests are being made by the user who claims to be making the request, and
-                    that the user has the right to access the requested resources.</para>
+                    these credentials and tokens,  Based on these credentials and tokens, the
+                    authentication service validates that incoming requests are being made by the
+                    user who claims to be making the request, and that the user has the right to
+                    access the requested resources  </para>
                 <para>In the &CLOUD; <glossterm xml:id="User-d1e1">Users</glossterm> are represented
                     as accounts created for specific individuals. When a user is created, the &CIS;
                     automatically assigns a user type and a default role based on the &CIS; system
-                    configuration. Users with suffficient access rights and privileges can change
-                    user role assighments if required.</para>
+                    configuration. Users with suffficient access rights and privileges can view and
+                    manage role assignments.</para>
                 <para>See the following links for more information: 
                     <itemizedlist condition="client">
                     <listitem>
@@ -64,7 +65,7 @@
             <term>Credentials</term>
             <listitem>
                 <para>Any kind of information that can be used in verifying an identity. For the
-                    &CIS;, credentials might include these types of information: 
+                    &CIS;, credentials include these types of information: 
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>a matching username and password</para>
@@ -88,18 +89,19 @@
         <varlistentry>
             <term>Authentication</term>
             <listitem>
-                <para>The act of passing in <glossterm baseform="Credentials-d1e03">credentials</glossterm>, confirming an identity, and returning a token
-                    representation of the verified identity. In the &CLOUD;, credentials are
-                    typically a username and API key.</para>
+                <para>The act of passing in <glossterm baseform="Credentials-d1e03"
+                        >credentials</glossterm>, confirming an identity, and returning a token
+                    representation of the verified identity. </para>
                 <para>In the &CLOUD;, you authenticate by submitting a POST tokens API request with
                     valid credentials to the &CIS; endpoint. Credentials are typically a username
                     and API key. However, additional types of credentials can be accepted based on
                     service, tenant, or user account configuration.</para>
                 <para>In response to valid credentials, the service returns an authentication token
-                    and a service catalog with information about the &CLOUD; resources that you have
-                    permission to access. You can use the authentication token and the service
-                    endpoint to submit service requests through the &CIS; API or any other service
-                    API that is included in the catalog. </para>
+                    and a service catalog with information about the &CLOUD; resources available for
+                    use. In subsequent requests to the &CIS; or other &CLOUD; service endpoint, the user includes the 
+                    authentication token in the reuest as proof of identity, rights, and privileges to 
+                    complete the requested operation.
+                </para>
             </listitem>
         </varlistentry>
         <varlistentry>
@@ -124,12 +126,10 @@
         </varlistentry>
         <varlistentry>
             <term>Authentication token</term>
-            <listitem><para>In the &CLOUD; an authenttication token is an encrypted string returned
-                    by &PRODNAME; in response to an authentication request submitted with valid
-                    credentials. The response also includes a service catalog with a list of &CLOUD;
-                    services that can be accessed with the token.</para><para>To access a service,
-                    include the authentication token in each request submitted to through the
-                    service API. </para><para condition="client">Authentication tokens expire after
+            <listitem><para>In the &CLOUD; an authenttication token is an encrypted string returned by &PRODNAME; in
+                    response to an authentication request submitted with valid credentials. The
+                    response also includes a service catalog with a list of &CLOUD; services that
+                    can be accessed with the token. </para><para condition="client">Authentication tokens expire after
                     24 hours. To get a new token, users must submit another authentication request
                     to the &CIS;.</para>
                 <para condition="admin">Authentication tokens expire after 24 hours. An
@@ -149,7 +149,7 @@
                 <para>&CLOUD; has two tenant types: <itemizedlist>
                         <listitem>
                             <para>The Mosso tenant (Mosso account) ncludes the collection of
-                                resources commonly associated withservices such as Cloud Servers,
+                                resources commonly associated with services such as Cloud Servers,
                                 Cloud Database, Cloud Load Balancers.</para>
                         </listitem>
                         <listitem>
@@ -162,8 +162,8 @@
                 <para>Typically, a service provider determines how tenants are defined and used. The
                     &CIS; allows service administrators to create, delete, enable, and disable
                     tenants. Service administrators can also assign users and groups to one or more
-                    tenants. Because each tenant can have its own role configuration, user might
-                    have different roles, or different rights and privileges for the same role on
+                    tenants. Because each tenant can have its own role configuration, user can have
+                    different roles, or different rights and privileges for the same role on
                     different tenants. </para>
             </listitem>
         </varlistentry>
@@ -212,25 +212,22 @@
                     </itemizedlist>
                 </para>
                 <para> To get the URLs for other service endpoints, submit an authentication request
-                    with valid credentials to a &CIS; endpoint. After successful authentication, the
-                    &CIS; returns an authentication token and a service catalog with information
-                    about available services, including the endpoints to access each service.<note>
+                    with valid credentials to a &CIS; endpoint. If authentication is successful, he
+                    Identity service returns an authentication token and a service catalog with
+                    information about available services, including the endpoints to access each service.<note>
                         <para>In &CIS; version 1.1, an endpoint was known as a baseURL.</para>
                     </note></para>
             </listitem>
         </varlistentry>
         <varlistentry audience="admin">
-            <term>Endpoint</term>
+            <term><emphasis role="bold">Endpoint</emphasis></term>
             <listitem>
-                <para>
-                    A network accessible addresss, usually described by a URL, where a service can
-                    be accessed.</para>
-                <para>
-                    Various &CLOUD; systems query the &CIS; for the service endpoints required to
+                <para> A network accessible addresss, usually described by a URL, where a service
+                    can be accessed.</para>
+                <para> Various &CLOUD; systems query the &CIS; for the service endpoints required to
                     complete processes and operations. Users must know the URL for a service
                     endpoint in order to use the service.</para>
-                <para>
-                    The &CIS; service endpoint, which is the entry point for the &CLOUD; can be
+                <para> The &CIS; service endpoint, which is the entry point for the &CLOUD; can be
                     accessed from these endpoints: <itemizedlist spacing="compact">
                         <listitem>
                             <para>
@@ -248,31 +245,31 @@
                     with valid credentials to a &CIS; endpoint. After successful authentication, the
                     &CIS; returns an authentication token and a service catalog with information
                     about available services, including the endpoints to access each service.<note>
-                        <para>In &CIS; version 1.1, an endpoint was known as a baseURL.</para>
+                        <para>In &CIS; version 1.1, an endpoint was known as a <emphasis
+                                role="italic">baseURL</emphasis>.</para>
                     </note></para>
                 <para>Service developers can create and delete endpoints. They can also define
                     region-specific service endpoints for the same service API to customize service
                     availability and operation by region.</para>
             </listitem>
         </varlistentry>
-        <varlistentry audience="admin">
-            <term>EndpointTemplate</term>
+        <varlistentry condition="admin">
+            <term><emphasis role="bold">Endpoint Template</emphasis></term>
             <listitem>
                 <para>Endpoint templates provide Cloud Service providers with a method to manage API
                     service endpoints that apply to many or all tenants without having to add each
-                    endpoint on each tenant manually. </para>
-                <para>For example, a Service developer can define a global endpoint template that
-                    endpoint is automatically included in the Service catalog for all tenants
-                    authorized to use that service. The endpoint template also specifies the URLs
-                    for the internal, administrative, and public endpoints that provide access to
-                    the service. </para>
+                    endpoint on each tenant manually.  For example, a Service developer can define a
+                    global endpoint template that is automatically included in the Service catalog
+                    for all tenants authorized to use that service. The endpoint template also
+                    specifies the URLs for the internal, administrative, and public endpoints that
+                    provide access to the service. </para>
                 <para>See <olink targetdoc="Identity-Admin-Developer-Guide"
                         targetptr="Endpoint_Template_Calls">“Endpoint Templates”</olink> for
                     detailed information. </para>
             </listitem>
         </varlistentry>
         <varlistentry>
-            <term>Role</term>
+            <term><emphasis role="bold">Role</emphasis></term>
             <listitem>
                 <para>A role is a common security construct for assigning a specific set of access
                     rights and privileges to a user or group of users. Service administrators can
@@ -285,7 +282,7 @@
                     create new roles.</para>
                 <para>&CIS; supports two types of roles:<variablelist>
                         <varlistentry>
-                            <term>Global roles</term>
+                            <term><emphasis role="bold">Global roles</emphasis></term>
                             <listitem>
                                 <para>A global role defines access and permissions across all
                                     Rackspace systems, administrator or user-administrator, for
@@ -295,13 +292,11 @@
                             </listitem>
                         </varlistentry>
                         <varlistentry>
-                            <term>Product roles</term>
+                                <term><emphasis role="bold">Product roles</emphasis></term>     
                             <listitem>
-                                <para>
-                                A product role defines the functions a user can perform for a
-                                particular Rackspace cloud service.
-                                </para>
-                                </listitem>
+                                <para> A product role defines the functions a user can perform for a
+                                    particular Rackspace cloud service. </para>
+                            </listitem>
                         </varlistentry>
                     </variablelist></para>
                 <para>A user with a specific role inherits the rights and privileges associated with
@@ -315,7 +310,7 @@
             </listitem>
         </varlistentry>
         <varlistentry>
-            <term>Role-based access control (RBAC)</term>
+            <term><emphasis role="bold">Role-based access control (RBAC)</emphasis></term>
             <listitem>
                 <para>RBAC is method to restrict service access to only authorized users. RBAC
                     allows customers to specify who has access to resources and capabilities within

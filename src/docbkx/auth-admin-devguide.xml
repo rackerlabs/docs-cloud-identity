@@ -57,8 +57,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_"
+							<para>Updated Get token by SAML assertion in <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="Token_Calls"
 								>“Get token by SAML assertion"</olink> code samples to correct spelling 
 							    error and role value and description.
 							</para>
@@ -700,7 +700,7 @@
 							<para> Updated Update user and Delete user operations to add suggestion about using “GET user by
 								id operation to confirm the user before running the update or delete operation. See <olink
 								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="User_Calls">.</para>
+								targetptr="User_Calls"></olink>.</para>
 						</listitem>
 						<listitem>
 							<para> Added  <olink targetdoc="Identity-Developer-Guide" targetptr="Account-Users-d1e910"
@@ -752,8 +752,10 @@
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
-							/> and <xref linkend="Account-Users-d1e910"/> to state that account
-								users must authenticate with their passwords. </para>
+								/> and  <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Account-Users-d1e910">“Identity user types and
+									default roles”</olink>to state that account users must
+								authenticate with their passwords. </para>
 						</listitem>
 						<listitem>
 							<para> Added an annotated JSON example in

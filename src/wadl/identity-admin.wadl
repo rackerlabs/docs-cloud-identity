@@ -38,55 +38,6 @@
     <resources base="http://localhost:35357" xml:id="Identity">
         
        <resource id="tokens" path="tokens">
-                <param name="username" style="plain" required="true"
-                    type="xsd:string">
-                    <doc>
-                        <p xmlns="http://www.w3.org/1999/xhtml">Required. The username.</p>
-                    </doc>
-                </param>
-                <param name="password" style="plain" required="true"
-                    type="xsd:string">
-                    <doc xmlns="http://docbook.org/ns/docbook">
-                        <p>Required. The password of the user.</p>
-                    </doc>
-                </param>
-                <param name="tenantName" style="plain" required="false"
-                    type="xsd:string">
-                    <doc xmlns="http://docbook.org/ns/docbook"
-                            ><p>Optional. The tenant
-                        name.</p></doc>
-                </param>
-                <param name="tenantId" style="plain" required="false"
-                    type="capi:UUID">
-                    <doc xmlns="http://docbook.org/ns/docbook"><p>Optional. The tenant
-                        ID.</p></doc>
-                </param>
-                <param name="username" style="plain" required="true"
-                    type="xsd:string">
-                    <doc>
-                        <p xmlns="http://www.w3.org/1999/xhtml">Required. The user
-                        name.</p></doc>
-                </param>
-                <param name="password" style="plain" required="true"
-                    type="xsd:string">
-                    <doc>
-                        <p xmlns="http://www.w3.org/1999/xhtml">Required. The password of the
-                            user.</p></doc>
-                </param>
-                <param 
-                    name="tenantName" style="plain" required="false"
-                    type="xsd:string">
-                    <doc>
-                        <p xmlns="http://www.w3.org/1999/xhtml">Optional. The tenant
-                        name.</p></doc>
-                </param>
-                <param 
-                    name="tenantId" style="plain" required="false"
-                    type="capi:UUID">
-                    <doc>
-                        <p xmlns="http://www.w3.org/1999/xhtml">Optional. The tenant
-                        ID.</p></doc>
-                </param>
                 <method href="#authenticate"/>
                 <resource id="tokenById" path="{tokenId}">
                     <param name="tokenId" style="template" type="capi:UUID" required="true">
@@ -118,11 +69,7 @@
                         credentials.
                     </doc>
                 </param>
-                <resource id="name">
-                    <param name="name" style="query" type="xsd:string"
-                        required="true">
-                        <doc xml:lang="EN">The user name associated with an account.</doc>
-                    </param>
+                <resource id="name" path="{name}">
                     <method href="#getUserByName"/>
                 </resource>
                 <resource id="email">
@@ -133,7 +80,7 @@
                     <method href="#getUserByEmail"/>
                 </resource>
                 <resource id="userid" path="{user_id}">
-                    <param name="user_id" style="template" type="xsd:string" required="true">
+                    <param name="user_id" style="query" type="xsd:string" required="true">
                     <doc>The user ID.</doc>
                     </param>
                     <method href="#getUserById"/>
@@ -188,62 +135,121 @@
     <!-- Token Operations -->
     
         <method name="POST" id="authenticate">
-            <doc xml:lang="EN" title="Authenticate for Admin API">
-                <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Authenticates and generates a
-                    token.</p>
-             
-                <p xmlns="http://www.w3.org/1999/xhtml">The Identity API is a ReSTful web service. 
-                    It is the entry point to all service APIs. To access the Identity API, you must know its URL.</p>
-                
-                <p xmlns="http://www.w3.org/1999/xhtml">Client authentication is provided through a ReST
-                interface by using the POST operation with v2.0/tokens
-                supplied as the path. Include a payload of valid credentials 
-                in the body.</p>
-                
-                <p xmlns="http://www.w3.org/1999/xhtml">Each ReST request against the Identity API
-                requires the X-Auth-Token header. Clients obtain this
-                token, along with the URL to other service APIs, by
-                first authenticating against the Identity API Service with
-                valid credentials. Credentials can include any of the following types.
-                    
-                    <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>username and API key</para>
-                        </listitem>
-                        <listitem>
-                            <para>username, API key, and tenant ID</para>
-                        </listitem>
-                        <listitem>
-                            <para> username, API key, and tenant name </para>
-                        </listitem>
-                        <listitem>
-                            <para> username and password </para>
-                        </listitem>
-                        <listitem>
-                           <para> username, password and tenant ID </para>
-                        </listitem>
-                        <listitem>
-                            <para> username, password and tenant name </para>
-                        </listitem>
-                        <listitem>
-                            <para> token and tenant ID </para>
-                        </listitem>
-                    </itemizedlist>
-                </p>
-                
-                        <p xmlns="http://www.w3.org/1999/xhtml">Unless you specify a tenant, the response from the Identity service is not 
-                    affected by the type of credentials that you use.
-                        <important>
-                            <p xmlns="http://www.w3.org/1999/xhtml">
-                            If you specify a tenant, the <code>Service Catalog</code> returned includes only
-                            endpoints for the cloud services authorized for that tenant.
-                            </p>
-                        </important>
-                        </p>     
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate">
+                <para role="shortdesc">Authenticates and generates a
+                    token.</para>
+            <para>The &CIS; is a ReSTful web service that provides authentication services  
+                for the &CLOUD;. To gain access, users and administrators can use this POST operation 
+                to obtain an authentication token from the &CIS;, or generate a new token after a previously 
+                issued token has expired. In subsequent requests to &CIS; or other services, 
+                you include the authentication token in the HTTP x-header parameter defined as 
+                <literal>X-Auth-Token</literal> to verify your identity and confirm access rights and privileges.
+            </para>
+            <para>
+                Submit the POST token authentication request to the &CIS; service endpoint URL with v2.0/tokens 
+                supplied as the path and a payload of credentials in the body. Credentials can include any of the following 
+                types:
+            </para>
             
-                   <p xmlns="http://www.w3.org/1999/xhtml">See the following examples to learn about authenticating with different credential types.</p>
-                </doc>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>username and API key</para>
+                </listitem>
+                <listitem>
+                    <para>username, API key, and tenant ID</para>
+                </listitem>
+                <listitem>
+                    <para>username, API key, and tenant name </para>
+                </listitem>
+                <listitem>
+                    <para>username and password </para>
+                </listitem>
+                <listitem>
+                    <para>username, password and tenant ID </para>
+                </listitem>
+                <listitem>
+                    <para>username, password and tenant name </para>
+                </listitem>
+                <listitem>
+                    <para>token and tenant ID </para>
+                </listitem>
+            </itemizedlist>
+            
+            <para>
+                You can use whichever valid credentials you prefer. 
+                Unless you specify a tenant, the response from the Identity service is not 
+                affected by the type of credentials that you use.</para>
+            <important>
+                <para>
+                    If you specify a tenant, the <code>Service Catalog</code> returned includes only
+                    endpoints for the cloud services authorized for that tenant.
+                </para>
+            </important>  
+            
+            <para>See the following examples to learn about authenticating with different credential types.</para>
+        </wadl:doc>
         <request>
+            <param name="tenantName" style="plain" required="false"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The tenant name. Both the
+                        <code>tenantId</code> and
+                        <code>tenantName</code> attributes are
+                        optional, but should not be specified
+                        together. If both attributes are specified,
+                        the server responds with a <code>400</code>
+                        <code>Bad Request</code>.</para></wadl:doc>
+            </param>
+            <param name="tenantId" style="plain" required="false"
+                type="capi:UUID">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The tenant ID. Both the
+                        <code>tenantId</code> and
+                        <code>tenantName</code> attributes are
+                        optional, but should not be specified
+                        together. If both attributes are specified,
+                        the server responds with a <code>400</code>
+                        <code>Bad Request</code>.</para></wadl:doc>
+            </param>
+            <param name="passwordCredentials" style="plain"
+                required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A <code>passwordCredentials</code>
+                        object. To authenticate, you must provide
+                        either a user ID and password or a
+                        token.</para></wadl:doc>
+            </param>
+            <param name="username" style="plain" required="false"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The user name. Required if you include
+                        the <code>passwordCredentials</code> object.
+                        If you do not provide password credentials,
+                        you must provide a token.</para></wadl:doc>
+            </param>
+            <param name="password" style="plain" required="false"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The password of the user. Required if
+                        you include the
+                        <code>passwordCredentials</code> object.
+                        If you do not provide a password credentials,
+                        you must provide a token.</para></wadl:doc>
+            </param>
+            <param name="token" style="plain" required="false"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A <code>token</code> object. Required
+                        if you do not provide password
+                        credentials.</para></wadl:doc>
+            </param>
+            <param name="id" style="plain" required="false"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The token ID. This is a required field
+                        in the <code>token</code>
+                        object.</para></wadl:doc>
+            </param>
             <representation mediaType="application/xml" element="identity:auth">
                 <doc>  
                 <xsdxt:sample title="Authenticate (with Username and API Key Credentials) Request: XML">
@@ -290,6 +296,114 @@
             </representation>
         </request>
         <response status="200 203">
+            <param name="access" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>An <code>access</code>
+                        object.</para></wadl:doc>
+            </param>
+            <param name="token" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A <code>token</code>
+                        object.</para></wadl:doc>
+            </param>
+            <param name="issued_at" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A timestamp that indicates when the
+                        token was issued.</para></wadl:doc>
+            </param>
+            <param name="expires" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A timestamp that indicates when the
+                        token expires.</para></wadl:doc>
+            </param>
+            <param name="id" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The authentication token. In the
+                        example, the token is
+                        <code>my_id</code>.</para></wadl:doc>
+            </param>
+            <param name="tenant" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A <code>tenant</code>
+                        object.</para></wadl:doc>
+            </param>
+            <param name="description" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The description of the tenant. If not
+                        set, this value is
+                        <code>null</code>.</para></wadl:doc>
+            </param>
+            <param name="enabled" style="plain" required="true"
+                type="xsd:boolean">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>Indicates whether the tenant is enabled
+                        or disabled.</para></wadl:doc>
+            </param>
+            <param name="id" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The tenant ID.</para></wadl:doc>
+            </param>
+            <param name="name" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>The tenant name.</para></wadl:doc>
+            </param>
+            <param name="serviceCatalog" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A <code>serviceCatalog</code>
+                        object.</para></wadl:doc>
+            </param>
+            <param name="endpoints" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>One or more <code>endpoints</code>
+                        objects. Each object shows the
+                        <code>adminURL</code>,
+                        <code>region</code>, <code>internalURL</code>,
+                        <code>id</code>, and
+                        <code>publicURL</code> for the
+                        endpoint.</para></wadl:doc>
+            </param>
+            <param name="endpoints_links" style="plain"
+                required="true" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>Links for the
+                        endpoint.</para></wadl:doc>
+            </param>
+            <param name="type" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>Endpoint type.</para></wadl:doc>
+            </param>
+            <param name="name" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>Endpoint name.</para></wadl:doc>
+            </param>
+            <param name="user" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A <code>user</code> object, which shows
+                        the <code>username</code>,
+                        <code>roles_links</code>, <code>id</code>,
+                        <code>roles</code>, and
+                        <code>name</code>.</para></wadl:doc>
+            </param>
+            <param name="metadata" style="plain" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    ><para>A <code>metadata</code>
+                        object.</para></wadl:doc>
+            </param>
             <representation mediaType="application/xml" element="identity:access">
                 <!-- Note: WADLs generally get samples from /common/samples/ while the rest of the book gets samples from /docbkx/samples/ -->
                 <!-- tired of trying to maintain synch between /common/samples/auth.xml & .json and /docbkx/samples/auth-annotated.xml & .json -->
@@ -315,6 +429,12 @@
                 </doc>
             </representation>
         </response>
+         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
+                <doc title="identity:badRequest">Missing requred parameters.</doc>
+                <representation mediaType="application/xml" element="identity:badRequest"/>
+                <representation mediaType="application/json"/>
+         </response>
+                
          <response status="401">
             <doc title="Unauthorized">Authentication has failed. The authentication token has expired. Use the POST token operation 
             to get a new token.</doc>
@@ -322,7 +442,7 @@
             <representation mediaType="application/json"/>
         </response>
         <response status="403">
-            <doc title="Unauthorized">Authentication has failed.</doc>
+            <doc title="Unauthorized">Permission denied, adjusting authentication credentials will not help.</doc>
             <representation mediaType="application/xml" element="identity:userDisabled"/>
             <representation mediaType="application/json"/>
         </response>
@@ -331,7 +451,8 @@
                  has expired or is no longer available. Use the POST token request to get a new token.</doc>
             <representation mediaType="application/xml" element="identity:userDisabled"/>
             <representation mediaType="application/json"/>
-        </response>&commonFaults; &getFaults; </method>
+        </response>
+        </method>
 
     <method name="GET" id="validateToken">
         <doc xml:lang="EN" title="Validate Token">

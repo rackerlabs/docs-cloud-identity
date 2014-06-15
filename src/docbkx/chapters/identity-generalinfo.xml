@@ -1216,12 +1216,11 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	<section xml:id="Account-Users-d1e910">
 		<title>Identity user types and default roles</title>
 		
-		<para>In the &CLOUD; Users are represented as accounts created for specific individuals.
+		<para>In the &CLOUD;, users are represented as accounts created for specific individuals.
 			Typically, a user has a password and email asspcoated with the account. When a user is
 			created, the &CIS; automatically assigns a user type and a default role to the account,
-			based on the default &CIS; system configuration. Users with suffficient access rights
-			and privileges can change user role assighments if required. The role defines access
-			rights and permissions for the &CIS; and other &CLOUD; services as shown <link
+			based on the default &CIS; system configuration. The role defines access rights and
+			permissions for the &CIS; and other &CLOUD; services as shown <link
 				linkend="Identity_tbl_usr"/>
 		</para>
 		<table xml:id="Identity_tbl_usr " rules="all" width="958">
@@ -1255,9 +1254,9 @@ Host: identity.api.rackspacecloud.com/v1.0/
 							Service administrators hold the
 								<literal>identity:service-admin</literal> role that provides full
 							administrative rights and privileges to manage the Identity service. </para>
-						<para>Service developers that want to update an existing &CLOUD; service or add a new one can
-							contact &CIS; Service Administrators for help integrating their service
-							with the &CIS;. </para>
+						<para>Service developers that want to update an existing &CLOUD; service or add a new one work
+							together with the &CIS; Operations team to create an endpoint template
+							and add the service to the Service catalog. </para>
 					</td>
 				</tr>
 				<tr>
@@ -1276,6 +1275,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<tr>
 					<td>
 						<para>User Adminisrator</para>
+						<para>(Account owner)</para>
 					</td>
 					<td>
 						<para>identity-user-admin</para>
@@ -1283,17 +1283,17 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<td>
 						<para>When a &CLOUD; customer account is created, it is associated with one
 							user, the User administrator.</para>
-						<para>The &CIS; automatically assigns the
-								<literal>identity:user-admin</literal> role to the account, giving
-							the User Administrator full administrative privileges to manage the
-							customer account. Exactly one admimistrative user exists for each
-							account. The User Administrator account user can also be referred to as
-							the Account Owner.</para>
+						<para>The &CIS; automatically assigns the <literal>identity:user-admin</literal> role to the
+							account, giving the User Administrator full administrative privileges to
+							manage the customer account. Exactly one admimistrative user exists for
+							each account. The User Administrator account user is also referred to
+							as the Account Owner.</para>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<para>Account User</para>
+						<para>(sub-user)</para>
 					</td>
 					<td>
 						<para>identity:default</para>
@@ -1307,7 +1307,8 @@ Host: identity.api.rackspacecloud.com/v1.0/
 									account.</para>
 							</listitem>
 							<listitem>
-								<para>Hold the <literal>identity:default</literal> role</para>
+								<para>Hold the <literal>identity:default</literal> role, with the associated rights and
+									privileges.</para>
 							</listitem>
 							<listitem>
 								<para>Share the tenant information, group memberships, and endpoints
@@ -1317,12 +1318,12 @@ Host: identity.api.rackspacecloud.com/v1.0/
 								<para>New user accounts inherit </para>
 							</listitem>
 						</itemizedlist>
-						<para>The <literal>identity:default</literal> role only provides rights and
-							privileges to manage the a user's own account. For example, Account
-							users can update user information and passwords on their own accounts,
-							but they cannot update information on other accounts. An account user
-							can submit a List users request, but the response only returns
-							information about the account owner. </para>
+						<para>The <literal>identity:default</literal> role only provides rights and privileges to
+							manage the user's own account. For example, account users can update
+							user information and passwords on their own accounts, but they cannot
+							update information on other accounts. An account user can submit a List
+							users request, but the response only returns information about the
+							account owner. </para>
 						<para>Administrators can directly assign sub-users to a particular tenant so
 							that the users behave as if they are contained within that tenant
 						</para>
@@ -1331,14 +1332,14 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<tr>
 					<td>User Manager</td>
 					<td>identity:user-manage</td>
-					<td> The User manager is a customer-based user type designated as the
-						administrator for the &CLOUD; account along with the User administrator. A
-						User Administrator can designate a User Manager by updating a Sub-user
-						account to change the role from <literal>identity:default</literal> to
-							<literal>identity:user-manage</literal>the role for the role for an
-						Account user By default, the User-Manager has <literal>user-admin</literal>
-						role with the same access rights and privileges as the User
-						administrotor.</td>
+					<td><para>The User manager is a customer-based user type designated as the administrator for the &CLOUD;
+							account along with the User administrator. User and Service
+							administtrators can update an existing or new sub-user account to change
+							it to a User Manager account.  create a User Manger account by account
+							to change the role from <literal>identity:default</literal> to
+								<literal>identity:user-manage</literal>.</para>
+						<para>User Manager accounts hold the <literal>user-admin</literal> role by default, with the
+							same access rights and privileges as the User administrator.</para></td>
 				</tr>
 			</tbody>
 		</table>
@@ -1347,17 +1348,16 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			and password. Only administrative users can authenticate either with a combination of
 			their username and API key or with a combination of their tenant ID and API key.</para>
 			<note>
-				<para>When managing &amp;CIS; accounts for the User Adiminstrator or the Account user, keep the
-				following points in mind to prevent unexpected changes for any of the Account Users
-				associated with the User Administrator account.
-					<itemizedlist>
+				<para>When managing &amp;CIS; accounts for the User Adiminstrator, keep the following points in
+				mind to prevent unexpected changes to the sub-user accounts associated with the User
+				Administrator account. <itemizedlist>
 					<listitem>
 						<para> When a new account user is created, it inherits its parent's groups.
 						</para>
 					</listitem>
 					<listitem>
-						<para> When a parent is assigned to a new group, its account users inherit that
-							group. </para>
+						<para> When a parent is assigned to a new group, its account users inherit
+							that group. </para>
 					</listitem>
 					<listitem>
 						<para> When a parent is removed from a group, its account users are removed,
@@ -1366,14 +1366,15 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<listitem>
 						<para> When a service attempts to assign an account user to a group, that
 							attempt fails. A <errorcode>400</errorcode> error is returned, with the
-							following message: "Cannot add sub-users directly to a group, must assign
-							their parent user." To assign an account user to a group, assign its parent
-							to that group; the account user will inherit the new group assignment from
-							its parent. </para>
+							following message: "Cannot add sub-users directly to a group, must
+							assign their parent user." To assign an account user to a group, assign
+							its parent to that group; the account user will inherit the new group
+							assignment from its parent. </para>
 					</listitem>
 					<listitem>
-						<para>Administrators can directly assign Account users to a particular tenant so
-							that the users behave as if they are contained within that tenant.</para>
+						<para>Administrators can directly assign Account users to a particular
+							tenant so that the users behave as if they are contained within that
+							tenant.</para>
 					</listitem>
 				</itemizedlist></para>
 			</note> 
@@ -1650,10 +1651,11 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</section>
 		<section xml:id="RBAC_Role_Conflict-dle808">
 			<title>Resolving Conflicts Between RBAC Multiproduct (Global) vs. Custom (Product) Roles</title>
-			<para> The account owner can set roles for both multiproduct and custom (product-specific) scope, and it is important to
-				understand how any potential conflicts among these roles are resolved. When two roles appear to conflict, the
-				role that provides the more extensive permissions takes precedence. Therefore, admin roles take precedence
-				over observer roles, because admin roles provide more permissions. </para>
+			<para>The account owner can set roles for both multiproduct and custom (product-specific) scope,
+				and it is important to understand how any potential conflicts among these roles are
+				resolved. When two roles appear to conflict, the role that provides the more
+				extensive permissions takes precedence. Therefore, admin roles take precedence over
+				observer roles, because admin roles provide more permissions. </para>
 			<para>
 				The following table shows two examples of how potential conflicts between user roles in the Control Panel are resolved:
 			</para>
