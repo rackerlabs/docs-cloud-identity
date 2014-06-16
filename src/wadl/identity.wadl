@@ -11,7 +11,7 @@
     <!ENTITY % common  SYSTEM "../common/common.ent">
     %common;
 ]>
-<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
+<application xmlns="http://wadl.dev.java.net/2009/02"
     xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
     xmlns:vers="http://docs.openstack.org/common/api/v1.0"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
@@ -19,7 +19,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
-    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 
                         ../xsd/api.xsd
                         http://docs.openstack.org/common/api/v1.0 
@@ -38,7 +38,7 @@
 
         <!--Versions-->
 
-        <resource id="versions" type="#VersionList" path="//">
+        <resource id="versions" type="#VersionList" path="/">
             <method href="#listVersions"/>
             <resource id="version" path="v2.0/">
                 <method href="#getVersionInfo"/>
@@ -188,7 +188,7 @@
                     <xsdxt:code href="../common/samples/versions.xml"/>
                 </wadl:doc>
             </representation>
-        </response> &commonFaults; &getFaults;</method>
+        </response> &commonFaults;</method>
 
     <method name="GET" id="getVersionInfo">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get Version Details"> 
@@ -210,18 +210,16 @@
                     <xsdxt:code href="../common/samples/versions.xml"/>
                 </wadl:doc>
             </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response> &commonFaults;</method>
 
     <!-- Extensions operations -->
 
     <method name="GET" id="listExtensions">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List Extensions">
-            <para class="shortdesc">Lists available extensions.</para>
-            <para>The Rackspace Cloud Idenity Service deploys API
-                extensions to add user and adminnistrative features to the core OpenStack Keystone
-                v2.0 API. You can use the Extensions API operations to query the API service
-                endpoint for information about the extensions available for the specified
-                service.</para>
+            <para role="shortdesc">Lists available extensions.</para>
+            <para>Applications can programmatically determine which extensions are 
+                available by issuing a GET on the <literal>/extensions</literal> URI.
+                </para>
         </wadl:doc>
         <response status="200 203">
             <param name="next" style="plain" type="xsd:anyURI"
@@ -248,7 +246,7 @@
                     <xsdxt:code href="../common/samples/extensions.xml"/>
                 </wadl:doc>
             </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response> &commonFaults;</method>
 
     <method name="GET" id="getExtension">
         <doc title="Get Extension Details">
@@ -272,7 +270,7 @@
                     <xsdxt:code href="../common/samples/extension.xml"/>
                 </wadl:doc>
             </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response> &commonFaults;</method>
   
       <!-- Token Operations -->
     
@@ -286,13 +284,16 @@
                 <para>The &CIS; is a ReSTful web service that provides authentication services  
                     for the &CLOUD;. To gain access, users and administrators can use this POST operation 
                     to obtain an authentication token from the &CIS;, or generate a new token after a previously 
-                    issued token has expired. In subsequent requests to &CIS; or other services, 
-                    you include the authentication token in the HTTP x-header parameter defined as 
-                    <literal>X-Auth-Token</literal> to verify your identity and confirm access rights and privileges.
+                    issued token has expired.</para>
+                <para>
+                    In subsequent requests to &CIS; or other services, 
+                    you include the authentication token in the HTTP x-header parameter, defined as 
+                    <literal>X-Auth-Token</literal> to verify your identity and permission to perform the 
+                    requested operation.
                 </para>
                 <para>
                 Submit the POST token authentication request to the &CIS; service endpoint URL with v2.0/tokens 
-                supplied as the path and a payload of credentials in the body. Credentials can include any of the following 
+                supplied as the path and a payload of credentials in the body. User administrators Credentials can include any of the following 
                 types:
                 </para>
                     
@@ -323,7 +324,7 @@
                     <para>
                         You can use whichever valid credentials you prefer. 
                         Unless you specify a tenant, the response from the Identity service is not 
-                    affected by the type of credentials that you use.</para>
+                        affected by the type of credentials that you use.</para>
                         <important>
                             <para>
                             If you specify a tenant, the <code>Service Catalog</code> returned includes only
@@ -343,12 +344,13 @@
                         optional, but should not be specified
                         together. If both attributes are specified,
                         the server responds with a <code>400</code>
-                        <code>Bad Request</code>.</para></wadl:doc>
+                        <code>Bad Request</code>.</para>
+                </wadl:doc>
             </param>
             <param name="tenantId" style="plain" required="false"
                 type="capi:UUID">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    ><para>The tenant ID. Both the
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>The tenant ID. Both the
                         <code>tenantId</code> and
                         <code>tenantName</code> attributes are
                         optional, but should not be specified
@@ -396,7 +398,7 @@
                         object.</para></wadl:doc>
             </param>
             <representation mediaType="application/xml" element="identity:auth">
-                <doc>  
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">  
                 <xsdxt:sample title="Authenticate (with Username and API Key Credentials) Request: XML">
                         <xsdxt:code href="../common/samples/auth_with_apikey.xml"/>
                     </xsdxt:sample>
@@ -415,7 +417,7 @@
                     <xsdxt:sample title="Authenticate (with Tenant Name and Token Credentials) Request: XML">
                         <xsdxt:code href="../common/samples/auth_with_token_tenantName.xml"/>
                     </xsdxt:sample>
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
                 <doc>
@@ -600,12 +602,12 @@
         </method>      
 
     <method name="DELETE" id="revokeToken">
-        <doc xml:lang="EN" title="Revoke Token">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Revoke token.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">This call revokes a token, returning a
+        <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Revoke Token">
+            <para role="shortdesc">Revoke token.</para>
+            <para>This call revokes a token, returning a
                     <code>204</code>. message if successful. If the token and <code>404</code> if
-                token in URI is invalid. </p>
-        </doc>
+                token in URI is invalid. </para>
+        </wadl:doc>
 
         <!-- no request or response body-->
 
