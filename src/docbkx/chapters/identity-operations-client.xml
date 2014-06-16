@@ -33,11 +33,11 @@
 			<!-- Get all API versions -->
 			
 			<wadl:resource href="../../wadl/identity.wadl#versions">
-				<wadl:method href="getVersions"/>
+				<wadl:method href="#listVersions"/>
 		
 			<!-- Get a specific API version -->
 					<wadl:resource href="../../wadl/identity.wadl#version">
-						<wadl:method href="getVersionInfo"/>
+						<wadl:method href="#getVersionInfo"/>
 					</wadl:resource>
 			</wadl:resource>
 		</wadl:resources>

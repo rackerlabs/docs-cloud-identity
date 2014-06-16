@@ -39,8 +39,7 @@
         <!--Versions-->
 
         <resource id="versions" type="#VersionList" path="//">
-            <method href="#getVersions"/>
-
+            <method href="#listVersions"/>
             <resource id="version" path="v2.0/">
                 <method href="#getVersionInfo"/>
             </resource>
@@ -106,62 +105,52 @@
     <!--***************************************************-->
     <!--               Resource Types                          -->
     <!--*******************************************************-->
-
     <resource_type id="VersionList">
-        <doc xml:lang="EN" title="List API contract versions">
-            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists information about the API
-                versions supported by the Identity service at the specified API service
-                endpoint.</p>
-        </doc>
-        <method href="#getVersions"/>
-
+        <method href="#listVersions"/>
+        
     </resource_type>
-
+    
     <resource_type id="ExtensionList">
-        <doc xml:lang="EN" title="List Extensions">
-            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists supported extensions.</p>
-        </doc>
         <method href="#listExtensions"/>
     </resource_type>
-
+   
     <!--*******************************************************-->
     <!--               All Methods                             -->
     <!--*******************************************************-->
 
     <!-- Version operations -->
 
-    <method name="GET" id="getVersions">
-        <wadl:doc title="List versions">
-            <para xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists information about the
-                API versions supported by the Identity service at the specified API service
+    <method name="GET" id="listVersions">
+        <wadl:doc title="List versions" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">>Lists information about the API versions supported by the Identity service at the specified API service
                 endpoint.</para>
-            <para xmlns="http://www.w3.org/1999/xhtml"> Use the GET version operation to discover
+            <para>Use the GET version operation to discover
                 API version information for the Identity service, links to documentation (PDF, HTML,
                 WADL), and supported media types. You can complete this operation from the browser
                 by entering the URL for the Identity API service endpoint: <a
-                    href="https://identity.api.rackspacecloud.com/"/> for example. </para>
+                    href="https://identity.api.rackspacecloud.com/"/> for example.</para>
         </wadl:doc>
         <response status="200">
             <param name="Versions" style="plain" type="vers:VersionChoiceList" required="true">
-                <doc>
-                    <p xmlns="http://www.w3.org/1999/xhtml">An array that returns the list of API
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>An array that returns the list of API
                         versions supported by the Rackspace Cloud environment at the specified
-                        endpoint.</p>
-                </doc>
+                        endpoint.</para>
+                </wadl:doc>
             </param>
             <param name="version" style="plain" type="vers:VersionChoice" required="true">
-                <doc>
-                    <p xmlns="http://www.w3.org/1999/xhtml"> The <code>version</code> parameter is
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>The <code>version</code> parameter is
                         an array that provides the API version number and detailed meta information
                         regarding the status of the current API version. The description includes an
                         id for the API version, links to both human readable and a machine
-                        processable description of the API service. </p>
-                </doc>
+                        processable description of the API service. </para>
+                </wadl:doc>
             </param>
 
             <param name="status" style="plain" type="vers:VersionStatus" required="true">
-                <doc>
-                    <p xmlns="http://www.w3.org/1999/xhtml"> The <code>status</code> parameter
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>The <code>status</code> parameter
                         describes the current operational state of the given service version. Status
                         can be any of the following values: <itemizedlist spacing="compact">
                             <listitem><strong>ALPHA</strong> status describes a new service API. The
@@ -186,26 +175,26 @@
                                 version. Use the latest, current version of the API
                                 instead.</listitem>
                         </itemizedlist>
-                    </p>
-                </doc>
+                    </para>
+                </wadl:doc>
             </param>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/versions.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/xml">
-                <doc xml:lang="EN">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/versions.xml"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults;</method>
 
     <method name="GET" id="getVersionInfo">
-        <doc> title="Get Version Details"> <para xmlns="http://www.w3.org/1999/xhtml"
-                role="shortdesc">Gets detailed information about the specified version of the
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get Version Details"> 
+            <para role="shortdesc">Gets detailed information about the specified version of the
                 Identity Service API.</para>
-        </doc>
+        </wadl:doc>
         <response status="200 203">
             <param name="location" style="plain" type="xsd:anyURI" required="true"
                 path="/capi:version/atom:link[@rel='self']/@href">
@@ -226,25 +215,27 @@
     <!-- Extensions operations -->
 
     <method name="GET" id="listExtensions">
-        <doc title="List Extensions">
-            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Lists available extensions.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">The Rackspace Cloud Idenity Service deploys API
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List Extensions">
+            <para class="shortdesc">Lists available extensions.</para>
+            <para>The Rackspace Cloud Idenity Service deploys API
                 extensions to add user and adminnistrative features to the core OpenStack Keystone
                 v2.0 API. You can use the Extensions API operations to query the API service
                 endpoint for information about the extensions available for the specified
-                service.</p>
-        </doc>
+                service.</para>
+        </wadl:doc>
         <response status="200 203">
             <param name="next" style="plain" type="xsd:anyURI"
                 path="/capi:extensions/atom:link[@rel='next']/@href">
-                <doc>
-                    <p xmlns="http://www.w3.org/1999/xhtml">Moves to the next item in the list.</p>
-                </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>Moves to the next item in the list.</para>
+                </wadl:doc>
                 <link resource_type="#ExtensionList" rel="next"/>
             </param>
             <param name="previous" style="plain" type="xsd:anyURI"
                 path="/capi:extensions/atom:link[@rel='previous']/@href">
-                <doc>Moves to the previous item in the list.</doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>Moves to the previous item in the list.</para>
+                </wadl:doc>
                 <link resource_type="#ExtensionList" rel="previous"/>
             </param>
             <representation mediaType="application/json">
