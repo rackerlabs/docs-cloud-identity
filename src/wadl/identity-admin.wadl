@@ -21,6 +21,7 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
     xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+    xmlns:domain="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:linkend="http://www.w3.org/1999/linkend"
@@ -34,7 +35,6 @@
     <grammars>
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
-        <include href="../common/xsd/RAX-AUTH.xsd"/>
     </grammars>
 
     <!--*******************************************************-->
