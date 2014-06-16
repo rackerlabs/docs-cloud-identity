@@ -82,7 +82,7 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
-		<para> When these requests are issued by an account user, they act
+		<para>When these requests are issued by an account user, they act
 			only upon that account user. You can learn more about
 			account users, also called sub-accounts, at <olink
 				targetdoc="Identity-Developer-Guide"

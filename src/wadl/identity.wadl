@@ -12,12 +12,18 @@
     %common;
 ]>
 <application xmlns="http://wadl.dev.java.net/2009/02"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:linkend="http://www.w3.org/1999/linkend"
+    xmlns:xref="http://www.w3.org/1999/xref"
     xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
+    xmlns:HP-IDM="http://docs.openstack.org/identity/api/ext/HP-IDM/v1.0"
     xmlns:vers="http://docs.openstack.org/common/api/v1.0"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     xmlns:capi="http://docs.openstack.org/common/api/v1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 
@@ -38,9 +44,9 @@
 
         <!--Versions-->
 
-        <resource id="versions" type="#VersionList" path="/">
+        <resource id="versions" path="/">
             <method href="#listVersions"/>
-            <resource id="version" path="v2.0/">
+            <resource id="version_get" path="v2.0/">
                 <method href="#getVersionInfo"/>
             </resource>
         </resource>
@@ -121,14 +127,14 @@
     <!-- Version operations -->
 
     <method name="GET" id="listVersions">
-        <wadl:doc title="List versions" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">>Lists information about the API versions supported by the Identity service at the specified API service
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List versions">
+            <para role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service
                 endpoint.</para>
             <para>Use the GET version operation to discover
                 API version information for the Identity service, links to documentation (PDF, HTML,
                 WADL), and supported media types. You can complete this operation from the browser
-                by entering the URL for the Identity API service endpoint: <a
-                    href="https://identity.api.rackspacecloud.com/"/> for example.</para>
+                by entering the URL for the Identity API service endpoint: <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">https://identity.api.rackspacecloud.com</link> 
+                for example.</para>
         </wadl:doc>
         <response status="200">
             <param name="Versions" style="plain" type="vers:VersionChoiceList" required="true">

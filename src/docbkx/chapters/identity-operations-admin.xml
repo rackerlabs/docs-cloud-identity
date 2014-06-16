@@ -85,8 +85,8 @@
 			</wadl:resource>
 			
 			<!-- Get a specific API version -->
-			<wadl:resource href="../../wadl/identity.wadl#versions">
-				<wadl:method href="#getVersion"/>
+			<wadl:resource href="../../wadl/identity.wadl#version">
+				<wadl:method href="#getVersionInfo"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>

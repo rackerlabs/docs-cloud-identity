@@ -20,6 +20,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:linkend="http://www.w3.org/1999/linkend"
+    xmlns:xref="http://www.w3.org/1999/xref"
+    xmlns:HP-IDM="http://docs.openstack.org/identity/api/ext/HP-IDM/v1.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
     xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../xsd/api.xsd
 		http://docs.openstack.org/common/api/v1.0 ../xsd/api-common.xsd
 		">
@@ -72,7 +79,7 @@
                 <resource id="name" path="{name}">
                     <method href="#getUserByName"/>
                 </resource>
-                <resource id="email">
+                <resource id="email" path="/">
                     <param name="email" style="query" type="xsd:string"
                         required="true">
                         <doc xml:lang="EN">The email address associated with an account.</doc>
@@ -578,7 +585,7 @@
         </wadl:doc>
         <request>
             <param name="name" style="query" type="xsd:string" required="true">
-                <doc>A user's name.</doc>
+                <doc>The name associated with the user account you want to look up.</doc>
             </param>
         </request>
         <response status="200 203">
