@@ -7,14 +7,14 @@
 <chapter 
 	xmlns="http://docbook.org/ns/docbook" 
 	xmlns:xi="http://www.w3.org/2001/XInclude"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:wadl="http://wadl.dev.java.net/2009/02"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	xml:id="API_Operations" version="5.0" role="api-reference">
+	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" 
+	xmlns:raxm="http://docs.rackspace.com/api/metadata"
+	xml:id="API_Operations" role="api-reference">
+	
 	<title>API Operations for Client Developers</title>
 	<para>
 		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.
-		If an extension is required, it is included in Rackspace's implementation of the Keystone Identity Service; 
+		If an extension is required, it is included in The Rackspace implementation of the Keystone Identity Service; 
 		issuing the calls as described here uses the API extensions as needed.
 	</para>
 	
@@ -22,47 +22,43 @@
 	
 	<section xml:id="Version_operations">
 		<title>API Contract Version</title>
-		<para> The Rackspace Cloud can support multiple versions of the service API contract. This
+		<para>The Rackspace Cloud can support multiple versions of the service API contract. This
 			architecture allows service providers to develop, test, and deploy new API versions
 			without disrupting service for customers that are using an existing version. You can use
 			the Version operations to query the API service endpoint for information about the API
 			version support in your cloud environment. </para>
 		
-		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			
-			<!-- Get all API versions -->
-			
-			<wadl:resource href="../../wadl/identity.wadl#versions">
-				<wadl:method href="#listVersions"/>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">			
+			<wadl:resource href="../../wadl/identity-admin.wadl#versions">
+				<wadl:method href="#getVersions-v2"/>
+			</wadl:resource>
 		
 			<!-- Get a specific API version -->
-					<wadl:resource href="../../wadl/identity.wadl#version">
-						<wadl:method href="#getVersionInfo"/>
+					<wadl:resource href="../../wadl/identity-admin.wadl#version">
+						<wadl:method href="#getVersionInfo-v2.0"/>
 					</wadl:resource>
-			</wadl:resource>
-		</wadl:resources>
+			</wadl:resources>
 	</section>
 	
 	<!--Extensions-->
 	
 	<section xml:id="Extensions_operations">
 		<title>Extensions</title>
-		<para xml:id="Extensions_ovw">
-			The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
+		<para xml:id="Extensions_ovw">The Rackspace Cloud Identity Service deploys API extensions to add user and administrative features to 
 			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
 			endpoint for information about the extensions available for the specified service.</para>
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			
 			<!-- List extensions -->
-			<wadl:resource href="../../wadl/identity.wadl#extensions">
-				<wadl:method href="listExtensions"/>
+			<wadl:resource href="../../wadl/identity-admin.wadl#extensions">
+				<wadl:method href="#listExtensions-v2"/>
 			</wadl:resource>
 			
 			<!-- Get extensions -->	
 			
-			<wadl:resource href="../../wadl/identity.wadl#extension">
-				<wadl:method href="getExtension"/>
+			<wadl:resource href="../../wadl/identity-admin.wadl#extension">
+				<wadl:method href="getExtension-v2.0"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -82,8 +78,8 @@
 					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
 			</para>
 		</note>
-		<para>When these requests are issued by an account user, they act
-			only upon that account user. You can learn more about
+		<para>
+			When these requests are issued by an account user, they act only upon that account user. You can learn more about
 			account users, also called sub-accounts, at <olink
 				targetdoc="Identity-Developer-Guide"
 				targetptr="Account-Users-d1e910">“Account

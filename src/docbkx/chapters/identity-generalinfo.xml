@@ -8,16 +8,26 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Overview-Keystone-API-d1e62">
-         <title>General API Information</title>
-        <para>The authentication service allows clients to obtain
+ 
+<title>General API Information</title>
+    
+	<para>
+		The authentication service allows clients to obtain
 		tokens that can be used to access cloud services such as those
 		provided by Rackspace and OpenStack.</para>
-		<para>The authentication service API is implemented using a ReSTful
+	
+	<para>The authentication service API is implemented using a ReSTful
 			web service interface. All requests to authenticate and
 			operate against the authentication service should be 
 			performed using SSL over HTTP (HTTPS) on TCP port
 			443.</para>
-	<xi:include href="section_identity-concepts.xml"/>
+	
+	<!--Note the Admin concepts section contains a workflow diagram not included in Dev guide.  
+		That's why the xi:include content is conditional.-->
+	
+	<xi:include condition="admin" href="identity-concepts-admin.xml"/>
+	<xi:include condition="client" href="section_identity-concepts.xml"/>
+	
 	<section xml:id="Request_Response_Types-d1e149">
 		<title>Request/Response Types</title>
 		<para>The &CIS; v2 API supports both the JSON and XML data serialization request and response
@@ -118,7 +128,7 @@
 		<para> The sample request and response in this section illustrate a
 			general case. In your authentication request, use your own
 			credentials rather than the sample values shown here for
-				<code>username</code>, <code>password</code>. and
+				<code>user name</code>, <code>password</code>. and
 				<code>tenantId</code>.  When you authenticate
 			successfully, the response to your authentication request
 			will include a catalog of the services to which you have
@@ -142,7 +152,7 @@
 		<calloutlist>
 			<callout arearefs="request.json.user">
 				<para> 
-					This is the username you use to login to the Rackspace
+					This is the user name you use to login to the Rackspace
 					Cloud Control Panel at <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com/</link>.</para>
 				<para> </para>
 			</callout>
@@ -210,7 +220,7 @@
 				</para>
 				<para>The token's <code>expires</code> attribute denotes the time after which the token will
 					automatically become invalid. This attribute predicts the maximum lifespan for
-					token validitiy but does not guarantee the token expiration time because a token
+					token validity but does not guarantee the token expiration time because a token
 					can be revoked manually before it expires.  Clients are encouraged to cache a
 					token until it expires.</para>
 				<para> </para>
@@ -241,7 +251,7 @@
 					compute services (Cloud Servers OpenStack and
 					Cloud Servers) and two object storage services
 					(Cloud Files Content Distribution Network (CDN),
-					and Cloud Files), as well as one database service, one DNS service, one loadbalancing service,
+					and Cloud Files), as well as one database service, one DNS service, one load balancing service,
 					and one monitoring service.
 					The catalog listing for each
 					service provides at least one endpoint URL for
@@ -253,7 +263,7 @@
 			<callout arearefs="response.xml.servicetype">
 				<para> 
 					The service type attribute identifies services that perform similar functions, whatever those services might be named. 
-					In this example, the services named cloudServers and cloudServersOpenstack are both identified as <code>type="compute"</code>, 
+					In this example, the services named <literal>cloudServers</literal> and <literal>cloudServersOpenstack</literal> are both identified as <code>type="compute"</code>, 
 					identifying them as compute services even though the word "compute" does not appear in their names.
 				</para>
 				<important>
@@ -273,7 +283,7 @@
 				<important>
 					<para>
 						When you parse an authentication response programmatically,
-						use <code>service type</code> rather than <code>ervice name</code> as 
+						use <code>service type</code> rather than <code>service name</code> as 
 						the basis for determining whether a user has access to
 						a particular kind of service. Service type is stable
 						across all releases; new service types can be added, 
@@ -282,7 +292,7 @@
 						<code>type="compute"</code> identifies all the
 						available compute services, one of which is named
 						cloudServers and one of which is named
-						cloudServersOpenStack. New compute service names may be added 
+						<literal>cloudServersOpenStack</literal>. New compute service names may be added 
 						in future releases; whatever the compute services are
 						named, you can always
 						recognize them by parsing for
@@ -346,7 +356,7 @@
 					compute services (Cloud Servers OpenStack and
 					Cloud Servers) and two object storage services
 					(Cloud Files Content Distribution Network (CDN),
-					and Cloud Files), as well as one database service, one DNS service, one loadbalancing service,
+					and Cloud Files), as well as one database service, one DNS service, one load balancing service,
 					and one monitoring service.
 					The catalog listing for each
 					service provides at least one endpoint URL for
@@ -594,9 +604,7 @@
 								<emphasis role="italic">Cloud Files, a
 								Rackspace service that supports a
 								Content Distribution Network (CDN),
-								is documented at <link
-								xlink:href="http://docs.rackspace.com/api/"
-								>http://docs.rackspace.com/api/</link>.</emphasis>
+								is documented at <link xlink:href="http://docs.rackspace.com/api/">http://docs.rackspace.com/api/</link>.</emphasis>
 							</para>
 						</td>
 					</tr>
@@ -604,7 +612,7 @@
 			</table>
 		</section>
 		<section xml:id="Sample_Catalog_Workflow-d1e266">
-			<title>Suggested Workflow for Processing a Service Catalog Response</title>
+			<title>Suggested Work flow for Processing a Service Catalog Response</title>
 			<para> When your client issues a successful authentication request,
 				the Cloud Identity Service responds with a catalog
 				showing the services available to that client, with
@@ -615,7 +623,7 @@
 				should use the contents of its service catalog. The
 				first step may be to identify a service to which your
 				client should be connected. Here is one possible
-				workflow for processing the service catalog response
+				work flow for processing the service catalog response
 				to identify available services and their endpoints: </para>
 			<orderedlist>
 			<listitem>
@@ -736,17 +744,17 @@
 				<parameter>marker</parameter> parameters are optional.
 			If the client requests a <parameter>limit</parameter>
 			beyond that which is supported by the deployment, an
-			overLimit (<errorcode>413</errorcode>) fault may be
+			<literal>overLimit</literal> (<errorcode>413</errorcode>) fault may be
 			thrown. A <parameter>marker</parameter> with an invalid ID
-			will return an itemNotFound (<errorcode>404</errorcode>)
+			will return an <literal>itemNotFound</literal> (<errorcode>404</errorcode>)
 			fault. </para>
 		<note>
-			<para> Paginated collections never return itemNotFound
-					(<errorcode>404</errorcode>) faults when the
+			<para>
+				Paginated collections never return <code>itemNotFound</code> (<errorcode>404</errorcode>) faults when the
 				collection is empty; clients should be prepared to
-				handle an empty collection. </para>
+				handle an empty collection.</para>
 		</note>
-		<para> Paginated collections contain "next" and "previous"
+		<para>Paginated collections contain "next" and "previous"
 			Atom links. The first page in the list will not contain a
 			"previous" link; similarly, the last page in the list will
 			not contain a "next" link. 
@@ -827,12 +835,12 @@
 	</section>
 	<section xml:id="Versions-d1e472">
 		<title>Contract versions</title>
-		<para>The contracct version denotes the data model and behavior that the API supports.
-			The identity API uses a URI versioning scheme.</para>
+		<para>The contract version denotes the data model and behavior that the API supports.
+			The identity API uses a URI version scheme.</para>
 		<important>
-			<para>Rackspace's implementation of the OpenStack Keystone Identity
+			<para>The Rackspace implementation of the OpenStack Keystone Identity
 				Service v2.0 does not
-				yet support MIME-type versioning. </para>
+				yet support MIME-type version. </para>
 		</important>
 		<para>
 			The first element of
@@ -848,17 +856,17 @@
 			Rackspace will work with developers and partners to ensure that there is adequate time to
 			migrate to the new version before deprecated versions are discontinued. </para>
 		<para security="writeronly">
-			The authentication service API uses two versioning schemes, one based on the URI 
+			The authentication service API uses two version schemes, one based on the URI 
 			and the other based on MIME type.
 			<annotation>
-				<remark>MIME-type versioning is not yet implemented in v2.0;
+				<remark>MIME-type version support has not been implemented in v2.0;
 					meanwhile, using URI-only text borrowed from Auth
 					1.1. </remark>
 			</annotation>
 			<itemizedlist>
 				<listitem>
 					<para>			
-						In the URI versioning scheme, the first
+						In the URI version scheme, the first
 						element of the path contains the target version
 						identifier. For example, in <code>https://identity.api.openstack.org/
 						v2.0/&hellip;</code>, the target version is identified as <code>v2.0</code>. 
@@ -866,7 +874,7 @@
 				</listitem>	
 				<listitem>
 					<para>
-						The MIME-type versioning scheme uses
+						The MIME-type version scheme uses
 						HTTP content negotiation where the <code>Accept</code>
 						or <code>Content-Type</code> header contains a MIME
 						type that includes the version ID as a parameter.
@@ -883,7 +891,7 @@
 			URI, the URI takes precedence.
 		</para>
 		<example security="writeronly">
-			<title>Request with MIME-Type Versioning</title>
+			<title>Request with MIME-Type version scheme</title>
 			<literallayout class="monospaced">
 GET /tenants HTTP/1.1
 Host: identity.api.rackspacecloud.com
@@ -892,7 +900,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
 		</example>
 		<example>
-			<title>Request with URI Versioning</title>
+			<title>Request with URI version scheme</title>
 			<literallayout class="monospaced">
 GET /v2.0/tenants HTTP/1.1
 Host: identity.api.rackspacecloud.com
@@ -1061,7 +1069,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</itemizedlist>Every service provider can choose API extensions to the core API based on
 			service requirements. Applications can programmiatically determine what extensions are
 			available by submitting a GET extensions URI query for the service endpoint URI. Note
-			that this is a versioned request; that is, an extension available in one API version may
+			that this is a version-specific request; that is, an extension available in one API version may
 			not be available in another, so a response is only applicable to a specific version. </para>
 		<para>Each extension has two unique identifiers: a <property>namespace</property> and an
 				<property>alias</property>. You can use these identifiers to associate an extension
@@ -1080,7 +1088,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		</example>
 		<para> Extensions may also be queried individually by their unique alias. This provides the
 			simplest method of checking whether an extension is available. An unavailable extension
-			will issue an itemNotFound (<errorcode>404</errorcode>) response. </para>
+			will issue an <code>itemNotFound</code> (<errorcode>404</errorcode>) response. </para>
 		<informaltable rules="all">
 			<thead>
 				<tr>
@@ -1217,7 +1225,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<title>Identity user types and default roles</title>
 		
 		<para>In the &CLOUD;, users are represented as accounts created for specific individuals.
-			Typically, a user has a password and email asspcoated with the account. When a user is
+			Typically, a user has a password and email associated with the account. When a user is
 			created, the &CIS; automatically assigns a user type and a default role to the account,
 			based on the default &CIS; system configuration. The role defines access rights and
 			permissions for the &CIS; and other &CLOUD; services as shown <link
@@ -1274,7 +1282,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</tr>
 				<tr>
 					<td>
-						<para>User Adminisrator</para>
+						<para>User Administrator</para>
 						<para>(Account owner)</para>
 					</td>
 					<td>
@@ -1285,7 +1293,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 							user, the User administrator.</para>
 						<para>The &CIS; automatically assigns the <literal>identity:user-admin</literal> role to the
 							account, giving the User Administrator full administrative privileges to
-							manage the customer account. Exactly one admimistrative user exists for
+							manage the customer account. Exactly one administrative user exists for
 							each account. The User Administrator account user is also referred to
 							as the Account Owner.</para>
 					</td>
@@ -1334,7 +1342,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<td>identity:user-manage</td>
 					<td><para>The User manager is a customer-based user type designated as the administrator for the &CLOUD;
 							account along with the User administrator. User and Service
-							administtrators can update an existing or new sub-user account to change
+							administrators can update an existing or new sub-user account to change
 							it to a User Manager account.  create a User Manger account by account
 							to change the role from <literal>identity:default</literal> to
 								<literal>identity:user-manage</literal>.</para>
@@ -1344,11 +1352,11 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</tbody>
 		</table>
 		<para><?oxy_comment_start author="marg7175" timestamp="20140612T001831-0500" comment="Does the section about valid authentication credentials require update?"?>All<?oxy_comment_end?>
-			users, including account users, can authenticate with a combination of their username
+			users, including account users, can authenticate with a combination of their user name
 			and password. Only administrative users can authenticate either with a combination of
-			their username and API key or with a combination of their tenant ID and API key.</para>
+			their user name and API key or with a combination of their tenant ID and API key.</para>
 			<note>
-				<para>When managing &amp;CIS; accounts for the User Adiminstrator, keep the following points in
+				<para>When managing &amp;CIS; accounts for the User Administrator, keep the following points in
 				mind to prevent unexpected changes to the sub-user accounts associated with the User
 				Administrator account. <itemizedlist>
 					<listitem>
@@ -1386,7 +1394,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			Since tokens have an expiration time of 24 hours, you should never hit this limit.
 		</para>
 		<para>
-			The limit is placed on either the request's IP address, the username, or the token 
+			The limit is placed on either the request's IP address, the user name, or the token 
 			in the <code>X-Auth-Token</code> header, depending on the data available in the call's request.
 			If your request is rejected because you have exceeded your rate limit, you will receive a <errorcode>413</errorcode> <code>overLimit</code> error. 
 			While you can retry after a few seconds, 
@@ -1501,7 +1509,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	<section xml:id="Role_Based_Access_Control-d1e808">
 		<title>Role Based Access Control</title>
 		<para>The Rackspace Cloud Identity service provides Role Based Access Control (RBAC) so that
-			customers can restrict access to Cloud services and capabilities to authroized users
+			customers can restrict access to Cloud services and capabilities to authorized users
 			only. RBAC is an opt-in feature available to all Rackspace Cloud customers. The account
 			owner user (<literal>identity:user-admin</literal>) can activate RBAC by adding users to
 			the account and assigning roles to users via the API, the Cloud Control Panel, or by

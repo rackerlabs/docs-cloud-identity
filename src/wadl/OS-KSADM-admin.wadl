@@ -266,9 +266,10 @@ http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.
     <method name="GET" id="listUsers">
         <doc xml:lang="EN" title="List Users">
             <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">List users.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users. The list includes identifying
-                information about each user. Identifying information includes the user's email account, username, user ID,
-                and status. </p>
+            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users with associated account information for 
+                each user.
+                is returned for each account: includes the user's email account, username, user ID,
+                and status.</p>
             <p xmlns="http://www.w3.org/1999/xhtml" security="internal"> To find the user with the authority to modify account permissions, refer
                 to <a xmlns="http://www.w3.org/1999/xhtml"
                     href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html"

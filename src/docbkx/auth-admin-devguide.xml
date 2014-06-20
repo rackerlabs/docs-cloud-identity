@@ -9,7 +9,7 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:xi="http://www.w3.org/2001/XInclude" 
 	xmlns:svg="http://www.w3.org/2000/svg"
-	xmlns:wadl="http://wadl.dev.java.net/2009/02"
+	xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" xml:id="Identity-Admin-Developer-Guide">
 	<title>Cloud Identity Admin Developer Guide</title>
 	<titleabbrev>Cloud Identity Admininistrator Guide</titleabbrev>
@@ -65,10 +65,10 @@
 						</listitem>
 						<listitem>
 							<para>Revised <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Role_Based_Access_Control-d1e808"
-									>“Role-based access control”</olink> sections to consolidate
-								overview and role descriptions, and add cross-references to Knowledge
-								Center articles.</para>
+									targetptr="Role_Based_Access_Control-d1e808">“Role-based access
+									control”</olink> sections to consolidate overview and role
+								descriptions, and add cross-references to Knowledge Center articles.
+								</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -428,9 +428,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_"></olink>
-							</para>
+							<para> Updated xref links to olinks in <olink targetdoc="Identity-Developer-Guide"
+									targetptr="User_Calls">“Users”</olink>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -487,28 +486,29 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <xref linkend="Policy_Calls"
-								/>. </para>
-						</listitem>
-						<listitem>
-							<para> Added <xref
-								linkend="Service_API_Calls"/>.
+							<para> Added <xref linkend="Policy_Calls"/>.<olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Policy_Calls">“Policy operations”</olink>
 							</para>
 						</listitem>
 						<listitem>
-							<para> In <xref linkend="User_Calls"/>,
-								added resetting API key credentials,
-								listing accessible domains, and
+							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Service_API_Calls"
+									>“Service APIs”</olink></para>
+						</listitem>
+						<listitem>
+							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="User_Calls">“User operations”</olink> to include the following operations: 
+								resetting API key credentials, listing accessible domains, and
 								listing domain endpoints. </para>
 						</listitem>
 						<listitem>
-							<para> In <xref linkend="Domain_Calls"/>,
+							<para> Add List domains operation to <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="Domain_Calls">“Domains”</olink>, add
 								added getting a list of domains.
 							</para>
 						</listitem>
 						<listitem>
-							<para> In <xref linkend="Token_Calls"/>,
-								added authentication as a Racker.
+							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="Token_Calls">“Token operations”</olink> to add authentication as a Racker example.
 							</para>
 						</listitem>
 					</itemizedlist>

@@ -7,15 +7,13 @@
     xml:id="Endpoints-d1e180">
     <title>Authentication Endpoints</title>
     <para>You can use the Rackspace Cloud Identity authentication endpoints from version 1.1 or
-        version 2.0. The legacy v1.1 API endpoint only provides authentication services, but you can
-        use tokens from version 1.1 in version 2.0 API calls.</para>
+        version 2.0. The legacy v1.1 API endpoint only supports  authentication services, but you
+        can use tokens from version 1.1 in version 2.0 API calls.</para>
     <important>
         <para>
             You can use either UK or US endpoints, regardless of where your account was created.
         </para>
     </important>
-    <para> Rackspace recommends that you authenticate at one of the following Cloud Identity
-        endpoints</para>
     <table rules="all">
         <caption>Authentication Endpoints</caption>
         <col width="13%"/>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section [
-<!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
-<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
-<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
-
+<!-- Common entities for Identity Service source files -->
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
 ]>
 <!-- if role="api-reference" on this chapter, generate table of all operations here -->
 <chapter 
@@ -13,27 +12,25 @@
 	xmlns:wadl="http://wadl.dev.java.net/2009/02"
 	xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Service Developers</title>
-	<para>The operations described in this chapter allow service
-		developers to get and validate access tokens and to manage
-		users, tenants, roles, and service endpoints. </para>
-	<para>Most calls to the Admin API require authentication. Two kinds
-		of calls are available without authentication: 
-		<itemizedlist spacing="compact">
-			<listitem>
-				<para>
-					calls to discover the service, such as obtaining version info, the WADL contract, and the API Developer Guide
-				 </para>
-			</listitem>
-			<listitem>
-				<para>
-					calls to authenticate and get a token</para>
-			</listitem>
-		</itemizedlist>
-		</para>
-	<para> Authentication is performed by passing a valid token in the
-			<code>X-Auth-Token</code> header of the client's request to the identity service. 
-		If the identity service verifies that the token has (or belongs to a
-		user that has) the <code>Admin</code> role, then administrator-level functions can be performed. </para>
+	<para>Service developers can use the operations described in this chapter to get and validate
+		access tokens and to manage users, tenants, roles, and service endpoints.</para>
+	<para>Use the Versions and Extensions operations to get current information about &CIS; API
+		contract and available extensions. These operations do not require any
+		authentication.</para>
+	<para>All other administrative operations require an authentication token with administrator
+		privileges. You can get an authentication token by submitting an authentication request with
+		&CLOUD; Administrator account credentials. Administrator accounts have either the
+			<literal>identity:admin</literal> or <literal>identity:admin-user</literal> role.</para>
+	
+	<para>To complete administrative operations,  include the authentication token in the
+			<code>X-Auth-Token</code> header of the client  request to the Identity service. The
+		operation runs if the identity service verifies that the token has (or belongs to a user
+		that has) the <code>Admin</code> role.</para>
+	<para>In some cases, &CLOUD; account users can submit administrative service requests successfully.
+		In this case, the user only gets a subset of information about their own account. For
+		example, if an Account user runs a List Users operation, the &CIS; returns information only
+		about that user. When an Administrator submits the same request, the service returns a full
+		list of users with associated information about each account. </para>
 	<note>
 		<para>
 			For information about obtaining a service account, contact 
@@ -60,10 +57,10 @@
 		</tbody>
 	</table>
 	<para>
-		Some of these operations require only the core authentication service API v2.0 and some require extensions to the API.
-		If an extension is required, it is included in Rackspace's implementation of the Keystone Identity Service; 
-		issuing the calls as described here will use API extensions as needed.
-	</para>
+		Some of these operations require only the core OpenStack Keystone authentication service v2.0 API. Some
+		require extensions to the API. &CIS; implementation of Keystone includes all required extension. The  
+		API operations described in this Administrator Guide provide reference information and examples that 
+		demonstrate how to use any operations or parameters that require an API extension.</para>
 	
 	<!--Versions-->
 	
@@ -71,22 +68,22 @@
 		<title>API Contract Version</title>
 		<para xml:id="Versions_ovw">
 			The Rackspace Cloud can support multiple versions of the service API contract. This architecture allows service providers 
-			to develop, test, and deploy new API versions without disrupting service for customers that are using an existing version. 
-			You can use the Version operations to query the API service endpoint for information about the 
-			API version support in your cloud environment.
+			to develop, test, and deploy new API versions without disrupting service for customers using an existing version. 
+			To learn about the API versions supported by a cloud service, use the Version operations to query the 
+			API service endpoint for all versions, or a specific version.
 		</para>
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			
 			<!-- Get all API versions -->
 			
-			<wadl:resource href="../../wadl/identity.wadl#versions">
-				<wadl:method href="#getVersion"/>
+			<wadl:resource href="../../wadl/identity-admin.wadl#versions">
+				<wadl:method href="#listVersions-v2.0"/>
 			</wadl:resource>
 			
 			<!-- Get a specific API version -->
-			<wadl:resource href="../../wadl/identity.wadl#version">
-				<wadl:method href="#getVersionInfo"/>
+			<wadl:resource href="../../wadl/identity-admin.wadl#version">
+				<wadl:method href="#getVersionInfo-v2.0"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -96,21 +93,21 @@
 	<section xml:id="Extensions_calls">
 		<title>Extensions</title>
 		<para xml:id="Extensions_ovw">
-			The Rackspace Cloud Idenity Service deploys API extensions to add user and adminnistrative features to 
+			The Rackspace Cloud Identity Service deploys API extensions to add user and administrative features to 
 			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
 			endpoint for information about the extensions available for the specified service.</para>
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			
 			<!-- List extensions -->
-			<wadl:resource href="../../wadl/identity.wadl#extensions">
-				<wadl:method href="#listExtensions"/>
+			<wadl:resource href="../../wadl/identity-admin.wadl#extensions">
+				<wadl:method href="#listExtensions-v2"/>
 			</wadl:resource>
 			
 			<!-- Get extensions -->	
 			
-			<wadl:resource href="../../wadl/identity.wadl#extension">
-				<wadl:method href="#getExtension"/>
+			<wadl:resource href="../../wadl/identity-admin.wadl#extension">
+				<wadl:method href="#getExtension-v2.0"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -136,7 +133,7 @@
 				attempting to update or delete a user, use  
 				<link xlink:href= "http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html">Get User Admin</link>
 
-				to obtain the username, email account, and status
+				to obtain the user name, email account, and status
 				associated with <code>userId</code>. That's Step 1.
 				Check the returned information carefully; if you are
 				certain that it describes the user you intend to
@@ -156,67 +153,67 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="listUsers"/>
+				<wadl:method href="#listUsers"/>
 			</wadl:resource>
 			<!-- get user by name (and id and email) -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#name">
-				<wadl:method href="getUserByName"/>
+				<wadl:method href="#getUserByName"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
-				<wadl:method href="getUserById"/>
+				<wadl:method href="#getUserById"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#email">
-				<wadl:method href="getUserByEmail"/>
+				<wadl:method href="#getUserByEmail"/>
 			</wadl:resource>
 			<!-- add user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="addUser"/>
+				<wadl:method href="#addUser"/>
 			</wadl:resource>
 			<!-- update user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="updateUser">			
+				<wadl:method href="#updateUser">			
 				</wadl:method>
 			</wadl:resource>
 			<!-- delete user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="deleteUser">
+				<wadl:method href="#deleteUser">
 				</wadl:method>
 			</wadl:resource>
 			<!-- get domains for user -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domains" >
-				<wadl:method href="getAccessibleDomainsForUser"/>
+				<wadl:method href="#getAccessibleDomainsForUser"/>
 			</wadl:resource>
 			<!-- get domain endpoints for user -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domain_endpoints" >
-				<wadl:method href="getAccesibleDomainEndpointsForUser"/>
+				<wadl:method href="#getAccesibleDomainEndpointsForUser"/>
 			</wadl:resource>
 			<!-- add API key credential -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
-				<wadl:method href="addUserCredential"/>
+				<wadl:method href="#addUserCredential"/>
 			</wadl:resource>
 			<!-- list API key credentials -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
-				<wadl:method href="listCredentials"/>
+				<wadl:method href="#listCredentials"/>
 			</wadl:resource>
 			<!-- update API key credentials -->
 			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
-				<wadl:method href="updateUserCredential"/>
+				<wadl:method href="#updateUserCredential"/>
 			</wadl:resource>
 			<!-- delete API key credentials -->
 			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
-				<wadl:method href="deleteUserCredential"/>
+				<wadl:method href="#deleteUserCredential"/>
 			</wadl:resource>
 			<!-- get user's API key credentials -->
 			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
-				<wadl:method href="getUserCredential"/>
+				<wadl:method href="#getUserCredential"/>
 			</wadl:resource>
 			<!-- reset user's API key credentials -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#reset_apikey_credentials" >
-				<wadl:method href="resetUserAPIKeyCredentials"/>
+				<wadl:method href="#resetUserAPIKeyCredentials"/>
 			</wadl:resource>
 			<!-- list user who is Admin user -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins" >
-				<wadl:method href="getUserAdmin"/>
+				<wadl:method href="#getUserAdmin"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -230,7 +227,7 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-GRPADM</code>, <code>RAX-KSGRP</code>, <code>RAX-KSKEY</code> extensions to the
 				core Identity API. You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-				OpenStack Exstensions documentation</link>. 
+				OpenStack Extensions documentation</link>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -259,7 +256,7 @@
 				provided by the <code>OS-KSADM</code> extension to the
 				core Identity API. 
 				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>. 
+					OpenStack Extensions documentation</link>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -308,7 +305,7 @@
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
 				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>.  
+					OpenStack Extensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -383,7 +380,7 @@
 					<wadl:doc>
 						<important>
 							<para>
-								Rackspace's implementation of the OpenStack Identity Service v2.0 
+								The Rackspace implementation of the OpenStack Identity Service v2.0 
 								supports <code>GET v2.0/tenants/{tenantId}/users/{userId}/roles</code>
 								for internal users only.  Customers will not have access to this call.
 							</para>
@@ -403,7 +400,7 @@
 				provided by the <code>OS-KSCATALOG</code> extension to the
 				core Identity API. 
 				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>.  
+					OpenStack Extensions documentation</link>.  
 			</para>
 		</note>
 		 
@@ -432,7 +429,7 @@
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSCATALOG</code> extension to the
 				core Identity API. You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>. 
+					OpenStack Extensions documentation</link>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -462,7 +459,7 @@
 				provided by the <code>RAX-AUTH</code> and <code>RAX-KSQA</code> extensions to the
 				core Identity API. 
 				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>.  
+					OpenStack Extensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -521,7 +518,7 @@
 				core Identity API. 
 				You can learn more about API extensions in the 
 				<link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation.</link>.  
+					OpenStack Extensions documentation.</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -696,7 +693,7 @@
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. You can learn more about API
 				extensions in the  <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>.</para>
+					OpenStack Extensions documentation</link>.</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domains">
@@ -801,7 +798,7 @@
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
 				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation.</link>.  
+					OpenStack Extensions documentation.</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -853,7 +850,7 @@
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
 				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>.  
+					OpenStack Extensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -884,7 +881,7 @@
 			<para> 
 				Some of the functionality described in this section is provided by the <code>RAX-AUTH</code> 
 				extension to the core Identity API.  You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation.</link>.  
+					OpenStack Extensions documentation.</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -904,7 +901,7 @@
 			<para> 
 				The functionality described in this section is provided by the <code>OS-KSADM</code> 
 				extension to the core Identity API.  You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Exstensions documentation</link>.  
+					OpenStack Extensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -927,9 +924,9 @@
 	<section condition="multifactor" xml:id="Multifactor_Calls">
 		<title>Multifactor Operations</title>
 		<para>The operations described in this section allow service developers to manage multifactor authentication.  To use a 
-			mobile device for multifactor authentication, use the API operations in this section to do the following:</para>
+			mobile phone device for multifactor authentication, use the API operations in this section to do the following:</para>
 		<para><itemizedlist>
-			<listitem><para>Create a mobile to be used for authentication.</para></listitem>
+			<listitem><para>Create a mobile phone resource to be used for authentication.</para></listitem>
 			<listitem><para>Request that a verification code be sent to the phone.</para></listitem>
 			<listitem><para>Verify receipt of the verification code.</para></listitem>
 			<listitem><para>Enable multifactor authentication for the phone.</para></listitem>

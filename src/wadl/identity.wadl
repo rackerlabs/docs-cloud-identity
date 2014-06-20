@@ -40,30 +40,27 @@
     <!--             All Resources                             -->
     <!--*******************************************************-->
     <!-- We should use SSL in production -->
-    <resources base="http://localhost:5000" xml:id="identity_common">
+    <resources base="http://localhost:5000" xml:id="identity-client-rack">
 
         <!--Versions-->
-
-        <resource id="versions" path="/">
-            <method href="#listVersions"/>
-            <resource id="version_get" path="v2.0/">
-                <method href="#getVersionInfo"/>
-            </resource>
-        </resource>
-
-        <!--Extensions-->
-
-        <resource id="extensions" type="#ExtensionList" path="extensions">
-            <method href="#listExtensions"/>
-
-            <resource id="extension" path="{alias}">
+        <resource id="version-v2.0_rack" path="/" type="#VersionList_rack">
+            <method href="#listVersions_rack"/>
+            <resource id="version_rack" path="v2.0">
+                <method href="#getVersionInfo_rack"/>
+            
+            <resource id="extensions_rack" type="#ExtensionList_rack" path="extensions">
+                <method href="#listExtensions_rack"/>
+            
+             <resource id="extension_rack" path="{alias}">
                 <param name="alias" style="template" required="true" type="xsd:string">
                     <doc>
                         <p xmlns="http://www.w3.org/1999/xhtml">The extension name.</p>
                     </doc>
                 </param>
-                <method href="#getExtension"/>
-            </resource>
+                    <method href="#getExtension_rack"/>
+                </resource>
+         </resource>
+        </resource>
         </resource>
 
         <!--Tokens-->
@@ -111,13 +108,26 @@
     <!--***************************************************-->
     <!--               Resource Types                          -->
     <!--*******************************************************-->
-    <resource_type id="VersionList">
-        <method href="#listVersions"/>
-        
+    <resource_type id="VersionList_rack">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+            title="List Versions">
+            <para role="shortdesc">Lists supported API contract versions.</para>
+        </wadl:doc>
+        <method href="#listVersions_rack"/>
     </resource_type>
-    
-    <resource_type id="ExtensionList">
-        <method href="#listExtensions"/>
+    <resource_type id="VersionDetails_rack">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+            title="List version">
+            <para role="shortdesc">Shows details for the Identity API v2.0.</para>
+        </wadl:doc>
+        <method href="#getVersionInfo_rack"/>
+    </resource_type>
+    <resource_type id="ExtensionList_rack">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+            title="List Extensions">
+            <para role="shortdesc">Lists supported extensions.</para>
+        </wadl:doc>
+        <method href="#listExtensions_rack"/>
     </resource_type>
    
     <!--*******************************************************-->
@@ -126,8 +136,8 @@
 
     <!-- Version operations -->
 
-    <method name="GET" id="listVersions">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List versions">
+    <method name="GET" id="listVersions_rack">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List versions">
             <para role="shortdesc">Lists information about the API versions supported by the Identity service at the specified API service
                 endpoint.</para>
             <para>Use the GET version operation to discover
@@ -137,14 +147,18 @@
                 for example.</para>
         </wadl:doc>
         <response status="200">
-            <param name="Versions" style="plain" type="vers:VersionChoiceList" required="true">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <para>An array that returns the list of API
-                        versions supported by the Rackspace Cloud environment at the specified
-                        endpoint.</para>
-                </wadl:doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="location" style="plain" type="xsd:anyURI" required="true"
+                path="/capi:version/atom:link[@rel='self']/@href">
+                <link resource_type="#VersionList_rack" rel="self"/>
             </param>
-            <param name="version" style="plain" type="vers:VersionChoice" required="true">
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="versions" style="plain" type="vers:VersionChoiceList" required="true">
+                <doc>
+                    <p xmlns="http://www.w3.org/1999/xhtml">An array that returns the list of API
+                        versions supported by the Rackspace Cloud environment at the specified
+                        endpoint.</p>
+                </doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="version" style="plain" type="vers:VersionChoice" required="true">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <para>The <code>version</code> parameter is
                         an array that provides the API version number and detailed meta information
@@ -154,7 +168,7 @@
                 </wadl:doc>
             </param>
 
-            <param name="status" style="plain" type="vers:VersionStatus" required="true">
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="status" style="template" type="vers:VersionStatus" required="true">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <para>The <code>status</code> parameter
                         describes the current operational state of the given service version. Status
@@ -190,37 +204,37 @@
                 </wadl:doc>
             </representation>
             <representation mediaType="application/xml">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/versions.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults;</method>
 
-    <method name="GET" id="getVersionInfo">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get Version Details"> 
+    <method name="GET" id="getVersionInfo_rack">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Version Details"> 
             <para role="shortdesc">Gets detailed information about the specified version of the
                 Identity Service API.</para>
         </wadl:doc>
         <response status="200 203">
-            <param name="location" style="plain" type="xsd:anyURI" required="true"
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="location" style="plain" type="xsd:anyURI" required="true"
                 path="/capi:version/atom:link[@rel='self']/@href">
-                <link resource_type="#VersionList" rel="self"/>
+                <link resource_type="#VersionDetails_rack" rel="self"/>
             </param>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <doc>
                     <xsdxt:code href="../common/samples/versions.json"/>
-                </wadl:doc>
+                </doc>
             </representation>
             <representation mediaType="application/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <doc>
                     <xsdxt:code href="../common/samples/versions.xml"/>
-                </wadl:doc>
+                </doc>
             </representation>
         </response> &commonFaults;</method>
 
     <!-- Extensions operations -->
 
-    <method name="GET" id="listExtensions">
+    <method name="GET" id="listExtensions_rack">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List Extensions">
             <para role="shortdesc">Lists available extensions.</para>
             <para>Applications can programmatically determine which extensions are 
@@ -230,41 +244,48 @@
         <response status="200 203">
             <param name="next" style="plain" type="xsd:anyURI"
                 path="/capi:extensions/atom:link[@rel='next']/@href">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <wadl:doc
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02"
+                    xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
                     <para>Moves to the next item in the list.</para>
                 </wadl:doc>
-                <link resource_type="#ExtensionList" rel="next"/>
+                <link resource_type="#ExtensionList_rack" rel="next"/>
             </param>
             <param name="previous" style="plain" type="xsd:anyURI"
                 path="/capi:extensions/atom:link[@rel='previous']/@href">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <para>Moves to the previous item in the list.</para>
+                <wadl:doc
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02"
+                    xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
+                    <para>Moves to the previous item in the
+                        list.</para>
                 </wadl:doc>
-                <link resource_type="#ExtensionList" rel="previous"/>
+                <link resource_type="#ExtensionList_rack" rel="previous"/>
             </param>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/extensions.json"/>
-                </wadl:doc>
+                </doc>
             </representation>
             <representation mediaType="application/xml" element="capi:extensions">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <doc>
                     <xsdxt:code href="../common/samples/extensions.xml"/>
-                </wadl:doc>
+                </doc>
             </representation>
         </response> &commonFaults;</method>
 
-    <method name="GET" id="getExtension">
-        <doc title="Get Extension Details">
-            <p xmlns="http://www.w3.org/1999/xhtml" role="shortdesc">Gets detailed information for a
-                specified extension.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Specify the extension alias in the URI.</p>
+    <method name="GET" id="getExtension_rack">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get Extension Details">
+            <para role="shortdesc">Gets detailed information for a
+                specified extension.</para>
+            <para>Specify the extension alias in the URI.</para>
             <!--     <param name="alias" style="template"
                 type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     ><para>The extension alias.</para> </wadl:doc>
             </param> -->
-        </doc>
+        </wadl:doc>
         <response status="200 203">
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -272,9 +293,9 @@
                 </wadl:doc>
             </representation>
             <representation mediaType="application/xml" element="capi:extension">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <doc>
                     <xsdxt:code href="../common/samples/extension.xml"/>
-                </wadl:doc>
+                </doc>
             </representation>
         </response> &commonFaults;</method>
   

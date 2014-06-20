@@ -4,8 +4,10 @@
 <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
 <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
 ]>
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+<book xmlns="http://docbook.org/ns/docbook" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" 
+	xmlns:svg="http://www.w3.org/2000/svg"
 	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0"
 	xml:id="Identity-Developer-Guide">
 	<title>Cloud Identity Client Developer Guide</title>
@@ -58,10 +60,9 @@
 								Center articles.</para>
 						</listitem>
 						<listitem security="internal">
-							<para>Updated <olink targetdoc="Identity-Developer-Guide"
-								targetptr="POST_getTokenBySAML_v2.0_RAX-AUTH_saml-tokens_">“Get token by SAML assertion"</olink> code samples to correct spelling 
-								error and role value and description.
-							</para>
+							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Token_Calls"
+									>“Tokens”</olink> to correct role value and description errors
+								in Get token by SAML assertion operation.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -113,9 +114,9 @@
 							</para>
 						</listitem>
 						<listitem>
-							<para> Corrected json response in <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_listUserGlobalRoles_v2.0_users__userId__roles_Role_Calls"
-								/>. </para>
+							<para> Corrected json response for List user global roles operation in <olink
+									targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Role_Calls">“Roles”</olink> section. </para>
 						</listitem>
 						<listitem>
 							<para>
@@ -123,10 +124,10 @@
 							</para>
 						</listitem>
 						<listitem>
-							<para> Mentioned that elements not being updated in <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__User_Calls"/> do
-								not need to be included in request body. </para>
+							<para>Added information to Update user operations to mention that request operations only
+								require specifying the parameters for the information being updated.
+								See  <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="User_Calls">“Users”</olink>.</para>
 						</listitem>
 						<listitem>
 							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
@@ -290,9 +291,9 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added examples demonstrating different format of <code>expires</code> for US and UK
-								endpoints in <olink targetdoc="Identity-Developer-Guide"
-									targetptr="POST_authenticate_v2.0_tokens_">“Additional
-									Resources”</olink>. </para>
+								endpoints in <olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Token_Calls">“Tokens”</olink> <olink condition="client" targetdoc="Identity-Developer-Guide"
+										targetptr="Token_Calls">“Tokens”</olink></para>
 						</listitem>
 						<listitem>
 							<para>

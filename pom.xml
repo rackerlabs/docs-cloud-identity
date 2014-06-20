@@ -1,5 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation= "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+<!-- 06/10/2014 Added support for glossary pop-ups -->
+<!-- 06/16/2014 Added canonical URL based. -->
+<!-- 06/16/2014 Still need  sectionLabelIncludesComponentLabel -->
+	
 	<!-- POM Build file for the Cloud Identity (akd Auth 2.0, based on Keystone) Developer Guides: -client-devguide and -admin-devguide -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rackspace.cloud.apidocs</groupId>
@@ -7,34 +14,53 @@
 	<version>2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Cloud Identity v2.0 Docs</name>
+	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
+		
 		<plugins>
-		  <plugin>
-		    <groupId>com.rackspace.cloud.api</groupId>
-		    <artifactId>olink-maven-plugin</artifactId>
-		    <version>1.1.0</version>
-		    <executions>
-		      <execution>
-			<phase>initialize</phase>
-			<goals>
-			  <goal>olink</goal>
-			</goals>
-		      </execution>
-		    </executions>
+
+<!-- Olink support -->
+			
+			<plugin>
+		    
+		  	<groupId>com.rackspace.cloud.api</groupId>
+		    
+		  		<artifactId>olink-maven-plugin</artifactId>
+		    	<version>1.1.0</version>
+		  	
+		    	<executions>
+		      		<execution>
+					<phase>initialize</phase>
+		      			
+					<goals>
+			  			<goal>olink</goal>
+					</goals>
+		      			
+		      	</execution>
+		    		
+		    	</executions>
+				
 		  </plugin>
-			<!-- Add plugin to support glossary term pop-ups -->
+			
+<!-- Glossary term pop-up support -->
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>unpack-dependencies</id>
+						
 						<phase>generate-sources</phase>
+						
 						<goals>
 							<goal>unpack</goal>
 						</goals>
+						
 						<configuration>
+							
 							<artifactItems>
 								<artifactItem>
 									<groupId>com.rackspace.cloud.api</groupId>
@@ -42,81 +68,147 @@
 									<version>1.0.0-SNAPSHOT</version>
 									<outputDirectory>${project.build.directory}/mvn/com.rackspace.cloud.api/glossary</outputDirectory>
 								</artifactItem>
-							</artifactItems>
-						</configuration>
+							</artifactItems>	
+							</configuration>
+						
 					</execution>
+					
 				</executions>
 			</plugin>
-			
+
+<!--Generate webhelp for auth-client-devguide -->
 			<plugin>
+				
 				<groupId>com.rackspace.cloud.api</groupId>
+				
 				<artifactId>clouddocs-maven-plugin</artifactId>
-				<version>2.0.1</version>
+				
+				<version>2.0.4</version>
+				
 				<executions>
-					<!-- HTML for auth-client-devguide -->
 					<execution>		
 						<id>g2-client</id>
+						
 						<goals>
 							<goal>generate-webhelp</goal>
 						</goals>
+						
 						<phase>generate-sources</phase>
+							
 						<configuration>
+							
 							<includes>auth-client-devguide.xml</includes>
-							<!-- if the condition attribute is present in the source, it must have client in it
-		   (<para condition="client">something only for the Client book</para>)
-		   or the element is stripped -->
+							
+							<canonicalUrlBase>http://docs.rackspace.com/identity/api/v2.0/auth-client-devguide-devguide/content</canonicalUrlBase>
+							
+							<!-- Only print elements that have condition = admin  -->
 							<profileCondition>client</profileCondition>
+							
 							<!-- These parameters only apply to webhelp -->
+							
+							<branding>rackspace</branding>
+							<feedbackEmail>margaret.eker@rackspace.com</feedbackEmail>
+							<socialIcons>1</socialIcons>
 							<enableDisqus>1</enableDisqus>
 							<enableGoogleAnalytics>1</enableGoogleAnalytics>
+							
+							<chapterAutolabel>0</chapterAutolabel>
+							<appendixAutolabel>0</appendixAutolabel>
+							<sectionAutolabel>0</sectionAutolabel>
+							<tocSectionDepth>1</tocSectionDepth>
+							<formalProcedures>0</formalProcedures>
+							<generateToc>
+								appendix toc,title
+								article/appendix nop
+								article toc,title
+								book toc,title,figure,table,equation
+								chapter toc
+								part toc,title
+								preface nop
+								qandadiv toc
+								qandaset toc
+								reference toc,title
+								section toc
+								set toc,title
+							</generateToc>
+							
 							<!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
+							
 						</configuration>
 					</execution>
-					<!-- HTML for auth-admin-devguide -->
+					
+<!-- Generate webhelp for Identity Service Admin Guide (auth-admin-devguide) -->
+					
 					<execution>						
 						<id>g2-admin</id>
+						
 						<goals>
 							<goal>generate-webhelp</goal>
 						</goals>
+						
 						<phase>generate-sources</phase>
+						
 						<configuration>
+							
 							<includes>auth-admin-devguide.xml</includes>
-							<!-- if the condition attribute is present in the source, it must have admin in it
-		   (<para condition="admin">something only for the Admin book</para>)
-		   or the element is stripped -->
+							
+							<canonicalUrlBase>http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/</canonicalUrlBase>
+							
+						<!-- Only print elements that have condition = admin  -->
+							
 							<profileCondition>admin</profileCondition>
 							<security>internal</security>
+							
 							<!-- These parameters only apply to webhelp -->
-							<enableDisqus>intranet</enableDisqus>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 							<feedbackEmail>margaret.eker@rackspace.com</feedbackEmail>
+							
 							<!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
 							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 						</configuration>
+						
 					</execution>
+					
 				</executions>
+
+<!--Set configuration options for pdf and webhelp -->
+				
 				<configuration>
 					<!-- These parameters apply to pdf and webhelp -->
-					<!-- don't fail build for validation errors yet; someday -->
+					
+					<!-- Build setting to enable/disable build failure if validation errors occur -->
 					 <failOnValidationError>no</failOnValidationError>
+					
 					<!-- do show better error messages -->
 					<showXslMessages>true</showXslMessages>
+					
 					<!--- open Webhelp at the QuickStart page -->
+					
 					<!--- change to index.html to open at the front matter: copyright page, list of tables, list of examples -->
+					
 					<webhelpDefaultTopic>QuickStart-000.html</webhelpDefaultTopic>
+					
 					<branding>rackspace</branding>
+					
 					<security>external</security>
+					
 					<!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
 					<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
-					<publicationNotificationEmails>rose.coste@rackspace.com,renee.rendon@rackspace.com,joe.savak@rackspace.com,cat.lookabaugh@rackspace.com, margaret.eker@rackspace.com</publicationNotificationEmails>
+					
+					<publicationNotificationEmails>margaret.eker@rackspace.com</publicationNotificationEmails>
 				</configuration>
+				
 			</plugin>
+			
 			<!--Maven Assembly Plugin-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				
 				<artifactId>maven-assembly-plugin</artifactId>
+				
 				<version>2.3</version>
+				
 				<configuration>
 					<descriptors>
 						<descriptor>includewars.xml</descriptor>
@@ -133,10 +225,13 @@
 				</executions>
 			</plugin>
 		</plugins>
+		
 	</build>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
 	<profiles>
 		<profile>
 			<id>Rackspace Research Repositories</id>
@@ -159,7 +254,9 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>
-	<scm>
-		<connection>scm:git:ssh://git@github.rackspace.com:IX/auth-2.0.git</connection>
-	</scm>
+		
+		<scm>
+			<connection>scm:git:ssh://git@github.rackspace.com:IX/auth-2.0.git</connection>
+		</scm>
+		
 </project>
