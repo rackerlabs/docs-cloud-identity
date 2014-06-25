@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "token": {
+      "id": "aaaaa-bbbbb-ccccc-dddd"
+    },
+    "RAX-AUTH:multiFactor": {
+      "factor": "PHONE"
+    }
+  }
+}
