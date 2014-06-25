@@ -25,8 +25,7 @@
 	<!--Note the Admin concepts section contains a workflow diagram not included in Dev guide.  
 		That's why the xi:include content is conditional.-->
 	
-	<xi:include condition="admin" href="identity-concepts-admin.xml"/>
-	<xi:include condition="client" href="section_identity-concepts.xml"/>
+	<xi:include href="section_identity-concepts.xml"/>
 	
 	<section xml:id="Request_Response_Types-d1e149">
 		<title>Request/Response Types</title>
@@ -1693,9 +1692,9 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						</tr>
 					</tbody>
 				</informaltable>
-			</para><para>For information about using RBAC with specific products, see the <link
-					xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each
-				product.</para>
+			</para>
+				<para>For information about using RBAC with specific products, see the 
+					<link xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each product.</para>
 		</section>
 	</section>
     </chapter>

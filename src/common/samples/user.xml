@@ -5,6 +5,7 @@
       id="123456" username="jqsmith"
       enabled="true"
       email="john.smith@example.org"
-      rax-auth:defaultRegion="DFW"
-      rax-auth:domainId="5830280">
+      RAX-AUTH:defaultRegion="DFW"
+      RAX-AUTH:domainId="5830280"
+      RAX-AUTH:multiFactorEnabled"="true" >
 </user>

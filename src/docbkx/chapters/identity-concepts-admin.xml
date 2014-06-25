@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE book [
+
+<!DOCTYPE section [
 <!ENTITY % common SYSTEM "../../common/common.ent">
 %common;
 ]>
+
 <section xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-    xml:id="Identity-Service-Concepts-admin">
+    xml:id="Identity-Service-Concepts-admin"
+    xmlns:db="http://docbook.org/ns/docbook">
     
 
     <title>Concepts</title>
-    <para>Rackspace Identity service; manages client authentication and authorization for the Rackspace Cloud. A client sends
-        credentials to the Rackspace Identity service; through the Cloud Contol panel, or programmatically by submitting a
-        POST tokens API service request. If the credentials are valid, the Rackspace Identity service; returns a token and
-        service catalog that lists available services and the endpoint URLs for service
-        requests.</para>
+    <para>The Rackspace Identity service manages client authentication and authorization for the
+        Rackspace Cloud. A client sends credentials to the Rackspace Identity service; through the
+        Cloud Contol panel, or programmatically by submitting a POST tokens API service request. If
+        the credentials are valid, the Rackspace Identity service returns a token and service
+        catalog that lists available services and the endpoint URLs for service requests.</para>
+    
     <!-- .SVG exists but doesn't use the right fonts: .PNG matches the source .VSD 
     at 100% natural size as exported, the .PNG fits HTML but is too large for PDF -->
     <figure xml:id="token-flow">
-        <title>Rackspace Identity service; authentication and authorization work flow</title>
-        <mediaobject>
-            <imageobject>
-                <imagedata scale="75" fileref="../figures/auth-keystone-identity-manager.png" format="PNG" align="center"/>
-            </imageobject>
-        </mediaobject>
-    </figure>
+            <title>Rackspace Cloud Services: Authenticaiton and authorization work flow</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata scale="75" fileref="../figures/auth-keystone-identity-manager.png" format="PNG" align="center"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+    
     <para>In subsequent service requests, the client includes the authentication token as proof of
-        identity. Rackspace Identity service; checks the validity of the token for the client requesting service. <itemizedlist>
+        identity. Rackspace Identity service checks the validity of the token for the client
+        requesting service. <itemizedlist>
             <listitem>
-                <para>If the token is valid, the Rackspace Identity service; responds with details describing the access
-                    rights and capabilities available to the client for the requested
+                <para>If the token is valid, the Identity service retruns information about the
+                    access rights and capabilities available to the client for the requested
                     service.</para>
             </listitem>
             <listitem>
@@ -38,13 +44,12 @@
             </listitem>
         </itemizedlist>
     </para>
-    <para>Based on the information returned by the Rackspace Identity service;, the service determines whether
-        the client is authorized to complete the requested operation. If authorization is
-        successful, the service processes the request. Otherwise, the service returns a message
-        prompting the user to retry the operation with a valid token.</para>
-    <para>
-        To learn more about the Rackspace Identity service components and processes, review <citetitle>Identity
-        concepts.</citetitle>
+    <para>Based on the information returned,  the service determines whether the client is
+        authorized to complete the requested operation. If authorization is successful, the service
+        processes the request. Otherwise, the client receives an error message prompting the user to
+        retry the operation with a valid token.</para>
+    <para>To learn more about the Rackspace Identity service components and processes, review
+            <citetitle>Identity concepts.</citetitle>
     </para>
-    <xi:include href="section_identity-concepts.xml"/>  
+    <xi:include href="section_identity-concepts.xml"/>
 </section>

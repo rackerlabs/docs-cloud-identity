@@ -9,7 +9,6 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:xi="http://www.w3.org/2001/XInclude" 
 	xmlns:svg="http://www.w3.org/2000/svg"
-	xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" xml:id="Identity-Admin-Developer-Guide">
 	<title>Cloud Identity Admin Developer Guide</title>
 	<titleabbrev>Cloud Identity Admininistrator Guide</titleabbrev>
@@ -79,9 +78,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="EndpointTemplate">Endpoint template</olink> to
-								glossary.</para>
+							<para>Added endpoint template term to the <olink targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="Identity-Concpts">Concepts section</olink></para>
 						</listitem>
 						<listitem>
 							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -221,7 +219,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated samples to RAcker token authentication in <olink
+							<para> Updated samples to Racker token authentication in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_validateToken_v2.0_tokens__tokenId__"/>. </para>
 						</listitem>
@@ -632,7 +630,7 @@
 						</listitem>
 						<listitem>
 							<para>Updated illustration in <xref
-								linkend="Identity-Concepts-e1362"/>
+								linkend="Identity-Concpts"/>
 							</para>
 						</listitem>
 						<listitem>
@@ -824,7 +822,7 @@
 								locating a service.</para>
 						</listitem>
 						<listitem>
-							<para> Expanded the list of operations
+							<para>Expanded the list of operations
 								described in <xref
 								linkend="API_Operations"/>. In the
 								same chapter, added contact info for
@@ -832,7 +830,7 @@
 								illustration of the impersonation
 								process, and added notes on
 								functionality provided by extensions
-								to the core Identity API. </para>
+								to the core Identity API.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

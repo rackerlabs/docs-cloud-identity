@@ -432,7 +432,7 @@
 						<listitem>
 							<para> Added <xref linkend="Account-Users-d1e910"/>;<olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="Identity-Concepts-e1362">“Identity concepts”</olink>
+									targetptr="Identity-Concpts">“Identity concepts”</olink>
 								moved most of the details from the Account User glossary item into
 								that section, along with additional details on account users'
 								inheritance of groups from parents. </para>
@@ -474,8 +474,7 @@
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Developer-Guide"
 									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
-								/> and <olink targetdoc="Identity-Developer-Guide"
-									targetptr="Account-User-d1e20"/><olink
+								/> and <olink
 									targetdoc="Identity-Developer-Guide"
 									targetptr="Account-Users-d1e910">“Identity user types and
 									default roles”</olink> to state that account users must

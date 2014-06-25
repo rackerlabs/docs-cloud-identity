@@ -9,7 +9,6 @@
 	xmlns="http://docbook.org/ns/docbook" 
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:wadl="http://wadl.dev.java.net/2009/02"
 	xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Service Developers</title>
 	<para>Service developers can use the operations described in this chapter to get and validate
@@ -28,7 +27,7 @@
 		that has) the <code>Admin</code> role.</para>
 	<para>In some cases, &CLOUD; account users can submit administrative service requests successfully.
 		In this case, the user only gets a subset of information about their own account. For
-		example, if an Account user runs a List Users operation, the &CIS; returns information only
+		example, if an Account user runs a List users operation, the &CIS; returns information only
 		about that user. When an Administrator submits the same request, the service returns a full
 		list of users with associated information about each account. </para>
 	<note>
@@ -64,21 +63,17 @@
 	
 	<!--Versions-->
 	
-	<section xml:id="Version_calls">
+	<section xml:id="Version_operations">
 		<title>API Contract Version</title>
-		<para xml:id="Versions_ovw">
-			The Rackspace Cloud can support multiple versions of the service API contract. This architecture allows service providers 
-			to develop, test, and deploy new API versions without disrupting service for customers using an existing version. 
-			To learn about the API versions supported by a cloud service, use the Version operations to query the 
-			API service endpoint for all versions, or a specific version.
-		</para>
+		<para>The Rackspace Cloud can support multiple versions of the service API contract. This
+			architecture allows service providers to develop, test, and deploy new API versions
+			without disrupting service for customers that are using an existing version. You can use
+			the Version operations to query the API service endpoint for information about the API
+			version support in your cloud environment. </para>
 		
-		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			
-			<!-- Get all API versions -->
-			
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">			
 			<wadl:resource href="../../wadl/identity-admin.wadl#versions">
-				<wadl:method href="#listVersions-v2.0"/>
+				<wadl:method href="#getVersions-v2"/>
 			</wadl:resource>
 			
 			<!-- Get a specific API version -->
@@ -90,10 +85,9 @@
 	
 	<!--Extensions-->
 	
-	<section xml:id="Extensions_calls">
+	<section xml:id="Extensions_operations">
 		<title>Extensions</title>
-		<para xml:id="Extensions_ovw">
-			The Rackspace Cloud Identity Service deploys API extensions to add user and administrative features to 
+		<para xml:id="Extensions_ovw">The Rackspace Cloud Identity Service deploys API extensions to add user and administrative features to 
 			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
 			endpoint for information about the extensions available for the specified service.</para>
 		
@@ -101,7 +95,7 @@
 			
 			<!-- List extensions -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#extensions">
-				<wadl:method href="#listExtensions-v2"/>
+				<wadl:method href="listExtensions-v2.0"/>
 			</wadl:resource>
 			
 			<!-- Get extensions -->	
@@ -156,13 +150,13 @@
 				<wadl:method href="#listUsers"/>
 			</wadl:resource>
 			<!-- get user by name (and id and email) -->
-			<wadl:resource href="../../wadl/identity-admin.wadl#name">
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="#getUserByName"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="#getUserById"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#email">
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="#getUserByEmail"/>
 			</wadl:resource>
 			<!-- add user -->
@@ -234,7 +228,7 @@
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#groups"/>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#group"/>
 			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
-				<wadl:method href="listUserGroups"/>
+				<wadl:method href="#listUserGroups"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#user"/>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#users"/>			
@@ -262,35 +256,35 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list roles -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
-				<wadl:method href="listRoles"/>
+				<wadl:method href="#listRoles"/>
 			</wadl:resource>
 			<!-- add a role globally -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
-				<wadl:method href="addRole"/>
+				<wadl:method href="#addRole"/>
 			</wadl:resource>
 			<!-- get a global role -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
-				<wadl:method href="getRole"/>
+				<wadl:method href="#getRole"/>
 			</wadl:resource>
 			<!-- delete a global role -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
-				<wadl:method href="deleteRole"/>
+				<wadl:method href="#deleteRole"/>
 			</wadl:resource>
 			<!-- add a global role to a user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
-				<wadl:method href="addUserRole"/>
+				<wadl:method href="#addUserRole"/>
 			</wadl:resource>
 			<!-- delete a global role from a user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
-				<wadl:method href="deleteUserRole"/>
+				<wadl:method href="#deleteUserRole"/>
 			</wadl:resource>
 			<!-- list users with role -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleIdRAXAUTHUsers">
-				<wadl:method href="getUsersWithRole"/>
+				<wadl:method href="#getUsersWithRole"/>
 			</wadl:resource>
 			<!-- list global roles available to a user -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#userRoles">
-				<wadl:method href="listUserGlobalRoles"/>
+				<wadl:method href="#listUserGlobalRoles"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -311,11 +305,11 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
 				<!-- authenticate -->
-				<wadl:method href="authenticate"/>
+				<wadl:method href="#authenticate"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
 				<!-- validate token -->
-				<wadl:method href="validateToken">
+				<wadl:method href="#validateToken">
 				<wadl:doc>
 					<tip>
 						<para>
@@ -330,21 +324,21 @@
 				</wadl:doc>
 				</wadl:method>
 				<!-- check token -->
-				<wadl:method href="checkToken"/>
+				<wadl:method href="#checkToken"/>
 				<!-- revoke token -->
-				<wadl:method href="revokeToken"/>
+				<wadl:method href="#revokeToken"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#endpointsForToken">
 				<!-- list endpoints for token -->
-				<wadl:method href="listEndpointsForToken"/>
+				<wadl:method href="#listEndpointsForToken"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#tokens">
 				<!-- authenticate as Racker -->
-				<wadl:method href="authenticateAsRacker"/>
+				<wadl:method href="#authenticateAsRacker"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#federation">
 				<!-- federation - get token by SAML -->
-				<wadl:method href="getTokenBySAML"/>
+				<wadl:method href="#getTokenBySAML"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -355,28 +349,28 @@
 		<para>The operations described in this section allow service developers to manage tenants.</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#tenants">
-				<wadl:method href="addTenant"/>
+				<wadl:method href="#addTenant"/>
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#tenantById">
-					<wadl:method href="updateTenant"/>
-					<wadl:method href="deleteTenant"/>
+					<wadl:method href="#updateTenant"/>
+					<wadl:method href="#deleteTenant"/>
 					<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#usersForTenant">
-						<wadl:method href="listUsersForTenant"/>
+						<wadl:method href="#listUsersForTenant"/>
 						<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userSpecificRoleForTenant">
-							<wadl:method href="addRolesToUserOnTenant"/>
-							<wadl:method href="deleteRoleFromUserOnTenant"/>
+							<wadl:method href="#addRolesToUserOnTenant"/>
+							<wadl:method href="#deleteRoleFromUserOnTenant"/>
 						</wadl:resource>
 					</wadl:resource>
 				</wadl:resource>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tenants">
-				<wadl:method href="listTenants"/>
-				<wadl:method href="getTenantByName"/>
+				<wadl:method href="#listTenants"/>
+				<wadl:method href="#getTenantByName"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tenantById">
-				<wadl:method href="getTenantById"/>
+				<wadl:method href="#getTenantById"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#userRolesForTenant">
-				<wadl:method href="listRolesForUserOnTenant">
+				<wadl:method href="#listRolesForUserOnTenant">
 					<wadl:doc>
 						<important>
 							<para>
@@ -406,16 +400,16 @@
 		 
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
-				<wadl:method href="listEndpointTemplates"/>
+				<wadl:method href="#listEndpointTemplates"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
-				<wadl:method href="addEndpointTemplate"/>
+				<wadl:method href="#addEndpointTemplate"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplateId">
-				<wadl:method href="getEndpointTemplate"/>
+				<wadl:method href="#getEndpointTemplate"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplateId">
-				<wadl:method href="deleteEndpointTemplate"/>
+				<wadl:method href="#deleteEndpointTemplate"/>
 			</wadl:resource>
 		</wadl:resources>
 		
@@ -434,16 +428,16 @@
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoints">
-				<wadl:method href="listEndpoints"/>
+				<wadl:method href="#listEndpoints"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoints">
-				<wadl:method href="addEndpoint"/>
+				<wadl:method href="#addEndpoint"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoint">
-				<wadl:method href="getEndpoint"/>
+				<wadl:method href="#getEndpoint"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpoint">
-				<wadl:method href="deleteEndpoint"/>
+				<wadl:method href="#deleteEndpoint"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -464,31 +458,31 @@
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
-				<wadl:method href="getUserSecretQA"/>
+				<wadl:method href="#getUserSecretQA"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
-				<wadl:method href="getUserSecretQAs"/>
+				<wadl:method href="#getUserSecretQAs"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
-				<wadl:method href="updateUserSecretQA"/>
+				<wadl:method href="#updateUserSecretQA"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
-				<wadl:method href="saveUserSecretQA"/>
+				<wadl:method href="#saveUserSecretQA"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#questions">
-				<wadl:method href="getQuestions"/>
+				<wadl:method href="#getQuestions"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#question">
-				<wadl:method href="getQuestion"/>
+				<wadl:method href="#getQuestion"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#questions">
-				<wadl:method href="createQuestion"/>
+				<wadl:method href="#createQuestion"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#question">
-				<wadl:method href="updateQuestion"/>
+				<wadl:method href="#updateQuestion"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#question">
-				<wadl:method href="deleteQuestion"/>
+				<wadl:method href="#deleteQuestion"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -496,10 +490,14 @@
 	<!-- IMPERSONATIONS -->
 	<section xml:id="Impersonation_Calls">
 		<title>Impersonations</title>
-		<para>The operations described in this section allow service developers to manage Rackers' impersonations of 
-			users for diagnostic purposes.</para>
+		<para>Impersonation operations allow service developers to manage
+			Rackers' impersonations of users for diagnostic purposes.
+				<xref linkend="impersonation"/> shows the process for
+			a Racker to immpersonate another user. The Racker issues
+			one POST with he Racker's own credentials, followed by a second POST request that identifies 
+		the user to be impresonated.</para>
 		<figure xml:id="impersonation">
-			<title>A Racker issues one POST with the Racker's own credentials, then a second POST identifying the user to be impersonated.
+			<title>Impersonation workflow for Racker accounts.
 			</title>
 			<!-- this is Joe Savak's drawing, 
 				from https://docs.google.com/a/rackspace.com/drawings/d/1fxomVwZRmWT6NYmhTFwj9VMfQ_NQHLVfpfb6474xnoc/edit 
@@ -523,7 +521,7 @@
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#impersonation-tokens">
-				<wadl:method href="impersonateUser">
+				<wadl:method href="#impersonateUser">
 				<wadl:doc>
 					<tip>
 						<para>
@@ -662,23 +660,23 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list rate limit for 1 user -->
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
-				<wadl:method href="getRateLimit"/>
+				<wadl:method href="#getRateLimit"/>
 			</wadl:resource>
 			<!-- change rate limit for 1 user -->
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
-				<wadl:method href="updateRateLimit"/>
+				<wadl:method href="#updateRateLimit"/>
 			</wadl:resource>
 			<!-- add 1 entry to rate limit whitelist -->
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
-				<wadl:method href="addWhitelistEntry"/>
+				<wadl:method href="#addWhitelistEntry"/>
 			</wadl:resource>
 			<!-- delete 1 entry from rate limit whitelist -->
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
-				<wadl:method href="deleteWhitelistEntry"/>
+				<wadl:method href="#deleteWhitelistEntry"/>
 			</wadl:resource>
 			<!-- replace entire rate limit whitelist -->
 			<wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
-				<wadl:method href="replaceWhitelist"/>
+				<wadl:method href="#replaceWhitelist"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -697,7 +695,7 @@
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domains">
-				<wadl:method href="getDomains">
+				<wadl:method href="#getDomains">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Create a Domain: Creates a domain. Clients must specify the domain id in the request body. -->
@@ -706,7 +704,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domains">
-				<wadl:method href="createDomain">
+				<wadl:method href="#createDomain">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Create a Domain: Creates a domain. Clients must specify the domain id in the request body. -->
@@ -715,7 +713,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId} -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain">
-				<wadl:method href="getDomain">
+				<wadl:method href="#getDomain">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Get a Domain: Gets a domain. -->
@@ -724,7 +722,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId} -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain">
-				<wadl:method href="updateDomain">
+				<wadl:method href="#updateDomain">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Update a Domain: Updates a domain. -->
@@ -733,7 +731,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId} -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain">
-				<wadl:method href="deleteDomain">
+				<wadl:method href="#deleteDomain">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Deletes a Domain: Deletes a domain. This request will only succeed if there are no entities that exist in this domain e.g users, tenants. A client will have t... -->
@@ -742,7 +740,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId}/endpoints -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain_endpoints">
-				<wadl:method href="getDomainEndpoints">
+				<wadl:method href="#getDomainEndpoints">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Get Endpoints for Domain: Gets endpoints restricted to a domain. -->
@@ -751,7 +749,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId}/users -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain_users">
-				<wadl:method href="getDomainUsers">
+				<wadl:method href="#getDomainUsers">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Get Users in Domain: Get users in a domain. -->
@@ -760,7 +758,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId}/users/{userId} -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain_user">
-				<wadl:method href="addUserToDomain">
+				<wadl:method href="#addUserToDomain">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Add User to Domain: Add a user to a domain. A user can only exist in one domain at a time. So when you add a user to a domain, the user is automatically removed... -->
@@ -769,7 +767,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId}/tenants -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain_tenants">
-				<wadl:method href="getDomainTenants">
+				<wadl:method href="#getDomainTenants">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Get Tenants in Domain: Get tenants in a domain. -->
@@ -778,7 +776,7 @@
 			</wadl:resource>
 			<!-- Path: /v2.0/RAX-AUTH/domains/{domainId}/tenants/{tenantId} -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain_tenant">
-				<wadl:method href="addTenantToDomain">
+				<wadl:method href="#addTenantToDomain">
 					<wadl:doc xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns="http://docbook.org/ns/docbook">
 						<!-- DocBook Markup is legal here -->
 						<!-- Add Tenant to Domain: Add a tenant to a domain. A tenant can only exist in one domain at a time. So when you add a tenant to a domain, it is automatically removed... -->
@@ -804,37 +802,37 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list regions -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#regions">
-				<wadl:method href="getRegions">
+				<wadl:method href="#getRegions">
 				</wadl:method>
 			</wadl:resource>
 			<!-- create region -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#regions">
-				<wadl:method href="createRegion">
+				<wadl:method href="#createRegion">
 				</wadl:method>
 			</wadl:resource>
 			<!-- get region -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#region">
-				<wadl:method href="getRegion">
+				<wadl:method href="#getRegion">
 				</wadl:method>
 			</wadl:resource>
 			<!-- update region -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#region">
-				<wadl:method href="updateRegion">
+				<wadl:method href="#updateRegion">
 				</wadl:method>
 			</wadl:resource>
 			<!-- delete region -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#region">
-				<wadl:method href="deleteRegion">
+				<wadl:method href="#deleteRegion">
 				</wadl:method>
 			</wadl:resource>
 			<!-- list default region for a service -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#default-region-services">
-				<wadl:method href="getDefaultRegionServices">
+				<wadl:method href="#getDefaultRegionServices">
 				</wadl:method>
 			</wadl:resource>
 			<!-- specify default region for a service -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#default-region-services">
-				<wadl:method href="setDefaultRegionServices">
+				<wadl:method href="#setDefaultRegionServices">
 				</wadl:method>
 			</wadl:resource>
 		</wadl:resources>
@@ -861,7 +859,7 @@
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#policy" />
 			<!-- get complete content (blob) of a policy -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#policyBlob" >
-				<wadl:method href="getPolicyBlob" />
+				<wadl:method href="#getPolicyBlob" />
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -901,27 +899,31 @@
 			<para> 
 				The functionality described in this section is provided by the <code>OS-KSADM</code> 
 				extension to the core Identity API.  You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>.  
+				OpenStack Extensions documentation</link>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#services">
-				<wadl:method href="listServices"/>
+				<wadl:method href="#listServices"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#services">
-				<wadl:method href="addService"/>
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#service">
+				<wadl:method href="#getServiceByName"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#serviceId">
-				<wadl:method href="getService"/>
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#service">
+				<wadl:method href="#getServiceById"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#serviceId">
+	
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#service">
+				<wadl:method href="#addService"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#service">
 				<wadl:method href="#deleteService"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
 	
 	<!-- MULTIFACTOR OPERATIONS -->
-	<section condition="multifactor" xml:id="Multifactor_Calls">
+	<section xml:id="Multifactor_Calls">
 		<title>Multifactor Operations</title>
 		<para>The operations described in this section allow service developers to manage multifactor authentication.  To use a 
 			mobile phone device for multifactor authentication, use the API operations in this section to do the following:</para>
@@ -932,17 +934,29 @@
 			<listitem><para>Enable multifactor authentication for the phone.</para></listitem>
 		</itemizedlist></para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-mobile-phones">
-				<wadl:method href="createMobilePhone"/>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+				<wadl:method href="#createMobilePhone"/>		
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+				<wadl:method href="#getMobilePhoneById"/>		
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+				<wadl:method href="#getMobilePhonesForUser"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+				<wadl:method href="#sendVerifyCode"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-vcode">
-				<wadl:method href="sendVerifyCode"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-verify">
-				<wadl:method href="verifyDevice"/>
+				<wadl:method href="#verifyDevice"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
-				<wadl:method href="updateMultifactorSettings"/>
+				<wadl:method href="#updateMultifactorSettings"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
+				<wadl:method href="#removeMultifactorForUser"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
+				<wadl:method href="#unlockMultifactorForUser"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>

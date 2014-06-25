@@ -52,13 +52,13 @@
 			
 			<!-- List extensions -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#extensions">
-				<wadl:method href="#listExtensions-v2"/>
+				<wadl:method href="listExtensions-v2.0"/>
 			</wadl:resource>
 			
 			<!-- Get extensions -->	
 			
 			<wadl:resource href="../../wadl/identity-admin.wadl#extension">
-				<wadl:method href="getExtension-v2.0"/>
+				<wadl:method href="#getExtension-v2.0"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -88,7 +88,7 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="listUsers">
+				<wadl:method href="#listUsers">
 					<wadl:doc>
 						<note>
 							<para>
@@ -109,18 +109,18 @@
 				</wadl:method>
 			</wadl:resource>
 			<!-- list user -->
-			<wadl:resource href="../../wadl/identity-admin.wadl#name">
-				<wadl:method href="getUserByName"/>
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
+				<wadl:method href="#getUserByName"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
-				<wadl:method href="getUserById"/>
+				<wadl:method href="#getUserById"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="#getUserByEmail"/>
 			</wadl:resource>
 			<!-- add user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="addUser">
+				<wadl:method href="#addUser">
 				<wadl:doc>
 					<note>
 						<para> This call is available only to users who hold the admin role (<code>identity:user-admin</code>).
@@ -137,7 +137,7 @@
 			</wadl:resource>
 			<!-- update user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="updateUser">
+				<wadl:method href="#updateUser">
 					<wadl:doc>
 						<note>
 							<para> Users who hold the admin role can update users who hold the user role (<code>identity:default</code>) or
@@ -148,7 +148,7 @@
 			</wadl:resource>
 			<!-- delete user -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="deleteUser">
+				<wadl:method href="#deleteUser">
 					<wadl:doc>
 						<note>
 							<para> This call is available only to users who hold the admin role (<code>identity:user-admin</code>).
@@ -160,7 +160,7 @@
 			</wadl:resource>
 			<!-- list all credentials -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
-				<wadl:method href="listCredentials">
+				<wadl:method href="#listCredentials">
 					<wadl:doc>
 						<note>
 							<para>
@@ -175,7 +175,7 @@
 			</wadl:resource>
 			<!-- get user's API key credentials -->
 			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
-				<wadl:method href="getUserCredential">
+				<wadl:method href="#getUserCredential">
 				<wadl:doc>
 					<note>
 						<para>
@@ -196,7 +196,7 @@
 			</wadl:resource>
 			<!-- reset user's API key credentials -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#reset_apikey_credentials" >
-				<wadl:method href="resetUserAPIKeyCredentials"/>
+				<wadl:method href="#resetUserAPIKeyCredentials"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -206,23 +206,23 @@
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<!-- list roles -->
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
-					<wadl:method href="listRoles"/>
+					<wadl:method href="#listRoles"/>
 				</wadl:resource>
 				<!-- get a global role -->
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
-					<wadl:method href="getRole"/>
+					<wadl:method href="#getRole"/>
 				</wadl:resource>
 				<!-- add a global role to a user -->
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
-					<wadl:method href="addUserRole"/>
+					<wadl:method href="#addUserRole"/>
 				</wadl:resource>
 				<!-- delete a global role from a user -->
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
-					<wadl:method href="deleteUserRole"/>
+					<wadl:method href="#deleteUserRole"/>
 				</wadl:resource>
 				<!-- list global roles available to a user -->
 				<wadl:resource href="../../wadl/identity-admin.wadl#userRoles">
-					<wadl:method href="listUserGlobalRoles">
+					<wadl:method href="#listUserGlobalRoles">
 						<wadl:doc>
 							<note>
 									<para> This call is available to users who hold either the
@@ -246,13 +246,13 @@
 		<para>The operations described in this section allow clients to get and validate access tokens.</para>
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/identity.wadl#tokens" >
+			<wadl:resource href="../../wadl/identity-admin.wadl#tokens" >
 				<!-- authenticate token -->
-				<wadl:method href="authenticate"/>				
+				<wadl:method href="#authenticate"/>				
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity.wadl#token">
+			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
 				<!-- revoke token -->
-				<wadl:method href="revokeToken"/>
+				<wadl:method href="#revokeToken"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -260,7 +260,7 @@
 		<title>Tenants</title>
 		<para>The operations described in this section allow clients to manage tenants.</para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/identity.wadl#tenants">
+			<wadl:resource href="../../wadl/identity-admin.wadl#tenants">
 				<wadl:method href="listTenants">
 				</wadl:method>
 			</wadl:resource>

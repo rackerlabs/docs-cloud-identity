@@ -13,7 +13,7 @@
 
     <variablelist>
         <varlistentry>
-            <term>User</term>
+            <term><emphasis role="bold">User</emphasis></term>
             <listitem>
                 <para>A user is a digital representation of a person, system, or service that uses
                     &CLOUD; services. Users have credentials and can be assigned tokens. They can
@@ -66,7 +66,8 @@
             </listitem>
         </varlistentry>
         <varlistentry>
-            <term>Authentication</term>
+            <term><emphasis role="bold"
+                >Authentication</emphasis></term>
             <listitem>
                 <para>The act of passing in <glossterm baseform="Credentials-d1e03"
                         >credentials</glossterm>, confirming an identity, and returning a token
@@ -77,7 +78,7 @@
                     service, tenant, or user account configuration.</para>
                 <para>In response to valid credentials, the service returns an authentication token
                     and a service catalog with information about the &CLOUD; resources available for
-                    use. In subsequent requests to the &CIS; or other &CLOUD; service endpoint, the
+                    use. In subsequent requests to the &CIS; or other &CLOUD; service <glossterm>endpoint</glossterm>. 
                     user includes the authentication token in the request as proof of identity,
                     rights, and privileges to complete the requested operation. </para>
             </listitem>
@@ -219,7 +220,7 @@
             <listitem>
                 <para>A service is a logical name for the internal and external capabilities
                     provided by a &CLOUD; platform or product component. A service provides one or
-                    more endpoints through which users can
+                    more <glossterm baseform="endpoint">endpoints</glossterm> through which users can
                     access resources and perform operations. Examples of Rackspace Cloud services include 
                     Identity, Servers, Load Balancers, and Files.</para>
             </listitem>
