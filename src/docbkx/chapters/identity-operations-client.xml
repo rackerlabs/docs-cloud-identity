@@ -112,7 +112,7 @@
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="#getUserByName"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#userid">
+			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="#getUserById"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
@@ -251,6 +251,9 @@
 				<wadl:method href="#authenticate"/>				
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
+				<wadl:method href="#authenticate_token"/>
+			</wadl:resource>	
+				<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
 				<!-- revoke token -->
 				<wadl:method href="#revokeToken"/>
 			</wadl:resource>

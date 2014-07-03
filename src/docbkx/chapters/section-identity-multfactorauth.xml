@@ -1,0 +1,67 @@
+<!DOCTYPE section [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+  
+  <section 
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="MFA__Ops">
+    
+  <title>Multifactor authentication</title>
+  <para>The &CIS; multifactor authentication service adds additional login security to &CLOUD;
+    accounts. With multifactor authentication enabled, authentication is a two-step process:<orderedlist>
+      <listitem>
+        <para>A user submits an inital POST tokens request to the Identity Service endpoint,
+          including either API key or password credentials.</para>
+        <para>The response body returned by the Identity service includes an X-SessionId header and
+          a request for additional credentials. The Identity service also sends an SMS text message
+          with a passcode to the phone number associated with the account.</para>
+      </listitem>
+      <listitem>
+        <para>To complete the authentication process, the user submits a second POST tokens request,
+          including the sessionId header and passcode as credentials.</para>
+        <para>If the credentials are valid, the Identity service returns an authentication response
+          that includes the authentication token and a service catalog showing the available
+          services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for each service.</para>
+      </listitem>
+    </orderedlist></para>
+    <para>Users interested in enabling multifactor authentication must update their &CLOUD; user
+    accounts to add a phone number that can be used in the authentication process, verify the phone,
+    and enable the user account for multifactor authentication. Figure <xref
+      linkend="mfa_workflow_setup" xrefstyle="select: labelnumber"/> provides an overview of the
+    work flow to complete these tasks.</para><figure xml:id="mfa_workflow_setup">
+      <title>Multifactor authentication user account set up work flow </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="../figures/auth_multifacSetup.png"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <variablelist>
+      <varlistentry>
+        <term><emphasis role="bold">Related topics</emphasis>
+        </term>
+        <listitem>
+          <para>
+            <simplelist>
+              <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+                targetptr="mfa_processes"></olink>Set up, use, and manage multifactor capabilities.</member>
+              <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+                targetptr="Multifactor_Calls"></olink>: Get information about multifactor API operations</member>
+              <member><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
+                Validate Token</link>Authenticate with multifactor credentials</member>
+            </simplelist>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
+    <important>
+      <para>Multifactor authentication is only supported by &CIS; version 2.0 or later. User
+      accounts set up for multifactor authentication cannot authenticate through version 1.1. </para>
+    </important>      
+  </section>
