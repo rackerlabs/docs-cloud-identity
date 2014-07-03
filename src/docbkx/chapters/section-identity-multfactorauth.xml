@@ -26,11 +26,14 @@
         <para>If the credentials are valid, the Identity service returns an authentication response
           that includes the authentication token and a service catalog showing the available
           services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for each service.</para>
+        <important><para>Multifactor authentication is only supported by Rackspace Cloud Identity Service version 2.0 or later. User accounts set up for multifactor authentication cannot authenticate through version 1.1. </para></important>
       </listitem>
     </orderedlist></para>
     <para>Users interested in enabling multifactor authentication must update their &CLOUD; user
     accounts to add a phone number that can be used in the authentication process, verify the phone,
-    and enable the user account for multifactor authentication. Figure <xref
+    and enable the user account for multifactor authentication. This work can be completed from the Cloud Control panel 
+    or by using the &CIS; API.</para>
+    <para>Figure <xref
       linkend="mfa_workflow_setup" xrefstyle="select: labelnumber"/> provides an overview of the
     work flow to complete these tasks.</para><figure xml:id="mfa_workflow_setup">
       <title>Multifactor authentication user account set up work flow </title>
@@ -41,27 +44,6 @@
         </imageobject>
       </mediaobject>
     </figure>
-    <variablelist>
-      <varlistentry>
-        <term><emphasis role="bold">Related topics</emphasis>
-        </term>
-        <listitem>
-          <para>
-            <simplelist>
-              <member><xref linkend="mfa_process_summary" xrefstyle="select: title"/>
-                </member>
-              <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-                targetptr="Multifactor_Calls" xrefstyle="API reference information"/></member>
-              <member><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
-               Authenticate with multifactor credentials</link></member>
-            </simplelist>
-          </para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-    
-    <important>
-      <para>Multifactor authentication is only supported by &CIS; version 2.0 or later. User
-      accounts set up for multifactor authentication cannot authenticate through version 1.1. </para>
-    </important>      
+    <para>For information about setting up, using, and managing multifactor authentication capabilities using &CIS; API operations, 
+      see <link xlink:href= "Multifactor_Calls.html#Multifactor_Calls">Multifactor API operations</link>.</para>  
   </section>

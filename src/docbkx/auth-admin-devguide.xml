@@ -64,6 +64,9 @@
 										<listitem>
 											<para><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
 												targetptr="mfa_api_ovw"></olink></para></listitem>
+									<listitem>
+										<para><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+											targetptr="proc_mfa_manage"></olink></para></listitem>
 									</itemizedlist></para>
 						</listitem>
 						<listitem>
@@ -101,6 +104,7 @@
 				<date>2014-06-25</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
+						
 						<listitem>
 							<para>Added information about obtaining tokens by authenticating with multifactor authentication credentials. 
 								See <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -111,6 +115,8 @@
 								>“Identity Concepts”</olink> to correct role value and description errors
 								in Get token by SAML assertion operation.</para>
 						</listitem>
+						<listitem><para>Updated the <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Account-Users-d1e910">“Account users”</olink> 
+							information to add information about the default identity role assignments.</para></listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
