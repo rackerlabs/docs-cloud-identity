@@ -5,7 +5,8 @@
             "email":"john.smith@example.org",
             "enabled":true,
             "RAX-AUTH:defaultRegion": "SYD",
-            "RAX-AUTH:domainId": "5830280"
+            "RAX-AUTH:domainId": "5830280",
+            "RAX-AUTH:multiFactorEnabled": "true"
         },
         {
             "id":"1234562",
@@ -13,7 +14,8 @@
             "email":"john.smith2@example.org",
             "enabled":true,
             "RAX-AUTH:defaultRegion": "SYD",
-            "RAX-AUTH:domainId": "5830280"
+            "RAX-AUTH:domainId": "5830280",
+            "RAX-AUTH:multiFactorEnabled": "false"
         }
     ],
     "users_links":[]

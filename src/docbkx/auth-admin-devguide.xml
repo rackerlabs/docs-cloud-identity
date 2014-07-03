@@ -11,7 +11,7 @@
 	xmlns:svg="http://www.w3.org/2000/svg"
 	xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" xml:id="Identity-Admin-Developer-Guide">
 	<title>Cloud Identity Admin Developer Guide</title>
-	<titleabbrev>Cloud Identity Admininistrator Guide</titleabbrev>
+	<titleabbrev>Cloud Identity Administrator Guide</titleabbrev>
 	<?rax pdf.url="../../auth-admin-devguide-latest.pdf" canonical.url.base="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content"?>
 	<?rax status.bar.text.font.size="80px" status.bar.text="RAX INTERNAL"?>
 	<info>
@@ -44,13 +44,91 @@
 			<para>This document is intended for software developers interested
 				in developing applications that use the Rackspace
 				Cloud Identity Service, which is an implementation of
-				OpenStack's Keystone Identity Service for identity
+				the OpenStack Keystone Identity Service for identity
 				authentication, authorization, and service
 				administration. This document also includes details on
 				how to integrate services with the Rackspace Cloud
 				Identity Service.</para>
 		</abstract>
 		<revhistory>
+			<revision condition="admin">
+				<date>2014-07-03</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added the following sections to Multifactor operations section to add information about Multifactor authentication and attributes. 
+								<itemizedlist>
+										<listitem>
+											<para><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+											targetptr="mfa_processes"></olink></para></listitem>
+										<listitem>
+											<para><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+												targetptr="mfa_api_ovw"></olink></para></listitem>
+									</itemizedlist></para>
+						</listitem>
+						<listitem>
+							<para>Cleaned up <olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Extensions-d1e688"/>:<itemizedlist>
+									<listitem>
+										<para>Moved information about Extensions API operations to
+												<olink condition="admin"
+												targetdoc="Identity-Admin-Developer-Guide"
+												targetptr="Extensions_operations"/></para>
+									</listitem>
+									<listitem>
+										<para>Added section for extended responses and actions:
+												<olink condition="admin"
+												targetdoc="Identity-Admin-Developer-Guide"
+												targetptr="extended_actions"/>.</para>
+									</listitem>
+								</itemizedlist><itemizedlist>
+									<listitem>
+										<para><olink condition="admin"
+												targetdoc="Identity-Admin-Developer-Guide"
+												targetptr="mfa_processes"/></para>
+									</listitem>
+									<listitem>
+										<para><olink condition="admin"
+												targetdoc="Identity-Admin-Developer-Guide"
+												targetptr="mfa_api_ovw"/></para>
+									</listitem>
+								</itemizedlist></para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>			
+			<revision>
+				<date>2014-06-25</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added information about obtaining tokens by authenticating with multifactor authentication credentials. 
+								See <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Token_Calls">“Token Calls”</olink> </para>
+						</listitem>
+						<listitem security="internal">
+							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Token_Calls"
+								>“Identity Concepts”</olink> to correct role value and description errors
+								in Get token by SAML assertion operation.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-06-23</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added Multifactor and Mobile phone resources and operations for multifactor-authentication support.
+								See <olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Multifactor_Calls">“Multifactor Operations”</olink> </para>
+						</listitem>
+						<listitem security="internal">
+							<para>Added support for pop-up glossary terms.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-05-05</date>
 				<revdescription>
@@ -170,7 +248,7 @@
 								internal-only. </para>
 						</listitem>
 						<listitem>
-							<para> Corrected json response in <olink targetdoc="Identity-Admin-Developer-Guide"
+							<para> Corrected JSON response in <olink targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_listUserGlobalRoles_v2.0_users__userId__roles_Role_Calls"
 								/>. </para>
 						</listitem>
@@ -186,7 +264,7 @@
 								body.</para>
 						</listitem>
 						<listitem>
-							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
+							<para> Added some examples of what a service is, since you can filter on service Id in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
 									>“Secret Questions and Answers”</olink>. </para>
@@ -209,7 +287,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added error to <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users_User_Calls"/>. </para>
+									targetptr="POST_addUser_v2.0_users__User_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -221,7 +299,7 @@
 						<listitem>
 							<para> Updated samples to Racker token authentication in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_validateToken_v2.0_tokens__tokenId__"/>. </para>
+									targetptr="Token_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -234,7 +312,7 @@
 							<para> Corrected links to endpoint documentation <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="Additional_Resources-d1e130">“Additional
-									Resources”</olink> . </para>
+									Resources”</olink>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -251,7 +329,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> RBAC: Changed account admin user to
-								account owner and changed sub-accout
+								account owner and changed sub-account
 								to account user. Changed some
 								occurrences of global to
 								multi-product. Changed some links to
@@ -293,7 +371,7 @@
 						<listitem>
 							<para> Added visibility note to <olink
 								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_addRole_v2.0_OS-KSADM_roles_Role_Calls"
+								targetptr="POST_addRole_v2.0_OS-KSADM_roles__Role_Calls"
 								>“Users”</olink>. </para>
 						</listitem>
 					</itemizedlist>
@@ -304,7 +382,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected update json user request and response (<olink
+							<para> Corrected update JSON user request and response (<olink
 								targetdoc="Identity-Admin-Developer-Guide"
 								targetptr="User_Calls">“User operations”</olink>) </para>
 						</listitem>
@@ -347,10 +425,10 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added discussion of apparent role
-								conflicts in rbac </para>
+								conflicts in RBAC </para>
 						</listitem>
 						<listitem>
-							<para> Corrected json example for
+							<para> Corrected JSON example for
 								impersonate user API call. </para>
 						</listitem>
 					</itemizedlist>
@@ -361,7 +439,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected json example for add
+							<para> Corrected JSON example for add
 								endpoint to tenant. </para>
 						</listitem>
 					</itemizedlist>
@@ -373,7 +451,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Corrected URI path for <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_"
+									targetptr="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins__User_Calls"
 									>“Secret Questions and Answers”</olink>.</para>
 						</listitem>
 						<listitem>
@@ -400,7 +478,7 @@
 						</listitem>
 						<listitem>
 							<para> Including several API calls from
-								KSCATALOG and KSADM Openstack APIs
+								KSCATALOG and KSADM OpenStack APIs
 								including: Delete Role; List Services;
 								Add, Get, and Delete Service; List
 								Endpoint Templates; Add, Get, and
@@ -682,8 +760,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added details to <xref
-								linkend="Namespaces-d1e910"/>,
+							<para> Added details to namespaces section,
 								describing new standards and defaults.
 							</para>
 						</listitem>
@@ -740,8 +817,7 @@
 								namespaces. </para>
 						</listitem>
 						<listitem>
-							<para> Added <xref
-								linkend="Namespaces-d1e910"/>,
+							<para> Added Namespaces section,
 								introducing the idea of namespaces and
 								relating it to the idea of <link
 								linkend="Extensions-d1e688">API
@@ -870,7 +946,7 @@
 		</raxm:metadata>
 	</info>
 	<xi:include href="chapters/identity-overview-admin.xml"/>
-	<xi:include href="chapters/identity-generalinfo.xml"/>
+	<xi:include href="chapters/identity-admin-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-admin.xml"/>
 </book>

@@ -2,6 +2,7 @@
   [
    { "RAX-AUTH:defaultRegion": "ORD", 
      "RAX-AUTH:domainId": "12345", 
+     "RAX-AUTH:multiFactorEnabled": "true",
      "created": "2013-04-30T13:27:32.908-04:00", 
      "email": "joeuser@example.org", 
      "enabled": true, 
@@ -11,6 +12,7 @@
 
    { "RAX-AUTH:defaultRegion": "ORD", 
      "RAX-AUTH:domainId": "12345", 
+       "RAX-AUTH:multiFactorEnabled": "false",
      "created": "2013-04-30T15:51:48.520-04:00", 
      "email": "joeuser@example.org", 
      "enabled": true, 

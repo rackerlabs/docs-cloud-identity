@@ -426,7 +426,7 @@
 						<listitem>
 							<para> For "Update User" and "Delete User" operations, added suggestion to use <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__"/> to confirm
+									targetptr="GET_getUserById_users__user_id__User_Calls"/> to confirm
 								that the intended user will be changed. </para>
 						</listitem>
 						<listitem>

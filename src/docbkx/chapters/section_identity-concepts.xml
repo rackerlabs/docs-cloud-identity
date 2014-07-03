@@ -8,8 +8,8 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Identity-Concpts">
     <title>Identity concepts</title>
-    <para>Before you begin using the  &CIS;, make sure you understand the following key
-        concepts:</para>
+    <para>Review the following key concepts to learn how &CIS;  helps you login and gain access to
+        &CLOUD; services. </para>
 
     <variablelist>
         <varlistentry>
@@ -29,7 +29,7 @@
                     role automatically, based on the &CIS; system configuration. The user type and
                     role determine the resources and capabilities available to the user.</para>
                 <para>See the following links for more information: 
-                    <itemizedlist condition="client">
+                    <itemizedlist audience="client">
                     <listitem>
                         <para>
                             <olink targetdoc="Identity-Developer-Guide"
@@ -45,7 +45,7 @@
                             </para>
                         </listitem>
                    </itemizedlist>
-                   <itemizedlist condition="admin">    
+                   <itemizedlist audience="admin">    
                         <listitem>
                             <para>
                                 <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -113,9 +113,9 @@
                     &PRODNAME; in response to an authentication request submitted with valid
                     credentials. The response also includes a service catalog with a list of &CLOUD;
                     services that can be accessed with the token. </para>
-                <para condition="client">Authentication tokens expire after 24 hours. To get a new
+                <para audience="client">Authentication tokens expire after 24 hours. To get a new
                     token, users must submit another authentication request to the &CIS;.</para>
-                <para condition="admin">Authentication tokens expire after 24 hours. An
+                <para audience="admin">Authentication tokens expire after 24 hours. An
                     administrator or process can revoke a token before its expiration, if necessary.
                     To get a new token, you must submit another authentication request to the
                     &CIS;.</para>
@@ -160,7 +160,7 @@
                         <term><emphasis role="bold">Product roles</emphasis></term>     
                         <listitem>
                             <para> A product role defines the functions a user can perform for a
-                                particular Rackspace cloud service. </para>
+                                    particular Rackspace Cloud service. </para>
                         </listitem>
                     </varlistentry>
                 </variablelist></para>
@@ -301,7 +301,7 @@
                     endpoints for the same &CLOUD; service.</para>
             </listitem>
         </varlistentry>
-        <varlistentry condition="admin">
+        <varlistentry audience="admin">
             <term><emphasis role="bold">Endpoint Template</emphasis></term>
             <listitem>
                 <para>Endpoint templates provide Cloud Service providers with a method to manage API
@@ -317,7 +317,7 @@
             </listitem>
         </varlistentry>
         <varlistentry>
-            <term>Service catalog</term>
+            <term><emphasis role="bold">Service catalog</emphasis></term>
             <listitem>
                 <para>The service catalog is the list of services available to authenticated users with a valid 
                     <glossterm xml:base="Token-d1e13">authentication token</glossterm>. The catalog is 
@@ -327,7 +327,8 @@
                     information. Typically, the service catalog returned to a System administrator has additional 
                     information that might not be visible to User administrators or Account users.</para>
                     
-                    <para>All the services in the catalog are available as long as you have a valid authentication token. </para>
+                    <para>All the services in the catalog are available as long as you have a valid
+                    authentication token.</para>
             </listitem>
         </varlistentry>
     </variablelist>   

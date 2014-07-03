@@ -60,26 +60,34 @@
         
        <resource id="tokens" path="tokens">
            <method href="#authenticate"/>
+           <method href="#authenticate_token"/>
+       </resource>
+           <resource id="sessionId_mfa" path ="tokens/">
+               <param xmlns="http://wadl.dev.java.net/2009/02" name="X-SessionId" style="header" type="xsd:string" required="false">
+                   <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                       <para>The SessionId header returned when a multifactor-enabled user authenticates 
+                           to &CIS; with either Password or API key credentials. Required to authenticate with multifactor authentication Passcode credentials.</para>
+                   </wadl:doc>
+               </param>
+               <param xmlns="http://wadl.dev.java.net/2009/02" name="passcode" style="template"
+                   required="false" type="xsd:string">
+                   <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Passcode received on the multifactor-enabled phone 
+                       associated with the user account.
+                   </wadl:doc>
+               </param>
+               <method href="#authenticateWithMultiFactor"/>
+           </resource>
            <resource id="tokenById" path="{tokenId}">
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A valid authentication token with administrative access.</para>
                     </wadl:doc>
                 </param>
-           <param xmlns="http://wadl.dev.java.net/2009/02" name="tokenId" style="template" type="xsd:string" required="true"/>
-                    <param name="tokenId" style="template" type="capi:UUID" required="true">
+           <param xmlns="http://wadl.dev.java.net/2009/02" name="tokenId" style="template" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                             <para>The unique ID for the authentication token issued by &CIS;</para>
                         </wadl:doc>
-                    </param>
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="belongsTo" style="query" required="false" type="xsd:string">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>Validates that a token has the specified tenant in scope, for performance. Valid tokens 
-                            are in the <code>/tokens/{tokenId}</code> path. An <code>itemNotFound</code> 
-                            (<code>404</code>) fault is returned for a token that is not valid.
-                        </para>
-                        </wadl:doc>
-                    </param>
+           </param>        
                         <method href="#revokeToken"/>
                         <method href="#validateToken"/>
                         <method href="#checkToken"/>
@@ -97,16 +105,11 @@
                     </wadl:doc>
                 </param>
                     <method href="#getUserByName"/>
-                    <method href="#getUserByEmail"/>
-                    <resource id="userid" path="{user_id}">
-                    <param name="user_id" style="template" type="xsd:string" required="true">
-                        <wadl:doc>The user ID.</wadl:doc>
-                    </param>
                     <method href="#getUserById"/>
+                    <method href="#getUserByEmail"/>
                     <resource id="userRoles" path="roles">
                         <method href="#listUserGlobalRoles"/>
                     </resource>
-                </resource>
             </resource>
 
              <resource id="tenants" path="tenants">
@@ -137,7 +140,6 @@
                     </resource>
                   </resource>
              </resource>
-    </resource>
     </resources>
 
     <!--*******************************************************-->
@@ -165,7 +167,7 @@
     <!--*******************************************************-->
 
     <!-- Version -->
-    <method name="GET" id="getVersions-v2">
+    <method xml:id="get_versions_op" name="GET" id="getVersions-v2">
         <wadl:doc xml:lang="EN" title="List versions"
             xmlns="http://docbook.org/ns/docbook"><para
                 role="shortdesc">Lists information about all Identity
@@ -197,7 +199,7 @@
     
     
     
-    <method name="GET" id="getVersionInfo-v2.0">
+    <method xml:id="get_verions_op" name="GET" id="getVersionInfo-v2.0">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Show version details">
             <para role="shortdesc">Shows details for the Identity API
@@ -227,7 +229,7 @@
     
    <!--Extension -->
     
-    <method name="GET" id="listExtensions-v2.0">
+    <method xml:id="get_extensions_op" name="GET" id="listExtensions-v2.0">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
             title="List extensions">
             <para role="shortdesc">Lists available extensions.</para>
@@ -276,12 +278,14 @@
             </representation>
         </response> &commonFaults; &getFaults; </method>
     
-    <method name="GET" id="getExtension-v2.0">
+    <method xml:id="get_extension_op" name="GET" id="getExtension-v2.0">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
             title="Get extension details">
             <para role="shortdesc">Gets detailed information for a
                 specified extension.</para>
-            <para>Specify the extension alias in the URI.</para>
+            <para>Get information about a specific extension by looking up the unique 
+                alias. If an extension is not available, the GET extensions operation 
+                returns a 404itemNotFound error.</para>
         </wadl:doc>
         <response status="200 203">
             <representation mediaType="application/json">
@@ -306,94 +310,58 @@
     <!-- Token Operations -->
     
         <method name="POST" id="authenticate">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate">
-                <para role="shortdesc">Authenticates and generates a
-                    token.</para>
-            <para>The &CIS; is a ReSTful web service that provides authentication services  
-                for the &CLOUD;. To gain access, users and administrators can use this POST operation 
-                to obtain an authentication token from the &CIS;, or generate a new token after a previously 
-                issued token has expired. In subsequent requests to &CIS; or other services, 
-                you include the authentication token in the HTTP x-header parameter defined as 
-                <literal>X-Auth-Token</literal> to verify your identity and confirm access rights and privileges.
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate as user with password or API key">
+                <para role="shortdesc">Authenticates using either a password or API key and generates an authentication token.</para>
+            <para>Submit the POST token authentication request to the &CIS; endpoint URL with <literal>v2.0/tokens </literal> 
+                supplied as the path and a payload with either of the following credential types:
+                <itemizedlist spacing="compact">
+                    <listitem><para>Password credentials: user name and password</para></listitem>
+                    <listitem><para>API Key credentials: user name and API key</para></listitem>                 
+                </itemizedlist>
             </para>
-            <para>
-                Submit the POST token authentication request to the &CIS; service endpoint URL with v2.0/tokens 
-                supplied as the path and a payload of credentials in the body. Credentials can include any of the following 
-                types:
+            <para>You might also need to include either the <code>tenantId</code> or <code>tenantName</code> 
+                on authentication requests with API key or password credentials. Some services use multi-level authentication, with 
+                service-specific credentials in addition to vendor-specific credentials. 
+                In such cases, associating a user with a tenant can be a method of passing that 
+                additional level of identifying information to the service. Also, if a user account 
+                is assigned to multiple tenants, then including the tenant information generates the authentication 
+                token for the specfied tenant.
             </para>
-            
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>username and API key</para>
-                </listitem>
-                <listitem>
-                    <para>username, API key, and tenant ID</para>
-                </listitem>
-                <listitem>
-                    <para>username, API key, and tenant name </para>
-                </listitem>
-                <listitem>
-                    <para>username and password </para>
-                </listitem>
-                <listitem>
-                    <para>username, password and tenant ID </para>
-                </listitem>
-                <listitem>
-                    <para>username, password and tenant name </para>
-                </listitem>
-                <listitem>
-                    <para>token and tenant ID </para>
-                </listitem>
-                <listitem>
-                    <para>passcode issued by Rackspace verification service</para>
-                    <note>Available for user account that have been set up for multifactor authentication.</note>
-                </listitem>
-            </itemizedlist>
-            
-            <para>
-                You can use whichever valid credentials you prefer. 
-                Unless you specify a tenant, the response from the Identity service is not 
-                affected by the type of credentials that you use.</para>
-            <important>
-                <para>
-                    If you specify a tenant, the <code>Service Catalog</code> returned includes only
-                    endpoints for the cloud services authorized for that tenant.
-                </para>
-            </important>              
-                <para>See the following examples to learn about authenticating with different credential types.</para>
         </wadl:doc>
         <request>         
             <representation mediaType="application/xml" element="identity:auth">
                   <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authenticate by phone Request: XML">
-                        <xsdxt:code href="../common/samples/auth_with_phoneReq.xml"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username and API Key Credentials) Request: XML">
-                        <xsdxt:code href="../common/samples/auth_with_apikey.xml"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username, API Key, and Tenant ID Credentials) Request: XML">
+                    <xsdxt:sample title="Authenticate with API key credentials and optional Tenant ID: XML request">
                         <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.xml"/>
                     </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username and Password Credentials) Request: XML">
-                        <xsdxt:code href="../common/samples/auth_credentials.xml"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username, Password, and Tenant ID Credentials) Request: XML">
+                    <xsdxt:sample title="Authenticate with Password credentials and optional Tenant ID: XML request">
                         <xsdxt:code href="../common/samples/auth_credentials_tenantId.xml"/>
                     </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Tenant ID and Token Credentials) Request: XML">
-                        <xsdxt:code href="../common/samples/auth_with_token_tenantId.xml"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Tenant Name and Token Credentials) Request: XML">
-                        <xsdxt:code href="../common/samples/auth_with_token_tenantName.xml"/>
-                    </xsdxt:sample>
                 </wadl:doc>
+     
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-KSKEY:APIKeyCredentials" style="plain"
+                    required="false" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>An <code>APIKeyCredentials</code>
+                            object to specify the <code>username</code> and <code>APIkey</code> string values associated with the &CLOUD; account. 
+                            Cannot be specified with <literal>passwordCredentials</literal> or <literal>token</literal>.</para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="passwordCredentials" style="plain"
+                    required="false" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>A <code>passwordCredentials</code> object to specify the 
+                            <code>username</code> and <code>password</code> string values associated with the &CLOUD; account.
+                        Cannot be specified with <literal>APIKeyCredentials</literal> or <literal>token</literal>.</para>
+                    </wadl:doc>
+                </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="tenantName" style="plain" required="false"
                     type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>The tenant name. Both the
+                        <para>Specify the name of the tenant for the specified user account 
+                            or token. Both the
                             <code>tenantId</code> and
                             <code>tenantName</code> attributes are
-                            optional, but should not be specified
+                            optional. However, they cannot be specified
                             together. If both attributes are specified,
                             the server responds with a <code>400</code>
                             <code>Bad Request</code>.</para></wadl:doc>
@@ -408,75 +376,19 @@
                         the server responds with a <code>400</code>
                         <code>Bad Request</code>.</para></wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="passwordCredentials" style="plain"
-                    required="false" type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>A <code>passwordCredentials</code>
-                            object. To authenticate, you must provide
-                            either a user ID and password or a
-                            token.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="plain" required="false"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>The user name. Required if you include
-                            the <code>passwordCredentials</code> object.
-                            If you do not provide password credentials,
-                            you must provide a token.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="password" style="plain" required="false"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The password of the user. Required if
-                        you include the
-                        <code>passwordCredentials</code> object.
-                        If you do not provide a password credentials,
-                        you must provide a token.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="token" style="plain" required="false"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>A <code>token</code> object. Required
-                            if you do not provide password
-                            credentials.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" required="false" type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>The token ID. This is a required field
-                            in the <code>token</code>
-                            object.</para>
-                    </wadl:doc>
-                </param>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authenticate by phone Request: JSON">
-                        <xsdxt:code href="../common/samples/auth_with_phoneReq.json"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username and API Key Credentials) Request: JSON">
-                        <xsdxt:code href="../common/samples/auth_with_apikey.json"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username, API Key, and Tenant ID Credentials) Request: JSON">
+                    <xsdxt:sample title="Authenticate with API key credentials and optional Tenant ID: JSON request">
                         <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.json"/>
                     </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username and Password Credentials) Request: JSON">
-                        <xsdxt:code href="../common/samples/auth_credentials.json"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Username, Password, and Tenant ID Credentials) Request: JSON">
+                    <xsdxt:sample title="Authenticate with Password credentials and optional Tenant ID: JSON request">
                         <xsdxt:code href="../common/samples/auth_credentials_tenantId.json"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Tenant ID and Token Credentials) Request: JSON">
-                        <xsdxt:code href="../common/samples/auth_with_token_tenantId.json"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate (with Tenant Name and Token Credentials) Request: JSON">
-                        <xsdxt:code href="../common/samples/auth_with_token_tenantName.json"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate with Multifactor authentication Request: JSON">
-                        <xsdxt:code href="../common/samples/auth_with_token_tenantName.json"/>
                     </xsdxt:sample>                   
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200 203">           
+            <response status="200"><wadl:doc title="Success">Operation completed successfully. See response examples.</wadl:doc>         
             <representation mediaType="application/xml" element="identity:access">
                 <!-- Note: WADLs generally get samples from /common/samples/ while the rest of the book gets samples from /docbkx/samples/ -->
                 <!-- tired of trying to maintain synch between /common/samples/auth.xml & .json and /docbkx/samples/auth-annotated.xml & .json -->
@@ -492,125 +404,51 @@
                     type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>An <code>access</code>
-                            object.</para>
+                            object that returns token, user, and service information upon successful authentication.</para>
                     </wadl:doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="token" style="plain" required="true"
                     type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>A <code>token</code> object.</para>
+                        <para>A <code>token</code> object that returns the authencation token id that provides access to &CLOUD; 
+                            services and capabilities. Save or copy the id value for use in subsequent requests to &CLOUD; services.
+                            Also note the expiration date and time. When the token expires, you must re-authenticate with the POST tokens 
+                            operation.</para>
+                        <para>The response also includes information token issue and expiration timestamps, and the authentication 
+                            method used to generate the token which can include the following values:<itemizedlist>
+                                <listitem><para>PASSWORD indicates the Rackspace Cloud account password.</para>
+                                </listitem>
+                                <listitem><para>APIKEY indicates the API Key associated with the user account.</para></listitem>
+                                <listitem><para>RSAKey</para></listitem>
+                                <listitem><para>PASSCODE issued to the user by Rackspace verification service. 
+                                    This authentication method is available on user accounts that have been configured 
+                                    for Multifactor authentication.</para>
+                                </listitem>
+                            </itemizedlist></para>
                     </wadl:doc> 
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:AuthenticatedBy" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>Indicates the type of crdentials the user presented to authenticate with &CIS;</para>
-                        <itemizedlist>
-                            <listitem><para>PASSWORD indicates the Rackspace Cloud account password.</para>
-                            </listitem>
-                            <listitem><para>APIKEY indicates the API Key associated with the user account.</para></listitem>
-                            <listitem><para>RSAKey</para></listitem>
-                            <listitem><para>PASSCODE issued to the user by Rackspace verification service. 
-                                This authentication method is available on user accounts that have been configured 
-                                for Multifactor authentication.</para>
-                            </listitem>
-                        </itemizedlist>
-                    </wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="issued_at" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>
-                            A timestamp that indicates when the
-                            token was issued.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="expires" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A timestamp that indicates when the
-                        token expires.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>The authentication token. In the
-                            example, the token is
-                            <code>my_id</code>.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="tenant" style="plain" required="true"
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="user" style="template" required="true"
+                        type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>
+                                A user object that returns the following information about the user, if available for the account: 
+                            id, name, assigned roles, default region, domain, multifactor-authentication status.</para></wadl:doc>
+                    </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="tenant" style="template" required="true"
                     type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         ><para>A <code>tenant</code>
-                            object.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="description" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>The description of the tenant. If not
-                            set, this value is
-                            <code>null</code>.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="enabled" style="plain" required="false"
-                    type="xsd:boolean">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Indicates whether the tenant is enabled
-                            or disabled.</para>
-                    </wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The tenant ID.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The tenant name.</para></wadl:doc>
+                            object with tenant information and account state. Information includes:
+                            tenant id, name, and description if 
+                        provided; The <literal>enabled</literal> parameter indicates whether the 
+                        tenant account is active (enabled=true).</para></wadl:doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="serviceCatalog" style="plain" required="true"
                     type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>A <code>serviceCatalog</code>
-                            object.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="endpoints" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>One or more <code>endpoints</code>
-                            objects. Each object shows the
-                            <code>adminURL</code>,
-                            <code>region</code>, <code>internalURL</code>,
-                            <code>id</code>, and
-                            <code>publicURL</code> for the
-                            endpoint.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="endpoints_links" style="plain"
-                    required="true" type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>Links for the
-                            endpoint.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="type" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>Endpoint type.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>Endpoint name.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="user" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A <code>user</code> object, which shows
-                            the <code>username</code>,
-                            <code>roles_links</code>, <code>id</code>,
-                            <code>roles</code>, and
-                            <code>name</code>.</para></wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="metadata" style="plain" required="true"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        ><para>A <code>metadata</code>
-                            object.</para></wadl:doc>
+                        ><para>A <code>serviceability</code>
+                            object that provides information about each service available to the authenticated user 
+                            along with the endpoints where the service can be accessed.</para></wadl:doc>
                 </param>
             </representation>
             <representation mediaType="application/json">
@@ -626,34 +464,310 @@
             </representation>
         </response>
          <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-                <wadl:doc title="identity:badRequest">Missing requred parameters.</wadl:doc>
+                <wadl:doc title="identity:badRequest">Missing required parameters.</wadl:doc>
                 <representation mediaType="application/xml" element="identity:badRequest"/>
                 <representation mediaType="application/json"/>
          </response>
                 
          <response status="401">
-            <wadl:doc title="Unauthorized">Authentication has failed. The authentication token has expired. Use the POST token operation 
-            to get a new token.</wadl:doc>
+             <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook">
+                <para>Authentication has failed. The authentication token has expired. Use the POST token operation 
+                    to get a new token.</para>
+             </wadl:doc>
+             <representation mediaType="application/xml" element="identity:userDisabled"/>
+             <representation mediaType="application/json"/>
+        </response>
+        <response status="401">
+            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook">Credentials are either expired or 
+                incorrect.</wadl:doc> 
             <representation mediaType="application/xml" element="identity:userDisabled"/>
             <representation mediaType="application/json"/>
         </response>
         <response status="403">
-            <wadl:doc title="Unauthorized">Permission denied, adjusting authentication credentials will not help.</wadl:doc>
+            <wadl:doc title="User disabled">Permission denied, adjusting authentication credentials will not help.</wadl:doc>
             <representation mediaType="application/xml" element="identity:userDisabled"/>
             <representation mediaType="application/json"/>
         </response>
          <response status="404">
-             <wadl:doc title="Unauthorized">The requested resource was not found.The subject token in X-Subject-Token  
+             <wadl:doc title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  
                  has expired or is no longer available. Use the POST token request to get a new token.</wadl:doc>
             <representation mediaType="application/xml" element="identity:userDisabled"/>
             <representation mediaType="application/json"/>
         </response>
         </method>
+    <method name="POST" id="authenticate_token">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate as tenant with token">
+            <para role="shortdesc">Allows Administrator users to authenticate by using a tenant id or name and 
+                a valid token.
+            </para>
+            <para>
+                Submit the POST token authentication request to the &CIS; endpoint URL with <code>v2.0/tokens</code>  
+                supplied as the path and the tenant name or id and token as a payload of credentials in the body. 
+            </para>             
+                <important>
+                    <para>
+                        If you authenticate as a tenant, the <code>Service Catalog</code> returned includes only
+                        endpoints for the cloud services authorized for that tenant.
+                    </para>
+                </important>
+        </wadl:doc>
+        <request>         
+            <representation mediaType="application/xml" element="identity:auth">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Authenticate with Tenant ID and Token Credentials: XML request">
+                        <xsdxt:code href="../common/samples/auth_with_token_tenantId.xml"/>
+                    </xsdxt:sample>
+                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="tenantName" style="plain" required="false"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Specify the name of the tenant for the specified user account 
+                            or token. Both the
+                            <code>tenantId</code> and
+                            <code>tenantName</code> attributes are
+                            optional. However, they cannot be specified
+                            together. If both attributes are specified,
+                            the server responds with a <code>400</code>
+                            <code>Bad Request</code>.</para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="tenantId" style="plain" required="false"
+                    type="capi:UUID">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The tenant ID. Both the
+                        <code>tenantId</code> and
+                        <code>tenantName</code> attributes are
+                        optional, but should not be specified
+                        together. If both attributes are specified,
+                        the server responds with a <code>400</code>
+                        <code>Bad Request</code>.</para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="token" style="plain" required="false"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>A <code>token</code> object that provides a validated token id for the specified tenant. Required
+                            to authenticate as a tenant.</para></wadl:doc>
+                </param>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">                                       
+                    <xsdxt:sample title="Authenticate with Tenant ID and Token Credentials: JSON request">
+                        <xsdxt:code href="../common/samples/auth_with_token_tenantId.json"/>
+                    </xsdxt:sample>                   
+                </wadl:doc>
+            </representation>
+        </request>
+        <response xml:id="auth_success_resp" status="200">           
+            <representation mediaType="application/xml" element="identity:access">
+                <!-- Note: WADLs generally get samples from /common/samples/ while the rest of the book gets samples from /docbkx/samples/ -->
+                <!-- tired of trying to maintain synch between /common/samples/auth.xml & .json and /docbkx/samples/auth-annotated.xml & .json -->
+                <!-- (showing same sample responses in Ch 3 & Ch 4, annotated with callouts in Ch 3 only) -->
+                <!-- for these 2 samples only, this Ch 4 WADL reuses the samples shown in Ch3 -->
+                <!-- now I can stop losing synch -->     
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">        
+                    <xsdxt:sample title="Authentication Response: XML">
+                        <xsdxt:code href="../docbkx/samples/auth-annotated.xml"/>
+                    </xsdxt:sample>               
+                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="access" style="plain" required="true"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>An <code>access</code>
+                            object that returns token, user, and service information upon successful authentication.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="token" style="plain" required="true"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>A <code>token</code> object that returns the following information about the token: 
+                            token id, timestamps showing when the token was issued and when it expires, and the authentication method used 
+                            to generate the token which can include the following values: <itemizedlist>
+                                <listitem><para>PASSWORD indicates the Rackspace Cloud account password.</para>
+                                </listitem>
+                                <listitem><para>APIKEY indicates the API Key associated with the user account.</para></listitem>
+                                <listitem><para>RSAKey</para></listitem>
+                                <listitem><para>PASSCODE issued to the user by Rackspace verification service. 
+                                    This authentication method is available on user accounts that have been configured 
+                                    for Multifactor authentication.</para>
+                                </listitem>
+                            </itemizedlist></para>
+                    </wadl:doc> 
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="user" style="template" required="true"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            A user object that returns the following information about the user, if available for the account: 
+                        </para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" required="true"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The authentication token. In the
+                            example, the token is
+                            <code>my_id</code>.</para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="tenant" style="template" required="true"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        ><para>A <code>tenant</code>
+                            object with tenant information and account state. Information includes:
+                            tenant id, name, and description if 
+                            provided; The <literal>enabled</literal> parameter indicates whether the 
+                            tenant account is active (enabled=true).</para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="serviceCatalog" style="plain" required="true"
+                    type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        ><para>A <code>serviceCatalog</code>
+                            object that provides information about each service available to the authenticated user 
+                            along with the endpoints where the service can be accessed.</para></wadl:doc>
+                </param>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Authentication Response: JSON">
+                        <xsdxt:code href="../docbkx/samples/auth-annotated.json"/>
+                    </xsdxt:sample>
+                    <para> For more detailed information about authentication requests and responses with 
+                        see the <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
+                        <link condition="client" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
+                            >"Sample Authentication Request and Response"</link> <link condition="admin" xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html"
+                                >"Sample Authentication Request and Response"</link>.</para>
+                </wadl:doc>
+            </representation>
+        </response>
+        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
+            <wadl:doc title="identity:badRequest">Missing required parameters.</wadl:doc>
+            <representation mediaType="application/xml" element="identity:badRequest"/>
+            <representation mediaType="application/json"/>
+        </response>
+        
+        <response status="401">
+            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook">
+                <para>Authentication has failed. The authentication token has expired. Use the POST token operation 
+                    to get a new token.</para>
+            </wadl:doc>
+            <representation mediaType="application/xml" element="identity:userDisabled"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="401">
+            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Additional authentication information required. 
+                The user account is enabled for multifactor authentication. Submit a POST tokens request  
+                with the WWW sessionId from this header and the passcode from the multifactor-enabled phone to complete the authentication process.</para></wadl:doc>
+            <representation mediaType="application/xml" element="identity:userDisabled"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="403">
+            <wadl:doc title="User disabled">Permission denied, adjusting authentication credentials will not help.</wadl:doc>
+            <representation mediaType="application/xml" element="identity:userDisabled"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="404">
+            <wadl:doc title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  
+                has expired or is no longer available. Use the POST token request to get a new token.</wadl:doc>
+            <representation mediaType="application/xml" element="identity:userDisabled"/>
+            <representation mediaType="application/json"/>
+        </response>
+    </method>
+    
+    <method id="authenticateWithMultiFactor" name="POST">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor passcode credentials">
+            <para role="shortdesc">Authenticate with multifactor passcode credentials.</para><important>
+                <para>User accounts that use multifactor authentication must
+                    authenticate with &CIS; version 2.0 or later. Attempts to
+                    authenticate with earlier API versions will fail.</para>
+            </important>
+            <para>If an account is enabled for multifactor authentication, authentication is a two-step process: 
+                <orderedlist>
+                    <listitem>
+                        <para>Send an authentication request with either Password or API credentials. See <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">.
+                            "Authenticate with password or API key credentials"</link></para>
+                        <para>The request triggers &CIS; to send an SMS message to the phone 
+                            associated with the user account. In response to the authentication request,  &CIS; 
+                            returns a 401 message that includes 
+                            a sessionId in the WWW-Authenticate header and a request for additional credentials.
+                            <screen><computeroutput>&lt;HTTP/1.1 401 Unauthorized
+* Server Apache-Coyote/1.1 is not blacklisted
+&lt; Server: Apache-Coyote/1.1
+&lt;vary:  Accept, Accept-Encoding, X-Auth-Token
+&lt; WWW-Authenticate: OS-MF sessionId='APU9ymMBWY5W-pTgnHuZEvjKsM5oG_ler4lC0g_EkCPYvPdUBHK55RWtsgpL5RZ22AyDNaVCNCz6mlDOwbJAI-RLFQywI7CgOvjH0MLhL5a6D-c4cd1x8BbZmy8uT8ejm7jzBUX_vDZ5R0Hcia5DkOB80yWNJ8XVKMxVYLg5Qwp0TPA2zx-HQOTM3xqVQE63u1mYDUqikrXQ', factor='PASSCODE'
+&lt;Content-Type: application/json
+&lt;Transfer-Encoding: chunked
+&lt; Date: Thu, 13 Mar 2XXX 21:10:50 GMT
+{ [data not shown]
+100   186    0    96  100    90    159    149 --:--:-- --:--:-- --:--:--   159
+* Connection #0 to host identity.api.rackspacecloud.com/v2.0 left intact
+{
+"unauthorized": {
+    "code": 401,
+    "message": "Additional authentication credentials required."
+    }
+}
+    {
+    "key":"value"
+    }</computeroutput></screen>
+                             
+                           </para>                        
+                    </listitem>
+                    <listitem>
+                        <para>Send an additional authentication request providing the sessionId and multifactor-authentication 
+                            passcode included in the SMS message from &CIS; verification service.
+                        </para>
+                    </listitem>
+                </orderedlist></para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="text/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML request with header">
+                    <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.xml"/>
+                </wadl:doc>           
+            </representation>
+            <representation mediaType="text/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON request with header">
+                    <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.json"/>
+                </wadl:doc>       
+            </representation>
+        </request>
+        <response status="200">
+            <wadl:doc title="OK"  xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+            <representation mediaType="text/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
+                    <para>OK</para>
+                    <xsdxt:code href="../common/samples/MultiFacWithHeaderResp.xml"/>
+                </wadl:doc>           
+            </representation>
+            
+            <representation mediaType="text/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON response with header">
+                    <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.json"/>
+                </wadl:doc>           
+            </representation>
+        </response>
+        <response status="401">
+            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Unauthorized error can occur if the passcode is not valid, or if the user 
+                account is locked because the user has exceeded the maximum number of attempts to authenticate. Use the Unlock user account operation to 
+            remove the account lock.</para></wadl:doc>
+            <representation mediaType="application/xml" element="identity:access"/>
+            <representation mediaType="application/json"/>
+        </response>
+        
+        <response status="403">
+                <wadl:doc title="User Disabled" xmlns="http://docbook.org/ns/docbook">User account has been disabled.
+                </wadl:doc>
+                <representation mediaType="application/xml" element="identity:userDisabled"/>
+                <representation mediaType="application/json"/>
+        </response>
+        
+        <response status="500">
+            <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook">Passcode not accepted.</wadl:doc>
+            <representation mediaType="application/xml" element="identity:serviceFault"/>
+            <representation mediaType="application/json"/>
+        </response> &postPutFaults; 
+    </method>
 
     <method name="GET" id="validateToken">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Validate Token">
             <para role="shortdesc">Verify that the specified token is valid, 
-                and owned by the specified tenant. Retun the tenant credentials if successful.
+                and owned by the specified tenant. Rerun the tenant credentials if successful.
                 specified tenant; return the permissions relevant to a particular client. </para>
             <para> In the <code>/tokens/{tokenId}</code> path, valid tokens exist and
                 invalid tokens do not. For application development, make sure that the client submitting the Validate token 
@@ -718,23 +832,10 @@
     <method name="HEAD" id="checkToken">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Check Token">
             <para role="shortdesc">Check that a token is valid and that it belongs to a
-                particular tenant (abbreviated response). </para>
+                particular tenant (abbreviated response).</para>
+            <para>
+                Determine whether the specified token is valid. If the optional, <literal>belongsTo</literal> parameter is specified.</para>
         </wadl:doc>
-        <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="belongsTo" style="query" required="false" type="xsd:string">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>Validate a token to determine whether the token provides 
-                        access to the tenant specified in the API service request.
-                        (abbreviated response).</para>
-                    <para>Valid tokens will exist in the <code>/tokens/{tokenId}</code>
-                        path and invalid tokens will not. In other words, a user should expect an itemNotFound
-                            (<code>404</code>) fault for an invalid token.</para>
-                    <para>If <code>belongsTo</code> is provided, validates that a token
-                        has a specific tenant in scope.</para>
-                    <para>No response body is returned for this method.</para>
-                </wadl:doc>
-            </param>
-        </request>
         <response status="200 203"/> &commonFaults; &getFaults; </method>
     
     <method name="DELETE" id="revokeToken">
@@ -765,7 +866,7 @@
                 <para>
                     If this request is issued by  a user holding the admin role (<code>identity:user-admin</code>),
                     the specific user's information is returned only if that user is associated with the same tenant as the 
-                    requester's  <code>user-admin</code> token.
+                    requester's <code>user-admin</code> token.
                 </para>
                 <para> If this request is issued by a user holding the user role (<code>identity:default</code>), 
                     information is returned for only the requester. 
@@ -904,8 +1005,9 @@
                 are managed in the <code>defaultRegion</code>. 
                 
                 <!-- linking from this WADL-generated section to hand-coded section -->
-                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">
-                    "Sample Authentication Request and Response"</link> section.</para>
+                <link condition="client" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
+                <link condition="admin" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link> 
+                section.</para>
         </wadl:doc>
         <request>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="query" type="xsd:string" required="true">

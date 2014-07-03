@@ -8,7 +8,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Overview-d1e65">
     <title>Overview</title>
     <para> This document describes the Rackspace Cloud Identity
-        Service API v2.0 which is Rackspace's implementation of the
+        Service API v2.0 which is the Rackspace implementation of the
         OpenStack Keystone Identity Service  v2.0.  The service
         performs authentication, generating a token in response to
         valid credentials, and authorization,  providing access to
@@ -111,7 +111,7 @@
                 </para>
             </listitem>
             <listitem>
-                <para> To learn about Keystone, read OpenStack's Keystone documentation at
+                <para> To learn about Keystone, read the OpenStack Keystone documentation at
                     <link xlink:href="http://keystone.openstack.org/">
                         keystone.openstack.org</link>.
                 </para>

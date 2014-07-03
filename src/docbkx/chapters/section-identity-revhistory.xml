@@ -192,9 +192,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated samples to RAcker token authentication in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_validateToken_v2.0_tokens__tokenId__"/>. </para>
+							<para> Updated samples to Racker token authentication in <olink
+								targetdoc="Identity-Admin-Developer-Guide"
+								targetptr="GET_validateToken_v2.0_tokens__tokenId__"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -237,11 +237,11 @@
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_"/>.</para>
+								targetptr="GET_getUserByName_users_User_Calls"/>.</para>
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__"/>.</para>
+								targetptr="GET_getUserById_users__user_id__User_Calls"/>.</para>
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -578,7 +578,7 @@
 									targetptr="GET_getUserByName_v2.0_users_">“GET user by name”</olink>, 
 								<olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__">“GET user by id"</olink>, 
+									targetptr="GET_getUserById_users__user_id__User_Calls">“GET user by id"</olink>, 
 								and <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="POST_updateUser_v2.0_users__userId__">“Add user"</olink>
@@ -689,10 +689,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> For "Update User" and "Delete User" operations, added suggestion to use <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserById_v2.0_users__userId__">“GET user by
-									id”</olink> to confirm that the intended user will be changed. </para>
+							<para>Updated the Update User and Delete User operations to add suggestion to confirm user
+							identity before submitting update or delete request.</para>
 						</listitem>
 						<listitem>
 							<para> Added <xref

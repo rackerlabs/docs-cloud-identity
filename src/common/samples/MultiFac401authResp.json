@@ -1,0 +1,6 @@
+{
+"unauthorized": {
+"code": 401,
+"message": "Additional authentication credentials required."
+}
+}

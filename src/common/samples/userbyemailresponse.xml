@@ -2,6 +2,7 @@
 <users>
     <RAX-AUTH:defaultRegion>ORD</RAX-AUTH:defaultRegion>
     <RAX-AUTH:domainId>12345</RAX-AUTH:domainId>
+    <RAX-AUTH:multiFactorEnabled>false</RAX-AUTH:multiFactorEnabled>
     <created>2013-04-30T13:27:32.908-04:00</created>
     <email>joeuser@example.org</email>
     <enabled>true</enabled>
@@ -12,6 +13,7 @@
 <users>
     <RAX-AUTH:defaultRegion>ORD</RAX-AUTH:defaultRegion>
     <RAX-AUTH:domainId>12345</RAX-AUTH:domainId>
+    <RAX-AUTH:multiFactorEnabled>false</RAX-AUTH:multiFactorEnabled>
     <created>2013-04-30T15:51:48.520-04:00</created>
     <email>joeuser@example.org</email>
     <enabled>true</enabled>

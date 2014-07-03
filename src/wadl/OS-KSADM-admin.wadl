@@ -278,7 +278,7 @@
             <p xmlns="http://www.w3.org/1999/xhtml">This request returns a list of users with associated account information for 
                 each user includes the user's email account, username, user ID, and status.</p>
             <p xmlns="http://www.w3.org/1999/xhtml" security="internal"> To find the user with the authority to modify account permissions, refer
-                to <a href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html">"Get User Admin."</a>
+                to <a href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins__User_Calls.html">"Get User Admin."</a>
             </p>
         </doc>
         <response status="200 203">
@@ -381,21 +381,20 @@
 
     <method name="POST" id="updateUser">
         <doc xml:lang="EN" title="Update user information and password">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update a user.</para>
+            <doc xmlns="http://www.w3.org/1999/xhtml">
                 <warning>
-                    <para>Before making any change to a user, you should confirm that you are changing the user you intend
-                        to change. You can do this by treating every change as a two-step operation: first, check the target
+                    <para>Before you update a user account, confirm that you are updating the correct account. 
+                        You can do this by treating every change as a two-step operation: first, check the target
                         of the change; second, make the change. </para>
-                    <para>The Update user operation acts upon the user specified by <code>userId</code>. Before attempting to update a
-                        user, use <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/> to obtain
-                        the user name, email account, and status associated with <code>userId</code>. That's Step 1. Check the
+                    <para>The Update user operation acts upon the user specified by <code>userId</code>. Before you update 
+                        a user account, use <xref linkend="GET_getUserById_v2.0_users__userId__User_Calls" xrefstyle="select: title"/> 
+                        verify the user name, email account, and status associated with <code>userId</code>. That's Step 1. Check the
                         returned information carefully; if you are certain that it describes the user you intend to change,
-                        proceed with Step 2, updating the user you just examined. </para>
+                        proceed with Step 2, updating the user you just examined.</para>
                 </warning>
-            </wadl:doc>
-            </p>
+            </doc>
+            
             <p xmlns="http://www.w3.org/1999/xhtml"> 
                 To update user information, specify any, or all, of the user's identifying data in the request body
                 (<code>email</code>, <code>username</code>, <code>id</code>, <code>defaultRegion</code>, and <code>status</code>),
@@ -463,7 +462,7 @@
                         to change. You can do this by treating every change as a two-step operation: first, check the target
                         of the change; second, make the change. </para>
                     <para> "Delete User" acts upon the user specified by <code>userId</code>. Before attempting to update a
-                        user, first use <xref linkend="GET_getUserById_v2.0_users__userId__" xrefstyle="select: title"/> to
+                        user, first use <xref linkend="GET_getUserById_users__user_id__User_Calls" xrefstyle="select: title"/> to
                         obtain the user name, email account, and status associated with <code>userId</code>. That's Step 1.
                         Check the returned information carefully; if you are certain that it describes the user you intend to
                         change, proceed with Step 2, deleting the user you just examined. </para>
@@ -472,7 +471,7 @@
             </p>
             <p xmlns="http://www.w3.org/1999/xhtml">To delete a user, specify the user's ID in the request. If you know the
                 user's name but not the user's ID, use
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                <xref linkend="GET_getUserByName_v2.0_users___User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. </p>
         </doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
@@ -526,7 +525,7 @@
                 the role's ID and the user's ID in the request. If you know the role's name but not the role's ID, use
                 <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain detailed information about available roles. If you know the user's name but not the user's ID, use
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                <xref linkend="GET_getUserByName_v2.0_users_User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. When the service-admin assigns a role to an
                 account owner (identity:user-admin), the role is propagated to users (identity:default). </p>
             <!--<p xmlns="http://www.w3.org/1999/xhtml"> See Role Categories table below to learn more about roles, who
@@ -588,7 +587,7 @@
                 Include the system-assigned role <code>id</code> and user <code>id</code> in the request. To get the correct ids, use the 
                 <xref linkend="GET_listRoles_v2.0_OS-KSADM_roles_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 and 
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/> operations.
+                <xref linkend="GET_getUserById_users__user_id__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/> operations.
                 </p>
             <p xmlns="http://www.w3.org/1999/xhtml">The  DELETE allows the account owner (identity:user-admin) to manage non-protected
                 role assignment for users (identity:default), granting and revoking access at will. Some roles like
@@ -605,7 +604,7 @@
                 call. To add a credential to a user, specify the user's ID in the request. If you know the user's name but
                 not the user's ID, use <!-- <link linkend="GET_getUserByName_v2.0_users_">Get User by Name</link> -->
                 <!-- <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/> -->
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                <xref linkend="GET_getUserByName_v2.0_users_User__Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. </p>
         </wadl:doc>
         <request>
@@ -640,7 +639,7 @@
             <p xmlns="http://www.w3.org/1999/xhtml"> A user's password cannot be obtained by this or any other means. To list
                 a user's non-password credentials for all authentication methods available to that user, specify the user's
                 ID in the request. If you know the user's name but not the user's ID, use
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+                <xref linkend="GET_getUserByName_v2.0_users__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. </p>
             <p xmlns="http://www.w3.org/1999/xhtml"> API credentials are currently not available for account users. Account
                 users, also called sub-accounts, are users who were created by the administrative user. Account users can
@@ -944,9 +943,9 @@
             <p xmlns="http://www.w3.org/1999/xhtml">If you don't know the service name, use the List services operation to 
             find it.</p>
         </doc>
-        <request>
+ <!--       <request>
             <param name="name" style="query" type="xsd:string" required="true"/>
-        </request>
+        </request> -->
         <response status="200 203">
             <representation mediaType="application/xml" element="OS-KSADM:service">
                 <doc xml:lang="EN">

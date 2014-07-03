@@ -12,7 +12,7 @@
     xmlns:db="http://docbook.org/ns/docbook">
     
 
-    <title>Concepts</title>
+    <title>&CIS; authentication and authorization</title>
     <para>The Rackspace Identity service manages client authentication and authorization for the
         Rackspace Cloud. A client sends credentials to the Rackspace Identity service; through the
         Cloud Contol panel, or programmatically by submitting a POST tokens API service request. If

@@ -28,6 +28,9 @@
         <include href="../common/xsd/RAX-AUTH.xsd"/>
     </grammars>
     
+    <!-- 2014-06-20 by Margaret Eker
+        ++ Added multifactor and mobile phone resources and methods. -->
+    
     <!-- 2014-05-04 by Margaret Eker
       ++ Corrected spelling error in "Get token by SAML assertion" request example. Corrected error in response examples 
          per QA request: changed "user" value from user-admin to identity:default and updated user example -->
@@ -62,9 +65,6 @@
                  I changed for consistency with other RAX- samples to
                  ../common/samples/formattedsamples/keystone/
             -->
- 
-   
-
     <!-- ======================================================================================= -->
     <!-- Resources -->
     <!-- ======================================================================================= -->
@@ -73,9 +73,11 @@
         <resource id="version" path="/v2.0">
 
             <!-- TOKENS resource(s) -->
-            <resource id="tokens" path="tokens">
+            <resource id="tokens" path="tokens"> 
                 <method href="#authenticateAsRacker"/>
+                <method href="#authenticateWithMultiFactor"/>
             </resource>
+
 
             <!-- USER ID RAX-AUTH resource(s) -->
             <resource id="useridRAX" path="users/{userId}/RAX-AUTH">
@@ -129,8 +131,7 @@
                 <!-- MULTIFACTOR resource(s) -->
                 <resource id="multifactor" path="users/{userId}/RAX-AUTH/multi-factor">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
-                            A valid authentication token</para></wadl:doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
                     <param name="userid" style="template" type="xsd:string">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID associated with the account. 
@@ -139,6 +140,18 @@
                     </param>
                     <method href="#removeMultifactorForUser"/>
                     <method href="#updateMultifactorSettings"/>
+                </resource>
+                    <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/{bypass">
+                        <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
+                                A valid authentication token</para></wadl:doc>
+                        </param>
+                        <param name="userid" style="template" type="xsd:string">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                                <para>The unique, system-generated user ID for the user account to generate codes for.</para>
+                            </wadl:doc>
+                        </param>
+                        <method href="#generateBypassCodes"/>
                 </resource>
                 <resource id="multifactor_unlock" path="users/{userId}/RAX-AUTH/multi-factor">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
@@ -150,9 +163,14 @@
                         <para>The unique, system-generated user ID for the user account to be unlocked.</para>
                     </wadl:doc>
                     </param>
+                    <param name="unlock" style="template" type="xsd:boolean" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>A boolean value that indicates the lock status on a user account enabled 
+                                for multifactor authentication. To unlock an account, specify <code>unlock=true</code> 
+                                in the Unlock operation request.</para>. </wadl:doc>
+                    </param>
                     <method href="#unlockMultifactorForUser"/>
                 </resource>
-
                 
                 <!-- MULTIFACTOR Mobile phones resource(s) -->
                 
@@ -160,19 +178,26 @@
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="template" type="xsd:string" required="true">
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="query" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID associated with the account. 
-                            Use the List user API operation to find the ID.</para></wadl:doc>
+                            Use the List user operation to find the ID.</para></wadl:doc>
                     </param>
                             <method href="#getMobilePhonesForUser"/>
                             <method href="#createMobilePhone"/>
-                            <method href="#getMobilePhoneById"/>                           
-                                <resource id="multifactor-vcode" path="users/{userId}/RAX-AUTH/multi-factor/mobile-phones/verificationcode">
-                                 <method href="#sendVerifyCode"/>
-                                </resource>
-                                <method href="#verifyDevice"/>
-                            </resource>                        
-                     </resource>                
+                            <method href="#getMobilePhoneById"/>  
+                    
+                    <resource id="multifactor-vcode" path="/verificationcode">
+                    <method href="#sendVerifyCode"/>
+                    </resource>
+                    <resource id="mfa_PIN" path="{code}">
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="code" style="template" type="RAX-AUTH:VerificationCode" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</para> 
+                        </wadl:doc>
+                    </param>
+                    <method href="#verifyDevice"/>
+                    </resource>
+                </resource>
 
             <!-- RESET_APIKEY_CREDENTIALS resource(s) -->
             <resource id="reset_apikey_credentials" path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
@@ -369,7 +394,8 @@
                     </resource>
                 </resource>
             </resource>
-           </resources>
+        </resource>
+       </resources>
 
     <!-- ======================================================================================= -->
     <!-- Methods -->
@@ -821,14 +847,12 @@
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:policies">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.json"/>
                 </wadl:doc>
             </representation>
@@ -841,14 +865,12 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:policy">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicy.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicy.json"/>
                 </wadl:doc>
             </representation>
@@ -866,14 +888,12 @@
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-AUTH:policy">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Policy.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Policy.json"/>
                 </wadl:doc>
             </representation>
@@ -886,14 +906,12 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:policy">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicy.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicy.json"/>
                 </wadl:doc>
             </representation>
@@ -1289,15 +1307,130 @@
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
+    <method id="authenticateWithMultiFactor" name="POST">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor passcode credentials">
+            <para role="shortdesc">Authenticate with multifactor passcode credentials.</para><important>
+                <para>User accounts that use multifactor authentication must
+                    authenticate with &CIS; version 2.0 or later. Attempts to
+                    authenticate with earlier API versions will fail.</para>
+            </important>
+            <para>If an account is enabled for multifactor authentication, authentication is a two-step process: 
+                <orderedlist>
+                    <listitem>
+                        <para>Send an authentication request with either Password or API credentials. See 
+                            <link condition="admin" xlink:href= "http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticate_v2.0_tokens_Token_Calls.html">Authenticate as user with password or API key credentials.</link>
+                            <link condition="client" xlink:href= "http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticate_v2.0_tokens_Token_Calls.html">Authenticate as user with password or API key credentials.</link></para>
+                        
+                        file:///Users/marg7175/Documents/githubDocs/auth-2.0/target/docbkx/webhelp/auth-admin-devguide-internal/content/POST_authenticate_v2.0_tokens_Token_Calls.html
+                        
+                        <para>The request triggers &CIS; to send an SMS message to the phone 
+                            associated with the user account. In response to the authentication request,  &CIS; 
+                            returns a 401 message that includes 
+                            a sessionId in the WWW-Authenticate header and a request for additional credentials.
+                            <screen><computeroutput>&lt;HTTP/1.1 401 Unauthorized
+* Server Apache-Coyote/1.1 is not blacklisted
+&lt; Server: Apache-Coyote/1.1
+&lt;vary:  Accept, Accept-Encoding, X-Auth-Token
+&lt; WWW-Authenticate: OS-MF sessionId='APU9ymMBWY5W-pTgnHuZEvjKsM5oG_ler4lC0g_EkCPYvPdUBHK55RWtsgpL5RZ22AyDNaVCNCz6mlDOwbJAI-RLFQywI7CgOvjH0MLhL5a6D-c4cd1x8BbZmy8uT8ejm7jzBUX_vDZ5R0Hcia5DkOB80yWNJ8XVKMxVYLg5Qwp0TPA2zx-HQOTM3xqVQE63u1mYDUqikrXQ', factor='PASSCODE'
+&lt;Content-Type: application/json
+&lt;Transfer-Encoding: chunked
+&lt; Date: Thu, 13 Mar 2XXX 21:10:50 GMT
+{ [data not shown]
+100   186    0    96  100    90    159    149 --:--:-- --:--:-- --:--:--   159
+* Connection #0 to host identity.api.rackspacecloud.com/v2.0 left intact
+{
+"unauthorized": {
+    "code": 401,
+    "message": "Additional authentication credentials required."
+    }
+}
+    {
+    "key":"value"
+    }</computeroutput></screen>
+                            
+                        </para>                        
+                    </listitem>
+                    <listitem>
+                        <para>Send an additional authentication request providing the sessionId and multifactor-authentication 
+                            passcode included in the SMS message from &CIS; verification service.
+                        </para>
+                    </listitem>
+                </orderedlist></para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="text/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML request with header">
+                    <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.xml"/>
+                </wadl:doc>           
+            </representation>
+            <representation mediaType="text/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON request with header">
+                    <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.json"/>
+                </wadl:doc>       
+            </representation>
+        </request>
+        <response status="200">
+            <wadl:doc title="OK"  xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+            <representation mediaType="text/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
+                    <para>OK</para>
+                    <xsdxt:code href="../common/samples/MultiFacWithHeaderResp.xml"/>
+                </wadl:doc>           
+            </representation>
+            
+            <representation mediaType="text/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON response with header">
+                    <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.json"/>
+                </wadl:doc>           
+            </representation>
+        </response>
+        <response status="401">
+            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Unauthorized error can occur if the passcode is not valid, or if the user 
+                account is locked because the user has exceeded the maximum number of attempts to authenticate. Use the Unlock user account operation to 
+                remove the account lock.</para></wadl:doc>
+            <representation mediaType="application/xml" element="identity:access"/>
+            <representation mediaType="application/json"/>
+        </response>
+        
+        <response status="403">
+            <wadl:doc title="User Disabled" xmlns="http://docbook.org/ns/docbook">User account has been disabled.
+            </wadl:doc>
+            <representation mediaType="application/xml" element="identity:userDisabled"/>
+            <representation mediaType="application/json"/>
+        </response>
+        
+        <response status="500">
+            <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook">Passcode not accepted.</wadl:doc>
+            <representation mediaType="application/xml" element="identity:serviceFault"/>
+            <representation mediaType="application/json"/>
+        </response> &postPutFaults; 
+    </method>
     <method id="authenticateAsRacker" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate as Racker">
-            <db:para role="shortdesc"> Authenticate as Racker. </db:para>
+            <db:para role="shortdesc"> Authenticate as Racker.</db:para>
+            <db:para>Rackers can use the POST tokens operation to authenticate by supplying the following information 
+            in the request: Rackspace username, SSO password, and the Rackspace domainId.</db:para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="identity:AuthenticationRequest">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Racker SSO authentication request: XML">
                     <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml"/>
                 </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="template" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>The Rackspace account user name.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="password" style="template" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>The SSO password for the specified user account</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX:AUTH:domain" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specify the Rackspace domain name.<code>name="Rackspace"</code>.</para>
+                    </wadl:doc>
+                </param>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Racker SSO authentication request: JSON">
@@ -1339,10 +1472,10 @@
     <method id="createMobilePhone" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Add a mobile phone">
-            <db:para role="shortdesc">Adds a mobile phone number to the specified user account to support multifactor authentication.</db:para>
-            <db:para>Updates the specified user account to add a mobile phone number that can be configured for multifactor authentication.
-            The same phone number can be sued on multiple user accounts.</db:para>
-            <db:para>If the phone number is not in E.123 format, or if the specified phone number 
+            <para role="shortdesc">Adds a mobile phone number to the specified user account to support multifactor authentication.</para>
+            <para>Updates the specified user account with a phone number for multifactor authentication. 
+            The same phone number can be associated with multiple accounts.</para>
+            <db:para>If the number is not in E.123 format, or if the specified phone number 
             is already associated with the user account, the operation fails with a 400 error message.</db:para>
       </wadl:doc>
         <request>
@@ -1377,34 +1510,34 @@
                 </wadl:doc>
             </representation>
         </response>
-            <response status="202"/> &commonFaults; &postPutFaults;
+            <response status="201"/> &commonFaults; &postPutFaults;
        </method>
     
     <method id="sendVerifyCode" name="POST">
-        <wadl:doc title="Send verification code to a mobile phone">
-            <db:para role="shortdesc">Sends a verification code to a mobile phone associated with a user account to verify that the user has the phone.</db:para>
-            <db:para xmlns="http://www.w3.org/1999/xhtml">Before a user can authenticate using a mobile phone, &CIS; must verify that the user 
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Send verification code to a mobile phone">
+            <para role="shortdesc">Sends a verification code to a mobile phone associated with a user account to verify that the user has the phone.</para>
+            <para>Before a user can authenticate using a mobile phone, &CIS; must verify that the user 
                 has the phone.
-            </db:para>
-            <db:para>After this request is submitted, the Rackspace verfication service sends a PIN to the specified phone 
+            </para>
+            <para>After this request is submitted, the Rackspace verfication service sends a PIN to the specified phone 
                 via SMS text message. Each PIN has a system-defined expiration time determined by the &CIS; system configuration.
                 The user can use the Verify device operation to submit the PIN to &CIS; and confirm 
                 the phone for use with multifactor authentication services. 
-            </db:para>
+            </para>
         </wadl:doc>
         <response status="202"/> &commonFaults; &getFaults;     
     </method>
     
     <method id="verifyDevice" name="POST">        
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device">
-            <db:para role="shortdesc">Submits a PIN code issued by Rackspace verification services to confirm user possession of a device.</db:para>
-            <db:para>Use this operation to submit the verification PIN received in the SMS text message from the Rackspace verification 
+            <para role="shortdesc">Submits a PIN code issued by Rackspace verification services to confirm user possession of a device.</para>
+            <para>Use this operation to submit the verification PIN received in the SMS text message from the Rackspace verification 
                 service. After the PIN is accepted, the user account is updated to indicate that the phone is verified. The phone can be used 
                 to authenticate to &CIS; if the assciated account has been enabled for multifactor authentication. See the Enable multifactor 
-                authentication operation.</db:para>
+                authentication operation.</para>
 
-            <db:para>This operation can only be completed from the user account that the phone is associated with. The operation fails if
-            the PIN is expired, or if it doesn't match the code issued by the Rackspace verfication service.</db:para>
+            <para>This operation can only be completed from the user account that the phone is associated with. The operation fails if
+            the PIN is expired, or if it doesn't match the code issued by the Rackspace verfication service.</para>
         </wadl:doc>
         
         <request>
@@ -1412,11 +1545,6 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="code" style="template" type="RAX-AUTH:VerificationCode" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <db:para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</db:para> 
-                    </wadl:doc>
-                </param>
             </representation>
             
             <representation mediaType="application/json">
@@ -1444,7 +1572,7 @@
 >
                     <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="template" type="xsd:string" required="true">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="query" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A unique, system-generated string that identifies a mobile phone 
                         associated with a &CLOUD; user account. If you don't know the id, use the List phones by user operation 
                         to find it.</para></wadl:doc>          
@@ -1486,6 +1614,7 @@
             </representation>
         </request>
         <response status="204">
+            <wadl:doc title="No Content">Accepted.</wadl:doc>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
@@ -1515,19 +1644,19 @@
                 </wadl:doc>
         </representation>
         
-        </response> &commonFaults; &getFaults;
+        </response>&commonFaults; &getFaults;
     </method>
     
     <method id="removeMultifactorForUser" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove mutlifactor authentication from account">
-            <db:para role="shortdesc">Removes the multifactor authentication setting and all associated 
-                mobile phones from your user account.</db:para>
-            <db:para>This operation removes the multifactor authentication setting from your account along with 
+            <para role="shortdesc">Removes the multifactor authentication setting and all associated 
+                mobile phones from your user account.</para>
+            <para>This operation removes the multifactor authentication setting from your account along with 
                 all phones associated with the account. To disable the feature without removing phones, use 
-                the Disable multifactor setting operation.</db:para>
-            <db:para>This operation can only be completed from the user account submitting the request.
+                the Disable multifactor setting operation.</para>
+            <para>This operation can only be completed from the user account submitting the request.
                 Attempts to run it for a different userid result in a 403 error message.
-            </db:para>
+            </para>
         </wadl:doc>        
         <response status="204"/> &commonFaults;
     </method>
@@ -1539,22 +1668,14 @@
             </db:para>
         </wadl:doc>
         <wadl:doc xmlns="http://docbook.org/ns/docbook">     
-            <para>After verifying the first mobile phone number associated with a user account, use this operaation  
+            <para>After verifying the first mobile phone number associated with a user account, use this operation  
                 to enable multifactor authentication. After the feature is enabled, users can authenticate to 
                 &CIS; with any verified mobile phone number associated with their account.</para>
             <para>
                 To disable multifactor authentication temporarily, without removing associated 
-                mobile phone numbers, run the Update mulltifactor authentication setting operation with <code>enable=false</code>.
-                To remove multifactor authentication capabilities from an account, use the Remove multifactor 
+                mobile phone numbers, run the Update mulltifactor authentication setting operation with <code>enable=false</code>. 
+                To remove multifactor authentication capabilities from an account completely, use the Remove multifactor 
                 operation.</para>
-            <para>This operation fails in these cases: 
-                <itemizedlist>
-                    <listitem><para>The user account does not have any phones associated with it.</para></listitem>
-                    <listitem><para>The user account does not have any phones associated with it.</para></listitem>
-                    <listitem><para></para>If their is a problem linking the account with the &CIS; multifactor 
-                        authentication service.</listitem>
-                </itemizedlist>
-            </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
@@ -1571,7 +1692,12 @@
                </param>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multifactor authentication: XML request">>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multifactor authentication: XML request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multifactor authentication: JSON request">
                     <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
                 </wadl:doc>
             </representation>
@@ -1581,38 +1707,96 @@
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multifactor authentication on account: XML request">>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multifactor authentication on account: JSON request">
                     <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &postPutFaults;
+        <response status="204"/> 
+        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Bad Request">No multifactor device on user account.</doc>
+            <representation mediaType="application/xml" element="identity:badRequest"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Bad Request">Multifactor phone on account is not verified.</doc>
+            <representation mediaType="application/xml" element="identity:badRequest"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="500" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="serviceFault">Problem linking phone with &CIS; multifactor authentication service. Contact the &CIS; service administrator for help.</doc>
+            <representation mediaType="application/xml" element="identity:serviceFault"/>
+            <representation mediaType="application/json"/>
+        </response>
+    </method>
+    
+    <method id="generateBypassCodes" name="POST">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generate multifactor authenticion Bypass Codes">
+            <para role="shortdesc">Generates a bypass code that can be substituted for a multifactor authentication passcode.  
+            </para>
+            <para>During multifactor authentication &CIS; sends a passcode to the phone number associated with the user account. 
+                The user must provide this passcode to complete the authentication process. If the phone is not available, or if the 
+                passcode is not received, administrators can use this operation to generate a bypass code that 
+                can be used in place of the passcode.</para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/xml" element="RAX-AUTH:bypassCodes">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesRequest.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json" >
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesRequest.json" />
+                </wadl:doc>
+            </representation>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="RAX-AUTH:bypassCodes">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesResponse.xml" />
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
+                    </wadl:doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &postPutFaults;
     </method>
     
     <method id="unlockMultifactorForUser" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock a user account">
-            <db:para role="shortdesc">Unlocks an account that was disabled because of too many failed login attempts.</db:para>
-            <db:para>&CIS; has a system-configured threshold for failed authentication attempts from a multifactor-enabled device.
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock user account">
+            <para role="shortdesc">Unlocks an account that was disabled because of too many failed login attempts.</para>
+            <para>&CIS; has a system-configured threshold for failed authentication attempts from a multifactor-enabled device.
                 The default threshold is 6. If a user enters incorrect multifactor authentication credentials more than 6 times, &CIS; locks 
                 the account.
-            </db:para>
+            </para>
                 
-            <db:para>A Rackspace Cloud administrator can unlock an account by submtting an Unlock request,  
-            or by using the Remove multifactor settings operation to remove multifactor authentication capabilities from 
-            the account. Users cannot unlock their own account.</db:para>
+            <para>A Rackspace Cloud administrator can unlock an account by submitting an Unlock request with <code>unlock=true</code> or 
+                by using the Remove multifactor settings operation to remove multifactor authentication capabilities from the account. 
+                Users cannot unlock their own account.</para>
+            <para>This operation cannot be used to lock an account. If you submit the 
+                request with <code>unlock=false</code>, the operation does not make any changes to the account.</para>
+            <note><para> 
+                The functionality described in this section is provided by the <code>RAX-AUTH</code> 
+                extension to the core Identity API.  For more information, see 
+                <xref linkend="Extensions-d1e688"/>.  
+            </para></note>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultiFacUnlockReq.xml"/>
                 </wadl:doc>
-                <param name="unlock" style="template" type="xsd:boolean" required="false">
+   <!--             <param name="unlock" style="template" type="xsd:boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates the lock status on a user account enabled for multifactor authentication.
-                            To unlock an account, specify <code>unlock=true</code> in the Unlock operation request. When set 
-                            to false or not provided, no change is made to the lock status of the user's account.</para>.
-                    </wadl:doc>
-                </param>
+                        <para>A boolean value that indicates the lock status on a user account enabled 
+                            for multifactor authentication. To unlock an account, specify <code>unlock=true</code> 
+                            in the Unlock operation request.</para>. </wadl:doc>
+                </param> -->
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">

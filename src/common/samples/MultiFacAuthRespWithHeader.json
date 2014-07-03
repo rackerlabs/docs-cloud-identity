@@ -1,0 +1,31 @@
+< HTTP/1.1 200 OK
+< Vary:  Accept, Accept-Encoding, X-Auth-Token
+< Content-Type: application/json
+< Content-Length: 387
+< Server: Jetty(6.1.25)
+{
+    "access": {
+        "serviceCatalog": [],
+        "token": {
+            "RAX-AUTH:authenticatedBy": [
+                "PASSCODE",
+                "PASSWORD"
+            ],
+            "expires": "2014-01-09T15:08:53.645-06:00",
+            "id": "449f04aca3594ce38e5b0b18fce6bfad"
+        },
+        "user": {
+            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:federated": false,
+            "id": "ec7f0fd2de2f4eeeb07c7412c848fe69",
+            "name": "mfaTestUser",
+            "roles": [
+                {
+                    "description": "User Admin Role.",
+                    "id": "3",
+                    "name": "identity:user-admin"
+                }
+            ]
+        }
+    }
+}

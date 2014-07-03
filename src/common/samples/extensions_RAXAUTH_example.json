@@ -1,0 +1,27 @@
+{
+    "users": [
+        {
+            "RAX-AUTH:defaultRegion": "DFW",
+            "RAX-AUTH:domainId": "660507",
+            "email": "testbox@mailtrust.com",
+            "enabled": true,
+            "id": "000029f0da41496495ea1463c71cc6a5",
+            "username": "ccdefaultuser513104"
+        },
+        {
+            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:domainId": "6019514",
+            "email": "PerfTest112326@rackspace.com",
+            "enabled": true,
+            "id": "000064f713e445f78ee8002917207428",
+            "username": "PerfTest112326"
+        },
+          {
+            "RAX-AUTH:defaultRegion": "DFW",
+            "RAX-AUTH:domainId": "-1881548574",
+            "enabled": true,
+            "id": "000515e9028b410584b3dd9e261820d6",
+            "username": "userAdminPerf32226"
+        }
+    ]
+}

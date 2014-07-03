@@ -74,8 +74,8 @@
 				provided by the <code>OS-KSADM</code> and <code>RAX-KSKEY</code> extensions to the
 				core Identity API. 
 				You can learn more about API extensions at
-				<link xlink:href="https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/">
-					https://github.com/openstack/identity-api/tree/master/openstack-identity-api/src/docbkx/</link>.  
+				<olink condition="client" targetdoc="Identity-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink>.  
 			</para>
 		</note>
 		<para>
@@ -97,7 +97,7 @@
 								</emphasis>
 							</para>
 							<para>
-								If this request is issued by  a user holding the admin role (<code>identity:user-admin</code>),
+								If this request is issued by a user holding the admin role (<code>identity:user-admin</code>),
 								it returns a list of all users for the tenant.
 							</para>
 							<para> 
@@ -242,7 +242,7 @@
 			</wadl:resources>
 	</section>
 	<section xml:id="Token_Calls">
-		<title>Tokens</title>
+		<title>Authentication tokens</title>
 		<para>The operations described in this section allow clients to get and validate access tokens.</para>
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">

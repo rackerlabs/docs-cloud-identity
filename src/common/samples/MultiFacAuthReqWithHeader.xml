@@ -1,0 +1,11 @@
+POST /v2.0/tokens HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Content-Type: application/xml
+Accept: application/xml
+X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw 
+
+<auth>
+<RAX-AUTH:passcodeCredentials
+	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+	passcode="1411594"
+</auth>

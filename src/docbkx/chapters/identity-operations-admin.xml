@@ -21,7 +21,7 @@
 		&CLOUD; Administrator account credentials. Administrator accounts have either the
 			<literal>identity:admin</literal> or <literal>identity:admin-user</literal> role.</para>
 	
-	<para>To complete administrative operations,  include the authentication token in the
+	<para>To complete administrative operations, include the authentication token in the
 			<code>X-Auth-Token</code> header of the client  request to the Identity service. The
 		operation runs if the identity service verifies that the token has (or belongs to a user
 		that has) the <code>Admin</code> role.</para>
@@ -73,12 +73,12 @@
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">			
 			<wadl:resource href="../../wadl/identity-admin.wadl#versions">
-				<wadl:method href="#getVersions-v2"/>
+				<wadl:method href="getVersions-v2"/>
 			</wadl:resource>
 			
 			<!-- Get a specific API version -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#version">
-				<wadl:method href="#getVersionInfo-v2.0"/>
+				<wadl:method href="getVersionInfo-v2.0"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -95,7 +95,7 @@
 			
 			<!-- List extensions -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#extensions">
-				<wadl:method href="listExtensions-v2.0"/>
+				<wadl:method href="#listExtensions-v2.0"/>
 			</wadl:resource>
 			
 			<!-- Get extensions -->	
@@ -104,6 +104,7 @@
 				<wadl:method href="#getExtension-v2.0"/>
 			</wadl:resource>
 		</wadl:resources>
+		<xi:include href="section-extended-response.xml"/>
 	</section>
 	
 	
@@ -115,7 +116,7 @@
 			only upon that account user. You can learn more about
 			account users, also called sub-accounts, at <olink targetdoc="Identity-Admin-Developer-Guide"
 				targetptr="Account-Users-d1e910">“Account
-				Users”</olink>. </para>
+				Users”</olink>.</para>
 		<warning>
 			<para>
 				Before making any change to a user, you should confirm that you are changing the user you intend to change. 
@@ -138,16 +139,20 @@
 			<para> Some of the functionality described in this section is
 				provided by the <code>OS-KSADM</code>,
 					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code>
-				extensions to the core Identity API. You can learn
-				more about API extensions in the <link
-					xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html"
-					> OpenStack Extensions documentation</link>.</para>
+				extensions to the core Identity API. For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.</para>
 		</note>
 		<!--- this section comes from 4 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin & RAX-AUTH -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list users -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
 				<wadl:method href="#listUsers"/>
+			</wadl:resource>
+		<!-- list user group membership -->	
+			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
+				<wadl:method href="#listUserGroups"/>
 			</wadl:resource>
 			<!-- get user by name (and id and email) -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
@@ -220,16 +225,15 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>RAX-GRPADM</code>, <code>RAX-KSGRP</code>, <code>RAX-KSKEY</code> extensions to the
-				core Identity API. You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-				OpenStack Extensions documentation</link>. 
-			</para>
+				core Identity API. For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+							targetptr="Extensions-d1e688">Extensions</olink>.  
+				</para> 
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#groups"/>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#group"/>
-			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
-				<wadl:method href="#listUserGroups"/>
-			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#user"/>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#users"/>			
 		</wadl:resources>
@@ -249,8 +253,10 @@
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSADM</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>. 
+				For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -291,21 +297,57 @@
 	
 	<!-- TOKENS -->
 	<section xml:id="Token_Calls">
-		<title>Tokens</title>
-		<para>The operations described in this section allow service developers to get and validate access tokens.</para>
+		<title>Authentication tokens</title>
+		<para>The &CIS; is a <glossterm baseform="REST">ReSTful</glossterm> web service that provides authentication services  
+			for the &CLOUD;. To gain access, users and administrators can use the POST tokens operation 
+			to request an authentication token from the &CIS;, or generate a new token after a previously 
+			issued token has expired. In subsequent requests to &CIS; or other services, 
+			clients include the authentication token in the HTTP x-header parameter defined as 
+			<literal>X-Auth-Token</literal> to verify your identity and confirm access rights and privileges.
+		</para>
+		<para>
+			Submit the POST token authentication request to the &CIS; endpoint URL with <literal>v2.0/tokens </literal> 
+			supplied as the path and a payload of credentials in the body. Credentials can be any of the following:
+			<itemizedlist spacing="compact">
+				<listitem><para>Password credentials: user name and password</para></listitem>
+				<listitem><para>API Key credentials: user name and API key</para></listitem>
+				<listitem><para>Token and tenant Id or tenant name (requires Administrator privileges).</para></listitem>
+				<listitem><para>Passcode credentials: multifactor authentication sessionId and passcode values</para></listitem>
+				<listitem audience="admin"><para>RSA credentials: Rackspace employees can authenticate with an SSO id and RSA key.</para></listitem>
+			</itemizedlist>
+		</para>
+		<para>Tenant information is required if you use the token method. 
+			You might also need to include either the <code>tenantId</code> or <code>tenantName</code> 
+			on authentication requests with API key or password credentials. Some services use multi-level authentication, with 
+			service-specific credentials in addition to vendor-specific credentials. 
+			In such cases, associating a user with a tenant can be a method of passing that 
+			additional level of identifying information to the service. Also, if a user account 
+			is assigned to multiple tenants, then including the tenant information generates the authentication 
+			token for the specfied tenant.
+		</para>
+		<para>For details on the Tokens operations to authenticate and manage tokens, see the following sections.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>.  
+					The functionality described in this section is provided by the <code>OS-KSADM</code> 
+					extension to the core Identity API.  For more information, see 
+					<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+							targetptr="Extensions-d1e688">Extensions</olink>.  				
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
 				<!-- authenticate -->
-				<wadl:method href="#authenticate"/>
+				<wadl:method href="#authenticate"/>		
+			</wadl:resource>
+			<wadl:resource href="../../wadl/identity-admin.wadl#tokens">
+				<wadl:method href="#authenticate_token"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/identity-admin.wadl#sessionId_mfa">
+				<wadl:method href="#authenticateWithMultiFactor"/>					
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
 				<!-- validate token -->
@@ -376,7 +418,7 @@
 							<para>
 								The Rackspace implementation of the OpenStack Identity Service v2.0 
 								supports <code>GET v2.0/tenants/{tenantId}/users/{userId}/roles</code>
-								for internal users only.  Customers will not have access to this call.
+								for internal users only.  Customers do not have access to this call.
 							</para>
 						</important>
 					</wadl:doc>
@@ -393,8 +435,10 @@
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSCATALOG</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>.  
+				For more information about extensions, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Admin-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink> section.  
 			</para>
 		</note>
 		 
@@ -422,8 +466,9 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSCATALOG</code> extension to the
-				core Identity API. You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>. 
+				core Identity API. For more information, see <olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Admin-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -451,9 +496,10 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> and <code>RAX-KSQA</code> extensions to the
-				core Identity API. 
-				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>.  
+				core Identity API. For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -490,12 +536,10 @@
 	<!-- IMPERSONATIONS -->
 	<section xml:id="Impersonation_Calls">
 		<title>Impersonations</title>
-		<para>Impersonation operations allow service developers to manage
-			Rackers' impersonations of users for diagnostic purposes.
-				<xref linkend="impersonation"/> shows the process for
-			a Racker to immpersonate another user. The Racker issues
-			one POST with he Racker's own credentials, followed by a second POST request that identifies 
-		the user to be impresonated.</para>
+		<para>Impersonation operations allow service developers to manage Rackers' impersonations of users
+			for diagnostic purposes. <xref linkend="impersonation"/> shows the process for a Racker
+			to impersonate another user. The Racker issues one POST with his or her own
+			credentials, followed by a second POST request that identifies the user to be impersonated.</para>
 		<figure xml:id="impersonation">
 			<title>Impersonation workflow for Racker accounts.
 			</title>
@@ -514,9 +558,10 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions in the 
-				<link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation.</link>.  
+				For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -524,9 +569,8 @@
 				<wadl:method href="#impersonateUser">
 				<wadl:doc>
 					<tip>
-						<para>
-							For information about how an impersonator can obtain a validated token,
-							see  <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_validateToken_v2.0_tokens__tokenId__Token_Calls.html">
+						<para>For information about how an impersonator can obtain a validated token,
+							see <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_validateToken_v2.0_tokens__tokenId__Token_Calls.html">
 								Validate Token</link>.
 						
 						</para>
@@ -548,7 +592,7 @@
 			via a separate endpoint. To update the rate limiting
 			configuration, change the values of three parameters in
 			the rate limiting database. Optionally, a fourth parameter
-			can be used to exclude (whitelist) some requests so that
+			can be used to exclude (white list) some requests so that
 			no rate limits apply to them. 
 		</para>
 			<table rules="all">
@@ -612,7 +656,7 @@
 		<para>
 			For example, if  
 			<code>rate.limit.whitelist=192.168.1.105,user:alex,192.168.1.243</code>,
-			then two IP addresses and a user named "alex" are whitelisted and therefore not subject to the general rate limits.
+			then two IP addresses and a user named "alex" are white listed and therefore not subject to the general rate limits.
 		</para>
 		<figure>
 		<title>
@@ -689,9 +733,10 @@
 		<note>
 			<para> Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
-				core Identity API. You can learn more about API
-				extensions in the  <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>.</para>
+				core Identity API. For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domains">
@@ -795,8 +840,9 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
 				core Identity API. 
-				You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation.</link>.  
+				You can learn more about API extensions in the <olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688"/><olink condition="admin" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688"/>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -846,9 +892,10 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
-				core Identity API. 
-				You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation</link>.  
+				core Identity API. For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -878,8 +925,10 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is provided by the <code>RAX-AUTH</code> 
-				extension to the core Identity API.  You can learn more about API extensions in the <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-					OpenStack Extensions documentation.</link>.  
+				extension to the core Identity API. For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -898,18 +947,20 @@
 		<note>
 			<para> 
 				The functionality described in this section is provided by the <code>OS-KSADM</code> 
-				extension to the core Identity API.  You can learn more about API extensions <link xlink:href="http://docs.openstack.org/api/openstack-identity-service/2.0/content/openstack_identity_extensions.html">
-				OpenStack Extensions documentation</link>.  
+				extension to the core Identity API.  For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#services">
 				<wadl:method href="#listServices"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#service">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#serviceName">
 				<wadl:method href="#getServiceByName"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#service">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#serviceId">
 				<wadl:method href="#getServiceById"/>
 			</wadl:resource>
 	
@@ -922,42 +973,255 @@
 		</wadl:resources>
 	</section>
 	
-	<!-- MULTIFACTOR OPERATIONS -->
-	<section xml:id="Multifactor_Calls">
-		<title>Multifactor Operations</title>
-		<para>The operations described in this section allow service developers to manage multifactor authentication.  To use a 
-			mobile phone device for multifactor authentication, use the API operations in this section to do the following:</para>
-		<para><itemizedlist>
-			<listitem><para>Create a mobile phone resource to be used for authentication.</para></listitem>
-			<listitem><para>Request that a verification code be sent to the phone.</para></listitem>
-			<listitem><para>Verify receipt of the verification code.</para></listitem>
-			<listitem><para>Enable multifactor authentication for the phone.</para></listitem>
-		</itemizedlist></para>
-		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
-				<wadl:method href="#createMobilePhone"/>		
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
-				<wadl:method href="#getMobilePhoneById"/>		
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
-				<wadl:method href="#getMobilePhonesForUser"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
-				<wadl:method href="#sendVerifyCode"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-vcode">
-				<wadl:method href="#verifyDevice"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
-				<wadl:method href="#updateMultifactorSettings"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
-				<wadl:method href="#removeMultifactorForUser"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
-				<wadl:method href="#unlockMultifactorForUser"/>
-			</wadl:resource>
-		</wadl:resources>
-	</section>
+		<!-- MULTIFACTOR OPERATIONS -->	
+		<section xml:id="Multifactor_Calls">
+			<title>Multifactor Operations</title>
+			<para>The operations described in this section allow administrators and users to set up &CLOUD;
+				accounts to support multifactor authentication. For additional information, see these topics:
+				<itemizedlist><listitem><para><xref linkend="mfa_api_ovw"/></para></listitem>
+					<listitem><para><xref linkend="mfa_processes"/></para></listitem>
+				</itemizedlist></para>
+			<note><para> 
+				The functionality described in this section is provided by the <code>RAX-AUTH</code> 
+				extension to the core Identity API.  For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink>.  
+			</para></note>
+			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+					<wadl:method href="#createMobilePhone"/>		
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+					<wadl:method href="#getMobilePhoneById"/>		
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+					<wadl:method href="#getMobilePhonesForUser"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-vcode">
+					<wadl:method href="#sendVerifyCode"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#mfa_PIN">
+					<wadl:method href="#verifyDevice"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
+					<wadl:method href="#updateMultifactorSettings"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
+					<wadl:method href="#removeMultifactorForUser"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#bypass_codes">
+					<wadl:method href="#generateBypassCodes"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_unlock">
+					<wadl:method href="#unlockMultifactorForUser"/>
+				</wadl:resource>
+			</wadl:resources>
+			<xi:include href="section-mfa-processes.xml"/>
+			<section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 
+				
+				<para>Multifactor authentication capabilities are provided by the
+					RAX-AUTH extension to the core OpenStack Keystone v2.0 API. The
+					following elements, attributes, and resources  support multifactor
+					authentication set up, usage, and administration operations.
+						<variablelist>
+						<varlistentry>
+							<term><guilabel>RAX-AUTH:MobilePhone</guilabel></term>
+							<listitem>
+								<para>The <code>RAX-AUTH:MobilePhone</code> element contains
+									information about a phone designated for use with
+									multifactor authentication. In the Identity API, a mobile
+									phone can be associated with one or more user accounts for
+									the purpose of multifactor authentication. Phones are
+									added to user accounts, and then verfied to establish that
+									the user has possession of the phone. Phones have the
+									following attributes:<variablelist>
+										<varlistentry>
+											<term><guilabel>number</guilabel></term>
+											<listitem>
+												<para>The number attribute links a phone to a user
+													account so it can be used for authentication. The
+													value must be specified in <link
+														xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123"
+														>E.123 format</link>. Use the Add mobile phone
+													operation to add the phone number to the
+													account.</para>
+											</listitem>
+										</varlistentry>
+										<varlistentry>
+											<term><guilabel>id</guilabel></term>
+											<listitem>
+												<para>The id attribute is a unique, system-generated
+													string assigned to a phone automatically when it
+													is added to &CLOUD; user account.</para>
+											</listitem>
+										</varlistentry>
+										<varlistentry>
+											<term><guilabel>verified</guilabel></term>
+											<listitem>
+												<para>Verified is a boolean value that indicates
+													whether a phone has been verified for use with
+													multifactor authentication. A verified phone is
+													also known as a multifactor-enabled device.</para>
+											</listitem>
+										</varlistentry>
+									</variablelist></para>
+							</listitem>
+						</varlistentry>
+					</variablelist><variablelist>
+						<varlistentry>
+							<term><guilabel>Multifactor settings for user
+								account</guilabel></term>
+							<listitem>
+								<para>Multifactor settings are attributes on a user account
+									that provide information about the multifactor
+									authentication capabilities available on the account.<variablelist>
+										<varlistentry>
+											<term><guilabel>RAX-AUTH:multiFactorEnabled
+												element</guilabel></term>
+											<listitem>
+												<para>The <code>RAX-AUTH:multiFactorEnabled</code>
+													element contains the <code>enabled</code>
+													attribute, a boolean value that indicates whether
+													a user can authenticate using a
+													multifactor-enabled device. This value can only be
+													set on accounts that are associated with a
+													verified multifactor-enabled device. If you remove
+													multifactor authentication capabilities from an
+													account using the Delete multifactor configuration
+													operation, the ç attribute is no longer included
+													on the account record.</para>
+											</listitem>
+										</varlistentry>
+										<varlistentry>
+											<term><guilabel>RAX-AUTH:multiFactorState element</guilabel></term>
+											<listitem>
+												<para>The <code>RAX-AUTH:multiFactorState</code>
+													element contains two attributes that indicate the
+													state of multifactor capabilities on the account:
+													<code>ACTIVE</code> indicates that multifactor
+													authentication capabilities are available for use;
+													<code>LOCKED</code> indicates that the user
+													account is locked as a result of too many login
+													attempts. If the account is locked, administrators
+													can use the Unlock user account operation to
+													restore access.</para>
+											</listitem>
+										</varlistentry><varlistentry>
+											<term><guilabel>Unlock</guilabel></term>
+											<listitem>
+												<para>The <code>Unlock</code> attribute is a boolean value that can 
+													be used to restore access to a locked account by using the 
+													Unlock user account operation with <code>unlock="true"</code>.
+												</para>
+											</listitem>
+										</varlistentry>
+									</variablelist></para>
+							</listitem>
+						</varlistentry>
+					</variablelist>
+					<variablelist>
+						<varlistentry>
+							<term><guilabel>Multifactor verification service</guilabel></term>
+							<listitem>
+								<para>&CIS; uses a verification service to link phones and
+									user accounts and to send verification and authentication
+									codes and messages to the user. Verification services are
+									managed by Identity Service administrators. <variablelist>
+										<varlistentry>
+											<term><emphasis role="bold">Verification
+												code</emphasis></term>
+											<listitem>
+												<para>Verification code is a unique,
+													system-generated string used to verify multifactor
+													devices. The Send verification code operation
+													triggers the verification service to send the code
+													to the phone associated with the user account. To
+													complete the verification process, the user
+													returns the code to the Identity service by using
+													the Verify phone operation.</para>
+											</listitem>
+										</varlistentry>
+										<varlistentry>
+											<term><emphasis role="bold">X-SessionId
+												header</emphasis></term>
+											<listitem>
+												<para>A unique system-generated value generated and
+													returned to a user in response to a successful
+													authentication request by a multifactor-enabled
+													user.</para>
+											</listitem>
+										</varlistentry>
+										<varlistentry>
+											<term><guilabel>passcode</guilabel></term>
+											<listitem>
+												<para>A passcode is a unique system-generated string that provides a credential to
+													authenticate to &CIS;. When a multifactor-enabled user authenticates to &CIS;
+													with valid credentials, the verification service generates the passcode and
+													sends it to the  phone associated with the account.</para>
+											</listitem>
+											
+										</varlistentry>
+										<varlistentry>
+											<term><guilabel>SMS text messages</guilabel></term>
+											<listitem>
+												<para>During the multifactor authentication process, the verification 
+													service sends text messages to a user's multifactor-enabled device in response to API requests and state 
+													changes such as Send verification code; send authentication passcode; and too many authentication attempts. 
+													These messages are managed by Service Administrators and can be customized upon request.</para>
+											</listitem>
+											
+										</varlistentry>
+									</variablelist>
+								</para>
+							</listitem>
+						</varlistentry>
+					</variablelist><variablelist>
+						<varlistentry>
+							<term><guilabel>Authentication settings for
+								Token</guilabel></term>
+							<listitem>
+								<para>Authentication settings extend the Tokens resource to
+									add support for multifactor authentication.<variablelist>
+										<varlistentry>
+											<term><guilabel>RAX-AUTH:PasscodeCredentials</guilabel></term>
+											<listitem>
+												<para>The RAX-AUTH:PasscodeCredentials element contains the
+													<parameter>passcode</parameter> attribute that can be used to return the
+													passcode from the Rackspace verification service to &CIS; to complete the
+													multifactor authentication process.</para>
+											</listitem>
+										</varlistentry>
+										<varlistentry>
+											<term><guilabel>RAX-AUTH:authenticatedBy</guilabel></term>
+											<listitem>
+												<para>This element returns attributes that describe the type of credentials used
+													to generate the authentication token. The value can be any of the following: <itemizedlist>
+														<listitem>
+															<para>PASSWORD indicates the Rackspace Cloud account password
+																credentials.</para>
+														</listitem>
+														<listitem>
+															<para>APIKEY indicates API key credentials. </para>
+														</listitem>
+														<listitem>
+															<para>RSAKey indicates RSA key credentials.</para>
+														</listitem>
+														<listitem>
+															<para>PASSCODE indicates the multifactor authentication passcode
+																credentials (RAX-AUTH: Passcode credentials).</para>
+														</listitem>
+													</itemizedlist> When a user successfully authenticates by using a
+													multifactor-enabled device, the <parameter>authenticatedBy</parameter> element
+													lists two credential types; the type used for the initial authentication to
+													the Identity service, and PASSCODE for the multifactor authentication
+													step.</para>
+											</listitem>
+										</varlistentry>
+									</variablelist></para>
+							</listitem>
+						</varlistentry>
+					</variablelist>
+				</para>
+			</section>
+		</section>
 </chapter>
