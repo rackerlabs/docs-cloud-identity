@@ -48,12 +48,12 @@
         <listitem>
           <para>
             <simplelist>
+              <member><xref linkend="mfa_process_summary" xrefstyle="select: title"/>
+                </member>
               <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-                targetptr="mfa_processes"></olink>Set up, use, and manage multifactor capabilities.</member>
-              <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-                targetptr="Multifactor_Calls"></olink>: Get information about multifactor API operations</member>
+                targetptr="Multifactor_Calls" xrefstyle="API reference information"/></member>
               <member><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
-                Validate Token</link>Authenticate with multifactor credentials</member>
+               Authenticate with multifactor credentials</link></member>
             </simplelist>
           </para>
         </listitem>

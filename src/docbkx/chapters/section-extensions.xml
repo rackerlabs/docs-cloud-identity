@@ -140,22 +140,14 @@
         </itemizedlist></para>
     </listitem>
   </itemizedlist>
-  <variablelist>
-      <varlistentry>
-      <term><emphasis role="bold">Related topics</emphasis>
-      </term>
-      <listitem>
-        <para>
-          <simplelist>
+  <para>For more infrmation, see these topics:</para>
+  <simplelist>
             <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-              targetptr="Extensions_operations"></olink>: Get information about extensions supported at an
-              API service endpoint.</member>
+              targetptr="Extensions_operations" xrefstyle="Get information about extensions supported at an
+              API service endpoint"></olink></member>
             <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-                targetptr="extended_actions"></olink>Learn about developing and using
-              extensions.</member>
+              targetptr="extended_actions" xrefstyle="Learn about developing and using
+              extensions"/>
+              </member>
           </simplelist>
-        </para>
-      </listitem>
-    </varlistentry>
-    </variablelist>
 </section>

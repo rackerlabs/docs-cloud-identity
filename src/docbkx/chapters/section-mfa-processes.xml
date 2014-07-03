@@ -7,7 +7,7 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="mfa_processes"> 
-    <title>Multifactor authentication work flow and management</title>
+    <title>Using Multifactor authentication</title>
     <para><xref linkend="mfa_process_summary"/> outlines the processes to set up, use, and manage
       multifactor authentication capabilities for &CLOUD; accounts using Identity service API
       operations.  This work can be completed by using Identity Service API operations, or from  the
@@ -15,7 +15,7 @@
     <para>Click the links in the table for detailed instructions that include example requests and
       responses using the multifactor authentication API operations.</para>
     <para>
-      <table xml:id="mfa_process_summary" rules="all" width="80%">
+      <table xml:id="mfa_process_summary" rules="all" width="100%">
         <caption>Multifactor authentication processes and procedures</caption>
         <col width="456pt"/>
         <col width="50%"/>

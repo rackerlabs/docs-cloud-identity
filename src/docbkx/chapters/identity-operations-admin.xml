@@ -978,8 +978,8 @@
 			<title>Multifactor Operations</title>
 			<para>The operations described in this section allow administrators and users to set up &CLOUD;
 				accounts to support multifactor authentication. For additional information, see these topics:
-				<itemizedlist><listitem><para><xref linkend="mfa_api_ovw"/></para></listitem>
-					<listitem><para><xref linkend="mfa_processes"/></para></listitem>
+				<itemizedlist><listitem><para><xref linkend="mfa_process_summary" xrefstyle="Using multifactor"/></para></listitem>
+					<listitem><para><xref linkend="mfa_api_ovw"  xrefstyle="Multifactor elements and attributes"/></para></listitem>
 				</itemizedlist></para>
 			<note><para> 
 				The functionality described in this section is provided by the <code>RAX-AUTH</code> 
@@ -1019,10 +1019,10 @@
 			<xi:include href="section-mfa-processes.xml"/>
 			<section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 
 				
-				<para>Multifactor authentication capabilities are provided by the
-					RAX-AUTH extension to the core OpenStack Keystone v2.0 API. The
-					following elements, attributes, and resources  support multifactor
-					authentication set up, usage, and administration operations.
+				<para>Multifactor authentication features are implemented in the 
+					RAX-AUTH extension to the core OpenStack Keystone v2.0 API. This section 
+					provides information about the extended elements, attributes, and resources 
+					required to set up, use, and manage multifactor authentication capabilities.
 						<variablelist>
 						<varlistentry>
 							<term><guilabel>RAX-AUTH:MobilePhone</guilabel></term>
