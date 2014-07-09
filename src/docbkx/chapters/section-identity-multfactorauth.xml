@@ -44,6 +44,7 @@
         </imageobject>
       </mediaobject>
     </figure>
-    <para>For information about setting up, using, and managing multifactor authentication capabilities using &CIS; API operations, 
-      see <link xlink:href= "Multifactor_Calls.html#Multifactor_Calls">Multifactor API operations</link>.</para>  
+    <para>For information about using multifactor authentication capabilities, 
+      see <link xlink:href= "#mfa_processes">Multifactor authentication set up, operation, and management</link>.</para>  
+    <xi:include href="section-mfa-setup.xml"/>
   </section>

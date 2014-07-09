@@ -7,7 +7,7 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="mfa_processes"> 
-    <title>Using Multifactor authentication setup and operation</title>
+    <title>Multifactor authentication set up, operation, and management</title>
     <para><xref linkend="mfa_process_summary"/> outlines the processes to set up, use, and manage
       multifactor authentication capabilities for &CLOUD; accounts using Identity service API
       operations. This work can be completed by using Identity Service API operations, or from  the
@@ -224,7 +224,7 @@
               <term>cURL Send Verification code request</term>
               <listitem>
                 <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
+                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
        -X POST \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
@@ -236,7 +236,7 @@
             <varlistentry>
               <term>Response</term>
               <listitem>
-                <para>&CIS; returns ta 201 response and sends  a message
+                <para>&CIS; returns ta 201 response and sends a message
                   like this to the designated phone number:</para>
                 <para><code>To verify this mobile device for your
                   Rackspace profile used for multi-factor
@@ -490,7 +490,7 @@
         </tr>
         <tr>
           <td valign="top">
-            <para><link xlink:href ="GET_getUserById_users_User_Calls.html">Check multifactor status on user account</link></para>
+            <para><link xlink:href="GET_getUserById_users_User_Calls.html">Check multifactor status on user account</link></para>
           </td>
           <td>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
@@ -508,7 +508,7 @@
  		| python -m json.tool</programlisting></td>
         </tr>
         <tr>
-          <td><link xlink:href ="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Disable multifactor authentication</link></td>
+          <td><link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Disable multifactor authentication</link></td>
           <td><para>cURL request to disable (<code>enabled=false</code>) multifactor
             for the specified user account.</para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
        -X PUT \
@@ -518,7 +518,7 @@
         </tr>
         <tr>
           <td valign="top">
-            <para><link xlink:href ="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Remove the multifactor settings and phone from a user account</link></para>
+            <para><link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Remove the multifactor settings and phone from a user account</link></para>
           </td>
           <td><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
        -X  DELETE  \

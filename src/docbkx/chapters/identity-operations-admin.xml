@@ -150,10 +150,6 @@
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
 				<wadl:method href="#listUsers"/>
 			</wadl:resource>
-		<!-- list user group membership -->	
-			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
-				<wadl:method href="#listUserGroups"/>
-			</wadl:resource>
 			<!-- get user by name (and id and email) -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#users">
 				<wadl:method href="#getUserByName"/>
@@ -185,6 +181,10 @@
 			<!-- get domain endpoints for user -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domain_endpoints" >
 				<wadl:method href="#getAccesibleDomainEndpointsForUser"/>
+			</wadl:resource>
+			<!-- list user group membership -->	
+			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
+				<wadl:method href="#listUserGroups"/>
 			</wadl:resource>
 			<!-- add API key credential -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
@@ -979,9 +979,9 @@
 			<para>The &CIS; API operations described in this section implement 
 				multifactor authentication capabilities for &CLOUD; accounts. 
 				For additional information, see these topics:
-				<itemizedlist><listitem><para><xref linkend="mfa_process_summary" xrefstyle="Multifactor operations"/></para></listitem>
+				<itemizedlist><listitem><para><link xlink:href="mfa_processes.html">Multifactor authentication set up, operation, and management"</link></para></listitem>
 					<listitem><para><link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">API request: Authenticate with multifactor credentials</link></para></listitem>
-					<listitem><para><xref linkend="mfa_api_ovw"  xrefstyle="Multifactor elements and attributes"/></para></listitem>
+					<listitem><para><link xlink:href="mfa_api_ovw.html">Multifactor elements and attributes</link></para></listitem>
 				</itemizedlist>
 			
 			POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html
@@ -995,24 +995,21 @@
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#createMobilePhone"/>		
-				</wadl:resource>
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
-					<wadl:method href="#getMobilePhoneById"/>		
-				</wadl:resource>
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
-					<wadl:method href="#getMobilePhonesForUser"/>
-				</wadl:resource>
+				</wadl:resource>	
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-vcode">
 					<wadl:method href="#sendVerifyCode"/>
 				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#mfa_PIN">
 					<wadl:method href="#verifyDevice"/>
 				</wadl:resource>
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#updateMultifactorSettings"/>
 				</wadl:resource>
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor">
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#removeMultifactorForUser"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+					<wadl:method href="#getMobilePhonesForUser"/>
 				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#bypass_codes">
 					<wadl:method href="#generateBypassCodes"/>
@@ -1021,7 +1018,6 @@
 					<wadl:method href="#unlockMultifactorForUser"/>
 				</wadl:resource>
 			</wadl:resources>
-			<xi:include href="section-mfa-setup.xml"/>
 			<section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 
 				
 				<para>Multifactor authentication features are implemented in the 

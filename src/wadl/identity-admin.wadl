@@ -498,8 +498,7 @@
     <method name="POST" id="authenticate_token">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate as tenant with token">
             <para role="shortdesc">Allows Administrator users to authenticate by using a tenant id or name and 
-                a valid token.
-            </para>
+                a valid token.</para>
             <para>
                 Submit the POST token authentication request to the &CIS; endpoint URL with <code>v2.0/tokens</code>  
                 supplied as the path and the tenant name or id and token as a payload of credentials in the body. 

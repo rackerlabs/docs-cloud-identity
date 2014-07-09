@@ -1,6 +1,7 @@
 {
     "RAX-AUTH:mobilePhone": {
         "id": "889a7245f49e4ab789ebaebf91c0f1eb",
+        "verified": false,
         "number": "+1 512-555-1000"
     }
 }

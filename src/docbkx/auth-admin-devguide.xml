@@ -59,14 +59,11 @@
 							<para>Added the following sections to Multifactor operations section to add information about Multifactor authentication and attributes. 
 								<itemizedlist>
 										<listitem>
-											<para><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-											targetptr="mfa_processes"></olink></para></listitem>
+											<para><link xlink:href="mfa_processes.html">Multifactor authentication set up, operation, and management</link></para></listitem>
 										<listitem>
-											<para><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-												targetptr="mfa_api_ovw"></olink></para></listitem>
+											<para><link xlink:href="proc_mfa_setup.html">Set up multifactor authentication</link></para></listitem>
 									<listitem>
-										<para><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-											targetptr="proc_mfa_manage"></olink></para></listitem>
+										<para><link xlink:href="proc_mfa_manage.html">Manage multifactor authentication settings and operation</link></para></listitem>
 									</itemizedlist></para>
 						</listitem>
 						<listitem>

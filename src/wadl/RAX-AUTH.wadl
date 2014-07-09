@@ -24,6 +24,7 @@
     xmlns:db="http://docbook.org/ns/docbook" 
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
 
+
     <grammars>
         <include href="../common/xsd/RAX-AUTH.xsd"/>
     </grammars>
@@ -80,7 +81,7 @@
 
 
             <!-- USER ID RAX-AUTH resource(s) -->
-            <resource id="useridRAX" path="users/{userId}/RAX-AUTH">
+            <resource id="userIdRAX" path="users/{userId}/RAX-AUTH">
                 <!-- ADD_USER_SECRETQA resource(s) -->
                 <!-- see also SECRETQA below -->
                 <resource id="add_user_secretqa" path="secretqas">
@@ -129,24 +130,12 @@
                 </resource>
                 
                 <!-- MULTIFACTOR resource(s) -->
-                <resource id="multifactor" path="users/{userId}/RAX-AUTH/multi-factor">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
-                    </param>
-                    <param name="userid" style="template" type="xsd:string">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID associated with the account. 
-                            Use the List user operation to find the ID.</para>
-                        </wadl:doc>
-                    </param>
-                    <method href="#removeMultifactorForUser"/>
-                    <method href="#updateMultifactorSettings"/>
-                </resource>
                     <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/{bypass">
                         <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
                                 A valid authentication token</para></wadl:doc>
                         </param>
-                        <param name="userid" style="template" type="xsd:string">
+                        <param name="userId" style="template" type="xsd:string">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                                 <para>The unique, system-generated user ID for the user account to generate codes for.</para>
                             </wadl:doc>
@@ -158,7 +147,7 @@
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
                         A valid authentication token</para></wadl:doc>
                     </param>
-                    <param name="userid" style="template" type="xsd:string">
+                    <param name="userId" style="template" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The unique, system-generated user ID for the user account to be unlocked.</para>
                     </wadl:doc>
@@ -178,24 +167,26 @@
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="query" type="xsd:string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID associated with the account. 
-                            Use the List user operation to find the ID.</para></wadl:doc>
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="template" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The user id for the account.</para></wadl:doc>          
                     </param>
-                            <method href="#getMobilePhonesForUser"/>
-                            <method href="#createMobilePhone"/>
-                            <method href="#getMobilePhoneById"/>  
-                    
-                    <resource id="multifactor-vcode" path="/verificationcode">
+                           <method href="#createMobilePhone"/> 
+                           <method href="#getMobilePhonesForUser"/>
+                           <method href="#removeMultifactorForUser"/>
+                           <method href="#updateMultifactorSettings"/>
+                    <resource id="multifactor-vcode" path="$phoneId/verificationcode">
                     <method href="#sendVerifyCode"/>
                     </resource>
-                    <resource id="mfa_PIN" path="{code}">
+                    <resource id="mfa_PIN" path="$phoneId/verify">
                     <param xmlns="http://wadl.dev.java.net/2009/02" name="code" style="template" type="RAX-AUTH:VerificationCode" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook">
                             <para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</para> 
                         </wadl:doc>
                     </param>
-                    <method href="#verifyDevice"/>
+                        <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="template" type="xsd:string" required="true">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated id assigned when a phone is added to an account.</para></wadl:doc>          
+                        </param>   
+                    <method href="#verifyDevice"/>                        
                     </resource>
                 </resource>
 
@@ -472,7 +463,7 @@
 
     <method id="impersonateUser" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user">
-            <db:para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Impersonate a specific user.</db:para>
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Impersonate a specific user.</para>
             <para xmlns="http://docbook.org/ns/docbook"> To impersonate a user, you must first authenticate as yourself. The
                 response to this authentication request will supply you with a current Racker token; you must already hold a
                 service token. After you are authenticated and holding the necessary privileges, you can issue this
@@ -1475,42 +1466,48 @@
             <para role="shortdesc">Adds a mobile phone number to the specified user account to support multifactor authentication.</para>
             <para>Updates the specified user account with a phone number for multifactor authentication. 
             The same phone number can be associated with multiple accounts.</para>
-            <db:para>If the number is not in E.123 format, or if the specified phone number 
-            is already associated with the user account, the operation fails with a 400 error message.</db:para>
+            <para>Specify the phone number in 
+                <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
+                <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example. 
+             </para>
       </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:mobilePhone">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML request">
-                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.xml"/>
-                </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="number" style="template" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Phone number of the device to be added to the account in 
-                            <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
-                            <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example. 
-                        The same phone number can be used on multiple accounts.</para>
-                    </wadl:doc>
-                </param>
+            <representation mediaType="application/json" element="RAX-AUTH:mobilePhone">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request in cURL command">
+                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+       -X POST \
+       -H "Content-Type: application/json" \
+       -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
+       | python -m json.tool</programlisting>
+           <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to environment variables:</para></note></wadl:doc>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a moble phone: JSON request">
-                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.json"/>
-            </wadl:doc>
-            </representation>
+            
         </request>
         <response status="201">
             <representation mediaType="application/xml" element="RAX-AUTH:mobilePhone">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML response">
                     <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.xml"/>
                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The userId for the account to update.</para></wadl:doc>          
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated id assigned when a phone is added to an account.</para></wadl:doc>          
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="verified" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>A boolean value that indicates whether the phone can be used to authenticate to &CIS;. Phones can be  
+                            verified by using the Send verification code and Verify device operations.</para>
+                    </wadl:doc>
+                </param>
+                
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a moble phone: JSON response">
                     <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.json"/>
                 </wadl:doc>
             </representation>
-        </response>
-            <response status="201"/> &commonFaults; &postPutFaults;
+        </response> &commonFaults; &postPutFaults;
        </method>
     
     <method id="sendVerifyCode" name="POST">
@@ -1525,6 +1522,18 @@
                 the phone for use with multifactor authentication services. 
             </para>
         </wadl:doc>
+        <request>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Send verification code: JSON request in a cURL command">
+                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
+       -X POST \
+       -H "Content-Type: application/json" \
+       -H "Accept: application/json" \
+       -H "X-Auth-Token: $AUTH_TOKEN"
+       | python -m json.tool</programlisting><note><para>This example assumes that the endpoint URL, userId, and your authentication token to
+           environment variables.</para></note></wadl:doc>
+            </representation>
+        </request>
         <response status="202"/> &commonFaults; &getFaults;     
     </method>
     
@@ -1556,72 +1565,25 @@
         
         <response status="204"/> &commonFaults; &postPutFaults;     
     </method>
-    
-    <method id="getMobilePhoneById" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get phone by id">
-            <db:para role="shortdesc">Returns the phone number of the device associated with the specified id.
-            </db:para>
-        </wadl:doc>
-        <wadl:doc xmlns="http://docbook.org/ns/docbook">     
-            <para>After adding a phone to a user account, use this operation to verify the phone configuration.
-            </para>              
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
-                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
-                </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="query" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A unique, system-generated string that identifies a mobile phone 
-                        associated with a &CLOUD; user account. If you don't know the id, use the List phones by user operation 
-                        to find it.</para></wadl:doc>          
-                </param>
-            </representation>
-            
-            <representation mediaType="application/json">
-                <wadl:doc >
-                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.json"/>
-                </wadl:doc>
-            </representation>
-        </request>
-        <response status="204">
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get phone by user: JSON">
-                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults; &getFaults;
-    </method>
+        
     <method id="getMobilePhonesForUser" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List phones for user">
-            <db:para role="shortdesc">Lists phones associated with the specified user account.</db:para>
-            <db:para>Use this operation to get the phone number, id, and the multifactor 
-            verification status for all phones associated with the specified user.</db:para>
+            <para role="shortdesc">Lists phones associated with the specified user account.</para>
+            <para>Use this operation to get the phone number, id, and the multifactor 
+            verification status for all phones associated with the specified user.</para>
+            <para>If you don't know the userId, use the List operation to find it.</para>
         </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
-                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
-               </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
-                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.json"/>
-                </wadl:doc>
-            </representation>
-        </request>
         <response status="204">
             <wadl:doc title="No Content">Accepted.</wadl:doc>
             <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="template" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A unique, system-generated string that identifies the mobile phone 
-                        in the system.</para></wadl:doc>          
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>A unique, system-generated string that identifies the mobile phone 
+                        in the &CIS;.</para>
+                    </wadl:doc>          
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="number" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -1655,9 +1617,16 @@
                 all phones associated with the account. To disable the feature without removing phones, use 
                 the Disable multifactor setting operation.</para>
             <para>This operation can only be completed from the user account submitting the request.
-                Attempts to run it for a different userid result in a 403 error message.
+                Attempts to run it for a different userId result in a 403 error message.
             </para>
-        </wadl:doc>        
+        </wadl:doc> 
+        <request>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="query" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A unique, system-generated string that identifies a mobile phone 
+                        associated with a &CLOUD; user account. If you don't know the id, use the List phones by user operation 
+                        to find it.</para></wadl:doc>          
+                </param>
+            </request>
         <response status="204"/> &commonFaults;
     </method>
      
@@ -1690,11 +1659,6 @@
                         <para>This setting does not remove the phone associated with the account.</para>
                     </wadl:doc>
                </param>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multifactor authentication: XML request">
-                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
-                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multifactor authentication: JSON request">
