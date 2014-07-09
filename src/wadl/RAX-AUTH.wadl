@@ -130,7 +130,7 @@
                 </resource>
                 
                 <!-- MULTIFACTOR resource(s) -->
-                    <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/{bypass">
+                    <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/{bypass}">
                         <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
                                 A valid authentication token</para></wadl:doc>

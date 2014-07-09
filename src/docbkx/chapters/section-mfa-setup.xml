@@ -143,7 +143,7 @@
           <para>Authenticate to &CIS; to obtain an authentication token.
             <variablelist>
             <varlistentry>
-              <term>POST tokens cURL request:</term>
+              <term><emphasis role="bold">POST tokens cURL request</emphasis>:</term>
               <listitem>
                 <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens \
        -X POST \
@@ -154,7 +154,8 @@
               </listitem>
             </varlistentry>
             <varlistentry>
-              <term>Response with authentication token id:</term>
+              <term><emphasis role="bold">Response with authentication
+                  token id</emphasis>:</term>
               <listitem>
                 <para>
                   <programlisting><![CDATA[  < HTTP/1.1 200 OK
@@ -202,26 +203,28 @@
         <!-- Step 2 Add a mobile phone -->
         <listitem>
           <para>Add a mobile phone to your account.<variablelist><varlistentry>
-            <term>cURL Add mobile phone request</term>
-            <listitem>
-              <para>
-                <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+              <term><emphasis role="bold">cURL Add mobile phone
+                  request</emphasis></term>
+              <listitem>
+                <para>
+                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X POST \
        -H "Content-Type: application/json" \
        -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
        | python -m json.tool</programlisting>
-              </para>
-              <para>This operation does not return a response
-                body.</para>
-            </listitem>
-          </varlistentry></variablelist></para>
+                </para>
+                <para>This operation does not return a response
+                  body.</para>
+              </listitem>
+            </varlistentry></variablelist></para>
         </listitem>
         
         <!--Step 3 Verify PIN code -->
         <listitem>
           <para>Send a verification PIN code to your phone to verify the device.<variablelist>
             <varlistentry>
-              <term>cURL Send Verification code request</term>
+              <term><emphasis role="bold">cURL Send Verification code
+                  request</emphasis></term>
               <listitem>
                 <para>
                   <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
@@ -234,7 +237,7 @@
               </listitem>
             </varlistentry>
             <varlistentry>
-              <term>Response</term>
+              <term><emphasis role="bold">Response</emphasis></term>
               <listitem>
                 <para>&CIS; returns ta 201 response and sends a message
                   like this to the designated phone number:</para>
@@ -250,7 +253,8 @@
           <!-- Step 4  Send verification code -->
           <para>Send the PIN code back to &CIS;.<variablelist>
             <varlistentry>
-              <term>cURL Send verification code request</term>
+              <term><emphasis role="bold">cURL Send verification code
+                  request</emphasis></term>
               <listitem>
                 <para>
                   <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
@@ -262,7 +266,7 @@
               </listitem>
             </varlistentry>
             <varlistentry>
-              <term>Response</term>
+              <term><emphasis role="bold">Response</emphasis></term>
               <listitem>
                 <para>&CIS; returns a 204 response.<programlisting><![CDATA[  < HTTP/1.1 202 Accepted
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
@@ -276,7 +280,8 @@
         <listitem>
           <para>Update your account to enable multifactor authentication support.<variablelist>
             <varlistentry>
-              <term>cURL Verify phone request</term>
+              <term><emphasis role="bold">cURL Verify phone
+                  request</emphasis></term>
               <listitem>
                 <para>
                   <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verify \
@@ -290,7 +295,7 @@
               </listitem>
             </varlistentry>
             <varlistentry>
-              <term>Response</term>
+              <term><emphasis role="bold">Response</emphasis></term>
               <listitem>
                 <para>&CIS; returns a 204 response.<programlisting><![CDATA[  < HTTP/1.1 204 No Content
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
@@ -308,7 +313,8 @@
             authentication is enabled.
             <variablelist>
               <varlistentry>
-              <term>GET user by id cURL request</term>
+              <term><emphasis role="bold">GET user by id cURL
+                  request</emphasis></term>
               <listitem>
                 <para>
                   <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID \
@@ -320,7 +326,8 @@
               </listitem>
             </varlistentry>
             <varlistentry>
-              <term>Response showing <code>RAX-AUTH:multiFactorEnabled=true</code></term>
+              <term><emphasis role="bold">Response showing
+                    <code>RAX-AUTH:multiFactorEnabled=true</code></emphasis></term>
               <listitem><para><programlisting><![CDATA[  {
     "user": {
         "RAX-AUTH:defaultRegion": "ORD",
@@ -346,10 +353,12 @@
         <varlistentry>
           <term><emphasis role="bold">Prerequisites</emphasis></term>
           <listitem><para><itemizedlist>
-            <listitem><para>You have valid credentials to authenticate to &CIS;:.</para></listitem>
-            <listitem><para>Your user account is enabled to use mulitifactor authentication.</para></listitem>
-            <listitem><para>You have access to the phone linked to your &CLOUD; account.</para></listitem>
-            <listitem><para>Your account is not locked as a result of too many failed authentication attempts.</para></listitem>
+            <listitem><para>Valid credentials to authenticate to &CIS;.</para></listitem>
+            <listitem><para>User account is enabled to use mulitifactor
+                  authentication.</para></listitem>
+            <listitem><para>Access to the phone linked to your &CLOUD; account.</para></listitem>
+            <listitem><para>User account not locked as a result of too many failed
+                  authentication attempts.</para></listitem>
           </itemizedlist>
           </para></listitem>
         </varlistentry>
@@ -361,13 +370,13 @@
             linkend="Step_authenticate"/>.
           <variablelist>
             <varlistentry>
-              <term>Response</term>
+              <term><emphasis role="bold">Response</emphasis></term>
               <listitem>
                 <para>The request triggers &CIS; to send an SMS
                   message to the phone associated with the user
                   account. In response to the authentication request,
                   &CIS; returns a 401 message that includes a
-                  sessionId in the WWW-Authenticate header and a
+                  <code>sessionId</code> in the WWW-Authenticate header and a
                   request for additional
                   credentials:<screen><computeroutput>
 &lt;&lt; HTTP/1.1 401 Unauthorized
@@ -402,8 +411,9 @@
           &lt;code><code>sessionId</code>&lt;/code> and
             &lt;code><code>passcode</code>. <variablelist>
             <varlistentry>
-              <term>cURL POST token request with multifactor
-                authentication credentials</term>
+              <term><emphasis role="bold">cURL POST token request with
+                  multifactor authentication
+                credentials</emphasis></term>
               <listitem>
                 <para>
                   <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens \
@@ -417,7 +427,7 @@
               </listitem>
             </varlistentry>
             <varlistentry>
-              <term>Response</term>
+              <term><emphasis role="bold">Response</emphasis></term>
               <listitem>
                 <para>&CIS; returns an authentication token id and
                   service catalog. Note that the information returned
@@ -480,7 +490,7 @@
         <tr>
           <td valign="top">
             <para><link xlink:href ="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Unlock user account</link></para></td>
-          <td>
+          <td valign="top">
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
        -X PUT  \
        -d '{"RAX-AUTH:multiFactor": { "unlock": "true" }}'
@@ -492,7 +502,7 @@
           <td valign="top">
             <para><link xlink:href="GET_getUserById_users_User_Calls.html">Check multifactor status on user account</link></para>
           </td>
-          <td>
+          <td valign="top">
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
        -X POST \
        -H "Content-Type: application/json" \
@@ -502,13 +512,17 @@
         <tr>
           <td valign="top"><link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List multifactor-enabled devices by user id</link>
             </td>
-          <td><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+          <td valign="top">
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X PUT \
        -H "Content-Type: application/json" \
- 		| python -m json.tool</programlisting></td>
+ 		| python -m json.tool</programlisting>
+          </td>
         </tr>
         <tr>
-          <td><link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Disable multifactor authentication</link></td>
+          <td valign="top"><link
+              xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
+              >Disable multifactor authentication</link></td>
           <td><para>cURL request to disable (<code>enabled=false</code>) multifactor
             for the specified user account.</para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
        -X PUT \
@@ -520,10 +534,12 @@
           <td valign="top">
             <para><link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Remove the multifactor settings and phone from a user account</link></para>
           </td>
-          <td><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
+          <td valign="top">
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
        -X  DELETE  \
        -H "Content-Type: application/json" \
- 		| python -m json.tool</programlisting></td>
+ 		| python -m json.tool</programlisting>
+          </td>
         </tr>
       </tbody>
     </table>
