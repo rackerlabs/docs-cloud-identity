@@ -1619,14 +1619,7 @@
             <para>This operation can only be completed from the user account submitting the request.
                 Attempts to run it for a different userId result in a 403 error message.
             </para>
-        </wadl:doc> 
-        <request>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="query" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A unique, system-generated string that identifies a mobile phone 
-                        associated with a &CLOUD; user account. If you don't know the id, use the List phones by user operation 
-                        to find it.</para></wadl:doc>          
-                </param>
-            </request>
+        </wadl:doc>
         <response status="204"/> &commonFaults;
     </method>
      
