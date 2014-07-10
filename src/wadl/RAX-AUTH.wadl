@@ -22,6 +22,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
     xmlns:db="http://docbook.org/ns/docbook" 
+    xmlns:capi="http://docs.openstack.org/common/api/v1.0"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
 
 
@@ -178,11 +179,6 @@
                     <method href="#sendVerifyCode"/>
                     </resource>
                     <resource id="mfa_PIN" path="$phoneId/verify">
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="code" style="template" type="RAX-AUTH:VerificationCode" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                            <para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</para> 
-                        </wadl:doc>
-                    </param>
                         <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="template" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated id assigned when a phone is added to an account.</para></wadl:doc>          
                         </param>   
@@ -399,9 +395,8 @@
             <db:para> The operation returns a list of questions and answers for a user. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:secretqa">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/SecretQAList.xml"/>
                 </wadl:doc>
             </representation>
@@ -420,7 +415,7 @@
             <db:para> Clients must specify the question ID, question, and answer in the request body. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:secretqa">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/SecretQAForSave.xml"/>
@@ -435,7 +430,7 @@
         </request>
         <response status="200"/>
         <response status="409">
-            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
@@ -448,7 +443,7 @@
                 reset does not revoke existing tokens. The <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-external/content/DELETE_revokeToken_v2.0_tokens__tokenId__.html"> "Revoke Token"</a> call can be used to revoke a token. </p>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
@@ -491,7 +486,7 @@
                 until the token expires.</para>
             </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ImpersonationRequest.xml"/>
                </wadl:doc>
@@ -503,7 +498,7 @@
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:access">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ImpersonationResponse.xml"/>
                 </wadl:doc>
@@ -524,7 +519,7 @@
                 an admin user, a list of all domains may be returned. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:domains">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DomainList.xml"/>
                 </wadl:doc>
@@ -542,7 +537,7 @@
             <db:para role="shortdesc"> Get a domain. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:domain">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Domain.xml"/>
                 </wadl:doc>
@@ -560,7 +555,7 @@
             <db:para role="shortdesc"> Update a domain. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:domain">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Domain.xml"/>
                 </wadl:doc>
@@ -580,7 +575,7 @@
             <db:para> Clients must specify the domain ID in the request body. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:domain">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/Domain.xml"/>
@@ -621,7 +616,7 @@
             </param>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:users">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/UserList.xml"/>
@@ -663,7 +658,7 @@
             </param>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:tenants">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/TenantList.xml"/>
@@ -705,7 +700,7 @@
                 only set their default region to <code>ORD</code>.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/DefaultRegionServices.xml"/>
@@ -727,7 +722,7 @@
             </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:impersonation">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/DefaultRegionServices.xml"/>
@@ -749,7 +744,7 @@
                 the user has a role in a tenant that exists in the domain. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:domains">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/DomainList.xml"/>
@@ -769,7 +764,7 @@
             <db:para role="shortdesc"> Get endpoints for a user restricted by domain. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:endpoints">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/EndpointList.xml"/>
@@ -792,7 +787,7 @@
                 to an admin user, a list of all domain endpoints may be returned. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:endpoints">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/EndpointList.xml"/>
@@ -817,7 +812,7 @@
                 domain name, domain ID, email address, status, user ID and user name.</p>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:users">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/UserAdminList.xml"/>
@@ -837,7 +832,7 @@
             <db:para role="shortdesc"> Get all Policies. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:policies">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
                 </wadl:doc>
@@ -855,7 +850,7 @@
             <db:para role="shortdesc"> Create a policy. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:policy">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicy.xml"/>
                 </wadl:doc>
@@ -878,7 +873,7 @@
             <db:para role="shortdesc"> Gets a policy. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:policy">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Policy.xml"/>
                 </wadl:doc>
@@ -896,7 +891,7 @@
             <db:para role="shortdesc"> Update a Policy. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:policy">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicy.xml"/>
                 </wadl:doc>
@@ -926,7 +921,7 @@
                 descriptions of the policy. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="xsd:string">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/PolicyBlob.xml"/>
@@ -940,7 +935,7 @@
             <db:para role="shortdesc"> Get all policies for endpoint template. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:policies">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
@@ -961,7 +956,7 @@
             <db:para> This allows clients to update all the policies for an endpoint template at once. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:policies">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/UpdatePolicyList.xml"/>
@@ -996,7 +991,7 @@
             <db:para role="shortdesc"> Gets a list of service APIs. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:serviceApis">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/ServiceApiList.xml"/>
@@ -1016,7 +1011,7 @@
             <db:para role="shortdesc"> Get the capabilities for an endpoint template. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/CapabilityList.xml"/>
@@ -1043,7 +1038,7 @@
           this says <request status="200"> but how does that work? try again as <request>
          -->
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:capabilities">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/CapabilityList.xml"/>
@@ -1072,7 +1067,7 @@
             <db:para> The operation returns a list of regions. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:regions">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/RegionList.xml"/>
@@ -1092,7 +1087,7 @@
             <db:para role="shortdesc"> Gets a region. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:region">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/Region.xml"/>
@@ -1112,7 +1107,7 @@
             <db:para role="shortdesc"> Updates a region. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:region">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/Region.xml"/>
@@ -1139,7 +1134,7 @@
                 one of their regions listed in the service catalog for the CloudServersOpenStack service. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:region">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/Region.xml"/>
@@ -1171,7 +1166,7 @@
             <db:para> The operation returns a list of questions. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:questions">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/QuestionList.xml"/>
@@ -1191,7 +1186,7 @@
             <db:para role="shortdesc"> Get a question. </db:para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:question">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/Question.xml"/>
@@ -1211,7 +1206,7 @@
             <db:para role="shortdesc"> Update a question. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:question">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/Question.xml"/>
@@ -1233,7 +1228,7 @@
             <db:para> Clients must specify the question name in the request body. </db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:question">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/QuestionForCreate.xml"/>
@@ -1252,7 +1247,7 @@
             </param>
         </response>
         <response status="409">
-            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
@@ -1284,7 +1279,7 @@
             </param>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:users">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/EndpointTemplateList.xml"/>
@@ -1379,20 +1374,20 @@
             <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Unauthorized error can occur if the passcode is not valid, or if the user 
                 account is locked because the user has exceeded the maximum number of attempts to authenticate. Use the Unlock user account operation to 
                 remove the account lock.</para></wadl:doc>
-            <representation mediaType="application/xml" element="identity:access"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response>
         
         <response status="403">
             <wadl:doc title="User Disabled" xmlns="http://docbook.org/ns/docbook">User account has been disabled.
             </wadl:doc>
-            <representation mediaType="application/xml" element="identity:userDisabled"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response>
         
         <response status="500">
             <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook">Passcode not accepted.</wadl:doc>
-            <representation mediaType="application/xml" element="identity:serviceFault"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &postPutFaults; 
     </method>
@@ -1403,7 +1398,7 @@
             in the request: Rackspace username, SSO password, and the Rackspace domainId.</db:para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="identity:AuthenticationRequest">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Racker SSO authentication request: XML">
                     <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml"/>
                 </wadl:doc>
@@ -1428,7 +1423,7 @@
                     <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.json"/>
                 </wadl:doc>
             </representation>
-            <representation mediaType="application/xml" element="identity:AuthenticationRequest">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Racker RSA token authentication request: XML">
                     <xsdxt:code href="../common/samples/RackerRSATokenAuthenticationRequest.xml"/>
@@ -1442,7 +1437,7 @@
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:access">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
                     <xsdxt:code href="../common/samples/RackerAuthenticationResponse.xml"/>
@@ -1456,7 +1451,7 @@
             </representation>
         </response>
         <response status="409">
-            <representation mediaType="application/xml" element="identity:identityFault"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
     
@@ -1472,6 +1467,13 @@
              </para>
       </wadl:doc>
         <request>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneNumber" style="plain" type="xsd:string" required="true">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>The phone number of the mobile phone in <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
+                        <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example.</para>
+                </wadl:doc>
+            </param></representation>
             <representation mediaType="application/json" element="RAX-AUTH:mobilePhone">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request in cURL command">
                     <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
@@ -1479,12 +1481,12 @@
        -H "Content-Type: application/json" \
        -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
        | python -m json.tool</programlisting>
-           <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to environment variables:</para></note></wadl:doc>
-            </representation>
-            
+           <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to environment variables:</para></note>
+                </wadl:doc>                
+            </representation> 
         </request>
         <response status="201">
-            <representation mediaType="application/xml" element="RAX-AUTH:mobilePhone">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML response">
                     <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.xml"/>
                </wadl:doc>
@@ -1550,11 +1552,17 @@
         </wadl:doc>
         
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.xml"/>
                 </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="code" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</para>
+                    </wadl:doc>
+                </param>
             </representation>
+            
             
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -1575,7 +1583,7 @@
         </wadl:doc>
         <response status="204">
             <wadl:doc title="No Content">Accepted.</wadl:doc>
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
                 </wadl:doc>
@@ -1640,7 +1648,7 @@
                 operation.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multifactor authentication: XML request">
                     <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
                 </wadl:doc>
@@ -1658,7 +1666,7 @@
                     <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
                 </wadl:doc>
             </representation>
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multifactor authentication on account: XML request">
                     <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.xml"/>
                 </wadl:doc>
@@ -1672,17 +1680,17 @@
         <response status="204"/> 
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="Bad Request">No multifactor device on user account.</doc>
-            <representation mediaType="application/xml" element="identity:badRequest"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response>
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="Bad Request">Multifactor phone on account is not verified.</doc>
-            <representation mediaType="application/xml" element="identity:badRequest"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response>
         <response status="500" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="serviceFault">Problem linking phone with &CIS; multifactor authentication service. Contact the &CIS; service administrator for help.</doc>
-            <representation mediaType="application/xml" element="identity:serviceFault"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response>
     </method>
@@ -1697,7 +1705,7 @@
                 can be used in place of the passcode.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:bypassCodes">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesRequest.xml"/>
                 </wadl:doc>
@@ -1709,7 +1717,7 @@
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="RAX-AUTH:bypassCodes">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesResponse.xml" />
                 </wadl:doc>
@@ -1744,7 +1752,7 @@
             </para></note>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:multifactor">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultiFacUnlockReq.xml"/>
                 </wadl:doc>
@@ -1780,14 +1788,14 @@
             </note>   
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="identity:AuthenticationRequest">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Token SAML request: XML">
                     <xsdxt:code href="../common/samples/TokenSAMLReq.xml"/>
                 </wadl:doc>
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:access">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Token SAML response: XML">
                     <xsdxt:code href="../common/samples/TokenSAMLRsp.xml"/>
                 </wadl:doc>
