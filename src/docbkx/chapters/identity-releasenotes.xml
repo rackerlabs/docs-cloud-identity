@@ -821,8 +821,8 @@
     <itemizedlist>
       <title>Changes</title>
       <listitem>
-        <para>Authentication. Authentication is through the Rackspace Cloud Identity Service, which integrates with the
-          Rackspace infrastructure and is a modification of the OpenStack Keystone authentication specification. See
+        <para>Authentication is through the Rackspace Cloud Identity Service, which integrates with the
+          Rackspace managed infrastructure and is a modification of the OpenStack Keystone authentication specification. See
           <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/os-auth.html">Authentication</link>
           in the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle>.</para>
       </listitem>
