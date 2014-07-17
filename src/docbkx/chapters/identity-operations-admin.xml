@@ -976,22 +976,26 @@
 		<!-- MULTIFACTOR OPERATIONS -->	
 		<section xml:id="Multifactor_Calls">
 			<title>Multifactor</title>
-			<para>The &CIS; API operations described in this section implement 
-				multifactor authentication capabilities for &CLOUD; accounts. 
-				For additional information, see these topics:
-				<itemizedlist><listitem><para><link xlink:href="mfa_processes.html">Multifactor authentication set up, operation, and management"</link></para></listitem>
-					<listitem><para><link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">API request: Authenticate with multifactor credentials</link></para></listitem>
-					<listitem><para><link xlink:href="mfa_api_ovw.html">Multifactor elements and attributes</link></para></listitem>
-				</itemizedlist>
-			
-			POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html
-			</para>
-			<note><para> 
-				The functionality described in this section is provided by the <code>RAX-AUTH</code> 
-				extension to the core Identity API.  For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink>.  
-			</para></note>
+			<para>The &CIS; API operations described in this section implement multifactor authentication
+			capabilities for &CLOUD; accounts. For additional information, see these topics: <itemizedlist>
+				<listitem>
+					<para><link xlink:href="mfa_processes.html">Multifactor authentication set up,
+							operation, and management</link></para>
+				</listitem>
+				<listitem>
+					<para><link
+							xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html"
+							>API request: Authenticate with multifactor credentials</link></para>
+				</listitem>
+				<listitem>
+					<para><link xlink:href="mfa_api_ovw.html">Multifactor elements and
+							attributes</link></para>
+				</listitem>
+			</itemizedlist></para>
+			<note><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension
+				to the core Identity API. For more information, see <olink condition="admin"
+					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"
+					>Extensions</olink>. </para></note>
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#createMobilePhone"/>		
