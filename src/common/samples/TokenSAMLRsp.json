@@ -3,7 +3,7 @@
         "serviceCatalog": [
             {
                 "endpoints": [
-                    {
+                   {
                         "publicURL": "https://ord.servers.api.rackspacecloud.com/v2/12345",
                         "region": "ORD",
                         "tenantId": "12345",
@@ -124,18 +124,31 @@
             }
         ],
         "token": {
+            "RAX-AUTH:authenticatedBy": [
+                "FEDERATED"
+            ],
             "expires": "2012-04-13T13:15:00.000-05:00",
-            "id": "aaaaa-bbbbb-ccccc-dddd"
+            "id": "aaaaa-bbbbb-ccccc-dddd",
+            "tenant": {
+                "id": "12345",
+                "name": "12345"
+            }
         },
         "user": {
             "RAX-AUTH:defaultRegion": "DFW",
             "id": "161418",
             "name": "john.doe",
+            "RAX-AUTH:federatedIdp": "https://idp.rackspace.com",
             "roles": [
                 {
-                    "description": "Customer account user",
+                    "description": "Default Role.",
                     "id": "3",
                     "name": "identity:default"
+                },
+                {
+                    "description": "Nova Admin",
+                    "id": "208",
+                    "name": "nova:admin"
                 }
             ]
         }

@@ -73,12 +73,12 @@
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">			
 			<wadl:resource href="../../wadl/identity-admin.wadl#versions">
-				<wadl:method href="getVersions-v2"/>
+				<wadl:method href="#getVersions-v2"/>
 			</wadl:resource>
 			
 			<!-- Get a specific API version -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#version">
-				<wadl:method href="getVersionInfo-v2.0"/>
+				<wadl:method href="#getVersionInfo-v2.0"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
@@ -126,7 +126,7 @@
 			<para> For example, both "Update User" and "Delete User" act upon
 				the user specified by <code>userId</code>. Before
 				attempting to update or delete a user, use  
-				<link xlink:href= "http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html">Get User Admin</link>
+				<link xlink:href= "GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html">Get User Admin</link>
 
 				to obtain the user name, email account, and status
 				associated with <code>userId</code>. That's Step 1.
@@ -233,7 +233,8 @@
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#groups"/>
-			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#group"/>
+			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#groupName"/>
+			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#groupId"/>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#user"/>
 			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#users"/>			
 		</wadl:resources>
@@ -1000,7 +1001,7 @@
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#createMobilePhone"/>		
 				</wadl:resource>	
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor-vcode">
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_vcode">
 					<wadl:method href="#sendVerifyCode"/>
 				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#mfa_PIN">
@@ -1015,9 +1016,10 @@
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#getMobilePhonesForUser"/>
 				</wadl:resource>
+<!-- Commenting out because this feature is not included in production yet
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#bypass_codes">
 					<wadl:method href="#generateBypassCodes"/>
-				</wadl:resource>
+				</wadl:resource> -->
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_unlock">
 					<wadl:method href="#unlockMultifactorForUser"/>
 				</wadl:resource>

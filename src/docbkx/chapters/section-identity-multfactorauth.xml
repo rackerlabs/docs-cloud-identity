@@ -11,8 +11,13 @@
     xml:id="MFA__Ops">
     
   <title>Multifactor authentication</title>
-  <para>The &CIS; multifactor authentication service adds additional login security to &CLOUD;
-    accounts. With multifactor authentication enabled, authentication is a two-step process:<orderedlist>
+    <para>Multifactor authentication is for Rackspace Cloud Customers who require a greater level of 
+      security when accessing Rackspace Cloud resources. When multifactor authentication is added to 
+      user accounts, users have an additional layer of identity verification that offers various methods 
+      to obtain the second factor for authentication. Additionally, Rackspace provides user administrators 
+      with account level controls that can be configured to require all users within an organization to 
+      use multifactor authentication.</para>
+    <para>With multifactor authentication enabled, authentication is a two-step process:<orderedlist>
       <listitem>
         <para>A user submits an inital POST tokens request to the Identity Service endpoint,
           including either API key or password credentials.</para>
@@ -26,9 +31,24 @@
         <para>If the credentials are valid, the Identity service returns an authentication response
           that includes the authentication token and a service catalog showing the available
           services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for each service.</para>
-        <important><para>Multifactor authentication is only supported by Rackspace Cloud Identity Service version 2.0 or later. User accounts set up for multifactor authentication cannot authenticate through version 1.1. </para></important>
+        <important><para>Multifactor authentication is only supported by Rackspace Cloud
+            Identity Service version 2.0 or later. User accounts set
+            up for multifactor authentication cannot authenticate
+            through version 1.0 or 1.1. </para></important>
       </listitem>
     </orderedlist></para>
+    <para>Figure <xref linkend="mfa_auth"
+      xrefstyle="select: labelnumber"/> shows the multifactor
+    authentication process flow.</para><figure xml:id="mfa_auth">
+        <title>Multifactor authentication process flow</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata
+                fileref="../figures/multifactor_auth.svg"
+                contentwidth="4in" align="center"/>
+            </imageobject>
+          </mediaobject>         
+       </figure>
     <para>Users interested in enabling multifactor authentication must update their &CLOUD; user
     accounts to add a phone number that can be used in the authentication process, verify the phone,
     and enable the user account for multifactor authentication. This work can be completed from the Cloud Control panel 
@@ -44,7 +64,7 @@
         </imageobject>
       </mediaobject>
     </figure>
-    <para>For information about using multifactor authentication capabilities, 
+    <para>After a user account has been configured for authentication, For information about using multifactor authentication capabilities, 
       see <link xlink:href= "#mfa_processes">Multifactor authentication set up, operation, and management</link>.</para>  
     <xi:include href="section-mfa-setup.xml"/>
   </section>

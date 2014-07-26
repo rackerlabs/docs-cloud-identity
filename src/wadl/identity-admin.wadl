@@ -678,7 +678,7 @@
             <para>If an account is enabled for multifactor authentication, authentication is a two-step process: 
                 <orderedlist>
                     <listitem>
-                        <para>Send an authentication request with either Password or API credentials. See <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">.
+                        <para>Send an authentication request with either Password or API credentials. See <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
                             "Authenticate with password or API key credentials"</link></para>
                         <para>The request triggers &CIS; to send an SMS message to the phone 
                             associated with the user account. In response to the authentication request,  &CIS; 
@@ -742,9 +742,15 @@
             </representation>
         </response>
         <response status="401">
-            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Unauthorized error can occur if the passcode is not valid, or if the user 
-                account is locked because the user has exceeded the maximum number of attempts to authenticate. Use the Unlock user account operation to 
-            remove the account lock.</para></wadl:doc>
+            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Unauthorized error can occur because of following conditions:
+                <itemizedlist>
+                    <listitem><para>Invalid passcode. Provide a valid passcode.</para></listitem>
+                    <listitem><para>Additional authentication credentials required for accounts that have been enabled for multifactor authentication. 
+                    Submit an additional authentication request with the multifactor authentication  sessionId and verification passcode from the Rackspace Cloud 
+                    Identity Service.</para></listitem>
+                    <listitem><para>User account locked or disabled. An identity administrator can use the Unlock user account operation to restore 
+                    account access.</para></listitem>
+                    </itemizedlist></para></wadl:doc>
             <representation mediaType="application/xml" element="identity:access"/>
             <representation mediaType="application/json"/>
         </response>

@@ -1,8 +1,8 @@
 {
   "RAX-AUTH:bypassCodes": {
-    "expires": "2014-07-01T03:32:15.000-05:00",
     "codes": [
       "123456789"
-    ]
+    ],
+    "validityDuration":"PT20M0.000S"
   }
 }

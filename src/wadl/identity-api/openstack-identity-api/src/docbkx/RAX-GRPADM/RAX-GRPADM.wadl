@@ -18,94 +18,110 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    xmlns:db="http://docbook.org/ns/docbook"
+   xmlns:capi="http://docs.openstack.org/common/api/v1.0"
    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
 
     <grammars>
         <include href="xsd/api.xsd"/>
     </grammars>
+    
+    
+    <!-- Groups -->
 
     <resources base="http://localhost:35357">
         <resource id="version" path="v2.0">
             <resource id="RAX-GRPADM" path="RAX-GRPADM">
                 <resource id="groups" path="groups" type="#GroupList">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <doc xml:lang="EN" title="Auth Token">
-                            <db:para>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Auth Token">
+                            <para>
                                 A valid authentication token.
-                            </db:para>
-                        </doc>
+                            </para>
+                        </wadl:doc>
                     </param>
                     <method href="#addGroup"/>
-                    <resource id="group" path="{groupId}">
-                        <param name="groupId" style="template" type="xsd:string">
-                            <doc xml:lang="EN" title="GroupId">
-                                <db:para>
-                                    A unique identifier for the group.
-                                </db:para>
-                            </doc>
+                    <resource id="groupName" path="{name}">
+                        <param name="name" style="template" type="xsd:string" required="false">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="GroupByName">
+                                 <para>
+                                    The unique name for the group.
+                                 </para>
+                            </wadl:doc>
                         </param>
-                        <method href="#getGroup"/>
+                        <method href="#getGroupName"/>
+                    <resource id="groupId" path="{groupId}">
+                        <param name="groupId" style="template" type="xsd:string">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="GroupId">
+                                <para>
+                                    A unique identifier for the group.
+                                </para>
+                            </wadl:doc>
+                        </param>
+                        <method href="#getGroupId"/>
                         <method href="#updateGroup"/>
                         <method href="#deleteGroup"/>
                         <resource id="users" path="users" type="#UserList">
                             <resource id="user" path="{userId}">
                                 <param name="userId" style="template" type="xsd:string">
-                                    <doc xml:lang="EN" title="GroupId">
-                                        <db:para>
+                                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="GroupId">
+                                        <para>
                                             A unique identifier for the user.
-                                        </db:para>
-                                    </doc>
+                                        </para>
+                                    </wadl:doc>
                                 </param>
                                 <method href="#addUserToGroup"/>
                                 <method href="#removeUserFromGroup"/>
                             </resource>
                         </resource>
                     </resource>
+                    </resource>     
                 </resource>
             </resource>
         </resource>
     </resources>
-
+    
     <resource_type id="UserList">
-        <doc xml:lang="EN" title="Volume List">
-            <db:para>
-                A list of users.
-            </db:para>
-        </doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Volume List">
+            <param>
+                <para>
+                    A list of users.
+                </para>
+            </param>    
+        </wadl:doc>
         <method href="#getUsersForGroup"/>
     </resource_type>
 
     <resource_type id="GroupList">
-        <doc xml:lang="EN" title="Volume List">
-            <db:para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Volume List">
+            <para>
                 A list of groups.
-            </db:para>
-        </doc>
+            </para>
+        </wadl:doc>
         <method href="#listGroups"/>
     </resource_type>
 
     <!-- Methods -->
     <method id="listGroups"  name="GET">
-        <doc xml:lang="EN" title="Get Groups">
-            <db:para role="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Groups">
+            <para role="shortdesc">
                 List of groups.
-            </db:para>
-            <db:para>
+            </para>
+            <para>
                 Displays a list of available groups.  You can use the
-                <db:parameter>name</db:parameter> to display only
+                <parameter>name</parameter> to display only
                 those groups matching a particular name.
-            </db:para>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string"/>
             <param name="limit"  style="query" required="false" type="xsd:int"/>
             <param name="name"  style="query" required="false" type="xsd:string"/>
         </request>
         <response status="200 203">
-            <representation mediaType="application/xml" element="grp:groups">
-                <doc xml:lang="EN">
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/groups.xml"/>
-                </doc>
+                </wadl:doc>
                 <param name="next" style="plain" type="xsd:anyURI"
                        path="/grp:groups/atom:link[@rel='next']/@href">
                     <link resource_type="#GroupList" rel="next"/>
@@ -116,22 +132,22 @@
                 </param>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/groups.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         <!-- commonFaults -->
         &commonFaults;
     </method>
     <method id="addGroup"    name="POST">
-        <doc xml:lang="EN" title="Add Group">
-            <db:para role="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add Group">
+            <para role="shortdesc">
                 Add a new group.
-            </db:para>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="grp:group">
+            <representation mediaType="application/xml" element="capi:element">
                 <doc xml:lang="EN">
                     <xsdxt:code href="samples/group-for-create.xml" />
                 </doc>
@@ -148,45 +164,67 @@
         <response status="201">
             <param name="Location" style="header"
                 required="true" type="xsd:anyURI">
-                <doc xml:lang="EN" title="Location Header">
-                    <db:para>
+                <wadLdoc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Location Header">
+                    <para>
                         The full URL for the newly created group is
-                        returned via the <db:code>Location</db:code>
+                        returned via the <code>Location</code>
                         header.
-                    </db:para>
-                </doc>
+                    </para>
+                </wadLdoc>
             </param>
-            <representation mediaType="application/xml" element="grp:group">
-                <doc xml:lang="EN">
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group.xml" />
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group.json" />
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
         &getFaults;
         &postPutFaults;
     </method>
-    <method id="getGroup"    name="GET">
-        <doc xml:lang="EN" title="Get Group">
-            <db:para role="shortdesc">
-                Get group by id.
-            </db:para>
-        </doc>
+    <method id="getGroupName" name="GET">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Group by name">
+            <para role="shortdesc">
+                Get group by name.
+            </para>
+        </wadl:doc>
         <response status="200 203">
-            <representation mediaType="application/xml" element="grp:group">
-                <doc xml:lang="EN">
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group.xml"/>
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group.json"/>
-                </doc>
+                </wadl:doc>
+            </representation>
+        </response>
+        <!-- Common, GET -->
+        &commonFaults;
+        &getFaults;
+    </method>
+    <method id="getGroupId" name="GET">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Group by name">
+            <para role="shortdesc">
+                Get group by id.
+            </para>
+        </wadl:doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="samples/group.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="samples/group.json"/>
+                </wadl:doc>
             </representation>
         </response>
         <!-- Common, GET -->
@@ -194,44 +232,44 @@
         &getFaults;
     </method>
     <method id="updateGroup"    name="PUT">
-        <doc xml:lang="EN" title="Update Group">
-            <db:para role="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update Group">
+            <para role="shortdesc">
                 Update a group.
-            </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            </para>
+            <para>
                 Use this call to update the description or name of a specified group.
                 A group is specified by its ID. 
                 If you know the group's name but not the group's ID, use                  
                 <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="grp:group">
-                <doc xml:lang="EN">
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group-for-update.xml" />
-                </doc>
+                </wadl:doc>
                 <param name="group" style="plain" required="true"
                     type="grp:GroupForUpdate"
                     path="/grp:group"/>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group-for-update.json" />
-                </doc>
+                </wadl:doc>
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="grp:group">
-                <doc xml:lang="EN">
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group-updated.xml" />
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/group-updated.json" />
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
@@ -239,47 +277,61 @@
         &postPutFaults;
     </method>
     <method id="deleteGroup" name="DELETE">
-        <doc xml:lang="EN" title="Delete Group">
-            <db:para role="shortdesc">
+        <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete Group">
+            <para role="shortdesc">
                 Delete a group.
-            </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            </para>
+            <para>
                 You must delete all the members of a group before deleting the group itself.
                 A group is specified by its ID. 
                 If you know the group's name but not the group's ID, use                  
                 <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <response status="204"/>
         <!-- Common, GET -->
         &commonFaults;
         &getFaults;
     </method>
     <method id="getUsersForGroup" name="GET">
-        <doc xml:lang="EN" title="Get Users for Group">
-            <db:para role="shortdesc">
-                List users for a group.
-            </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                This call lists all the users belonging to the specified group.
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Users for Group">
+            <para role="shortdesc">
+                List users in a specified group.
+            </para>
+            <para>
+                This operation lists all the users belonging to the specified group
                 A group is specified by its ID. 
                 If you know the group's name but not the group's ID, use                  
-                <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                  to                   
                 obtain complete identifying information about all groups.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit"  style="query" required="false" type="xsd:int"/>
+            <param name="marker" style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>Specifies an opaque string that the client can use 
+                    to request the next batch of users. The marker parameter communicates to 
+                    the server which users the client has already received. If you do not specify a value, 
+                    the API returns all users (up to the limit).</para>
+                </wadl:doc>
+            </param>
+            <param name="limit"  style="query" required="false" type="xsd:int">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>When more users are available than can be returned in 
+                    a single request, the client can pick up the next batch of groups by 
+                    using the URI template parameters returned from the previous call 
+                    in the <code>next</code> field.</para>
+                </wadl:doc>
+            </param>
         </request>
         <response status="200 203">
-            <representation mediaType="application/xml" element="identity:users">
-                <doc xml:lang="EN">
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/users.xml"/>
-                </doc>
+                </wadl:doc>
                 <param name="next" style="plain" type="xsd:anyURI"
                        path="/identity:users/atom:link[@rel='next']/@href">
                     <link resource_type="#UserList" rel="next"/>
@@ -290,43 +342,43 @@
                 </param>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="samples/users.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         <!-- commonFaults -->
         &commonFaults;
     </method>
     <method id="addUserToGroup" name="PUT">
-        <doc xml:lang="EN" title="Add User to Group">
-            <db:para role="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook"> xml:lang="EN" title="Add User to Group">
+            <para role="shortdesc">
                 Add a user to the group.
-            </db:para>
-            <db:para>
+            </para>
+            <para>
                 This call adds a specified user to a specified group. 
-            </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            </para>
+            <para>
                     Users and groups are specified by their IDs. 
                     If you know the user's name but not the user's ID, use  <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                      to obtain complete identifying information about the user. If you know the group's name but not the group's ID, use  <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                      to obtain complete identifying information about all groups.
-             </p> 
-            <db:para>
+             </para> 
+            <para>
                 Users inherit the groups assigned to the user-admin.  This enables client code built around rate-limit groups to be more stable.
-            </db:para>
-        </doc>
+            </para>
+        </wadl:doc>
         <response status="204"/>
         <!-- Common, GET -->
         &commonFaults;
         &getFaults;
     </method>
     <method id="removeUserFromGroup" name="DELETE">
-        <doc xml:lang="EN" title="Remove User from Group">
-            <db:para role="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Remove User from Group">
+            <para role="shortdesc">
                 Remove a user from the group.
-            </db:para>
-            <db:para>
+            </para>
+            <para>
                 This call deletes a specified user from a specified group. 
                 Users and groups are specified by their IDs. 
                 If you know the user's name but not the user's ID, use                  
@@ -337,8 +389,8 @@
                 <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.
-            </db:para>  
-        </doc>
+            </para>  
+        </wadl:doc>
         <response status="204"/>
         <!-- Common, GET -->
         &commonFaults;

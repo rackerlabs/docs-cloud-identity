@@ -2,7 +2,7 @@
 <saml2p:Response xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
      ID="cedee8c1-22b7-45dc-8dbf-eeb107175eaa" IssueInstant="2013-11-15T16:19:06.313Z"
      Version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-     <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">http://my.rackspace.com
+     <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">https://idp.rackspace.com
      </saml2:Issuer>
      <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
           <ds:SignedInfo>
@@ -47,11 +47,15 @@
           <saml2:AttributeStatement>
                <saml2:Attribute Name="roles">
                     <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                         xsi:type="xs:string">identity:default</saml2:AttributeValue>
+                         xsi:type="xs:string">nova:admin</saml2:AttributeValue>
                </saml2:Attribute>
                <saml2:Attribute Name="domain">
                     <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                          xsi:type="xs:string">323676</saml2:AttributeValue>
+               </saml2:Attribute>
+               <saml2:Attribute Name="email">
+                    <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xsi:type="xs:string">no-reply@rackspace.com</saml2:AttributeValue>
                </saml2:Attribute>
           </saml2:AttributeStatement>
      </saml2:Assertion>

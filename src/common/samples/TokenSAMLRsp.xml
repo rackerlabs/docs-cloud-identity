@@ -3,6 +3,7 @@
      xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
      xmlns="http://docs.openstack.org/identity/api/v2.0"
      xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+     xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
      xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
      xmlns:common="http://docs.openstack.org/common/api/v1.0"
      xmlns:ksgrp="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
@@ -10,13 +11,20 @@
      xmlns:atom="http://www.w3.org/2005/Atom">
      <token
           id="aaaaa-bbbbb-ccccc-dddd"
-          expires="2012-04-13T13:15:00.000-05:00"/>
+          expires="2012-04-13T13:15:00.000-05:00">
+          <tenant id="12345" name="12345"/>
+          <rax-auth:authenticatedBy>
+               <rax-auth:credential>FEDERATED</rax-auth:credential>
+          </rax-auth:authenticatedBy>
+     </token>
      <user
           xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-          id="161418" name="john.doe" rax-auth:defaultRegion="DFW">
+          id="161418" name="john.doe" rax-auth:defaultRegion="DFW" rax-auth:federatedIdp="https://idp.rackspace.com">
           <roles>
                <role id="3" name="identity:default"
-                    description="Customer account user"/>
+                    description="Default Role."/>
+               <role id="208" name="nova:admin"
+                    description="Nova Admin."/>
           </roles>
      </user>
      <serviceCatalog>

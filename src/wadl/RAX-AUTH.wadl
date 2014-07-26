@@ -145,8 +145,7 @@
                 </resource>
                 <resource id="multifactor_unlock" path="users/{userId}/RAX-AUTH/multi-factor">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
-                        A valid authentication token</para></wadl:doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
                     <param name="userId" style="template" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -175,10 +174,10 @@
                            <method href="#getMobilePhonesForUser"/>
                            <method href="#removeMultifactorForUser"/>
                            <method href="#updateMultifactorSettings"/>
-                    <resource id="multifactor-vcode" path="$phoneId/verificationcode">
+                    <resource id="multifactor_vcode" path="phoneId/verificationcode">
                     <method href="#sendVerifyCode"/>
                     </resource>
-                    <resource id="mfa_PIN" path="$phoneId/verify">
+                    <resource id="mfa_PIN" path="{phoneId}/verify">
                         <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="template" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated id assigned when a phone is added to an account.</para></wadl:doc>          
                         </param>   
@@ -395,6 +394,7 @@
             <db:para> The operation returns a list of questions and answers for a user. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/SecretQAList.xml"/>
@@ -428,7 +428,9 @@
                </wadl:doc>
             </representation>
         </request>
-        <response status="200"/>
+        <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        </response>
         <response status="409">
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
@@ -443,6 +445,7 @@
                 reset does not revoke existing tokens. The <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-external/content/DELETE_revokeToken_v2.0_tokens__tokenId__.html"> "Revoke Token"</a> call can be used to revoke a token. </p>
         </wadl:doc>
         <response status="200">
+                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -498,6 +501,7 @@
             </representation>
         </request>
         <response status="200">
+                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ImpersonationResponse.xml"/>
@@ -519,6 +523,7 @@
                 an admin user, a list of all domains may be returned. </db:para>
         </wadl:doc>
         <response status="200">
+                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DomainList.xml"/>
@@ -537,6 +542,7 @@
             <db:para role="shortdesc"> Get a domain. </db:para>
         </wadl:doc>
         <response status="200">
+                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Domain.xml"/>
@@ -616,6 +622,7 @@
             </param>
         </request>
         <response status="200">
+                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -658,6 +665,7 @@
             </param>
         </request>
         <response status="200">
+                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -722,6 +730,7 @@
             </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -744,6 +753,7 @@
                 the user has a role in a tenant that exists in the domain. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -764,6 +774,7 @@
             <db:para role="shortdesc"> Get endpoints for a user restricted by domain. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -787,6 +798,7 @@
                 to an admin user, a list of all domain endpoints may be returned. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -812,6 +824,7 @@
                 domain name, domain ID, email address, status, user ID and user name.</p>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -832,6 +845,7 @@
             <db:para role="shortdesc"> Get all Policies. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
@@ -873,6 +887,7 @@
             <db:para role="shortdesc"> Gets a policy. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Policy.xml"/>
@@ -921,6 +936,7 @@
                 descriptions of the policy. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -935,6 +951,7 @@
             <db:para role="shortdesc"> Get all policies for endpoint template. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -991,6 +1008,7 @@
             <db:para role="shortdesc"> Gets a list of service APIs. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -1011,6 +1029,7 @@
             <db:para role="shortdesc"> Get the capabilities for an endpoint template. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -1067,6 +1086,7 @@
             <db:para> The operation returns a list of regions. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -1087,6 +1107,7 @@
             <db:para role="shortdesc"> Gets a region. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -1166,6 +1187,7 @@
             <db:para> The operation returns a list of questions. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -1186,6 +1208,7 @@
             <db:para role="shortdesc"> Get a question. </db:para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -1279,6 +1302,7 @@
             </param>
         </request>
         <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
 >
@@ -1356,7 +1380,7 @@
             </representation>
         </request>
         <response status="200">
-            <wadl:doc title="OK"  xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
                     <para>OK</para>
@@ -1467,23 +1491,24 @@
              </para>
       </wadl:doc>
         <request>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneNumber" style="plain" type="xsd:string" required="true">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <para>The phone number of the mobile phone in <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
-                        <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example.</para>
-                </wadl:doc>
-            </param></representation>
-            <representation mediaType="application/json" element="RAX-AUTH:mobilePhone">
+            <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request in cURL command">
                     <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X POST \
        -H "Content-Type: application/json" \
        -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
        | python -m json.tool</programlisting>
-           <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to environment variables:</para></note>
+                    <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to environment variables:</para></note>
                 </wadl:doc>                
             </representation> 
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneNumber" style="plain" type="xsd:string" required="true">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <para>The phone number of the mobile phone in <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
+                        <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example.</para>
+                </wadl:doc>
+            </param></representation>
         </request>
         <response status="201">
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1504,7 +1529,7 @@
                 </param>
                 
             </representation>
-            <representation mediaType="application/json">
+            <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a moble phone: JSON response">
                     <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.json"/>
                 </wadl:doc>
@@ -1525,7 +1550,7 @@
             </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/json">
+            <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Send verification code: JSON request in a cURL command">
                     <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
        -X POST \
@@ -1544,16 +1569,16 @@
             <para role="shortdesc">Submits a PIN code issued by Rackspace verification services to confirm user possession of a device.</para>
             <para>Use this operation to submit the verification PIN received in the SMS text message from the Rackspace verification 
                 service. After the PIN is accepted, the user account is updated to indicate that the phone is verified. The phone can be used 
-                to authenticate to &CIS; if the assciated account has been enabled for multifactor authentication. See the Enable multifactor 
+                to authenticate to &CIS; if the associated account has been enabled for multifactor authentication. See the Enable multifactor 
                 authentication operation.</para>
 
             <para>This operation can only be completed from the user account that the phone is associated with. The operation fails if
-            the PIN is expired, or if it doesn't match the code issued by the Rackspace verfication service.</para>
+            the PIN is expired, or if it doesn't match the code issued by the Rackspace verification service.</para>
         </wadl:doc>
         
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: XML request">
                     <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.xml"/>
                 </wadl:doc>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="code" style="plain" type="xsd:string" required="true">
@@ -1564,14 +1589,15 @@
             </representation>
             
             
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: JSON request">
                     <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.json"/>
                 </wadl:doc>
             </representation>
         </request>
         
-        <response status="204"/> &commonFaults; &postPutFaults;     
+        <response status="204">
+            <wadl:doc title="No Content">Accepted</wadl:doc></response> &commonFaults; &postPutFaults;     
     </method>
         
     <method id="getMobilePhonesForUser" name="GET">
@@ -1701,16 +1727,42 @@
             </para>
             <para>During multifactor authentication &CIS; sends a passcode to the phone number associated with the user account. 
                 The user must provide this passcode to complete the authentication process. If the phone is not available, or if the 
-                passcode is not received, administrators can use this operation to generate a bypass code that 
+                passcode is not received, users and administrators can use this operation to generate a bypass code that 
                 can be used in place of the passcode.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesRequest.xml"/>
-                </wadl:doc>
+                </wadl:doc>    
+                    <param name="numberOfCodes" style="plain" type="xsd:boolean" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>Specifies the time interval that the the bypass codes remain valid. The time interval 
+                                is expressed in the following format: <code>PnYnMnDTnHnMnS</code> where 
+                                <simplelist>
+                                    <member><code>P</code>code> indicates the period (required)</member>
+                                    <member><code>nY</code> indicates the number of years</member>
+                                    <member><code>nM</code> indicates the number of months</member> 
+                                    <member><code>nD</code> indicates the number of days</member>
+                                    <member><code>T</code> indicates the start time of a section (required if the duration value incudes hours, minutes, or seconds)</member>
+                                    <member><code>nH</code> indicates the number of hours</member>
+                                    <member><code>nM</code> indicates the number of minutes</member>
+                                    <member><code>nM</code> indicates the number of seconds</member>
+                                </simplelist>
+                            For example, to create bypass codes that expire 10 minutes after the codes are generated, specify 
+                            <code>validityDuration=PT10M</code> in the request parameters.
+                               </para>
+                            <para>This setting does not remove the phone associated with the account.</para>
+                        </wadl:doc>
+                    </param>
+                <param name="validityDuration" style="plain" type="xsd:duration" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para> <code>1</code>.</para>
+                        <para>This setting does not remove the phone associated with the account.</para>
+                    </wadl:doc>
+                </param>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesRequest.json" />
                 </wadl:doc>
@@ -1722,7 +1774,7 @@
                     <xsdxt:code href="../common/samples/BypassCodesResponse.xml" />
                 </wadl:doc>
             </representation>
-            <representation mediaType="application/json">
+            <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
                     </wadl:doc>
@@ -1734,7 +1786,7 @@
     
     <method id="unlockMultifactorForUser" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock user account">
-            <para role="shortdesc">Unlocks an account that was disabled because of too many failed login attempts.</para>
+            <para role="shortdesc">Unlocks an account that was disabled because of too many failed login attempts or disablement.</para>
             <para>&CIS; has a system-configured threshold for failed authentication attempts from a multifactor-enabled device.
                 The default threshold is 6. If a user enters incorrect multifactor authentication credentials more than 6 times, &CIS; locks 
                 the account.
@@ -1763,7 +1815,7 @@
                             in the Unlock operation request.</para>. </wadl:doc>
                 </param> -->
             </representation>
-            <representation mediaType="application/json">
+            <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultiFacUnlockReq.json"/>
                     <db:para>This operation does not accept a response body.</db:para>
@@ -1800,7 +1852,7 @@
                     <xsdxt:code href="../common/samples/TokenSAMLRsp.xml"/>
                 </wadl:doc>
             </representation>
-            <representation mediaType="application/json">
+            <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Token SAML response: JSON">
                     <xsdxt:code href="../common/samples/TokenSAMLRsp.json"/>
                 </wadl:doc>

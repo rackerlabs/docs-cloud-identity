@@ -17,7 +17,7 @@
     <para>
       <table xml:id="mfa_process_summary" rules="all" width="100%">
         <caption>Multifactor authentication processes and procedures</caption>
-        <col width="456pt"/>
+        <col width="30%"/>
         <col width="50%"/>
         <thead>
           <tr valign="top">
@@ -137,9 +137,10 @@
       Identity service API operations. This process can also be completed from the Cloud Control
       panel.</para>
     <important>
-      <para>Multifactor authentication is only supported by Rackspace Cloud Identity Service version
-        2.0 or later. After an account is enabled for multifactor authentication, the user cannot
-        authenticate from earlier API versions.</para>
+      <para>Multifactor authentication is only supported by Rackspace
+        Cloud Identity Service version 2.0 or later. After an account
+        is enabled for multifactor authentication, the user cannot
+        authenticate using &CIS; v1.0 or v1.1.</para>
     </important>
     <orderedlist>
       <!-- Step 1 Authenticate -->
@@ -466,7 +467,11 @@
       <tbody>
         <tr>
           <td valign="top">
-            <para><link xlink:href ="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Unlock user account</link></para></td>
+            <para><link
+                xlink:href="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html"
+                >Unlock user account</link> if  a user is locked as a
+              result of failed login attempts or account
+              disablement.</para></td>
           <td valign="top">
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
        -X PUT  \
@@ -521,6 +526,6 @@
       </tbody>
     </table>
     <para>For detailed reference information about API service support for multifactor
-      authentication resources and methods, see <link xlink:href="MultiFactor_Calls.html">API Operations for Service Developers: Multifactor
+      authentication resources and methods, see <link xlink:href="MultiFactor_Calls.html#Mutlifactor_Calls">API Operations for Service Developers: Multifactor
         operations.</link></para>  
   </section></section>
