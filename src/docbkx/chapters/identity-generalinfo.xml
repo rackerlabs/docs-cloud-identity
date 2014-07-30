@@ -6,6 +6,7 @@
 
 <chapter xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:db="http://docbook.org/ns/docbook" 
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Overview-Keystone-API-d1e62">
  
@@ -1220,6 +1221,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</itemizedlist></para>
 			</note> 
 	</section>
+	<xi:include href="section-identity-multfactorauth-client.xml"/>
 	<section xml:id="Limits-d1e909">
 		<title>Limits</title>
 		<para>

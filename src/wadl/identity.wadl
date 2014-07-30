@@ -70,16 +70,16 @@
             <method href="#authenticate"/>
             <resource id="token" path="tokens/{tokenId}">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <doc>
-                        <p xmlns="http://www.w3.org/1999/xhtml">A valid administrator
-                            authentication token. </p>
-                    </doc>
+                    <wadLdoc>
+                        <para xmlns="http://www.w3.org/1999/xhtml">A valid administrator
+                            authentication token. </para>
+                    </wadLdoc>
                 </param>
                 <param name="tokenID" style="query" required="true" type="capi:UUID">
-                    <doc>
+                    <wadl:doc>
                         <p xmlns="http://www.w3.org/1999/xhtml">The ID for the token that you want
                             to delete.</p>
-                    </doc>
+                    </wadl:doc>
                 </param>
                 <method href="#revokeToken"/>
             </resource>

@@ -465,7 +465,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr condition="admin">
           <td valign="top">
             <para><link
                 xlink:href="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html"
@@ -478,6 +478,15 @@
        -d '{"RAX-AUTH:multiFactor": { "unlock": "true" }}'
        -H "Content-Type: application/json" \
  		| python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="client">
+          <td valign="top">
+            <para>Unlock user account</para></td>
+          <td valign="top">
+            <para>If your acocunt is locked as a
+              result of failed login attempts or account
+              disablement, contact the user administrator to unlock your account.</para>
           </td>
         </tr>
         <tr>
@@ -525,7 +534,10 @@
         </tr>
       </tbody>
     </table>
-    <para>For detailed reference information about API service support for multifactor
-      authentication resources and methods, see <link xlink:href="MultiFactor_Calls.html#Mutlifactor_Calls">API Operations for Service Developers: Multifactor
-        operations.</link></para>  
+    <para condition="admin">For detailed reference information about API service support for multifactor
+      authentication resources and methods, see <link xlink:href="Mutlifactor_Calls.html">API Operations for Service Developers: Multifactor
+        operations.</link></para> 
+    <para condition="client">For detailed reference information about multifactor authentication API operations, see 
+      <link xlink:href="Multifactor_Calls_client.html">API Operations for Service Developers: Multifactor
+        operations.</link></para>
   </section></section>
