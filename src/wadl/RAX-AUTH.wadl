@@ -1328,11 +1328,7 @@
                 <orderedlist>
                     <listitem>
                         <para>Send an authentication request with either Password or API credentials. See 
-                            <link condition="admin" xlink:href= "http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticate_v2.0_tokens_Token_Calls.html">Authenticate as user with password or API key credentials.</link>
-                            <link condition="client" xlink:href= "http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticate_v2.0_tokens_Token_Calls.html">Authenticate as user with password or API key credentials.</link></para>
-                        
-                        file:///Users/marg7175/Documents/githubDocs/auth-2.0/target/docbkx/webhelp/auth-admin-devguide-internal/content/POST_authenticate_v2.0_tokens_Token_Calls.html
-                        
+                            <link xlink:href= "POST_authenticate_v2.0_tokens_Token_Calls.html">Authenticate as user with password or API key credentials</link>.</para>
                         <para>The request triggers &CIS; to send an SMS message to the phone 
                             associated with the user account. In response to the authentication request,  &CIS; 
                             returns a 401 message that includes 

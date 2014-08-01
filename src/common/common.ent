@@ -10,6 +10,7 @@
 <!ENTITY ndash  "&#x2013;">
 <!ENTITY mdash  "&#x2014;">
 <!ENTITY hellip "&#x2026;">
+<!ENTITY ampsymb "&#x26;">
 
 <!-- graphic symbols -->
 
