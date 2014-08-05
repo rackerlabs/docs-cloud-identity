@@ -4,8 +4,8 @@ Content-Type: application/xml
 Accept: application/xml
 X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw 
 
-<auth>
-<RAX-AUTH:passcodeCredentials
-	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-	passcode="1411594"
+<auth xmlns="http://docs.openstack.org/identity/api/v2.0"
+	xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<token id="aaaaa-bbbbb-ccccc-dddd"/>
+	<RAX-AUTH:multiFactor factor="PASSCODE" passcode="123456"/>
 </auth>

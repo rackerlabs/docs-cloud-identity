@@ -4,10 +4,14 @@ Content-Type: application/json
 Accept: application/json
 X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw
 
- {
-    "auth":{
-        "passcodeCredentials":{
-            "passcode":"1411594"
-        }
+{
+  "auth": {
+    "token": {
+      "id": "aaaaa-bbbbb-ccccc-dddd"
+    },
+    "RAX-AUTH:multiFactor": {
+      "passcode": "123456",
+      "factor": "PASSCODE"
     }
+  }
 }

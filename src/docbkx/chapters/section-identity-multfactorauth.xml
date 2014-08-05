@@ -38,27 +38,29 @@
       </listitem>
     </orderedlist></para>
     <para>Figure <xref linkend="mfa_auth"
-      xrefstyle="select: labelnumber"/> shows the multifactorgit 
-    authentication process flow.</para><figure condition="admin" xml:id="mfa_auth">
-        <title>Multifactor authentication process flow</title>
-          <mediaobject>
-            <imageobject>
-              <imagedata format="png" 
-                fileref="../figures/multifactor_auth.png"
-                contentdepth="100%" contentwidth="100%" align="center"/>
-            </imageobject>
-          </mediaobject>         
-       </figure>
+      xrefstyle="select: labelnumber"/> shows the multifactor
+    authentication process flow.<figure condition="admin"
+      xml:id="mfa_auth">
+      <title>Multifactor authentication process flow</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata format="png"
+            fileref="../figures/multifactor_auth.png"
+            contentdepth="100%" contentwidth="100%" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
     <figure condition="client" xml:id="mfa_auth_user">
       <title>Multifactor authentication process flow</title>
       <mediaobject>
         <imageobject>
-          <imagedata format="png" 
+          <imagedata format="png"
             fileref="../figures/multifactor_auth_user.png"
             contentdepth="100%" contentwidth="100%" align="center"/>
         </imageobject>
-      </mediaobject>         
+      </mediaobject>
     </figure>
+  </para>
     <para>Users interested in enabling multifactor authentication must update their &CLOUD; user
     accounts to add a phone number that can be used in the authentication process, verify the phone,
     and enable the user account for multifactor authentication. This work can be completed from the Cloud Control panel 
@@ -69,12 +71,12 @@
       <title>Multifactor authentication user account set up work flow </title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="../figures/auth_multifacSetup.png"
+          <imagedata fileref="../figures/multifactor_auth_user.png"
             format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
     </figure>
-    <para>For information about using multifactor authentication capabilities, 
+    <para>For information about using multifactor authentication capabilities through the Cloud Identity API, 
       see <link xlink:href= "#mfa_processes">Multifactor authentication set up, operation, and management</link>.</para>  
     <xi:include href="section-mfa-setup.xml"/>
   </section>
