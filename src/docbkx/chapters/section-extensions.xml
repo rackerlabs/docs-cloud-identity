@@ -141,13 +141,10 @@
     </listitem>
   </itemizedlist>
   <para>For more infrmation, see these topics:</para>
-  <simplelist>
-            <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-              targetptr="Extensions_operations" xrefstyle="Get information about extensions supported at an
-              API service endpoint"></olink></member>
-            <member><olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-              targetptr="extended_actions" xrefstyle="Learn about developing and using
-              extensions"/>
-              </member>
-          </simplelist>
+  <itemizedlist>
+    <listitem><para><link xlink:href="Extensions_operations.html">Extensions API operations</link></para></listitem>
+    <listitem><para><link xlink:href="extended_actions.html">Learn about developing and using
+              extensions</link></para>
+              </listitem>
+          </itemizedlist>
 </section>

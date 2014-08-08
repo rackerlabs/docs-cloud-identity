@@ -4,12 +4,10 @@
           enabled="true" email="john.smith@example.org"
           username="jqsmith" id="123456"
           RAX-AUTH:defaultRegion="SYD"
-          RAX-AUTH:domainId="5830280"
-          RAX-AUTH:multiFactorEnabled="false"/>
+          RAX-AUTH:domainId="5830280"/>
     <user xmlns="http://docs.openstack.org/identity/api/v2.0"
           enabled="true" email="john.smith2@example.org"
           username="jqsmith2" id="1234562"
           RAX-AUTH:defaultRegion="SYD"
-          RAX-AUTH:domainId="5830280"
-          RAX-AUTH:multiFactorEnabled="false"/>
+          RAX-AUTH:domainId="5830280"/>
 </users>

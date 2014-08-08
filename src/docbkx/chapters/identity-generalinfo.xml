@@ -133,45 +133,73 @@
 			successfully, the response to your authentication request
 			will include a catalog of the services to which you have
 			subscribed rather than the sample values shown here. </para>
+			<note>
+				<para>If a user account has been set up to use
+					multi-factor authentication, additional
+					credentials are required after submitting the log
+					in credentials. For details, see 
+					<link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">Authenticate with multifactor passcode credentials</link>.
+				</para>
+			</note>
+		
 	  <example>
 		<title>Authentication Request with Headers: JSON</title>
 		<programlisting language="xml">
 <xi:include href="../samples/samplerequestheader.txt" parse="text"/>
 		</programlisting>
-	  	<programlistingco>
-	  		<areaspec>
-	  			<area xml:id="request.json.user" units="linecolumn" coords="5 32"/>
-	  			<area xml:id="request.json.password" units="linecolumn" coords="6 27"/>
-	  			<area xml:id="request.json.tenant" units="linecolumn" coords="8 23"/>
-	  		</areaspec>	
 <programlisting language="javascript">
 <xi:include href="../samples/auth_credentials.json" parse="text"/>
 </programlisting>
-</programlistingco>	
 	  </example>
-		<calloutlist>
-			<callout arearefs="request.json.user">
-				<para> 
-					This is the user name you use to login to the Rackspace
-					Cloud Control Panel at <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com/</link>.</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="request.json.password">
-				<para>
-					This is the password you use to login to the Rackspace Cloud Control Panel.</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="request.json.tenant">
-				<para> 
-					Tenant is an optional specification. 
-					Some services use multi-level authentication, with service-specific credentials
-					in addition to vendor-specific credentials. 
-					In such cases, associating a user with a tenant can
-					be a method of passing that additional level of identifying information to the service.
-				</para>
-				<para> </para>
-			</callout>
-		</calloutlist>	
+		<para><link linkend="auth_req_attributes"></link> describes the attributes for the authentication response.</para>
+		<table rules="all" xml:id="auth_req_attributes">
+			<caption>Authentication request attribute descriptions</caption>
+			<col width="24%"/>
+			<col width="76%"/>
+			<thead>
+				<tr>
+					<th valign="top">Attribute</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><parameter>username</parameter></td>
+					<td>
+						<para> 
+							This is the user name you use to login to the Rackspace
+							Cloud Control Panel at 
+							<link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com</link></para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>password</parameter></td>
+					<td>
+						<para> 
+							This is the password you use to login to the Rackspace Cloud Control Panel.
+							Yhe password must meet the following criteria:</para>
+						<itemizedlist>
+							<listitem><para>Length must be at least 8 characters; no maximum.</para></listitem>
+							<listitem><para>Includes at least one uppercase and one lower case character.</para></listitem>
+							<listitem><para>Can include special characters.</para></listitem>
+							<listitem><para>Cannot begin with a space.</para></listitem>			
+						</itemizedlist>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>tenantId</parameter></td>
+					<td>
+						<para> 
+							Tenant is an optional specification. 
+							Some services use multi-level authentication, with service-specific credentials
+							in addition to vendor-specific credentials. 
+							In such cases, associating a user with a tenant can
+							be a method of passing that additional level of identifying information to the service.</para>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>			
 		<para>A successful authentication response includes a token and a
 			service catalog. For each service in the service catalog,
 			only relevant details are returned. Service descriptions
@@ -181,291 +209,308 @@
 			description. If the service endpoint does not have a
 			default region defined, the service description does not
 			include <code>region</code>.</para>
-	  <example>
+		<para><xref linkend="xml_auth_resp"/> and <xref
+				linkend="json_auth_resp"/> show example responses. For
+			information about response attributes, see <xref
+				linkend="auth_attributes"/>.</para>
+	  <example xml:id="xml_auth_resp">
 		<title>Service Catalog in Authentication Response with Headers: XML</title>
 		<programlisting language="xml">
-<xi:include href="../samples/sampleresponseheader.txt" parse="text"/>
-		</programlisting>
-	  	<programlistingco>
-	  		<areaspec>
-	  			<area xml:id="response.xml.namespaces" units="linecolumn" coords="4 8"/>
-	  			<area xml:id="response.xml.token" units="linecolumn" coords="13 11"/>
-	  			<area xml:id="response.xml.userdefault" units="linecolumn" coords="18 68"/>
-	  			<area xml:id="response.xml.role" units="linecolumn" coords="19 16"/>
-	  			<area xml:id="response.xml.catalog" units="linecolumn" coords="24 21"/>
-	  			<area xml:id="response.xml.servicetype" units="linecolumn" coords="49 37"/>
-	  			<area xml:id="response.xml.servicename" units="linecolumn" coords="49 56"/>
-	  			<area xml:id="response.xml.region" units="linecolumn" coords="50 35"/>
-	  			<area xml:id="response.xml.tenant" units="linecolumn" coords="50 83"/>
-	  			<area xml:id="response.xml.url" units="linecolumn" coords="52 114"/>
-	  		</areaspec>	
-		<programlisting language="xml">
-<xi:include href="../samples/auth-annotated.xml" parse="text"/>
-		</programlisting>
-	  	</programlistingco>			
+<![CDATA[< HTTP/1.1 200 OKAY
+Date: Mon, 12 Nov 2010 15:55:01 GMT
+Content-Length:
+Content-Type: application/xml; charset=UTF-8
+< <access 
+    xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+    xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+    xmlns="http://docs.openstack.org/identity/api/v2.0"
+    xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+    xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
+    xmlns:common="http://docs.openstack.org/common/api/v1.0"
+    xmlns:ksgrp="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
+    xmlns:rax-kscatalog="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0"
+    xmlns:atom="http://www.w3.org/2005/Atom">
+    <token 
+        id="aaaaa-bbbbb-ccccc-dddd" 
+        expires="2012-04-13T13:15:00.000-05:00">
+        <rax-auth:authenticatedBy>
+            <rax-auth:credential>PASSWORD</rax-auth:credential>
+        </rax-auth:authenticatedBy>
+    </token>
+    <user
+        id="161418" 
+        name="demoauthor" 
+        rax-auth:defaultRegion="DFW" 
+        rax-auth:domainId= "12345">
+        <roles>
+            <role id="3" name="identity:user-admin" 
+                description="User Admin Role."/>
+        </roles>
+    </user>
+    <serviceCatalog>
+        <service type="rax:database" name="cloudDatabases">
+            <endpoint region="DFW" tenantId="12345"
+                publicURL="https://dfw.databases.api.rackspacecloud.com/v1.0/12345"/>
+            <endpoint region="ORD" tenantId="12345"
+                publicURL="https://ord.databases.api.rackspacecloud.com/v1.0/12345"/>
+        </service>
+        <service type="rax:load-balancer" name="cloudLoadBalancers">
+            <endpoint region="ORD" tenantId="12345"
+                publicURL="https://ord.loadbalancers.api.rackspacecloud.com/v1.0/12345"/>
+            <endpoint region="DFW" tenantId="12345"
+                publicURL="https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/12345"/>
+        </service>
+        <service type="rax:object-cdn" name="cloudFilesCDN">
+            <endpoint region="DFW" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
+                publicURL="https://cdn1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"/>
+            <endpoint region="ORD" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
+                publicURL="https://cdn2.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"/>
+        </service>
+        <service type="rax:monitor" name="cloudMonitoring">
+            <endpoint tenantId="12345"
+                publicURL="https://monitoring.api.rackspacecloud.com/v1.0/12345"/>
+        </service>
+        <service type="object-store" name="cloudFiles">
+            <endpoint region="DFW" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
+                publicURL="https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
+                internalURL="https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"/>
+            <endpoint region="ORD" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
+                publicURL="https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
+                internalURL="https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"/>
+        </service>
+        <service type="compute" name="cloudServers">
+            <endpoint tenantId="12345"
+                publicURL="https://servers.api.rackspacecloud.com/v1.0/12345">
+                <version id="1.0" info="https://servers.api.rackspacecloud.com/v1.0"
+                    list="https://servers.api.rackspacecloud.com/"/>
+            </endpoint>
+        </service>
+        <service type="compute" name="cloudServersOpenStack">
+            <endpoint region="DFW" tenantId="12345"
+                publicURL="https://dfw.servers.api.rackspacecloud.com/v2/12345">
+                <version id="2" info="https://dfw.servers.api.rackspacecloud.com/v2"
+                    list="https://dfw.servers.api.rackspacecloud.com/"/>
+            </endpoint>
+            <endpoint region="ORD" tenantId="12345"
+                publicURL="https://ord.servers.api.rackspacecloud.com/v2/12345">
+                <version id="2" info="https://ord.servers.api.rackspacecloud.com/v2"
+                    list="https://ord.servers.api.rackspacecloud.com/"/>
+            </endpoint>
+        </service>
+        <service type="rax:dns" name="cloudDNS">
+            <endpoint tenantId="12345"
+                publicURL="https://dns.api.rackspacecloud.com/v1.0/12345"/>
+        </service>
+    </serviceCatalog>
+</access>]]>
+</programlisting>
 	  </example>
-		<calloutlist>
-			<callout arearefs="response.xml.namespaces">
-				<para>
-					In XML responses only, 
-					a list of namespaces identifies API extensions that add functionality to the core API.
-					You can read more about namespaces in 
-					<xref linkend="Namespaces-d1e910"></xref>.
-				</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.token">
-				<para>This token can be presented to a service as evidence of authentication.
-					Tokens are valid for a finite duration; a token's default lifespan is twenty-four hours. 
-				</para>
-				<para>The token's <code>expires</code> attribute denotes the time after which the token will
-					automatically become invalid. This attribute predicts the maximum lifespan for
-					token validity but does not guarantee the token expiration time because a token
-					can be revoked manually before it expires.  Clients are encouraged to cache a
-					token until it expires.</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.userdefault">
-				<para> 
-					Users can be assigned a default region so that, when there is a choice between multiple endpoints associated with a 
-					service in the user's catalog, the endpoint for the user's default region will be selected if it is available.
-					In this example, the user's default region is <code>DFW</code> and several of the services in the user's catalog offer endpoints in that region and the 
-					<code>ORD</code> region; this user's work will be directed to the <code>DFW</code> region whenever possible.
-				</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.role">
-				<para> 
-					Users can be assigned multiple roles, with each role providing specific privileges.
-					In this example, <code>joeuser</code> is the administrative user for the account,
-					holding the fully-privileged <code>identity:user-admin</code> role.
-					Other users might hold other roles with different privileges.
-					Roles need not be associated with actual job functions such as Administrator, Operator, Developer, Tester, or Trainer.
-				</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.catalog">
-				<para>
-					The service catalog lists the services this user can
-					access. In this example, the user can access two
-					compute services (Cloud Servers OpenStack and
-					Cloud Servers) and two object storage services
-					(Cloud Files Content Distribution Network (CDN),
-					and Cloud Files), as well as one database service, one DNS service, one load balancing service,
-					and one monitoring service.
-					The catalog listing for each
-					service provides at least one endpoint URL for
-					that service. Other information, such as regions
-					and versions and tenants, is provided if it's
-					relevant to this user's access to this service. </para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.servicetype">
-				<para> 
-					The service type attribute identifies services that perform similar functions, whatever those services might be named. 
-					In this example, the services named <literal>cloudServers</literal> and <literal>cloudServersOpenstack</literal> are both identified as <code>type="compute"</code>, 
-					identifying them as compute services even though the word "compute" does not appear in their names.
-				</para>
-				<important>
-					<para>
-						Use service type as the primary value for
-						locating a service. If multiple endpoints of the
-						same service type exist in the same region, use
-						service name as the tiebreaker.</para>
-				</important>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.servicename">
-				<para> 
-					The service name attribute identifies each unique service in the catalog.
-					Once a service is created, its name does not change. However, new services of the same service type may be added to the catalog with new names.
-				</para>
-				<important>
-					<para>
-						When you parse an authentication response programmatically,
-						use <code>service type</code> rather than <code>service name</code> as 
-						the basis for determining whether a user has access to
-						a particular kind of service. Service type is stable
-						across all releases; new service types can be added, 
-						but existing service types are not renamed.
-						In this example,
-						<code>type="compute"</code> identifies all the
-						available compute services, one of which is named
-						cloudServers and one of which is named
-						<literal>cloudServersOpenStack</literal>. New compute service names may be added 
-						in future releases; whatever the compute services are
-						named, you can always
-						recognize them by parsing for
-						<code>type="compute"</code> in the authentication
-						response's service catalog. </para>
-				</important>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.region">
-				<para> A service may expose endpoints in different regions.
-					Regional endpoints allow clients to provision
-					resources in a manner that provides high
-					availability.  </para>
-				<para> Some services are not region-specific. These services supply a single
-					non-regional endpoint and do not provide access to internal URLs. </para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.tenant">
-				<para> Some services recognize specification of a tenant. If a
-					service does recognize tenants, the format of the
-					tenant specification is defined only by the
-					service; for details about whether and how to
-					specify a tenant, check the documentation for the
-					service you are using.</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.url">
-				<para>
-					An endpoint can be assigned public and internal URLs. A
-					public URL is accessible from anywhere. Access to a public
-					URL usually incurs traffic charges. Internal URLs are only
-					accessible to services within the same region. Access to
-					an internal URL is free of charge.
-				</para>
-				<para> </para>
-			</callout>
-		</calloutlist>
-		<example>
+		<example xml:id="json_auth_resp">
 			<title>Service Catalog in Authentication Response: JSON</title>
-			<programlistingco>
-				<areaspec>
-					<area xml:id="response.json.catalog" units="linecolumn" coords="4 28"/>
-					<area xml:id="response.json.url" units="linecolumn" coords="8 92"/>
-					<area xml:id="response.json.region" units="linecolumn" coords="9 41"/>
-					<area xml:id="response.json.tenant" units="linecolumn" coords="10 45"/>
-					<area xml:id="response.json.servicename" units="linecolumn" coords="24 49"/>
-					<area xml:id="response.json.servicetype" units="linecolumn" coords="25 34"/>				
-					<area xml:id="response.json.token" units="linecolumn" coords="127 19"/>
-					<area xml:id="response.json.userdefault" units="linecolumn" coords="132 41"/>
-					<area xml:id="response.json.role" units="linecolumn" coords="135 23"/>
-				</areaspec>	
-				<programlisting language="javascript">
+			<programlisting>
 <xi:include href="../samples/auth-annotated.json" parse="text"/>
-		</programlisting>
-			</programlistingco>			
+		</programlisting>		
 		</example>
-		<calloutlist>
-			<callout arearefs="response.json.catalog">
-				<para> The service catalog lists the services this user can
-					access. In this example, the user can access two
-					compute services (Cloud Servers OpenStack and
-					Cloud Servers) and two object storage services
-					(Cloud Files Content Distribution Network (CDN),
-					and Cloud Files), as well as one database service, one DNS service, one load balancing service,
-					and one monitoring service.
-					The catalog listing for each
-					service provides at least one endpoint URL for
-					that service. Other information, such as regions
-					and versions and tenants, is provided if it's
-					relevant to this user's access to this service. </para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.json.url">
-				<para>
-					An endpoint can be assigned public and internal URLs. A
-					public URL is accessible from anywhere. Access to a public
-					URL usually incurs traffic charges. Internal URLs are only
-					accessible to services within the same region. Access to
-					an internal URL is free of charge.
-				</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.json.region">
-				<para> A service may expose endpoints in different regions.
-					Regional endpoints allow clients to provision
-					resources in a manner that provides high
-					availability.  </para>
-				<para> Some services are not region-specific. These services supply a single
-					non-regional endpoint and do not provide access to internal URLs. </para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.json.tenant">
-				<para> Some services recognize specification of a tenant. If a
-					service does recognize tenants, the format of the
-					tenant specification is defined only by the
-					service; for details about whether and how to
-					specify a tenant, check the documentation for the
-					service you are using.</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.json.servicename">
-				<para> 
-					The service name attribute identifies each unique service in the catalog.
-					Once a service is created, its name does not change. However, new services of the same service type may be added to the catalog with new names.
-				</para>
-				<important>
-					<para> If you are programmatically parsing an authentication
-						response, use service type rather than service name as
-						the basis for determining whether a user has access to
-						a particular kind of service. Service type is stable
-						across all releases; new service types may be developed,
-						but existing service types are not renamed.
-						In this example,
-						<code>type="compute"</code> identifies all the
-						available compute services, one of which is named
-						cloudServers and one of which is named
-						cloudServersOpenStack. New compute service names may be added 
-						in future releases; whatever the compute services are
-						named, you can always
-						recognize them by parsing for
-						<code>type="compute"</code> in the authentication
-						response's service catalog. </para>
-				</important>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.json.servicetype">
-				<para> 
-					The service type attribute identifies services that perform similar functions, whatever those services might be named. 
-					In this example, the services named cloudServers and cloudServersOpenstack are both identified as <code>type="compute"</code>, 
-					identifying them as compute services even though the word "compute" does not appear in their names.
-				</para>
-				<important>
-					<para>Use service type as the primary value for
-						locating a service. If multiple endpoints of the
-						same service type exist in the same region, use
-						service name as the tiebreaker.</para>
-				</important>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.json.token">
-				<para> This token can be presented to a service as evidence of authentication.
-					Tokens are valid for a finite duration; a token's default lifespan is twenty-four hours. 
-				</para>
-				<para> The token's <code>expires</code> attribute denotes the time
-					after which the token will automatically become
-					invalid. A token may be manually revoked before
-					the time identified by the <code>expires</code>
-					attribute; <code>expires</code> predicts a token's
-					maximum possible lifespan but does not guarantee
-					that it will reach that lifespan. Clients are
-					encouraged to cache a token until it expires. </para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.json.role">
-				<para> 
-					Users can be assigned multiple roles, with each role providing specific privileges.
-					In this example, <code>joeuser</code> is the administrative user for the account,
-					holding the fully-privileged <code>identity:user-admin</code> role.
-					Other users might hold other roles with different privileges.
-					Roles need not be associated with actual job functions such as Administrator, Operator, Developer, Tester, or Trainer.
-				</para>
-				<para> </para>
-			</callout>
-			<callout arearefs="response.xml.userdefault">
-				<para> 
-					Users can be assigned a default region so that, when there is a choice between multiple endpoints associated with a 
-					service in the user's catalog, the endpoint for the user's default region will be selected if it is available.
-					In this example, the user's default region is <code>DFW</code> and several of the services in the user's catalog offer endpoints in that region and the 
-					<code>ORD</code> region; this user's work will be directed to the <code>DFW</code> region whenever possible.
-				</para>
-				<para> </para>
-			</callout>
-		</calloutlist>
+<para><xref linkend="auth_attributes"></xref> describes the attributes for the authentication response.</para>
+		<table rules="all" xml:id="auth_attributes">
+			<caption>Authentication response attribute descriptions</caption>
+			<col width="24%"/>
+			<col width="76%"/>
+			<thead>
+				<tr>
+					<th valign="top">Attribute</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>namespaces (<parameter>xmlns</parameter>)</td>
+					<td>
+						<para>In XML responses only, a list of
+							namespaces identifies API extensions that
+							add functionality to the core API. </para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>token</parameter></td>
+					<td>
+						<para>This token can be presented to a service
+							as evidence of authentication. Tokens are
+							valid for a finite duration; a token's
+							default lifespan is twenty-four hours. </para>
+						<para>The token's <code>expires</code>
+							attribute denotes the time after which the
+							token will automatically become invalid.
+							This attribute predicts the maximum
+							lifespan for token validity but does not
+							guarantee the token expiration time
+							because a token can be revoked manually
+							before it expires. Clients are encouraged
+							to cache a token until it expires.</para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>region</parameter></td>
+					<td>
+						<para> Users can be assigned a default region
+							so that, when there is a choice between
+							multiple endpoints associated with a
+							service in the user's catalog, the
+							endpoint for the user's default region
+							will be selected if it is available. In
+							this example, the user's default region is
+							<code>DFW</code> and several of the
+							services in the user's catalog offer
+							endpoints in that region and the
+							<code>ORD</code> region; this user's
+							work will be directed to the
+							<code>DFW</code> region whenever
+							possible. </para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>role</parameter></td>
+					<td>
+						<para> Users can be assigned multiple roles,
+							with each role providing specific
+							privileges. In this example,
+							<code>joeuser</code> is the
+							administrative user for the account,
+							holding the fully-privileged
+							<code>identity:user-admin</code> role.
+							Other users might hold other roles with
+							different privileges. Roles need not be
+							associated with actual job functions such
+							as Administrator, Operator, Developer,
+							Tester, or Trainer. </para>
+						<para>For information about roles, see
+							<link xlink:href="Account-Users-d1e910.html">Identity user types and default roles</link></para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>serviceCatalog</parameter></td>
+					<td>
+						<para> The service catalog lists the services
+							this user can access. In this example, the
+							user can access two compute services
+							(Cloud Servers OpenStack and Cloud
+							Servers) and two object storage services
+							(Cloud Files Content Distribution Network
+							(CDN), and Cloud Files), as well as one
+							database service, one DNS service, one
+							load balancing service, and one monitoring
+							service. The catalog listing for each
+							service provides at least one endpoint URL
+							for that service. Other information, such
+							as regions and versions and tenants, is
+							provided if it's relevant to this user's
+							access to this service. </para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>service type</parameter></td>
+					<td>
+						<para> The service type attribute identifies
+							services that perform similar functions,
+							whatever those services might be named. In
+							this example, the services named
+							<literal>cloudServers</literal> and
+							<literal>cloudServersOpenstack</literal>
+							are both identified as
+							<code>type="compute"</code>,
+							identifying them as compute services even
+							though the word "compute" does not appear
+							in their names. </para>
+						<important>
+							<para> Use service type as the primary
+								value for locating a service. If
+								multiple endpoints of the same service
+								type exist in the same region, use
+								service name as the tiebreaker.</para>
+						</important>
+					</td>
+				</tr>
+				<tr>
+					<td><code>service name</code></td>
+					<td>
+						<para> The service name attribute identifies
+							each unique service in the catalog. Once a
+							service is created, its name does not
+							change. However, new services of the same
+							service type may be added to the catalog
+							with new names. </para>
+						<important>
+							<para> When you parse an authentication
+								response programmatically, use
+								<code>service type</code> rather
+								than <code>service name</code> as the
+								basis for determining whether a user
+								has access to a particular kind of
+								service. Service type is stable across
+								all releases; new service types can be
+								added, but existing service types are
+								not renamed. In this example,
+								<code>type="compute"</code>
+								identifies all the available compute
+								services, one of which is named
+								cloudServers and one of which is named
+								<literal>cloudServersOpenStack</literal>.
+								New compute service names may be added
+								in future releases; whatever the
+								compute services are named, you can
+								always recognize them by parsing for
+								<code>type="compute"</code> in the
+								authentication response's service
+								catalog. </para>
+						</important>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>endpoints</parameter></td>
+					<td>
+						<para>A service can expose endpoints in different regions as
+							specified by the
+							<parameter>region</parameter>
+							attribute. Regional endpoints allow
+							clients to provision resources in a manner
+							that provides high availability. </para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>tenantId</parameter></td>
+					<td>
+						<para>Some services recognize specification of a tenant. If a
+							service does recognize tenants, the format
+							of the tenant specification is defined
+							only by the service; for details about
+							whether and how to specify a tenant, check
+							the documentation for the service you are
+							using.</para>
+					</td>
+				</tr>
+				<tr>
+					<td><parameter>version</parameter></td>
+					<td>Specifies the API version for the endpoint.
+						The API version is also included in the URL to
+						access the service.</td>
+				</tr>
+				<tr>
+					<td valign="top">URLs (public and internal)</td>
+					<td>
+						<para> An endpoint can be assigned public and internal URLs. A
+							public URL is accessible from anywhere.
+							Access to a public URL usually incurs
+							traffic charges. Internal URLs are only
+							accessible to services within the same
+							region. Access to an internal URL is free
+							of charge.  The URL includes the API
+							version and tenantId for services that
+							require it.</para>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
 		<section xml:id="Service_Types-d1e265">
 			<title>Service Types in the Service Catalog</title>
 			<para> As shown in <xref
@@ -1062,8 +1107,8 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			Typically, a user has a password and email associated with the account. When a user is
 			created, the &CIS; automatically assigns a user type and a default role to the account,
 			based on the default &CIS; system configuration. The role defines access rights and
-			permissions for the &CIS; and other &CLOUD; services as shown <link
-				linkend="Identity_tbl_usr"/>
+			permissions for the &CIS; and other &CLOUD; services as shown in <xref
+				linkend="Identity_tbl_usr"/>.
 		</para>
 		<table xml:id="Identity_tbl_usr " rules="all" width="958">
 			<caption>&CIS; Accounts: User types and default role assignments</caption>
@@ -1125,11 +1170,17 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<td>
 						<para>When a &CLOUD; customer account is created, it is associated with one
 							user, the User administrator.</para>
-						<para>The &CIS; automatically assigns the <literal>identity:user-admin</literal> role to the
-							account, giving the User Administrator full administrative privileges to
-							manage the customer account. Exactly one administrative user exists for
-							each account. The User Administrator account user is also referred to
-							as the Account Owner.</para>
+						<para>The &CIS; automatically assigns the
+								<literal>identity:user-admin</literal>
+							role to the account, giving the User
+							Administrator full administrative
+							privileges to manage the administrative
+							account and all sub-user accounts created
+							as children of the User administrator
+							account. Exactly one administrative user
+							exists for each account. The User
+							Administrator account user is also
+							referred to as the Account Owner.</para>
 					</td>
 				</tr>
 				<tr>
@@ -1155,9 +1206,6 @@ Host: identity.api.rackspacecloud.com/v1.0/
 							<listitem>
 								<para>Share the tenant information, group memberships, and endpoints
 									from the parent User Administrator account.</para>
-							</listitem>
-							<listitem>
-								<para>New user accounts inherit </para>
 							</listitem>
 						</itemizedlist>
 						<para>The <literal>identity:default</literal> role only provides rights and privileges to

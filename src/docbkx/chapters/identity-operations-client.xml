@@ -351,9 +351,7 @@
 			</itemizedlist></para>
 		<note><title>Notes</title><itemizedlist>
 			<listitem><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension
-				to the core Identity API. For more information, see <olink condition="admin"
-					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"
-					>Extensions</olink>. </para>
+				to the core Identity API. For more information, see <link xlink:href="Extensions-d1e688.html">Extensions</link></para>
 			</listitem>
 			<listitem><para></para></listitem>
 		</itemizedlist><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension

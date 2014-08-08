@@ -141,6 +141,7 @@
                                 <para>The unique, system-generated user ID for the user account to generate codes for.</para>
                             </wadl:doc>
                         </param>
+                        <method href="#generateBypassCode"/>
                         <method href="#generateBypassCodes"/>
                 </resource>
                 <resource id="multifactor_unlock" path="users/{userId}/RAX-AUTH/multi-factor">
@@ -655,7 +656,7 @@
                 games and manage Star Wars pictures.</db:para>
         </wadl:doc>
         <request>
-            <param name="enabled" style="query" type="xsd:string">
+            <param name="enabled" style="template" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"> 
                     <para>A boolean value that filters the list of tenants based on account status.
                         Specify <code>enabled=true</code> to list active (enabled) tenants; specify
@@ -1288,16 +1289,16 @@
             <db:para role="shortdesc">Get users in a domain. </db:para>
         </wadl:doc>
         <request>
-            <param name="serviceId" style="query" type="xsd:string">
+            <param name="serviceId" style="template" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by service id.</para></wadl:doc>
             </param>
-            <param name="type" style="query" type="xsd:string">
+            <param name="type" style="template" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by service type: compute, object-store, or rax:dns for example.</para></wadl:doc>
             </param>
-            <param name="version" style="query" type="xsd:string">
+            <param name="version" style="template" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by version.</para></wadl:doc>
             </param>
-            <param name="region" style="query" type="xsd:string">
+            <param name="region" style="template" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Allows us to filter by region. </para></wadl:doc>
             </param>
         </request>
@@ -1717,44 +1718,126 @@
         </response>
     </method>
     
-    <method id="generateBypassCodes" name="POST">
+   <!-- <method id="generateBypassCode" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generate multifactor authenticion Bypass Codes">
             <para role="shortdesc">Generates a bypass code that can be substituted for a multi-factor authentication passcode.  
             </para>
             <para>During multifactor authentication &CIS; sends a passcode to the phone number associated with the user account. 
-                The user must provide this passcode to complete the authentication process. If the phone is not available, or if the 
-                passcode is not received, users and administrators can use the Generate bypass codes operation to generate one or more 
-                bypass codes that can be used in place of the passcode.</para>
+                The user must provide this passcode to complete the authentication process. 
+                If the phone is not available, or if the 
+                passcode is not received, an Identity administrator or User Manager can generate 
+                a single, one-time use bypass code that can be used in place of the passcode.</para>
+            <para>Users with the Identity</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesRequest.xml"/>
                 </wadl:doc>    
-                    <param name="numberOfCodes" style="plain" type="xsd:boolean" required="false">
+                    <param name="validityDuration" style="plain" type="xsd:boolean" required="false">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                            <para>Specifies the time interval that the the bypass codes remain valid. The time interval 
-                                is expressed in the following format: <code>PnYnMnDTnHnMnS</code> where 
+                            <para>Specifies the time interval that the the bypass codes remain valid. 
+                                For example, to generate a bypass code that expires 30 minutes after creation, 
+                                specify <code>validityDuration="PT30M"</code> in the Generate bypass code 
+                                API request.
+                                is expressed in the following format: <code>PT20MPnYnMnDTnHnMnS</code> where 
                                 <simplelist>
-                                    <member><code>P</code>code> indicates the period (required)</member>
+                                    <member><code>P</code>  indicates the period (required)</member>
                                     <member><code>nY</code> indicates the number of years</member>
                                     <member><code>nM</code> indicates the number of months</member> 
                                     <member><code>nD</code> indicates the number of days</member>
                                     <member><code>T</code> indicates the start time of a section (required if the duration value incudes hours, minutes, or seconds)</member>
                                     <member><code>nH</code> indicates the number of hours</member>
                                     <member><code>nM</code> indicates the number of minutes</member>
-                                    <member><code>nM</code> indicates the number of seconds</member>
+                                    <member><code>nS</code> indicates the number of seconds</member>
                                 </simplelist>
-                            For example, to create bypass codes that expire 10 minutes after the codes are generated, specify 
+                            Bypass codes generated by users to create bypass codes that expire 10 minutes after the codes are generated, specify 
                             <code>validityDuration=PT10M</code> in the request parameters.
                                </para>
-                            <para>This setting does not remove the phone associated with the account.</para>
+                            <para>If you are creating a bypass code for another users account, you can configure 
+                            an interval between 1 and 360 minutes. The default value is 30 minutes, 
+                                <code>PT30M</code>) for example.</para>
                         </wadl:doc>
                     </param>
-                <param name="validityDuration" style="plain" type="xsd:duration" required="false">
+            </representation>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesRequest.json" />
+                </wadl:doc>
+            </representation>
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesResponse.xml" />
+                </wadl:doc>
+                <param name="code" style="plain" type="xsd:integer" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para> <code>1</code>.</para>
-                        <para>This setting does not remove the phone associated with the account.</para>
+                        <para>The bypass code for the user account.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="validityDuration" style="plain" type="xsd:duration" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the amount of time that the bypass code remains valid. If 
+                            the request specified a 30 minute interval, the value returned is 
+                            <code>validityDuration=PT30M</code>.
+                        </para>        
+                    </wadl:doc>
+                </param>
+            </representation>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
+                    </wadl:doc>
+            </representation>
+        </response>
+        &commonFaults;
+        &postPutFaults;
+    </method>
+    <method id="generateBypassCodes" name="POST">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generate multifactor authenticion Bypass Codes">
+            <para role="shortdesc">Generates a bypass code that can be substituted for a multi-factor authentication passcode.  
+            </para>
+            <para>During multifactor authentication &CIS; sends a passcode to the phone number associated with the user account. 
+                The user must provide this passcode to complete the authentication process. 
+                If the phone is not available, or if the 
+                passcode is not received, the user can generate 
+                up to 10 bypass codes that can be used in place of the multi-factor authentication passcode.</para>
+            <para>Users with the Identity</para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesRequest.xml"/>
+                </wadl:doc>    
+                <param name="validityDuration" style="plain" type="xsd:boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the time interval that the the bypass codes remain valid.
+                            is expressed in the following format: <code>PT20MPnYnMnDTnHnMnS</code> where 
+                            <simplelist>
+                                <member><code>P</code>code> indicates the period (required)</member>
+                                <member><code>nY</code> indicates the number of years</member>
+                                <member><code>nM</code> indicates the number of months</member> 
+                                <member><code>nD</code> indicates the number of days</member>
+                                <member><code>T</code> indicates the start time of a section (required if the duration value incudes hours, minutes, or seconds)</member>
+                                <member><code>nH</code> indicates the number of hours</member>
+                                <member><code>nM</code> indicates the number of minutes</member>
+                                <member><code>nS</code> indicates the number of seconds</member>
+                            </simplelist>
+                            Bypass codes generated by users to create bypass codes that expire 10 minutes after the codes are generated, specify 
+                            <code>validityDuration=PT10M</code> in the request parameters.
+                        </para>
+                        <para>If you are creating a bypass code for another users account, you can configure 
+                            an interval between 1 and 360 minutes. The default value is 30 minutes, 
+                            <code>PT30M</code>) for example.</para>
+                    </wadl:doc>
+                </param>
+                <param name="numberofcodes" style="plain" type="xsd:integer" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the number of bypass codes to generate.
+                            Users can generate up to 10 bypass codes for their own account. 
+                        </para>
                     </wadl:doc>
                 </param>
             </representation>
@@ -1773,12 +1856,12 @@
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
-                    </wadl:doc>
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
         &postPutFaults;
-    </method>
+    </method> -->
     
     <method id="unlockMultifactorForUser" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock user account">

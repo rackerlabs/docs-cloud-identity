@@ -20,7 +20,6 @@
         id="161418" 
         name="demoauthor" 
         rax-auth:defaultRegion="DFW" 
-        rax-auth:multiFactorEnabled="true"
         rax-auth:domainId= "12345">
         <roles>
             <role id="3" name="identity:user-admin" 

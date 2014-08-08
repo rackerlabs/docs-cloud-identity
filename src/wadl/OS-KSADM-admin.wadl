@@ -42,7 +42,7 @@
             <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                 <wadl:doc>You need a valid admin token for access.</wadl:doc>
             </param>
-            <resource id="users" path="users">
+            <resource id="users" path="users/">
                 <method href="#listUsers"/>
                 <method href="#addUser"/>
                 <resource id="userById" path="{userId}">
@@ -52,7 +52,7 @@
                     <method href="#updateUser"/>
                     <method href="#deleteUser"/>
 
-                    <resource id="userRoles" path="roles">
+                    <resource id="userRoles" path="/roles">
                         <resource id="user-roles-OS-KSADM" path="OS-KSADM">
                             <resource id="userRoleById" path="{roleId}">
                                 <param name="roleId" type="xsd:string" style="template" required="true">
@@ -115,8 +115,8 @@
                 </resource>
             </resource>
 
-            <resource id="role-service-OS-KSADM" path="OS-KSADM">
-                <resource id="roles" path="roles">
+            <resource id="role-service-OS-KSADM" path="users/{userId}/>
+                <resource id="roles" path="roles/OS-KSADM/">
                     <method href="#getRoleByName"/>
                     <method href="#listRoles"/>
                     <method href="#addRole"/>

@@ -11,6 +11,10 @@
     xml:id="MFA__Ops">
     
   <title>Multi-factor authentication</title>
+    <note>
+    <para>Multi-factor authentication is currently available only to
+    customers enrolled in the Early Access program for this feature.</para></note>
+  
     <para>Multi-factor authentication is for Rackspace Cloud Customers who require a greater level of 
       security when accessing Rackspace Cloud resources. When multi-factor authentication is added to 
       user accounts, users have an additional layer of identity verification that offers various methods 
@@ -37,9 +41,7 @@
             through version 1.0 or 1.1. </para></important>
       </listitem>
     </orderedlist></para>
-    <para condition="admin">Figure <xref linkend="mfa_auth"
-      xrefstyle="select: labelnumber"/> shows the multi-factor
-      authentication process flow. <figure xml:id="mfa_auth">
+    <para><xref linkend="mfa_auth"/> shows the multi-factor authentication process flow. <figure xml:id="mfa_auth">
         <title>Multi-factor authentication process flow</title>
         <mediaobject>
           <imageobject>
@@ -54,7 +56,7 @@
     and enable their account for multi-factor authentication. This work can be completed from the Cloud Control panel 
     or by using the &CIS; API.</para>
     <para>Figure <xref
-      linkend="mfa_workflow_setup" xrefstyle="select: labelnumber"/> provides an overview of the
+      linkend="mfa_workflow_setup"/> provides an overview of the
     work flow to complete these tasks.</para><figure xml:id="mfa_workflow_setup">
       <title>Multi-factor authentication user account set up work flow </title>
       <mediaobject>
@@ -64,7 +66,22 @@
         </imageobject>
       </mediaobject>
     </figure>
-    <para>For information about using multi-factor authentication capabilities, 
-      see <link xlink:href= "#mfa_processes">Multi-factor authentication set up, operation, and management</link>.</para>  
+    <para>For more information, see the following links:<itemizedlist>
+      <listitem>
+        <para><link xlink:href="#mfa_processes">Multi-factor
+            authentication set up, operation, and management using the
+            API</link></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/multi-factor-authentication-from-the-cloud-control-panel"
+          xlink:show="new">Using Multi-factor authentication from the Cloud Control
+            panel </link>
+        </para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="Multifactor_Calls_client.html">Multi-factor operations API reference</link></para>
+      </listitem>
+    </itemizedlist></para>  
     <xi:include href="section-mfa-setup.xml"/>
   </section>

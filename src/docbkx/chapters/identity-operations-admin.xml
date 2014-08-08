@@ -977,6 +977,10 @@
 		<!-- MULTIFACTOR OPERATIONS -->	
 		<section xml:id="Multifactor_Calls">
 			<title>Multifactor</title>
+			<note>
+				<para>Multi-factor authentication is currently available only to
+					customers enrolled in the Early Access program for this feature.</para></note>
+			
 			<para>The &CIS; API operations described in this section implement multifactor authentication
 			capabilities for &CLOUD; accounts. For additional information, see these topics: <itemizedlist>
 				<listitem>
@@ -988,10 +992,9 @@
 							xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html"
 							>API request: Authenticate with multifactor credentials</link></para>
 				</listitem>
-				<listitem>
+				<!-- <listitem>
 					<para><link xlink:href="mfa_api_ovw.html">Multifactor elements and
-							attributes</link></para>
-				</listitem>
+							attributes</link></para></listitem> -->
 			</itemizedlist></para>
 			<note><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension
 				to the core Identity API. For more information, see <olink condition="admin"
@@ -1024,7 +1027,7 @@
 					<wadl:method href="#unlockMultifactorForUser"/>
 				</wadl:resource>
 			</wadl:resources>
-			<section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 
+			<!-- <section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 
 				
 				<para>Multifactor authentication features are implemented in the 
 					RAX-AUTH extension to the core OpenStack Keystone v2.0 API. This section 
@@ -1229,6 +1232,6 @@
 						</varlistentry>
 					</variablelist>
 				</para>
-			</section>
+			</section> -->
 		</section>
 </chapter>

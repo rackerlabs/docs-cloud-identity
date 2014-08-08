@@ -97,16 +97,37 @@
                 </resource>
             </resource>
 
-            <resource id="users" path="users">
+            <resource id="users" path="users/">
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A valid authentication token with administrative access.
                         </para>
                     </wadl:doc>
                 </param>
+                <resource id="name" >
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="template" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>The name associated with the user account you want to look up.</para>
+                        </wadl:doc>
+                    </param>
                     <method href="#getUserByName"/>
+                </resource>
+                <resource id="id">
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="template" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>The id associated with the user account you want to look up.</para>
+                        </wadl:doc>
+                    </param>
                     <method href="#getUserById"/>
+                </resource>
+                <resource id="email">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="template" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The email associated with the user account you want to look up.</para>
+                    </wadl:doc>
+                </param>
                     <method href="#getUserByEmail"/>
+                </resource>
                     <resource id="userRoles" path="roles">
                         <method href="#listUserGlobalRoles"/>
                     </resource>
@@ -670,20 +691,27 @@
     
     <method id="authenticateWithMultiFactor" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor passcode credentials">
-            <para role="shortdesc">Authenticate with multifactor passcode credentials.</para><important>
-                <para>User accounts that use multifactor authentication must
+            <para role="shortdesc">Authenticate with multifactor passcode credentials.</para>
+            <note><title>Notes</title>
+                <para>
+                    <itemizedlist><listitem><para>User accounts that use multifactor authentication must
                     authenticate with &CIS; version 2.0 or later. Attempts to
-                    authenticate with earlier API versions will fail.</para>
-            </important>
-            <para>If an account is enabled for multifactor authentication, authentication is a two-step process: 
+                    authenticate with earlier API versions will fail.</para></listitem>
+                    <listitem><para>Multi-factor authentication is currently available only to
+                        customers enrolled in the Early Access program for this feature.</para></listitem>
+                </itemizedlist>
+                </para>
+            </note>
+            <para>If an account is enabled to use muliti-factor authentication, authentication is a two-step process: 
                 <orderedlist>
                     <listitem>
-                        <para>Send an authentication request with either Password or API credentials. See <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
-                            "Authenticate with password or API key credentials"</link></para>
+                        <para>Send an authentication request with either Password or API credentials. 
+                            See <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
+                            "Authenticate with password or API key credentials."</link></para>
                         <para>The request triggers &CIS; to send an SMS message to the phone 
                             associated with the user account. In response to the authentication request,  &CIS; 
                             returns a 401 message that includes 
-                            a sessionId in the WWW-Authenticate header and a request for additional credentials.
+                            a sessionId parameter in the WWW-Authenticate header and a request for additional credentials.
                             <screen><computeroutput>&lt;HTTP/1.1 401 Unauthorized
 * Server Apache-Coyote/1.1 is not blacklisted
 &lt; Server: Apache-Coyote/1.1
@@ -708,9 +736,7 @@
                            </para>                        
                     </listitem>
                     <listitem>
-                        <para>Send an additional authentication request providing the sessionId and multifactor-authentication 
-                            passcode included in the SMS message from &CIS; verification service.
-                        </para>
+                        <para>Send an additional authentication request providing the sessionId and multifactor-authentication passcode included in the SMS message from &CIS; verification service.</para>
                     </listitem>
                 </orderedlist></para>
         </wadl:doc>
@@ -878,13 +904,6 @@
                 </para>
             </note>
         </wadl:doc>
-        <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="query" type="xsd:string" required="true">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>The name associated with the user account you want to look up.</para>
-                </wadl:doc>
-            </param>
-        </request>
         <response status="200 203">           
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -976,12 +995,6 @@
                 This request returns the following information for each account associated with the specified user ID: 
                 email address, username, user ID, status, default region, and domain id.</para>
         </wadl:doc>
-        <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="query" type="xsd:string" required="true">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                <para>The id associated with the user account you want to look up.</para>
-            </wadl:doc>
-        </param></request>
         <response status="200 203">
             <!-- Pull in shared response parameters by using entity from common.ent file -->
             <representation mediaType="application/xml" element="identity:user">
@@ -1014,15 +1027,6 @@
                 <link condition="admin" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link> 
                 section.</para>
         </wadl:doc>
-        <request>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="query" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>
-                           The email address for the user account lookup.</para>
-                    </wadl:doc>
-                </param>
-            
-        </request>
         <response status="200 203">
             <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain" type="string" required="false">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1155,7 +1159,7 @@
                 the tenant ID, name, description, and status.</para>
         </wadl:doc>
         <request>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="query" type="xsd:string" required="true"/>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="template" type="xsd:string" required="true"/>
             
         </request>
         <response status="200 203">

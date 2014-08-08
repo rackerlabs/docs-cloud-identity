@@ -9,13 +9,22 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="mfa_processes"> 
     <title>Multi-factor authentication set up, operation, and
     management</title>
+  
+  <note>
+    <para>Multi-factor authentication is currently available only to
+      customers enrolled in the Early Access program for this feature.</para></note>
     <para><xref linkend="mfa_process_summary"/> outlines the processes
     to set up, use, and manage multi-factor authentication
     capabilities for &CLOUD; accounts using Identity service API
     operations. This work can be completed by using Identity Service
-    API operations, or from the Rackspace Cloud Control panel.</para>
-    <para>For detailed instructions using the API operations that include 
-      request and response examples, click the links in the task column.</para>
+    API operations, or from the Rackspace Cloud Control panel. (See
+      <link
+      xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/multi-factor-authentication-from-the-cloud-control-panel"
+      >Using Multi-factor authentication from the Cloud Control panel
+    </link>.)</para>
+    <para>For detailed instructions using the API operations that
+    include request and response examples, click the links in the task
+    column. </para>
     <para>
       <table xml:id="mfa_process_summary" rules="all" width="100%">
         <caption>Multi-factor authentication processes and
@@ -221,9 +230,11 @@
     }
 }</programlisting>
                   <note>
-                    <para>To run the cURL commands in these examples, export the authentication
-                      token to an environment variable: <literal>export
-                        AUTH_TOKEN=""xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"</literal> for example.</para>
+                    <para>To run the cURL commands in these examples,
+                      export the authentication token to an
+                      environment variable: <literal>export
+                        AUTH_TOKEN="xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"</literal>
+                      for example.</para>
                   </note>
                 </para>
               </listitem>
@@ -487,7 +498,7 @@
     </section>
   <section xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="proc_mfa_manage">
     <title>Manage multi-factor authentication settings and operation</title>
-    <para>This table describes the API operations for managing
+    <para><xref linkend="manage_mfa_ops"/> describes the API operations for managing
       multi-factor authentication capabilities for &CLOUD; accounts
       and shows the cURL command to make the request. For more
       detailed information about an operation, click the link in the
@@ -509,7 +520,8 @@
                 xlink:href="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html"
                 >Unlock user account</link> if a user is locked as a
               result of failed login attempts.</para></td>
-          <td valign="top">
+          <td valign="top"><para>Use the following cURL request to restore access to a user account that has been locked 
+          as a result of too many failed authentication attempts.</para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
        -X PUT  \
        -d '{"RAX-AUTH:multiFactor": { "unlock": "true" }}'
@@ -517,9 +529,26 @@
        -H "X-Auth-Token": $AUTHTOKEN | python -m json.tool</programlisting>
           </td>
         </tr>
-        <tr condition="admin">
-          <td valign="top">Generate bypass code</td>
+        <tr condition="client">
+          <td valign="top">Recover account  </td>
           <td valign="top">
+            <para>If you cannot get the multi-factor authentication
+              passcode from the device associated with your account,
+              contact Rackspace Support.</para>
+          </td>
+        </tr>
+        <tr condition="admin">
+          <td valign="top">Recover account</td>
+          <td valign="top">
+            <para>Identity administrators or user managers can use the
+              following cURL request for the Generate bypass code API
+              operation to generate a single, one-time use bypass code
+              that can be substituted for a multi-factor
+              authentication passcode if a user cannot get the
+              passcode from the device associated with their account.
+              The default expiration for the bypass code is 30 minutes
+              after being generated. Users cannot recover their own
+              account.</para>
        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \      
        -X POST \
        -d '{"RAX-AUTH:bypassCodes"{"validityDuration":"PT30M"}}'\
@@ -541,6 +570,9 @@
             <para><link xlink:href="GET_getUserById_users_User_Calls.html">Check multi-factor status on user account</link></para>
           </td>
           <td valign="top">
+            <para>Use the following cURL request to review the multi-factor authentication configuration settings on 
+            an account.  If the <parameter>MultifactorEnabled</parameter>account has not been enabled for multi-factor authentication, the user listing does not 
+            include </para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
        -X POST \
        -H "Content-Type: application/json" \
@@ -550,7 +582,8 @@
         <tr>
           <td valign="top"><link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List multifactor-enabled devices by user id</link>
             </td>
-          <td valign="top">
+          <td valign="top"><para>Use the following cURL request to list the devices that 
+            associated with a user account for the purpose of multi-factor authentication.</para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X PUT \
        -H "Content-Type: application/json" \
@@ -561,8 +594,9 @@
           <td valign="top"><link
               xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
               >Disable multi-factor authentication</link></td>
-          <td><para>cURL request to disable (<code>enabled=false</code>) multi-factor
-            for the specified user account.</para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+          <td><para>Use the folowing cURL request to disable
+                (<code>enabled=false</code>) multi-factor for the
+              specified user account.</para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
        -X PUT \
        -d '{"RAX-AUTH:multiFactor": { "enabled": "false" }}' \
        -H "Content-Type: application/json" \
@@ -572,7 +606,8 @@
           <td valign="top">
             <para><link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Remove the multi-factor settings and phone from a user account</link></para>
           </td>
-          <td valign="top">
+          <td valign="top"><para>Use the following cURL request to remove multi-factor
+              authentication capabilities from a user account.</para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
        -X  DELETE  \
        -H "Content-Type: application/json" \
@@ -581,10 +616,7 @@
         </tr>
       </tbody>
     </table>
-    <para condition="admin">For detailed reference information about API service support for multi-factor
-      authentication resources and methods, see <link xlink:href="Mutlifactor_Calls.html">API Operations for Service Developers: Multi-factor
-        operations.</link></para> 
-    <para condition="client">For detailed reference information about multi-factor authentication API operations, see 
-      <link xlink:href="Multifactor_Calls_client.html">API Operations for Service Developers: Multi-factor
-        operations.</link></para>
+    <para>For detailed API referenceinformation for Multifactor-authentication operations, see 
+      <link xlink:href="Multifactor_Calls.html">Multi-factor
+        operations</link></para> 
   </section></section>
