@@ -134,7 +134,7 @@
                 page outlines creation of service users (identity:admin users) for Auth 1.0, 1.1, and 2.0.</para>
         </tip>
         <para> If you have a suggestion about any Rackspace product or service, including this one, please share it at
-            <link xlink:href="http://feedback.rackspacecloud.com/">feedback.rackspacecloud.com</link>. </para>
+            <link xlink:href="https://rackspace.uservoice.com/forums/71021-product-feedback/category/81960-identity-auth">feedback.rackspacecloud.com</link>. </para>
     </section>
     <xi:include href="identity-endpoints.xml"/>
     <xi:include href="identity-releasenotes-v20-admin.xml"/>

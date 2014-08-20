@@ -86,116 +86,42 @@
 				Users”</olink>. </para>
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<!-- list users -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="#listUsers">
-					<wadl:doc>
-						<note>
-							<para>
-								<emphasis role="italic">
-									If you  authenticated with the user role, you can see only yourself.
-								</emphasis>
-							</para>
-							<para>
-								If this request is issued by a user holding the admin role (<code>identity:user-admin</code>),
-								it returns a list of all users for the tenant.
-							</para>
-							<para> 
-								If this request is issued by a user holding the user role (<code>identity:default</code>), it
-								returns only the user who issued the request. 
-							</para>
-						</note>
-					</wadl:doc>
-				</wadl:method>
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-users">
+				<wadl:method href="#admin-addUser"/>
 			</wadl:resource>
-			<!-- list user -->
-			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="#getUserByName"/>
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-name">
+				<wadl:method href="#admin-getUserByName"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="#getUserById"/>
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-userid">
+				<wadl:method href="#admin-getUserById"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="#getUserByEmail"/>
-			</wadl:resource>
-			<!-- add user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="#addUser">
-				<wadl:doc>
-					<note>
-						<para> This call is available only to users who hold the admin role (<code>identity:user-admin</code>).
-								Using the admin role, you can create a user who holds the user role (<code>identity:default</code>). </para>
-					</note>
-					<warning>
-						<para> If you use this <code>POST /users</code> call to create a user, that user will have access to
-								APIs but will not have access to the Cloud Control Panel. Cloud Control Panel access is provided to 
-								the account's admin user; the admin user is the user who initiated the account by completing the 
-								Sign-Up process. </para>
-					</warning>
-				</wadl:doc>
-				</wadl:method>
-			</wadl:resource>
-			<!-- update user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="#updateUser">
-					<wadl:doc>
-						<note>
-							<para> Users who hold the admin role can update users who hold the user role (<code>identity:default</code>) or
-								the admin role (<code>identity:user-admin</code>) for the same tenant. </para>
-						</note>
-					</wadl:doc>
-				</wadl:method>
-			</wadl:resource>
-			<!-- delete user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="#deleteUser">
-					<wadl:doc>
-						<note>
-							<para> This call is available only to users who hold the admin role (<code>identity:user-admin</code>).
-								Using the admin role, you can delete a user who holds the user role (<code>identity:default</code>) 
-								for the same tenant. </para>
-						</note>
-					</wadl:doc>
-				</wadl:method>
-			</wadl:resource>
+			
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-userId">
+				<wadl:method href="#admin-listUsers"/>
+			</wadl:resource>	
+		   <wadl:resource href="../../wadl/identity-admin.wadl#admin-userId">
+					<wadl:method href="#admin-updateUsers"/>
+		   </wadl:resource>
+		   	
+		   	<wadl:resource
+		   		href="../../wadl/identity-admin.wadl#admin-userId">
+		   		<wadl:method href="#admin-deleteUser"/>
+		   	</wadl:resource>
+			
 			<!-- list all credentials -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentials">
-				<wadl:method href="#listCredentials">
-					<wadl:doc>
-						<note>
-							<para>
-								<emphasis role="italic">You can see only yourself.</emphasis>
-							</para>
-							<para> This call is available to users who hold either the admin role
-								(<code>identity:user-admin</code>) or the user role (<code>identity:default</code>). In
-								either case, the credentials returned are only those of the user who issued the request. </para>
-						</note>
-					</wadl:doc>
-				</wadl:method>
+				<wadl:method href="#listCredentials"/>
 			</wadl:resource>
 			<!-- get user's API key credentials -->
 			<wadl:resource href="../../wadl/RAX-KSKEY-admin.wadl#userCredentialsByType">
-				<wadl:method href="#getUserCredential">
-				<wadl:doc>
-					<note>
-						<para>
-							<emphasis role="italic">You
-								can see only yourself.</emphasis>
-						</para>
-						<para> This call is available to users who hold either the admin
-								role
-								(<code>identity:user-admin</code>) or
-								the user role
-								(<code>identity:default</code>). In
-								either case, the credentials returned
-								are only those of the user who issued
-								the request. </para>
-					</note>
-				</wadl:doc>
-				</wadl:method>
+				<wadl:method href="#getUserCredential"/>
 			</wadl:resource>
 			<!-- reset user's API key credentials -->
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#reset_apikey_credentials" >
+			<wadl:resource href="../../wadl/identity-admin.wadl#reset_apikey_credentials" >
 				<wadl:method href="#resetUserAPIKeyCredentials"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -221,23 +147,8 @@
 					<wadl:method href="#deleteUserRole"/>
 				</wadl:resource>
 				<!-- list global roles available to a user -->
-				<wadl:resource href="../../wadl/identity-admin.wadl#userRoles">
-					<wadl:method href="#listUserGlobalRoles">
-						<wadl:doc>
-							<note>
-									<para> This call is available to users who hold either the
-								admin role
-								(<code>identity:user-admin</code>)
-								or the user role
-								(<code>identity:default</code>). </para>
-									<para> For users holding the <code>user</code> role, the call
-								is valid only if <code>userID</code>
-								and the <code>user-default</code>
-								token have the same value for
-								<code>tenant</code>. </para>
-							</note>
-						</wadl:doc>
-					</wadl:method>
+				<wadl:resource href="../../wadl/identity-admin.wadl#admin-userRoles">
+					<wadl:method href="#listUserGlobalRoles"/>
 				</wadl:resource>
 			</wadl:resources>
 	</section>
@@ -336,17 +247,11 @@
 		<para>The &CIS; API operations described in this section implement multifactor authentication
 			capabilities for &CLOUD; accounts. For additional information, see these topics: <itemizedlist>
 				<listitem>
-					<para><link xlink:href="mfa_processes.html">Multifactor authentication set up,
-						operation, and management</link></para>
+					<para><link xlink:href="mfa_processes.html">Using multi-factor authentication</link></para>
 				</listitem>
 				<listitem>
-					<para><link
-						xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html"
-						>API request: Authenticate with multifactor credentials</link></para>
-				</listitem>
-				<listitem>
-					<para><link xlink:href="mfa_api_ovw.html">Multifactor elements and
-						attributes</link></para>
+					<para><link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
+						API request: Authenticate with multifactor credentials</link></para>
 				</listitem>
 			</itemizedlist></para>
 		<note><title>Notes</title><itemizedlist>

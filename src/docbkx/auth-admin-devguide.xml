@@ -34,7 +34,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2013-04-27</pubdate>
+		<pubdate>2014-08-20</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -51,6 +51,41 @@
 				Identity Service.</para>
 		</abstract>
 		<revhistory>
+			<revision condition="admin">
+				<date>2014-08-19</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Fixed incorrect paths in <link xlink:href="User_Calls.html">Users</link> API operations.</para></listitem>
+						<listitem>
+							<para>Updated <link xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link> field descriptions to remove call outs</para>
+					    </listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision condition="admin">
+				<date>2014-07-29</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								<itemizedlist>
+									<listitem>
+										<para>Updated Multi-factor authentication overview section to include authentication process work flow.</para></listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								<itemizedlist>
+									<listitem>
+										<para>Corrected code samples in Update User operation.</para></listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision condition="admin">
 				<date>2014-07-03</date>
 				<revdescription>
@@ -71,26 +106,15 @@
 									targetptr="Extensions-d1e688"/>:<itemizedlist>
 									<listitem>
 										<para>Moved information about Extensions API operations to
-												<olink condition="admin"
-												targetdoc="Identity-Admin-Developer-Guide"
-												targetptr="Extensions_operations"/></para>
+												<link xlink:href="Extensions_operations.html">Extensions</link></para>
 									</listitem>
 									<listitem>
 										<para>Added section for extended responses and actions:
-												<olink condition="admin"
-												targetdoc="Identity-Admin-Developer-Guide"
-												targetptr="extended_actions"/>.</para>
+												<link xlink:href="extended_actions.html">Extended responses and actions</link>.</para>
 									</listitem>
 								</itemizedlist><itemizedlist>
 									<listitem>
-										<para><olink condition="admin"
-												targetdoc="Identity-Admin-Developer-Guide"
-												targetptr="mfa_processes"/></para>
-									</listitem>
-									<listitem>
-										<para><olink condition="admin"
-												targetdoc="Identity-Admin-Developer-Guide"
-												targetptr="mfa_api_ovw"/></para>
+										<para><link xlink:href="mfa_processes.html">Using Multi-factor authentication</link></para>
 									</listitem>
 								</itemizedlist></para>
 						</listitem>
@@ -104,8 +128,7 @@
 						
 						<listitem>
 							<para>Added information about obtaining tokens by authenticating with multifactor authentication credentials. 
-								See <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Token_Calls">“Token Calls”</olink> </para>
+								See <link xlink:href="Token_Calls.html">Authentication tokens</link></para>
 						</listitem>
 						<listitem security="internal">
 							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Token_Calls"
@@ -182,7 +205,7 @@
 						</listitem>
 						<listitem>
 							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Endpoints-d1e180">“Alternate Authentication
+									targetptr="Endpoints-d1e180.html">“Alternate Authentication
 									Endpoints”</olink> section to remove the Legacy endpoint table
 								that duplicated information in the Authentication endpoints
 								table.</para>
@@ -223,7 +246,7 @@
 							example.</para>
 					</listitem>
 					<listitem>
-						<para>Removed duplicate AUTH param in Get and Delete Endpoint template operations.</para>
+						<para>Removed duplicate AUTH para in Get and Delete Endpoint template operations.</para>
 					</listitem>
 				</itemizedlist>
 				</revdescription>
@@ -314,7 +337,7 @@
 						<listitem>
 							<para> Corrected links to endpoint documentation <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Additional_Resources-d1e130">“Additional
+									targetptr="Additional_Resources-d1e130.html">“Additional
 									Resources”</olink>. </para>
 						</listitem>
 					</itemizedlist>
@@ -391,7 +414,7 @@
 						</listitem>
 						<listitem>
 							<para> Added Region calls (<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Region_Calls">“Regions”</olink>) </para>
+									targetptr="Region_Calls.html">“Regions”</olink>) </para>
 						</listitem>
 						<listitem>
 							<para> Updated Add User to reflect default region (<olink
@@ -477,11 +500,11 @@
 						<listitem>
 							<para> Removed references to deprecated endpoint v1 <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Endpoints-d1e180">“Authentication Endpoints”</olink>. </para>
+									targetptr="Endpoints-d1e180.html">“Authentication Endpoints”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Including several API calls from
-								KSCATALOG and KSADM OpenStack APIs
+								KSCATALOG and KSADM Open Stack APIs
 								including: Delete Role; List Services;
 								Add, Get, and Delete Service; List
 								Endpoint Templates; Add, Get, and
@@ -507,7 +530,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated xref links to olinks in <olink targetdoc="Identity-Developer-Guide"
+							<para> Updated xref links to oinks in <olink targetdoc="Identity-Developer-Guide"
 									targetptr="User_Calls">“Users”</olink>.</para>
 						</listitem>
 					</itemizedlist>
@@ -518,13 +541,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> In <xref
-								linkend="Additional_Resources-d1e130"
-								/>, repaired broken links. </para>
+							<para> In <link xlink:href="Additional_Resources-d1e130.html">Additional resources</link>
+								, repaired broken links. </para>
 						</listitem>
 						<listitem>
-							<para> In <xref linkend="Endpoints-d1e180"
-								/>, repaired broken links. </para>
+							<para> In <link xlink:href="Endpoints-d1e180.html">Endpoints</link>, repaired broken links. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -534,14 +555,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> In <xref
-								linkend="Additional_Resources-d1e130"
-								/>, added a link to the Rackspace Open
+							<para> In <link xlink:href="Additional_Resources-d1e130.html">Additional resources</link>, added a link to the Rackspace Open
 								Cloud Community. </para>
 						</listitem>
 						<listitem>
-							<para> In <xref
-								linkend="Service_API_Calls"/>,
+							<para> In <link xlink:href="Service_API_Calls.html">Service</link>,
 								expanded Update Capabilities to add
 								request body. </para>
 						</listitem>
@@ -553,7 +571,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> In <xref linkend="Policy_Calls"/>,
+							<para> In <link xlink:href="Policy_Calls.html">Policy</link>,
 								added call to get detailed policy
 								content. </para>
 						</listitem>
@@ -565,12 +583,12 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <xref linkend="Policy_Calls"/>.<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Policy_Calls">“Policy operations”</olink>
+							<para> Added <link xlink:href="Policy_Calls.html">Policy</link>.<olink targetdoc="Identity-Admin-Developer-Guide"
+									targetptr="Policy_Calls.html">“Policy operations”</olink>
 							</para>
 						</listitem>
 						<listitem>
-							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Service_API_Calls"
+							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Service_API_Calls.html"
 									>“Service APIs”</olink></para>
 						</listitem>
 						<listitem>
@@ -581,7 +599,7 @@
 						</listitem>
 						<listitem>
 							<para> Add List domains operation to <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Domain_Calls">“Domains”</olink>, add
+								targetptr="Domain_Calls.html">“Domains”</olink>, add
 								added getting a list of domains.
 							</para>
 						</listitem>
@@ -605,7 +623,7 @@
 						</listitem>
 						<listitem>
 							<para> Improved introductory text for
-								<xref linkend="Secret_Calls"/>.
+								<link xlink:href="Secret_Calls.html">Secret Calls</link>.
 							</para>
 						</listitem>
 						<listitem>
@@ -620,12 +638,10 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Expanded <xref
-								linkend="Secret_Calls"/>. </para>
+							<para> Expanded <link xlink:href="Secret_Calls.html">Secret questions and answers</link>. </para>
 						</listitem>
 						<listitem>
-							<para> Added <xref linkend="Region_Calls"
-								/>. </para>
+							<para> Added <link xlink:href="Region_Calls.html">Region</link>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -635,8 +651,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <xref linkend="Domain_Calls"
-								/>, documenting use of domains to
+							<para> Added <link xlink:href="Domain_Calls.html">Domain</link>
+								, documenting use of domains to
 								establish administrative boundaries.
 							</para>
 						</listitem>
@@ -653,8 +669,7 @@
 								targetptr="Token_Calls">“Tokens”</olink>.</para>
 						</listitem>
 						<listitem>
-							<para> Updated samples to show <code>defaultRegion</code> in <xref
-									linkend="Sample_Request_Response-d1e64"/> and the <olink
+							<para> Updated samples to show <code>defaultRegion</code> in <link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response</link> and the <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="Token_Calls">Token operations</olink>.</para>
 						</listitem>
@@ -673,16 +688,14 @@
 						</listitem>
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Service_Types-d1e265">“Service Types in the Service
+									targetptr="Service_Types-d1e265.html">“Service Types in the Service
 									Catalog”</olink> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. </para>
 						</listitem>
 						<listitem>
-							<para> Simplified references to the Cloud
+							<para>Simplified references to the Cloud
 								Control Panel, showing that all
 								customers have access to the Cloud
-								Control Panel at <link
-								xlink:href="http://mycloud.rackspace.com/"
-								>http://mycloud.rackspace.com/</link>.
+								Control Panel at <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com/</link>.
 							</para>
 						</listitem>
 						<listitem>
@@ -710,13 +723,11 @@
 								targetptr="Impersonation_Calls"/>, showing use of <code>expire-in-seconds</code>.</para>
 						</listitem>
 						<listitem>
-							<para>Updated illustration in <xref
-								linkend="Identity-Concpts"/>
+							<para>Updated illustration in <link xlink:href="Identity-Concpts"/>
 							</para>
 						</listitem>
 						<listitem>
-							<para>Restructured and expanded <xref
-								linkend="Additional_Resources-d1e130"
+							<para>Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html"
 								/>, adding links to Rackspace
 								Knowledge Center and customer feedback
 								site. </para>
@@ -725,14 +736,12 @@
 							<para>Added Statuses section listing all possible account statuses. </para>
 						</listitem>
 						<listitem>
-							<para> Added <xref
-								linkend="Endpoints-d1e180"/>,
+							<para> Added <link xlink:href="Endpoints-d1e180.html"/>,
 								showing recommended and legacy
 								authentication endpoints. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <xref
-								linkend="Faults-d1e908"/> to show
+							<para> Updated <link xlink:href="Faults-d1e908.html"></link> to show
 								that the overLimit fault can occur
 								with any request. </para>
 						</listitem>
@@ -743,13 +752,11 @@
 								is not a customer. </para>
 						</listitem>
 						<listitem>
-							<para> Repaired broken link to <xref
-								linkend="Sample_Request_Response-d1e64"
-								/>. </para>
+							<para> Repaired broken link to <link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response</link>
+								. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <xref
-								linkend="Service_Types-d1e265"/> to
+							<para> Updated <link xlink:href="Service_Types-d1e265.html"/> to
 								provide link to publicly-available
 								documentation on Cloud Databases.
 							</para>
@@ -788,21 +795,19 @@
 								groups from parents. </para>
 						</listitem>
 						<listitem>
-							<para> Added suggestion in <xref
-								linkend="Additional_Resources-d1e130"
+							<para> Added suggestion in <link xlink:href="Additional_Resources-d1e130.html"
 								/> to check wiki pages for additional
 								operational information. </para>
 						</listitem>
 						<listitem>
-							<para> Added <xref linkend="Limits-d1e909"
-								/>, introducing rate limiting, and
-								<xref linkend="Ratelimiting_Calls"
-								/>, describing rate limiting
+							<para> Added <link xlink:href="Limits-d1e909.html">Limits</link>, introducing rate limiting, and
+								<link xlink:href="Ratelimiting_Calls.html">Limit</link> API operations 
+								, describing rate limiting
 								operations. </para>
 						</listitem>
 						<listitem>
 							<para> Corrected malformed cURL example in
-								<xref linkend="QuickStart-000"/>.
+								<link xlink:href="QuickStart-000.html">Quick Start</link>.
 								In the same section, added an
 								introduction to API extensions.
 							</para>
@@ -822,8 +827,7 @@
 						<listitem>
 							<para> Added Namespaces section,
 								introducing the idea of namespaces and
-								relating it to the idea of <link
-								linkend="Extensions-d1e688">API
+								relating it to the idea of <link xlink:href="Extensions-d1e688.html">API
 								extensions</link>. </para>
 						</listitem>
 						<listitem>
@@ -836,15 +840,12 @@
 						</listitem>
 						<listitem>
 							<para> Added an annotated JSON example in
-								<xref
-								linkend="Sample_Request_Response-d1e64"
-								/>. In the same section, updated the
+								<link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response</link>. In the same section, updated the
 								annotated XML example to show new
 								service types. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <xref
-								linkend="Service_Types-d1e265"/> to
+							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types</link> to
 								show new service types. </para>
 						</listitem>
 					</itemizedlist>
@@ -855,8 +856,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Simplified the structure of <xref
-								linkend="API_Operations"/>. </para>
+							<para>Simplified the structure of <link xlink:href="API_Operations.html">API Operations</link>. </para>
 						</listitem>
 						<listitem>
 							<para> Updated Add user operation with example of creating a user with a password in <olink
@@ -888,9 +888,7 @@
 								accounts). </para>
 						</listitem>
 						<listitem>
-							<para>Added <xref
-								linkend="Sample_Request_Response-d1e64"
-								/>, focused on interpreting
+							<para>Added <link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response</link>, focused on interpreting
 								authentication responses. This section
 								includes annotated examples relocated
 								from the "Request/Response Types"
@@ -902,8 +900,7 @@
 						</listitem>
 						<listitem>
 							<para>Expanded the list of operations
-								described in <xref
-								linkend="API_Operations"/>. In the
+								described in <link xlink:href="API_Operations.html">API Operations</link>. In the
 								same chapter, added contact info for
 								obtaining a service account, added an
 								illustration of the impersonation

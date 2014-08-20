@@ -144,35 +144,33 @@
 					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
 						targetptr="Extensions-d1e688">Extensions</olink>.</para>
 		</note>
-		<!--- this section comes from 4 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin & RAX-AUTH -->
+		
+		<!-- User API operations -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<!-- list users -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="#listUsers"/>
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-users">
+				<wadl:method href="#admin-addUser"/>
 			</wadl:resource>
-			<!-- get user by name (and id and email) -->
-			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="#getUserByName"/>
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-name">
+				<wadl:method href="#admin-getUserByName"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="#getUserById"/>
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-userid">
+				<wadl:method href="#admin-getUserById"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/identity-admin.wadl#users">
-				<wadl:method href="#getUserByEmail"/>
+			
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-userId">
+				<wadl:method href="#admin-listUsers"/>
+			</wadl:resource>	
+			<wadl:resource href="../../wadl/identity-admin.wadl#admin-userId">
+				<wadl:method href="#admin-updateUsers"/>
 			</wadl:resource>
-			<!-- add user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#users">
-				<wadl:method href="#addUser"/>
-			</wadl:resource>
-			<!-- update user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="#updateUser">			
-				</wadl:method>
-			</wadl:resource>
-			<!-- delete user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userById">
-				<wadl:method href="#deleteUser">
-				</wadl:method>
+			
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-userId">
+				<wadl:method href="#admin-deleteUser"/>
 			</wadl:resource>
 			<!-- get domains for user -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domains" >
@@ -207,9 +205,9 @@
 				<wadl:method href="#getUserCredential"/>
 			</wadl:resource>
 			<!-- reset user's API key credentials -->
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#reset_apikey_credentials" >
+			<wadl:resource href="../../wadl/identity-admin.wadl#reset_apikey_credentials" >
 				<wadl:method href="#resetUserAPIKeyCredentials"/>
-			</wadl:resource>
+			</wadl:resource>	
 			<!-- list user who is Admin user -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins" >
 				<wadl:method href="#getUserAdmin"/>
@@ -290,7 +288,7 @@
 				<wadl:method href="#getUsersWithRole"/>
 			</wadl:resource>
 			<!-- list global roles available to a user -->
-			<wadl:resource href="../../wadl/identity-admin.wadl#userRoles">
+			<wadl:resource href="../../wadl/identity-admin.wadl#admin-userRoles">
 				<wadl:method href="#listUserGlobalRoles"/>
 			</wadl:resource>
 		</wadl:resources>
@@ -352,20 +350,7 @@
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
 				<!-- validate token -->
-				<wadl:method href="#validateToken">
-				<wadl:doc>
-					<tip>
-						<para>
-							You can use this call to return information about an impersonator:
-							a Racker performing operations on behalf of a user. 
-						</para>
-						<para>
-							For information about how an impersonator can use a validated token,
-							see <xref linkend="Impersonation_Calls" />. 
-						</para>
-					</tip>
-				</wadl:doc>
-				</wadl:method>
+				<wadl:method href="#validateToken"/>
 				<!-- check token -->
 				<wadl:method href="#checkToken"/>
 				<!-- revoke token -->
@@ -538,7 +523,7 @@
 	<section xml:id="Impersonation_Calls">
 		<title>Impersonations</title>
 		<para>Impersonation operations allow service developers to manage Rackers' impersonations of users
-			for diagnostic purposes. <xref linkend="impersonation"/> shows the process for a Racker
+			for diagnostic purposes. <link xlink:href="Impersonation_Calls.html">Impersonation</link> shows the process for a Racker
 			to impersonate another user. The Racker issues one POST with his or her own
 			credentials, followed by a second POST request that identifies the user to be impersonated.</para>
 		<figure xml:id="impersonation">

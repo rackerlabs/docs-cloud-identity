@@ -4,7 +4,7 @@
             "RAX-AUTH:defaultRegion": "",
             "RAX-AUTH:domainId": "12345",
             "email": "userAdmin@rack.com",
-            "enabled": true,
+            "enabled":"true",
             "id": "10022879",
             "username": "JuserAdmin"
         }

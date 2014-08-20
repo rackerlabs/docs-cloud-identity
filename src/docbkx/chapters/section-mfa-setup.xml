@@ -7,8 +7,7 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="mfa_processes"> 
-    <title>Multi-factor authentication set up, operation, and
-    management</title>
+    <title>Using Multi-factor authentication</title>
   
   <note>
     <para>Multi-factor authentication is currently available only to
@@ -255,6 +254,10 @@
        -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
        | python -m json.tool</programlisting>
                 </para>
+                <note><para>Specify the phone number in <link
+                      xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123"
+                      >E.123 notation</link>, <code>+1
+                        235-435-623</code> or <code>+44 42 1123 4567</code>, for example.</para></note>
                 <para>This operation does not return a response body.</para>
               </listitem>
             </varlistentry>
@@ -300,7 +303,7 @@
        -X POST \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
-       -d '{"RAX-AUTH:verificationCode": { "code": "1832" }}' \
+       -d '{"RAX-AUTH:verificationCode": { "code": "1732" }}' \
        -H "X-Auth-Token: $AUTH_TOKEN" \
        | python -m json.tool</programlisting>
                 </para>
@@ -354,9 +357,13 @@
         <listitem><para>
           <link xlink:href="proc_mfa_auth.html">Authenticate from a multifactor-enabled user
             account</link></para></listitem>
-        <listitem><para><link xlink:href="Multifactor_Calls.html">API reference:
+        <listitem condition="admin"><para><link xlink:href="Multifactor_Calls.html">API reference:
               Multi-factor authentication operations</link></para>
-        </listitem></itemizedlist>
+        </listitem>
+        <listitem condition="client"><para><link xlink:href="Multifactor_Calls_client.html">API reference:
+          Multi-factor authentication operations</link></para>
+        </listitem>
+      </itemizedlist>
         </para>
   </section>
      
@@ -420,8 +427,8 @@
             </varlistentry>
           </variablelist></para></listitem>
       <listitem><para>Send another authentication request with the multi-factor
-          authentication credentials: <code>sessionId</code> and
-            <code>passcode</code>. <variablelist>
+          authentication credentials: <parameter>sessionId</parameter> and
+            <parameter>passcode</parameter>. <variablelist>
             <varlistentry>
               <term><emphasis role="bold">cURL POST token request with
                   multi-factor authentication
@@ -489,11 +496,17 @@
               multi-factor authentication settings and
               operation</link></para>
         </listitem>
-        <listitem>
-          <para><link xlink:href="Multifactor_Calls.html">API
-              reference: multi-factor authentication
-            operations</link></para>
-        </listitem>
+          <listitem condition="admin">
+            <para><link xlink:href="Multifactor_Calls.html">API
+                reference: Multi-factor authentication
+                operations</link></para>
+          </listitem>
+          <listitem condition="client">
+            <para><link xlink:href="Multifactor_Calls_client.html">API
+                reference: Multi-factor authentication
+                operations</link></para>
+          </listitem>
+        
       </itemizedlist></para> 
     </section>
   <section xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="proc_mfa_manage">
@@ -567,7 +580,8 @@
         </tr>
         <tr>
           <td valign="top">
-            <para><link xlink:href="GET_getUserById_users_User_Calls.html">Check multi-factor status on user account</link></para>
+            <para condition="admin"><link xlink:href="GET_getUserById_users_User_Calls.html">Check multi-factor status on user account</link></para>
+            <para condition="client"><link xlink:href="GET_getUserById_users_User_Calls_client.html">Check multi-factor status on user account</link></para>
           </td>
           <td valign="top">
             <para>Use the following cURL request to review the multi-factor authentication configuration settings on 
@@ -579,7 +593,7 @@
        -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
           </td>
         </tr>
-        <tr>
+        <tr condition="admin">
           <td valign="top"><link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List multifactor-enabled devices by user id</link>
             </td>
           <td valign="top"><para>Use the following cURL request to list the devices that 
@@ -590,7 +604,18 @@
        -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
           </td>
         </tr>
-        <tr>
+        <tr condition="client">
+          <td valign="top"><link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">List multifactor-enabled devices by user id</link>
+          </td>
+          <td valign="top"><para>Use the following cURL request to list the devices that 
+            associated with a user account for the purpose of multi-factor authentication.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+       -X PUT \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="admin">
           <td valign="top"><link
               xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
               >Disable multi-factor authentication</link></td>
@@ -602,7 +627,19 @@
        -H "Content-Type: application/json" \
        -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting></td>
         </tr>
-        <tr>
+        <tr condition="client">
+          <td valign="top"><link
+            xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html"
+            >Disable multi-factor authentication</link></td>
+          <td><para>Use the folowing cURL request to disable
+            (<code>enabled=false</code>) multi-factor for the
+            specified user account.</para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+       -X PUT \
+       -d '{"RAX-AUTH:multiFactor": { "enabled": "false" }}' \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting></td>
+        </tr>
+        <tr condition="admin">
           <td valign="top">
             <para><link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Remove the multi-factor settings and phone from a user account</link></para>
           </td>
@@ -614,9 +651,24 @@
        -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
           </td>
         </tr>
+        <tr condition="client">
+          <td valign="top">
+            <para><link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">Remove the multi-factor settings and phone from a user account</link></para>
+          </td>
+          <td valign="top"><para>Use the following cURL request to remove multi-factor
+            authentication capabilities from a user account.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
+       -X  DELETE  \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
       </tbody>
     </table>
-    <para>For detailed API referenceinformation for Multifactor-authentication operations, see 
+    <para condition="admin">For detailed API reference information, see 
       <link xlink:href="Multifactor_Calls.html">Multi-factor
         operations</link></para> 
+    <para condition="client">For detailed API reference information, see 
+      <link xlink:href="Multifactor_Calls_client.html">Multi-factor
+        operations</link></para>
   </section></section>

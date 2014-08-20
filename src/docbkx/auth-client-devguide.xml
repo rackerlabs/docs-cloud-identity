@@ -48,6 +48,47 @@
 				administration, and access control of </para>
 		</abstract>
 		<revhistory>
+			<revision condition="admin">
+				<date>2014-08-19</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Fixed incorrect paths in <link xlink:href="User_Calls.html">Users</link> API operations.</para></listitem>
+						<listitem>
+							<para>Updated <link xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link> field descriptions to remove call outs</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-07-29</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>
+								<itemizedlist>
+									<listitem>
+										<para>Updated Multi-factor authentication overview section to include authentication process work flow.</para></listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								<itemizedlist>
+									<listitem>
+										<para>Corrected code samples in Update User operation.</para></listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-07-26</date>
+				<revdescription>
+						<para>Added documentation for <link xlink:href="mfa_processes.html">Using Multifactor authentication</link>.</para>
+					</revdescription>
+			</revision>
 			<revision>
 				<date>2014-05-05</date>
 				<revdescription>
@@ -133,7 +174,7 @@
 							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
 									targetdoc="Identity-Developer-Guide"
 									targetptr="GET_listRoles_v2.0_OS-KSADM_roles_Role_Calls"
-									>“Role-based access control”</olink>. </para>
+									>“Role-based access control”</olink>.</para>
 						</listitem>
 						<listitem>
 							<para> Removed Category Role table from <olink targetdoc="Identity-Developer-Guide"

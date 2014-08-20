@@ -1250,7 +1250,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					</td>
 					<td><para>When a &CLOUD; customer account is created, it is
 							associated with one user, the User
-							Administrator.</para>The &CIS;
+							Administrator.</para><para>The &CIS;
 						automatically assigns the <literal
 							xmlns:db="http://docbook.org/ns/docbook"
 							>identity:user-admin</literal> role to the
@@ -1261,7 +1261,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						administrator account. Exactly one
 						administrative user exists for each account.
 						The User Administrator account user is also
-						referred to as the Account Owner.</td>
+						referred to as the Account Owner.</para></td>
 				</tr>
 				<tr valign="top">
 					<td>

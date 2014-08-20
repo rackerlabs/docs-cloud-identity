@@ -62,6 +62,39 @@
          </resource>
         </resource>
         </resource>
+        <!-- Users -->
+        
+        <resource id="user" path="users/">
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>A valid authentication token with administrative access.
+                    </para>
+                </wadl:doc>
+            </param>
+            <resource id="name" path="{username}">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="template" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The name associated with the user account you want to look up.</para>
+                    </wadl:doc>
+                </param>
+                <method href="#getUserByName-client"/>
+            </resource>
+            <resource id="id" path="{id}">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="template" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The id associated with the user account you want to look up.</para>
+                    </wadl:doc>
+                </param>
+                <method href="#getUserById-client"/>
+            </resource>
+            <resource id="email" path="{email}">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="template" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The email associated with the user account you want to look up.</para>
+                    </wadl:doc>
+                </param>
+            </resource>
+        </resource>
 
         <!--Tokens-->
 
@@ -70,10 +103,10 @@
             <method href="#authenticate"/>
             <resource id="token" path="tokens/{tokenId}">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <wadLdoc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para xmlns="http://www.w3.org/1999/xhtml">A valid administrator
                             authentication token. </para>
-                    </wadLdoc>
+                    </wadl:doc>
                 </param>
                 <param name="tokenID" style="query" required="true" type="capi:UUID">
                     <wadl:doc>
@@ -646,6 +679,216 @@
             <representation mediaType="application/json"/>
         </response>
         </method>
+    <!-- User operations -->
+    
+    <method name="GET" id="getUserByName-client">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user information by name">
+            <para role="shortdesc">Get detailed account information for a specified user, by
+                user name.</para>
+            <para>This request returns the following information for each account associated 
+                with the  specified user name:  email address, username, user ID, status, default region, and domain id.</para>
+            <note>
+                <para>
+                    <emphasis role="italic">
+                        If you  authenticated with the user role, you can see only yourself.
+                    </emphasis>
+                </para>
+                <para>
+                    If this request is issued by  a user holding the admin role (<code>identity:user-admin</code>),
+                    the specific user's information is returned only if that user is associated with the same tenant as the 
+                    requester's <code>user-admin</code> token.
+                </para>
+                <para> If this request is issued by a user holding the user role (<code>identity:default</code>), 
+                    information is returned for only the requester. 
+                </para>
+            </note>
+        </wadl:doc>
+        <response status="200 203">           
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by name: XML response">
+                    <xsdxt:code href="../common/samples/user.xml"/>
+                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Provides the ID for the default regional data center associated with the user account, if one exists.
+                            Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para> 
+                        <para>If a user account is associated with a default region, and the service catalog is available in 
+                            multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>. 
+                            For example of services available in multiple regions, see  
+                            <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">Sample Authentication Request and Response</link></para>
+                        
+                        <para>
+                            Use the <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html">"Update user"</link> 
+                            API operation to add, remove, or update the defaultRegion setting on an account. 
+                        </para>               
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:domainID" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the ID for the domain associated with the user account if one exists. 
+                            A domain represents an administrative boundary for identity management.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:multiFactorEnabled" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Indicates whether the account is enabled for multifactor authentication by mobile phone.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the ID for the domain associated with the user account if one exists. 
+                        </para>
+                        <para>
+                            A domain ID associates the user with a specific domain. The association can be 
+                            established during account creation and update operations.
+                        </para>
+                        <para> 
+                            A domain establishes an administrative boundary for a customer and a container for customer tenants (accounts) and users.
+                            Generally, the <code>domainId</code> value matches the value associated with the primary tenant ID 
+                            for the &CLOUD; account.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            The name of the user on the account. 
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the email address on the user account if one has been defined.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="enabled" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Indicates whether the user can authenticate to the &CIS;. If <code>enabled="false"</code>,
+                            the user cannot authenticate. Typically, the <code>enabled</code> setting is set 
+                            and stored by a backend system integrated with &CIS;. To restore account access, 
+                            work with the &CIS; System and user administrators to resolve any issues on the account.
+                        </para>
+                    </wadl:doc>
+                </param>
+                
+                <!-- Pull in shared response parameters by using entity from common.ent file -->
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by name: JSON response">
+                    <xsdxt:code href="../common/samples/user.json"/>
+                </wadl:doc>
+            </representation>
+        </response> &commonFaults; &getFaults; </method>
+    <method name="GET" id="getUserById-client">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User by ID">
+            <para role="shortdesc">Get detailed account information for a specific user, by userid.</para>
+            <para>
+                This request returns the following information for each account associated with the specified user ID: 
+                email address, username, user ID, status, default region, and domain id.</para>
+        </wadl:doc>
+        <response status="200 203">
+            <!-- Pull in shared response parameters by using entity from common.ent file -->
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by id: XML response">
+                    <xsdxt:code href="../common/samples/user.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json" element="identity:user">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by id: json response">
+                    <xsdxt:code href="../common/samples/user.json"/>
+                </wadl:doc>
+            </representation>
+        </response> &commonFaults; &getFaults; </method>
+    
+    <method name="GET" id="getUserByEmail-client">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user information by email">
+            <para role="shortdesc">Get detailed information about a specific user, by
+                user email.</para>
+            <para>This request returns the following information for 
+                all accounts with the specified user email address: email address, username,
+                user ID, status, domain, creation date, update date, default region, and domain id.</para>
+            <para>Default region, indicated by <code>defaultRegion</code>, associates this
+                user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
+                acceptable, indicating that no default region has been assigned for this user. If a default region has been
+                assigned and a service in this user's service catalog is available in multiple regions, API service requests
+                are managed in the <code>defaultRegion</code>. 
+            </para>
+        </wadl:doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by email: XML response">
+                    <xsdxt:code href="../common/samples/userbyemailresponse.xml"/>
+                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Provides the ID for the default regional data center associated with the user account, if one exists.
+                            Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para> 
+                        <para xmlns="http://www.w3.org/1999/xhtml">If a user account is associated with a default region, and the service catalog is available in 
+                            multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>. 
+                            For example of services available in multiple regions, see 
+                            <link xlink:href="Sample_Request_Response-d1e64.html">Sample Authentication Request and Response</link></para>
+                        
+                        <para>
+                            Use the <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html">"Update user"</link> 
+                            API operation to add, remove, or update the defaultRegion setting on an account. 
+                        </para>               
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:domainID" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the ID for the domain associated with the user account if one exists. 
+                        </para>
+                        <para>
+                            A domain ID associates the user with a specific domain. The association can be 
+                            established during account creation and update operations.
+                        </para>
+                        <para> 
+                            A domain establishes an administrative boundary for a customer and a container for customer tenants (accounts) and users.
+                            Generally, the <code>domainId</code> value matches the value associated with the primary tenant ID 
+                            for the &CLOUD; account.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            The name of the user on the account. 
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the email address on the user account if one has been defined.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="enabled" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Indicates whether the user can authenticate to the &CIS;. If <code>enabled="false"</code>,
+                            the user cannot authenticate. Typically, the <code>enabled</code> setting is set 
+                            and stored by a backend system integrated with &CIS;. To restore account access, 
+                            work with the &CIS; System and user administrators to resolve any issues on the account.
+                        </para>
+                    </wadl:doc>
+                </param>
+            </representation>
+            <representation mediaType="application/json" element="identity:user">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by email: json response">
+                    <xsdxt:code href="../common/samples/userbyemailresponse.json"/>
+                </wadl:doc>
+            </representation>
+        </response> &commonFaults; &getFaults; </method>
 
     <!-- Tenant Operations -->
 

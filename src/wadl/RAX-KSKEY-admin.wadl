@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+<!-- (C) 2011-2014 OpenStack Foundation, All Rights Reserved -->
 <!--*******************************************************-->
 <!--         Import Common XML Entities                    -->
 <!--                                                       -->
@@ -19,14 +19,9 @@
 	xmlns:capi="http://docs.openstack.org/common/api/v1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
-	xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../common/xsd/api.xsd
-		http://docs.openstack.org/common/api/v1.0 ../common/xsd/api-common.xsd
-		http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd
-		http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0 ../common/xsd/RAX-KSKEY-credentials.xsd
-		">
+	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
 
-    <grammars>
+ <grammars>
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
         <include href="../common/xsd/RAX-KSKEY-credentials.xsd" />
@@ -36,21 +31,52 @@
     <!--*******************************************************-->
 
     <!-- We should use SSL in production -->
-    <resources base="http://localhost:35357" xml:id="Identity-v2">
+    <resources base="http://localhost:35357" xml:id="RAX-KSKEY-admin-v2.0">
         <resource id="version" path="v2.0">
             <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                <doc>You need a valid admin token for access.</doc>
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
+                    <para>Use a valid authentication token for an administrative user.</para></wadl:doc>
             </param>            
             <resource id="users" path="users">
                 <resource id="userById" path="{userId}">
                     <param name="userId" style="template" type="xsd:string" required="true">
-                        <doc>The user ID assigned by system when user is added.</doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN">The user ID assigned by system when user is added.</wadl:doc>
                     </param>
                     <resource id="user-OS-KSADM" path="OS-KSADM">
                         <resource id="userCredentials" path="credentials">
                             <method href="#addUserCredential"/>
-                            <method href="#listCredentials"/>
-                            <resource id="userCredentialsByType" path="RAX-KSKEY:apiKeyCredentials">
+
+                            <resource id="tenants">
+                                <param name="X-Auth-Token"
+                                    style="header" type="xsd:string"
+                                    required="true">
+                                    <wadl:doc
+                                        xmlns="http://docbook.org/ns/docbook"
+                                        xml:lang="EN"><para>A valid
+                                            authentication token for an
+                                            administrative
+                                            user.</para></wadl:doc>
+                                </param>
+                                <param name="marker" style="query"
+                                    required="false" type="xsd:string">
+                                    <wadl:doc
+                                        xmlns="http://docbook.org/ns/docbook"
+                                        xml:lang="EN"><para>The ID of the
+                                            last item in the previous
+                                            list.</para></wadl:doc>
+                                </param>
+                                <param name="limit" style="query"
+                                    required="false" type="xsd:int">
+                                    <wadl:doc
+                                        xmlns="http://docbook.org/ns/docbook"
+                                        xml:lang="EN"><para>The page
+                                            size.</para></wadl:doc>
+                                </param>
+                                <method href="#listCredentials"/>
+                            </resource>
+                            <resource id="userCredentialsByType"
+                                path="RAX-KSKEY:apiKeyCredentials">
                                 <method href="#updateUserCredential"/>
                                 <method href="#deleteUserCredential"/>
                                 <method href="#getUserCredential"/>
@@ -68,34 +94,32 @@
     
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
-        <doc xml:lang="EN" title="Add User Credential">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Add credentials to a user.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Add credentials to a user.</p>
-        </doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user credential">
+            <para role="shortdesc">Adds a credential to a user.</para>
+        </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
-            <doc xml:lang="EN">
+            <wadl:doc xml:lang="EN"
+                    xmlns="http://docbook.org/ns/docbook">
                <xsdxt:code href="../common/samples/apiKeyCredentials.xml"/>
-            </doc>
+            </wadl:doc>
          </representation>
             <representation mediaType="application/json">
-            <doc xml:lang="EN">
+            <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
-            </doc>
+            </wadl:doc>
          </representation>
         </request>
         <response status="201">
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
-            <doc xml:lang="EN">
+            <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                <xsdxt:code href="../common/samples/apiKeyCredentials.xml"/>
-            </doc>
+            </wadl:doc>
          </representation>
             <representation mediaType="application/json">
-            <doc xml:lang="EN">
+            <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
-            </doc>
+            </wadl:doc>
          </representation>
         </response>
         &commonFaults;
@@ -104,30 +128,30 @@
     </method>
 
     <method name="GET" id="listCredentials">
-        <doc xml:lang="EN" title="List Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List Credentials">
+            <para role="shortdesc">
                 List credentials.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">List credentials.</p>
-        </doc>
+            </para>
+            <para>List credentials.</para>
+        </wadl:doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc> Allows us to page through list of users. </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to page through list of users. </wadl:doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc> Allows us to set size of page when paging through list of users. </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. </wadl:doc>
             </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:credentials">
-            <doc xml:lang="EN">
+            <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                <xsdxt:code href="../common/samples/credentialswithapikey.xml"/>
-            </doc>
+            </wadl:doc>
          </representation>
             <representation mediaType="application/json">
-            <doc xml:lang="EN">
+            <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                <xsdxt:code href="../common/samples/credentialswithapikey.json"/>
-            </doc>
+            </wadl:doc>
          </representation>
         </response>
         &commonFaults;
@@ -135,30 +159,33 @@
     </method>
     
     <method name="GET" id="listCredentialsByType">
-        <doc xml:lang="EN" title="List Credentials by Type">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Credentials by Type">
+            <para role="shortdesc">
                 List credentials by type.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">List credentials by type.</p>          
-        </doc>
+            </para>
+            <para>List credentials by type.</para>          
+        </wadl:doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <doc> Allows us to page through list of users. </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN"> Allows us to page through list of users. </wadl:doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <doc> Allows us to set size of page when paging through list of users. </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN"> Allows us to set size of page when paging through list of users. </wadl:doc>
             </param>
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="identity:credentials">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
                <xsdxt:code href="../common/samples/credentials.xml"/>
-            </doc>
+            </wadl:doc>
          </representation>
             <representation mediaType="application/json">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                <xsdxt:code href="../common/samples/credentials.json"/>
-            </doc>
+            </wadl:doc>
          </representation>
         </response>
         &commonFaults;
@@ -166,41 +193,45 @@
     </method>    
 
     <method name="POST" id="updateUserCredential">
-        <doc xml:lang="EN" title="Update User Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user API key credentials">
+            <para role="shortdesc">
                 Update user credentials.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            </para>
+            <para>
                 An API key is a credential; you can update a user's API key with this call.
                 To add a credential to a user, specify the user's ID in the request.
                 If you know the user's name but not the user's ID, use                  
                 <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about the user.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
                <xsdxt:code href="../common/samples/apiKeyCredentials.xml"/>
-            </doc>
+            </wadl:doc>
          </representation>
             <representation mediaType="application/json">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
                <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
-            </doc>
+            </wadl:doc>
          </representation>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
                <xsdxt:code href="../common/samples/apiKeyCredentials.xml"/>
-            </doc>
+            </wadl:doc>
          </representation>
             <representation mediaType="application/json">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
                <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
-            </doc>
+            </wadl:doc>
          </representation>
         </response>
         &commonFaults;
@@ -209,19 +240,19 @@
     </method>
     
     <method name="DELETE" id="deleteUserCredential">
-        <doc xml:lang="EN" title="Delete User Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete user API key credentials">
+            <para role="shortdesc">
                 Delete user credentials.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            </para>
+            <para>
                 An API key is a credential; you can delete a user's API key with this call.
                 To delete a credential from a user, specify the user's ID in the request.
                 If you know the user's name but not the user's ID, use                  
                 <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about the user.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <response status="204"/>
         &commonFaults;
         &postPutFaults;
@@ -229,27 +260,24 @@
     </method>
     
     <method name="GET" id="getUserCredential">
-        <doc xml:lang="EN" title="Get User Credentials">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">
-                Get user credentials.
-            </p>
-            <p xmlns="http://www.w3.org/1999/xhtml">
-                To list a user's API key credentials, 
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user API key credentials">
+            <para role="shortdesc">Get user credentials.</para>
+            <para>To list a user's API key credentials, 
                 specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use "Get User by Name" to 
+                If you know the user's name but not the user's ID, use the Get user by name operation to 
                 obtain complete identifying information about the user.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                <xsdxt:code href="../common/samples/apiKeyCredentials.xml"/>
-            </doc>
+            </wadl:doc>
          </representation>
             <representation mediaType="application/json">
-            <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
-            </doc>
+            </wadl:doc>
          </representation>
         </response>
         &commonFaults;

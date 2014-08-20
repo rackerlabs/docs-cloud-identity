@@ -67,8 +67,16 @@
                         providing a username and
                     password.</emphasis></para>
                     <para>
-                        <literallayout class="monospaced">curl -X POST https://identity.api.rackspacecloud.com/v2.0/tokens -d
-'{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' -H "Content-type: application/json"</literallayout>
+                        
+                        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
+ -X POST \
+ -d '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' \
+ -H "Content-type: application/json"</programlisting>
+  
+  
+  
+  
+  
                     </para>
                     <para> Successful authentication returns a token
                     which you can use as evidence that your service's
@@ -88,8 +96,9 @@
                         along with the token.</para>
                     <para><emphasis>You can use a token and a service endpoint to tell a service that your credentials are valid.</emphasis></para>
                     <para>
-                        <literallayout class="monospaced">curl -X GET https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee
--H 'X-Auth-Token:vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose</literallayout>
+                        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee  \
+-X GET \
+-H 'X-Auth-Token:vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose </programlisting>             
                     </para>
                 </listitem>
             </orderedlist>

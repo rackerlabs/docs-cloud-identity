@@ -144,14 +144,25 @@
 		
 	  <example>
 		<title>Authentication Request with Headers: JSON</title>
-		<programlisting language="xml">
-<xi:include href="../samples/samplerequestheader.txt" parse="text"/>
-		</programlisting>
-<programlisting language="javascript">
-<xi:include href="../samples/auth_credentials.json" parse="text"/>
+	  	
+		<programlisting language="json">
+<![CDATA[<POST /v2.0/tokens HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Content-Type: application/json
+Accept: application/json
+
+{
+  "auth": {
+    "passwordCredentials": {
+      "username": "demoauthor",
+      "password": "mypass"
+    },
+    "tenantId": "1234"
+  }
+}]]>
 </programlisting>
 	  </example>
-		<para><link linkend="auth_req_attributes"></link> describes the attributes for the authentication response.</para>
+		<para><xref linkend="auth_req_attributes"></xref> describes the attributes for the authentication response.</para>
 		<table rules="all" xml:id="auth_req_attributes">
 			<caption>Authentication request attribute descriptions</caption>
 			<col width="24%"/>
@@ -220,7 +231,7 @@
 Date: Mon, 12 Nov 2010 15:55:01 GMT
 Content-Length:
 Content-Type: application/xml; charset=UTF-8
-< <access 
+<access 
     xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
     xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
     xmlns="http://docs.openstack.org/identity/api/v2.0"
@@ -709,7 +720,7 @@ Content-Type: application/xml; charset=UTF-8
 					</orderedlist>
 				</listitem>
 			</orderedlist>
-					<para> Authentication endpoints follow the process described
+					<para>Authentication endpoints follow the process described
 				above. </para>
 			<para>
 				To connect a client to an endpoint listed as

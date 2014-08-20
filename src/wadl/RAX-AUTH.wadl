@@ -71,7 +71,7 @@
     <!-- Resources -->
     <!-- ======================================================================================= -->
 
-    <resources base="http://localhost:8080" xml:id="Identity-v2">
+    <resources base="http://localhost:8080" xml:id="RAX-AUTH-v2">
         <resource id="version" path="/v2.0">
 
             <!-- TOKENS resource(s) -->
@@ -131,7 +131,7 @@
                 </resource>
                 
                 <!-- MULTIFACTOR resource(s) -->
-                    <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/{bypass}">
+<!--                    <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/{bypass}">
                         <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
                                 A valid authentication token</para></wadl:doc>
@@ -143,7 +143,7 @@
                         </param>
                         <method href="#generateBypassCode"/>
                         <method href="#generateBypassCodes"/>
-                </resource>
+                </resource> -->
                 <resource id="multifactor_unlock" path="users/{userId}/RAX-AUTH/multi-factor">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
@@ -364,14 +364,14 @@
                     <resource id="service_api_capabilities" path="{type}/{version}/capabilities">
                         <param name="type" type="xsd:string" style="template" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                                <db:para>The service type, compute, object-store, and rax-dns for example.</db:para>
+                                <para>The service type, compute, object-store, and rax-dns for example.</para>
                             </wadl:doc>
                         </param>
                         <param name="version" type="xsd:string" style="template" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                                <db:para>
+                                <para>
                                     The service version, v1 or v2.0 for example.
-                                </db:para>>
+                                </para>>
                             </wadl:doc>
                         </param>
 
@@ -391,8 +391,8 @@
     <method id="getUserSecretQAs" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get user secret Q&amp;A list">
-            <db:para role="shortdesc"> Get a list of secret questions and answers for a user. </db:para>
-            <db:para> The operation returns a list of questions and answers for a user. </db:para>
+            <para role="shortdesc"> Get a list of secret questions and answers for a user. </para>
+            <para> The operation returns a list of questions and answers for a user. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -412,8 +412,8 @@
     <method id="saveUserSecretQA" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Create a secret Q&amp;A">
-            <db:para role="shortdesc"> Create a secret question and answer for a user. </db:para>
-            <db:para> Clients must specify the question ID, question, and answer in the request body. </db:para>
+            <para role="shortdesc"> Create a secret question and answer for a user. </para>
+            <para> Clients must specify the question ID, question, and answer in the request body. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -438,18 +438,18 @@
         </response> &commonFaults; &postPutFaults; </method>
 
     <method id="resetUserAPIKeyCredentials" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Reset user API key">
-            <db:para role="shortdesc"> Reset a user's API Key </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml"> We recommend that you routinely reset passwords and API keys. This API
-                key reset call will return the new API key for the user account. Unlike updating the password, the API key
-                reset does not revoke existing tokens. The <a href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-external/content/DELETE_revokeToken_v2.0_tokens__tokenId__.html"> "Revoke Token"</a> call can be used to revoke a token. </p>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para role="shortdesc"> Reset a user's API Key.</para>para>
+            <para>We recommend that you routinely reset passwords and API keys. 
+                This API key reset operation returns the new API key for the user account. 
+                Unlike updating the password, the API key reset does not revoke existing 
+                tokens. Administrators can use the Revoke Token operation to invalidate 
+                the token for a user.</para>
         </wadl:doc>
         <response status="200">
                 <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
                </wadl:doc>
             </representation>
@@ -462,7 +462,7 @@
 
     <method id="impersonateUser" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user">
-            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> Impersonate a specific user.</para>
+           <para class="shortdesc"> Impersonate a specific user.</para>
             <para xmlns="http://docbook.org/ns/docbook"> To impersonate a user, you must first authenticate as yourself. The
                 response to this authentication request will supply you with a current Racker token; you must already hold a
                 service token. After you are authenticated and holding the necessary privileges, you can issue this
@@ -518,10 +518,10 @@
     <method id="getDomains" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get domains">
-            <db:para role="shortdesc"> Gets a list of domains. </db:para>
-            <db:para> The operation returns a list of domains for which the supplied token provides access. Tokens have
+            <para role="shortdesc"> Gets a list of domains. </para>
+            <para> The operation returns a list of domains for which the supplied token provides access. Tokens have
                 access to domains by the token having access to a tenant that exists in the domain. If the token belongs to
-                an admin user, a list of all domains may be returned. </db:para>
+                an admin user, a list of all domains may be returned. </para>
         </wadl:doc>
         <response status="200">
                 <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -540,7 +540,7 @@
     <method id="getDomain" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get a domain">
-            <db:para role="shortdesc"> Get a domain. </db:para>
+            <para role="shortdesc"> Get a domain. </para>
         </wadl:doc>
         <response status="200">
                 <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -559,7 +559,7 @@
     <method id="updateDomain" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Update a domain">
-            <db:para role="shortdesc"> Update a domain. </db:para>
+            <para role="shortdesc"> Update a domain. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -578,8 +578,8 @@
     <method id="createDomain" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Create a domain">
-            <db:para role="shortdesc"> Create a domain. </db:para>
-            <db:para> Clients must specify the domain ID in the request body. </db:para>
+            <para role="shortdesc"> Create a domain. </para>
+            <para> Clients must specify the domain ID in the request body. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -601,16 +601,16 @@
     <method id="deleteDomain" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Delete a domain">
-            <db:para role="shortdesc"> Delete a domain. </db:para>
-            <db:para> This operation fails unless no entities such as users and tenants exist in this domain. Only an empty
-                domain can be deleted. </db:para>
+            <para role="shortdesc"> Delete a domain. </para>
+            <para> This operation fails unless no entities such as users and tenants exist in this domain. Only an empty
+                domain can be deleted. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method id="getDomainUsers" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get users in domain">
-            <db:para role="shortdesc"> Get users in a domain. </db:para>
+            <para role="shortdesc"> Get users in a domain. </para>
         </wadl:doc>
         <request>
             <param name="enabled" style="query" type="xsd:string">
@@ -641,19 +641,19 @@
     <method id="addUserToDomain" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Add user to domain">
-            <db:para role="shortdesc"> Add a user to a domain. </db:para>
-            <db:para> A user can exist in only one domain at a time. When you add a user to a domain, the user is
-                automatically removed from any prior domain. </db:para>
+            <para role="shortdesc"> Add a user to a domain. </para>
+            <para> A user can exist in only one domain at a time. When you add a user to a domain, the user is
+                automatically removed from any prior domain. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getDomainTenants" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get tenants in domain">
-            <db:para role="shortdesc"> Get tenants in a domain. </db:para>
-            <db:para> Tenants can be used to create logical organization within a domain. For example, an entertainment
+            <para role="shortdesc"> Get tenants in a domain. </para>
+            <para> Tenants can be used to create logical organization within a domain. For example, an entertainment
                 business might use two tenants to separately identify resources related to two kinds of activity: manage Star Wars
-                games and manage Star Wars pictures.</db:para>
+                games and manage Star Wars pictures.</para>
         </wadl:doc>
         <request>
             <param name="enabled" style="template" type="xsd:string">
@@ -684,23 +684,23 @@
     <method id="addTenantToDomain" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Add tenant to domain">
-            <db:para role="shortdesc"> Add a tenant to a domain. </db:para>
-            <db:para> A tenant can only exist in one domain at a time. When you add a tenant to a domain, the tenant is
-                automatically removed from any prior domain. </db:para>
+            <para role="shortdesc"> Add a tenant to a domain. </para>
+            <para> A tenant can only exist in one domain at a time. When you add a tenant to a domain, the tenant is
+                automatically removed from any prior domain. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="removeTenantFromDomain" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Remove tenant from domain">
-            <db:para role="shortdesc"> Remove a tenant from a domain. </db:para>
+            <para role="shortdesc"> Remove a tenant from a domain. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="setDefaultRegionServices" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Set default region services">
-            <db:para role="shortdesc">Sets the list of services that restrict the default regions their users can set.</db:para>
+            <para role="shortdesc">Sets the list of services that restrict the default regions their users can set.</para>
             
             <para xmlns="http://docbook.org/ns/docbook">Users can modify their own default regions, but only within limits.
                 Those limits are imposed by the services in the user's service catalog. Each service specifies the default
@@ -727,8 +727,8 @@
     <method id="getDefaultRegionServices" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get default region services">
-            <db:para role="shortdesc"> Gets the list of services that restrict the default regions their users can set.
-            </db:para>
+            <para role="shortdesc"> Gets the list of services that restrict the default regions their users can set.
+            </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -749,9 +749,9 @@
     <method id="getAccessibleDomainsForUser" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get accessible domains">
-            <db:para role="shortdesc"> Gets a list of accessible domains. </db:para>
-            <db:para> The operation returns a list of domains to which the user has access. A user has access to a domains if
-                the user has a role in a tenant that exists in the domain. </db:para>
+            <para role="shortdesc"> Gets a list of accessible domains. </para>
+            <para> The operation returns a list of domains to which the user has access. A user has access to a domains if
+                the user has a role in a tenant that exists in the domain. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -772,7 +772,7 @@
     <method id="getAccesibleDomainEndpointsForUser" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get accessible domain endpoints">
-            <db:para role="shortdesc"> Get endpoints for a user restricted by domain. </db:para>
+            <para role="shortdesc"> Get endpoints for a user restricted by domain. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -793,10 +793,10 @@
     <method id="getDomainEndpoints" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get endpoints for domain">
-            <db:para role="shortdesc"> Get endpoints restricted to a domain. </db:para>
-            <db:para>This operation returns a list of domain endpoints for which the supplied token provides access. If a token 
+            <para role="shortdesc"> Get endpoints restricted to a domain. </para>
+            <para>This operation returns a list of domain endpoints for which the supplied token provides access. If a token 
                 has access to a tenant that exists in the domain, then the token has access to the domain.  If the token belongs 
-                to an admin user, a list of all domain endpoints may be returned. </db:para>
+                to an admin user, a list of all domain endpoints may be returned. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -815,14 +815,12 @@
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getUserAdmin" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get user admin">
-            <db:para role="shortdesc"> Get user admin. </db:para>
-            <p xmlns="http://www.w3.org/1999/xhtml">This request returns a single user. The request allows users within an
-                account who are user-admins (identity: user-admin) or account users (identity: default) to locate the
-                administrator/point of contact of their account if they have questions or need assistance regarding user
-                and/or role management. This request provides identifying information about the administrator including
-                domain name, domain ID, email address, status, user ID and user name.</p>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get user admin">
+            <para role="shortdesc"> Get the user admininistrator or point of contact for an account</para>
+            <para>Account users with the <parameter>identity:user-admin</parameter> or 
+                <parameter>identity:default</parameter> role can use this operation to identify the administrator or point of contact for a user 
+                account if they have questions or need assistance regarding user
+                and/or role management. This request returns the following identifying information about the administrator: domain name, domain ID, email address, status, user ID and user name.</para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -843,7 +841,7 @@
     <method id="getPolicies" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get all policies">
-            <db:para role="shortdesc"> Get all Policies. </db:para>
+            <para role="shortdesc"> Get all Policies. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -862,7 +860,7 @@
     <method id="createPolicy" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Create a policy">
-            <db:para role="shortdesc"> Create a policy. </db:para>
+            <para role="shortdesc"> Create a policy. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -885,7 +883,7 @@
     <method id="getPolicy" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get a policy">
-            <db:para role="shortdesc"> Gets a policy. </db:para>
+            <para role="shortdesc"> Gets a policy. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -904,7 +902,7 @@
     <method id="updatePolicy" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Update a policy">
-            <db:para role="shortdesc"> Update a Policy. </db:para>
+            <para role="shortdesc"> Update a Policy. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -923,18 +921,18 @@
     <method id="deletePolicy" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Delete a policy">
-            <db:para role="shortdesc"> Delete a policy. </db:para>
-            <db:para> A policy can only be deleted if it is not tied to any entity. </db:para>
+            <para role="shortdesc"> Delete a policy. </para>
+            <para> A policy can only be deleted if it is not tied to any entity. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getPolicyBlob" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get detailed policy content">
-            <db:para role="shortdesc"> Gets a policy content. </db:para>
-            <db:para> The representation of the policy is different from the author's perspective and the policy enforcer's
+            <para role="shortdesc"> Gets a policy content. </para>
+            <para> The representation of the policy is different from the author's perspective and the policy enforcer's
                 perspective. This API is intended for policy enforcers; it gives clear, fully detailed, non-verbose
-                descriptions of the policy. </db:para>
+                descriptions of the policy. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -949,7 +947,7 @@
     <method id="getEndpointTemplatePolicies" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get policies">
-            <db:para role="shortdesc"> Get all policies for endpoint template. </db:para>
+            <para role="shortdesc"> Get all policies for endpoint template. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -970,8 +968,8 @@
     <method id="updateEndpointTemplatePolicies" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Update policies">
-            <db:para role="shortdesc"> Update all policies for endpoint template </db:para>
-            <db:para> This allows clients to update all the policies for an endpoint template at once. </db:para>
+            <para role="shortdesc"> Update all policies for endpoint template </para>
+            <para> This allows clients to update all the policies for an endpoint template at once. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -992,21 +990,21 @@
     <method id="addPolicyToEndpointTemplate" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Add policy">
-            <db:para role="shortdesc"> Add a Policy to an endpoint template. </db:para>
+            <para role="shortdesc"> Add a Policy to an endpoint template. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="removePolicyFromEndpointTemplate" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Remove policy">
-            <db:para role="shortdesc"> Remove a policy from an endpoint template. </db:para>
+            <para role="shortdesc"> Remove a policy from an endpoint template. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getServiceApis" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get service APIs">
-            <db:para role="shortdesc"> Gets a list of service APIs. </db:para>
+            <para role="shortdesc"> Gets a list of service APIs. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -1027,7 +1025,7 @@
     <method id="getCapabilities" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get capabilities">
-            <db:para role="shortdesc"> Get the capabilities for an endpoint template. </db:para>
+            <para role="shortdesc"> Get the capabilities for an endpoint template. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -1048,10 +1046,10 @@
     <method id="updateCapabilities" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Update capabilities">
-            <db:para role="shortdesc"> Update the capabilities for a Service API. </db:para>
-            <db:para>Any capabilities that previously existed for this endpoint template will be overridden. There will be
+            <para role="shortdesc"> Update the capabilities for a Service API. </para>
+            <para>Any capabilities that previously existed for this endpoint template will be overridden. There will be
                 future support to update capabilities by specifying a WADL as the payload. A WADL describes all the
-                capabilities that can exist for a service. </db:para>
+                capabilities that can exist for a service. </para>
         </wadl:doc>
         <!-- 
           in https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl,
@@ -1076,15 +1074,15 @@
     <method id="removeCapabilities" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Remove capabilities">
-            <db:para role="shortdesc"> Remove capabilities from an endpoint template. </db:para>
+            <para role="shortdesc"> Remove capabilities from an endpoint template. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getRegions" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get regions">
-            <db:para role="shortdesc"> Gets a list of regions. </db:para>
-            <db:para> The operation returns a list of regions. </db:para>
+            <para role="shortdesc"> Gets a list of regions. </para>
+            <para> The operation returns a list of regions. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -1105,7 +1103,7 @@
     <method id="getRegion" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get a region">
-            <db:para role="shortdesc"> Gets a region. </db:para>
+            <para role="shortdesc"> Gets a region. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -1126,7 +1124,7 @@
     <method id="updateRegion" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Update a region">
-            <db:para role="shortdesc"> Updates a region. </db:para>
+            <para role="shortdesc"> Updates a region. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1147,13 +1145,13 @@
     <method id="createRegion" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Create a region">
-            <db:para role="shortdesc"> Creates a region. </db:para>
-            <db:para> Clients must specify the region name in the request body. </db:para>
-            <db:para> Clients must specify whether or not the region is default in the request body. When a user is created,
+            <para role="shortdesc"> Creates a region. </para>
+            <para> Clients must specify the region name in the request body. </para>
+            <para> Clients must specify whether or not the region is default in the request body. When a user is created,
                 they are assigned the default region based on which region is set as “isDefault”:true. This is used to assist
                 Next Gen Compute capacity by suggesting to new users that they provision where we want them to. The user can
                 change their default region through the update user API call, but they are restricted to changing it only to
-                one of their regions listed in the service catalog for the CloudServersOpenStack service. </db:para>
+                one of their regions listed in the service catalog for the CloudServersOpenStack service. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1175,17 +1173,17 @@
     <method id="deleteRegion" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Delete a region">
-            <db:para role="shortdesc"> Deletes a region. </db:para>
-            <db:para>This request only succeeds if the region default is set to false. The default value must be false
-                before this operation will be allowed.</db:para>
+            <para role="shortdesc"> Deletes a region. </para>
+            <para>This request only succeeds if the region default is set to false. The default value must be false
+                before this operation will be allowed.</para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method id="getQuestions" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get questions">
-            <db:para role="shortdesc"> Get a list of questions. </db:para>
-            <db:para> The operation returns a list of questions. </db:para>
+            <para role="shortdesc"> Get a list of questions. </para>
+            <para> The operation returns a list of questions. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -1206,7 +1204,7 @@
     <method id="getQuestion" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get a question">
-            <db:para role="shortdesc"> Get a question. </db:para>
+            <para role="shortdesc"> Get a question. </para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -1227,7 +1225,7 @@
     <method id="updateQuestion" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Update a question">
-            <db:para role="shortdesc"> Update a question. </db:para>
+            <para role="shortdesc"> Update a question. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1248,8 +1246,8 @@
     <method id="createQuestion" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Create a question">
-            <db:para role="shortdesc"> Create a question. </db:para>
-            <db:para> Clients must specify the question name in the request body. </db:para>
+            <para role="shortdesc"> Create a question. </para>
+            <para> Clients must specify the question name in the request body. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1277,16 +1275,16 @@
 
     <method id="deleteQuestion" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete a question">
-            <db:para role="shortdesc"> Delete a question. </db:para>
-            <db:para> This request will only succeed if the question is not assigned to any users. The question must be
-                removed from any users before this operation will be allowed. </db:para>
+            <para role="shortdesc"> Delete a question. </para>
+            <para> This request will only succeed if the question is not assigned to any users. The question must be
+                removed from any users before this operation will be allowed. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method id="getEndpointTemplates" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get endpoint templates">
-            <db:para role="shortdesc">Get users in a domain. </db:para>
+            <para role="shortdesc">Get users in a domain. </para>
         </wadl:doc>
         <request>
             <param name="serviceId" style="template" type="xsd:string">
@@ -1414,9 +1412,9 @@
     </method>
     <method id="authenticateAsRacker" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate as Racker">
-            <db:para role="shortdesc"> Authenticate as Racker.</db:para>
-            <db:para>Rackers can use the POST tokens operation to authenticate by supplying the following information 
-            in the request: Rackspace username, SSO password, and the Rackspace domainId.</db:para>
+            <para role="shortdesc"> Authenticate as Racker.</para>
+            <para>Rackers can use the POST tokens operation to authenticate by supplying the following information 
+            in the request: Rackspace username, SSO password, and the Rackspace domainId.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1484,7 +1482,7 @@
             The same phone number can be associated with multiple accounts.</para>
             <para>Specify the phone number in 
                 <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
-                <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example. 
+                <code>+1 235-435-623</code> or <code>+44 42 1123 4567</code> for example.
              </para>
       </wadl:doc>
         <request>
@@ -1657,8 +1655,8 @@
     <method id="updateMultifactorSettings" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
             title="Update multi-factor authentication configuration on user account">
-            <db:para role="shortdesc">Enables or disables the multi-factor authentication setting for the specified account.
-            </db:para>
+            <para role="shortdesc">Enables or disables the multi-factor authentication setting for the specified account.
+            </para>
         </wadl:doc>
         <wadl:doc xmlns="http://docbook.org/ns/docbook">     
             <para>After verifying the first mobile phone number associated with a user account, use this operation  
@@ -1897,7 +1895,7 @@
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultiFacUnlockReq.json"/>
-                    <db:para>This operation does not accept a response body.</db:para>
+                    <para>This operation does not accept a response body.</para>
                </wadl:doc>
             </representation>
         </request>
@@ -1906,10 +1904,10 @@
     
     <method id="getTokenBySAML" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get token by SAML assertion">
-            <db:para role="shortdesc">Get a token by SAML assertion.</db:para>
-            <db:para>Cloud Identity supports identity federation through the implementation of the SAML 2 protocol. Using this 
+            <para role="shortdesc">Get a token by SAML assertion.</para>
+            <para>Cloud Identity supports identity federation through the implementation of the SAML 2 protocol. Using this 
                 protocol, you can provide an XML assertion indicating that the identity is already authenticated via a trusted 
-                identity provider. Cloud Identity will return a token in response.</db:para>
+                identity provider. Cloud Identity will return a token in response.</para>
         </wadl:doc>
         <wadl:doc xmlns="http://docbook.org/ns/docbook">     
             <note>
