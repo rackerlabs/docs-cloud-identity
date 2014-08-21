@@ -580,6 +580,23 @@
         </tr>
         <tr>
           <td valign="top">
+            <para condition="admin"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor__bypass__Multifactor_Calls.html">Generate bypass code</link></para>
+          <para condition="client"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor__bypass__Multifactor_Calls_client.html">Generate bypass codes</link></para>
+          </td>
+            <td valign="top">
+            <para>Use the following cURL request to generate a bypass
+              code that can be used in lieu of the multi-factor
+              authentication passcode when the mobile phone associated
+              with the account is lost or damaged, or if the user does
+              not receive the passcode.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> $ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \
+       -d '{"RAX-AUTH:bypassCodes":{"validityDuration":"PT30M"}}' 
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
             <para condition="admin"><link xlink:href="GET_getUserById_users_User_Calls.html">Check multi-factor status on user account</link></para>
             <para condition="client"><link xlink:href="GET_getUserById_users_User_Calls_client.html">Check multi-factor status on user account</link></para>
           </td>
@@ -670,5 +687,5 @@
         operations</link></para> 
     <para condition="client">For detailed API reference information, see 
       <link xlink:href="Multifactor_Calls_client.html">Multi-factor
-        operations</link></para>
+        operations</link>.</para>
   </section></section>

@@ -52,6 +52,28 @@
 		</abstract>
 		<revhistory>
 			<revision condition="admin">
+				<date>2014-08-20</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added Generate Bypass codes API operation to <link xlink:href="User_Calls.html">Users</link> API operations.</para></listitem>
+						
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision condition="admin">
+				<date>2014-08-20</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Fixed incorrect paths in <link xlink:href="User_Calls.html">Users</link> API operations.</para></listitem>
+						<listitem>
+							<para>Updated <link xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link> field descriptions to remove call outs</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision condition="admin">
 				<date>2014-08-19</date>
 				<revdescription>
 					<itemizedlist spacing="compact">

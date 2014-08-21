@@ -148,7 +148,7 @@
 				</wadl:resource>
 				<!-- list global roles available to a user -->
 				<wadl:resource href="../../wadl/identity-admin.wadl#admin-userRoles">
-					<wadl:method href="#listUserGlobalRoles"/>
+					<wadl:method href="#admin-listUserGlobalRoles"/>
 				</wadl:resource>
 			</wadl:resources>
 	</section>
@@ -282,10 +282,9 @@
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 				<wadl:method href="#getMobilePhonesForUser"/>
 			</wadl:resource>
-			<!-- Commenting out because this feature is not included in production yet
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#bypass_codes">
 					<wadl:method href="#generateBypassCodes"/>
-				</wadl:resource> -->
+				</wadl:resource>
 		</wadl:resources>
 		<!-- <section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 
 				

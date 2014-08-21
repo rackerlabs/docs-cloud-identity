@@ -125,15 +125,14 @@
 			<xref linkend="diff-serialization"/> show a request body in JSON format and a response body in XML format. </para>
 		<example xml:id="JSON_req">
 			<title>Authentication Request with Headers: JSON</title>
-			<programlisting><![CDATA[               
-POST /v2.0/tokens HTTP/1.1
-Host: identity.api.openstack.org
+			
+			<programlisting language="json">
+<![CDATA[<POST /v2.0/tokens HTTP/1.1
+Host: identity.api.rackspacecloud.com
 Content-Type: application/json
-Accept: application/xml
-				]]>   
-			</programlisting>
-			<programlisting><![CDATA[ 
-				{
+Accept: application/json
+
+{
   "auth": {
     "passwordCredentials": {
       "username": "demoauthor",
@@ -141,9 +140,10 @@ Accept: application/xml
     },
     "tenantId": "1234"
   }
-}
-			]]> </programlisting>
-		</example>
+}]]>
+</programlisting>
+</example>
+		
 		<para><xref linkend="diff-serialization"/> shows the headers and XML response returned by the JSON request.</para>
 		<example xml:id="diff-serialization">
 			<title>Response with Headers: XML</title>
@@ -172,11 +172,14 @@ vary: Accept, Accept-Encoding, X-Auth-Token]]>
 	</section>
 	<section xml:id="Sample_Request_Response-d1e64">
 		<title>Sample Authentication Request and Response</title>
-		<para>&CIS; supports different authentication methods: The sample
+		<para>&CIS; supports different authentication methods: 
+			<itemizedlist>
+				<listitem><para>username and password</para></listitem>
+			</itemizedlist>The sample
 			request and response in this section illustrate a general
 			case using the user name and password credentials
-			associated with &CIS; cloud account. In your
-			authentication request, use your own credentials rather
+			associated with &CIS; cloud account. 
+			In your authentication request, use your own credentials rather
 			than the sample values shown here for <code>user
 				name</code>, <code>password</code>. and
 				<code>tenantId</code>. When you authenticate
@@ -184,25 +187,37 @@ vary: Accept, Accept-Encoding, X-Auth-Token]]>
 			includes a catalog of available services along with
 				<glossterm>endpoint</glossterm> URLs to access each
 			service.</para>
+		<note><para>For information about other 
+			authentication methods with examples, 
+			see <link xlink:href="Token_Calls.html">Authentication tokens</link>.
+		</para></note>
 		<note>
 			<para>If a user account has been set up to use
 				multi-factor authentication, additional
 				credentials are required after submitting the log
-				in credentials. For details, see <link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">Authenticate with multifactor passcode credentials</link>.
+				in credentials. For details, see <link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">Authenticate with multi-factor passcode credentials</link>.
 			</para>
 		</note>
-	  <example>
-		<title>Authentication Request with Headers: JSON format</title>
-		<programlisting>
-<![CDATA[POST /v2.0/tokens HTTP/1.1
+	  	<example>
+	  		<title>Authentication Request with Headers: JSON</title>
+	  		
+	  		<programlisting language="json">
+<![CDATA[<POST /v2.0/tokens HTTP/1.1
 Host: identity.api.rackspacecloud.com
 Content-Type: application/json
-Accept: application/xml]]>			
-		</programlisting>
-<programlisting language="json">
-<xi:include href="../samples/auth_credentials.json" parse="text"/>
+Accept: application/json
+
+{
+  "auth": {
+    "passwordCredentials": {
+      "username": "demoauthor",
+      "password": "mypass"
+    },
+    "tenantId": "1234"
+  }
+}]]>
 </programlisting>
-	  </example>
+	  	</example>
 		<para>The attributes in this example have the following definitions:</para>
 		<para><link linkend="auth_req_attributes"></link> describes the attributes for the authentication response.</para>
 		<table rules="all" xml:id="auth_req_attributes">
@@ -230,7 +245,7 @@ Accept: application/xml]]>
 					<td>
 						<para> 
 							This is the password you use to login to the Rackspace Cloud Control Panel.
-							Yhe password must meet the following criteria:</para>
+							The password must meet the following criteria:</para>
 						<itemizedlist>
 							<listitem><para>Length must be at least 8 characters; no maximum.</para></listitem>
 							<listitem><para>Includes at least one uppercase and one lower case character.</para></listitem>

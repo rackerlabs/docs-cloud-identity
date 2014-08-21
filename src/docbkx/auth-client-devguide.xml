@@ -48,7 +48,7 @@
 				administration, and access control of </para>
 		</abstract>
 		<revhistory>
-			<revision condition="admin">
+			<revision>
 				<date>2014-08-19</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
@@ -65,21 +65,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								<itemizedlist>
-									<listitem>
-										<para>Updated Multi-factor authentication overview section to include authentication process work flow.</para></listitem>
-								</itemizedlist>
-							</para>
-						</listitem>
-						<listitem>
-							<para>
-								<itemizedlist>
-									<listitem>
-										<para>Corrected code samples in Update User operation.</para></listitem>
-								</itemizedlist>
-							</para>
-						</listitem>
+							<para>Updated Multi-factor authentication overview section to include authentication process work flow.</para></listitem>
+								
+						<listitem><para>Corrected code samples in Update User operation.</para></listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
@@ -205,9 +193,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected links to endpoint documentation <olink targetdoc="Identity-Developer-Guide"
-									targetptr="Additional_Resources-d1e130">“Additional
-									Resources”</olink>. </para>
+							<para> Corrected links to endpoint documentation <olink
+								targetdoc="Identity-Developer-Guide"
+								targetptr="Additional_Resources-d1e130"
+								>“Additional Resources”</olink>.
+								</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

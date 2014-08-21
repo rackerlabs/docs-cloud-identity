@@ -55,7 +55,7 @@
     accounts to add a phone number that can be used in the authentication process, verify the phone,
     and enable their account for multi-factor authentication. This work can be completed from the Cloud Control panel 
     or by using the &CIS; API.</para>
-    <para>Figure <xref
+    <para><xref
       linkend="mfa_workflow_setup"/> provides an overview of the
     work flow to complete these tasks.</para><figure xml:id="mfa_workflow_setup">
       <title>Multi-factor authentication user account set up work flow </title>

@@ -225,7 +225,7 @@
                     Identity, Servers, Load Balancers, and Files.</para>
             </listitem>
         </varlistentry>
-        <varlistentry audience="admin">
+        <varlistentry condition="admin">
             <term><emphasis role="bold">Service</emphasis></term>
             <listitem>
                 <para>The &CLOUD; allows Service providers to define services, which are logical
@@ -238,7 +238,7 @@
                     service is considered a service.</para>
             </listitem>
         </varlistentry>
-        <varlistentry audience="client">
+        <varlistentry condition="client">
             <term><emphasis role="bold">Endpoint</emphasis></term>
             <listitem>
                 <para>A network accessible address, usually described by a URL, where a service can
@@ -267,7 +267,7 @@
                     </note></para>
             </listitem>
         </varlistentry>
-        <varlistentry audience="admin">
+        <varlistentry condition="admin">
             <term><emphasis role="bold">Endpoint</emphasis></term>
             <listitem>
                 <para> A network accessible address, usually described by a URL, where a service can
@@ -301,7 +301,7 @@
                     endpoints for the same &CLOUD; service.</para>
             </listitem>
         </varlistentry>
-        <varlistentry audience="admin">
+        <varlistentry condition="admin">
             <term><emphasis role="bold">Endpoint Template</emphasis></term>
             <listitem>
                 <para>Endpoint templates provide Cloud Service providers with a method to manage API

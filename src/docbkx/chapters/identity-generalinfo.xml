@@ -27,7 +27,6 @@
 		That's why the xi:include content is conditional.-->
 	
 	<xi:include href="section_identity-concepts.xml"/>
-	
 	<section xml:id="Request_Response_Types-d1e149">
 		<title>Request/Response Types</title>
 		<para>The &CIS; v2 API supports both the JSON and XML data serialization request and response
@@ -94,13 +93,12 @@
 			query extension:</para>
 		<variablelist>
 			<varlistentry>
-				<term><code>Accept</code> header syntax</term>
+				<term>Accept header syntax</term>
 				<listitem>
 					<para>
 						<programlisting>Accept: application/format</programlisting> 
 					</para>
-					<para>Where <code>format</code> can be either <code>json</code> or 
-						<code>xml</code>.</para>
+					<para>Where <parameter>format</parameter> can be either json or xml.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -123,6 +121,7 @@
 			</varlistentry>
 		</variablelist>
 	</section>
+	
 	<section xml:id="Sample_Request_Response-d1e64">
 		<title>Sample Authentication Request and Response</title>
 		<para> The sample request and response in this section illustrate a
@@ -188,7 +187,7 @@ Accept: application/json
 					<td>
 						<para> 
 							This is the password you use to login to the Rackspace Cloud Control Panel.
-							Yhe password must meet the following criteria:</para>
+							The password must meet the following criteria:</para>
 						<itemizedlist>
 							<listitem><para>Length must be at least 8 characters; no maximum.</para></listitem>
 							<listitem><para>Includes at least one uppercase and one lower case character.</para></listitem>
@@ -667,17 +666,16 @@ Content-Type: application/xml; charset=UTF-8
 				</tbody>
 			</table>
 		</section>
-		<section xml:id="Sample_Catalog_Workflow-d1e266">
-			<title>Suggested Work flow for Processing a Service Catalog Response</title>
-			<para> When your client issues a successful authentication request,
-				the Cloud Identity Service responds with a catalog
-				showing the services available to that client, with
-				one endpoint listed for each available service; you
-				can find an annotated example of such a response in
-					<xref linkend="Sample_Request_Response-d1e64"/>. </para>
-			<para> As the client developer, you must decide how your client
+		<section xml:id="Sample_Catalog_Workflow-d1e266"><title>Suggested work flow for processing a Service Catalog Response</title>
+			<para>When your client issues a successful authentication request,
+				the Cloud Identity Service responds with a catalog that shows 
+				the services available to that client, with
+				one endpoint listed for each available service. (See 
+					<xref linkend="Sample_Request_Response-d1e64"/> for a 
+				service catalog example.)</para>
+			<para>As the client developer, you must decide how your client
 				should use the contents of its service catalog. The
-				first step may be to identify a service to which your
+				first step is to identify a service to which your
 				client should be connected. Here is one possible
 				work flow for processing the service catalog response
 				to identify available services and their endpoints: </para>
@@ -685,7 +683,7 @@ Content-Type: application/xml; charset=UTF-8
 			<listitem>
 					<para> 
 						If the service catalog lists only one endpoint, use it.
-						This will connect your client to the only
+						This endpoint connects your client to the only
 						service available to that client.
 					</para>
 				</listitem>
@@ -697,7 +695,7 @@ Content-Type: application/xml; charset=UTF-8
 					<orderedlist numeration="loweralpha">
 						<listitem>
 							<para> If the user has not specified which endpoint to use,
-								generate an error. </para>
+								generate an error.</para>
 						</listitem>
 						<listitem>
 							<para> If the user has specified which endpoint to use, help
@@ -779,12 +777,12 @@ Content-Type: application/xml; charset=UTF-8
 	  </table>
 	</section>
 	<section security="writeronly" xml:id="Paginated_Collections-d1e325">
-		<title>Paginated Collections</title>
+		<title>Paginated collections</title>
 		<annotation>
 			<remark>"Paginated Collections" is not yet implemented as of v2.0;
 				hide it for now and reveal it when the feature is working." </remark>
 		</annotation>
-		<para> To reduce load on the service, list operations will return a
+		<para>To reduce load on the service, list operations return a
 			maximum number of items at a time. The maximum number of
 			items returned is determined by the Identity provider. To
 			navigate the collection, the parameters
@@ -1498,39 +1496,20 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				interface.
 			</para>
 			<para>Use the following API operations to add account users and manage role assignments:</para>
-			<itemizedlist condition="client">
+			<itemizedlist>
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
+						<link xlink:href="POST_admin-addUser_users_User_Calls.html">Add account user</link>
 					</para>
 				</listitem>
 				<listitem>
-					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-						>Assign role to account users</olink></para>
+					<para>
+						<link xlink:href="PUT_addUserRole_2.0_users_roles_OS-KSADM__roleId__Role_Calls.html">
+						Assign role to account users</link></para>
 				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-						>Delete role from account user</olink></para>
-				</listitem>
-			</itemizedlist>
-			<itemizedlist condition="admin">
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Admin-Developer-Guide"
-							targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
-					</para>
-				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-							>Assign role to account users</olink></para>
-				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-							>Delete role from account user</olink></para>
+						<link xlink:href="DELETE_deleteUserRole_2.0_users_roles_OS-KSADM__roleId__Role_Calls.html">Delete role from account user</link></para>
 				</listitem>
 			</itemizedlist>
 			<para>For information about implementing RBAC by using the Cloud
