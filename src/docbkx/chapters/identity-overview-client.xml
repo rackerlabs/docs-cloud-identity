@@ -178,7 +178,7 @@
         </itemizedlist>
         <para>
             If you have a suggestion about any Rackspace product or service, including this one, 
-            please share it at <link xlink:href="https://rackspace.uservoice.com/forums/71021-product-feedback/category/81960-identity-auth">feedback.rackspacecloud.com</link>.
+            please share it at <link xlink:href="https://rackspace.uservoice.com/forums/71021-product-feedback/category/81960-identity-auth">rackspace.uservoice.com</link>.
         </para>
     </section>
     <xi:include href="identity-endpoints.xml"/>
