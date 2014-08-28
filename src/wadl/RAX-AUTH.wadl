@@ -133,10 +133,9 @@
                 </resource>
                 
                 <!-- MULTIFACTOR resource(s) -->
-                    <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/{bypass}">
+                    <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/bypass-codes">
                         <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. 
-                                A valid authentication token</para></wadl:doc>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                         </param>
                         <param name="userId" style="template" type="xsd:string">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -1721,25 +1720,20 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generate bypass codes">
             <para role="shortdesc">Generates a bypass code that can be substituted for a multi-factor authentication passcode.  
             </para>
-            <para>During multifactor authentication &CIS; sends a passcode to the phone number associated with the user account. 
-                The user must provide this passcode to complete the authentication process. 
-                If the phone is not available, or if the 
-                passcode is not received, a user administrator or user can generate a bypass code 
-                that can be used to authenticate.
-            </para>
+            <para>The Generate bypass codes operation helps users and administrators recover access to an account if the user 
+                cannot retrieve the multi-factor authentication passcode.</para>
            <para>
                 <itemizedlist>
                     <listitem>
                         <para>Users with the <parameter>identity:default</parameter> 
-                            role can generate up to 10 bypass codes for their own account. 
-                            They can also specify how long bypass codes remain valid.</para>
+                            role can generate up to 10 bypass codes for their own account to save 
+                            for later use. They can also specify how long bypass codes remain valid.</para>
                     </listitem>
                     <listitem>
                         <para>
                             Users with the <parameter>identity:user-admin</parameter> or 
-                            <parameter>identity:admin</parameter> role can generate only 
-                            one bypass code for another user's accoount. Administrator-generated 
-                            codes are valid for 30 minutes by default. Administrators can configure 
+                            <parameter>identity:admin</parameter> role can generate a single bypass code 
+                            another user's accoount. Administrator-generated codes are valid for 30 minutes by default. Administrators can configure 
                             the validity duration from 1 to 360 minutes.
                         </para>
                     </listitem>
@@ -1747,6 +1741,9 @@
             </para>
             <para>Each bypass code can be used only one time. A bypass code remains valid until it expires. Bypass codes 
                 are also invalidated if multi-factor authentication is disabled on the account associated with the bypass code.</para>
+            <note>
+                <para>The Generate bypass codes operation is only supported by the &CIS; V2.0 API. You cannot generate bypass codes from the Cloud Control panel.</para>
+            </note>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1755,16 +1752,14 @@
                 </wadl:doc>
                 <param name="validityDuration" style="plain" type="xsd:duration" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>An optional value that specifies the time interval that the the bypass codes remain valid. 
+                        <para>Specifies the time interval that the bypass codes remain valid. 
                             If no value is specified, the value defaults to 30 minutes <code>PT30M</code>.</para>
-                         <para>If you are creating bypass codes for your own account, you can configure any 
-                             desired interval.</para>
-                          <para>If you are creating a bypass code for another user account, you can configure 
-                              an interval between 1 and 360 minutes.</para>
+                         <para>If the bypass codes are for your own account, customize the value as needed.</para>
+                          <para>Administrators can configure an interval between 1 and 360 minutes when 
+                              creating a bypass code for other user account.</para>
                             
-                            <para>The value is expressed in xsd:duration format, <code>PT20MPnYnMnDTnHnMnS</code> where 
+                            <para>The value is expressed in xsd:duration format, <code>PT20MPnYnMnDTnHnMnS</code> where</para> 
                             
-                                <para><parameter>P</parameter> indicates the period (required)</para>
                                 <para><parameter>P</parameter> indicates the period (required)</para>
                                 <para><parameter>nY</parameter> indicates the number of years</para>
                                 <para><parameter>nM</parameter> indicates the number of months</para> 
@@ -1773,7 +1768,6 @@
                                 <para><parameter>nH</parameter> indicates the number of hours</para>
                                 <para><parameter>nM</parameter> indicates the number of minutes</para>
                                 <para><parameter>nS</parameter> indicates the number of seconds</para>
-                        </para>
                     </wadl:doc>
                 </param>
                 <param name="numberofcodes" style="plain" type="xsd:integer" required="false">

@@ -65,13 +65,6 @@
 					<td>.xml</td>
 					<td>No</td>
 				</tr>
-				<tr>
-					<td>Atom</td>
-					<td/>
-					<td><code>application/atom+xml</code></td>
-					<td>.atom</td>
-					<td>No</td>
-				</tr>
 			</tbody>
 		</table>
 		<variablelist>

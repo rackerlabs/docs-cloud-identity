@@ -38,7 +38,7 @@
 
     <!-- We should use SSL in production -->
     <resources base="http://localhost:35357" xml:id="OS-KSADM-admin-v2">
-        <resource id="version" path="/2.0/">
+        <resource id="version" path="/v2.0/">
             <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                 <wadl:doc>You need a valid admin token for access.</wadl:doc>
             </param>
@@ -84,7 +84,7 @@
                     </resource>
             </resource>
 
-            <resource id="tenants" path="tenants">
+            <resource id="tenants" path="/v2.0/tenants">
                 <method href="#addTenant"/>
                 <resource id="tenantById" path="{tenantId}">
                     <param name="tenantId" style="template" type="xsd:string" required="true">

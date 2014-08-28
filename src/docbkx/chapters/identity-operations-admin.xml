@@ -148,9 +148,13 @@
 		<!-- User API operations -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource
-				href="../../wadl/identity-admin.wadl#admin-users">
-				<wadl:method href="#admin-addUser"/>
+				href="../../wadl/identity-admin.wadl#admin-createUser">
+				<wadl:method href="#admin-createUserWithFullPayload"/>
 			</wadl:resource>
+			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-userlst">
+				<wadl:method href="#admin-listUsers"/>
+			</wadl:resource>	
 			<wadl:resource
 				href="../../wadl/identity-admin.wadl#admin-name">
 				<wadl:method href="#admin-getUserByName"/>
@@ -159,11 +163,6 @@
 				href="../../wadl/identity-admin.wadl#admin-userid">
 				<wadl:method href="#admin-getUserById"/>
 			</wadl:resource>
-			
-			<wadl:resource
-				href="../../wadl/identity-admin.wadl#admin-userId">
-				<wadl:method href="#admin-listUsers"/>
-			</wadl:resource>	
 			<wadl:resource href="../../wadl/identity-admin.wadl#admin-userId">
 				<wadl:method href="#admin-updateUsers"/>
 			</wadl:resource>
@@ -172,14 +171,7 @@
 				href="../../wadl/identity-admin.wadl#admin-userId">
 				<wadl:method href="#admin-deleteUser"/>
 			</wadl:resource>
-			<!-- get domains for user -->
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domains" >
-				<wadl:method href="#getAccessibleDomainsForUser"/>
-			</wadl:resource>
-			<!-- get domain endpoints for user -->
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domain_endpoints" >
-				<wadl:method href="#getAccesibleDomainEndpointsForUser"/>
-			</wadl:resource>
+		
 			<!-- list user group membership -->	
 			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
 				<wadl:method href="#listUserGroups"/>
@@ -219,6 +211,7 @@
 	<section xml:id="Group_Calls">
 		<title>Groups</title>
 		<para>The operations described in this section allow service developers to manage groups.</para>
+		
 		<note>
 			<para> 
 				Some of the functionality described in this section is

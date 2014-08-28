@@ -31,6 +31,8 @@
         <include href="../common/xsd/api.xsd"/>
         <include href="../common/xsd/api-common.xsd"/>
         <include href="../common/xsd/RAX-AUTH.xsd"/>
+        <include href="../common/xsd/RAX-KSGRP-groups.xsd"/>
+        <include href="../common/xsd/RAX-KSKEY-credentials.xsd"/>
     </grammars>
 
     <!--*******************************************************-->
@@ -95,15 +97,32 @@
                         <method href="#listEndpointsForToken"/>
                     </resource>
                 </resource>
-            </resource>
-        <resource id="admin-users" path="users">
+            </resource> 
+        <resource id="admin-createUser" path="/v2.0/users">
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>A valid authentication token.</para>
+                </wadl:doc>
+            </param>
+            <method href="#admin-createUserWithFullPayload"/>
+        </resource>
+        <resource id="admin-users" path="/v2.0/users">
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <para>A valid authentication token.</para>
                 </wadl:doc>
             </param>
             <method href="#admin-addUser"/>
-            <resource id="admin-userId" path="{userId}">
+        </resource>
+        <resource id="admin-userlst" path="/v2.0/users">
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>A valid authentication token.</para>
+                </wadl:doc>
+            </param>
+            <method href="#admin-listUsers"/>
+        </resource>
+        <resource id="admin-userId" path="/v2.0/users/{userId}">
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="template"
                     required="true" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -111,11 +130,10 @@
                             request.</para>
                     </wadl:doc>
                 </param>
-                <method href="#admin-listUsers"/>
                 <method href="#admin-updateUsers"/>
                 <method href="#admin-deleteUser"/>
             </resource>
-            <resource id="admin-name" path="{name}">
+        <resource id="admin-name" path="/v2.0/users/{name}">
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="template"
                     type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
@@ -130,7 +148,7 @@
                         ID.</wadl:doc>
                 </param>
                 <method href="#admin-getUserById"/>
-                <resource id="admin-userRoles" path="roles">
+                <resource id="admin-userRoles" path="/v2.0/users/​{userId}​/roles">
                     <method href="#admin-listUserGlobalRoles"/>
                 </resource>
             </resource>
@@ -145,9 +163,8 @@
                 </param>
                 <method href="#resetUserAPIKeyCredentials"/>
             </resource>
-        </resource>
 
-             <resource id="tenants" path="tenants">
+             <resource id="tenants" path="v2.0/tenants">
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <wadl:doc>A valid authentication token issued to a user with administrative privileges.
                     </wadl:doc>
@@ -320,7 +337,8 @@
                 specified extension.</para>
             <para>Get information about a specific extension by looking up the unique 
                 alias. If an extension is not available, the GET extensions operation 
-                returns a 404itemNotFound error.</para>
+                returns a <code>404</code> error message. For a list of aliases, see 
+                <link xlink:href="Extensions-d1e688.html">Extensions</link>.</para>
         </wadl:doc>
         <response status="200 203">
             <representation mediaType="application/json">
@@ -904,25 +922,161 @@
         <response status="204"/>&commonFaults; &getFaults;</method>
 
     <!-- Create user with full payload -->
-    <method id="createUserWithFullPayload" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create User">
+    <method id="admin-createUserWithFullPayload" name="POST">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create user">
             <para role="shortdesc">
-                Creates a user.
+                Creates a Rackspace Cloud account user.
             </para>
             <para>
-                Allows user to be created. Allows other properties of the user to be specified
-                in a single call.
+                Users that have the <parameter>identity:service-admin</parameter> or 
+                <parameter>identity:admin</parameter> role can use the Create user operation 
+                to add a sub-user (<code>identity:default</code>) to a Rackspace Cloud account. 
+                Within an account, a maximum of 100 account users (sub-accounts) can be
+                added.
             </para>
+            <para>In the Create user request, include the required values for the user name, email, and 
+                initial account status 
+                (<parameter>enabled=true</parameter> or <parameter>enabled=false</parameter> 
+                enabled attributes.</para>
+            <para>You can also include values for optional attributes such as 
+                domain, role, and default region, password. Review the following details 
+                for specifying optional attributes.</para>
+                <variablelist>
+                    <varlistentry>
+                        <term><parameter>password</parameter></term>
+                        <listitem>
+                            <para>If you want to set the initial password for the user, 
+                                specify a password value. If you don't specify a password, &CIS; automatically generates a password, which 
+                                is returned with a successful response. Make note of the password, so you can give it to the user. After the 
+                                user is created, the password cannot be retrieved by any means.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>defaultRegion</term>
+                        <listitem>
+                            <para xmlns="http://docbook.org/ns/docbook">
+                                The user is assigned the default region based on which region was set as <code>isDefault:true</code> during the 
+                                creation of the region. Users can change their default region through the 
+                                <link xlink:href="POST_updateUser_v2.0_users__userId__User_Calls.html">
+                                Update User</link> API operation, but they can only change it to a region that is listed in the service catalog for the Cloud Servers service.</para>>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>
+                <variablelist>
+                    <varlistentry>
+                        <term><parameter>password</parameter></term>
+                        <listitem>
+                            <para>If you want to set the initial password for the user, 
+                                specify a password value. If you don't specify a password, &CIS; automatically generates a password, which 
+                                is returned with a successful response. Make note of the password, so you can give it to the user. After the 
+                                user is created, the password cannot be retrieved by any means.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>defaultRegion</term>
+                        <listitem>
+                            <para xmlns="http://docbook.org/ns/docbook">
+                                Specify this attribute to override the default region assigned to the user. 
+                                The default region based on which region was set as <code>isDefault:true</code> during the 
+                                creation of the region. If you want to override the default value, sUsers can change their default region through the 
+                                <link xlink:href="POST_admin-updateUsers__userId__User_Calls.html">
+                                Update User</link> API operation, but they can only change it to a region that is listed in the 
+                                service catalog for the Cloud Servers service.
+                            </para>>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>roles</term>
+                        <listitem>
+                            <para xmlns="http://docbook.org/ns/docbook">
+                                Use the roles attribute to assign a user one or more roles other than the <parameter>identity:default</parameter>, 
+                                default role. You can also associate the user with a new tenant by specifying an alphanumeric 
+                                <parameter>tenantId</parameter> attribute in the <parameter>role</parameter> element. 
+                            </para>>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>   
+            </wadl:doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN">     
+            <note>
+                <para>If you attempt to add a user who already exists, an <errorcode>HTTP error 409</errorcode> results.</para>
+            </note>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="identity:user" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/UserWithFullPayloadRequest.xml" />
+                    <xsdxt:code href="../common/samples/UserWithFullPayloadRequest.xml" />
                 </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="OS-KSADM:password" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify a password string that meets the following criteria:
+                        <itemizedlist>
+                            <listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
+                            <listitem><para>Includes at least one uppercase and one lower case character</para></listitem>
+                            <listitem><para>Can include special characters.</para></listitem>
+                            <listitem><para>Password cannot begin with a space.</para></listitem>
+                        </itemizedlist>                     
+                    </para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>Specify the default region for the user: <parameter>DFW</parameter>, <parameter>IAD</parameter>, 
+                    <parameter>HKG</parameter>, or <parameter>SYD</parameter>.                  
+                    </para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:domainId" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>To assign the user to a domain,
+                        specify the domain ID. If you don't know the domain ID, use the Get domains operation to 
+                        list the available domains.</para>
+                    </wadl:doc>
+                </param>
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="plain"
+                        type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The name to assign 
+                            to the user.</wadl:doc>
+                    </param>
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="plain"
+                        type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
+                            email.</wadl:doc>
+                    </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="enabled" style="plain"
+                    type="xsd:bool" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
+                        the user is enabled (true) or disabled (false).</wadl:doc>
+                </param>
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="roles" style="plain"
+                        type="identity:RoleList" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>The roles object assigns the user roles. For each role, specify the name using the <parameter>role</parameter> 
+                                element with the <parameter>name</parameter> attribute.</para>
+                            <para>You can also specify a <parameter>tenantId</parameter> attribute to assign a role to a new tenant container.</para>
+                            <para>See the XML and JSON request examples for the correct syntax.</para>
+                            </wadl:doc>
+                    </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-KSGRP:groups" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>This object defines the groups the user belongs to. For each group,
+                            specify the <parameter>RAX-KSGRP:group</parameter> element with the   
+                            <parameter>name</parameter> attribute. See the XML and JSON request 
+                            examples for the correct syntax.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-KSQA:secretQA" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>This object specifies   
+                        the secret <parameter>question</parameter> and <parameter>answer</parameter> attributes that 
+                        can be used to verify the identity of the user.</para>
+                    </wadl:doc>
+                </param>
             </representation>
-            <representation mediaType="application/json" >
+            <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../formattedsamples/UserWithFullPayloadRequest.json" />
+                    <xsdxt:code href="../common/samples/UserWithFullPayloadRequest.json" />
                 </wadl:doc>
             </representation>
         </request>
@@ -933,12 +1087,12 @@
             </param>
             <representation mediaType="application/xml" element="identity:user" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../samples/UserWithFullPayloadResponse.xml" />
+                    <xsdxt:code href="../common/samples/UserWithFullPayloadResponse.xml" />
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json" >
                 <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../samples/UserWithFullPayloadResponse.json" />
+                    <xsdxt:code href="../common/samples/UserWithFullPayloadResponse.json" />
                 </wadl:doc>
             </representation>
         </response>
@@ -962,24 +1116,23 @@
                         the account's admin user; the admin user is the user who initiated the account by completing the 
                         Sign-Up process. </para>
                 </warning>
-            <para xmlns="http://docbook.org/ns/docbook"> To add a user, specify the user's <code>email</code> and
+            <para xmlns="http://docbook.org/ns/docbook">To add a user, specify the user's <code>email</code> and
                 <code>username</code> values, as well as whether the user's initial status is <code>enabled</code>. A
                 successful response echoes the requested values and adds a value for <code>id</code>. </para>
-            <para xmlns="http://docbook.org/ns/docbook"> To add a user and specify an initial password for that user, include the
+            <para xmlns="http://docbook.org/ns/docbook">To add a user and specify an initial password for that user, include the
                 password in a request resembling the "Add User with Password Request" examples shown below. </para>
-            <para xmlns="http://docbook.org/ns/docbook"> If you do not specify a password for the new user, one will be
-                generated. </para>
-            <para xmlns="http://docbook.org/ns/docbook"> If an initial password is generated, it is included in a successful
+            <para xmlns="http://docbook.org/ns/docbook">If you do not specify a password for the new user, &CIS; generates a password.
+                </para>
+            <para xmlns="http://docbook.org/ns/docbook">If an initial password is generated, it is included in a successful
                 response to this request. After the user is created, the password cannot be retrieved by any means. Make note
-                of the password in the response and supply that password to the user. </para>
+                of the password in the response and supply that password to the user.</para>
             <para xmlns="http://docbook.org/ns/docbook"> Within an account, a maximum of 100 account users (sub-accounts) can be
                 added. </para>
             <para security="internal" xmlns="http://docbook.org/ns/docbook">
                 The user is assigned the default region based on which region was set as <code>isDefault:true</code> during the 
                 creation of the region. Users can change their default region through the 
                 <link xlink:href="POST_updateUser_v2.0_users__userId__User_Calls.html">
-                    Update User</link> API operation, but they can only change it to a region that is listed in  
-                in the service catalog for the Cloud Servers service.</para>
+                    Update User</link> API operation, but they can only change it to a region that is listed in the service catalog for the Cloud Servers service.</para>
         </wadl:doc>
         <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN">     
             <note>
@@ -992,6 +1145,26 @@
                 <wadl:doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/userwithoutid.xml"/>
                 </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain"
+                    type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
+                        ID.</wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="plain"
+                    type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
+                        name.</wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="plain"
+                    type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
+                        email.</wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="enabled" style="plain"
+                    type="xsd:bool" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
+                        the user is enabled (true) or disabled (false).</wadl:doc>
+                </param>
             </representation>
             
             <representation mediaType="application/json">
@@ -1061,9 +1234,9 @@
                                 it returns a list of all users for the tenant.
                             </para>
                         </listitem>
-                        <listitem>
-                            <para xmlns="http://docbook.org/ns/docbook" security="internal"> To find the user with the authority to modify account permissions, refer
-                            to <link xlink:href="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins__User_Calls.html">"Get User Admin."</link>
+                        <listitem security="internal">
+                            <para xmlns="http://docbook.org/ns/docbook"> To find the user with the authority to modify account permissions, refer
+                                to <link xlink:href="GET_getUserAdmin_v2.0_admins_User_Calls.html">"Get User Admin."</link>
                         </para>
                         </listitem>
                     </itemizedlist>                    

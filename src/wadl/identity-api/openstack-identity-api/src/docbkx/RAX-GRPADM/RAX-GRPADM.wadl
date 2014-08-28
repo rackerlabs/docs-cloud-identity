@@ -19,7 +19,8 @@
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    xmlns:db="http://docbook.org/ns/docbook"
    xmlns:capi="http://docs.openstack.org/common/api/v1.0"
-   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
+   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
 
     <grammars>
         <include href="xsd/api.xsd"/>
@@ -49,6 +50,7 @@
                             </wadl:doc>
                         </param>
                         <method href="#getGroupName"/>
+                    </resource>
                     <resource id="groupId" path="{groupId}">
                         <param name="groupId" style="template" type="xsd:string">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="GroupId">
@@ -73,7 +75,6 @@
                                 <method href="#removeUserFromGroup"/>
                             </resource>
                         </resource>
-                    </resource>
                     </resource>     
                 </resource>
             </resource>
@@ -210,7 +211,7 @@
         &getFaults;
     </method>
     <method id="getGroupId" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Group by name">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Group by ID">
             <para role="shortdesc">
                 Get group by id.
             </para>
@@ -351,18 +352,17 @@
         &commonFaults;
     </method>
     <method id="addUserToGroup" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"> xml:lang="EN" title="Add User to Group">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add User to Group">
             <para role="shortdesc">
                 Add a user to the group.
             </para>
             <para>
                 This call adds a specified user to a specified group. 
             </para>
-            <para>
-                    Users and groups are specified by their IDs. 
-                    If you know the user's name but not the user's ID, use  <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
-                     to obtain complete identifying information about the user. If you know the group's name but not the group's ID, use  <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
-                     to obtain complete identifying information about all groups.
+            <para>Users and groups are specified by their IDs. If you know the user name but not the ID, 
+                use  <link xlink:href="GET_admin-getUserByName_v2.0_users__name__User_Calls.html">Get user by name</link> operation to find the user name.
+                If you know the group name but not the ID, 
+                use  <link xlink:href="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls.html">List groups</link> operation to find the group name.
              </para> 
             <para>
                 Users inherit the groups assigned to the user-admin.  This enables client code built around rate-limit groups to be more stable.
@@ -381,11 +381,11 @@
             <para>
                 This call deletes a specified user from a specified group. 
                 Users and groups are specified by their IDs. 
-                If you know the user's name but not the user's ID, use                  
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                If you know the user name but not the ID, use                  
+                <xref linkend="GET_getUserByName_v2.0_users__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about the user.
-                If you know the group's name but not the group's ID, use                  
+                If you know the group name but not the ID, use                  
                 <xref linkend="GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about all groups.

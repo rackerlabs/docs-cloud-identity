@@ -1,0 +1,25 @@
+{
+  "user": {
+    "RAX-AUTH:domainId": "5473387",
+    "enabled": "true",
+    "username": "jqsmith",
+    "OS-KSADM:password": "securePassword",
+    "email": "john.smith@example.org",
+    "roles": [
+      {
+        "name": "managed",
+        "tenantId": "newTenantId"
+      }
+    ],
+    "RAX-KSGRP:groups": [
+      {
+        "name": "restricted"
+      }
+    ],
+    "RAX-AUTH:defaultRegion": "SYD",
+    "RAX-KSQA:secretQA": {
+      "answer": "There is no meaning",
+      "question": "What is the meaning of it all"
+    }
+  }
+}

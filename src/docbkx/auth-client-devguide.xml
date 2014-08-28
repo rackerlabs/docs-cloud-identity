@@ -49,6 +49,16 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-08-22</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated Rackspace feedback link to point to <link xlink:href="rackspace.uservoice.com">rackspace.uservoice.com</link> forum for Cloud Identity.</para></listitem>
+						
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-08-19</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
@@ -499,7 +509,7 @@
 						</listitem>
 						<listitem>
 							<para> Linked <xref linkend="QuickStart-000"/> to <olink targetdoc="Identity-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users_"/> with note that account
+									targetptr="POST_admin-addUser_v2.0_users_User_Calls"/> with note that account
 								users added via API cannot use the control panel. </para>
 						</listitem>
 						<listitem>
@@ -554,7 +564,7 @@
 						<listitem>
 							<para> Added examples of creating a user with a password in <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users_"/>. In the same section,
+									targetptr="POST_admin-addUser_v2.0_users_User_Calls"/>. In the same section,
 								added information that an account can have up to 100 account users. </para>
 						</listitem>
 						<listitem>

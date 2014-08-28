@@ -91,6 +91,10 @@
 				<wadl:method href="#admin-addUser"/>
 			</wadl:resource>
 			<wadl:resource
+				href="../../wadl/identity-admin.wadl#admin-userlst">
+				<wadl:method href="#admin-listUsers"/>
+			</wadl:resource>
+			<wadl:resource
 				href="../../wadl/identity-admin.wadl#admin-name">
 				<wadl:method href="#admin-getUserByName"/>
 			</wadl:resource>
@@ -98,11 +102,6 @@
 				href="../../wadl/identity-admin.wadl#admin-userid">
 				<wadl:method href="#admin-getUserById"/>
 			</wadl:resource>
-			
-			<wadl:resource
-				href="../../wadl/identity-admin.wadl#admin-userId">
-				<wadl:method href="#admin-listUsers"/>
-			</wadl:resource>	
 		   <wadl:resource href="../../wadl/identity-admin.wadl#admin-userId">
 					<wadl:method href="#admin-updateUsers"/>
 		   </wadl:resource>

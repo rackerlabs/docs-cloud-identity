@@ -345,7 +345,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added error to <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users__User_Calls"/>. </para>
+								targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -451,7 +451,7 @@
 						<listitem>
 							<para> Updated Add User to reflect default region (<olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_addUser_v2.0_users_">“Secret Questions and
+									targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls">“Secret Questions and
 									Answers”</olink>) </para>
 						</listitem>
 						<listitem>

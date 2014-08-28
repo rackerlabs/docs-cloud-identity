@@ -215,6 +215,12 @@
                     different tenants. </para>
             </listitem>
         </varlistentry>
+        <varlistentry>
+            <term><emphasis role="bold">Domain</emphasis></term>
+            <listitem>
+                <para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.</para>
+            </listitem>
+        </varlistentry>
         <varlistentry audience="client">
             <term><emphasis role="bold">Service</emphasis></term>
             <listitem>
