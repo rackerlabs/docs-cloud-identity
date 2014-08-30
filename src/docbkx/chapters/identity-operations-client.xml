@@ -79,8 +79,7 @@
 			</para>
 		</note>
 		<para>
-			When these requests are issued by an account user, they act only upon that account user. You can learn more about
-			account users, also called sub-accounts, at <olink
+			When these requests are issued by an account user, they act only upon that account user. To learn more about account users, see <olink
 				targetdoc="Identity-Developer-Guide"
 				targetptr="Account-Users-d1e910">“Account
 				Users”</olink>. </para>
@@ -122,33 +121,43 @@
 			<!-- reset user's API key credentials -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#reset_apikey_credentials" >
 				<wadl:method href="#resetUserAPIKeyCredentials"/>
-			</wadl:resource>
+			</wadl:resource>			
 		</wadl:resources>
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
-		<para>The operations described in this section allow clients to manage roles.</para>
-			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-				<!-- list roles -->
-				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
-					<wadl:method href="#listRoles"/>
-				</wadl:resource>
-				<!-- get a global role -->
+		<para>The operations described in this section allow clients to view and manage  
+			roles and user role assignments.</para>
+		
+		<!-- Roles operations from WADL -->
+		
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+					
+			<!-- list roles -->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
+				<wadl:method href="#listRoles"/>
+			</wadl:resource>
+			
+			<!-- get role by name -->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#rolename">
+				<wadl:method href="#getRoleByName"/>
+			</wadl:resource>
+
+				<!-- get a global role by id-->
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
-					<wadl:method href="#getRole"/>
+					<wadl:method href="#getRolebyId"/>
 				</wadl:resource>
-				<!-- add a global role to a user -->
+	
+			<wadl:resource href="../../wadl/identity-admin.wadl#admin-userRoles">
+				<wadl:method href="#admin-listUserGlobalRoles"/>
+			</wadl:resource>
+			
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 					<wadl:method href="#addUserRole"/>
-				</wadl:resource>
-				<!-- delete a global role from a user -->
-				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
+					<wadl:method href="#getUserRole"/>
 					<wadl:method href="#deleteUserRole"/>
-				</wadl:resource>
-				<!-- list global roles available to a user -->
-				<wadl:resource href="../../wadl/identity-admin.wadl#admin-userRoles">
-					<wadl:method href="#admin-listUserGlobalRoles"/>
-				</wadl:resource>
+				</wadl:resource>	
+				
 			</wadl:resources>
 	</section>
 	
@@ -167,20 +176,16 @@
 		the path and a payload of credentials in the body. Credentials
 		can be any of the following: <itemizedlist spacing="compact">
 			<listitem>
-				<para>Password credentials: user name and
-					password</para>
+				<para>Password credentials: user name and password</para>
 			</listitem>
 			<listitem>
-				<para>API Key credentials: user name and API
-					key</para>
+				<para>API Key credentials: user name and API key</para>
 			</listitem>
 			<listitem>
-				<para>Token and tenant Id or tenant name (requires
-					Administrator privileges).</para>
+				<para>Token and tenant Id or tenant name (requires Administrator privileges).</para>
 			</listitem>
 			<listitem>
-				<para>Passcode credentials: multifactor authentication
-					sessionId and passcode values</para>
+				<para>Passcode credentials: multifactor authentication sessionId and passcode values</para>
 			</listitem>
 		</itemizedlist>
 	</para>

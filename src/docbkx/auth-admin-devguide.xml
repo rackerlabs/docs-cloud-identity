@@ -52,6 +52,30 @@
 		</abstract>
 		<revhistory>
 			<revision condition="admin">
+				<date>2014-08-28</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated <link xlink:href="Role_Calls.html">Role</link> API operations to correct URI paths and broken links.</para></listitem>
+						<listitem>
+							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
+						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision condition="admin">
+				<date>2014-08-26</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added <link xlink:href="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls.html">Create user</link> API operation.</para></listitem>
+						<listitem>
+							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
+						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision condition="admin">
 				<date>2014-08-22</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
@@ -237,7 +261,7 @@
 						</listitem>
 						<listitem>
 							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Endpoints-d1e180.html">“Alternate Authentication
+								targetptr="Endpoints-d1e180">“Alternate Authentication
 									Endpoints”</olink> section to remove the Legacy endpoint table
 								that duplicated information in the Authentication endpoints
 								table.</para>
@@ -306,18 +330,17 @@
 								internal-only. </para>
 						</listitem>
 						<listitem>
-							<para> Corrected JSON response in <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_listUserGlobalRoles_v2.0_users__userId__roles_Role_Calls"
-								/>. </para>
+							<para> Corrected JSON response in <link xlink:href="GET_admin-listUserGlobalRoles_v2.0_users__userId__v2.0_users_%E2%80%8B_userId_%E2%80%8B_OS-KSADM_roles_Role_Calls.html"
+								>List available roles by userId</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Added simple definitions to many
-								operation parameter tables. </para>
+								operation parameter tables.</para>
 						</listitem>
 						<listitem>
 							<para> Mentioned that elements not being updated in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__User_Calls"
+									targetptr="POST_admin-updateUsers_v2.0_users__userId__User_Calls"
 									>“Update user”</olink> do not need to be included in request
 								body.</para>
 						</listitem>
@@ -369,7 +392,7 @@
 						<listitem>
 							<para> Corrected links to endpoint documentation <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Additional_Resources-d1e130.html">“Additional
+									targetptr="Additional_Resources-d1e130">“Additional
 									Resources”</olink>. </para>
 						</listitem>
 					</itemizedlist>
@@ -410,9 +433,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Developer-Guide"
+							<para>Updated <olink targetdoc="Identity-Developer-Guide"
 									targetptr="Request_Response_Types-d1e149">“Request/Response
-									Types”</olink> to include warning about potential delays. </para>
+									Types”</olink> to include warning about potential delays.</para>
 						</listitem>
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="RBAC_roledesc_tbl"
@@ -429,7 +452,7 @@
 						<listitem>
 							<para> Added visibility note to <olink
 								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_addRole_v2.0_OS-KSADM_roles__Role_Calls"
+								targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
 								>“Users”</olink>. </para>
 						</listitem>
 					</itemizedlist>
@@ -446,7 +469,7 @@
 						</listitem>
 						<listitem>
 							<para> Added Region calls (<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Region_Calls.html">“Regions”</olink>) </para>
+									targetptr="Region_Calls">“Regions”</olink>) </para>
 						</listitem>
 						<listitem>
 							<para> Updated Add User to reflect default region (<olink
@@ -509,7 +532,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Corrected URI path for <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins__User_Calls"
+								targetptr="GET_getUserAdmin_v2.0_admins_User_Calls"
 									>“Secret Questions and Answers”</olink>.</para>
 						</listitem>
 						<listitem>
@@ -526,13 +549,13 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Role_Based_Access_Control-d1e808"></olink>. 
+								targetptr="Role_Based_Access_Control-d1e808"></olink>. 
 							</para>
 						</listitem>
 						<listitem>
 							<para> Removed references to deprecated endpoint v1 <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Endpoints-d1e180.html">“Authentication Endpoints”</olink>. </para>
+									targetptr="Endpoints-d1e180">“Authentication Endpoints”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Including several API calls from
@@ -615,12 +638,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <link xlink:href="Policy_Calls.html">Policy</link>.<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Policy_Calls.html">“Policy operations”</olink>
+							<para> Added <link xlink:href="Policy_Calls.html">Policy opeations</link>.
 							</para>
 						</listitem>
 						<listitem>
-							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Service_API_Calls.html"
+							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Service_API_Calls"
 									>“Service APIs”</olink></para>
 						</listitem>
 						<listitem>
@@ -631,7 +653,7 @@
 						</listitem>
 						<listitem>
 							<para> Add List domains operation to <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Domain_Calls.html">“Domains”</olink>, add
+								targetptr="Domain_Calls">“Domains”</olink>, add
 								added getting a list of domains.
 							</para>
 						</listitem>
@@ -673,7 +695,7 @@
 							<para> Expanded <link xlink:href="Secret_Calls.html">Secret questions and answers</link>. </para>
 						</listitem>
 						<listitem>
-							<para> Added <link xlink:href="Region_Calls.html">Region</link>.</para>
+							<para> Added <link xlink:href="Region_Calls">Region</link>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -720,7 +742,7 @@
 						</listitem>
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Service_Types-d1e265.html">“Service Types in the Service
+									targetptr="Service_Types-d1e265">“Service Types in the Service
 									Catalog”</olink> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. </para>
 						</listitem>
 						<listitem>
@@ -864,7 +886,7 @@
 						</listitem>
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
+								targetptr="GET_listCredentials_v2.0_users__userId__roles_OS-KSADM_credentials_User_Calls"
 								/> and  <olink targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="Account-Users-d1e910">“Identity user types and
 									default roles”</olink>to state that account users must

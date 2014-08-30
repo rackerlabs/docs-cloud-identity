@@ -199,11 +199,10 @@
             </para>
             <para>
                 An API key is a credential; you can update a user's API key with this call.
-                To add a credential to a user, specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use                  
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
-                 to                   
-                obtain complete identifying information about the user.
+                To add a credential to a user, specify the user ID in the request.
+                If you know the user name but not the ID, use  the                
+                <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                 to get the ID.      
             </para>
         </wadl:doc>
         <request>
@@ -241,14 +240,13 @@
     
     <method name="DELETE" id="deleteUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete user API key credentials">
-            <para role="shortdesc">
-                Delete user credentials.
+            <para role="shortdesc">Delete user credentials.
             </para>
             <para>
                 An API key is a credential; you can delete a user's API key with this call.
-                To delete a credential from a user, specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use                  
-                <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                To delete a credential from a user, specify the user ID in the request.
+                If you know the user name but not the ID, use                  
+                <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
                  to                   
                 obtain complete identifying information about the user.
             </para>

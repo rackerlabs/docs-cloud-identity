@@ -33,7 +33,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2014-08-22</pubdate>
+		<pubdate>2014-08-28</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -48,6 +48,28 @@
 				administration, and access control of </para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2014-08-28</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated <link xlink:href="Role_Calls.html">Role</link> API operations to correct URI paths and broken links.</para></listitem>
+						<listitem>
+							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
+						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-08-26</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
+						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-08-22</date>
 				<revdescription>
@@ -171,7 +193,7 @@
 						<listitem>
 							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_listRoles_v2.0_OS-KSADM_roles_Role_Calls"
+									targetptr="GET_listRoles_v2.0_users_OS-KSADM_roles_Role_Calls"
 									>“Role-based access control”</olink>.</para>
 						</listitem>
 						<listitem>
@@ -465,9 +487,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> For "Update User" and "Delete User" operations, added suggestion to use <olink
+							<para>For "Update User" and "Delete User" operations, added suggestion to use <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserById_users__user_id__User_Calls"/> to confirm
+									targetptr="GET_admin-getUserById_v2.0_users__userId__User_Calls"/> to confirm
 								that the intended user will be changed. </para>
 						</listitem>
 						<listitem>
@@ -514,7 +536,7 @@
 						</listitem>
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
+								targetptr="GET_listCredentials_v2.0_users__userId__roles_OS-KSADM_credentials_User_Calls"
 								/> and <olink
 									targetdoc="Identity-Developer-Guide"
 									targetptr="Account-Users-d1e910">“Identity user types and
@@ -570,7 +592,7 @@
 						<listitem>
 							<para> Added examples of changing a user's password in <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_updateUser_v2.0_users__userId__">“Role-based
+									targetptr="POST_admin-updateUsers_v2.0_users__userId__User_Calls">“Role-based
 									access control”</olink>. </para>
 						</listitem>
 						<listitem>
@@ -578,7 +600,7 @@
 						</listitem>
 						<listitem>
 							<para> Clarified <olink targetdoc="Identity-Developer-Guide"
-									targetptr="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_"
+								targetptr="GET_listCredentials_v2.0_users__userId__roles_OS-KSADM_credentials_User_Calls"
 								/> to say that user passwords cannot be retrieved. </para>
 						</listitem>
 					</itemizedlist>

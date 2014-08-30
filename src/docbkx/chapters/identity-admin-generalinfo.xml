@@ -212,7 +212,7 @@ Accept: application/json
 </programlisting>
 	  	</example>
 		<para>The attributes in this example have the following definitions:</para>
-		<para><link linkend="auth_req_attributes"></link> describes the attributes for the authentication response.</para>
+		<para><xref linkend="auth_req_attributes"/> describes the attributes for the authentication response.</para>
 		<table rules="all" xml:id="auth_req_attributes">
 			<caption>Authentication request attribute descriptions</caption>
 			<col width="24%"/>
@@ -273,7 +273,7 @@ Accept: application/json
 			default region defined, the service description does not
 			include <code>region</code>.</para>
 		<para><xref linkend="xml_auth_resp"/> and <xref linkend="json_auth_resp"/> show example responses. 
-			See <xref linkend="auth_attributes"/> for information about the attributes included in the response.
+			See <xref linkend="auth_resp_attributes"/> for information about the attributes included in the response.
 		</para>
 	  <example xml:id="xml_auth_resp">
 		<title>Service Catalog in Authentication Response with Headers: XML</title>
@@ -287,8 +287,8 @@ Accept: application/json
 <xi:include href="../samples/auth-annotated.json" parse="text"/>
 		</programlisting>	
 		</example>
-		<para><link linkend="auth_attributes"></link> describes the attributes for the authentication response.</para>
-		<table xml:id="auth_attributes" rules="all">
+		<para><xref linkend="auth_resp_attributes"/> describes the attributes for the authentication response.</para>
+		<table xml:id="auth_resp_attributes" rules="all">
 			<caption>Authentication response attribute descriptions</caption>
 			<col width="24%"/>
 			<col width="76%"/>
@@ -1445,7 +1445,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			xmlns:xi="http://www.w3.org/2001/XInclude"
 			xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
 			xml:id="section_assign_roles_3">
-			<title>Assigning Roles to Account Users</title>
+			<title>Assigning roles to account users</title>
 			<para>The account owner, <literal>identity:user-admin</literal>) can create account users, 
 				<literal>identity:default)</literal> on the account and then assign roles to 
 				those users. The roles grant the account users specific permissions for accessing the 
@@ -1462,7 +1462,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<itemizedlist condition="client">
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
+						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_admin-addUser_v2.0_users_User_CallsUser_Calls">Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>
@@ -1480,7 +1480,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<listitem>
 					<para>
 						<olink targetdoc="Identity-Admin-Developer-Guide"
-							targetptr="POST_addUser_v2.0_users_User_Calls">Add account user</olink>
+							targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls">Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>

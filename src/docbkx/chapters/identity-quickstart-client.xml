@@ -28,17 +28,19 @@
             </listitem>
         </itemizedlist>
         </para>
-        <para> Your <code>username</code> and <code>password</code>
-        are the ones you use to login to the Cloud Control Panel at
-            <link xlink:href="http://mycloud.rackspace.com/"
-            >http://mycloud.rackspace.com/</link>. Once you are logged
-        in, you can use the Cloud Control Panel to obtain your
-            <code>API key</code>. </para>
+        <para> The <code>username</code> and <code>password</code> are
+        the same credentials you use to log in to the Cloud Control
+        Panel at <link xlink:href="http://mycloud.rackspace.com/"
+            >http://mycloud.rackspace.com/</link>.  You can get your
+        API key from the  you can use the Cloud Control Panel to
+        obtain your <code>API key</code>. </para>
     <important>
-        <para> Multiple users (account users) can be created for an account but, as explained in
-                <olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_"/>,
-            users created via the API do not have access to the control panel. Control panel access
-            for these users is coming soon. </para>
+        <para> Multiple users (account users) can be created for an
+            account but, users created via the  <olink
+                targetdoc="Identity-Developer-Guide"
+                targetptr="POST_admin-addUser_v2.0_users_User_Calls"
+                >Add user</olink>, API operation do not have access to
+            the control panel.</para>
     </important>
         <para>
             <emphasis role="bold">CHOOSE YOUR AUTHENTICATION ENDPOINT</emphasis>

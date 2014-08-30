@@ -141,14 +141,19 @@
                 </param>
                 <method href="#admin-getUserByName"/>
             </resource>
-            <resource id="admin-userid" path="{userId}">
+        <resource id="admin-userid" path="/v2.0/users/{userId}">
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="template"
                     type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
                         ID.</wadl:doc>
                 </param>
                 <method href="#admin-getUserById"/>
-                <resource id="admin-userRoles" path="/v2.0/users/​{userId}​/roles">
+                <resource id="admin-userRoles" path="/v2.0/users/​{userId}​/OS-KSADM/roles">
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>A valid authentication token.</para>
+                        </wadl:doc>
+                    </param>
                     <method href="#admin-listUserGlobalRoles"/>
                 </resource>
             </resource>
@@ -931,45 +936,32 @@
                 Users that have the <parameter>identity:service-admin</parameter> or 
                 <parameter>identity:admin</parameter> role can use the Create user operation 
                 to add a sub-user (<code>identity:default</code>) to a Rackspace Cloud account. 
-                Within an account, a maximum of 100 account users (sub-accounts) can be
-                added.
+                Administrators can add up to 100 users to an account. 
             </para>
+            <warning xmlns="http://docbook.org/ns/docbook">
+                <para>Account sub-users created using the Add user operation can only access Rackspace Cloud resources through the API. 
+                    Only the Administrator user can access the account from the Cloud Control panel. The Administrator 
+                    user is assigned when the Rackspace Cloud account is created during the Rackspace signup process.
+                </para>
+            </warning>
             <para>In the Create user request, include the required values for the user name, email, and 
                 initial account status 
-                (<parameter>enabled=true</parameter> or <parameter>enabled=false</parameter> 
-                enabled attributes.</para>
-            <para>You can also include values for optional attributes such as 
-                domain, role, and default region, password. Review the following details 
-                for specifying optional attributes.</para>
+                (<parameter>enabled=true</parameter> or <parameter>enabled=false</parameter>) attributes.</para>
+            <para>Users inherit the domain and defaultRegion associated with the Rackspace Cloud account. They 
+                also inherit group membership.  If you want to override a default value, include the new 
+                value in the Create user request.</para>
+            <para>You can also include values for optional attributes such as password and role. 
+            Review the following details for additional information about specifying optional attributes.</para>
+            <para>
                 <variablelist>
                     <varlistentry>
-                        <term><parameter>password</parameter></term>
+                        <term>password</term>
                         <listitem>
-                            <para>If you want to set the initial password for the user, 
-                                specify a password value. If you don't specify a password, &CIS; automatically generates a password, which 
-                                is returned with a successful response. Make note of the password, so you can give it to the user. After the 
-                                user is created, the password cannot be retrieved by any means.</para>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry>
-                        <term>defaultRegion</term>
-                        <listitem>
-                            <para xmlns="http://docbook.org/ns/docbook">
-                                The user is assigned the default region based on which region was set as <code>isDefault:true</code> during the 
-                                creation of the region. Users can change their default region through the 
-                                <link xlink:href="POST_updateUser_v2.0_users__userId__User_Calls.html">
-                                Update User</link> API operation, but they can only change it to a region that is listed in the service catalog for the Cloud Servers service.</para>>
-                        </listitem>
-                    </varlistentry>
-                </variablelist>
-                <variablelist>
-                    <varlistentry>
-                        <term><parameter>password</parameter></term>
-                        <listitem>
-                            <para>If you want to set the initial password for the user, 
-                                specify a password value. If you don't specify a password, &CIS; automatically generates a password, which 
-                                is returned with a successful response. Make note of the password, so you can give it to the user. After the 
-                                user is created, the password cannot be retrieved by any means.</para>
+                            <para>Use this parameter to specify an initial password for the user.  
+                            If you don't specify a password, &CIS; automatically generates one and 
+                            returns it in the response. Make note of the password, 
+                            so you can give it to the user. After the user is created, 
+                            the password cannot be retrieved by any means.</para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
@@ -977,25 +969,25 @@
                         <listitem>
                             <para xmlns="http://docbook.org/ns/docbook">
                                 Specify this attribute to override the default region assigned to the user. 
-                                The default region based on which region was set as <code>isDefault:true</code> during the 
-                                creation of the region. If you want to override the default value, sUsers can change their default region through the 
+                                Users can change their default region by using the 
                                 <link xlink:href="POST_admin-updateUsers__userId__User_Calls.html">
-                                Update User</link> API operation, but they can only change it to a region that is listed in the 
+                                    Update User</link> API operation, but they can only change it to a region that is listed in the 
                                 service catalog for the Cloud Servers service.
-                            </para>>
+                            </para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
                         <term>roles</term>
                         <listitem>
-                            <para xmlns="http://docbook.org/ns/docbook">
-                                Use the roles attribute to assign a user one or more roles other than the <parameter>identity:default</parameter>, 
-                                default role. You can also associate the user with a new tenant by specifying an alphanumeric 
+                            <para>
+                                Use the roles attribute to assign a user one or more roles other than the default role (<parameter>identity:default</parameter>). 
+                                You can also associate the user with a new tenant by specifying an alphanumeric 
                                 <parameter>tenantId</parameter> attribute in the <parameter>role</parameter> element. 
-                            </para>>
+                            </para>
                         </listitem>
                     </varlistentry>
-                </variablelist>   
+                </variablelist>
+            </para>
             </wadl:doc>
         <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN">     
             <note>
@@ -1104,35 +1096,27 @@
     <method name="POST" id="admin-addUser">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user">
             <para role="shortdesc">Add a user.</para>
-                <note xmlns="http://docbook.org/ns/docbook">
-                    <para>This API operation is available only to users who hold an admin role 
-                        (<parameter>identity:user-admin</parameter>, 
-                        or <parameter>identity:admin</parameter>.
-                        Using the admin role, you can create a user who holds the user role (<code>identity:default</code>). </para>
-                </note>
-                <warning xmlns="http://docbook.org/ns/docbook">
-                    <para>If you use this <code>POST /users</code> call to create a user, that user will have access to
-                        APIs but will not have access to the Cloud Control Panel. Cloud Control Panel access is provided to 
-                        the account's admin user; the admin user is the user who initiated the account by completing the 
-                        Sign-Up process. </para>
-                </warning>
-            <para xmlns="http://docbook.org/ns/docbook">To add a user, specify the user's <code>email</code> and
-                <code>username</code> values, as well as whether the user's initial status is <code>enabled</code>. A
-                successful response echoes the requested values and adds a value for <code>id</code>. </para>
-            <para xmlns="http://docbook.org/ns/docbook">To add a user and specify an initial password for that user, include the
-                password in a request resembling the "Add User with Password Request" examples shown below. </para>
-            <para xmlns="http://docbook.org/ns/docbook">If you do not specify a password for the new user, &CIS; generates a password.
+                    <para>
+                        User administrators that have the <parameter>identity:service-admin</parameter> or 
+                        <parameter>identity:admin</parameter> role can use the Add user operation 
+                        to add sub-users (<code>identity:default</code>) to a Rackspace Cloud account. 
+                        Administrators can add up to 100 users to an account. 
+                    </para>
+            <para>In the Add user request, include the required values for the user name, email, and 
+                initial account status 
+                (<parameter>enabled=true</parameter> or <parameter>enabled=false</parameter>) attributes.</para>
+            <para>You can specify an initial password for the user by including it in the Add user request as 
+                shown in the Addd user with password request code sample. 
+                If you don't specify a passowrd, &CIS; generates one and returns it in the response. In either case, 
+                make a note of the password so you can provide it to the user.  After the user is created, you cannot 
+                retrieve the password by any means. 
+               </para>
+            <warning xmlns="http://docbook.org/ns/docbook">
+                <para>Account sub-users created using the Add user operation can only access Rackspace Cloud resources through the API. 
+                    Only the Administrator user can access the account from the Cloud Control panel. The Administrator 
+                    user is assigned when the Rackspace Cloud account is created during the Rackspace signup process.
                 </para>
-            <para xmlns="http://docbook.org/ns/docbook">If an initial password is generated, it is included in a successful
-                response to this request. After the user is created, the password cannot be retrieved by any means. Make note
-                of the password in the response and supply that password to the user.</para>
-            <para xmlns="http://docbook.org/ns/docbook"> Within an account, a maximum of 100 account users (sub-accounts) can be
-                added. </para>
-            <para security="internal" xmlns="http://docbook.org/ns/docbook">
-                The user is assigned the default region based on which region was set as <code>isDefault:true</code> during the 
-                creation of the region. Users can change their default region through the 
-                <link xlink:href="POST_updateUser_v2.0_users__userId__User_Calls.html">
-                    Update User</link> API operation, but they can only change it to a region that is listed in the service catalog for the Cloud Servers service.</para>
+            </warning>
         </wadl:doc>
         <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN">     
             <note>
@@ -1164,6 +1148,31 @@
                     type="xsd:bool" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
                         the user is enabled (true) or disabled (false).</wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="OS-KSADM:password" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify a password string that meets the following criteria:
+                        <itemizedlist>
+                            <listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
+                            <listitem><para>Includes at least one uppercase and one lower case character</para></listitem>
+                            <listitem><para>Can include special characters.</para></listitem>
+                            <listitem><para>Password cannot begin with a space.</para></listitem>
+                        </itemizedlist>                     
+                    </para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-KSQA:secretQA" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>This object specifies   
+                        the secret <parameter>question</parameter> and <parameter>answer</parameter> attributes that 
+                        can be used to verify the identity of the user.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-KSQA:secretQA" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>This object specifies   
+                        the secret <parameter>question</parameter> and <parameter>answer</parameter> attributes that 
+                        can be used to verify the identity of the user.</para>
+                    </wadl:doc>
                 </param>
             </representation>
             
@@ -1592,26 +1601,21 @@
             This operation is available only to users that have the admin role (<code>identity:user-admin</code>).
             Using the admin role, you can delete a user who holds the user role (<code>identity:default</code>) 
             for the same tenant.</para>
-            <para xmlns="http://docbook.org/ns/docbook">To delete a user, specify the user's ID in the request. If you know the
-                user's name but not the user's ID, use
-                <xref linkend="GET_getUserByName_v2.0_users___User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+            <para xmlns="http://docbook.org/ns/docbook">To delete a user, specify the user ID in the request. If you know the
+                user name but not id, use
+                <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. </para>
                     <warning xmlns="http://docbook.org/ns/docbook">
-                        <para>Before making any change to a user, you should confirm that you are changing the user you intend
-                            to change. You can do this by treating every change as a two-step operation: first, check the target
-                            of the change; second, make the change. </para>
-                        <para>"Delete User" acts upon the user specified by <code>userId</code>. Before attempting to update a
-                            user, first use <xref linkend="GET_getUserById_user__user_id__User_Calls" xrefstyle="select: title"/> to
-                            obtain the user name, email account, and status associated with <code>userId</code>. That's Step 1.
-                            Check the returned information carefully; if you are certain that it describes the user you intend to
-                            change, proceed with Step 2, deleting the user you just examined. </para>
+                        <para>Dpn't delete the wrong user! Before submitting the 
+                            Delete request, use the Get user by name or Get user by id operation to review the user account information 
+                            and confirm that you are working with the correct account.</para>
                     </warning>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
     
     <!-- Reset a user's API key -->
     <method id="resetUserAPIKeyCredentials" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Reset API key credentials">
             <para role="shortdesc"> Reset a user's API Key.</para>para>
             <para>We recommend that you routinely reset passwords and API keys. 
                 This API key reset operation returns the new API key for the user account. 
@@ -1634,7 +1638,7 @@
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method name="GET" id="admin-listUserGlobalRoles">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List User Global Roles">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List global roles for a user">
             <para role="shortdesc">Return global roles for a specific user.</para>
             <para>
                 This call returns a list of global roles associated with the user with

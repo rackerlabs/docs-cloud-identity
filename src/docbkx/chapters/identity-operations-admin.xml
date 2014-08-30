@@ -203,7 +203,7 @@
 			<!-- list user who is Admin user -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins" >
 				<wadl:method href="#getUserAdmin"/>
-			</wadl:resource>
+			</wadl:resource>		
 		</wadl:resources>
 	</section>
 	
@@ -252,38 +252,46 @@
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+		
+			<!-- add a global role -->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
+				<wadl:method href="#addRole"/>
+			</wadl:resource>
+			
 			<!-- list roles -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
 				<wadl:method href="#listRoles"/>
 			</wadl:resource>
-			<!-- add a role globally -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roles">
-				<wadl:method href="#addRole"/>
+			
+			<!-- get a global role by name-->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#rolename">
+				<wadl:method href="#getRoleByName"/>
 			</wadl:resource>
-			<!-- get a global role -->
+			
+			<!-- get a global role by id-->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
-				<wadl:method href="#getRole"/>
+				<wadl:method href="#getRolebyId"/>
+				<wadl:method href="deleteRole"/>
 			</wadl:resource>
-			<!-- delete a global role -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
-				<wadl:method href="#deleteRole"/>
-			</wadl:resource>
-			<!-- add a global role to a user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
-				<wadl:method href="#addUserRole"/>
-			</wadl:resource>
-			<!-- delete a global role from a user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
-				<wadl:method href="#deleteUserRole"/>
-			</wadl:resource>
-			<!-- list users with role -->
+			
+			
+			<!-- list all users with a specified role -->
+			
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleIdRAXAUTHUsers">
 				<wadl:method href="#getUsersWithRole"/>
 			</wadl:resource>
+			
 			<!-- list global roles available to a user -->
 			<wadl:resource href="../../wadl/identity-admin.wadl#admin-userRoles">
 				<wadl:method href="#admin-listUserGlobalRoles"/>
 			</wadl:resource>
+			
+			<!-- Manage user roles -->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
+				<wadl:method href="#addUserRole"/>
+				<wadl:method href="#getUserRole"/>
+				<wadl:method href="#deleteUserRole"/>
+			</wadl:resource>	
 		</wadl:resources>
 	</section>
 	
