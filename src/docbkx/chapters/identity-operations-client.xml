@@ -222,13 +222,7 @@
 		<wadl:resource href="../../wadl/identity-admin.wadl#sessionId_mfa">
 			<wadl:method href="#authenticateWithMultiFactor"/>					
 		</wadl:resource>
-		<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
-			<!-- validate token -->
-			<wadl:method href="#validateToken"/>
 			
-			<!-- check token -->
-			<wadl:method href="#checkToken"/>
-		</wadl:resource>	
 		<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
 			<!-- revoke token -->
 			<wadl:method href="#revokeToken"/>
