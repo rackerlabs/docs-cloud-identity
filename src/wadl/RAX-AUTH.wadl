@@ -175,7 +175,11 @@
                            <method href="#getMobilePhonesForUser"/>
                            <method href="#removeMultifactorForUser"/>
                            <method href="#updateMultifactorSettings"/>
-                    <resource id="multifactor_vcode" path="phoneId/verificationcode">
+                    <resource id="multifactor_vcode" path="{phoneId}/verificationcode">
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneId" style="template" type="xsd:string" required="true">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The id of the phone associated with the user account.
+                            </para></wadl:doc>          
+                        </param>
                     <method href="#sendVerifyCode"/>
                     </resource>
                     <resource id="mfa_PIN" path="{phoneId}/verify">
