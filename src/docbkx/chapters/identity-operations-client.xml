@@ -216,15 +216,10 @@
 		<wadl:resource href="../../wadl/identity-admin.wadl#sessionId_mfa">
 			<wadl:method href="#authenticateWithMultiFactor"/>					
 		</wadl:resource>
-<<<<<<< HEAD
 		
-	<!-- revoke token -->
-		<wadl:resource  href="../../wadl/identity-admin.wadl#tokenById">
-=======
-			
+		
 		<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
-			<!-- revoke token -->
->>>>>>> 2b846381dae70218c482ec9d0592f27e03e0b95f
+
 			<wadl:method href="#revokeToken"/>
 		</wadl:resource>
 	</wadl:resources>
@@ -261,7 +256,7 @@
 				targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"
 				>Extensions</olink>. </para></note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobgit ile_phones">
 				<wadl:method href="#createMobilePhone"/>		
 			</wadl:resource>	
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_vcode">
