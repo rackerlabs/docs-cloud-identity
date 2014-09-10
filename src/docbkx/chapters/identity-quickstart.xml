@@ -30,9 +30,9 @@
         <orderedlist>
             <listitem>
                 <para>Get your Rackspace Cloud credentials.</para>
-                <informaltable rules="all" width="85%">
-                    <col width="30%"/>
-                    <col width="20%"/>
+                <informaltable rules="all" width="90%">
+                    <col width="39%"/>
+                    <col width="11%"/>
                     <col width="50%"/>
                     <thead>
                         <tr>
@@ -86,7 +86,7 @@
                                         <guilabel>Show</guilabel>.</para>
                                 </listitem>
                                 <listitem>
-                                    <para>Copy the APIKey value and paste it into a text
+                                    <para>Copy the API key value and paste it into a text
                                         editor of your choice.</para>
                                 </listitem>
                                 <listitem>
@@ -96,26 +96,32 @@
                             </orderedlist></para></td>
                         </tr>
                         <tr>
-                            <td>tenantId (Optional)</td>
+                            <td><parameter>tenantId</parameter> or
+                                   <parameter>tenantName</parameter>(Optional)</td>
                             <td>xsd:string</td>
-                            <td>The tenant name. Both the
-                                <parameter>tenantId</parameter> and
-                                <parameter>tenantName</parameter> are
-                                optional, but should not be specified
-                                together. If both attributes are
-                                specified, the server responds with a
-                                <errorcode>400</errorcode>
-                                <errorname>Bad Request</errorname>.</td>
-                        </tr>
-                        <tr>
-                            <td>token (Optional)</td>
-                            <td>capi:UUID</td>
-                            <td>A token. If you do not provide a token,
-                                you must provide a user name and
-                                password.</td>
+                            <td><para>Specify the tenantId or tenantName for
+                                the specified user account. Both the
+                                   <parameter>tenantId</parameter> and
+                                   <parameter>tenantName</parameter>
+                                are optional, but should not be
+                                specified together. If both attributes
+                                are specified, the server responds
+                                with a <errorcode>400</errorcode>
+                                <errorname>Bad
+                                   Request</errorname>.
+                                
+                                <note><para>Administrative
+                                   users can also authenticate by
+                                   submitting<parameter>tenantId</parameter>
+                                   and <parameter>token</parameter>
+                                   credentials.  For details, see
+                                   <link
+                                   xlink:href="POST_authenticate_token_v2.0_tokens_Token_Calls.html"
+                                   >Authenticate as tenant with
+                                   token</link>.</para></note></para></td>
                         </tr>
                     </tbody>
-                </informaltable>  
+                </informaltable>
             </listitem>
             <listitem> 
                 <para>Choose your authentication endpoint. You can use either of 
@@ -173,24 +179,11 @@
                             Early Access program. </para>
                     </note></para>
             </listitem>
-            <listitem>
-                <para>Submit an API request to any of the services
-                    included in the Service catalog using the token <code>id</code> and the service endpoint URL included in the authentication response.</para>
-                <para>The following example shows a cURL request to
-                    get information about the Cloud Files service at
-                    endpoint
-                        <code>https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</code>.</para>
-                <para>
-                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee  \
--X GET \
--H 'X-Auth-Token:vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz' --verbose </programlisting>
-                </para>
-            </listitem>
         </orderedlist>
     </para>
     <para>
-        <emphasis role="bold">Step 2: Submit API requests to Rackspace
-            Cloud services</emphasis></para>
+        <emphasis role="bold">Step 2: Submit an API request to a
+            Rackspace Cloud service</emphasis></para>
     <para>After you get an authentication token, you can use it to
         submit API requests to any of the services included in the
         Service catalog.</para>
@@ -216,21 +209,21 @@
         Cloud  authentication endpoint. </para>
     
     
-    <para condition="admin"><emphasis role="bold">Learn more</emphasis></para>
+    <para><emphasis role="bold">Learn more</emphasis></para>
     <para>Visit the following links to learn more about &CIS;.</para>
     <para>
         <itemizedlist>
             <listitem>
-                <para><link xlink:href="Token_Calls.html" xrefstyle="select:title"/></para>
+                <para><link xlink:href="Token_Calls.html">Authentication tokens</link></para>
             </listitem>
             <listitem>
                 <para>
-                    <link xlink:href="Identity-Concpts.html" xrefstyle="select:title"/>
+                    <link xlink:href="Identity-Concpts.html">Identity concepts</link>
                     </para>
             </listitem>
             <listitem>
                 <para>
-                <link xlink:href="Sample_Request_Response-d1e64.html" xrefstyle="select:title"/>
+                <link xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link>
                 </para>
             </listitem>
             <listitem>
@@ -240,12 +233,12 @@
             </listitem>
             <listitem>
                 <para>
-                    <link xlink:href="https://docs-internal.rackspace.com">API operations references for other Rackspace services</link>
+                    <link xlink:href="http://docs-internal.rackspace.com/">API operations references for other Rackspace services</link>
                 </para>
             </listitem>
             <listitem condition="admin">
                 <para>
-                    <link xlink:href="https://docs.rackspace.com">API operations reference for other Rackspace services (Internal documentation)</link>
+                    <link xlink:href="http://docs.rackspace.com">API operations reference for other Rackspace services (Internal documentation)</link>
                 </para>
             </listitem>
         </itemizedlist>
