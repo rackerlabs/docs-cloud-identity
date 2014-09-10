@@ -5,8 +5,8 @@
   <endpoint
       id="1" 
       tenantId="1"
-      type="compute"
       name="Compute"
+      type="compute"
       region="North"
       publicURL="https://compute.north.public.com/v1"
       internalURL="https://compute.north.internal.com/v1"
@@ -20,8 +20,8 @@
   <endpoint
       id="2" 
       tenantId="2"
-      type="compute"
       name="Compute"
+      type="compute"
       region="South"
       publicURL="https://compute.north.public.com/v1"
       internalURL="https://compute.north.internal.com/v1"
@@ -35,8 +35,8 @@
   <endpoint
       id="3" 
       tenantId="1"
-      type="compute"
       name="Compute"
+      type="compute"
       region="East"
       publicURL="https://compute.north.public.com/v1"
       internalURL="https://compute.north.internal.com/v1"
@@ -46,8 +46,8 @@
   <endpoint
       id="4" 
       tenantId="1"
-      type="compute"
       name="Compute"
+      type="compute"
       region="West"
       publicURL="https://compute.north.public.com/v1"
       internalURL="https://compute.north.internal.com/v1"
@@ -61,8 +61,8 @@
   <endpoint
       id="5" 
       tenantId="1"
-      type="compute"
       name="Compute"
+      type="compute"
       region="Global"
       publicURL="https://compute.north.public.com/v1"
       internalURL="https://compute.north.internal.com/v1"

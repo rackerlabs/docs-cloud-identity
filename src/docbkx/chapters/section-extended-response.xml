@@ -41,8 +41,7 @@ format="SVG" scale="60"/>
     extension. </para>
   <para>In JSON, you must use the alias. The domainId and defaultRegion attributes in the
     <xref linkend="IdentityLSTUSRX" xrefstyle="template: Examples %n"/> and
-    <xref linkend="IdentityLSTUSRJ" xrefstyle="select:
-      labelnumber"/> are defined in the
+    <xref linkend="IdentityLSTUSRJ" xrefstyle="select: labelnumber"/> are defined in the
     <code>RAX-AUTH</code> namespace. </para>
   <para>Actions work in exactly the same manner as illustrated in the Create region request shown in 
     <xref linkend="IdentityGETRGNX" xrefstyle="template: Examples %n"/> and

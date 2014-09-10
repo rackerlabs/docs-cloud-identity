@@ -377,7 +377,7 @@
 								internal-only. </para>
 						</listitem>
 						<listitem>
-							<para> Corrected JSON response in <link xlink:href="GET_admin-listUserGlobalRoles_v2.0_users__userId__v2.0_users_%E2%80%8B_userId_%E2%80%8B_OS-KSADM_roles_Role_Calls.html"
+							<para> Corrected JSON response in <link xlink:href="GET_listUserGlobalRoles__v2.0_users__userId__OS-KSADM_roles_Role_Calls.html"
 								>List available roles by userId</link>.</para>
 						</listitem>
 						<listitem>
@@ -385,10 +385,8 @@
 								operation parameter tables.</para>
 						</listitem>
 						<listitem>
-							<para> Mentioned that elements not being updated in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_admin-updateUser_v2.0_users__userId__User_Calls"
-									>“Update user”</olink> do not need to be included in request
+							<para> Mentioned that elements not being updated in 
+								<olink targetdoc="Identity-Admin-Developer-Guide" targetptr="POST_admin-updateUser_v2.0_users__userId__User_Calls">“Update user”</olink> do not need to be included in request
 								body.</para>
 						</listitem>
 						<listitem>

@@ -32,13 +32,13 @@
                     <itemizedlist>
                     <listitem>
                         <para>
-                            <link xlink:href="Account-Users-d1e910.html" xrefstyle="select: title"/>
+                            <link xlink:href="Account-Users-d1e910.html">Account users</link>
                         </para>
                     </listitem>
                         
                     <listitem>
                             <para>
-                                <link xlink:href="section_assign_roles_3.html" xrefstyle="select: title "/>                               
+                                <link xlink:href="section_assign_roles_3.html">Assing roles</link>                         
                             </para>
                         </listitem>
                    </itemizedlist>
@@ -297,7 +297,7 @@
                     for all tenants authorized to use that service. The endpoint template also
                     specifies the URLs for the internal, administrative, and public endpoints that
                     provide access to the service. </para>
-                <para>See <link xlink:href="Endpoint_Template_Calls.html" xrefstyle="select: title"/> for
+                <para>See <link xlink:href="Endpoint_Template_ Calls.html" xrefstyle="select: title"/> for
                     detailed information. </para>
             </listitem>
         </varlistentry>
