@@ -224,6 +224,7 @@
 			<wadl:method href="#revokeToken"/>
 		</wadl:resource>
 	</wadl:resources>
+   </section>
 	<section xml:id="Tenant_Calls">
 		<title>Tenants</title>
 		<para>The operations described in this section allow clients to manage tenants.</para>
@@ -234,8 +235,6 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-		
-		</section>
 	<section xml:id="Multifactor_Calls_client">
 		<title>Multifactor</title>
 		<para>The &CIS; API operations described in this section implement multifactor authentication

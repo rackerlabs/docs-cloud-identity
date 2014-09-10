@@ -111,7 +111,7 @@
                     <para>A valid admin authentication token.</para>
                 </wadl:doc>
             </param>
-            <method href="#admin-createUserWithFullPayload"/>    
+            <method href="#admin-addUser"/>    
             <method href="#admin-listUsers"/>
         <resource id="admin-userid" path="{userId}">
             <param name="userId" style="template" type="xsd:string" required="true">
@@ -186,8 +186,7 @@
 
     <!-- Version -->
     <method name="GET" id="admin-getVersions">
-        <wadl:doc xml:lang="EN" title="List versions"
-            xmlns="http://docbook.org/ns/docbook"><para
+        <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN"  title="List versions"><para
                 role="shortdesc">Lists information about all Identity
                 API versions.</para>
         </wadl:doc>
@@ -699,9 +698,8 @@
             <para>If an account is enabled to use muliti-factor authentication, authentication is a two-step process: 
                 <orderedlist>
                     <listitem>
-                        <para>Send an authentication request with either Password or API credentials. 
-                            See <link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">
-                            "Authenticate with password or API key credentials."</link></para>
+                        <para>Send an inital POST token authentication request with either password or API credentials. 
+                        </para>
                         <para>The request triggers &CIS; to send an SMS message to the phone 
                             associated with the user account. In response to the authentication request,  &CIS; 
                             returns a 401 message that includes 
@@ -887,8 +885,11 @@
         
         <response status="204"/>&commonFaults; &getFaults;</method>
 
-    <!-- Create user with full payload -->
-    <method id="admin-createUserWithFullPayload" name="POST">
+    <!-- Create user with full payload 
+    This is a customized call that is designed to help Service administrators add users with all required characteristics.
+    The role parameter has a special tenantId attribute that allows a new tenantId to be created and associated with the new user.
+    -->
+    <method id="admin-addUser" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create user">
             <para role="shortdesc">
                 Creates a Rackspace Cloud account user.
@@ -943,7 +944,8 @@
                             <para>
                                 Use the roles attribute to assign a user one or more roles other than the default role (<parameter>identity:default</parameter>). 
                                 You can also associate the user with a new tenant by specifying a new alphanumeric 
-                                <parameter>tenantId</parameter> attribute in the <parameter>role</parameter> element.
+                                <parameter>tenantId</parameter> attribute in the <parameter>role</parameter> element. You cannot specify 
+                                an existing an id for an existing tenant.
                             </para>
                         </listitem>
                     </varlistentry>

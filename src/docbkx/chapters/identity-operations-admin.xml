@@ -150,7 +150,7 @@
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/identity-admin.wadl#admin-user">
-				<wadl:method href="#admin-createUserWithFullPayload"/>
+				<wadl:method href="#admin-addUser"/>
 			</wadl:resource>
 			
 			<wadl:resource

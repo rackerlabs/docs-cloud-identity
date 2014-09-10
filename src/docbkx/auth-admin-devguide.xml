@@ -92,7 +92,7 @@
 							<para>Added syntax requirements for the user
 								<parameter>name</parameter>
 								attribute in the 
-								<link xlink:href="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls.html">Create user</link>.</para>
+								<link xlink:href="POST_admin-addUser_v2.0_users_User_Calls.html">Create user</link>.</para>
 						</listitem>
 						<listitem><para>Updated <link xlink:href="QuickStart-000.html">Quick Start</link> to correct outdated information, reformat as a stepped process, and add additional "Learn more" links.</para></listitem>
 					</itemizedlist>
@@ -115,7 +115,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added <link xlink:href="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls.html">Create user</link> API operation.</para></listitem>
+							<para>Added <link xlink:href="POST_admin-addUser_v2.0_users_User_Calls.html">Create user</link> API operation.</para></listitem>
 						<listitem>
 							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
 						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
@@ -412,7 +412,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added error to <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls"/>. </para>
+								targetptr="POST_admin-addUser_v2.0_users_User_Calls"/>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -516,7 +516,7 @@
 						<listitem>
 							<para> Updated Add User to reflect default region (<olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls">Add user</olink>) </para>
+									targetptr="POST_admin-addUser_v2.0_users_User_Calls">Add user</olink>) </para>
 						</listitem>
 						<listitem>
 							<para> Updated Update User operation to reflect default region (<olink

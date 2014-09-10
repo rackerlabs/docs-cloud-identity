@@ -1654,7 +1654,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<itemizedlist condition="client">
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_admin-addUser_v2.0_users_User_CallsUser_Calls">Add account user</olink>
+						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_User_Calls.html">Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>
@@ -1672,18 +1672,16 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<listitem>
 					<para>
 						<olink targetdoc="Identity-Admin-Developer-Guide"
-							targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls">Add account user</olink>
+							targetptr="POST_admin-addUser_v2.0_users_User_Calls">Add account user</olink>
 					</para>
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
-							>Assign role to account users</olink></para>
+						targetptr="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls">Assign role to account users</olink></para>
 				</listitem>
 				<listitem>
-					<para><olink targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-							>Delete role from account user</olink></para>
+					<para>
+						<olink targetdoc="Identity-Admin-Developer-Guide" targetptr="DELETE_deleteUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls">Delete role from account user</olink></para>
 				</listitem>
 			</itemizedlist>
 			<para>For information about implementing RBAC by using the Cloud
