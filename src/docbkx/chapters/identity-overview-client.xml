@@ -6,6 +6,7 @@
 ]>
 <chapter xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:db="db=http://docbook.org/ns/docbook"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Overview-d1e65">
     <title>Overview</title>
@@ -51,6 +52,7 @@
         For example, if you use the v1.1 API to generate a token, you
         can use that token in calls to the v2.0 API. </para>
     <xi:include href="identity-quickstart.xml"/>
+    
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
         <para>This Developer Guide is intended for software developers

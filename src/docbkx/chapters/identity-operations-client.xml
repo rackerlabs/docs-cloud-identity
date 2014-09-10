@@ -60,6 +60,7 @@
 				<wadl:method href="#admin-getExtension"/>
 			</wadl:resource>
 		</wadl:resources>
+		<xi:include href="section-extended-response.xml"/>
 	</section>
 	
 	<!--User operations-->
@@ -255,8 +256,9 @@
 			to the core Identity API. For more information, see <olink condition="admin"
 				targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"
 				>Extensions</olink>. </para></note>
+		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobgit ile_phones">
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 				<wadl:method href="#createMobilePhone"/>		
 			</wadl:resource>	
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_vcode">

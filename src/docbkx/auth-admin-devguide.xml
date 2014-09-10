@@ -927,7 +927,7 @@
 						</listitem>
 						<listitem>
 							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="GET_listCredentials_v2.0_users__userId__roles_OS-KSADM_credentials_User_Calls"
+								targetptr="GET_admin-listCredentials_v2.0_users__userId__OS-KSADM_credentials_User_Calls"
 								/> and  <olink targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="Account-Users-d1e910">“Identity user types and
 									default roles”</olink>to state that account users must

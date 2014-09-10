@@ -627,8 +627,8 @@
 						<listitem>
 							<para> Added examples of changing a user's password in <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_admin-updateUser_v2.0_users__userId__User_Calls">“Role-based
-									access control”</olink>. </para>
+									targetptr="POST_updateUser__v2.0_users__userId__User_Calls.html">“Role-based
+									access control”</olink>.</para>
 						</listitem>
 						<listitem>
 							<para> Added information about account users (also known as sub-accounts). See </para>
