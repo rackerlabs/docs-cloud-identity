@@ -179,7 +179,7 @@
 						</listitem>
 						<listitem>
 							<para> Removed Category Role table from <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+								targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
 								/>. </para>
 						</listitem>
 						<listitem>
@@ -251,7 +251,7 @@
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_"/>.</para>
+								targetptr="GET_listUsers__v2.0_users__User_Calls"/>.</para>
 						</listitem>
 						<listitem>
 							<para> Added domain id to: <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -579,7 +579,7 @@
 						<listitem>
 							<para> Added information about <code>defaultRegion</code> for <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_">“GET user by name”</olink>, 
+									targetptr="GET_listUsers__v2.0_users__User_Calls">“GET user by name”</olink>, 
 								<olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_getUserById_v2.0_users__userId__">“GET user by id"</olink>, 
@@ -633,7 +633,7 @@
 						</listitem>
 						<listitem>
 							<para>Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html">Additional resources</link>, 
-								adding links to Rackspace Knowledge Center and customer feedback site.</para>
+								adding links to Rackspace Knowledge Center and customer <link xlink:href="https://rackspace.uservoice.com/forums/71021-product-feedback/category/81960-identity-auth">feedback</link> site.</para>
 						</listitem>
 						<listitem>
 							<para> Added Statuses section listing all possible account statuses. </para>
@@ -738,7 +738,7 @@
 						</listitem>
 						<listitem>
 							<para>Updated 
-								<link xlink:href="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_User_Calls.html">List credentials operation</link>
+								<link xlink:href="GET_listCredentials_v2.0_users__userid__OS-KSADM_credentials_User_Calls.html">List credentials operation</link>
 								 and <link xlink:href="Account-User-d1e20.html">Account users</link> to state that account
 								users must authenticate with their passwords. </para>
 						</listitem>

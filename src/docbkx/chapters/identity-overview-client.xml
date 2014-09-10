@@ -50,7 +50,7 @@
         authenticate when making calls to Rackspace Cloud services.
         For example, if you use the v1.1 API to generate a token, you
         can use that token in calls to the v2.0 API. </para>
-    <xi:include href="identity-quickstart-client.xml"/>
+    <xi:include href="identity-quickstart.xml"/>
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
         <para>This Developer Guide is intended for software developers

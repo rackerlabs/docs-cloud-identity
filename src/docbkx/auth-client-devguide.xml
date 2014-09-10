@@ -3,6 +3,9 @@
 <!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
 <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
 <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+<!-- Created a common entity file to manage all entities for the Identity doc from one place.-->
+<!ENTITY % common SYSTEM "../common/common.ent">
+%common;
 ]>
 <book xmlns="http://docbook.org/ns/docbook" 
 	xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -49,6 +52,49 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-09-09</date>
+			<revdescription>
+				<itemizedlist spacing="compact">
+					<listitem>
+						<para>Updated <link xlink:href="GET_listUsers__v2.0_users__User_Calls.html">List users</link> 
+							operation to add the <parameter>name</parameter> and <parameter>email</parameter> query parameters.
+							Removed Get User by name operation.
+						</para>
+					</listitem>
+					<listitem>
+					<para>Fixed incorrect URIs for Role and User operations.
+					</para>
+					</listitem>
+					<listitem>
+						<para>Removed List role by name operation which is not supported by &CIS;.</para>
+					</listitem>
+					<listitem>
+						<para>Updated <link xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls_client.html">Send verification code to 
+						mobile phone</link> operation to include the <parameter>phoneId</parameter> URI parameter.</para>
+					</listitem>
+					<listitem>
+						<para>Removed Check token and Validate token operations from the Developer.</para>
+					</listitem>
+				</itemizedlist>
+			</revdescription>
+			</revision>
+			<revision>
+				<date>2014-09-03</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated <link
+								xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link> to add missing attributes 
+								and object elements (user, token, and
+								service catalog) to attributies reference table.
+							</para></listitem>
+						<listitem>
+							<para>Added syntax requirements for specify the user name in the <link xlink:href="POST_addUser_v2.0_users_User_Calls.html">Add user</link> operation.
+							</para></listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-08-28</date>
 				<revdescription>
 					<itemizedlist spacing="compact">
@@ -87,7 +133,7 @@
 						<listitem>
 							<para>Fixed incorrect paths in <link xlink:href="User_Calls.html">Users</link> API operations.</para></listitem>
 						<listitem>
-							<para>Updated <link xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link> field descriptions to remove call outs</para>
+							<para>Updated <link xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link> field descriptions to remove call outs.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -191,15 +237,14 @@
 									targetptr="User_Calls">“Users”</olink>.</para>
 						</listitem>
 						<listitem>
-							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_listRoles_v2.0_users_OS-KSADM_roles_Role_Calls"
-									>“Role-based access control”</olink>.</para>
+							<para> Added some examples of what a service is, since you can filter on serviceId in 
+								<link xlink:href="GET_listRoles_v2.0_OS-KSADM_roles_Role_Calls.html"/>
+							</para>
 						</listitem>
 						<listitem>
-							<para> Removed Category Role table from <olink targetdoc="Identity-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-								/>. </para>
+							<para> Removed Category Role table from 
+								<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user.</link>
+							</para>
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Developer-Guide"
@@ -244,19 +289,13 @@
 							</para>
 						</listitem>
 						<listitem>
-							<para> RBAC: Exposed sections 3.11, 4.3.5, 4.3.6: (<olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="Role_Based_Access_Control-d1e808">“Role-based access
-									control”</olink>, <olink targetdoc="Identity-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__"
-								/>, <olink targetdoc="Identity-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__"
-								/>, and <olink targetdoc="Identity-Developer-Guide"
-									targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__"
-								/>). </para>
+							<para>RBAC: Exposed sections 3.11, 4.3.5, 4.3.6: (<xref linkend="Role_Based_Access_Control-d1e808"/>, 
+								<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user</link>, 
+								and 
+								<link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Delete global role from user</link>.</para>
 						</listitem>
 						<listitem>
-							<para> Added domain id to <olink targetdoc="Identity-Developer-Guide"
+							<para>Added domain id to <olink targetdoc="Identity-Developer-Guide"
 									targetptr="User_Calls">"User operations"</olink> and corrected code samples.</para>
 						</listitem>
 					</itemizedlist>
@@ -489,7 +528,7 @@
 						<listitem>
 							<para>For "Update User" and "Delete User" operations, added suggestion to use <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_admin-getUserById_v2.0_users__userId__User_Calls"/> to confirm
+									targetptr="GET_getUserById__v2.0_users__userId__User_Calls"/> to confirm
 								that the intended user will be changed. </para>
 						</listitem>
 						<listitem>
@@ -531,17 +570,13 @@
 						</listitem>
 						<listitem>
 							<para> Linked <xref linkend="QuickStart-000"/> to <olink targetdoc="Identity-Developer-Guide"
-									targetptr="POST_admin-addUser_v2.0_users_User_Calls"/> with note that account
+								targetptr="POST_addUser__v2.0_users_User_Calls"/> with note that account
 								users added via API cannot use the control panel. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Developer-Guide"
-								targetptr="GET_listCredentials_v2.0_users__userId__roles_OS-KSADM_credentials_User_Calls"
-								/> and <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="Account-Users-d1e910">“Identity user types and
-									default roles”</olink> to state that account users must
-								authenticate with their passwords. </para>
+							<para> Updated <link xlink:href="GET_listCredentials_v2.0_users_OS-KSADM_credentials_User_Calls.html"/>
+								and <link xlink:href="Account-Users-d1e910.html"/> to state that account users must
+								authenticate with their passwords.</para>
 						</listitem>
 						<listitem>
 							<para> Added an annotated JSON example in <olink targetdoc="Identity-Developer-Guide"
@@ -586,21 +621,20 @@
 						<listitem>
 							<para> Added examples of creating a user with a password in <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_admin-addUser_v2.0_users_User_Calls"/>. In the same section,
+									targetptr="POST_addUser__v2.0_users_User_Calls"/>. In the same section,
 								added information that an account can have up to 100 account users. </para>
 						</listitem>
 						<listitem>
 							<para> Added examples of changing a user's password in <olink
 									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_admin-updateUsers_v2.0_users__userId__User_Calls">“Role-based
+									targetptr="POST_admin-updateUser_v2.0_users__userId__User_Calls">“Role-based
 									access control”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Added information about account users (also known as sub-accounts). See </para>
 						</listitem>
 						<listitem>
-							<para> Clarified <olink targetdoc="Identity-Developer-Guide"
-								targetptr="GET_listCredentials_v2.0_users__userId__roles_OS-KSADM_credentials_User_Calls"
+							<para> Clarified <link xlink:href="GET_listCredentials_v2.0_users_OS-KSADM_credentials_User_Calls.html"
 								/> to say that user passwords cannot be retrieved. </para>
 						</listitem>
 					</itemizedlist>

@@ -3,7 +3,7 @@
             "id":"9999",
             "name":"Bigz",
             "description":"A description ...",
-            "enabled": "true"
+            "enabled": true
         }
     ],
     "tenants_links":[{

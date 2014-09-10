@@ -29,39 +29,19 @@
                     role automatically, based on the &CIS; system configuration. The user type and
                     role determine the resources and capabilities available to the user.</para>
                 <para>See the following links for more information: 
-                    <itemizedlist audience="client">
+                    <itemizedlist>
                     <listitem>
                         <para>
-                            <olink targetdoc="Identity-Developer-Guide"
-                        targetptr="Account-Users-d1e910">"Identity users types and default roles"</olink>
+                            <link xlink:href="Account-Users-d1e910.html" xrefstyle="select: title"/>
                         </para>
                     </listitem>
                         
                     <listitem>
                             <para>
-                                <olink targetdoc="Identity-Developer-Guide"
-                                    targetptr="section_assign_roles_3">“Assigning Roles to Account
-                                    Users”</olink>
+                                <link xlink:href="section_assign_roles_3.html" xrefstyle="select: title "/>                               
                             </para>
                         </listitem>
                    </itemizedlist>
-                   <itemizedlist audience="admin">    
-                        <listitem>
-                            <para>
-                                <olink targetdoc="Identity-Admin-Developer-Guide"
-                                    targetptr="Account-Users-d1e910">“Identity user types and
-                                    default roles”</olink>
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>
-                                <olink
-                                targetdoc="Identity-Admin-Developer-Guide"
-                                targetptr="section_assign_roles_3">“Assigning Roles to Account
-                                    Users”</olink>
-                            </para>
-                        </listitem>
-                    </itemizedlist>
                 </para>
             </listitem>
         </varlistentry>
@@ -317,8 +297,7 @@
                     for all tenants authorized to use that service. The endpoint template also
                     specifies the URLs for the internal, administrative, and public endpoints that
                     provide access to the service. </para>
-                <para>See <olink targetdoc="Identity-Admin-Developer-Guide"
-                        targetptr="Endpoint_Template_Calls">“Endpoint Templates”</olink> for
+                <para>See <link xlink:href="Endpoint_Template_Calls.html" xrefstyle="select: title"/> for
                     detailed information. </para>
             </listitem>
         </varlistentry>

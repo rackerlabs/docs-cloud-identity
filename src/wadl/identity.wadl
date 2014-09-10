@@ -207,9 +207,9 @@
                         describes the current operational state of the given service version. Status
                         can be any of the following values: <itemizedlist spacing="compact">
                             <listitem><strong>ALPHA</strong> status describes a new service API. The
-                                API contract might be set, but the API implementaiton might not
+                                API contract might be set, but the API implementation might not
                                 comply with the contract completely. Developers are encouraged to
-                                begin testing aganst an ALPHA version to provide feedback. </listitem>
+                                begin testing against an ALPHA version to provide feedback. </listitem>
                             <listitem>
                                 <strong>BETA</strong> status describes an API version that is a
                                 candidate for the next major release. BETA versions might include

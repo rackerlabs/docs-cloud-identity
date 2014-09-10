@@ -51,6 +51,53 @@
 				Identity Service.</para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2014-09-09</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated <link xlink:href="GET_listUsers__v2.0_users__User_Calls.html">List users</link> 
+								operation to add the <parameter>name</parameter> and <parameter>email</parameter> query parameters.
+								Removed Get User by name operation.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Fixed incorrect URIs for Role and User operations.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Removed List role by name operation which is not supported by &CIS;.</para>
+						</listitem>
+						<listitem>
+							<para>Updated <link xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls_client.html">Send verification code to 
+								mobile phone</link> operation to include the <parameter>phoneId</parameter> URI parameter.</para>
+						</listitem>
+						<listitem>
+							<para>Removed Check token and Validate token operations from the Developer.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-09-03</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated <link
+								xlink:href="Sample_Request_Response-d1e64.html">Sample authentication request and response</link> to add missing attributes 
+								and object elements (user, token, and
+								service catalog) to attributes reference table.
+							</para></listitem>
+						<listitem>
+							<para>Added syntax requirements for the user
+								<parameter>name</parameter>
+								attribute in the 
+								<link xlink:href="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls.html">Create user</link>.</para>
+						</listitem>
+						<listitem><para>Updated <link xlink:href="QuickStart-000.html">Quick Start</link> to correct outdated information, reformat as a stepped process, and add additional "Learn more" links.</para></listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision condition="admin">
 				<date>2014-08-28</date>
 				<revdescription>
@@ -147,14 +194,14 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added the following sections to Multifactor operations section to add information about Multifactor authentication and attributes. 
+							<para>Added the following sections to Multi-factor operations section to add information about Multi-factor authentication and attributes. 
 								<itemizedlist>
 										<listitem>
-											<para><link xlink:href="mfa_processes.html">Multifactor authentication set up, operation, and management</link></para></listitem>
+											<para><link xlink:href="mfa_processes.html">Multi factor authentication set up, operation, and management</link></para></listitem>
 										<listitem>
-											<para><link xlink:href="proc_mfa_setup.html">Set up multifactor authentication</link></para></listitem>
+											<para><link xlink:href="proc_mfa_setup.html">Set up multi factor authentication</link></para></listitem>
 									<listitem>
-										<para><link xlink:href="proc_mfa_manage.html">Manage multifactor authentication settings and operation</link></para></listitem>
+										<para><link xlink:href="proc_mfa_manage.html">Manage multi factor authentication settings and operation</link></para></listitem>
 									</itemizedlist></para>
 						</listitem>
 						<listitem>
@@ -183,7 +230,7 @@
 					<itemizedlist spacing="compact">
 						
 						<listitem>
-							<para>Added information about obtaining tokens by authenticating with multifactor authentication credentials. 
+							<para>Added information about obtaining tokens by authenticating with multi factor authentication credentials. 
 								See <link xlink:href="Token_Calls.html">Authentication tokens</link></para>
 						</listitem>
 						<listitem security="internal">
@@ -201,9 +248,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added Multifactor and Mobile phone resources and operations for multifactor-authentication support.
+							<para>Added Multi factor and Mobile phone resources and operations for multifactor-authentication support.
 								See <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Multifactor_Calls">“Multifactor Operations”</olink> </para>
+									targetptr="Multifactor_Calls">“Multi-factor Operations”</olink> </para>
 						</listitem>
 						<listitem security="internal">
 							<para>Added support for pop-up glossary terms.</para>
@@ -326,7 +373,7 @@
 						<listitem>
 							<para> Updated many RAX-AUTH operations to
 								have consistent examples. Added
-								Multifactor and Federation,
+								Multi-factor and Federation,
 								internal-only. </para>
 						</listitem>
 						<listitem>
@@ -340,20 +387,17 @@
 						<listitem>
 							<para> Mentioned that elements not being updated in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_admin-updateUsers_v2.0_users__userId__User_Calls"
+									targetptr="POST_admin-updateUser_v2.0_users__userId__User_Calls"
 									>“Update user”</olink> do not need to be included in request
 								body.</para>
 						</listitem>
 						<listitem>
-							<para> Added some examples of what a service is, since you can filter on service Id in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-									>“Secret Questions and Answers”</olink>. </para>
+							<para> Added some examples of what a service is, since you can filter on service Id in 
+								<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user</link>
+							</para>
 						</listitem>
 						<listitem>
-							<para> Removed Category Role table from <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-								/>. </para>
+							<para> Removed Category Role table from <link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -450,10 +494,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added visibility note to <olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-								>“Users”</olink>. </para>
+							<para> Added visibility note to 
+								<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user</link></para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -474,8 +516,7 @@
 						<listitem>
 							<para> Updated Add User to reflect default region (<olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls">“Secret Questions and
-									Answers”</olink>) </para>
+									targetptr="POST_admin-createUserWithFullPayload_v2.0_users_User_Calls">Add user</olink>) </para>
 						</listitem>
 						<listitem>
 							<para> Updated Update User operation to reflect default region (<olink
@@ -638,7 +679,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <link xlink:href="Policy_Calls.html">Policy opeations</link>.
+							<para> Added <link xlink:href="Policy_Calls.html">Policy operations</link>.
 							</para>
 						</listitem>
 						<listitem>

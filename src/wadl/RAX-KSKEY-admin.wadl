@@ -19,6 +19,7 @@
 	xmlns:capi="http://docs.openstack.org/common/api/v1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
 
  <grammars>
@@ -47,7 +48,7 @@
                         <resource id="userCredentials" path="credentials">
                             <method href="#addUserCredential"/>
 
-                            <resource id="tenants">
+<!--                            <resource id="tenants">
                                 <param name="X-Auth-Token"
                                     style="header" type="xsd:string"
                                     required="true">
@@ -72,7 +73,7 @@
                                         xmlns="http://docbook.org/ns/docbook"
                                         xml:lang="EN"><para>The page
                                             size.</para></wadl:doc>
-                                </param>
+                                </param> -->
                                 <method href="#listCredentials"/>
                             </resource>
                             <resource id="userCredentialsByType"
@@ -85,7 +86,6 @@
                     </resource>
                    </resource>
                 </resource>
-            </resource>
     </resources>
 
     <!--*******************************************************-->
@@ -194,15 +194,12 @@
 
     <method name="POST" id="updateUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user API key credentials">
-            <para role="shortdesc">
-                Update user credentials.
+            <para role="shortdesc">Update user credentials.
             </para>
             <para>
                 An API key is a credential; you can update a user's API key with this call.
-                To add a credential to a user, specify the user ID in the request.
-                If you know the user name but not the ID, use  the                
-                <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
-                 to get the ID.      
+                To add a credential to a user, include the userid in the request. If you don't know the id, 
+                you can use the  <link xlink:href="GET_admin-getUserByName_v2.0_users_User_Calls.html"/> operation to find it.
             </para>
         </wadl:doc>
         <request>
@@ -246,7 +243,7 @@
                 An API key is a credential; you can delete a user's API key with this call.
                 To delete a credential from a user, specify the user ID in the request.
                 If you know the user name but not the ID, use                  
-                <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"></xref>
+                <link xlink:href="GET_admin-getUserByName_v2.0_users_User_Calls.html"/>
                  to                   
                 obtain complete identifying information about the user.
             </para>
@@ -260,10 +257,8 @@
     <method name="GET" id="getUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user API key credentials">
             <para role="shortdesc">Get user credentials.</para>
-            <para>To list a user's API key credentials, 
-                specify the user's ID in the request.
-                If you know the user's name but not the user's ID, use the Get user by name operation to 
-                obtain complete identifying information about the user.
+            <para>To list API key credentials for a specified user, include the userid in the request. If you don't know the id, 
+                you can use the  <link xlink:href="GET_admin-getUserByName_v2.0_users_User_Calls.html"/> operation to find it.
             </para>
         </wadl:doc>
         <response status="200 203">

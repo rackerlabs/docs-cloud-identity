@@ -31,16 +31,16 @@
 		<title>Request/Response Types</title>
 		<para>The &CIS; v2 API supports both the JSON and XML data serialization request and response
 			formats. Some operations also support the Atom Syndication Format for responses. If you
-			do not specify a format type, <code>JSON</code> is the default. <xref
-				linkend="Response_Types"/> provides a summary of the available formats.</para>
-
-				<table rules="all" width="884" xml:id="Response_Types">
+			do not specify a format type, JSON is the default. <xref linkend="Response_Types"/> provides 
+			a summary of the available formats.</para>
+		
+		<table rules="all" width="884" xml:id="Response_Types">
 			<caption>Supported Request and Response formats</caption>
+			<col width="7%"/>
+			<col width="35%"/>
+			<col width="222pt"/>
 			<col width="14%"/>
-			<col width="36%"/>
-			<col width="204pt"/>
-			<col width="18%"/>
-			<col width="80px"/>
+			<col width="160px"/>
 			<thead valign="baseline">
 				<tr>
 					<td>Format</td>
@@ -69,39 +69,40 @@
 		</table>
 		<variablelist>
 			<varlistentry>
-			<term><code>Content-Type</code> header syntax</term>
+				<term><guilabel>Content-Type header syntax</guilabel></term>
 				<listitem>
 					<para>You specify the request format in the <code>Content-Type</code> header. This header is
-					required for operations that have a request body.  The following code sample shows the
-					syntax for the <code>Content-Type</code> header:
+						required for operations that have a request body.  The following code sample shows the
+						syntax for the <code>Content-Type</code> header:
 					</para>
-				<para>
-					<programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
-				</para>
-				<para>Where <parameter>format</parameter> is either <literal>json</literal> or <literal>xml</literal>.</para>
-			</listitem>
-		</varlistentry>
+					<para>
+						<programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
+					</para>
+					<para>Where <parameter>format</parameter> is either <literal>json</literal> or <literal>xml</literal>.</para>
+				</listitem>
+			</varlistentry>
 		</variablelist>
 		<para>You can specify the response format using either the <code>Accept</code> header or a
 			query extension:</para>
 		<variablelist>
 			<varlistentry>
-				<term>Accept header syntax</term>
+				<term><guilabel>Accept header syntax</guilabel></term>
 				<listitem>
 					<para>
 						<programlisting>Accept: application/format</programlisting> 
 					</para>
-					<para>Where <parameter>format</parameter> can be either json or xml.</para>
+					<para>Where <code>format</code> can be either <code>json</code> or 
+						<code>xml</code>.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
-				<term>Query extension syntax</term>
+				<term><guilabel>Query extension syntax</guilabel></term>
 				<listitem>
 					<para>Add an <code>.xml</code> or <code>.json</code> extension to the request
 						URI. For example, the <code>.xml</code> extension in the following URI
 						request specifies that the response body is returned in XML format.</para>
 					<para>
-						<programlisting>POST /v2/010101/servers.xml</programlisting>
+						<programlisting>POST /v2/tokens.xml</programlisting>
 					</para>
 					<para>
 						If you specify different formats for the Accept header and the query extension, the format
@@ -113,6 +114,62 @@
 				</listitem>
 			</varlistentry>
 		</variablelist>
+		<para>You can serialize a response in a different format from the request format. <xref linkend="JSON_req"/> and
+			<xref linkend="diff-serialization"/> show a request body in JSON format and a response body in XML format. </para>
+		<example xml:id="JSON_req">
+			<title>Authentication Request with Headers: JSON</title>
+			
+			<programlisting language="json">
+<![CDATA[&lt; &lt; POST /v2.0/tokens HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Content-Type: application/json
+Accept: application/json
+
+{
+  "auth": {
+    "passwordCredentials": {
+      "username": "demoauthor",
+      "password": "mypass"
+    },
+    "tenantId": "1234"
+  }
+}]]>
+</programlisting>
+		</example>
+		
+		<para><xref linkend="diff-serialization"/> shows the headers and XML response returned by the JSON request.</para>
+		<example xml:id="diff-serialization">
+			<title>Response with Headers: XML</title>
+			<programlisting>
+<![CDATA[HTTP/1.1 200 OK
+Date: Sun, 29 Jun 2014 03:35:05 GMT
+Content-Type: application/xml
+Content-Length: 1060
+Connection: keep-alive
+vary: Accept, Accept-Encoding, X-Auth-Token]]>
+<![CDATA[
+<access xmlns:atom="http://www.w3.org/2005/Atom" 
+xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+xmlns="http://docs.openstack.org/identity/api/v2.0" 
+xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+     <token id="yyyyxxxaxxxxyyyyyyxxxxxxxyyyyy" expires="2014-06-29T21:09:34.085Z">
+          <rax-auth:authenticatedBy>
+               <rax-auth:credential>PASSWORD</rax-auth:credential>
+          </rax-auth:authenticatedBy>
+     </token>
+     <user name="demoauthor" rax-auth:defaultRegion="DFW" rax-auth:federated="false">
+          <roles>
+               <role id="1" name="identity:admin" description="Admin Role."/>
+          </roles>
+     </user>
+     <serviceCatalog/>
+</access>]]>
+			</programlisting>
+		</example>
 	</section>
 	
 	<section xml:id="Sample_Request_Response-d1e64">
@@ -891,9 +948,8 @@ Content-Type: application/xml; charset=UTF-8
 		</important>
 		<para>
 			The first element of
-			the URI path contains the target version identifier: for example, in 
-			&ENDPOINT-US;&hellip;, the API version is 2.0. Other than requests to query for version, 
-			all requests must contain a target version. 
+			the URI path contains the target version identifier. For example, this URI targets API version 2.0: 
+			&ENDPOINT-US;&hellip;. Other than requests to query for version, all requests must contain a target version. 
 		</para>
 	    <para>
 			Any features or functionality
@@ -1224,14 +1280,24 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<tr>
 					<td>User Manager</td>
 					<td>identity:user-manage</td>
-					<td><para>The User manager is a customer-based user type designated as the administrator for the &CLOUD;
-							account along with the User administrator. User and Service
-							administrators can update an existing or new sub-user account to change
-							it to a User Manager account.  create a User Manger account by account
-							to change the role from <literal>identity:default</literal> to
-								<literal>identity:user-manage</literal>.</para>
-						<para>User Manager accounts hold the <literal>user-admin</literal> role by default, with the
-							same access rights and privileges as the User administrator.</para></td>
+					<td>
+						   <para>The User manager is a customer-based
+								user type designated as an
+								administrator on a &CLOUD; account
+								along with the User
+								administrator.</para>
+							<para>User Manager accounts hold the
+								<literal>user-admin</literal> role
+								by default, with the same access
+								rights and privileges as the User
+								administrator.</para>
+							<para>User and Service administrators can
+								update an existing or new sub-user
+								account with the
+								<literal>identity:default</literal>
+								role to change the account to a User
+								Manager account.</para>
+						</td>
 				</tr>
 			</tbody>
 		</table>
@@ -1411,9 +1477,9 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			Role assignments can be global or custom. Global roles manage access and permissions across 
 			multiple API services. Custom roles manage access and permissions on a per-product basis. 
 			For both global and custom roles, the user has access only to designated products. 
-			<xref linkend="RBAC_roledesc_table"/> describes the
+			<xref linkend="RBAC_roledesc_tbl"/> describes the
 			RBAC roles available.</para> 
-		<table rules="all" width="100%" xml:id="RBAC_roledesc_table">
+		<table rules="all" width="100%" xml:id="RBAC_roledesc_tbl">
 				<caption>Rackspace Cloud RBAC Roles and Capabilities</caption>
 				<thead>
 					<tr>
@@ -1492,17 +1558,17 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			<itemizedlist>
 				<listitem>
 					<para>
-						<link xlink:href="POST_admin-addUser_users_User_Calls.html">Add account user</link>
+						<link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add account user</link>
 					</para>
 				</listitem>
 				<listitem>
 					<para>
-						<link xlink:href="PUT_addUserRole_2.0_users_roles_OS-KSADM__roleId__Role_Calls.html">
+						<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">
 						Assign role to account users</link></para>
 				</listitem>
 				<listitem>
 					<para>
-						<link xlink:href="DELETE_deleteUserRole_2.0_users_roles_OS-KSADM__roleId__Role_Calls.html">Delete role from account user</link></para>
+						<link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Delete role from account user</link></para>
 				</listitem>
 			</itemizedlist>
 			<para>For information about implementing RBAC by using the Cloud

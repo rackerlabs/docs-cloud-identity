@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<roles xmlns="http://docs.openstack.org/identity/api/v2.0">
-  <role id="123" name="Admin" description="All Access" />
-  <role id="234" name="Guest" description="Guest Access" />
+  <roles 
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+    xmlns="http://docs.openstack.org/identity/api/v2.0" 
+    xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+    xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+    xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+    xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+    xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+    
+    <role id="100" name="devops" description="DevOps center" serviceId="cke5372rw2rty8bb70a0e702a4626977x4406e5" rax-auth:propagate="true"/>
+    <role id="30007896" name="acctCreator:public" description="Account creator public role" serviceId="cke5372ebabeeabb70a0e702a4626977x4406e5" rax-auth:propagate="false"/>
+    <role id="30007897" name="acctCreator:trusted" description="Account creator trusted role" serviceId="bde1268ebabeeabb70a0e702a4626977c331d5c4" rax-auth:propagate="false"/>
+    <role id="30007653" name="database:admin" description="admin role for cloud files" serviceId="bde1268ebabeeabb70a0e702a4626977c331d5c4" rax-auth:propagate="false"/> 
 </roles>
+

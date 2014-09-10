@@ -1,9 +1,29 @@
 {
-    "roles":[{
-            "id":"123",
-            "name":"compute:admin",
-            "description":"Nova Administrator"
-        }
-    ],
-    "roles_links":[]
+    "roles": [
+        {
+            "description": "DevOps center",
+            "id": "100",
+            "name": "devops",
+            "serviceId": "cke5372rw2rty8bb70a0e702a4626977x4406e5"
+        },
+        {
+            "description": "Account creator public role",
+            "id": "30007896",
+            "name": "acctCreator:public",
+            "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
+        },
+        {
+            "description": "Admin creator trusted role",
+            "id": "30007897",
+            "name": "acctCreator:trusted",
+            "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
+        },
+        {
+            "description": "Admin role for database service",
+            "id": "30007653",
+            "name": "database:admin",
+            "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
+        },
+       
+    ]
 }

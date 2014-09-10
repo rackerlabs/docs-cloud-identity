@@ -51,7 +51,7 @@
     <abstract>
       <para>
           This document is intended for software developers interested
-          in using the Group Admin Extension Extension to the OpenStack
+          in using the Group Admin Extension to the OpenStack
           Identity Application Programming Interface
           (<abbrev>API</abbrev>).
       </para>
@@ -171,7 +171,7 @@
       <section>
           <title>Document Change History</title>
           <para>
-              The most recent changes to this document are desrcibed
+              The most recent changes to this document are described
               below.
           </para>
           <?rax revhistory?>
@@ -180,9 +180,9 @@
   <chapter role="api-reference">
       <title>Summary of Changes</title>
       <para>
-          This extension adds capabilites to the RAX-KSGRP extension.
+          This extension adds capabilities to the RAX-KSGRP extension.
           It allows for CRUD operations on groups and gives the
-          ability to assocate groups with users.
+          ability to associate groups with users.
       </para>
       <section>
           <title>New Headers</title>

@@ -4,6 +4,7 @@
         "region":"North",
         "global":true,
         "type":"compute",
+        "name":"Compute",
         "publicURL":"https://compute.north.public.com/v1",
         "internalURL":"https://compute.north.internal.com/v1",
         "adminURL": "https://service-admin.com/v1",
@@ -11,6 +12,6 @@
         "versionInfo":"https://compute.north.public.com/v1/",
         "versionList":"https://compute.north.public.com/",
         "RAX-AUTH:tenantAlias": "{tenant}",
-        "enabled": "true"
+        "enabled": true
     }
 }

@@ -3,13 +3,13 @@
             "id":"1234",
             "name":"ACME Corp",
             "description":"A description ...",
-            "enabled": "true"
+            "enabled": true
         },
         {
             "id":"3456",
             "name":"Iron Works",
             "description":"A description ...",
-            "enabled": "true"
+            "enabled": true
         }
     ],
     "tenants_links":[]

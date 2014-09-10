@@ -53,15 +53,15 @@
 			<tbody>
 				<tr>
 					<td>JSON</td>
-					<td><code>Content-Type application/json</code></td>
-					<td><code>application/json</code></td>
+					<td>Content-Type application/json</td>
+					<td>application/json</td>
 					<td>.json</td>
 					<td>Yes</td>
 				</tr>
 				<tr>
 					<td>XML</td>
-					<td><code>Content-Type application/xml</code></td>
-					<td><code>application/xml</code></td>
+					<td>Content-Type application/xml</td>
+					<td>application/xml</td>
 					<td>.xml</td>
 					<td>No</td>
 				</tr>
@@ -71,25 +71,26 @@
 			<varlistentry>
 			<term><guilabel>Content-Type header syntax</guilabel></term>
 				<listitem>
-					<para>You specify the request format in the <code>Content-Type</code> header. This header is
-					required for operations that have a request body.  The following code sample shows the
-					syntax for the <code>Content-Type</code> header:
-					</para>
+					<para>The Content-Type header is required for API operations that
+						have a request body.  </para>
 				<para>
-					<programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
+					<programlisting>Content-Type: application/<replaceable>format</replaceable></programlisting>
 				</para>
-				<para>Where <parameter>format</parameter> is either <literal>json</literal> or <literal>xml</literal>.</para>
+				<para>Where <replaceable>format </replaceable> is either
+							<literal>json</literal> or
+							<literal>xml</literal>.</para>
 				</listitem>
 		</varlistentry>
 		</variablelist>
-		<para>You can specify the response format using either the <code>Accept</code> header or a
-			query extension:</para>
 		<variablelist>
 			<varlistentry>
 				<term><guilabel>Accept header syntax</guilabel></term>
 				<listitem>
+					<para>For the Accept header, you can use the
+						following syntax or use the Query extension
+						format.</para>
 					<para>
-						<programlisting>Accept: application/format</programlisting> 
+						<programlisting>Accept: application/<replaceable>format</replaceable></programlisting> 
 					</para>
 					<para>Where <code>format</code> can be either <code>json</code> or 
 						<code>xml</code>.</para>
@@ -120,7 +121,8 @@
 			<title>Authentication Request with Headers: JSON</title>
 			
 			<programlisting language="json">
-<![CDATA[<POST /v2.0/tokens HTTP/1.1
+<![CDATA[
+<POST /v2.0/tokens HTTP/1.1
 Host: identity.api.rackspacecloud.com
 Content-Type: application/json
 Accept: application/json
@@ -147,29 +149,37 @@ Content-Type: application/xml
 Content-Length: 1060
 Connection: keep-alive
 vary: Accept, Accept-Encoding, X-Auth-Token]]>
-<![CDATA[<access xmlns:atom="http://www.w3.org/2005/Atom" xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" xmlns="http://docs.openstack.org/identity/api/v2.0" xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
-     <token id="yyyyxxxaxxxxyyyyyyxxxxxxxyyyyy" expires="2014-06-29T21:09:34.085Z">
+<![CDATA[
+<access 
+	xmlns:atom="http://www.w3.org/2005/Atom" 
+	xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+	xmlns="http://docs.openstack.org/identity/api/v2.0" 
+	xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+	xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+	xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+	xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+	xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+    
+    <token id="yyyyxxxaxxxxyyyyyyxxxxxxxyyyyy" expires="2014-06-29T21:09:34.085Z">
           <rax-auth:authenticatedBy>
                <rax-auth:credential>PASSWORD</rax-auth:credential>
           </rax-auth:authenticatedBy>
      </token>
-     <user name="demoauthor" rax-auth:defaultRegion="DFW" rax-auth:federated="false">
+    
+    <user name="demoauthor" rax-auth:defaultRegion="DFW" rax-auth:federated="false">
           <roles>
                <role id="1" name="identity:admin" description="Admin Role."/>
           </roles>
      </user>
      <serviceCatalog/>
-</access>]]>
+</access>
+]]>
 			</programlisting>
 		</example>
 	</section>
 	<section xml:id="Sample_Request_Response-d1e64">
 		<title>Sample Authentication Request and Response</title>
-		<para>&CIS; supports different authentication methods: 
-			<itemizedlist>
-				<listitem><para>username and password</para></listitem>
-			</itemizedlist>The sample
-			request and response in this section illustrate a general
+		<para>The sample request and response in this section illustrate a general
 			case using the user name and password credentials
 			associated with &CIS; cloud account. 
 			In your authentication request, use your own credentials rather
@@ -180,18 +190,20 @@ vary: Accept, Accept-Encoding, X-Auth-Token]]>
 			includes a catalog of available services along with
 				<glossterm>endpoint</glossterm> URLs to access each
 			service.</para>
-		<note><para>For information about other 
-			authentication methods with examples, 
-			see <link xlink:href="Token_Calls.html">Authentication tokens</link>.
-		</para></note>
-		<note>
-			<para>If a user account has been set up to use
-				multi-factor authentication, additional
-				credentials are required after submitting the log
-				in credentials. For details, see <link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">Authenticate with multi-factor passcode credentials</link>.
-			</para>
-		</note>
-	  	<example>
+		<note><para>
+			<itemizedlist>
+				<listitem>
+					<para>For information about other authentication methods with examples, 
+						see <link xlink:href="Token_Calls.html">Authentication tokens</link></para></listitem>
+				<listitem>
+					<para>If a user account has been set up to use
+					multi-factor authentication, additional
+					credentials are required after submitting the log
+					in credentials. For details, see <link xlink:href="proc_mfa_auth.html" xrefstyle="select:title"/>
+					</para></listitem>
+			</itemizedlist>
+		    </para></note>
+		 	<example>
 	  		<title>Authentication Request with Headers: JSON</title>
 	  		
 	  		<programlisting language="json">
@@ -228,9 +240,8 @@ Accept: application/json
 					<td><parameter>username</parameter></td>
 					<td>
 						<para> 
-							This is the user name you use to login to the Rackspace
-							Cloud Control Panel at 
-							<link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com</link></para>
+							This is the <parameter>username</parameter> that you use to login to the Rackspace
+							Cloud Control Panel at <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com</link></para>
 					</td>
 				</tr>
 				<tr>
@@ -264,17 +275,49 @@ Accept: application/json
 			
 
 		<para>A successful authentication response includes a token and a
-			service catalog. For each service in the service catalog,
-			only relevant details are returned. Service descriptions
-			vary depending on how the service has been configured. For
-			example, some service endpoints might be associated with a
-			default region. For those services, the <code>region</code> specification is included in the
-			description. If the service endpoint does not have a
-			default region defined, the service description does not
-			include <code>region</code>.</para>
-		<para><xref linkend="xml_auth_resp"/> and <xref linkend="json_auth_resp"/> show example responses. 
-			See <xref linkend="auth_resp_attributes"/> for information about the attributes included in the response.
-		</para>
+			service catalog, along with information about the user .
+			For each service in the service catalog, only relevant
+			details are returned. Service descriptions vary depending
+			on how the service has been configured. For example, some
+			service endpoints might be associated with a default
+			region. For those services, the <code>region</code>
+			specification is included in the description. If the
+			service endpoint does not have a default region defined,
+			the service description does not include
+				<code>region</code>.</para>
+		<para><xref linkend="xml_auth_resp" xrefstyle="select:title"/> and
+				<xref linkend="json_auth_resp"
+				xrefstyle="select:title"/> show sample authenticaion
+			responses in XML and JSON format. In these examples, the
+			authentication token returned provides access to the
+			following services: <itemizedlist>
+				<listitem>
+					<para>Compute: Cloud Servers OpenStack and Cloud
+						Servers</para>
+				</listitem>
+				<listitem>
+					<para>Object storage: Cloud Files Content
+						Distribution Service (CDN) and Cloud
+						Files.</para>
+				</listitem>
+				<listitem>
+					<para>Database</para>
+				</listitem>
+				<listitem>
+					<para>DNS</para>
+				</listitem>
+				<listitem>
+					<para>Load Balancers</para>
+				</listitem>
+				<listitem>
+					<para>Monitoring</para>
+				</listitem>
+			</itemizedlist>The catalog listing for each service
+			provides the URL for the API endpoint  to access the
+			service, along with information about the API version, and
+			the region or tenant, if applicable,    See <xref
+				linkend="auth_resp_attributes"/> for information about
+			the attributes included in the response.  </para>
 	  <example xml:id="xml_auth_resp">
 		<title>Service Catalog in Authentication Response with Headers: XML</title>
 	  	<programlisting language="javascript">
@@ -302,58 +345,63 @@ Accept: application/json
 				<tr>
 					<td><parameter>xmlns</parameter> namespaces</td>
 					<td>
-						<para> In XML responses only, a list of
+						<para>In XML responses only, a list of
 							namespaces identifies API extensions that
 							add functionality to the core API. </para>
 					</td>
 				</tr>
 				<tr>
-					<td><parameter>token</parameter></td>
+					<td><parameter>access</parameter> object</td>
+					<td><para>The access object returns the authentication token, service
+							catalog, and user objects that specify the
+							token scope and provide information for
+							accessing available Rackspace Cloud
+							resources.</para></td>
+				</tr>
+				<tr>
+					<td><parameter>token</parameter> object</td>
 					<td>
-						<para>This token can be presented to a service
-							as evidence of authentication. Tokens are
-							valid for a finite duration; a token's
-							default lifespan is twenty-four hours. </para>
-						<para>The token's <code>expires</code>
-							attribute denotes the time after which the
-							token will automatically become invalid.
-							This attribute predicts the maximum
-							lifespan for token validity but does not
-							guarantee the token expiration time
-							because a token can be revoked manually
-							before it expires. Clients are encouraged
-							to cache a token until it expires.</para>
+						<para>The token object supplies the authentication token id
+							required to access &CLOUD; services
+							through the API. It also determines how
+							long the token remains valid. The token
+							object has the following
+							attributes.</para>
+						
+						<variablelist>
+								<varlistentry>
+								<term>id</term>
+									<listitem><para>A string value that can be presented to a service as evidence of
+								authentication. Tokens are valid
+								for a finite duration; a token's
+								default lifespan is twenty-four
+								hours.  In the authentication
+								response example, the token is
+								<code>aaaaa-bbbbb-ccccc-dddd</code>.</para></listitem>
+								</varlistentry>
+							
+								<varlistentry>
+								<term>expires</term>
+									<listitem><para>A timestamp that indicates when the token expires.</para>
+										<para>By default, a token id expires 24-hours after 
+										being generated, unless the token is revoked before 
+										it expires. Clients are encouraged to cache the token 
+										until it expires. After the token expires, client users and 
+										applications must re-authenticate to get a new token.</para></listitem>
+								</varlistentry>
+							</variablelist>
 					</td>
 				</tr>
 				<tr>
-					<td><parameter>RAX-defaultRegion</parameter></td>
-					<td>
-						<para> Users can be assigned a default region
-							so that, when there is a choice between
-							multiple endpoints associated with a
-							service in the user's catalog, the
-							endpoint for the user's default region
-							will be selected if it is available. In
-							this example, the user's default region is
-							<code>DFW</code> and several of the
-							services in the user's catalog offer
-							endpoints in that region and the
-							<code>ORD</code> region; this user's
-							work will be directed to the
-							<code>DFW</code> region whenever
-							possible. </para>
+					<td><parameter>role</parameter>
 					</td>
-				</tr>
-				<tr>
-					<td><parameter>role</parameter></td>
 					<td>
-						<para> Users can be assigned multiple roles,
-							with each role providing specific
-							privileges. In this example,
-							<code>joeuser</code> is the
+						<para>Users can be assigned multiple roles, with each role
+							providing specific privileges.  In this
+							example, <code>demoauthor</code> is the
 							administrative user for the account,
 							holding the fully-privileged
-							<code>identity:user-admin</code> role.
+								<code>identity:user-admin</code> role.
 							Other users might hold other roles with
 							different privileges. Roles need not be
 							associated with actual job functions such
@@ -366,37 +414,95 @@ Accept: application/json
 				<tr>
 					<td><parameter>serviceCatalog</parameter></td>
 					<td>
-						<para> The service catalog lists the services
-							this user can access. In this example, the
-							user can access two compute services
-							(Cloud Servers OpenStack and Cloud
-							Servers) and two object storage services
-							(Cloud Files Content Distribution Network
-							(CDN), and Cloud Files), as well as one
-							database service, one DNS service, one
-							load balancing service, and one monitoring
-							service. The catalog listing for each
-							service provides at least one endpoint URL
-							for that service. Other information, such
-							as regions and versions and tenants, is
-							provided if it's relevant to this user's
-							access to this service. </para>
+						<para>Returns a list of service objects that provide the
+							endpoint and description for each service
+							that can be accessed using the
+							authentication token.</para>
 					</td>
 				</tr>
 				<tr>
-					<td><parameter>service type</parameter></td>
+					<td><parameter>service</parameter></td>
+					<td>In XML responses, the service object returns
+						information about each service along with the
+						endpoint URL to access the service.</td>
+				</tr>
+				<tr>
+					<td><parameter>endpoints</parameter></td>
 					<td>
-						<para> The service type attribute identifies
-							services that perform similar functions,
-							whatever those services might be named. In
-							this example, the services named
-							<literal>cloudServers</literal> and
-							<literal>cloudServersOpenstack</literal>
-							are both identified as
-							<code>type="compute"</code>,
-							identifying them as compute services even
-							though the word "compute" does not appear
-							in their names. </para>
+						<para>In JSON responses, the endpoints object returns
+							information about each service available
+							to the authenticated user. <variablelist>
+								<varlistentry>
+								<term>endpoint</term>
+								<listitem>
+								<para>An endpoint object returns
+								one or more URLs to access the
+								specified service, API version
+								information, and any relevant
+								information regions and
+								tenants.</para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>name</term>
+								<listitem>
+								<para>The service name attribute
+								identifies each unique service in
+								the catalog. After a service is
+								created, its name does not change.
+								However, new services of the same
+								service type can be added to the
+								catalog with new names.<important>
+								<para> When you parse an
+								authentication response
+								programmatically, use <code>service
+								type</code> rather than
+								<code>service name</code> as the
+								basis for determining whether a
+								user has access to a particular
+								kind of service. Service type is
+								stable across all releases; new
+								service types can be added, but
+								existing service types are not
+								renamed. In this example,
+								<code>type="compute"</code>
+								identifies all the available
+								compute services, one of which is
+								named cloudServers and one of which
+								is named
+								<literal>cloudServersOpenStack</literal>.
+								New compute service names may be
+								added in future releases; whatever
+								the compute services are named, you
+								can always recognize them by
+								parsing for
+								<code>type="compute"</code> in the
+								authentication response's service
+								catalog. </para>
+								</important></para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>type</term>
+								<listitem>
+								<para>The type of service provided
+								at the specified endpoint,
+								<parameter>compute</parameter>,
+								<parameter>object-store</parameter>,
+								or
+								<parameter>rax:loadbalancer</parameter>
+								for example.</para>
+								<para>Service types categorize the
+								services registered with OpenStack
+								or custom types registered with the
+								&CIS;. For a list of service types,
+								see <link
+								xlink:href="Service_Types-d1e265.html"
+								xrefstyle="select:title"/></para>
+								</listitem>
+								</varlistentry>
+							</variablelist>
+						</para>
 						<important>
 							<para> Use service type as the primary
 								value for locating a service. If
@@ -407,81 +513,166 @@ Accept: application/json
 					</td>
 				</tr>
 				<tr>
-					<td><code>service name</code></td>
+					<td><parameter>endpoint</parameter></td>
 					<td>
-						<para> The service name attribute identifies
-							each unique service in the catalog. Once a
-							service is created, its name does not
-							change. However, new services of the same
-							service type may be added to the catalog
-							with new names. </para>
-						<important>
-							<para> When you parse an authentication
-								response programmatically, use
-								<code>service type</code> rather
-								than <code>service name</code> as the
-								basis for determining whether a user
-								has access to a particular kind of
-								service. Service type is stable across
-								all releases; new service types can be
-								added, but existing service types are
-								not renamed. In this example,
-								<code>type="compute"</code>
-								identifies all the available compute
-								services, one of which is named
-								cloudServers and one of which is named
-								<literal>cloudServersOpenStack</literal>.
-								New compute service names may be added
-								in future releases; whatever the
-								compute services are named, you can
-								always recognize them by parsing for
-								<code>type="compute"</code> in the
-								authentication response's service
-								catalog. </para>
-						</important>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>endpoints</parameter></td>
-					<td>
-						<para>A service can expose endpoints in different regions as
+						<para>The endpoint object provides the URL for the API endpoints
+							to access a service, API version details,
+							and information about the region and
+							tenant scope for accessing the service.
+							The information returned for a service is
+							detemined by the &CIS;, not all fields are
+							returned for all services. service
+							configuration. different regions as
 							specified by the
-							<parameter>region</parameter>
+								<parameter>region</parameter>
 							attribute. Regional endpoints allow
 							clients to provision resources in a manner
-							that provides high availability. </para>
+							that provides high availability. <variablelist>
+								<varlistentry>
+								<term>publicURL, internalURL, and
+								AdminURL</term>
+								<listitem>
+								<para>An endpoint can be assigned
+								public, internal, and adminstrative
+								service URLs. Access to a public
+								URL usually incurs traffic charges.
+								Internal and Admin URLs are only
+								accessible to services within the
+								same region. Access to an internal
+								URL is free of charge.</para>
+								<para>The URL includes the API
+								version and tenantId for services
+								that require it. For example, in
+								the
+								<code>https://ord.servers.api.rackspacecloud.com/v2/12345"</code>
+								URL, the <code>versionId=2</code>
+								and the
+								<code>tenantId=12345</code>. (The
+								<code>tenantId</code> is also
+								referred to as the account
+								number.)</para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>region</term>
+								<listitem>
+								<para>The location of the Rackspace data center where the
+								specified service is hosted. </para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>tenantId</term>
+								<listitem>
+								<para>Some services recognize
+								specification of a tenant. If a
+								service does recognize tenants, the
+								format of the tenant specification
+								is defined only by the service; for
+								details about whether and how to
+								specify a tenant, check the
+								documentation for the service you
+								are using.</para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>versionId</term>
+								<listitem>
+								<para>Specifies the API version for
+								the endpoint. The API version is
+								also included in the URL to access
+								the service.</para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>versionInfo</term>
+								<listitem><para>URI to get information about the specified API
+								version. You can also retrieve
+								information about an API version by
+								using the Show version details API
+								operation for the specified
+								service, <code>GET
+								<replaceable>endpointURL//</replaceable><parameter>v</parameter><replaceable>version_number</replaceable></code>
+								for example.</para></listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>versionList</term>
+								<listitem>
+								<para>URI to get information about all versions. You can also
+								retrieve this infomation by using
+								the List versions API operation for
+								the specified service, <code>GET
+								<replaceable>endpointURL</replaceable></code>
+								for example.</para>
+								</listitem>
+								</varlistentry>
+							</variablelist></para>
 					</td>
 				</tr>
 				<tr>
-					<td><parameter>tenantId</parameter></td>
-					<td>
-						<para>Some services recognize specification of a tenant. If a
-							service does recognize tenants, the format
-							of the tenant specification is defined
-							only by the service; for details about
-							whether and how to specify a tenant, check
-							the documentation for the service you are
-							using.</para>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>version</parameter></td>
-					<td>Specifies the API version for the endpoint.
-						The API version is also included in the URL to
-						access the service.</td>
-				</tr>
-				<tr>
-					<td>URLs (public and internal)</td>
-					<td>
-						<para> An endpoint can be assigned public and internal URLs. A
-							public URL is accessible from anywhere.
-							Access to a public URL usually incurs
-							traffic charges. Internal URLs are only
-							accessible to services within the same
-							region. Access to an internal URL is free
-							of charge.  The URL includes the API
-							version and tenantId for services that
-							require it.</para>
+					<td><parameter>User</parameter></td>
+					<td><para>The user object returns account information for the
+							authenticated user.<variablelist>
+								<varlistentry>
+								<term>RAX-AUTH:defaultRegion</term>
+								<listitem>
+								<para>Users can be assigned a
+								default region so that, when there
+								is a choice between multiple
+								endpoints associated with a service
+								in the user's catalog, the endpoint
+								for the user's default region will
+								be selected if it is available. In
+								this example, the user's default
+								region is <code>DFW</code> and
+								several of the services in the
+								user's catalog offer endpoints in
+								that region and the
+								<code>ORD</code> region; this
+								user's work will be directed to the
+								<code>DFW</code> region whenever
+								possible.</para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>id</term>
+								<listitem>
+								<para>The user id.</para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>name</term>
+								<listitem>
+								<para>The user name.</para>
+								</listitem>
+								</varlistentry>
+								<varlistentry>
+								<term>roles</term>
+								<listitem>
+								<para>The roles object returns information about roles
+								assigned to the user account. Each
+								role is returned as a role object
+								that can contain the following
+								information: <itemizedlist>
+								<listitem>
+								<para>Role
+								<parameter>name</parameter>, along
+								with the role
+								<parameter>id</parameter> and
+								<parameter>description</parameter>
+								if available.</para>
+								</listitem>
+								<listitem><para>If the role is associated
+								with a specific tenant, the
+								response returns the tenant
+								information, including the
+								<parameter>id</parameter>,
+								<parameter>name</parameter>, and
+								<parameter>tentnatId</parameter>.</para></listitem>
+								</itemizedlist></para>
+								</listitem>
+								</varlistentry>
+							</variablelist>
+						</para>
 					</td>
 				</tr>
 			</tbody>
@@ -858,13 +1049,14 @@ Accept: application/json
 			<para>The Rackspace implementation of the OpenStack Keystone Identity
 				Service v2.0 does not yet support MIME-type version.</para>
 		</important>
-		<para>
-			All client requests to the API must specify the target version identifier in the first 
-			element of the URI path. For example, v2.0 is the target version in this 
-			enddpoint URI: <programlisting>&ENDPOINT-US;</programlisting> The only access available without the target 
-			version are to check for the GET version API request that returns available API versions supported at the specified 
-			endpoint.
-		</para>
+		<para> All client requests to the API must specify the target
+			version identifier in the first element of the URI path.
+			For example, v2.0 is the target version in this enddpoint
+			URI: <programlisting>&ENDPOINT-US;</programlisting>The
+			only access available without the target version are to
+			check for the GET version API request that returns
+			available API versions supported at the specified
+			endpoint. </para>
 		<para>The folloiwng example shows an XML request that uses 
 			URI versioning.
 			<example>
@@ -1120,7 +1312,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<tr align="left">
 					<td>serviceFault</td>
 					<td>500</td>
-					<td> YES </td>
+					<td> Yes</td>
 				</tr>
 				<tr>
 					<td>serviceUnavailable</td>
@@ -1130,18 +1322,18 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				<tr align="left">
 					<td>badRequest</td>
 					<td>400</td>
-					<td> YES </td>
+					<td> Yes</td>
 				</tr>
 				<tr align="left">
 					<td>unauthorized</td>
 					<td>401</td>
-					<td> YES </td>
+					<td> Yes</td>
 				</tr>
 				<tr align="left">
 					<td><link linkend="Limits-d1e909"
 							>overLimit</link></td>
 					<td>413</td>
-					<td> YES</td>
+					<td> Yes</td>
 				</tr>
 				<tr align="left">
 					<td>userDisabled</td>
@@ -1313,11 +1505,11 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						<para>User Manager accounts hold the <literal>user-admin</literal> role by
 							default, with the same access rights and privileges as the User
 							administrator.</para>
-						<para>User and Service administrators can update an existing or new sub-user
-							account with the <literal>identity:default</literal> role to change the
-							account to a User Manager account with the to change it to a User
-							Manager account with the <literal>identity:user-manage</literal>.
-						</para>
+						<para>User and Service administrators can update an existing or
+							new sub-user account with the
+								<literal>identity:default</literal>
+							role to change the account to a User
+							Manager account.</para>
 					</td>
 				</tr>
 			</tbody>
@@ -1467,13 +1659,13 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+						targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
 						>Assign role to account users</olink></para>
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
-						>Delete role from account user</olink></para>
+						targetptr="GET_listCredentials_v2.0_users__userid__OS-KSADM_credentials_User_Calls">
+						Delete role from account user</olink></para>
 				</listitem>
 			</itemizedlist>
 			<itemizedlist condition="admin">
@@ -1485,7 +1677,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+						targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
 							>Assign role to account users</olink></para>
 				</listitem>
 				<listitem>

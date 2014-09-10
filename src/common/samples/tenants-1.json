@@ -3,7 +3,7 @@
             "id":"1234",
             "name":"ACME corp",
             "description":"A description ...",
-            "enabled": "true"
+            "enabled": true
         }
     ],
     "tenants_links":[{

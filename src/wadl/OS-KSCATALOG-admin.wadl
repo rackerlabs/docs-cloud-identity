@@ -141,6 +141,11 @@
             <p xmlns="http://www.w3.org/1999/xhtml">Add an endpoint template.</p>                       
         </doc>          
         <request>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/endpointTemplate.json"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplate">
                 <wadl:doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/endpointTemplate.xml"/>
@@ -158,8 +163,8 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN">
                         <para>Determines whether the endpoint template is 
-                            automatically included for every account. If the value is <code>'true'</code>, 
-                            the endpoint shows up for all tenants. If the value is <code>'false'</code>, the 
+                            automatically included for every account. If the value is <code>true</code>, 
+                            the endpoint shows up for all tenants. If the value is <code>false</code>, the 
                             template only shows up when it is added to a tenant manually. 
                         </para></wadl:doc>
                 </param>
@@ -237,11 +242,6 @@
                         </para>
                     </wadl:doc>
                 </param>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/endpointTemplate.json"/>
-                </wadl:doc>
             </representation>
         </request>
         <response status="201">

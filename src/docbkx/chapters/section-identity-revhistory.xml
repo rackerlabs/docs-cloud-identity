@@ -157,17 +157,17 @@
 						<listitem>
 							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+									targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
 									>“Secret Questions and Answers”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Removed Category Role table from <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls"
+								targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
 								/>. </para>
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_User_Calls"/>, <olink
+								targetptr="GET_listUsers__v2.0_users__User_Calls"/>, <olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_getUserById_v2.0_users__userId__User_Calls"/>,
 								and <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -563,7 +563,7 @@
 						<listitem>
 							<para> Added information about <code>defaultRegion</code> for <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="GET_getUserByName_v2.0_users_">“GET user by name”</olink>, 
+									targetptr="GET_listUsers__v2.0_users__User_Calls">“GET user by name”</olink>, 
 								<olink
 									targetdoc="Identity-Admin-Developer-Guide"
 									targetptr="GET_getUserById_users__user_id__User_Calls">“GET user by id"</olink>, 
@@ -614,7 +614,7 @@
 						<listitem>
 							<para> Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html">Additional resources</link>
 								, adding links to Rackspace
-								Knowledge Center and customer feedback
+								Knowledge Center and <link xlink:href="https://rackspace.uservoice.com/forums/71021-product-feedback/category/81960-identity-auth">customer feedback</link>
 								site. </para>
 						</listitem>
 						<listitem>
@@ -711,15 +711,13 @@
 								<link xlink:href="Extensions-d1e688.html">API extensions</link>.</para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="GET_listCredentials_v2.0_users__userId__OS-KSADM_credentials_User_Calls.html">List credentials operation</link>
+							<para> Updated <link xlink:href="GET_listCredentials_v2.0_users__userid__OS-KSADM_credentials_User_Calls.html">List credentials operation</link>
 								 and <link xlink:href="Account-User-d1e20.html">Account user</link> to state that account
 								users must authenticate with their passwords. </para>
 						</listitem>
 						<listitem>
 							<para> Added an annotated JSON example in
-								<xref
-								linkend="Sample_Request_Response-d1e64"
-								/>. In the same section, updated the
+								<link xlink:href="Sample_Request_Response-d1e64.html"/>. In the same section, updated the
 								annotated XML example to show new
 								service types. </para>
 						</listitem>
@@ -817,7 +815,7 @@
 							<para>Initial release for API v2.0.</para>
 						</listitem>
 					</itemizedlist>
-				</revdescription>i
+				</revdescription>
 			</revision>
 		</revhistory>
 </section>

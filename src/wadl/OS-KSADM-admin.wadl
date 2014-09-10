@@ -8,7 +8,7 @@
 <!-- xmllint -noent OS-KSADM-admin.wadl -->
 <!--*******************************************************-->
 <!DOCTYPE application [
-<!ENTITY % common SYSTEM "../common/common.ent">
+<!ENTITY % common  SYSTEM "../common/common.ent">
 %common;
 ]>
 
@@ -20,11 +20,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../common/xsd/api.xsd
-    http://docs.openstack.org/common/api/v1.0 ../common/xsd/api-common.xsd
-    http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd
-    http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0 ../common/xsd/OS-KSADM.xsd">
+    xmlns:xlink="http://www.w3.org/1999/xlink">
 
     <grammars>
         <include href="../common/xsd/api.xsd"/>
@@ -38,43 +34,58 @@
 
     <!-- We should use SSL in production -->
     <resources base="http://localhost:35357" xml:id="OS-KSADM-admin-v2">
-        <resource id="version" path="/v2.0/">
+        <resource id="version" path="//v2.0">
             <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">You need a valid admin token for access.</wadl:doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>You need a valid admin token for access.</para></wadl:doc>
             </param>
-            <resource id="users_osksadm" path="users/">
-                <method href="#listUsers"/>
+            <resource id="user_osksadm" path="users">
                 <method href="#addUser"/>
-                <resource id="userById" path="{userId}">
-                    <param name="userId" style="template" type="xsd:string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A user ID assigned by system when user is added.</wadl:doc>
-                    </param>
-                    <method href="#updateUser"/>
-                    <method href="#deleteUser"/>
-                </resource>
-                    <resource id="userRoles" path="{userId}/roles">
-                        <resource id="user-roles-OS-KSADM" path="OS-KSADM">
-                            <param name="userId" style="template" type="xsd:string" required="true">
-                                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A user ID assigned by system when user is added.</wadl:doc>
-                            </param>
-                            <resource id="userRoleById" path="{roleId}">
+                
+                <resource id="usr_list">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <request>
+                        <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="query" type="xsd:string" required="false">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                                <para>Specify the user name to look up.</para>
+                            </wadl:doc>
+                        </param>
+                        <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="query" type="xsd:string" required="false">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                                <para>User email address.</para>
+                            </wadl:doc>
+                        </param>
+                    </request>
+                    
+                </wadl:doc>
+                <method href="#listUsers"/>
+                </resource>  
+                
+                    <resource id="userid" path="{userId}">
+                        <param name="userId" style="template" type="xsd:string" required="true">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A user ID assigned by system when user is added.</wadl:doc>
+                        </param>
+                        <method href="#getUserById"/>
+                        <method href="#updateUser"/>
+                        <method href="#deleteUser"/>
+                    <resource id="userRolesOSKSADM" path="OS-KSADM/roles">        
+                        <method href="#listUserGlobalRoles"/>
+                            <resource id="userRoleById" path="{roleid}">
                                 <param name="roleId" type="xsd:string" style="template" required="true">
                                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A role Id.</para></wadl:doc>
                                 </param>
                                 <method href="#addUserRole"/>
                                 <method href="#getUserRole"/>
-                                <method href="#deleteUserRole"/>
+                                 <method href="#deleteUserRole"/>
                             </resource>
-                        </resource>
-
-                    <resource id="user-OS-KSADM" path="OS-KSADM">
-                        <resource id="enabled" path="enabled">
+                    </resource>
+  <!--                      <resource id="enabled" path="enabled">
                             <method href="#setUserEnabled"/>
-                        </resource>
-                        <resource id="userCredentials" path="credentials">
+                        
+                        </resource> -->
+                        <resource id="userCredentials" path="OS-KSADM/credentials">
                             <method href="#addUserCredential"/>
                             <method href="#listCredentials"/>
-                            <resource id="userCredentialsByType" path="{credential-type}">
+                            <resource id="userCredentialsByType">
                                 <param name="credentialType" style="template" type="OS-KSADM:extensibleCredentialsType"
                                     required="true">
                                     <wadl:doc xmlns="http://docbook.org/ns/docbook">A credential type</wadl:doc>
@@ -82,12 +93,14 @@
                                 <method href="#updateUserCredential"/>
                                 <method href="#deleteUserCredential"/>
                                 <method href="#getUserCredential"/>
+                                <resource id="reset_apikey_credentials" path="RAX-AUTH/reset">
+                                    <method href="#resetUserAPIKeyCredentials"/>
+                                </resource>
                             </resource>
-                        </resource>
+                    </resource>
                     </resource>
             </resource>
-
-            <resource id="tenants" path="/v2.0/tenants">
+            <resource id="tenants" path="tenants">
                 <method href="#addTenant"/>
                 <resource id="tenantById" path="{tenantId}">
                     <param name="tenantId" style="template" type="xsd:string" required="true">
@@ -116,67 +129,42 @@
                     </resource>
                 </resource>
             </resource>
-
-                <resource id="role-service-OS-KSADM-v2.0" path="OS-KSADM">
-                    <resource id="roles" path="roles">
-                        <method href="#addRole"/>
-                        <method href="#listRoles"/>
-                        <resource id="rolename">
-                            <param name="name" style="query"
-                                type="xsd:string">
-                                <wadl:doc
-                                    xmlns="http://docbook.org/ns/docbook"
-                                    xml:lang="EN"><para>The name of the role that you are searching for.
-                                    </para>
-                                </wadl:doc>
-                            </param>
-                        <method href="#getRoleByName"/>
-                        </resource>
-                    
-                        <resource id="roleId" path="{roleId}">
-                            <param name="id" style="template"
-                                type="xsd:string">
-                                <wadl:doc
-                                    xmlns="http://docbook.org/ns/docbook"
-                                    xml:lang="EN"><para>The role
-                                        ID.</para></wadl:doc>
-                            </param>
-                            <method href="#getRolebyId"/>
-                            <method href="#deleteRole"/>
-                            <resource id="roleIdRAXAUTHUsers" path="RAX-AUTH/users">
-                                <method href="#getUsersWithRole"/>
-                            </resource>
-                        </resource>
-                    </resource>
-                </resource>
-
-
-
-                <resource id="service"  path="service">
-                    <method href="#addService"/>
-                    <resource id="serviceName" path="{name}">
-                        <param name="name" style="template"
+            <resource id="role-service-OS-KSADM-v2.0" path="OS-KSADM/roles">
+                <method href="#addRole"/>
+                <method href="#listRoles"/>
+                <resource id="roleId" path="{roleId}">
+                     <param name="id" style="plain" type="xsd:string">
+                          <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                                <para>The role ID.</para>
+                           </wadl:doc>
+                     </param>
+                     <method href="#getRolebyId"/>
+                     <method href="#deleteRole"/>
+                     <resource id="roleIdRAXAUTHUsers" path="RAX-AUTH/users">
+                           <method href="#getUsersWithRole"/>
+                     </resource>
+                  </resource>
+            </resource>
+            <resource id="service" path="services">
+                <method href="#addService"/> 
+                <resource id="services">
+                        <param name="name" style="query"
                             type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A service name.</wadl:doc>
                         </param>
-                        <method href="#getServiceByName"/>
-                    </resource>
-                    <resource id="serviceId" path="{id}">
+                        <method href="#listServices"/>
+                        <resource id="serviceId" path="{serviceId}">
                         <param name="id" style="template"
                             type="xsd:string" required="true">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A service id.</wadl:doc>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A service id.</para></wadl:doc>
                         </param>
                         <method href="#getServiceById"/>
-                    </resource>
-                    <method href="#deleteService"/>
-                </resource>
-                <resource id="services" path="services">
-                    <method href="#listServices"/>             
+                        <method href="#deleteService"/>
+                     </resource>
                     </resource>
                 </resource>
-                </resource>
+        </resource>
     </resources>
-
     <!--*******************************************************-->
     <!-- All Methods -->
     <!--*******************************************************-->
@@ -184,74 +172,74 @@
     <!-- Tenant Operations -->
     <method name="POST" id="addTenant">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add tenant">
-            <para role="shortdesc"> Create a tenant. </para>
+            <para role="shortdesc">Creates a tenant. </para>
            <para >Create a tenant.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="identity:tenant">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/tenantwithoutid.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/tenantwithoutid.json"/>
                 </wadl:doc>
             </representation>
-        </request>
-        <response status="201">
             <representation mediaType="application/xml" element="identity:tenant">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/tenant.xml"/>
+                    <xsdxt:code href="../common/samples/tenantwithoutid.xml"/>
                 </wadl:doc>
             </representation>
+        </request>
+        <response status="201">
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/tenant.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:tenant">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/tenant.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &postPutFaults; </method>
 
     <method name="POST" id="updateTenant">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update tenant">
-            <para role="shortdesc"> Update a tenant. </para>
+            <para role="shortdesc">Updates a tenant.</para>
            <para >Update a tenant.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="identity:tenant">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/tenant.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/tenant.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:tenant">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/tenant.xml"/>
                 </wadl:doc>
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:tenant">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/tenant.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/tenant.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:tenant">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/tenant.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method name="DELETE" id="deleteTenant">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete tenant">
-            <para role="shortdesc"> Deletes a tenant. </para>
+            <para role="shortdesc">Deletes a tenant.</para>
            <para >Delete a tenant.</para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method name="GET" id="listUsersForTenant">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List users for tenant">
-            <para role="shortdesc">List all the users for a tenant.</para>
+            <para role="shortdesc">Lists all users for a tenant.</para>
            <para >List all the users for a tenant.</para>
         </wadl:doc>
         <request>
@@ -263,184 +251,288 @@
             </param>
         </request>
         <response status="200 203">
-            <representation mediaType="application/xml" element="identity:users">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/users.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/users.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:users">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/users.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method name="PUT" id="addRolesToUserOnTenant">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add role to user for tenant">
-            <para role="shortdesc">Add a specific role to a user for a tenant.</para>
-           <para >Add a specific role to a user for a tenant.</para>
+            <para role="shortdesc">Adds a specific role to a user for a tenant.</para>
+           <para>Add a specific role to a user for a tenant.</para>
         </wadl:doc>
         <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="DELETE" id="deleteRoleFromUserOnTenant">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete role from user for tenant">
-            <para role="shortdesc">Delete a specific role from a user for a tenant.</para>
+            <para role="shortdesc">Deletes a specific role from a user for a tenant.</para>
            <para >Delete a specific role from a user for a tenant.</para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <!--User Operations-->
-    <method name="GET" id="listUsers">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List users">
-            <para role="shortdesc">List users.</para>
-           <para >This request returns a users object that lists information for each 
-                user. Information includes the user's email account, username, user ID, status, and account setting information.</para>
-           <para  security="internal"> To find the user with the authority to modify account permissions, refer
-                to <a href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins__User_Calls.html">"Get User Admin."</a>
+    <method name="POST" id="addUser">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user">
+            <para role="shortdesc">Adds a user.</para>
+            <para>User administrators that have the <parameter>identity:service-admin</parameter> or 
+                <literal>identity:admin</literal> role can use the Add user operation 
+                to add sub-users (<literal>identity:default</literal>) to a Rackspace Cloud account. 
+                Administrators can add up to 100 users to an account.</para>
+            <para>In the Add user request, include the required values for the user name, email, and 
+                initial account status 
+                (<parameter>enabled=true</parameter> or <parameter>enabled=false</parameter>) attributes.</para>
+            <para>You can specify an initial password for the user by including it in the Add user request as 
+                shown in the Add user with password request code sample. 
+                If you don't specify a password, &CIS; generates one and returns it in the response. In either case, 
+                make a note of the password so you can provide it to the user.  After the user is created, you cannot 
+                retrieve the password by any means. 
             </para>
+            <para>If you attempt to add a user who already exists, an <errorcode>HTTP error 409</errorcode> results.</para>
+            <warning xmlns="http://docbook.org/ns/docbook">
+                <para>Account sub-users created using the Add user operation can only access Rackspace Cloud resources through the API. 
+                    Only the Administrator user can access the account from the Cloud Control panel. The Administrator 
+                    user is assigned when the Rackspace Cloud account is created during the Rackspace sign-up process.
+                </para>
+            </warning>
         </wadl:doc>
-        <response status="200 203">
-            <representation mediaType="application/xml" element="identity:userss">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/users.xml"/>
+       
+        <request>
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userwithoutid.xml"/>
+                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
+                        ID.</wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The name to assign to the user. Specify a value that 
+                            meets the following criteria:
+                            <itemizedlist>
+                                <listitem><para>Start with an alpha character.</para></listitem>
+                                <listitem><para>Minimum length: 1 character</para></listitem>
+                                <listitem><para>Can contain upper and lowercase characters.</para></listitem>
+                                <listitem><para>Can contain any of the following special characters:  &#x002E; &#x002D; &#x0040;  &#x005F; </para></listitem>
+                            </itemizedlist></para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="domain" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The name to assign to the user. Specify a value that 
+                            meets the following criteria:
+                            <itemizedlist>
+                                <listitem><para>Start with an alpha character.</para></listitem>
+                                <listitem><para>Minimum length: 1 character</para></listitem>
+                                <listitem><para>Can contain upper and lowercase characters.</para></listitem>
+                                <listitem><para>Can contain any of the following special characters:  &#x002E; &#x002D; &#x0040;  &#x005F; </para></listitem>
+                            </itemizedlist></para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="plain"
+                    type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
+                        email.</wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="OS-KSADM:password" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify a password string that meets the following criteria:
+                        <itemizedlist>
+                            <listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
+                            <listitem><para>Includes at least one uppercase and one lower case character</para></listitem>
+                            <listitem><para>Can include special characters.</para></listitem>
+                            <listitem><para>Password cannot begin with a space.</para></listitem>
+                        </itemizedlist>                     
+                    </para></wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="enabled" style="plain"
+                    type="xsd:bool" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
+                        the user is enabled (true) or disabled (false).</wadl:doc>
+                </param>
+                
+                <!-- Secret Question and answer parameter not available to client users 
+                    
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-KSQA:secretQA" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>This object specifies   
+                        the secret <parameter>question</parameter> and <parameter>answer</parameter> attributes that 
+                        can be used to verify the identity of the user.</para>
+                    </wadl:doc>
+                </param> -->
+            </representation>
+            
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userwithoutid.json"/>
                 </wadl:doc>
             </representation>
+            <representation mediaType="application/xml">
+                <wadl:doc xml:lang="EN" title="Add user with password request: XML">
+                    <xsdxt:code href="../common/samples/userwithpw.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" title="Add user with password request: JSON">
+                    <xsdxt:code href="../common/samples/userwithpw.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <!-- Not available to client users yet.           
+            <representation mediaType="application/xml">
+                <wadl:doc xml:lang="EN" title="Add user with secret question request: XML">
+                    <xsdxt:code href="../common/samples/userwithsq.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation security="internal" mediaType="application/json">
+                <wadl:doc xml:lang="EN" title="Add user with secret question request: JSON">
+                    <xsdxt:code href="../common/samples/userwithsq.json"/>
+                </wadl:doc>
+            </representation>  -->
+        </request>
+        <response status="201">
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/user.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/user.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <!-- Add user with Secret Question is not available to client users yet
+            
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xml:lang="EN" title="Add User with secret question response: XML">
+                    <xsdxt:code href="../common/samples/usersq.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" title="Add user with secret question response: JSON">
+                    <xsdxt:code href="../common/samples/usersq.json"/>
+                </wadl:doc>
+            </representation> -->
+            
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
+    
+    <method name="GET" id="listUsers">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List users">
+            <para role="shortdesc">Lists users.</para>
+           <para >This request returns a users object that lists information for each 
+                user. Information includes the email, name, user ID, status, and account settings for the specified account. 
+                Use the <parameter>name</parameter> and <parameter>email</parameter> query parameters to find information about a specific user account.
+               <itemizedlist>
+                <listitem>
+                    <para>
+                        If this request is issued by a user holding the admin role (<code>identity:user-admin</code>),
+                        it returns a list of all users for the tenant. To find a single user, include the <parameter>name</parameter> in the request.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        If this request is issued by a user holding the user role (<code>identity:default</code>),
+                        the operation only returns information about the user's account.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>To find the user with the authority to modify account permissions, refer
+                        to <link xlink:href="GET_getUserAdmin_v2.0_admins_User_Calls.html">"Get User Admin."</link>
+                    </para>
+                </listitem>
+            </itemizedlist>
+           </para>
+        </wadl:doc>
+        <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="query" type="xsd:string" required="false">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>Specify the user name to look up.</para>
+                </wadl:doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="query" type="xsd:string" required="false">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>User email address.</para>
+                </wadl:doc>
+            </param>
+        </request>
+        <response status="200 203">
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/users.json"/>
                 </wadl:doc>
             </representation>
+            <representation mediaType="application/xml" element="identity:userss">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/users.xml"/>
+                </wadl:doc>
+            </representation>
         </response> &commonFaults; &getFaults; </method>
-    <method name="POST" id="addUser">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user">
-           <para  class="shortdesc">Add a user.
-                <note>
-                    <para> This call is available only to users who hold the admin role (<code>identity:user-admin</code>).
-                        Using the admin role, you can create a user who holds the user role (<code>identity:default</code>). </para>
-                </note>
-                <warning>
-                    <para> If you use this <code>POST /users</code> call to create a user, that user will have access to
-                        APIs but will not have access to the Cloud Control Panel. Cloud Control Panel access is provided to
-                        the account's admin user; the admin user is the user who initiated the account by completing the
-                        Sign-Up process. </para>
-                </warning>
-            </para>
-           <para > To add a user, specify the user's <code>email</code> and
-                    <code>username</code> values, as well as whether the user's initial status is <code>enabled</code>. A
-                successful response echoes the requested values and adds a value for <code>id</code>. </para>
-           <para > To add a user and specify an initial password for that user, include the
-                password in a request resembling the "Add User with Password Request" examples shown below. </para>
-           <para > If you do not specify a password for the new user, one will be
-                generated. </para>
-           <para > If an initial password is generated, it is included in a successful
-                response to this request. After the user is created, the password cannot be retrieved by any means. Make note
-                of the password in the response and supply that password to the user. </para>
-           <para > Within an account, a maximum of 100 account users (sub-accounts) can be
-                added. </para>
-            <para security="internal" xmlns="http://docbook.org/ns/docbook">
-                    The user is assigned the default region based on which region was set as <code>isDefault:true</code> during the
-                    creation of the region. Users can change their default region through the
-                    <a href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_updateUser_v2.0_users__userId__.html">
-                    "Update User "</a> API call, but they can only change it to a region that is listed in
-                    in the service catalog for the CloudServersOpenStack service.
-                </para>
+ 
+   
+    <method name="GET" id="getUserById">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User by ID">
+            <para role="shortdesc">Gets detailed account information for a specific user, by userId.</para>
+            <para>
+                This request returns the following information for each account associated with the specified user ID:
+                email address, username, user ID, status, default region, and domain id.</para>
         </wadl:doc>
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-            <note>
-                <para>If you attempt to add a user who already exists, an <errorcode>HTTP error 409</errorcode> results.</para>
-            </note>
-        </wadl:doc>
-
-        <request>
-            <representation mediaType="application/xml" element="identity:user">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/userwithoutid.xml"/>
-                </wadl:doc>
-            </representation>
-            
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/userwithoutid.json"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user with password request: XML">
-                    <xsdxt:code href="../common/samples/userwithpw.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user with password request: JSON">
-                    <xsdxt:code href="../common/samples/userwithpw.json"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user with secret question request: XML">
-                    <xsdxt:code href="../common/samples/userwithsq.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user with secret question request: JSON">
-                    <xsdxt:code href="../common/samples/userwithsq.json"/>
-                </wadl:doc>
-            </representation>
-        </request>
-        <response status="201">
-            <representation mediaType="application/xml" element="identity:user">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/user.xml"/>
-                </wadl:doc>
-            </representation>
+        <response status="200 203">
+            <!-- Pull in shared response parameters by using entity from common.ent file -->
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/user.json"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/xml" element="identity:user">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add User with secret question response: XML">
-                    <xsdxt:code href="../common/samples/usersq.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user with secret question response: JSON">
-                    <xsdxt:code href="../common/samples/usersq.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults; &getFaults; &postPutFaults; </method>
-    
-    
-    <method name="GET" id="getUserByName">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user information by name">
-            <para role="shortdesc">Get detailed account information for a specified user, by
-                user name.</para>
-            <para>This request returns the following information for each account associated
-                with the specified user name: email address, username, user ID, status, default region, and domain id.</para>
-            <note>
-                <para>
-                    <emphasis role="italic">
-                        If you authenticated with the user role, you can see only yourself.
-                    </emphasis>
-                </para>
-                <para>
-                    If this request is issued by a user holding the admin role (<code>identity:user-admin</code>),
-                    the specific user's information is returned only if that user is associated with the same tenant as the
-                    requester's <code>user-admin</code> token.
-                </para>
-                <para> If this request is issued by a user holding the user role (<code>identity:default</code>),
-                    information is returned for only the requester.
-                </para>
-            </note>
-        </wadl:doc>
-        <response status="200 203">
-            <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/user.xml"/>
+                </wadl:doc>
+            </representation>
+        </response> &commonFaults; &getFaults; </method>
+    
+    <method name="GET" id="getUserByEmail">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user information by email">
+            <para role="shortdesc">Gets detailed information about a specific user, by
+                user email.</para>
+            <para>This request returns the following information for
+                all accounts with the specified user email address: email address, username,
+                user ID, status, domain, creation date, update date, default region, and domain id.</para>
+            <para>Default region, indicated by <code>defaultRegion</code>, associates this
+                user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
+                acceptable, indicating that no default region has been assigned for this user. If a default region has been
+                assigned and a service in this user's service catalog is available in multiple regions, API service requests
+                are managed in the <code>defaultRegion</code>.
+                
+                <!-- linking from this WADL-generated section to hand-coded section -->
+                <link condition="client" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
+                <link condition="admin" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
+                section.</para>
+        </wadl:doc>
+        <response status="200 203">
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userbyemailresponse.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userbyemailresponse.xml"/>
                 </wadl:doc>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain" type="string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Provides the ID for the default regional data center associated with the user account, if one exists.
                             Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para>
-                        <para>If a user account is associated with a default region, and the service catalog is available in
+                        <para >If a user account is associated with a default region, and the service catalog is available in
                             multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>.
                             For example of services available in multiple regions, see
                             <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">Sample Authentication Request and Response</link></para>
@@ -452,21 +544,6 @@
                     </wadl:doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:domainID" style="plain" type="xsd:string" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>
-                            Returns the ID for the domain associated with the user account if one exists.
-                            A domain represents an administrative boundary for identity management.
-                        </para>
-                    </wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:multiFactorEnabled" style="plain" type="boolean" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>
-                            Indicates whether the account is enabled for multifactor authentication by mobile phone.
-                        </para>
-                    </wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Returns the ID for the domain associated with the user account if one exists.
@@ -482,7 +559,7 @@
                         </para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" type="xsd:string" required="false">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="plain" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             The name of the user on the account.
@@ -505,125 +582,12 @@
                         </para>
                     </wadl:doc>
                 </param>
-                
-                <!-- Pull in shared response parameters by using entity from common.ent file -->
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/user.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults; &getFaults; </method>
-    <method name="GET" id="getUserById">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User by ID">
-            <para role="shortdesc">Get detailed account information for a specific user, by userid.</para>
-            <para>
-                This request returns the following information for each account associated with the specified user ID:
-                email address, username, user ID, status, default region, and domain id.</para>
-        </wadl:doc>
-        <response status="200 203">
-            <!-- Pull in shared response parameters by using entity from common.ent file -->
-            <representation mediaType="application/xml" element="identity:user">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/user.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/user.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults; &getFaults; </method>
-    
-    <method name="GET" id="getUserByEmail">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user information by email">
-            <para role="shortdesc">Get detailed information about a specific user, by
-                user email.</para>
-            <para>This request returns the following information for
-                all accounts with the specified user email address: email address, username,
-                user ID, status, domain, creation date, update date, default region, and domain id.</para>
-            <para>Default region, indicated by <code>defaultRegion</code>, associates this
-                user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
-                acceptable, indicating that no default region has been assigned for this user. If a default region has been
-                assigned and a service in this user's service catalog is available in multiple regions, API service requests
-                are managed in the <code>defaultRegion</code>.
-                
-                <!-- linking from this WADL-generated section to hand-coded section -->
-                <link condition="client" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
-                <link condition="admin" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
-                section.</para>
-        </wadl:doc>
-        <response status="200 203">
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain" type="string" required="false">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>
-                        Provides the ID for the default regional data center associated with the user account, if one exists.
-                        Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para>
-                   <para >If a user account is associated with a default region, and the service catalog is available in
-                        multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>.
-                        For example of services available in multiple regions, see
-                        <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">Sample Authentication Request and Response</link></para>
-                    
-                    <para>
-                        Use the <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html">"Update user"</link>
-                        API operation to add, remove, or update the defaultRegion setting on an account.
-                    </para>
-                </wadl:doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:domainID" style="plain" type="xsd:string" required="false">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>
-                        Returns the ID for the domain associated with the user account if one exists.
-                    </para>
-                    <para>
-                        A domain ID associates the user with a specific domain. The association can be
-                        established during account creation and update operations.
-                    </para>
-                    <para>
-                        A domain establishes an administrative boundary for a customer and a container for customer tenants (accounts) and users.
-                        Generally, the <code>domainId</code> value matches the value associated with the primary tenant ID
-                        for the &CLOUD; account.
-                    </para>
-                </wadl:doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="plain" type="xsd:string" required="false">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>
-                        The name of the user on the account.
-                    </para>
-                </wadl:doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="email" style="plain" type="xsd:string" required="false">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>
-                        Returns the email address on the user account if one has been defined.</para>
-                </wadl:doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="enabled" style="plain" type="boolean" required="false">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>
-                        Indicates whether the user can authenticate to the &CIS;. If <code>enabled="false"</code>,
-                        the user cannot authenticate. Typically, the <code>enabled</code> setting is set
-                        and stored by a backend system integrated with &CIS;. To restore account access,
-                        work with the &CIS; System and user administrators to resolve any issues on the account.
-                    </para>
-                </wadl:doc>
-            </param>
-            <representation mediaType="application/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/userbyemailresponse.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/userbyemailresponse.json"/>
-                </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method name="POST" id="updateUser">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user information and password">
-            <para role="shortdesc">Update user information and password.</para>
+            <para role="shortdesc">Updates user information, settings, and password.</para>
             <para>The Update user operation acts upon the user specified by <parameter>userId</parameter>. Before you update
                 a user account, use the <link xlink:href="GET_getUserById_users_User_Calls.html">Get user by id</link> operation
                 to verify that the user name, email account, and status associated with
@@ -643,6 +607,12 @@
             </para>
         </wadl:doc>
         <request>
+           
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user request: JSON">
+                    <xsdxt:code href="../common/samples/updateuser.json"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user request: XML">
                     <xsdxt:code href="../common/samples/updateuser.xml"/>
@@ -677,18 +647,19 @@
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="password" type="xsd:string" style="plain">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A password string that meets the following criteria:
-                        <itemizedlist><listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
-                            <listitem><para>Includes at least one uppercase and one lower case character</para></listitem>
-                            <listitem><para>Can include special characters.</para></listitem>
-                            <listitem><para>Password cannot begin with a space.</para></listitem>
-                        </itemizedlist>
+                            <itemizedlist><listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
+                                <listitem><para>Includes at least one uppercase and one lower case character</para></listitem>
+                                <listitem><para>Can include special characters.</para></listitem>
+                                <listitem><para>Password cannot begin with a space.</para></listitem>
+                            </itemizedlist>
                         </para>
                     </wadl:doc>
                 </param>
             </representation>
+         
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user request: JSON">
-                    <xsdxt:code href="../common/samples/updateuser.json"/>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user password request: JSON">
+                    <xsdxt:code href="../common/samples/userupdatepw.json"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/xml">
@@ -696,52 +667,42 @@
                     <xsdxt:code href="../common/samples/userupdatepw.xml"/>
                 </wadl:doc>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user password request: JSON">
-                    <xsdxt:code href="../common/samples/userupdatepw.json"/>
-                </wadl:doc>
-            </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:user">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/user.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/user.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/user.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="DELETE" id="deleteUser">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete user">
-            <para role="shortdesc">Delete a user.</para>
-           <para >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                <warning>
-                    <para>Before making any change to a user, you should confirm that you are changing the user you intend
-                        to change. You can do this by treating every change as a two-step operation: first, check the target
-                        of the change; second, make the change. </para>
-                    <para> "Delete User" acts upon the user specified by <code>userId</code>. Before attempting to update a
-                        user, first use <xref linkend="GET_getUserById_users__user_id__User_Calls" xrefstyle="select: title"/> to
-                        obtain the user name, email account, and status associated with <code>userId</code>. That's Step 1.
-                        Check the returned information carefully; if you are certain that it describes the user you intend to
-                        change, proceed with Step 2, deleting the user you just examined. </para>
-                </warning>
-            </wadl:doc>
-            </para>
-           <para >To delete a user, specify the user's ID in the request. If you know the
+            <para role="shortdesc">Deletes a user.</para>
+            <para>Before making any change to a user, confirm that you are changing the user you intend 
+                to change. You can do this by treating every change as a two-step operation: first, check the target of the change; second, make the change.</para>
+            <para>Delete User" acts upon the user specified by <code>userId</code>. Before attempting to update a user, first use 
+                <xref linkend="GET_getUserById__v2.0_users__userId__User_Calls" xrefstyle="select: quotedtitle nopage"/> to 
+                obtain the user name, email account, and status associated with <code>userId</code>. That's Step 1.
+                Check the returned information carefully; if you are certain that it describes the user you intend to 
+                change, proceed with Step 2, deleting the user you just examined. </para>
+            
+            
+           <para>To delete a user, specify the user's ID in the request. If you know the
                 user's name but not the user's ID, use
-                <xref linkend="GET_getUserByName_v2.0_users___User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
+               <xref linkend="GET_listUsers__v2.0_users__User_Calls" xrefstyle="select: quotedtitle nopage" xmlns="http://docbook.org/ns/docbook"/>
                 to obtain complete identifying information about the user. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method name="PUT" id="setUserEnabled">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Enable user">
-            <para role="shortdesc">Enable a user.</para>
+            <para role="shortdesc">Enables a user.</para>
            <para >Enable a user.</para>
         </wadl:doc>
         <request>
@@ -781,12 +742,49 @@
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <!--User Roles-->
+    <method name="GET" id="listUserGlobalRoles">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List global roles for a user">
+            <para role="shortdesc">Returns global roles for a specific user.</para>
+            <para>
+                This call returns a list of global roles associated with the user with
+                the specified user ID. If you have only the user's name but not the user's ID, use "Get User by Name" to
+                obtain complete identifying information about the user. For each role listed, the response includes
+                identifying information such as the role's ID (such as <code>123</code>), name (such as <code>Admin</code>,
+                and description (such as <code>All Access</code>). The list of global roles excludes any tenant roles
+                associated with this user.</para>
+            <note xmlns="http://docbook.org/ns/docbook">
+                <para>This call is available to users who hold either the
+                    admin role
+                    (<code>identity:user-admin</code>)
+                    or the user role
+                    (<code>identity:default</code>). </para>
+                <para>For users holding the <code>user</code> role, the call
+                    is valid only if <code>userId</code>
+                    and the <code>user-default</code>
+                    token have the same value for
+                    <code>tenant</code>. </para>
+            </note>
+        </wadl:doc>
+        <response status="200 203">
+          
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/roles.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/xml" element="identity:roles">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/roles.xml"/>
+                </wadl:doc>
+            </representation>
+            
+        </response> &commonFaults; &getFaults; </method>
     <method name="PUT" id="addUserRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add role to user">
-            <para role="shortdesc">Add a specific multiproduct or custom (product-specific) role to a user.</para>
-           <para>This call adds a role to a user. To add a role to a user, specify the role ID and the user ID in the request. Use the   
-                <xref linkend="GET_getRoleByName_v2.0_users_OS-KSADM_roles__Role_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/> and 
-               <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/> operations to find the ids.</para>
+            <para role="shortdesc">Adds a specific multiproduct or custom (product-specific) role to a user.</para>
+           <para>To add a role to a user, specify the <parameter>roleId</parameter> and the 
+               <parameter>userId</parameter> in the request. Use the List roles and List users operations to find the ids.</para>
            <para>If a &CIS; Administrator (identity:service-admin) assigns a role to an account owner (identity:user-admin), the 
                role is propagated to all account users (identity:default).</para>
             <!--<para xmlns="http://docbook.org/ns/docbook">See Role Categories table below to learn more about roles, who
@@ -842,7 +840,7 @@
         <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
     <method name="GET" id="getUserRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user Role">
-            <para role="shortdesc">Get information about a specified role assigned to a specified user.</para>
+            <para role="shortdesc">Gets information about a specified role assigned to a specified user.</para>
             <para>Get information about a global role that belongs to a user.</para>
         </wadl:doc>
         <response status="200 203">
@@ -863,13 +861,11 @@
     </method>
     <method name="DELETE" id="deleteUserRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete global role from user">
-            <para role="shortdesc">Delete a multiproduct or custom (product-specific) role from a user.</para>
+            <para role="shortdesc">Deletes a multiproduct or custom (product-specific) role from a user.</para>
             <para>Use this operation to delete a role from a user account. 
-                Include the system-assigned role <code>id</code> and user <code>id</code> in the request. To get the correct ids, use the 
-                <xref linkend="GET_listRoles_v2.0_users_OS-KSADM_roles_Role_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/> and
-                <xref linkend="GET_admin-listUsers_v2.0_users_User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/> operations.
-                </para>
-            <para>The  DELETE allows the account owner (identity:user-admin) to manage non-protected
+                Include the system-assigned role <code>id</code> and user <code>id</code> in the request. Use the 
+                List role and List user operations to find the correct ids.</para>
+            <para>The DELETE operation allows the account owner (identity:user-admin) to manage non-protected
                 role assignment for users (identity:default), granting and revoking access at will. Some roles like
                 identity:rack_connect and identity:rax_managed cannot be managed by customers to prevent them from revoking
                 privileges unintentionally.</para>
@@ -879,51 +875,52 @@
     <!-- User Credentials-->
     <method name="POST" id="addUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add credential to user">
-            <para role="shortdesc">Add a credential to a user.</para>
+            <para role="shortdesc">Adds a credential to a user.</para>
             <para> A password is a credential; you can add a password to a user with this
                 call. To add a credential to a user, specify the user's ID in the request. If you know the user's name but
-                not the user's ID, use <!-- <link linkend="GET_getUserByName_v2.0_users_">Get User by Name</link> -->
-                <!-- <xref linkend="GET_getUserByName_v2.0_users_" xrefstyle="select: title"/> -->
-                <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
-                to obtain complete identifying information about the user. </para>
+                not the user's ID, use 
+                <link xlink:href="GET_admin-getUserByName_v2.0_users_User_Calls.html"/></para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="identity:credential">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
-                </wadl:doc>
-            </representation>
+           
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/xml" element="identity:credential">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
                 </wadl:doc>
             </representation>
         </request>
         <response status="201">
-            <representation mediaType="application/xml" element="identity:credential">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
-                </wadl:doc>
-            </representation>
+            
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
                 </wadl:doc>
             </representation>
+            
+            <representation mediaType="application/xml" element="identity:credential">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
+                </wadl:doc>
+            </representation>
+            
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="GET" id="listCredentials">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List credentials">
-            <para role="shortdesc">List credentials, other than passwords, for all
+            <para role="shortdesc">Lists credentials, other than passwords, for all
                 authentication methods.</para>
             <para>This operation is available to users who hold either the admin role
                 (<code>identity:user-admin</code>) or the user role (<code>identity:default</code>). 
                 The operation returns only the credentials for the user who issued the request.</para>
            <para >A user's password cannot be obtained by this or any other means. To list
-                a user's non-password credentials for all authentication methods available to that user, specify the user's
-                ID in the request. If you know the user's name but not the user's ID, use
-                <xref linkend="GET_admin-getUserByName_v2.0_users__name__User_Calls" xrefstyle="select: title" xmlns="http://docbook.org/ns/docbook"/>
-                to obtain complete identifying information about the user. </para>
+               non-password credentials for all authentication methods available to that user, include the user Id in the 
+               request. Use the List User operation to find the id.</para>
            <para >API credentials are currently not available for account users. Account
                 users, also called sub-accounts, are users who were created by the administrative user. Account users can
                 access API features with their password credentials. The administrative user holds the
@@ -941,21 +938,23 @@
         </request>
         -->
         <response status="200 203">
-            <representation mediaType="application/xml" element="identity:credentials">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/credentials-response-apikey-nopw.xml"/>
-                </wadl:doc>
-            </representation>
+          
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/credentials-response-apikey-nopw.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/xml" element="identity:credentials">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/credentials-response-apikey-nopw.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method name="GET" id="listCredentialsByType">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List credentials by type">
-            <para role="shortdesc">List credentials by type.</para>
+            <para role="shortdesc">Lists credentials by type.</para>
            <para >List credentials by type.</para>
             <para>This operation is available to users who hold either the admin role
                 (<code>identity:user-admin</code>) or the user role (<code>identity:default</code>). 
@@ -970,81 +969,106 @@
             </param>
         </request>
         <response status="200 203">
-            <representation mediaType="application/xml" element="identity:credentials">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/credentials.xml"/>
-                </wadl:doc>
-            </representation>
+           
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/credentials.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/xml" element="identity:credentials">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/credentials.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method name="POST" id="updateUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user credentials">
-            <para role="shortdesc">Update user credentials.</para>
+            <para role="shortdesc">Updates user credentials.</para>
            <para >Update user credentials.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="identity:credential">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml"
+                element="identity:credential">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
+                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
                 </wadl:doc>
             </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:credential">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml"
+                element="identity:credential">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
+                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="DELETE" id="deleteUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete user credentials">
-            <para role="shortdesc">Delete user credentials.</para>
+            <para role="shortdesc">Deletes user credentials.</para>
            <para >Delete user credentials.</para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="GET" id="getUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user credentials">
-            <para role="shortdesc">Get user credentials.</para>
+            <para role="shortdesc">Gets user credentials.</para>
            <para >Get user credentials.</para>
         </wadl:doc>
         <response status="200 203">
-            <representation mediaType="application/xml" element="identity:credential">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
                 </wadl:doc>
             </representation>
+            <representation mediaType="application/xml" element="identity:credential">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
+                </wadl:doc>
+            </representation>
         </response> &commonFaults; &getFaults; </method>
-
+    <method id="resetUserAPIKeyCredentials" name="POST">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Reset API key credentials">
+            <para role="shortdesc">Reset user API key.</para>para>
+            <para>We recommend that you routinely reset passwords and API keys. 
+                This API key reset operation returns the new API key for the user account. 
+                Unlike updating the password, the API key reset does not revoke existing 
+                tokens. Administrators can use the Revoke Token operation to invalidate 
+                the token for a user.</para>
+        </wadl:doc>
+        <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/ResetAPIKey.json"/>
+                </wadl:doc>
+            </representation>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
     <!--Roles-->    
     <method name="POST" id="addRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add role">
-            <para role="shortdesc">Add a role.</para>
+            <para role="shortdesc">Adds a role.</para>
            <para >This operation adds a newly created global role (with user-assigned Rackspace
                 capabilities), allowing the customer to tailor user roles to his or her business needs.</para>
-        </wadl:doc>
-        <wadl:doc xmlns="http://docbook.org/ns/docbook">     
             <note>
                 <para>
                     Roles added by this call are by default visible to customers. If you would like the role to be service-managed 
@@ -1054,6 +1078,11 @@
             </note>   
         </wadl:doc>
         <request>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/role.json"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="identity:role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.xml"/>
@@ -1068,33 +1097,37 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Additional information about the role 
                         to help administrators and users understand its scope and purpose.</wadl:doc>
                 </param>
+                <param name="serviceId" style="plain" required="false" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Additional information about the role 
+                        to help administrators and users understand its scope and purpose.</wadl:doc>
+                </param>
+                <param name="tenantId" style="plain" required="false" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">If the role is intended for use with a specific tenant, and the 
+                        tenantId has not been defined, use this attribute to specify a unique ID for the tenant.</wadl:doc>
+                </param>
             </representation>
+        </request>
+        <response status="201">
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.json"/>
                 </wadl:doc>
             </representation>
-        </request>
-        <response status="201">
             <representation mediaType="application/xml" element="identity:role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.xml"/>
                 </wadl:doc>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/role.json"/>
-                </wadl:doc>
-            </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
     <method name="GET" id="listRoles">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List roles">
-            <para role="shortdesc">List roles.</para>
-            <para > This call lists the global roles available within a specified service 
-                (like nova, or glance).
+            <para role="shortdesc">Lists roles.</para>
+            <para >Use the List roles API operation to retrieve a list of roles 
             </para>
         </wadl:doc>
         <request>
+       
+       <!-- The following query parameters are not supported in the Rackspace Identity implementation 
             <param name="serviceId" style="query" required="false" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to filter by service id. </wadl:doc>
             </param>
@@ -1103,14 +1136,9 @@
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
-            </param>
+            </param> -->
         </request>
         <response status="200 203">
-            <representation mediaType="application/xml" element="identity:roles">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/roles.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/roles.json"/>
@@ -1121,13 +1149,25 @@
                     <xsdxt:code href="../common/samples/roles-domain-users.json"/>
                 </wadl:doc>
             </representation>
+            <representation mediaType="application/xml" element="identity:roles">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/roles.xml"/>
+                </wadl:doc>
+            </representation>
         </response> &commonFaults; &getFaults; </method>
+    
+    <!--  This call doesn't work per Joe Savak Sept 2014 
     <method name="GET" id="getRoleByName">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get role by name">
-            <para role="shortdesc">Get a role by name.</para>
+            <para role="shortdesc">Gets a role by name.</para>
             <para >Get a role by name.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200 203">         
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/role.json"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="identity:role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.xml"/>
@@ -1140,54 +1180,67 @@
                         </para>
                     </wadl:doc>
                 </param>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/role.json"/>
-                </wadl:doc>
+                <param name="id" style="plain"
+                    type="xsd:string">
+                    <wadl:doc
+                        xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>The id assigned to the role when it was created.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="description" style="plain" required="false"
+                    type="xsd:string">
+                    <wadl:doc
+                        xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>A description of the role, if available.
+                        </para>
+                    </wadl:doc>
+                </param>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
+        
+        -->
     <method name="GET" id="getRolebyId">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get role by ID">
-            <para role="shortdesc">Get role by role ID.</para>
+            <para role="shortdesc">Gets a role by role ID.</para>
             <para> This call lists detailed information (<code>id</code>,
                 <code>name</code>, <code>description</code>) for a specified role. </para>
         </wadl:doc>
         <response status="200 203">
-            <representation mediaType="application/xml" element="identity:role">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/role.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json" element="identity:role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:role">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/role.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="DELETE" id="deleteRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete role">
-            <para role="shortdesc">Delete a role.</para>
+            <para role="shortdesc">Deletes a role.</para>
            <para >Delete a role.</para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method name="GET" id="getUsersWithRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get users with role">
-            <para role="shortdesc">Get users that have the specified role.</para>
+            <para role="shortdesc">Gets users that have the specified role.</para>
            <para>Return a list of users with the specified role.</para>
            <para >This operation does not require a request body.</para>
         </wadl:doc>
         <response status="200">
-            <representation mediaType="application/xml" element="identity:roles">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/userswithroles.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json" element="identity:roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/userswithroles.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:roles">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userswithroles.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
@@ -1195,26 +1248,26 @@
     <!-- Service Operations -->
     <method name="GET" id="listServices">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List services">
-            <para role="shortdesc">List services.</para>
+            <para role="shortdesc">Lists services.</para>
            <para >List services.</para>
         </wadl:doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to page through list of users. This is the numeric id of the item to start the list.</wadl:doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Allows us to page through list of users. This is the numeric id of the item to start the list.</wadl:doc>
             </param>
             <param name="limit" style="query" required="false" type="xsd:int">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
             </param>
         </request>
         <response status="200 203">
-            <representation mediaType="application/xml" element="OS-KSADM:services">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/services.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json" element="OS-KSADM:services">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/services.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="OS-KSADM:services">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/services.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
@@ -1229,14 +1282,14 @@
             <param name="name" style="query" type="xsd:string" required="true"/>
         </request> -->
         <response status="200 203">
-            <representation mediaType="application/xml" element="OS-KSADM:service">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/service.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/service.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="OS-KSADM:service">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/service.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
@@ -1248,51 +1301,63 @@
                 to find it.</para>
         </wadl:doc>
         <response status="200 203">
-            <representation mediaType="application/xml" element="OS-KSADM:service">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/service.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/service.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="OS-KSADM:service">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/service.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method name="POST" id="addService">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add service">
-            <para role="shortdesc">Add a service.</para>
+            <para role="shortdesc">Adds a service.</para>
            <para >Add a service.</para>
         </wadl:doc>
         <request>
+            <representation mediaType="application/json" element="OS-KSADM:service">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/service.json"/>
+                </wadl:doc>
+                    <param name="name" style="plain" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A service name.</wadl:doc>
+                    </param>
+                    <param name="type" style="plain" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A unique id to identify the service.</para></wadl:doc>
+                    </param>
+                    <param name="type" style="plain" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The type of service you are adding, <code>Compute</code>, for example.</para></wadl:doc>
+                    </param>
+                    <param name="description" style="plain" type="xsd:string" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A human-readable description for the service.</wadl:doc>
+                    </param>
+            </representation>
             <representation mediaType="application/xml" element="OS-KSADM:service">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/service.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/service.json"/>
                 </wadl:doc>
             </representation>
         </request>
         <response status="201">
-            <representation mediaType="application/xml" element="OS-KSADM:service">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/service.xml"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/service.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="OS-KSADM:service">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/service.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <method name="DELETE" id="deleteService">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete service">
-            <para role="shortdesc">Delete a service.</para>
+            <para role="shortdesc">Deletes a service.</para>
            <para >Delete a service.</para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>

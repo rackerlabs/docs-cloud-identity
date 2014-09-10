@@ -1,7 +1,7 @@
 {
   "user": {
     "RAX-AUTH:domainId": "5473387",
-    "enabled": "true",
+    "enabled": true,
     "username": "jqsmith",
     "OS-KSADM:password": "securePassword",
     "email": "john.smith@example.org",

@@ -262,12 +262,16 @@
               </listitem>
             </varlistentry>
           </variablelist></para>
+        <para>Export the <parameter>phoneId</parameter> value to an
+          environment variable, so you can use it to complete the
+          phone verification process: EXPORT <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT $</programlisting></para>
       </listitem>
       <!--Step 3 Verify PIN code -->
       <listitem>
-        <para>Send a verification PIN code to your phone to verify the device.<variablelist>
+        <para>Send a verification code to your phone to confirm that you possess the phone associated with your account. You 
+          need to include the <parameter>phoneId</parameter> value from the Add mobile phone operation in this request.<variablelist>
             <varlistentry>
-              <term><emphasis role="bold">Send Verification code cURL
+              <term><emphasis role="bold">Send Verification PIN code cURL
                   request</emphasis></term>
               <listitem>
                 <para>
@@ -293,9 +297,9 @@
       </listitem>
       <listitem>
         <!-- Step 4  Send verification code -->
-        <para>Send the PIN code back to &CIS;.<variablelist>
+        <para>Return the verification PIN code to complete the phone verification process.<variablelist>
             <varlistentry>
-              <term><emphasis role="bold">Send verification code cURL
+              <term><emphasis role="bold">Return verification code to &CIS; cURL
                   request</emphasis></term>
               <listitem>
                 <para>
@@ -580,8 +584,8 @@
         </tr>
         <tr>
           <td valign="top">
-            <para condition="admin"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor__bypass__Multifactor_Calls.html">Generate bypass code</link></para>
-          <para condition="client"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor__bypass__Multifactor_Calls_client.html">Generate bypass codes</link></para>
+            <para condition="admin"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html">Generate bypass code</link></para>
+            <para condition="client"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html">Generate bypass codes</link></para>
           </td>
             <td valign="top">
             <para>Use the following cURL request to generate a bypass
@@ -597,8 +601,8 @@
         </tr>
         <tr>
           <td valign="top">
-            <para condition="admin"><link xlink:href="GET_getUserById_users_User_Calls.html">Check multi-factor status on user account</link></para>
-            <para condition="client"><link xlink:href="GET_getUserById_users_User_Calls_client.html">Check multi-factor status on user account</link></para>
+            <para condition="admin"><link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Check multi-factor status on user account</link></para>
+            <para condition="client"><link xlink:href="GET_getUserById_v2.0_users__userId__User_Calls.html">Check multi-factor status on user account</link></para>
           </td>
           <td valign="top">
             <para>Use the following cURL request to review the multi-factor authentication configuration settings on 

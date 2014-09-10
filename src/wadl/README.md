@@ -2,7 +2,7 @@
 
 **identity-admin.wadl** describes the core API. **RAX-RATELIMIT.wadl** describes rate-limiting functions. Everything else here describes an extension to the core API and is a frozen local copy of a WADL that is maintained alive somewhere else. 
 
-For links to the extensions' live GitHub repos, visit http://red.rackspace.com/display/RED/Source+control+repositories#Sourcecontrolrepositories-Identity.
+For links to the live GitHub repository for the extensions, visit http://red.rackspace.com/display/RED/Source+control+repositories#Sourcecontrolrepositories-Identity.
 
 ----
 These WADLs include external samples.

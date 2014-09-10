@@ -175,7 +175,11 @@
                            <method href="#getMobilePhonesForUser"/>
                            <method href="#removeMultifactorForUser"/>
                            <method href="#updateMultifactorSettings"/>
-                    <resource id="multifactor_vcode" path="phoneId/verificationcode">
+                    <resource id="multifactor_vcode" path="{phoneId}/verificationcode">
+                        <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneId" style="template" type="xsd:string" required="true">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The id of the phone associated with the user account.
+                            </para></wadl:doc>          
+                        </param>
                     <method href="#sendVerifyCode"/>
                     </resource>
                     <resource id="mfa_PIN" path="{phoneId}/verify">
@@ -1538,7 +1542,11 @@
             <para>Before a user can authenticate using a mobile phone, &CIS; must verify that the user 
                 has the phone.
             </para>
-            <para>After this request is submitted, the Rackspace verfication service sends a PIN to the specified phone 
+            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. The 
+                id is generated when the phone is added to the user account. If you don't know the id, use the 
+                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
+                operation to get it.</para>
+            <para>In response to the Send Verify operation request, the Rackspace verification service sends a PIN to the specified phone 
                 via SMS text message. Each PIN has a system-defined expiration time determined by the &CIS; system configuration.
                 The user can use the Verify device operation to submit the PIN to &CIS; and confirm 
                 the phone for use with multi-factor authentication services. 
@@ -1564,14 +1572,26 @@
             <para role="shortdesc">Submits a PIN code issued by Rackspace verification services to confirm user possession of a device.</para>
             <para>Use this operation to submit the verification PIN received in the SMS text message from the Rackspace verification 
                 service. After the PIN is accepted, the user account is updated to indicate that the phone is verified. The phone can be used 
-                to authenticate to &CIS; if the associated account has been enabled for multifactor authentication. See the Enable multi-factor 
+                to authenticate to &CIS; if the associated account has been enabled for multi-factor authentication. See the Enable multi-factor 
                 authentication operation.</para>
+            
+            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. The 
+                id is generated when the phone is added to the user account. If you don't know the id, use the 
+                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
+                operation to get it.</para>
 
             <para>This operation can only be completed from the user account that the phone is associated with. The operation fails if
             the PIN is expired, or if it doesn't match the code issued by the Rackspace verification service.</para>
         </wadl:doc>
         
         <request>
+         
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: JSON request">
+                    <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.json"/>
+                </wadl:doc>
+            </representation>
+            
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: XML request">
                     <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.xml"/>
@@ -1581,13 +1601,6 @@
                         <para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</para>
                     </wadl:doc>
                 </param>
-            </representation>
-            
-            
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: JSON request">
-                    <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.json"/>
-                </wadl:doc>
             </representation>
         </request>
         
@@ -1604,29 +1617,7 @@
         </wadl:doc>
         <response status="204">
             <wadl:doc title="No Content">Accepted.</wadl:doc>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
-                </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A unique, system-generated string that identifies the mobile phone 
-                        in the &CIS;.</para>
-                    </wadl:doc>          
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="number" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Phone number of the device associated with the user account. Use the Add mobile phone operation 
-                            to add a phone to the account. Use the Remove multifactor operation to remove phones from the account.</para>
-                    </wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="verified" style="plain" type="boolean" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates whether the phone can be used to authenticate to &CIS;. Phones can be  
-                        verified by using the Send verification code and Verify device operations.</para>
-                    </wadl:doc>
-                </param>
-            </representation>
+           
         
             <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -1634,6 +1625,30 @@
                     <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.json"/>
                 </wadl:doc>
         </representation>
+            
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
+                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>A unique, system-generated string that identifies the mobile phone 
+                            in the &CIS;.</para>
+                    </wadl:doc>          
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="number" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Phone number of the device associated with the user account. Use the Add mobile phone operation 
+                            to add a phone to the account. Use the Remove multi-factor operation to remove phones from the account.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="verified" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>A boolean value that indicates whether the phone can be used to authenticate to &CIS;. Phones can be  
+                            verified by using the Send verification code and Verify device operations.</para>
+                    </wadl:doc>
+                </param>
+            </representation>
         
         </response>&commonFaults; &getFaults;
     </method>
@@ -1664,11 +1679,18 @@
                 &CIS; with any verified mobile phone number associated with their account.</para>
             <para>
                 To disable multi-factor authentication temporarily, without removing associated 
-                mobile phone numbers, run the Update mulltifactor authentication setting operation with <code>enable=false</code>. 
-                To remove multi-factor authentication capabilities from an account completely, use the Remove multifactor 
+                mobile phone numbers, run the Update mullti-factor authentication setting operation with <code>enable=false</code>. 
+                To remove multi-factor authentication capabilities from an account completely, use the Remove multi-factor 
                 operation.</para>
         </wadl:doc>
         <request>
+          
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: JSON request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
+                </wadl:doc>
+            </representation>
+            
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: XML request">
                     <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
@@ -1680,39 +1702,36 @@
                             <code>enabled=false</code> to disable it.</para>
                         <para>This setting does not remove the phone associated with the account.</para>
                     </wadl:doc>
-               </param>
+                </param>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: JSON request">
-                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request">
-                    <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.xml"/>
-                </wadl:doc>
-            </representation>
+            
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: JSON request">
                     <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.json"/>
                 </wadl:doc>
             </representation>
+            
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.xml"/>
+                </wadl:doc>
+            </representation>
         </request>
         <response status="204"/> 
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="Bad Request">No multifactor device on user account.</doc>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+            <doc title="Bad Request">No multi-factor device on user account.</doc>
             <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
         </response>
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="Bad Request">multi-factor phone on account is not verified.</doc>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
         </response>
         <response status="500" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="serviceFault">Problem linking phone with &CIS; multi-factor authentication service. Contact the &CIS; service administrator for help.</doc>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
         </response>
     </method>
     
@@ -1733,7 +1752,7 @@
                         <para>
                             Users with the <parameter>identity:user-admin</parameter> or 
                             <parameter>identity:admin</parameter> role can generate a single bypass code 
-                            another user's accoount. Administrator-generated codes are valid for 30 minutes by default. Administrators can configure 
+                            another user's account. Administrator-generated codes are valid for 30 minutes by default. Administrators can configure 
                             the validity duration from 1 to 360 minutes.
                         </para>
                     </listitem>
@@ -1746,6 +1765,12 @@
             </note>
         </wadl:doc>
         <request>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesRequest.json" />
+                </wadl:doc>
+            </representation>
+            
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesRequest.xml"/>
@@ -1764,20 +1789,20 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>An attribute of the <parameter>RAX-AUTH:bypassCodes</parameter> element. Specifies the time interval that the bypass codes remain valid. 
                             If no value is specified, the value defaults to 30 minutes <code>PT30M</code>.</para>
-                         <para>If the bypass codes are for your own account, customize the value as needed.</para>
-                          <para>Administrators can configure an interval between 1 and 360 minutes when 
-                              creating a bypass code for other user account.</para>
-                            
-                            <para>The value is expressed in xsd:duration format, <code>PT20MPnYnMnDTnHnMnS</code> where</para> 
-                            
-                                <para><parameter>P</parameter> indicates the period (required)</para>
-                                <para><parameter>nY</parameter> indicates the number of years</para>
-                                <para><parameter>nM</parameter> indicates the number of months</para> 
-                                <para><parameter>nD</parameter> indicates the number of days</para>
-                                <para><parameter>T</parameter> indicates the start time of a section (required if the duration value includes hours, minutes, or seconds)</para>
-                                <para><parameter>nH</parameter> indicates the number of hours</para>
-                                <para><parameter>nM</parameter> indicates the number of minutes</para>
-                                <para><parameter>nS</parameter> indicates the number of seconds</para>
+                        <para>If the bypass codes are for your own account, customize the value as needed.</para>
+                        <para>Administrators can configure an interval between 1 and 360 minutes when 
+                            creating a bypass code for other user account.</para>
+                        
+                        <para>The value is expressed in xsd:duration format, <code>PT20MPnYnMnDTnHnMnS</code> where</para> 
+                        
+                        <para><parameter>P</parameter> indicates the period (required)</para>
+                        <para><parameter>nY</parameter> indicates the number of years</para>
+                        <para><parameter>nM</parameter> indicates the number of months</para> 
+                        <para><parameter>nD</parameter> indicates the number of days</para>
+                        <para><parameter>T</parameter> indicates the start time of a section (required if the duration value includes hours, minutes, or seconds)</para>
+                        <para><parameter>nH</parameter> indicates the number of hours</para>
+                        <para><parameter>nM</parameter> indicates the number of minutes</para>
+                        <para><parameter>nS</parameter> indicates the number of seconds</para>
                     </wadl:doc>
                 </param>
                 <param name="numberofcodes" style="plain" type="xsd:integer" required="false">
@@ -1786,18 +1811,18 @@
                             that specifies the number of bypass codes to generate. 
                             If not specified, the value defaults to <code>1</code>. 
                             Users can generate up to 10 bypass codes for their own account. Administrators 
-                            can generate only one bypass code for other user accounts.
+                            can generate only one bypass code for user accounts other than their own.
                         </para>
                     </wadl:doc>
                 </param>
             </representation>
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/BypassCodesRequest.json" />
-                </wadl:doc>
-            </representation>
         </request>
         <response status="200">
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesResponse.xml" />
@@ -1819,14 +1844,9 @@
                 <param name="validityDuration" style="plain" type="xsd:duration" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The time interval that specifies how long the code is valid.
-                            </para>
+                        </para>
                     </wadl:doc>
                 </param>
-            </representation>
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
-                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
@@ -1853,22 +1873,23 @@
             </para></note>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/MultiFacUnlockReq.xml"/>
-                </wadl:doc>
-   <!--             <param name="unlock" style="template" type="xsd:boolean" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates the lock status on a user account enabled 
-                            for multi-factor authentication. To unlock an account, specify <code>unlock=true</code> 
-                            in the Unlock operation request.</para>. </wadl:doc>
-                </param> -->
-            </representation>
+         
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultiFacUnlockReq.json"/>
                     <para>This operation does not accept a response body.</para>
                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/MultiFacUnlockReq.xml"/>
+                </wadl:doc>
+                <!--             <param name="unlock" style="template" type="xsd:boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>A boolean value that indicates the lock status on a user account enabled 
+                            for multi-factor authentication. To unlock an account, specify <code>unlock=true</code> 
+                            in the Unlock operation request.</para>. </wadl:doc>
+                </param> -->
             </representation>
         </request>
         <response status="204"/> &commonFaults; &getFaults;

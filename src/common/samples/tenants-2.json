@@ -3,7 +3,7 @@
             "id":"3645",
             "name":"Iron Works",
             "description":"A description ...",
-            "enabled": "true"
+            "enabled": true
         }
     ],
     "tenants_links":[{
