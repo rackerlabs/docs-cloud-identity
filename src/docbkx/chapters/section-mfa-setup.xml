@@ -231,9 +231,9 @@
                   <note>
                     <para>To run the cURL commands in these examples,
                       export the authentication token to an
-                      environment variable: <literal>export
-                        AUTH_TOKEN="xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"</literal>
-                      for example.</para>
+                      environment variable:
+                      <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT AUTH_TOKEN="xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"</programlisting>
+                    </para>
                   </note>
                 </para>
               </listitem>
@@ -258,13 +258,33 @@
                       xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123"
                       >E.123 notation</link>, <code>+1
                         235-435-623</code> or <code>+44 42 1123 4567</code>, for example.</para></note>
-                <para>This operation does not return a response body.</para>
               </listitem>
             </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">Response</emphasis></term>
+            <listitem>
+              <para>&CIS; returns a 201 response that includes the
+                  system-generated phoneId.<programlisting><![CDATA[< HTTP/1.1 201 Created
+< Vary:  Accept, Accept-Encoding, X-Auth-Token
+< Location: http://localhost:8083/idm/cloud/v2.0/users/a64ee2047fc14cc7bc977caa3cfff35f/RAX-AUTH/multi-factor/mobile-phones/889a7245f49e4ab789ebaebf91c0f1eb
+< Content-Type: application/json
+< Content-Length: 93
+< Server: Jetty(6.1.25)
+<
+{
+    "RAX-AUTH:mobilePhone": {
+        "id": "845321245f49e4ab789ebaebf91c0f1eb",
+        "number": "+1 512-555-1000"
+    }
+} ]]></programlisting></para>
+            </listitem>
+          </varlistentry>
+          
           </variablelist></para>
         <para>Export the <parameter>phoneId</parameter> value to an
           environment variable, so you can use it to complete the
-          phone verification process: EXPORT <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT $</programlisting></para>
+          phone verification process:
+          <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT PHONE_ID=""845321245f49e4ab789ebaebf91c0f1eb"</programlisting></para>
       </listitem>
       <!--Step 3 Verify PIN code -->
       <listitem>
@@ -275,7 +295,7 @@
                   request</emphasis></term>
               <listitem>
                 <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
+                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/<replaceable>$PHONE_ID</replaceable>/verificationcode \
        -X POST \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
@@ -303,7 +323,7 @@
                   request</emphasis></term>
               <listitem>
                 <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verify \
+                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/<replaceable>$PHONE_ID</replaceable>/verify \
        -X POST \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \

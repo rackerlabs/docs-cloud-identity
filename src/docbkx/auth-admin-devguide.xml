@@ -34,7 +34,7 @@
 		</copyright>
 		<releaseinfo>API v2.0</releaseinfo>
 		<productname>Cloud Identity</productname>
-		<pubdate>2014-08-22</pubdate>
+		<pubdate></pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -51,6 +51,33 @@
 				Identity Service.</para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2014-09-11</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated <link xlink:href="proc_mfa_setup.html">Set up multi-factor authentication</link> 
+								instructions to include information about exporting the <parameter>phoneId</parameter> value from the 
+								Add mobile phone to user response, so you can use it to verify the phone for use with multi-factor authentication. 
+							</para>
+						</listitem>
+						<listitem>
+							<para>Fixed incorrect URIs for Role and User operations.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Removed List role by name operation which is not supported by &CIS;.</para>
+						</listitem>
+						<listitem>
+							<para>Updated <link xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls_client.html">Send verification code to 
+								mobile phone</link> operation to include the <parameter>phoneId</parameter> URI parameter.</para>
+						</listitem>
+						<listitem>
+							<para>Removed Check token and Validate token operations from the Developer.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-09-09</date>
 				<revdescription>
