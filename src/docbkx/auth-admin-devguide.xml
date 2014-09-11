@@ -61,19 +61,29 @@
 								Add mobile phone to user response, so you can use it to verify the phone for use with multi-factor authentication. 
 							</para>
 						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-09-10</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Fixed incorrect URIs for Role and User operations.
-							</para>
+							<para>Fixed incorrect URIs for Role and
+								User operations. </para>
 						</listitem>
 						<listitem>
-							<para>Removed List role by name operation which is not supported by &CIS;.</para>
+							<para>Removed List role by name operation
+								which is not supported by
+								&CIS;.</para>
 						</listitem>
 						<listitem>
-							<para>Updated <link xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls_client.html">Send verification code to 
-								mobile phone</link> operation to include the <parameter>phoneId</parameter> URI parameter.</para>
-						</listitem>
-						<listitem>
-							<para>Removed Check token and Validate token operations from the Developer.</para>
+							<para>Updated <link
+								xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls_client.html"
+								>Send verification code to mobile
+								phone</link> operation to include
+								the <parameter>phoneId</parameter> URI
+								parameter.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
