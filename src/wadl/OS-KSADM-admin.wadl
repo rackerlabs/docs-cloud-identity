@@ -67,7 +67,7 @@
                         <method href="#getUserById"/>
                         <method href="#updateUser"/>
                         <method href="#deleteUser"/>
-                    <resource id="userRolesOSKSADM" path="OS-KSADM/roles">        
+                    <resource id="userRolesOSKSADM" path="roles/OS-KSADM">        
                         <method href="#listUserGlobalRoles"/>
                             <resource id="userRoleById" path="{roleid}">
                                 <param name="roleId" type="xsd:string" style="template" required="true">

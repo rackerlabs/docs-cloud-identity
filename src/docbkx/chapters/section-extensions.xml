@@ -55,8 +55,9 @@
         </itemizedlist></para>
     </listitem>
     <listitem>
-      <para><emphasis role="bold">OpenStack KSCATALOG Admin </emphasis>. Supports CRUD operations
-        for Endpoint templates and Endpoints.  Requires Service administrator privileges.<itemizedlist>
+      <para><emphasis role="bold">OpenStack KSCATALOG
+        Admin</emphasis>. Supports CRUD operations for Endpoint
+        templates and Endpoints. Requires Service administrator privileges.<itemizedlist>
           <listitem>
             <para>Alias: OS-KSCATALOG</para>
           </listitem>
@@ -79,10 +80,11 @@
         </itemizedlist></para>
     </listitem>
     <listitem>
-      <para><emphasis role="bold">Rackspace API Key Authentication Service</emphasis>. Adds the API key
-        credentials element to support API key authentication for User resources.<itemizedlist>
+      <para><emphasis role="bold">Rackspace API Key Authentication
+          Service</emphasis>. Adds the API key credentials element to
+        support API key authentication for User resources.<itemizedlist>
           <listitem>
-            <para>Alias: RAX-KSKEYA</para>
+            <para>Alias: RAX-KSKEY</para>
           </listitem>
           <listitem>
             <para>Namespace:<code>
@@ -92,8 +94,9 @@
         </itemizedlist></para>
     </listitem>
     <listitem>
-      <para><emphasis role="bold">Rackspace Keystone Group Admin </emphasis>. Adds administrative support for
-        CRUD operations for Group resources.<itemizedlist>
+      <para><emphasis role="bold">Rackspace Keystone Group
+          Admin</emphasis>. Adds administrative support for CRUD
+        operations for Group resources.<itemizedlist>
           <listitem>
             <para>Alias: RAX-GRPADM</para>
           </listitem>

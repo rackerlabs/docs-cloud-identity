@@ -21,7 +21,7 @@
                     identity and verify permission to access the requested system resources. </para>
                 <para>
                     Users can also be assigned to a tenant or region so that they inherit a set of 
-                    access rights and privileges automatically, based on the tenant or region configuration.
+                    access rights and priviUserleges automatically, based on the tenant or region configuration.
                 </para>
                 
                 <para>In the &CLOUD; Users are represented as accounts created for specific
@@ -36,10 +36,18 @@
                         </para>
                     </listitem>
                         
-                    <listitem>
+                    <listitem condition="admin">
                             <para>
-                                <link xlink:href="section_assign_roles_3.html">Assing roles</link>                         
-                            </para>
+                                <olink
+                                   targetdoc="Identity-Admin-Developer-Guide"
+                                   targetptr="section_assign_roles_3"
+                                   >“Assigning roles to account
+                                   users”</olink><olink
+                                   targetdoc="Identity-Developer-Guide"
+                                   targetptr="section_assign_roles_3"
+                                   >“Assigning Roles to Account
+                                   Users”</olink></para>
+                        
                         </listitem>
                    </itemizedlist>
                 </para>

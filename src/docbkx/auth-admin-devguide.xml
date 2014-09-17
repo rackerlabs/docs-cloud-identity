@@ -427,12 +427,7 @@
 								body.</para>
 						</listitem>
 						<listitem>
-							<para> Added some examples of what a service is, since you can filter on service Id in 
-								<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user</link>
-							</para>
-						</listitem>
-						<listitem>
-							<para> Removed Category Role table from <link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user</link>.</para>
+							<para> Removed Category Role table from <link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Add role to user</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -530,7 +525,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added visibility note to 
-								<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Add role to user</link></para>
+								<link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Add role to user</link></para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

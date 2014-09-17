@@ -1563,12 +1563,12 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</listitem>
 				<listitem>
 					<para>
-						<link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">
+						<link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">
 						Assign role to account users</link></para>
 				</listitem>
 				<listitem>
 					<para>
-						<link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls.html">Delete role from account user</link></para>
+						<link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Delete role from account user</link></para>
 				</listitem>
 			</itemizedlist>
 			<para>For information about implementing RBAC by using the Cloud

@@ -1677,11 +1677,11 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="PUT_addUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls">Assign role to account users</olink></para>
+						targetptr="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Assign role to account users</olink></para>
 				</listitem>
 				<listitem>
 					<para>
-						<olink targetdoc="Identity-Admin-Developer-Guide" targetptr="DELETE_deleteUserRole__v2.0_users__userId__OS-KSADM_roles__roleid__Role_Calls">Delete role from account user</olink></para>
+						<olink targetdoc="Identity-Admin-Developer-Guide" targetptr="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Delete role from account user</olink></para>
 				</listitem>
 			</itemizedlist>
 			<para>For information about implementing RBAC by using the Cloud
