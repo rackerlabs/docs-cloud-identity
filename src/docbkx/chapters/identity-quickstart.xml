@@ -151,10 +151,9 @@
                     </listitem>
                     <listitem>
                         <para>Use your <parameter>username</parameter> and <parameter>API key</parameter>:</para>
-                        <programlisting language="bash" role="gutter: false"
-                        ><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
+                        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
  -X POST \
- -d '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' \
+ -d '{"auth":{"RAX-KSKEY:apiKeyCredentials"{"username":"theUserName","apiKey":"thePassword"}}}' \
  -H "Content-type: application/json"</programlisting>
                     </listitem>
                 </itemizedlist>

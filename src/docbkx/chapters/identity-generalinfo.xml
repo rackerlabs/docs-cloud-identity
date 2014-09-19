@@ -1628,6 +1628,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			</para>
 				<para>For information about using RBAC with specific products, see the 
 					<link xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each product.</para>
+			
 		</section>
 	</section>
     </chapter>

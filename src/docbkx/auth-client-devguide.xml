@@ -52,6 +52,24 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-09-19</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updates to <link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add user operation</link> 
+								to correct attribute descriptions, update code samples, and notes about using the operation.  
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Updated notes about authenticating with tenant and token operation to clarify which attributes are required and 
+								optional in the request payload. See <xref linkend="Token_Calls"/>.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-09-11</date>
 				<revdescription>
 					<para>Updated <link xlink:href="proc_mfa_setup.html">Set up multi-factor authentication</link> 

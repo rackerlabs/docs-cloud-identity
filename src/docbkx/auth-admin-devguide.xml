@@ -52,6 +52,24 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-09-17</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updates to <xref linkend="Role_Calls" xrefstyle="select: title"/>
+								fix URI path to get, add, and delete user role operations.  
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Updated notes about authenticating with tenant and token operation to clarify which attributes are required and 
+								optional in the request payload. See <xref linkend="Token_Calls" xrefstyle="select: title"/>.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-09-11</date>
 				<revdescription>
 					<itemizedlist spacing="compact">

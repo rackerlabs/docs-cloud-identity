@@ -306,27 +306,39 @@
 			clients include the authentication token in the HTTP x-header parameter defined as 
 			<literal>X-Auth-Token</literal> to verify your identity and confirm access rights and privileges.
 		</para>
-		<para>
-			Submit the POST token authentication request to the &CIS; mvn URL with <literal>v2.0/tokens </literal> 
-			supplied as the path and a payload of credentials in the body. Credentials can be any of the following:
-			<itemizedlist spacing="compact">
-				<listitem><para>Password credentials: user name and password</para></listitem>
-				<listitem><para>API Key credentials: user name and API key</para></listitem>
-				<listitem><para>Token and tenant Id or tenant name (requires Administrator privileges).</para></listitem>
-				<listitem><para>Passcode credentials: multifactor authentication sessionId and passcode values</para></listitem>
-				<listitem audience="admin"><para>RSA credentials: Rackspace employees can authenticate with an SSO id and RSA key.</para></listitem>
+		<para>Submit the POST token authentication request to the &CIS; endpoint URL with
+				<literal>/v2.0/tokens </literal> supplied as the path and a payload of credentials
+			in the body. Credentials can be any of the following: <itemizedlist spacing="compact">
+				<listitem>
+					<para>Password credentials: user name and password</para>
+				</listitem>
+				<listitem>
+					<para>API Key credentials: user name and API key</para>
+				</listitem>
+				<listitem>
+					<para>Token and tenant Id or tenant name (requires Administrator
+						privileges)</para>
+				</listitem>
+				<listitem>
+					<para>Passcode credentials: multifactor authentication sessionId and passcode
+						values</para>
+				</listitem>
+				<listitem audience="admin">
+					<para>RSA credentials: Rackspace employees can authenticate with an SSO id and
+						RSA key</para>
+				</listitem>
 			</itemizedlist>
 		</para>
-		<para>Tenant information is required if you use the token method. 
-			You might also need to include either the <code>tenantId</code> or <code>tenantName</code> 
-			on authentication requests with API key or password credentials. Some services use multi-level authentication, with 
-			service-specific credentials in addition to vendor-specific credentials. 
-			In such cases, associating a user with a tenant can be a method of passing that 
-			additional level of identifying information to the service. Also, if a user account 
-			is assigned to multiple tenants, then including the tenant information generates the authentication 
-			token for the specfied tenant.
-		</para>
-		<para>For details on the Tokens operations to authenticate and manage tokens, see the following sections.</para>
+		<para>Tenant information is required if you use the token method. You might also need to include
+			either the <code>tenantId</code> or <code>tenantName</code> on authentication requests
+			with API key or password credentials. Some services use multi-level authentication, with
+			service-specific credentials in addition to vendor-specific credentials. In such cases,
+			associating a user with a tenant can be a method of passing that additional level of
+			identifying information to the service. Also, if a user account is assigned to multiple
+			tenants, then including the tenant information generates the authentication token for
+			the specfied tenant. </para>
+		<para>See the following sections for details on the Token operations available in the &CIS;
+			API. </para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is

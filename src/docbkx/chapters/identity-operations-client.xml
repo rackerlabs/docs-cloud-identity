@@ -163,24 +163,25 @@
 		clients include the authentication token in the HTTP x-header parameter defined as 
 		<literal>X-Auth-Token</literal> to verify your identity and confirm access rights and privileges.
 	</para>
-	<para>Submit the POST token authentication request to the &CIS;
-		endpoint URL with <literal>v2.0/tokens </literal> supplied as
-		the path and a payload of credentials in the body. Credentials
-		can be any of the following: <itemizedlist spacing="compact">
-			<listitem>
-				<para>Password credentials: user name and password</para>
-			</listitem>
-			<listitem>
-				<para>API Key credentials: user name and API key</para>
-			</listitem>
-			<listitem>
-				<para>Token and tenant Id or tenant name (requires Administrator privileges).</para>
-			</listitem>
-			<listitem>
-				<para>Passcode credentials: multifactor authentication sessionId and passcode values</para>
-			</listitem>
-		</itemizedlist>
-	</para>
+	<para>Submit the POST token authentication request to the &CIS; endpoint URL with
+				<literal>/v2.0/tokens </literal> supplied as the path and a payload of credentials
+			in the body. Credentials can be any of the following: <itemizedlist spacing="compact">
+				<listitem>
+					<para>Password credentials: user name and password</para>
+				</listitem>
+				<listitem>
+					<para>API Key credentials: user name and API key</para>
+				</listitem>
+				<listitem>
+					<para>Token and tenant Id or tenant name (requires Administrator
+						privileges).</para>
+				</listitem>
+				<listitem>
+					<para>Passcode credentials: multifactor authentication session ID and passcode
+						values</para>
+				</listitem>
+			</itemizedlist>
+		</para>
 	<para>Tenant information is required if you use the token method. 
 		You might also need to include either the <code>tenantId</code> or <code>tenantName</code> 
 		on authentication requests with API key or password credentials. Some services use multi-level authentication, with 
@@ -190,7 +191,7 @@
 		is assigned to multiple tenants, then including the tenant information generates the authentication 
 		token for the specfied tenant.
 	</para>
-	<para>For details on the Tokens operations to authenticate and manage tokens, see the following sections.</para>
+	<para>See the following sections for details on the Token operations available in the &CIS; API. </para>
 	<note>
 		<para> 
 			Some of the functionality described in this section is

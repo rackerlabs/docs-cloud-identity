@@ -346,7 +346,17 @@
                 token for the specified tenant.
             </para>
         </wadl:doc>
-        <request>         
+        <request>
+            <representation mediaType="application/json" element="identity:auth">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Authenticate with API key credentials and optional Tenant ID: JSON request">
+                        <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.json"/>
+                    </xsdxt:sample>
+                    <xsdxt:sample title="Authenticate with Password credentials and optional Tenant ID: JSON request">
+                        <xsdxt:code href="../common/samples/auth_credentials_tenantId.json"/>
+                    </xsdxt:sample>                   
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="identity:auth">
                   <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:sample title="Authenticate with API key credentials and optional Tenant ID: XML request">
@@ -395,18 +405,18 @@
                         <code>Bad Request</code>.</para></wadl:doc>
                 </param>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authenticate with API key credentials and optional Tenant ID: JSON request">
-                        <xsdxt:code href="../common/samples/auth_with_apikey_tenantId.json"/>
-                    </xsdxt:sample>
-                    <xsdxt:sample title="Authenticate with Password credentials and optional Tenant ID: JSON request">
-                        <xsdxt:code href="../common/samples/auth_credentials_tenantId.json"/>
-                    </xsdxt:sample>                   
-                </wadl:doc>
-            </representation>
         </request>
-            <response status="200"><wadl:doc title="Success">Operation completed successfully. See response examples.</wadl:doc>         
+            <response>
+                <representation mediaType="application/json" element="identity:access">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <xsdxt:sample title="Authentication Response: JSON">
+                            <xsdxt:code href="../docbkx/samples/auth-annotated.json"/>
+                        </xsdxt:sample>
+                        <para>For more detailed information about authentication requests and responses with 
+                            see the <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
+                            <link xlink:href="Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>.</para>
+                    </wadl:doc>
+                </representation>    
             <representation mediaType="application/xml" element="identity:access">
                 <!-- Note: WADLs generally get samples from /common/samples/ while the rest of the book gets samples from /docbkx/samples/ -->
                 <!-- tired of trying to maintain synch between /common/samples/auth.xml & .json and /docbkx/samples/auth-annotated.xml & .json -->
@@ -469,17 +479,10 @@
                             along with the endpoints where the service can be accessed.</para></wadl:doc>
                 </param>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authentication Response: JSON">
-                        <xsdxt:code href="../docbkx/samples/auth-annotated.json"/>
-                    </xsdxt:sample>
-                    <para>For more detailed information about authentication requests and responses with 
-                        see the <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
-                        <link xlink:href="Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>.</para>
-                </wadl:doc>
-            </representation>
         </response>
+         <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+             <wadl:doc title="OK">Operation completed successfully. See response examples.</wadl:doc>
+         </response>   
          <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
                 <wadl:doc title="identity:badRequest">Missing required parameters.</wadl:doc>
                 <representation mediaType="application/xml" element="identity:badRequest"/>
@@ -511,15 +514,29 @@
             <representation mediaType="application/xml" element="identity:userDisabled"/>
             <representation mediaType="application/json"/>
         </response>
+            <response status="500">
+                <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook"/>
+                <representation mediaType="application/xml" element="identity:serviceFault"/>
+                <representation mediaType="application/json"/>
+            </response>
         </method>
     <method name="POST" id="authenticate_token">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate as tenant with token">
             <para role="shortdesc">Allows Administrator users to authenticate by using a tenant id or name and 
                 a valid token.</para>
             <para>
-                Submit the POST token authentication request to the &CIS; endpoint URL with <code>v2.0/tokens</code>  
-                supplied as the path and the tenant name or id and token as a payload of credentials in the body. 
-            </para>             
+                Submit the POST token authentication request to the &CIS; endpoint URL with a payload of credentials.  
+                Use either of the following credentials in the request.
+                <itemizedlist>
+                    <listitem>
+                        <para><parameter>tenantName</parameter> and <parameter>token</parameter> or</para></listitem>
+                    <listitem>
+                        <para><parameter>tenantId</parameter> and 
+                        <parameter>tokenId</parameter></para>
+                     </listitem>
+                </itemizedlist>
+            </para>
+            <para>If the request includes both the name and ID, the server returns a <systemitem>400 Bad Request</systemitem> error.</para>
                 <important>
                     <para>
                         If you authenticate as a tenant, the <code>Service Catalog</code> returned includes only
@@ -527,7 +544,14 @@
                     </para>
                 </important>
         </wadl:doc>
-        <request>         
+        <request>
+            <representation mediaType="application/json" element="identity:auth">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">                                       
+                    <xsdxt:sample title="Authenticate with Tenant ID and Token Credentials: JSON request">
+                        <xsdxt:code href="../common/samples/auth_with_token_tenantId.json"/>
+                    </xsdxt:sample>                   
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="identity:auth">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:sample title="Authenticate with Tenant ID and Token Credentials: XML request">
@@ -537,24 +561,14 @@
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="tenantName" style="plain" required="false"
                     type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>Specify the name of the tenant for the specified user account 
-                            or token. Both the
-                            <code>tenantId</code> and
-                            <code>tenantName</code> attributes are
-                            optional. However, they cannot be specified
-                            together. If both attributes are specified,
-                            the server responds with a <code>400</code>
-                            <code>Bad Request</code>.</para></wadl:doc>
+                        <para>Specify the name of the tenant. 
+                            If you use this value in the request, do not include the tenant ID.</para></wadl:doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="tenantId" style="plain" required="false"
                     type="capi:UUID">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The tenant ID. Both the
-                        <code>tenantId</code> and
-                        <code>tenantName</code> attributes are
-                        optional, but should not be specified
-                        together. If both attributes are specified,
-                        the server responds with a <code>400</code>
-                        <code>Bad Request</code>.</para></wadl:doc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify the ID for the 
+                        tenant. If you use this value in the request, do not include the tenant name.
+                      </para></wadl:doc>
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="token" style="plain" required="false"
                     type="xsd:string">
@@ -563,15 +577,18 @@
                             to authenticate as a tenant.</para></wadl:doc>
                 </param>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">                                       
-                    <xsdxt:sample title="Authenticate with Tenant ID and Token Credentials: JSON request">
-                        <xsdxt:code href="../common/samples/auth_with_token_tenantId.json"/>
-                    </xsdxt:sample>                   
+        </request>
+        <response>
+            <representation mediaType="application/json" element="identity:access">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Authentication Response: JSON">
+                        <xsdxt:code href="../docbkx/samples/auth-annotated.json"/>
+                    </xsdxt:sample>
+                    <para>For more detailed information about authentication requests and responses with 
+                        see the <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
+                        <link xlink:href="Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>.</para>
                 </wadl:doc>
             </representation>
-        </request>
-        <response xml:id="auth_success_resp" status="200">           
             <representation mediaType="application/xml" element="identity:access">
                 <!-- Note: WADLs generally get samples from /common/samples/ while the rest of the book gets samples from /docbkx/samples/ -->
                 <!-- tired of trying to maintain synch between /common/samples/auth.xml & .json and /docbkx/samples/auth-annotated.xml & .json -->
@@ -584,14 +601,14 @@
                     </xsdxt:sample>               
                 </wadl:doc>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="access" style="plain" required="true"
-                    type="xsd:string">
+                    type="identity:AuthenticateResponse">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>An <code>access</code>
                             object that returns token, user, and service information upon successful authentication.</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="token" style="plain" required="true"
-                    type="xsd:string">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="token" style="plain" 
+                    type="identity:TenantForAuthenticateResponse">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A <code>token</code> object that returns the following information about the token: 
                             token id, timestamps showing when the token was issued and when it expires, and the authentication method used 
@@ -607,22 +624,22 @@
                             </itemizedlist></para>
                     </wadl:doc> 
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="user" style="template" required="true"
-                    type="xsd:string">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="user" style="template"
+                    type="identity:UserForAuthenticateResponse">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             A user object that returns the following information about the user, if available for the account: 
                         </para></wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" required="true"
-                    type="xsd:string">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain"
+                    type="identity:Token">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>The authentication token. In the
                             example, the token is
                             <code>my_id</code>.</para></wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="tenant" style="template" required="true"
-                    type="xsd:string">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="tenant" style="template" 
+                    type="identity:TenantForAuthenticateResponse">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         ><para>A <code>tenant</code>
                             object with tenant information and account state. Information includes:
@@ -630,27 +647,26 @@
                             provided; The <literal>enabled</literal> parameter indicates whether the 
                             tenant account is active (enabled=true).</para></wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="serviceCatalog" style="plain" required="true"
-                    type="xsd:string">
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="serviceCatalog" style="plain" 
+                    type="identity:ServiceCatalog">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         ><para>A <code>serviceCatalog</code>
                             object that provides information about each service available to the authenticated user 
                             along with the endpoints where the service can be accessed.</para></wadl:doc>
                 </param>
             </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authentication Response: JSON">
-                        <xsdxt:code href="../docbkx/samples/auth-annotated.json"/>
-                    </xsdxt:sample>
-                    <para>For more detailed information about authentication requests and responses with 
-                        see the <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
-                        <link xlink:href="Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>.</para>
-                </wadl:doc>
-            </representation>
+        </response>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook">
+                <para>Success. The tenant is authenticated.</para>
+            </wadl:doc>
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json"/>
         </response>
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-            <wadl:doc title="identity:badRequest">Missing required parameters.</wadl:doc>
+            <wadl:doc title="identity:badRequest" xmlns="http://docbook.org/ns/docbook">
+                <para>Missing required parameters. This error also occurs if you include both the 
+                    tenant name and ID in the request.</para></wadl:doc>
             <representation mediaType="application/xml" element="identity:badRequest"/>
             <representation mediaType="application/json"/>
         </response>
@@ -658,14 +674,10 @@
             <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook">
                 <para>Authentication has failed. The authentication token has expired. Use the POST token operation 
                     to get a new token.</para>
+                <para>Additional authentication information required. 
+                    The user account is enabled for multifactor authentication. Submit a POST tokens request  
+                    with the WWW sessionId from this header and the passcode from the multifactor-enabled phone to complete the authentication process.</para>
             </wadl:doc>
-            <representation mediaType="application/xml" element="identity:userDisabled"/>
-            <representation mediaType="application/json"/>
-        </response>
-        <response status="401">
-            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Additional authentication information required. 
-                The user account is enabled for multifactor authentication. Submit a POST tokens request  
-                with the WWW sessionId from this header and the passcode from the multifactor-enabled phone to complete the authentication process.</para></wadl:doc>
             <representation mediaType="application/xml" element="identity:userDisabled"/>
             <representation mediaType="application/json"/>
         </response>
@@ -678,6 +690,11 @@
             <wadl:doc title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  
                 has expired or is no longer available. Use the POST token request to get a new token.</wadl:doc>
             <representation mediaType="application/xml" element="identity:userDisabled"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="500">
+            <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook"/>
+            <representation mediaType="application/xml" element="identity:serviceFault"/>
             <representation mediaType="application/json"/>
         </response>
     </method>
@@ -734,31 +751,35 @@
                 </orderedlist></para>
         </wadl:doc>
         <request>
-            <representation mediaType="text/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML request with header">
-                    <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.xml"/>
-                </wadl:doc>           
-            </representation>
-            <representation mediaType="text/json">
+            <representation mediaType="text/json" element="identity:auth">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON request with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.json"/>
                 </wadl:doc>       
             </representation>
-        </request>
-        <response status="200">
-            <wadl:doc title="OK"  xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
-            <representation mediaType="text/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
-                    <para>OK</para>
-                    <xsdxt:code href="../common/samples/MultiFacWithHeaderResp.xml"/>
+            <representation mediaType="text/xml" element="identity:auth">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML request with header">
+                    <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.xml"/>
                 </wadl:doc>           
             </representation>
-            
-            <representation mediaType="text/json">
+        </request>
+        <response>
+            <representation mediaType="text/json" element="identity:access">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON response with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.json"/>
                 </wadl:doc>           
             </representation>
+            <representation mediaType="text/xml" element="identity:access">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
+                    <xsdxt:code href="../common/samples/MultiFacWithHeaderResp.xml"/>
+                </wadl:doc>           
+            </representation>
+        </response>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook">
+                <para>Success. The tenant is authenticated.</para>
+            </wadl:doc>
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json"/>
         </response>
         <response status="401">
             <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>An unauthorized error can result from issues like these: 
@@ -782,7 +803,7 @@
         </response>
         
         <response status="500">
-            <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook">Passcode not accepted.</wadl:doc>
+            <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook"/>
             <representation mediaType="application/xml" element="identity:serviceFault"/>
             <representation mediaType="application/json"/>
         </response> &postPutFaults; 
