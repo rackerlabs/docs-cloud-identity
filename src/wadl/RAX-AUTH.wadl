@@ -100,7 +100,7 @@
             </resource>
             
                 <!-- USER_USER_ADMINS resource(s) -->
-                <resource id="user_user_admins" path="admins">
+            <resource id="user_user_admins" path="users/{userId}/RAX-AUTH/admins">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook">
                             <para>A valid authentication token</para></wadl:doc>
@@ -466,7 +466,7 @@
 
     <method id="impersonateUser" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user">
-           <para class="shortdesc"> Impersonate a specific user.</para>
+           <para class="shortdesc">Impersonate a specific user.</para>
             <para xmlns="http://docbook.org/ns/docbook"> To impersonate a user, you must first authenticate as yourself. The
                 response to this authentication request will supply you with a current Racker token; you must already hold a
                 service token. After you are authenticated and holding the necessary privileges, you can issue this
@@ -1744,9 +1744,8 @@
            <para>
                 <itemizedlist>
                     <listitem>
-                        <para>Users with the <parameter>identity:default</parameter> 
-                            role can generate up to 10 bypass codes for their own account to save 
-                            for later use. They can also specify how long bypass codes remain valid.</para>
+                        <para>Users can generate as many bypass codes as they need for their own account for later user. 
+                            They can also specify how long bypass codes remain valid.</para>
                     </listitem>
                     <listitem>
                         <para>
