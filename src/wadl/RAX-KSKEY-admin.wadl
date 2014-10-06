@@ -194,12 +194,12 @@
 
     <method name="POST" id="updateUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user API key credentials">
-            <para role="shortdesc">Update user credentials.
+            <para role="shortdesc">Update user API key credentials.
             </para>
             <para>
-                An API key is a credential; you can update a user's API key with this call.
-                To add a credential to a user, include the userid in the request. If you don't know the id, 
-                you can use the  <link xlink:href="GET_admin-getUserByName_v2.0_users_User_Calls.html"/> operation to find it.
+                This operation uses the OS-KSADM and RAX-KSKEY extensions to update An API key is a credential; you can update a user's API key with this call.
+                To add a credential to a user, include the user ID in the request. If you don't know the ID, 
+                use the <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> operation to find it.
             </para>
         </wadl:doc>
         <request>
@@ -257,8 +257,8 @@
     <method name="GET" id="getUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user API key credentials">
             <para role="shortdesc">Get user credentials.</para>
-            <para>To list API key credentials for a specified user, include the userid in the request. If you don't know the id, 
-                you can use the  <link xlink:href="GET_admin-getUserByName_v2.0_users_User_Calls.html"/> operation to find it.
+            <para>To list API key credentials for a specified user, include the user ID in the request. If you don't know the ID, 
+                use the <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> operation to find it.
             </para>
         </wadl:doc>
         <response status="200 203">
