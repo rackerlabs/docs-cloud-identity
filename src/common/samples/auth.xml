@@ -4,7 +4,7 @@
         xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
         xmlns:ns4="http://docs.openstack.org/common/api/v1.0" 
         xmlns:ns5="http://www.w3.org/2005/Atom">
-  <token id="vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz" expires="2011-12-08T22:51:02.000-06:00"/>
+  <token id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" expires="2011-12-08T22:51:02.000-06:00"/>
   <user id="123456" name="jsmith">
     <roles>
       <role id="identity:admin" name="identity:admin" description="Admin Role."/>

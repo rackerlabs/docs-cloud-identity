@@ -15,7 +15,7 @@
     <title>&CIS; authentication and authorization</title>
     <para>The Rackspace Identity service manages client authentication and authorization for the
         Rackspace Cloud. A client sends credentials to the Rackspace Identity service; through the
-        Cloud Contol panel, or programmatically by submitting a POST tokens API service request. If
+        Cloud Contol panel, or programmatically by submitting a <command>POST tokens</command> API service request. If
         the credentials are valid, the Rackspace Identity service returns a token and service
         catalog that lists available services and the endpoint URLs for service requests.</para>
     

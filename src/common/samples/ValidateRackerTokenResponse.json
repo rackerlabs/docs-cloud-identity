@@ -2,7 +2,7 @@
   "access": {
     "token": {
       "expires": "2013-10-26T14:34:02.255Z",
-      "id": "VALID_TOKEN"
+      "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     },
     "user": {
       "RAX-AUTH:defaultRegion": "",
@@ -14,7 +14,7 @@
           "serviceId": "18e7a7032733486cd32f472d7bd58f709ac0d221"
         }
       ],
-      "id": "test_user"
+      "id": "userID"
     }
   }
 }

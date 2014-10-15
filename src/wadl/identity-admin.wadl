@@ -476,27 +476,6 @@
                     </wadl:doc>
                 </representation>
             </response>
-         <response status="400">
-                <doc title="Bad Request">Missing required parameters.</doc>
-         </response>
-                
-         <response status="401">
-             <doc title="Unauthorized">Authentication has failed. The authentication token has expired or the credentials are incorrect. Use the POST token operation 
-                    to get a new token.
-             </doc>
-        </response>
-        <response status="403">
-            <doc title="User disabled">Permission denied, adjusting authentication credentials will not help.</doc>
-            <representation mediaType="application/xml" element="forbidden"/>
-            <representation mediaType="application/json" element="forbidden"/>
-        </response>
-         <response status="404">
-             <doc title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  
-                 has expired or is no longer available. Use the POST token request to get a new token.</doc>
-        </response>
-            <response status="500">
-                <doc title="Service Fault">The service is not available.</doc>
-            </response>
         </method>
     <method name="POST" id="authenticate_token">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate as tenant with token">
@@ -669,38 +648,19 @@
                     <listitem>
                         <para>Send an inital POST token authentication request with either password or API credentials. 
                         </para>
-                        <para>The request triggers &CIS; to send an SMS message to the phone 
-                            associated with the user account. In response to the authentication request,  &CIS; 
-                            returns a 401 message that includes 
-                            a sessionId parameter in the WWW-Authenticate header and a request for additional credentials.
- <screen>
-<computeroutput>&lt;HTTP/1.1 401 Unauthorized
-* Server Apache-Coyote/1.1 is not blacklisted
-&lt; Server: Apache-Coyote/1.1
-&lt;vary:  Accept, Accept-Encoding, X-Auth-Token
-&lt; WWW-Authenticate: OS-MF sessionId='APU9ymMBWY5W-pTgnHuZEvjKsM5oG_ler4lC0g_EkCPYvPdUBHK55RWtsgpL5RZ22AyDNaVCNCz6mlDOwbJAI-RLFQywI7CgOvjH0MLhL5a6D-c4cd1x8BbZmy8uT8ejm7jzBUX_vDZ5R0Hcia5DkOB80yWNJ8XVKMxVYLg5Qwp0TPA2zx-HQOTM3xqVQE63u1mYDUqikrXQ', factor='PASSCODE'
-&lt;Content-Type: application/json
-&lt;Transfer-Encoding: chunked
-&lt; Date: Thu, 13 Mar 2XXX 21:10:50 GMT
-{ [data not shown]
-100   186    0    96  100    90    159    149 --:--:-- --:--:-- --:--:--   159
-* Connection #0 to host identity.api.rackspacecloud.com/v2.0 left intact
-{
-"unauthorized": {
-    "code": 401,
-    "message": "Additional authentication credentials required."
-    }
-}
-    {
-    "key":"value"
-    }</computeroutput></screen>
-                             
+                        <para>In response to the authentication request, the Identity service returns 
+                            a 401 message that includes the X-SessionId parameter in the WWW-Authenticate header 
+                            and a request for additional credentials.  The Identity service also sends the multi-factor 
+                            authentication passcode to the phone associated with the user account.                   
                            </para>                        
                     </listitem>
                     <listitem>
-                        <para>Send an additional authentication request providing the sessionId and multifactor-authentication passcode included in the SMS message from &CIS; verification service.</para>
+                        <para>Send an additional authentication request that includes the <code>X-SessionID</code> and the multi-factor authentication 
+                            <code>passcode</code></para>
                     </listitem>
                 </orderedlist></para>
+            <para>See <link xlink:href="proc_mfa_auth.html">Authenticate from a multifactor-enabled user account</link> for sample authentication 
+            requests in cURL format.</para>
         </wadl:doc>
         <request>
             <representation mediaType="text/xml" element="auth">
@@ -719,7 +679,7 @@
             </doc>
             <representation mediaType="text/xml" element="access">
                 <doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
-                    <xsdxt:code href="../common/samples/MultiFacWithHeaderResp.xml"/>
+                    <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.xml"/>
                 </doc>           
             </representation>
             <representation mediaType="text/json" element="access">
@@ -752,14 +712,14 @@
                 request can handle an ItemNotFound (<code>404</code>) error for an invalid token.</para>
             <para>If the operation is successful, rerun the tenant credentials to return the permissions 
                 relevant to a particular client.</para>
-            <tip>
+            <tip><title>Tips</title>
                 <para>
                     Administrators can use this call to return information about an impersonator:
                     a Racker performing operations on behalf of a user. 
                 </para>
                 <para>
                     For information about how an impersonator can use a validated token,
-                    see <link xlink:href="Impersonation_Calls.html"></link>. 
+                    see <link xlink:href="Impersonation_Calls.html">Impersonation Calls</link>. 
                 </para>
             </tip>
         </wadl:doc>
@@ -769,21 +729,6 @@
                     <para>Validate that a token has the specified tenant in scope.</para>
                 </wadl:doc>
             </param>
-            <!-- Impersonator samples show how RAX-AUTH extension can request token for impersonator 
-            but 
-            2012-03-19 Itari Ighoroje says there is no special request, hide these 
-            <representation mediaType="application/xml" >
-                <wadl:doc xml:lang="EN" title="Validate Token for Impersonation Request: XML">
-                    <xsdxt:code href="../common/samples/Impersonator.xml" />
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json" >
-                <wadl:doc xml:lang="EN" title="Validate Token for Impersonation Request: JSON">
-                    <xsdxt:code href="../common/samples/Impersonator.json" />
-                </wadl:doc>
-            </representation>
-            
-                 Impersonator samples show how RAX-AUTH extension can request token for impersonator -->
         </request>
         <response status="200 203">
             <representation mediaType="application/xml" element="access">
@@ -798,7 +743,7 @@
             </representation>
             <!-- Validate Token Response samples show how RAX-AUTH extension can describe impersonator -->
             <representation mediaType="application/json" element="access">
-                <wadl:doc xml:lang="EN" title="Validate Token for Impersonation Response: JSON">
+                <wadl:doc xml:lang="EN" title="Validate token for impersonation response: JSON">
                     <xsdxt:code href="../common/samples/ValidateTokenResponse.json"/>
                 </wadl:doc>
             </representation>
@@ -811,27 +756,34 @@
             
             <!-- Validate Token Response samples validating a Racker token -->
             <representation mediaType="application/json" element="access" >
-            <wadl:doc xml:lang="EN" title="Validate Token for Racker Response: JSON">
+            <wadl:doc xml:lang="EN" title="Validate token for Racker response: JSON">
                 <xsdxt:code href="../common/samples/ValidateRackerTokenResponse.json" security="internal"/>
             </wadl:doc>
             </representation>
             <representation mediaType="application/xml" element="access">
-                <wadl:doc xml:lang="EN" title="Validate Token for Racker Response: XML">
+                <wadl:doc xml:lang="EN" title="Validate token for Racker response: XML">
                     <xsdxt:code href="../common/samples/ValidateRackerTokenResponse.xml" security="internal"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
     <method name="HEAD" id="checkToken">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Check Token">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Check token">
             <para role="shortdesc">Check that a token is valid and that it belongs to a
                 particular tenant (abbreviated response).</para>
             <para>
-                Determine whether the specified token is valid. If the optional, <literal>belongsTo</literal> parameter is specified.</para>
+                Determine whether the specified token is valid.</para>
         </wadl:doc>
+        <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="belongsTo" style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>Validate that a token has the specified tenant in scope.</para>
+                </wadl:doc>
+            </param>           
+        </request>
         <response status="200 203"/> &commonFaults; &getFaults; </method>
     
     <method name="DELETE" id="revokeToken">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Revoke Token">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Revoke token">
             <para role="shortdesc">Revoke token.</para>
             <para>This call revokes a token, returning code <code>204</code>. if successful
                 and <code>404</code> if token in URI is invalid. </para>

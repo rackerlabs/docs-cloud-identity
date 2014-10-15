@@ -2,6 +2,6 @@
 <auth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xmlns="http://docs.openstack.org/identity/api/v2.0"
  tenantId="1100111">
-  <token id="vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz" />
+ <token id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
 </auth>
 

@@ -6,7 +6,7 @@
     xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
     xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0"
     xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
-    <token id="abcdefghijkl"
+    <token id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         expires="2013-11-26T18:08:51.146Z"/>
     <user id="racerSSOUsername">
         <roles>

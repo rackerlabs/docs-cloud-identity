@@ -73,7 +73,7 @@
 		
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">			
 			<wadl:resource href="../../wadl/identity-admin.wadl#admin-versions">
-				<wadl:method href="#admin-getVersion"/>
+				<wadl:method href="#admin-getVersions"/>
 			</wadl:resource>
 			
 			<!-- Get a specific API version -->
@@ -84,7 +84,6 @@
 	</section>
 	
 	<!--Extensions-->
-	
 	<section xml:id="Extensions_operations">
 		<title>Extensions</title>
 		<para xml:id="Extensions_ovw">The Rackspace Cloud Identity Service deploys API extensions to add user and administrative features to 
@@ -111,7 +110,7 @@
 	<!-- USERS -->
 	<section xml:id="User_Calls">
 		<title>Users</title>
-		<para>The operations described in this section allow service developers to manage users.</para>
+		<para>The operations described in this section allow &CIS; service administrators to manage users.</para>
 		<para> When these requests are issued by an account user, they act
 			only upon that account user. You can learn more about
 			account users, also called sub-accounts, at <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -288,9 +287,11 @@
 			   </wadl:resource>
 			
 			<!-- Manage user roles -->
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRole">
+				<wadl:method href="#getUserRole"/>
+			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="#addUserRole"/>
-				<wadl:method href="#getUserRole"/>
 				<wadl:method href="#deleteUserRole"/>
 			</wadl:resource>	
 		</wadl:resources>
@@ -300,7 +301,7 @@
 	<section xml:id="Token_Calls">
 		<title>Authentication tokens</title>
 		<para>The &CIS; is a <glossterm baseform="REST">ReSTful</glossterm> web service that provides authentication services  
-			for the &CLOUD;. To gain access, users and administrators can use the POST tokens operation 
+			for the &CLOUD;. To gain access, users and administrators can use the <command>POST tokens</command> operation 
 			to request an authentication token from the &CIS;, or generate a new token after a previously 
 			issued token has expired. In subsequent requests to &CIS; or other services, 
 			clients include the authentication token in the HTTP x-header parameter defined as 
@@ -976,19 +977,12 @@
 					customers enrolled in the Early Access program for this feature.</para></note>
 			
 			<para>The &CIS; API operations described in this section implement multifactor authentication
-			capabilities for &CLOUD; accounts. For additional information, see these topics: <itemizedlist>
-				<listitem>
-					<para><link xlink:href="mfa_processes.html">Multifactor authentication set up,
-							operation, and management</link></para>
-				</listitem>
-				<listitem>
-					<para>
-						<link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens__Token_Calls.html">API request: Authenticate with multifactor credentials</link></para>
-				</listitem>
-				<!-- <listitem>
+			capabilities for &CLOUD; accounts. For more information, see 
+				<link xlink:href="MFA_Ops.html">Using multi-factor authentication</link>
+				<!--
 					<para><link xlink:href="mfa_api_ovw.html">Multifactor elements and
-							attributes</link></para></listitem> -->
-			</itemizedlist></para>
+							attributes</link></para>-->
+			</para>
 			<note><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension
 				to the core Identity API. For more information, see <olink condition="admin"
 					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"

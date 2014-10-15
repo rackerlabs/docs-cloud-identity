@@ -3,201 +3,64 @@
 <!ENTITY % common SYSTEM "../../common/common.ent">
 %common;
 ]>
-<section xmlns="http://docbook.org/ns/docbook"
-	xmlns:xi="http://www.w3.org/2001/XInclude"
-	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
-	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="mfa_processes"> 
-    <title>Using Multi-factor authentication</title>
+<section 
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+  xml:id="proc_mfa_setup">
+  <title>Set up multi-factor authentication</title>
+  <para>Use these instructions to set up multi-factor
+    authentication for a user account using Identity service API
+    operations. You can also complete this process through the Cloud Control panel.</para>
+  <important>
+    <para>Multi-factor authentication is supported only by Rackspace
+      Cloud Identity Service version 2.0 or later. After an account
+      is enabled for multi-factor authentication, the user cannot
+      authenticate using &CIS; v1.0 or v1.1. This feature is
+      currently only available to customers enrolled in the Early
+      Access program.</para>
+  </important>
   
-  <note>
-    <para>Multi-factor authentication is currently available only to
-      customers enrolled in the Early Access program for this feature.</para></note>
-    <para><xref linkend="mfa_process_summary"/> outlines the processes
-    to set up, use, and manage multi-factor authentication
-    capabilities for &CLOUD; accounts using Identity service API
-    operations. This work can be completed by using Identity Service
-    API operations, or from the Rackspace Cloud Control panel. (See
-      <link
-      xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/multi-factor-authentication-from-the-cloud-control-panel"
-      >Using Multi-factor authentication from the Cloud Control panel
-    </link>.)</para>
-    <para>For detailed instructions using the API operations that
-    include request and response examples, click the links in the task
-    column. </para>
-    <para>
-      <table xml:id="mfa_process_summary" rules="all" width="100%">
-        <caption>Multi-factor authentication processes and
-        procedures</caption>
-        <col width="30%"/>
-        <col width="50%"/>
-        <thead>
-          <tr valign="top">
-            <th>Task</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr valign="top">
-            <td>
-              <para><link linkend="proc_mfa_setup">Set up multi-factor
-                authentication</link><orderedlist>
-                <listitem>
-                  <para>Authenticate to &CIS; to obtain an
-                    authentication token.</para>
-                </listitem>
-                <listitem>
-                  <para>Add a mobile phone to your account.</para>
-                </listitem>
-                <listitem>
-                  <para>Send a verification PIN code to your phone to
-                    verify the device.</para>
-                </listitem>
-                <listitem>
-                  <para>Send the PIN code back to &CIS;.</para>
-                </listitem>
-                <listitem>
-                  <para>Update your account to enable multi-factor
-                    authentication support.</para>
-                </listitem>
-                <listitem>
-                  <para>Review your account to make sure the phone is
-                    verified and multi-factor authentication is
-                    enabled.</para>
-                </listitem>
-              </orderedlist></para>
-            </td>
-            <td><itemizedlist>
-              <listitem><para>Requires a valid authentication token.</para>
-              </listitem>
-              <listitem><para>Each account can have only one phone number.</para></listitem>
-                <listitem>
-                  <para>The same phone number can be used for multiple accounts, but the phone must
-                    be verified separately from each account.</para>
-                </listitem>
-                <listitem>
-                  <para>After an account has been enabled with
-                  multi-factor authentication, the user must submit
-                  two requests to authenticate: an initial request
-                  with API key or password credentials to obtain the
-                  multi-factor credentials, followed by a request with
-                  the multi-factor credentials.</para>
-                </listitem>
-            </itemizedlist>
-            </td>
-          </tr>
-          <tr valign="top">
-            <td>
-              <para><link linkend="proc_mfa_auth">Authenticate by phone</link><orderedlist>
-                  <listitem>
-                    <para>Authenticate to &CIS; by using either your password or API key.</para>
-                  </listitem>
-                  <listitem>
-                    <para>If authentication is successful, &CIS; returns a 401 message with a
-                      SessionId in the header and also sends an SMS passcode to the phone associated
-                      with your account.</para>
-                  </listitem>
-                  <listitem>
-                    <para>To complete the authentication process, submit another authentication
-                      request with the <parameter>SessionId</parameter> in the header and the passcode in the request
-                      body.</para>
-                  </listitem>
-                </orderedlist></para>
-            </td>
-            <td>
-              <itemizedlist>
-                <listitem>
-                  <para>Requires a multifactor-enabled user account with a verified phone
-                    number.</para>
-                </listitem>
-                <listitem>
-                  <para>If user exceeds the maximum number of login attempts, the account is locked.
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr valign="top">
-            <td>
-              <para><link linkend="proc_mfa_manage">Manage
-                multi-factor settings and operation</link><itemizedlist>
-                <listitem>
-                  <para>Unlock a user account.</para>
-                </listitem>
-                <listitem>
-                  <para>Generate a bypass code </para>
-                </listitem>
-                <listitem>
-                  <para>Check the multi-factor configuration on an
-                    account.</para>
-                </listitem>
-                <listitem>
-                  <para>Enable or disable multi-factor authentication
-                    capabilities.</para>
-                </listitem>
-                <listitem>
-                  <para>Remove the multi-factor configuration and any
-                    associated phones from an account.</para>
-                </listitem>
-              </itemizedlist></para>
-            </td>
-            <td>
-              <itemizedlist>
-                <listitem>
-                <para>If a user account is locked as a result of too
-                  many failed authentication attempts, an
-                  administrator can unlock their account. </para>
-              </listitem>
-              <listitem condition="admin">
-                <para>If a user does not have access to the phone
-                  associated with their user account, an administrator
-                  can generate a bypsass code that can be substituted
-                  for the multifactor authentication passcode sent via
-                  SMS.</para>
-              </listitem>
-                <listitem>
-                  <para>You can temporarily disable multi-factor
-                  authentication, or remove all multi-factor settings
-                  and phones from an account.</para>
-                </listitem>
-              </itemizedlist>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </para>
-    <section xml:id="proc_mfa_setup">
-    <title>Set up multi-factor authentication</title>
-    <para>Complete the following steps to set up multi-factor
-      authentication for a user account using Identity service API
-      operations. This process can also be completed from the Cloud
-      Control panel.</para>
-    <important>
-      <para>Multi-factor authentication is only supported by Rackspace
-        Cloud Identity Service version 2.0 or later. After an account
-        is enabled for multi-factor authentication, the user cannot
-        authenticate using &CIS; v1.0 or v1.1.</para>
-    </important>
-    <orderedlist>
-      <!-- Step 1 Authenticate -->
-      <listitem xml:id="Step_authenticate">
-        <para>Authenticate to &CIS; to obtain an authentication token. <variablelist>
-            <varlistentry>
-              <term><emphasis role="bold">Authentication cURL
-                  request</emphasis>:</term>
-              <listitem>
-                <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens \
+  <orderedlist>
+    <variablelist>
+      <varlistentry><term>Notes</term>
+        <listitem><itemizedlist>
+          <listitem><para>A user account can have only one phone number for use with
+            multi-factor authentication. </para></listitem>
+          <listitem>
+            <para>The same phone number can be used for multiple
+              accounts, but the phone must be verified separately
+              for each account.</para>
+          </listitem>
+          <listitem>
+            <para>After an account has been enabled with
+              multi-factor authentication, the user must submit
+              two requests to authenticate: an initial request
+              with API key or password credentials to obtain the
+              multi-factor credentials, followed by a request with
+              the multi-factor authentication sessionId and
+              passcode credentials.</para>
+          </listitem>
+        </itemizedlist>      
+        </listitem></varlistentry>
+    </variablelist>
+    <!-- Step 1 Authenticate -->
+    <listitem xml:id="Step_authenticate">
+      <para>Authenticate to the Identity service to obtain an
+        authentication token. <variablelist>
+          <varlistentry>
+            <term>Request</term>
+            <listitem>
+              <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens \
        -X POST \
-       -H "Content-Type: application/json" \
        -H "Accept: application/json" \
        -d '{"auth": {"passwordCredentials": {"username":"jqsmith", "password":"Password1"}}}' \ 
-       | python -m json.tool</programlisting>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><emphasis role="bold">Response with authentication token id</emphasis>:</term>
-              <listitem>
-                <para>
-                  <programlisting><![CDATA[< HTTP/1.1 200 OK
+       -H "Content-Type: application/json"</programlisting>
+              <para>The Identity service returns a 200 response code
+                that includes the authtication token ID.</para>
+              <para>
+                <programlisting><![CDATA[< HTTP/1.1 200 OK
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Content-Type: application/json
 < Content-Length: 375
@@ -211,7 +74,7 @@
                 "PASSWORD"
             ],
             "expires": "2013-12-17T22:47:04.253-06:00",
-            "id": "xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"
+            "id": "xxxxxxxxxxxxxxxxxxx"
         },
         "user": {
             "RAX-AUTH:defaultRegion": "ORD",
@@ -228,43 +91,43 @@
         }
     }
 }</programlisting>
-                  <note>
-                    <para>To run the cURL commands in these examples,
-                      export the authentication token to an
-                      environment variable:
-                      <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT AUTH_TOKEN="xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"</programlisting>
-                    </para>
-                  </note>
-                </para>
-              </listitem>
-            </varlistentry>
-          </variablelist></para>
-      </listitem>
-      <!-- Step 2 Add a mobile phone -->
-      <listitem>
-        <para>Add a mobile phone to your account.<variablelist>
-            <varlistentry>
-              <term><emphasis role="bold">Add mobile phone request
-                  cURL request</emphasis></term>
-              <listitem>
-                <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+                <tip>
+                  <para>To run the cURL commands in the following
+                    steps, export the authentication token to an
+                    environment variable:
+                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT AUTH_TOKEN="xxxxxxxxxxxxxxxx"</programlisting>
+                  </para>
+                </tip>
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </listitem>
+    <!-- Step 2 Add a mobile phone -->
+    <listitem>
+      <para>Add a mobile phone to your account.<variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">Request</emphasis></term>
+          <listitem>
+            <para>
+              <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X POST \
        -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTH_TOKEN"
        -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
        | python -m json.tool</programlisting>
-                </para>
-                <note><para>Specify the phone number in <link
-                      xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123"
-                      >E.123 notation</link>, <code>+1
-                        235-435-623</code> or <code>+44 42 1123 4567</code>, for example.</para></note>
-              </listitem>
-            </varlistentry>
-          <varlistentry>
-            <term><emphasis role="bold">Response</emphasis></term>
-            <listitem>
-              <para>&CIS; returns a 201 response that includes the
-                  system-generated phoneId.<programlisting><![CDATA[< HTTP/1.1 201 Created
+            </para>
+            <tip><para>Specify the phone number in 
+              <link xlink:href="https://www.itu.int/rec/T-REC-E.123-200102-I/en">E.123 notation</link>, <code>+1 235 435
+                6234</code> or <code>+44 42 1123 4567</code>,
+              for example.</para></tip>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">Response</emphasis></term>
+          <listitem>
+            <para>The Identity service returns a 201 response that
+              includes the system-generated phone ID.<programlisting><![CDATA[< HTTP/1.1 201 Created
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Location: http://localhost:8083/idm/cloud/v2.0/users/a64ee2047fc14cc7bc977caa3cfff35f/RAX-AUTH/multi-factor/mobile-phones/889a7245f49e4ab789ebaebf91c0f1eb
 < Content-Type: application/json
@@ -274,442 +137,129 @@
 {
     "RAX-AUTH:mobilePhone": {
         "id": "845321245f49e4ab789ebaebf91c0f1eb",
-        "number": "+1 512-555-1000"
+        "number": "+1 512-555-0100"
     }
 } ]]></programlisting></para>
-            </listitem>
-          </varlistentry>
-          
-          </variablelist></para>
-        <para>Export the <parameter>phoneId</parameter> value to an
-          environment variable, so you can use it to complete the
-          phone verification process:
-          <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT PHONE_ID=""845321245f49e4ab789ebaebf91c0f1eb"</programlisting></para>
-      </listitem>
-      <!--Step 3 Verify PIN code -->
-      <listitem>
-        <para>Send a verification code to your phone to confirm that you possess the phone associated with your account. You 
-          need to include the <parameter>phoneId</parameter> value from the Add mobile phone operation in this request.<variablelist>
-            <varlistentry>
-              <term><emphasis role="bold">Send Verification PIN code cURL
-                  request</emphasis></term>
-              <listitem>
-                <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/<replaceable>$PHONE_ID</replaceable>/verificationcode \
+          </listitem>
+        </varlistentry>
+        
+      </variablelist></para>
+      <tip><para>Export the phone <parameter>id</parameter> value to an
+        environment variable, so you can use it to complete the
+        phone verification process:
+        <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT PHONE_ID=""845321245f49e4ab789ebaebf91c0f1eb"</programlisting></para></tip>
+    </listitem>
+    <!--Step 3 Verify PIN code -->
+    <listitem>
+      <para>Send a verification code to your phone to confirm that
+        you possess the phone associated with your account. In the
+        request, include the phone <parameter>id</parameter> value
+        (or the $PHONE_ID environment variable that you exported)
+        from the add mobile phone operation. from the Add mobile
+        phone operation in this request.<variablelist>
+          <varlistentry>
+            <term><emphasis role="bold">Request</emphasis></term>
+            <listitem>
+              <para>
+                <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \
        -X POST \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
        -H "X-Auth-Token: $AUTH_TOKEN"
        | python -m json.tool</programlisting>
-                </para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><emphasis role="bold">Response</emphasis></term>
-              <listitem>
-                <para>&CIS; returns ta 201 response and sends a message like this to the designated
-                  phone number:</para>
-                <para><code>To verify this mobile device for your Rackspace profile used for
-                    multi-factor authentication enter the PIN 1732</code>.</para>
-              </listitem>
-            </varlistentry>
-          </variablelist></para>
-      </listitem>
-      <listitem>
-        <!-- Step 4  Send verification code -->
-        <para>Return the verification PIN code to complete the phone verification process.<variablelist>
-            <varlistentry>
-              <term><emphasis role="bold">Return verification code to &CIS; cURL
-                  request</emphasis></term>
-              <listitem>
-                <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/<replaceable>$PHONE_ID</replaceable>/verify \
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">Response</emphasis></term>
+            <listitem>
+              <para>&CIS; returns ta 201 response and sends a
+                message like this to the designated phone
+                number:</para>
+              <para><code>To verify this mobile device for your
+                Rackspace profile used for multi-factor
+                authentication enter the PIN 1732</code>.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </listitem>
+    <listitem>
+      <!-- Step 4  Send verification code -->
+      <para>Return the verification PIN code to complete the phone verification process.<variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">Requestt</emphasis></term>
+          <listitem>
+            <para>
+              <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verify \
        -X POST \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
        -d '{"RAX-AUTH:verificationCode": { "code": "1732" }}' \
        -H "X-Auth-Token: $AUTH_TOKEN" \
        | python -m json.tool</programlisting>
-                </para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><emphasis role="bold">Response</emphasis></term>
-              <listitem>
-                <para>&CIS; returns a 202 response.<programlisting><![CDATA[< HTTP/1.1 202 Accepted
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">Response</emphasis></term>
+          <listitem>
+            <para>The Identity Service returns a 202 response.<programlisting><![CDATA[< HTTP/1.1 202 Accepted
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Content-Type: application/json
 < Server: Jetty(6.1.25) ]]></programlisting></para>
-              </listitem>
-            </varlistentry>
-          </variablelist></para>
-      </listitem>
-      <!-- Step 5 Verify phone request-->
-      <listitem>
-        <para>Update your account to enable multi-factor
-          authentication support.<variablelist>
-            <varlistentry>
-              <term><emphasis role="bold">Update account to enable
-                  multi-factor authentication support cURL
-                  request</emphasis></term>
-              <listitem>
-                <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+    </listitem>
+    <!-- Step 5 Verify phone request-->
+    <listitem>
+      <para>Update your account to enable multi-factor
+        authentication support.<variablelist>
+          <varlistentry>
+            <term><emphasis role="bold">Request</emphasis></term>
+            <listitem>
+              <para>
+                <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
        -X POST \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
        -d '{"RAX-AUTH:multiFactor: { "enabled"="true" }}' \
        -H "X-Auth-Token: $AUTH_TOKEN" \
        | python -m json.tool</programlisting>
-                </para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><emphasis role="bold">Response</emphasis></term>
-              <listitem>
-                <para>&CIS; returns a 204 response.<programlisting><![CDATA[< HTTP/1.1 204 No Content
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">Response</emphasis></term>
+            <listitem>
+              <para>The Identity service returns a 204 response.<programlisting><![CDATA[< HTTP/1.1 204 No Content
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Content-Type: application/json
 < Server: Jetty(6.1.25) ]]></programlisting></para>
-              </listitem>
-            </varlistentry>
-          </variablelist></para>
-      </listitem>
-    </orderedlist>
-    <para>For additional information, see the following topics:
-      <itemizedlist>
-        <listitem><para>
-          <link xlink:href="proc_mfa_auth.html">Authenticate from a multifactor-enabled user
-            account</link></para></listitem>
-        <listitem condition="admin"><para><link xlink:href="Multifactor_Calls.html">API reference:
-              Multi-factor authentication operations</link></para>
-        </listitem>
-        <listitem condition="client"><para><link xlink:href="Multifactor_Calls_client.html">API reference:
-          Multi-factor authentication operations</link></para>
-        </listitem>
-      </itemizedlist>
-        </para>
-  </section>
-     
-    
-    <section xml:id="proc_mfa_auth"><title>Authenticate from a multi-factor-enabled user account</title>
-      <para>Complete the following steps to authenticate to &CIS;
-      using multi-factor authentication credentials.</para>
-      <variablelist>
-        <varlistentry>
-          <term><emphasis role="bold">Prerequisites</emphasis></term>
-          <listitem><para><itemizedlist>
-            <listitem><para>Valid credentials to authenticate to &CIS;.</para></listitem>
-            <listitem><para>User account is enabled to use multi-factor
-                  authentication.</para></listitem>
-            <listitem><para>Access to the phone linked to your &CLOUD; account.</para></listitem>
-            <listitem><para>User account not locked as a result of too many failed
-                  authentication attempts.</para></listitem>
-          </itemizedlist>
-          </para></listitem>
-        </varlistentry>
-      </variablelist>
-      <orderedlist>
-        <listitem>
-          <para>Send a POST tokens authentication request to the Identity
-          service with either Password or API credentials. See <xref
-            linkend="Step_authenticate"/>.
-          <variablelist>
-            <varlistentry>
-              <term><emphasis role="bold">Response</emphasis></term>
-              <listitem>
-                <para>The request triggers &CIS; to send an SMS message to the phone associated with
-                  the user account. In response to the authentication request, &CIS; returns a 401
-                  message that includes a <code>sessionId</code> in the WWW-Authenticate header and
-                  a request for additional
-                  credentials:<screen><computeroutput>
-&lt; HTTP/1.1 401 Unauthorized
-* Server Apache-Coyote/1.1 is not blacklisted
-&lt; Server: Apache-Coyote/1.1
-&lt; vary:  Accept, Accept-Encoding, X-Auth-Token
-&lt; WWW-Authenticate: OS-MF sessionId='APU9ymMBWY5W-pTgnHuZEvjKsM5oG_ler4lC0g_EkCPYvPdUBHK55RWtsgpL5RZ22AyDNaVCNCz6mlDOwbJAI-RLFQywI7CgOvjH0MLhL5a6D-c4cd1x8BbZmy8uT8ejm7jzBUX_vDZ5R0Hcia5DkOB80yWNJ8XVKMxVYLg5Qwp0TPA2zx-HQOTM3xqVQE63u1mYDUqikrXQ', factor='PASSCODE'
-&lt; Content-Type: application/json
-&lt; Transfer-Encoding: chunked
-&lt; Date: Thu, 13 Mar 2XXX 21:10:50 GMT
-{ [data not shown]
-100   186    0    96  100    90    159    149 --:--:-- --:--:-- --:--:--   159
-* Connection #0 to host identity.api.rackspacecloud.com/v2.0 left intact
-{
-"unauthorized": {
-    "code": 401,
-    "message": "Additional authentication credentials required."
-    }
-}
-    {
-    "key":"value"
-    } </computeroutput></screen></para>
-                <para>&CIS; also sends a message like this to your
-                  phone:</para>
-                <para><code>Rackspace SMS passcodes (will expire in 1
-                    hour): 1411594</code>.</para>
-              </listitem>
-            </varlistentry>
-          </variablelist></para></listitem>
-      <listitem><para>Send another authentication request with the multi-factor
-          authentication credentials: <parameter>sessionId</parameter> and
-            <parameter>passcode</parameter>. <variablelist>
-            <varlistentry>
-              <term><emphasis role="bold">cURL POST token request with
-                  multi-factor authentication
-                credentials</emphasis></term>
-              <listitem>
-                <para>
-                  <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens \
-       -X POST \
-       -H "Content-Type: application/json" \
-       -H "Accept: application/json" \
-       -d '{"auth": {"RAX-AUTH:passcodeCredentials": {"passcode":"1411594"}}}'
-       -H "X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw" \
- 		    | python -m json.tool</programlisting>
-                </para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><emphasis role="bold">Response</emphasis></term>
-              <listitem>
-                <para>&CIS; returns an authentication token id and
-                  service catalog. Note that the information returned
-                  in the <parameter>RAX-AUTH: authenticated By</parameter> object
-                  shows authentication by both password and passcode.<programlisting><![CDATA[  < HTTP/1.1 200 OK
-< Vary:  Accept, Accept-Encoding, X-Auth-Token
-< Content-Type: application/json
-< Content-Length: 375
-< Server: Jetty(6.1.25)
-< ]]>
-{
-    "access": {
-        "serviceCatalog": [],
-        "token": {
-            "RAX-AUTH:authenticatedBy": [
-                "PASSCODE",
-                "PASSWORD"
-            ],
-            "expires": "2014-01-09T15:08:53.645-06:00",
-            "id": "xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"
-        }, 
-        "user": {
-            "RAX-AUTH:defaultRegion": "ORD",
-            "RAX-AUTH:federated": false,
-            "RAX-AUTH:multiFactorEnabled": true,
-            "id": "a64ee2047fc14cc7bc977caa3cfff35f",
-            "name": "jqsmith",
-            "roles": [
-                {
-                    "description": "User Admin Role.",
-                    "id": "3",
-                    "name": "identity:user-admin"
-                }
-            ]
-        }
-    }
-}</programlisting></para>
-              </listitem>
-            </varlistentry>
-          </variablelist></para>
-      </listitem>
-      </orderedlist>
-      <para>For additional information, see the following topics: <itemizedlist>
-        <listitem>
-          <para>
-            <link xlink:href="proc_mfa_manage.html">Manage
-              multi-factor authentication settings and
-              operation</link></para>
-        </listitem>
-          <listitem condition="admin">
-            <para><link xlink:href="Multifactor_Calls.html">API
-                reference: Multi-factor authentication
-                operations</link></para>
-          </listitem>
-          <listitem condition="client">
-            <para><link xlink:href="Multifactor_Calls_client.html">API
-                reference: Multi-factor authentication
-                operations</link></para>
-          </listitem>
-        
-      </itemizedlist></para> 
-    </section>
-  <section xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="proc_mfa_manage">
-    <title>Manage multi-factor authentication settings and operation</title>
-    <para><xref linkend="manage_mfa_ops"/> describes the API operations for managing
-      multi-factor authentication capabilities for &CLOUD; accounts
-      and shows the cURL command to make the request. For more
-      detailed information about an operation, click the link in the
-      task section.</para>
-    <table xml:id="manage_mfa_ops" rules="all" width="100%">
-      <caption>Multi-factor authentication management tasks</caption>
-      <col/>
-      <col/>
-      <thead>
-        <tr>
-          <th>Task</th>
-          <th>cURL command</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr condition="admin">
-          <td valign="top">
-            <para><link
-                xlink:href="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html"
-                >Unlock user account</link> if a user is locked as a
-              result of failed login attempts.</para></td>
-          <td valign="top"><para>Use the following cURL request to restore access to a user account that has been locked 
-          as a result of too many failed authentication attempts.</para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
-       -X PUT  \
-       -d '{"RAX-AUTH:multiFactor": { "unlock": "true" }}'
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token": $AUTHTOKEN | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr condition="client">
-          <td valign="top">Recover account  </td>
-          <td valign="top">
-            <para>If you cannot get the multi-factor authentication
-              passcode from the device associated with your account,
-              contact Rackspace Support.</para>
-          </td>
-        </tr>
-        <tr condition="admin">
-          <td valign="top">Recover account</td>
-          <td valign="top">
-            <para>Identity administrators or user managers can use the
-              following cURL request for the Generate bypass code API
-              operation to generate a single, one-time use bypass code
-              that can be substituted for a multi-factor
-              authentication passcode if a user cannot get the
-              passcode from the device associated with their account.
-              The default expiration for the bypass code is 30 minutes
-              after being generated. Users cannot recover their own
-              account.</para>
-       <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \      
-       -X POST \
-       -d '{"RAX-AUTH:bypassCodes"{"validityDuration":"PT30M"}}'\
-       -H "Content-type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr condition="client">
-          <td valign="top">
-            <para>Unlock user account</para></td>
-          <td valign="top">
-            <para>If your account is locked as a
-              result of failed login attempts, wait 5 minutes and then try to authenticate again using the passcode 
-              sent to your account, or contact the user administrator to unlock your account.</para>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">
-            <para condition="admin"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html">Generate bypass code</link></para>
-            <para condition="client"><link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html">Generate bypass codes</link></para>
-          </td>
-            <td valign="top">
-            <para>Use the following cURL request to generate a bypass
-              code that can be used in lieu of the multi-factor
-              authentication passcode when the mobile phone associated
-              with the account is lost or damaged, or if the user does
-              not receive the passcode.</para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> $ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \
-       -d '{"RAX-AUTH:bypassCodes":{"validityDuration":"PT30M"}}' 
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">
-            <para condition="admin"><link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Check multi-factor status on user account</link></para>
-            <para condition="client"><link xlink:href="GET_getUserById_v2.0_users__userId__User_Calls.html">Check multi-factor status on user account</link></para>
-          </td>
-          <td valign="top">
-            <para>Use the following cURL request to review the multi-factor authentication configuration settings on 
-            an account.  If the <parameter>MultifactorEnabled</parameter>account has not been enabled for multi-factor authentication, the user listing does not 
-            include </para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
-       -X POST \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr condition="admin">
-          <td valign="top"><link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List multifactor-enabled devices by user id</link>
-            </td>
-          <td valign="top"><para>Use the following cURL request to list the devices that 
-            associated with a user account for the purpose of multi-factor authentication.</para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
-       -X PUT \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr condition="client">
-          <td valign="top"><link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">List multifactor-enabled devices by user id</link>
-          </td>
-          <td valign="top"><para>Use the following cURL request to list the devices that 
-            associated with a user account for the purpose of multi-factor authentication.</para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
-       -X PUT \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr condition="admin">
-          <td valign="top"><link
-              xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
-              >Disable multi-factor authentication</link></td>
-          <td><para>Use the folowing cURL request to disable
-                (<code>enabled=false</code>) multi-factor for the
-              specified user account.</para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
-       -X PUT \
-       -d '{"RAX-AUTH:multiFactor": { "enabled": "false" }}' \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting></td>
-        </tr>
-        <tr condition="client">
-          <td valign="top"><link
-            xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html"
-            >Disable multi-factor authentication</link></td>
-          <td><para>Use the folowing cURL request to disable
-            (<code>enabled=false</code>) multi-factor for the
-            specified user account.</para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
-       -X PUT \
-       -d '{"RAX-AUTH:multiFactor": { "enabled": "false" }}' \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting></td>
-        </tr>
-        <tr condition="admin">
-          <td valign="top">
-            <para><link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Remove the multi-factor settings and phone from a user account</link></para>
-          </td>
-          <td valign="top"><para>Use the following cURL request to remove multi-factor
-              authentication capabilities from a user account.</para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
-       -X  DELETE  \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr condition="client">
-          <td valign="top">
-            <para><link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">Remove the multi-factor settings and phone from a user account</link></para>
-          </td>
-          <td valign="top"><para>Use the following cURL request to remove multi-factor
-            authentication capabilities from a user account.</para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
-       -X  DELETE  \
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <para condition="admin">For detailed API reference information, see 
-      <link xlink:href="Multifactor_Calls.html">Multi-factor
-        operations</link></para> 
-    <para condition="client">For detailed API reference information, see 
-      <link xlink:href="Multifactor_Calls_client.html">Multi-factor
-        operations</link>.</para>
-  </section></section>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </listitem>
+  </orderedlist>
+  <para>For more information, see the following topics: <itemizedlist>
+    <listitem>
+      <para>
+        <link xlink:href="proc_mfa_auth.html">Authenticate from a
+          multifactor-enabled user account</link></para>
+    </listitem>
+    <listitem><para>
+      <link xlink:href="proc_mfa_manage.html">Authenticate from a
+        multifactor-enabled user account</link></para></listitem>
+    <listitem condition="admin">
+      <para><link xlink:href="Multifactor_Calls.html">API
+        reference: Multi-factor authentication
+        operations</link></para>
+    </listitem>
+    <listitem condition="client">
+      <para><link xlink:href="Multifactor_Calls_client.html">API
+        reference: Multi-factor authentication
+        operations</link></para>
+    </listitem>
+  </itemizedlist>
+  </para>
+</section>

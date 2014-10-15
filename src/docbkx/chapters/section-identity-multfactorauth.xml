@@ -19,22 +19,22 @@
       use multifactor authentication.</para>
     <para>With multifactor authentication enabled, authentication is a two-step process:<orderedlist>
       <listitem>
-        <para>A user submits an inital POST tokens request to the Identity Service endpoint,
+        <para>A user submits an inital <command>POST tokens</command> request to the Identity Service endpoint,
           including either API key or password credentials.</para>
         <para>The response body returned by the Identity service includes an X-SessionId header and
           a request for additional credentials. The Identity service also sends an SMS text message
           with a passcode to the phone number associated with the account.</para>
       </listitem>
       <listitem>
-        <para>To complete the authentication process, the user submits a second POST tokens request,
+        <para>To complete the authentication process, the user submits a second <command>POST tokens</command> request,
           including the sessionId header and passcode as credentials.</para>
         <para>If the credentials are valid, the Identity service returns an authentication response
           that includes the authentication token and a service catalog showing the available
           services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for each service.</para>
-        <important><para>Multifactor authentication is only supported by Rackspace Cloud
+        <important><para>Multifactor authentication is supported only by Rackspace Cloud
             Identity Service version 2.0 or later. User accounts set
-            up for multifactor authentication cannot authenticate
-            through version 1.0 or 1.1. </para></important>
+            up for multifactor authentication cannot authenticate by using 
+            version 1.0 or 1.1 of the service.</para></important>
       </listitem>
     </orderedlist></para>
     <para>Figure <xref linkend="mfa_auth"
@@ -66,6 +66,18 @@
       </mediaobject>
     </figure>
     <para>For information about using multifactor authentication capabilities through the Cloud Identity API, 
-      see <link xlink:href= "#mfa_processes">Multifactor authentication set up, operation, and management</link>.</para>  
+      see the following topics:
+      <itemizedlist>
+        <listitem>
+          <para><link xlink:href= "proc_mfa_setup.html">Set up multi-factor authentication</link></para>
+        </listitem>
+        <listitem>
+          <para><link xlink:href= "proc_mfa_auth.html">Authenticate from a multi-factor-enabled user account</link></para>
+        </listitem>
+        <listitem><para><link xlink:href= "proc_mfa_manage.html">Manage multi-factor authentication settings and operation</link></para></listitem>
+      </itemizedlist>
+    </para>
     <xi:include href="section-mfa-setup.xml"/>
+    <xi:include href="section-mfa-auth.xml"/>
+    <xi:include href="section-mfa-manage.xml"/>
   </section>

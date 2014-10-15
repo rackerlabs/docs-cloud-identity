@@ -7,7 +7,7 @@ X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_D
 {
   "auth": {
     "token": {
-      "id": "aaaaa-bbbbb-ccccc-dddd"
+      "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     },
     "RAX-AUTH:multiFactor": {
       "passcode": "123456",

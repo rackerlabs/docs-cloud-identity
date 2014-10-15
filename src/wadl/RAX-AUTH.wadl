@@ -467,9 +467,9 @@
     <method id="impersonateUser" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user">
            <para class="shortdesc">Impersonate a specific user.</para>
-            <para xmlns="http://docbook.org/ns/docbook"> To impersonate a user, you must first authenticate as yourself. The
-                response to this authentication request will supply you with a current Racker token; you must already hold a
-                service token. After you are authenticated and holding the necessary privileges, you can issue this
+            <para xmlns="http://docbook.org/ns/docbook">To impersonate a user, you must first authenticate as yourself. The
+                response to this authentication request includes a current Racker token; you must already hold a
+                service token. After you have authenticated and have the necessary privileges, issue this
                 impersonation call with your Racker token, identifying the <code>username</code> you wish to impersonate.</para>
             
             <para xmlns="http://docbook.org/ns/docbook">You can specify the number of seconds you want the impersonation to
@@ -1383,7 +1383,7 @@
             <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
                     <para>OK</para>
-                    <xsdxt:code href="../common/samples/MultiFacWithHeaderResp.xml"/>
+                    <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.xml"/>
                 </wadl:doc>           
             </representation>
             
@@ -1415,10 +1415,49 @@
         </response> &postPutFaults; 
     </method>
     <method id="authenticateAsRacker" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate as Racker">
-            <para role="shortdesc"> Authenticate as Racker.</para>
-            <para>Rackers can use the POST tokens operation to authenticate by supplying the following information 
-            in the request: Rackspace username, SSO password, and the Rackspace domainId.</para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate as a Racker">
+            <para role="shortdesc">Authenticate using Racker credentials.</para>
+            <para>Rackers can use the POST tokens operation to authenticate to the Identity 
+                service by supplying the following information in the request: Rackspace username, 
+                SSO password, and the Rackspace domain ID.</para>
+            <para>When you authenticate, the Identity Service 
+                validates the authentication request through internal Rackspace eDirectory (eDir) service, maps your Racker credentials to the Identity 
+               service permissions and roles, and returns an authentication response.</para>
+            <para>User, group, and role configuration for Racker accounts are managed through 
+                the eDir service. You can view, manage, and submit eDir service 
+                requests by using either of these resources: 
+               <itemizedlist>
+                    <listitem>
+                        <para>View and manage your Racker account credentials and submit service requests by using   
+                            <link xlink:href="https://rackerapp.rackspace.com:8443/IDMProv/portal/cn/GuestContainerPage/Welcome">RackerApp</link>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>For access and permission requests, submit a ticket 
+                            from the <link xlink:href="https://rackspace.service-now.com/ess/sd_order_rack_group.do">
+                            Access and Permissions</link> section of the Rackspace Service Desk portal.   
+                        </para>
+                    </listitem> 
+                </itemizedlist>
+            </para>
+            <note><title>Notes</title>
+            <itemizedlist>
+                <listitem>
+                    <para>When you are authenticated as a Racker, you cannot create sub-user accounts 
+                    because your account is not associated with a tenant.</para>
+                </listitem>
+                <listitem>
+                    <para>Because role configuration for Racker accounts is managed through the eDir service, 
+                        you cannot manage RBAC roles by using the role operations available in the Identity service API. 
+                        To add or change role assignments, submit a request through RackerApp or the Rackspace Service Desk.</para>
+                </listitem>
+                <listitem>
+                    <para>If you use the same account to access the Rackspace Cloud staging environment and production systems, 
+                        problems in the staging environment might cause failures in production.  For example, if your Racker 
+                        account gets locked out in the staging environment, any production processes that use the same account 
+                        will fail on authentication. To prevent issues like this, use different accounts in staging and production.
+                     </para>
+                </listitem>
+            </itemizedlist></note>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">

@@ -190,16 +190,16 @@ vary: Accept, Accept-Encoding, X-Auth-Token]]>
 			includes a catalog of available services along with
 				<glossterm>endpoint</glossterm> URLs to access each
 			service.</para>
-		<note><para>
+		<note><title>Notes</title><para>
 			<itemizedlist>
 				<listitem>
 					<para>For information about other authentication methods with examples, 
-						see <link xlink:href="Token_Calls.html">Authentication tokens</link></para></listitem>
+						see <link xlink:href="Token_Calls.html">Authentication tokens</link>.</para></listitem>
 				<listitem>
 					<para>If a user account has been set up to use
 					multi-factor authentication, additional
 					credentials are required after submitting the log
-					in credentials. For details, see <link xlink:href="proc_mfa_auth.html" xrefstyle="select:title"/>
+					in credentials. For details, see <link xlink:href="proc_mfa_auth.html">Authenticate from a multifactor-enabled user account</link>
 					</para></listitem>
 			</itemizedlist>
 		    </para></note>
@@ -207,7 +207,7 @@ vary: Accept, Accept-Encoding, X-Auth-Token]]>
 	  		<title>Authentication Request with Headers: JSON</title>
 	  		
 	  		<programlisting language="json">
-<![CDATA[<POST /v2.0/tokens HTTP/1.1
+<![CDATA[POST /v2.0/tokens HTTP/1.1
 Host: identity.api.rackspacecloud.com
 Content-Type: application/json
 Accept: application/json
@@ -285,12 +285,12 @@ Accept: application/json
 			service endpoint does not have a default region defined,
 			the service description does not include
 				<code>region</code>.</para>
-		<para><xref linkend="xml_auth_resp" xrefstyle="select: quotedtitle"/> and
-				<xref linkend="json_auth_resp"
-				xrefstyle="select: quotedtitle"/> show sample authenticaion
-			responses in XML and JSON format. In these examples, the
-			authentication token returned provides access to the
-			following services: <itemizedlist>
+		<para><xref linkend="xml_auth_resp" xrefstyle="select: quotedtitle"
+			/> and <xref linkend="json_auth_resp"
+				xrefstyle="select: quotedtitle"/> show sample
+			authenticaion responses in XML and JSON format. In these
+			examples, the authentication token returned provides
+			access to the following services: <itemizedlist>
 				<listitem>
 					<para>Compute: Cloud Servers OpenStack and Cloud
 						Servers</para>
@@ -313,11 +313,11 @@ Accept: application/json
 					<para>Monitoring</para>
 				</listitem>
 			</itemizedlist>The catalog listing for each service
-			provides the URL for the API endpoint  to access the
+			provides the URL for the API endpoint to access the
 			service, along with information about the API version, and
-			the region or tenant, if applicable,    See <xref
+			the region or tenant, if applicable, See <xref
 				linkend="auth_resp_attributes"/> for information about
-			the attributes included in the response.  </para>
+			the attributes included in the response. </para>
 	  <example xml:id="xml_auth_resp">
 		<title>Service Catalog in Authentication Response with Headers: XML</title>
 	  	<programlisting language="javascript">

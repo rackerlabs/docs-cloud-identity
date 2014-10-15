@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossary [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<section
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+  xml:id="proc_mfa_auth">
+<title>Authenticate from a multifactor-enabled user account</title>
+  <para>Complete the following steps to authenticate to &CIS;
+    using multi-factor authentication credentials.</para>
+  <variablelist>
+    <varlistentry>
+      <term><emphasis role="bold">Prerequisites</emphasis></term>
+      <listitem><para><itemizedlist>
+        <listitem><para>Valid username and password credentials for a Rackspace Cloud account that has been enabled for multi-factor authentication.</para></listitem>
+        <listitem><para>Access to the phone linked to your &CLOUD; account.</para></listitem>
+        <listitem><para>User account not locked as a result of too many failed
+          authentication attempts.</para></listitem>
+      </itemizedlist></para></listitem>
+    </varlistentry>
+  </variablelist>
+  <orderedlist>
+      <listitem>
+        <para>Send a POST tokens authentication request to the Identity services with your
+          <parameter>username</parameter> and
+          <parameter>password</parameter>:</para>
+        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
+ -X POST \
+ -d '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' \
+ -H "Content-type: application/json"  --verbose -k</programlisting>
+        <para>&CIS; returns a 401
+          message that includes a <code>sessionId</code> in the WWW-Authenticate header and
+          a request for additional
+          credentials:<screen><computeroutput>
+&lt; HTTP/1.1 401 Unauthorized
+* Server Apache-Coyote/1.1 is not blacklisted
+&lt; Server: Apache-Coyote/1.1
+&lt; vary:  Accept, Accept-Encoding, X-Auth-Token
+&lt; WWW-Authenticate: OS-MF sessionId='APU9ymMBWY5W-pTgnHuZEvjKsM5oG_ler4lC0g_EkCPYvPdUBHK55RWtsgpL5RZ22AyDNaVCNCz6mlDOwbJAI-RLFQywI7CgOvjH0MLhL5a6D-c4cd1x8BbZmy8uT8ejm7jzBUX_vDZ5R0Hcia5DkOB80yWNJ8XVKMxVYLg5Qwp0TPA2zx-HQOTM3xqVQE63u1mYDUqikrXQ', factor='PASSCODE'
+&lt; Content-Type: application/json
+&lt; Transfer-Encoding: chunked
+&lt; Date: Thu, 13 Mar 2XXX 21:10:50 GMT
+{ [data not shown]
+100   186    0    96  100    90    159    149 --:--:-- --:--:-- --:--:--   159
+* Connection #0 to host identity.api.rackspacecloud.com/v2.0 left intact
+{
+"unauthorized": {
+    "code": 401,
+    "message": "Additional authentication credentials required."
+    }
+}
+    {
+    "key":"value"
+    } </computeroutput></screen></para> 
+        <para>The request also triggers &CIS; to send an SMS message
+        like this to the phone associated with the user account.
+          <?sbr?><code>Rackspace SMS passcodes (will expire in 1
+          hour): 1411594</code>.</para> 
+      </listitem>
+    
+    <listitem><para>Send a second authentication request that includes the multi-factor
+      authentication credentials: <parameter>sessionId</parameter> and
+      <parameter>passcode</parameter>. 
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">cURL POST token request with
+            multi-factor authentication
+            credentials</emphasis></term>
+          <listitem>
+            <para>
+              <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl -X POST https://identity.api.rackspacecloud.com/v2.0/tokens \
+       -d '{"auth": {"RAX-AUTH:passcodeCredentials": {"passcode":"1411594"}}}'\
+       -H "X-SessionId: $SESSION_ID" \
+       -H "Content-Type: application/json" --verbose -k </programlisting>
+            </para>
+            <para>The authentication response returns the
+                authentication token ID and the service catalong with
+                a list of available services. Note that the
+                information returned in the <parameter>RAX-AUTH:
+                  authenticated By</parameter> object shows
+                authentication by both passcode and password.<programlisting><![CDATA[  < HTTP/1.1 200 OK
+< Vary:  Accept, Accept-Encoding, X-Auth-Token
+< Content-Type: application/json
+< Content-Length: 375
+< Server: Jetty(6.1.25)
+< ]]>
+{
+    "access": {
+        "serviceCatalog": [],
+        "token": {
+            "RAX-AUTH:authenticatedBy": [
+                "PASSCODE",
+                "PASSWORD"
+            ],
+            "expires": "2014-01-09T15:08:53.645-06:00",
+            "id": "xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"
+        }, 
+        "user": {
+            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:federated": false,
+            "RAX-AUTH:multiFactorEnabled": true,
+            "id": "a64ee2047fc14cc7bc977caa3cfff35f",
+            "name": "jqsmith",
+            "roles": [
+                {
+                    "description": "User Admin Role.",
+                    "id": "3",
+                    "name": "identity:user-admin"
+                }
+            ]
+        }
+    }
+}</programlisting></para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+    </listitem>
+  </orderedlist>
+  <para>For additional information, see the following topics: <itemizedlist>
+    <listitem>
+      <para>
+        <link xlink:href="proc_mfa_manage.html">Manage
+          multi-factor authentication settings and
+          operation</link></para>
+    </listitem>
+    <listitem condition="admin">
+      <para><link xlink:href="Multifactor_Calls.html">API
+        reference: Multi-factor authentication
+        operations</link></para>
+    </listitem>
+    <listitem condition="client">
+      <para><link xlink:href="Multifactor_Calls_client.html">API
+        reference: Multi-factor authentication
+        operations</link></para>
+    </listitem>
+    
+  </itemizedlist></para> 
+</section>

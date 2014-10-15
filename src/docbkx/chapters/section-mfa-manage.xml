@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossary [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+  <section 
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="proc_mfa_manage">
+    <title>Manage multi-factor authentication settings and operation</title>
+    <important>
+      <para>Multi-factor authentication is supported only by Rackspace
+        Cloud Identity Service version 2.0 or later. After an account
+        is enabled for multi-factor authentication, the user cannot
+        authenticate using &CIS; v1.0 or v1.1. This feature is
+        currently only available to customers enrolled in the Early
+        Access program.</para>
+    </important>
+    <para><xref linkend="manage_mfa_ops"/> describes the API
+      operations for managing multi-factor authentication capabilities
+      for &CLOUD; accounts and shows the cURL command to make the
+      request. For more detailed information about an operation, click
+      the link in the Task column.</para>
+    <table xml:id="manage_mfa_ops" rules="all" width="1031">
+      <caption>Multi-factor authentication management tasks</caption>
+      <col width="94pt"/>
+      <col width="929pt"/>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>cURL command</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr condition="admin">
+          <td valign="top">
+            <para><link
+                xlink:href="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html"
+                >Unlock user account</link></para>
+          </td>
+          <td valign="top">
+            <para>Use the following cURL request to restore access to
+              a user account that has been locked as a result of too
+              many failed authentication attempts.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
+       -X PUT  \
+       -d '{"RAX-AUTH:multiFactor": { "unlock": "true" }}'
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token": $AUTHTOKEN | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="client">
+          <td valign="top">Recover account </td>
+          <td valign="top">
+            <para>If you cannot get the multi-factor authentication
+              passcode from the device associated with your account,
+              contact Rackspace Support.</para>
+          </td>
+        </tr>
+        <tr condition="admin">
+          <td valign="top">Recover account</td>
+          <td valign="top">
+            <para>If a user cannot get the passcode from the device
+              associated with their account,  an Identity
+              administrator or user manager can use the following cURL
+              request to generate a single, one-time use bypass code
+              that can be substituted for a multi-factor
+              authentication passcode. The default expiration for the
+              bypass code is 30 minutes after it is generated. Users
+              cannot recover their own account.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \      
+       -X POST \
+       -d '{"RAX-AUTH:bypassCodes"{"validityDuration":"PT30M"}}'\
+       -H "Content-type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="client">
+          <td valign="top">
+            <para>Unlock user account</para>
+          </td>
+          <td valign="top">
+            <para>If your account is locked as a result of failed
+              login attempts, wait 5 minutes and then try to
+              authenticate again using the passcode sent to your
+              account, or contact the user administrator to unlock
+              your account.</para>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <para condition="admin"><link
+                xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html"
+                >Generate bypass code</link></para>
+            <para condition="client"><link
+                xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html"
+                >Generate bypass codes</link></para>
+          </td>
+          <td valign="top">
+            <para>Users that cannot retrieve the multi-factor
+              authentication mobile passcode can submit the following
+              cURL request to generate a bypass code that can be used
+              in lieu of the passcode.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> $ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \
+       -d '{"RAX-AUTH:bypassCodes":{"validityDuration":"PT30M"}}' 
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <para condition="admin"><link
+                xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html"
+                >Check multi-factor status on user
+              account</link></para>
+            <para condition="client"><link
+                xlink:href="GET_getUserById_v2.0_users__userId__User_Calls.html"
+                >Check multi-factor status on user
+              account</link></para>
+          </td>
+          <td valign="top">
+            <para>Use the following cURL request to review the
+              multi-factor authentication configuration settings on an
+              account. If the account is enabled for multi-factor
+              authentication, the user listing includes the
+                <parameter>multiFactorEnabled</parameter>
+              attribute.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
+       -X POST \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="admin">
+          <td valign="top"><link
+              xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
+              >List multifactor-enabled devices by user id</link>
+          </td>
+          <td valign="top">
+            <para>Use the following cURL request to list the devices
+              that are associated with a user account for the purpose
+              of multi-factor authentication.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+       -X PUT \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="client">
+          <td valign="top"><link
+              xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html"
+              >List multifactor-enabled devices by user id</link>
+          </td>
+          <td valign="top">
+            <para>Use the following cURL request to list the devices
+              that associated with a user account for the purpose of
+              multi-factor authentication.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+       -X PUT \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="admin">
+          <td valign="top"><link
+              xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
+              >Disable multi-factor authentication</link></td>
+          <td>
+            <para>Use the folowing cURL request to disable
+                (<code>enabled=false</code>) multi-factor for the
+              specified user account.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+       -X PUT \
+       -d '{"RAX-AUTH:multiFactor": { "enabled": "false" }}' \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="client">
+          <td valign="top"><link
+              xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html"
+              >Disable multi-factor authentication</link></td>
+          <td>
+            <para>Use the folowing cURL request to disable
+                (<code>enabled=false</code>) multi-factor for the
+              specified user account.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+       -X PUT \
+       -d '{"RAX-AUTH:multiFactor": { "enabled": "false" }}' \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="admin">
+          <td valign="top">
+            <para><link
+                xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
+                >Remove the multi-factor settings and phone from a
+                user account</link></para>
+          </td>
+          <td valign="top">
+            <para>Use the following cURL request to remove
+              multi-factor authentication capabilities from a user
+              account.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
+       -X  DELETE  \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+        <tr condition="client">
+          <td valign="top">
+            <para><link
+                xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html"
+                >Remove the multi-factor settings and phone from a
+                user account</link></para>
+          </td>
+          <td valign="top">
+            <para>Use the following cURL request to remove
+              multi-factor authentication capabilities from a user
+              account.</para>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multifactor  \
+       -X  DELETE  \
+       -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <para condition="admin">For detailed API reference information, see 
+      <link xlink:href="Multifactor_Calls.html">Multi-factor
+        operations</link></para> 
+    <para condition="client">For detailed API reference information, see 
+      <link xlink:href="Multifactor_Calls_client.html">Multi-factor
+        operations</link>.</para>
+  </section>

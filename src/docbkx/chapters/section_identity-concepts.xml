@@ -21,7 +21,7 @@
                     identity and verify permission to access the requested system resources. </para>
                 <para>
                     Users can also be assigned to a tenant or region so that they inherit a set of 
-                    access rights and priviUserleges automatically, based on the tenant or region configuration.
+                    access rights and privileges automatically, based on the tenant or region configuration.
                 </para>
                 
                 <para>In the &CLOUD; Users are represented as accounts created for specific
@@ -56,7 +56,7 @@
                 <para>The act of passing in <glossterm baseform="Credentials-d1e03"
                         >credentials</glossterm>, confirming an identity, and returning a token
                     representation of the verified identity. </para>
-                <para>In the &CLOUD;, you authenticate by submitting a POST tokens API request with
+                <para>In the &CLOUD;, you authenticate by submitting a <command>POST tokens</command> API request with
                     valid credentials to the &CIS; endpoint. Credentials are typically a user name
                     and API key. However, other types of credentials can be accepted based on
                     service, tenant, or user account configuration.</para>

@@ -3,7 +3,7 @@
   <title type="text">About This Version</title>
   <updated>2011-01-21T11:33:21-06:00</updated>
   <id>https://identity.api.rackspacecloud.com/v2.0/</id>
-   <author><name>OpenStack</name><uri>http://www.openstack.org/</uri></author>
+   <author><name>Rackspace/name><uri>http://docs.rackspace.com/</uri></author>
    <link rel="self" href="http://identity.api.openstack.org/v2.0/"/>
    <entry>
       <id>http://identity.api.rackspacecloud.com/v2.0/</id>

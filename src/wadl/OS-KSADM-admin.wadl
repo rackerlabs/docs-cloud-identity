@@ -67,15 +67,18 @@
                         <method href="#getUserById"/>
                         <method href="#updateUser"/>
                         <method href="#deleteUser"/>
-                    <resource id="userRolesOSKSADM" path="roles/OS-KSADM">        
+                    <resource id="userRole" path ="roles">
+                        <method href="#getUserRole"/>
+                        
+                        <resource id="userRolesOSKSADM" path="/OS-KSADM">
                         <method href="#listUserGlobalRoles"/>
                             <resource id="userRoleById" path="{roleid}">
                                 <param name="roleId" type="xsd:string" style="template" required="true">
                                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A role Id.</para></wadl:doc>
                                 </param>
                                 <method href="#addUserRole"/>
-                                <method href="#getUserRole"/>
                                  <method href="#deleteUserRole"/>
+                             </resource>
                             </resource>
                     </resource>
   <!--                      <resource id="enabled" path="enabled">
@@ -393,30 +396,30 @@
         </request>
         <response status="201">
             <representation mediaType="application/xml" element="User">
-                <wadl:doc xml:lang="EN">
+                <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/addUser_response.xml"/>
-                </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain" type="identity:User" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>Specifies the default region for the user account. This value is inherited from the user administrator when the account is created..</para>
-                    </wadl:doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:domainId" style="plain" type="identity:User" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>Identifies the domain that contains the user account. This value is inherited from the user administrator when the account is created.</para>
-                    </wadl:doc>
-                </param>
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain"
-                        type="xsd:string" required="false">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A unique system-generated ID  for the user account. 
-                            The ID generated for the account cannot be modified.</wadl:doc>
-                    </param>
+                </doc>
                     <param xmlns="http://wadl.dev.java.net/2009/02" name="user" style="plain" type="identity:User" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                             <para>A <parameter>user</parameter> object that contains the user account information.
                                 <code>{"user": {"username": "test", "OS-KSADM:password": "xxxxxxxx", "email": "jqsmith@test.com"}</code></para>
                         </wadl:doc>
                     </param>
+                   <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:defaultRegion" style="plain" type="identity:User" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Specifies the default region for the user account. This value is inherited from the user administrator when the account is created..</para>
+                    </wadl:doc>
+                  </param>
+                  <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX-AUTH:domainId" style="plain" type="identity:User" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Identifies the domain that contains the user account. This value is inherited from the user administrator when the account is created.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A unique system-generated ID  for the user account. 
+                        The ID generated for the account cannot be modified.</wadl:doc>
+                </param>
                     <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="plain" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                             <para>The name that the user can use to authenticate to the Rackspace Cloud. 
@@ -554,7 +557,7 @@
                 
                 <!-- linking from this WADL-generated section to hand-coded section -->
                 <link condition="client" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
-                <link condition="admin" xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
+                <link condition="admin" xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
                 section.</para>
         </wadl:doc>
         <response status="200 203">
@@ -880,7 +883,7 @@
         </wadl:doc>
         <response status="201"/> &commonFaults; &postPutFaults; &getFaults; </method>
     <method name="GET" id="getUserRole">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get role information for a user">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user role information">
             <para role="shortdesc">Returns information about a specified role assigned to a specified user.</para>
             <para>Get information about a global role that belongs to a user.</para>
         </wadl:doc>
