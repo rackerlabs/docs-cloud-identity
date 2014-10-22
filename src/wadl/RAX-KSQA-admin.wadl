@@ -22,8 +22,7 @@
     xsi:schemaLocation="http://docs.openstack.org/identity/api/v2.0 ../common/xsd/api.xsd
     http://docs.openstack.org/common/api/v1.0 ../common/xsd/api-common.xsd
     http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd
-    http://docs.openstack.org/identity/api/ext/RAX-KSQA/v1.0 ../common/xsd/RAX-KSQA-secretQA.xsd
-    ">
+    http://docs.openstack.org/identity/api/ext/RAX-KSQA/v1.0 ../common/xsd/RAX-KSQA-secretQA.xsd">
     
     <grammars>
         <include href="../common/xsd/api.xsd"/>
@@ -38,12 +37,14 @@
     <resources base="http://localhost:35357" xml:id="Identity-v2">
         <resource id="version" path="v2.0">
             <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                <doc>You need a valid admin token for access.</doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">Valid admin token. valid admin token.</wadl:doc>
             </param>
             <resource id="users" path="users">
                 <resource id="userById" path="{userId}">
-                    <param name="userId" style="template" type="xsd:string" required="true">
-                        <doc>The user ID assigned by system when user is added.</doc>
+                    <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="template" type="xsd:string" required="true">
+                        <wadl:doc  xmlns="http://docbook.org/ns/docbook">
+                            <para>The user ID assigned by system when user is added.</para>
+                        </wadl:doc>
                     </param>
                     <resource id="user-RAX-KSQA" path="RAX-KSQA">
                         <resource id="secretqa" path="secretqa">
@@ -57,50 +58,50 @@
     </resources>
     
     <method name="GET" id="getUserSecretQA">
-        <doc xml:lang="EN" title="Get User Secret Q&amp;A">
-            <p xmlns="http://www.w3.org/1999/xhtml">Get a secret question and answer for a user.</p>
-        </doc>
+        <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User Secret Q&amp;A">
+            <para>Get a secret question and answer for a user.</para>
+        </wadl:doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="RAX-KSQA:secretQA">
-                <doc xml:lang="EN">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSQA-secretQA.xml"/>
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSQA-secretQA.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
         &getFaults;
     </method>
     <method name="PUT" id="updateUserSecretQA">
-        <doc xml:lang="EN" title="Update User Secret Q&amp;A">
-            <p xmlns="http://www.w3.org/1999/xhtml">Update a secret question and answer for a user.</p>
-        </doc>
+        <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create or update a user secret Q&amp;A">
+            <para role="shortdesc">Create or update a user secret question and answer.</para>
+        </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-KSQA:secretQA">
-                <doc xml:lang="EN">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSQA-secretQA.xml"/>
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSQA-secretQA.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="RAX-KSQA:secretQA">
-                <doc xml:lang="EN">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSQA-secretQA.xml"/>
-                </doc>
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSQA-secretQA.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
