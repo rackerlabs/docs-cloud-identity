@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--*******************************************************-->
 <!-- Import Common XML Entities -->
 <!-- -->
 <!-- You can resolve the entites with xmllint -->
@@ -14,7 +13,7 @@
 <application 
     xmlns="http://wadl.dev.java.net/2009/02" 
     xmlns:identity="http://docs.openstack.org/identity/api/v2.0" 
-    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:resource_type="http://wadl.dev.java.net/2009/02" 
     xmlns:policy="http://docs.rackspace.com/identity/policy/v1.0" 
@@ -94,7 +93,7 @@
                     <param name="userId" style="template" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                     </param>
-                    <method href="#saveUserSecretQA"/>
+                    <method href="#saveSecretQA"/>
                     <method href="#getUserSecretQAs"/>
                 </resource>
             </resource>
@@ -177,14 +176,14 @@
                            <method href="#updateMultifactorSettings"/>
                     <resource id="multifactor_vcode" path="{phoneId}/verificationcode">
                     <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneId" style="template" type="xsd:string" required="true">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The id of the phone associated with the user account.
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The ID for the phone associated with the user account.
                             </para></wadl:doc>          
                         </param>
                     <method href="#sendVerifyCode"/>
                     </resource>
                     <resource id="mfa_PIN" path="{phoneId}/verify">
                         <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="template" type="xsd:string" required="true">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated id assigned when a phone is added to an account.</para></wadl:doc>          
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when a phone is added to an account.</para></wadl:doc>          
                         </param>   
                     <method href="#verifyDevice"/>                        
                     </resource>
@@ -307,7 +306,7 @@
 
                     <resource id="policy" path="{policyId}">
                         <param name="policyId" type="xsd:string" style="template" required="true">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A policy Id</para></wadl:doc>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A policy ID</para></wadl:doc>
                         </param>
                         <method href="#getPolicy"/>
                         <method href="#updatePolicy"/>
@@ -329,7 +328,7 @@
 
                     <resource id="region" path="{regionId}">
                         <param name="regionId" type="xsd:string" style="template" required="true" default="false">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A region Id</para></wadl:doc>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A region ID</para></wadl:doc>
                         </param>
                         <method href="#getRegion"/>
                         <method href="#updateRegion"/>
@@ -349,7 +348,7 @@
                         <method href="#createQuestion"/>
                         <resource id="question" path="{questionId}">
                             <param name="questionId" type="xsd:string" style="template" required="true">
-                                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A question Id</para></wadl:doc>
+                                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A question ID</para></wadl:doc>
                             </param>
                             <method href="#getQuestion"/>
                             <method href="#updateQuestion"/>
@@ -391,46 +390,39 @@
     <!-- ======================================================================================= -->
     <!-- Methods -->
     <!-- ======================================================================================= -->
-
-    <method id="getUserSecretQAs" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get user secret Q&amp;A list">
-            <para role="shortdesc"> Get a list of secret questions and answers for a user. </para>
-            <para> The operation returns a list of questions and answers for a user. </para>
-        </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/SecretQAList.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
-                    <xsdxt:code href="../common/samples/SecretQAList.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults; &getFaults; </method>
-
-    <method id="saveUserSecretQA" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Create a secret Q&amp;A">
-            <para role="shortdesc"> Create a secret question and answer for a user. </para>
-            <para> Clients must specify the question ID, question, and answer in the request body. </para>
+    <method id="saveSecretQA" name="POST">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add secret question to a user account">
+            <para role="shortdesc">Adds a secret question and answer to a user account.</para>
+            <para>The Identity service provides a list of security questions that can be used to verify account access.
+                Administrators and users can add one of these questions to a user account with a unique answer that 
+                can be used to confirm identity before granting access to the 
+                account or account information. Users can only add a security question to their own account.</para>
+            <para>If the account already has a secret question and answer, this operation replaces the existing information with the values 
+                specified in the request body.</para>
+                <tip>
+                    <para>Use the Get questions API operation to list the available questions and associated IDs.
+                    </para>
+                </tip>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/SecretQAForSave.xml"/>
                 </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The ID of the secret question to add to the account.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="answer" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The answer that the user can provide to verify an account.</para>
+                    </wadl:doc>
+                </param>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/SecretQAForSave.json"/>
-               </wadl:doc>
+                </wadl:doc>
             </representation>
         </request>
         <response status="200">
@@ -441,9 +433,46 @@
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
+    <method id="getUserSecretQAs" name="GET">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get user secret Q&amp;A list">
+            <para role="shortdesc">Lists the secret questions and answers for a user account.</para>
+            <para>The operation returns a list of questions and answers for a user.</para>
+        </wadl:doc>
+        <response status="200">
+            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/SecretQAList.xml"/>
+                </wadl:doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="questions" style="plain" type="RAX-AUTH:Questions" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>An object that contains the collection of secret questions that can be added to user accounts.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="question" style="plain" type="RAX-AUTH:Question" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>An object that contains the ID and text for a secret question.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when the question was created.</para>
+                    </wadl:doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02" name="question" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The text for the question.</para>
+                    </wadl:doc>
+                </param>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/SecretQAList.json"/>
+                </wadl:doc>
+            </representation>
+        </response> &commonFaults; &getFaults; </method>
+
     <method id="resetUserAPIKeyCredentials" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-            <para role="shortdesc"> Reset a user's API Key.</para>para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Reset API key for user">
+            <para role="shortdesc">Resets the API Key for a specified user account.</para>para>
             <para>We recommend that you routinely reset passwords and API keys. 
                 This API key reset operation returns the new API key for the user account. 
                 Unlike updating the password, the API key reset does not revoke existing 
@@ -466,7 +495,7 @@
 
     <method id="impersonateUser" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user">
-           <para class="shortdesc">Impersonate a specific user.</para>
+           <para class="shortdesc">Impersonates a specific user.</para>
             <para xmlns="http://docbook.org/ns/docbook">To impersonate a user, you must first authenticate as yourself. The
                 response to this authentication request includes a current Racker token; you must already hold a
                 service token. After you have authenticated and have the necessary privileges, issue this
@@ -1150,8 +1179,8 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Create a region">
             <para role="shortdesc"> Creates a region. </para>
-            <para> Clients must specify the region name in the request body. </para>
-            <para> Clients must specify whether or not the region is default in the request body. When a user is created,
+            <para>Clients must specify the region name in the request body. </para>
+            <para>Clients must specify whether or not the region is default in the request body. When a user is created,
                 they are assigned the default region based on which region is set as “isDefault”:true. This is used to assist
                 Next Gen Compute capacity by suggesting to new users that they provision where we want them to. The user can
                 change their default region through the update user API call, but they are restricted to changing it only to
@@ -1184,22 +1213,20 @@
         <response status="204"/> &commonFaults; &getFaults; </method>
 
     <method id="getQuestions" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get questions">
-            <para role="shortdesc"> Get a list of questions. </para>
-            <para> The operation returns a list of questions. </para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get questions">
+            <para role="shortdesc">Returns a list of secret questions that can be added to user accounts.</para>
+            <para> The list includes secret questions and associated IDs required to manage questions by using the Identity 
+                service API. questions.</para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/QuestionList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/QuestionList.json"/>
                 </wadl:doc>
             </representation>
@@ -1208,39 +1235,35 @@
     <method id="getQuestion" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Get a question">
-            <para role="shortdesc"> Get a question. </para>
+            <para role="shortdesc">Get a secret question by question ID.</para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Question.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Question.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="updateQuestion" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Update a question">
-            <para role="shortdesc"> Update a question. </para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update a question">
+            <para role="shortdesc">Updates a question. </para>
+            <para>Identity administrators can use this operation to modify the question associated with the specified question ID.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Question.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Question.json"/>
                 </wadl:doc>
             </representation>
@@ -1248,28 +1271,34 @@
         <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="createQuestion" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Create a question">
-            <para role="shortdesc"> Create a question. </para>
-            <para> Clients must specify the question name in the request body. </para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Create a secret question">
+            <para role="shortdesc">Creates a secret question that can be added to user accounts.</para>
+            <para>Identity administrators can create security questions for account verification. 
+            When the question is created, the Identity service assigns a unique question ID and returns the value in the LOCATION 
+            field of the response header. You need the ID when you 
+            submit API requests to update, delete, or assign the secret question to a user account. 
+            </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/QuestionForCreate.xml"/>
                 </wadl:doc>
+                    <param name="question" style="plain" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>Specifies the text for a secret question.</para>
+                        </wadl:doc>
+                    </param>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/QuestionForCreate.json"/>
                 </wadl:doc>
             </representation>
         </request>
         <response status="201">
-            <param name="Location" style="header" type="xsd:string" required="true">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Location of the URI for the newly-created question.</para></wadl:doc>
+            <param name="LOCATION" style="header" type="URI" required="true">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Location of the URI for the newly-created question that includes the question ID assigned by the Identity service.</para></wadl:doc>
             </param>
         </response>
         <response status="409">
@@ -1280,8 +1309,10 @@
     <method id="deleteQuestion" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete a question">
             <para role="shortdesc"> Delete a question. </para>
-            <para> This request will only succeed if the question is not assigned to any users. The question must be
-                removed from any users before this operation will be allowed. </para>
+            <para>Identity administrators can remove a secret question by question ID. 
+             If the question is associated with any user accounts, use the 
+             You can remowith a user account, the operation fails. 
+                The question must be removed from any users before this operation will be allowed. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &getFaults; </method>
 
@@ -1330,7 +1361,7 @@
             <para>If an account is enabled for multi-factor authentication, authentication is a two-step process: 
                 <orderedlist>
                     <listitem>
-                        <para>Send an authentication request with either Password or API credentials. See 
+                        <para>Send an initial  with user name and password credentials. See 
                             <link xlink:href= "POST_authenticate_v2.0_tokens_Token_Calls.html">Authenticate as user with password or API key credentials</link>.</para>
                         <para>The request triggers &CIS; to send an SMS message to the phone 
                             associated with the user account. In response to the authentication request,  &CIS; 
@@ -1557,7 +1588,7 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The userId for the account to update.</para></wadl:doc>          
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated id assigned when a phone is added to an account.</para></wadl:doc>          
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when a phone is added to an account.</para></wadl:doc>          
                 </param>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="verified" style="plain" type="boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -1581,8 +1612,7 @@
             <para>Before a user can authenticate using a mobile phone, &CIS; must verify that the user 
                 has the phone.
             </para>
-            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. The 
-                id is generated when the phone is added to the user account. If you don't know the id, use the 
+            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
                 <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
                 operation to get it.</para>
             <para>In response to the Send Verify operation request, the Rackspace verification service sends a PIN to the specified phone 
@@ -1599,7 +1629,7 @@
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
        -H "X-Auth-Token: $AUTH_TOKEN"
-       | python -m json.tool</programlisting><note><para>This example assumes that the endpoint URL, userId, and your authentication token to
+       | python -m json.tool</programlisting><note><para>This example assumes that the endpoint URL, userId, and your authentication token have been exported to
            environment variables.</para></note></wadl:doc>
             </representation>
         </request>
@@ -1614,8 +1644,7 @@
                 to authenticate to &CIS; if the associated account has been enabled for multi-factor authentication. See the Enable multi-factor 
                 authentication operation.</para>
             
-            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. The 
-                id is generated when the phone is added to the user account. If you don't know the id, use the 
+            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
                 <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
                 operation to get it.</para>
 
@@ -1650,7 +1679,7 @@
     <method id="getMobilePhonesForUser" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List phones for user">
             <para role="shortdesc">Lists phones associated with the specified user account.</para>
-            <para>Use this operation to get the phone number, id, and the multi-factor 
+            <para>Use this operation to get the phone number, ID, and the multi-factor 
             verification status for all phones associated with the specified user.</para>
             <para>If you don't know the userId, use the List operation to find it.</para>
         </wadl:doc>
