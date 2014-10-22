@@ -6,6 +6,5 @@ X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_D
 
 <auth xmlns="http://docs.openstack.org/identity/api/v2.0"
 	xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<token id="aaaaa-bbbbb-ccccc-dddd"/>
 	<RAX-AUTH:multiFactor factor="PASSCODE" passcode="123456"/>
 </auth>

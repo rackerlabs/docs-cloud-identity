@@ -486,7 +486,7 @@
                         the operation only returns information about the user's account.
                     </para>
                 </listitem>
-                <listitem>
+                <listitem security="internal">
                     <para>To find the user with the authority to modify account permissions, refer
                         to <link xlink:href="GET_getUserAdmin_v2.0_admins_User_Calls.html">"Get User Admin."</link>
                     </para>

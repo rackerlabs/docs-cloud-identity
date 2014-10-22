@@ -7,6 +7,9 @@
 <!-- -->
 <!-- xmllint -noent RAX-KSQA-admin.wadl -->
 <!--*******************************************************-->
+
+<!-- The RAX-KSQA API operations are available only to Rackspace Identity Administrators. 
+    They are documented in the Rackspace Identity Admin Guide.  -->
 <!DOCTYPE application [
 <!ENTITY % common SYSTEM "../common/common.ent">
 %common;

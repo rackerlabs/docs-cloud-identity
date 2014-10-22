@@ -1,12 +1,28 @@
 {
   "RAX-AUTH:questions": [
     {
-      "id": "1",
-      "question": "What is the location of a dream vacation?"
-    },
-    {
-      "id": "2",
-      "question": "Where is the best place to live?"
-    }
+            "id": "6",
+            "question": "What is your pass phrase?"
+        },
+        {
+            "id": "5",
+            "question": "Who let the dogs out?"
+        },
+        {
+            "id": "4",
+            "question": "What is your favorite color?"
+        },
+        {
+            "id": "3",
+            "question": "What is your favorite book?"
+        },
+        {
+            "id": "2",
+            "question": "Where is the best place to live?"
+        },
+        {
+            "id": "1",
+            "question": "What is the location of your dream vacation?"
+        }
   ]
 }
