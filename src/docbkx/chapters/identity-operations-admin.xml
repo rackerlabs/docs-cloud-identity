@@ -484,7 +484,7 @@
 	
 	<!-- SECRETS -->
 	<section xml:id="Secret_Calls">
-		<title>Secret Questions and Answers</title>
+		<title>Secret questions and answers</title>
 		<para>The operations described in this section allow service developers to manage 
 			secret questions and answers. Secret questions and answers can be used to identify a user to a support Racker via telephone.</para>
 		<note>
@@ -506,6 +506,9 @@
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
 				<wadl:method href="#saveSecretQA"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
+				<wadl:method href="#getUserSecretQAs"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#questions">
 				<wadl:method href="#getQuestions"/>

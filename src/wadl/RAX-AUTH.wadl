@@ -435,8 +435,7 @@
 
     <method id="getUserSecretQAs" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get user secret Q&amp;A list">
-            <para role="shortdesc">Lists the secret questions and answers for a user account.</para>
-            <para>The operation returns a list of questions and answers for a user.</para>
+            <para role="shortdesc">Returns the list of secret questions and answers for a user account.</para>
         </wadl:doc>
         <response status="200">
             <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
@@ -1410,7 +1409,7 @@
             </representation>
         </request>
         <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+            <doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></doc>
             <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
                     <para>OK</para>

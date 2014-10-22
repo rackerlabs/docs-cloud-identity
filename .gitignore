@@ -38,3 +38,15 @@ Thumbs.db
 .idea/workspace.xml
 
 1
+
+src/common/xsd/Transforms/global_transform_scenarios.scenarios
+
+src/common/xsd/token.xsd
+
+*.xsd
+
+src/common/samples/RAX-GRPADM-old/samples/group-for-create.json
+
+src/wadl/identity-api/.DS_Store
+
+src/wadl/identity-api/openstack-identity-api/.DS_Store

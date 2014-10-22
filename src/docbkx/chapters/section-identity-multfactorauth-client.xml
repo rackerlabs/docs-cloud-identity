@@ -65,7 +65,7 @@
       <mediaobject>
         <imageobject>
           <imagedata fileref="../figures/multifactor_setup_user.png"
-            format="PNG" align="center"/>
+            contentdepth="100%" contentwidth="100%" align="left"/>
         </imageobject>
       </mediaobject>
     </figure>

@@ -12,12 +12,12 @@
                 "PASSWORD"
             ],
             "expires": "2014-01-09T15:08:53.645-06:00",
-            "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            "id": "abcdef123ghi4j5k67m8910n12op3qrs"
         },
         "user": {
             "RAX-AUTH:defaultRegion": "ORD",
             "RAX-AUTH:federated": false,
-            "id": "ec7f0fd2de2f4eeeb07c7412c848fe69",
+            "id": "789345",
             "name": "mfaTestUser",
             "roles": [
                 {

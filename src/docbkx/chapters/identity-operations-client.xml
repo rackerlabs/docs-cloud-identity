@@ -246,7 +246,7 @@
 	</section>
 	
 	<section xml:id="Secret_Calls_client">
-		<title>Secret Questions and Answers</title>
+		<title>Secret questions and answers</title>
 		<para>The operations described in this section allow administrators and users to manage 
 			secret questions and answers. Secret questions and answers can be used to identify a user to Racksapce support via telephone.</para>
 		<note>
