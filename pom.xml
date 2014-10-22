@@ -210,7 +210,7 @@
 					<!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
 					<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 					
-					<publicationNotificationEmails>margaret.eker@rackspace.com</publicationNotificationEmails>
+					<publicationNotificationEmails>margaret.eker@rackspace.com; angela.molock@rackspace.com</publicationNotificationEmails>
 				</configuration>
 				
 			</plugin>

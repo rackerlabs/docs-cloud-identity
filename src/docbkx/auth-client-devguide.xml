@@ -53,18 +53,37 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-10-22</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Corrected XML and JSON response examples in the <link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens__Token_Calls.html">Authenticating with multi-factor 
+								authentication credentials</link> section.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the <link xlink:href="QuickStart-000.html">Quick Start</link> to include instructions for authenticating with multi-factor authentication credentials.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Added <link xlink:href="Secret_Calls_client.html">Secret Question and Answer</link> operations available in the RAX-AUTH extension.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-10-14</date>
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Corrected URI for <link xlink:href="GET_getUserRole__v2.0_users__userId__roles_Role_Calls.html">Get user role</link> operation.
+							<para>Corrected URI for <link xlink:href="GET_getRolebyId__v2.0_OS-KSADM_roles__roleId__Role_Calls.html">Get role by ID</link> operation.
 							</para>
 						</listitem>
 						<listitem>
 							<para>Updated <link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add User operation</link> to correct spelling error.</para>
 						</listitem>
 						<listitem>
-							<para>Updated <link xlink:href="MFA__Ops.html">Multi-factor authentication></link> set up, authenticate, and manage sections 
+							<para>Updated <link xlink:href="MFA_Ops.html">Multi-factor authentication></link> set up, authenticate, and manage sections 
 								to remove extra headers and correct cURL sample code.</para>
 						</listitem>
 					</itemizedlist>
@@ -74,10 +93,6 @@
 				<date>2014-10-08</date>
 				<revdescription>
 					<itemizedlist>
-						<listitem>
-							<para>Updated <link xlink:href="POST_authenticateAsRacker_v2.0_tokens_Token_Calls.html">Authentication as a Racker</link> operation to include information about how to submit a request to update 
-								the user, group, and role configuration managed by the Rackspace eDirectory service.</para>
-						</listitem>
 						<listitem>
 							<para>Updated the <link xlink:href="QuickStart-000.html">Quick Start</link> to add information notes about managing authentication tokens.</para>
 						</listitem>
@@ -92,8 +107,6 @@
 							<para>Corrected URI in <link xlink:href="POST_admin-resetUserAPIKeyCredentials_v2.0_users__userId__OS-KSADM_credentials_RAX-KSKEYapiKeyCredentials_RAX-AUTH_reset_User_Calls.html">Reset API credentials</link> operation to add missing RAX-KSKEY modifier on the <code>apiKeyCredentials</code> parameter.</para>
 						</listitem>
 					</itemizedlist>
-					<para>
-						Updated <link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add User operation</link> to correct spelling error.</para>
 				</revdescription>
 			</revision>
 			<revision>

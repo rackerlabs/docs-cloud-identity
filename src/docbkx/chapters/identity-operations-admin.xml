@@ -220,13 +220,7 @@
 				</para> 
 		</note>
 		
-		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02" href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl"/>
-		<!--	
-			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#groups"/>
-			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#group"/>
-			<wadl:resource href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#users"/>
-			<wadl:resource	href="../../wadl/identity-api/openstack-identity-api/src/docbkx/RAX-GRPADM/RAX-GRPADM.wadl#user"/>
-		</wadl:resources> -->
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02" href="../../wadl/RAX-GRPADM.wadl"/>
 	</section>
 	
 	<!-- ROLES -->
@@ -507,14 +501,11 @@
 			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="#getUserSecretQA"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
-				<wadl:method href="#getUserSecretQAs"/>
-			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-KSQA-admin.wadl#secretqa">
 				<wadl:method href="#updateUserSecretQA"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
-				<wadl:method href="#saveUserSecretQA"/>
+				<wadl:method href="#saveSecretQA"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#questions">
 				<wadl:method href="#getQuestions"/>
@@ -942,7 +933,7 @@
 	
 	<!-- SERVICE OPERATIONS -->
 	<section xml:id="Service_Calls">
-		<title>Service Operations</title>
+		<title>Service operations</title>
 		<para>The operations described in this section allow service developers to manage services.  These
 		services correspond to the OpenStack Keystone services.</para>
 		<note>
@@ -971,14 +962,14 @@
 	
 		<!-- MULTIFACTOR OPERATIONS -->	
 		<section xml:id="Multifactor_Calls">
-			<title>Multi-factor</title>
+			<title>Multi-factor operations</title>
 			<note>
 				<para>Multi-factor authentication is currently available only to
 					customers enrolled in the Early Access program for this feature.</para></note>
 			
 			<para>The &CIS; API operations described in this section implement multifactor authentication
 			capabilities for &CLOUD; accounts. For more information, see 
-				<link xlink:href="MFA_Ops.html">Using multi-factor authentication</link>
+				<link xlink:href="MFA_Ops.html">Multi-factor authentication</link>.
 				<!--
 					<para><link xlink:href="mfa_api_ovw.html">Multifactor elements and
 							attributes</link></para>-->

@@ -99,7 +99,7 @@
 			
 			<!-- list user who is Admin user -->	
 			
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins" >
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_user_admins">
 				<wadl:method href="#getUserAdmin"/>
 			</wadl:resource>	
 			
@@ -116,8 +116,9 @@
 			<!-- reset user's API key credentials -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#reset_apikey_credentials" >
 				<wadl:method href="#resetUserAPIKeyCredentials"/>
-			</wadl:resource>			
+			</wadl:resource>
 		</wadl:resources>
+		
 	</section>
 	<section xml:id="Role_Calls">
 		<title>Roles</title>
@@ -243,11 +244,35 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	
+	<section xml:id="Secret_Calls_client">
+		<title>Secret Questions and Answers</title>
+		<para>The operations described in this section allow administrators and users to manage 
+			secret questions and answers. Secret questions and answers can be used to identify a user to Racksapce support via telephone.</para>
+		<note>
+			<para> 
+				Some of the functionality described in this section is
+				provided by the <code>RAX-AUTH</code> and <code>RAX-KSQA</code> extensions to the
+				core Identity API. For more information, see 
+				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
+					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
+						targetptr="Extensions-d1e688">Extensions</olink>.
+			</para>
+		</note>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#add_user_secretqa">
+				<wadl:method href="#saveSecretQA"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#questions">
+				<wadl:method href="#getQuestions"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
 	<section xml:id="Multifactor_Calls_client">
-		<title>Multifactor</title>
+		<title>Multifactor operations</title>
 		<para>The &CIS; API operations described in this section implement multifactor authentication
 			capabilities for &CLOUD; accounts. For more information, see 
-			<link xlink:href="MFA_Ops.html">Using multi-factor authentication</link>
+			<link xlink:href="MFA_Ops.html">Using multi-factor authentication</link>.
 			<!--
 					<para><link xlink:href="mfa_api_ovw.html">Multifactor elements and
 							attributes</link></para>-->
