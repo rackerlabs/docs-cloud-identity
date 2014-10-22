@@ -7,7 +7,7 @@
 <!--        xmllint -noent RAX-GRPADM.wadl           -->
 <!--*******************************************************-->
 <!DOCTYPE application [
-<!ENTITY % common  SYSTEM "../../../../../../common/common.ent">
+<!ENTITY % common  SYSTEM "../common/common.ent">
     %common;
 ]>
 
@@ -20,7 +20,7 @@
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
     <grammars>
-        <include href="../../../../../../common/xsd/api.xsd"/>
+        <include href="../common/xsd/api.xsd"/>
     </grammars>
 
     <resources base="http://localhost:35357" xml:id="RAX-GRPADM-v2.0">
@@ -114,7 +114,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/groups.xml"/>
+                        href="../common/samples/groups.xml"/>
                 </wadl:doc>
                 <param name="next" style="plain" type="xsd:anyURI"
                     path="/grp:groups/atom:link[@rel='next']/@href">
@@ -129,7 +129,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/groups.json"/>
+                        href="../common/samples/groups.json"/>
                 </wadl:doc>
             </representation>
         </response>
@@ -145,7 +145,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group-for-create.xml"
+                        href="../common/samples/group-for-create.xml"
                     />
                 </wadl:doc>
                 <param name="group" style="plain" required="true"
@@ -155,7 +155,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group-for-create.json"
+                        href="../common/samples/group-for-create.json"
                     />
                 </wadl:doc>
             </representation>
@@ -165,7 +165,7 @@
                 element="grp:group">
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../RAX-GRPADM/samples/group.xml"
+                    <xsdxt:code href="../common/samples/group.xml"
                     />
                 </wadl:doc>
                 <param name="Location" style="header" required="true"
@@ -182,7 +182,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group.json"/>
+                        href="../common/samples/group.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -197,7 +197,7 @@
                 element="grp:group">
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../RAX-GRPADM/samples/group.xml"
+                    <xsdxt:code href="../common/samples/group.xml"
                     />
                 </wadl:doc>
             </representation>
@@ -205,7 +205,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group.json"/>
+                        href="../common/samples/group.json"/>
                 </wadl:doc>
             </representation>
         </response>
@@ -221,7 +221,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group-for-update.xml"
+                        href="../common/samples/group-for-update.xml"
                     />
                 </wadl:doc>
                 <param name="group" style="plain" required="true"
@@ -231,7 +231,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group-for-update.json"
+                        href="../common/samples/group-for-update.json"
                     />
                 </wadl:doc>
             </representation>
@@ -242,7 +242,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group-updated.xml"
+                        href="../common/samples/group-updated.xml"
                     />
                 </wadl:doc>
             </representation>
@@ -250,7 +250,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/group-updated.json"
+                        href="../common/samples/group-updated.json"
                     />
                 </wadl:doc>
             </representation>
@@ -280,7 +280,7 @@
                 element="identity:users">
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../RAX-GRPADM/samples/users.xml"
+                    <xsdxt:code href="../common/samples/users.xml"
                     />
                 </wadl:doc>
                 <param name="next" style="plain" type="xsd:anyURI"
@@ -296,7 +296,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../RAX-GRPADM/samples/users.json"/>
+                        href="../common/samples/users.json"/>
                 </wadl:doc>
             </representation>
         </response>

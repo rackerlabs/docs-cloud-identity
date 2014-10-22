@@ -9,47 +9,55 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Identity-Service-Concepts-admin"
-    xmlns:db="http://docbook.org/ns/docbook">
-    
-
-    <title>&CIS; authentication and authorization</title>
-    <para>The Rackspace Identity service manages client authentication and authorization for the
-        Rackspace Cloud. A client sends credentials to the Rackspace Identity service; through the
-        Cloud Contol panel, or programmatically by submitting a <command>POST tokens</command> API service request. If
-        the credentials are valid, the Rackspace Identity service returns a token and service
-        catalog that lists available services and the endpoint URLs for service requests.</para>
-    
-    <!-- .SVG exists but doesn't use the right fonts: .PNG matches the source .VSD 
-    at 100% natural size as exported, the .PNG fits HTML but is too large for PDF -->
-    <figure xml:id="token-flow">
-            <title>Rackspace Cloud Services: Authenticaiton and authorization work flow</title>
-            <mediaobject>
-                <imageobject>
-                    <imagedata scale="75" fileref="../figures/auth-keystone-identity-manager.png" format="PNG" align="center"/>
-                </imageobject>
-            </mediaobject>
-        </figure>
-    
-    <para>In subsequent service requests, the client includes the authentication token as proof of
-        identity. Rackspace Identity service checks the validity of the token for the client
-        requesting service. <itemizedlist>
-            <listitem>
-                <para>If the token is valid, the Identity service retruns information about the
-                    access rights and capabilities available to the client for the requested
-                    service.</para>
-            </listitem>
-            <listitem>
-                <para>If the token is invalid, the Identity service returns a <returnvalue>401
-                        unauthorized</returnvalue> error message.</para>
-            </listitem>
-        </itemizedlist>
+    xmlns:db="http://docbook.org/ns/docbook"><title>&CIS;
+        authentication and authorization</title><para>The Rackspace
+        Identity service manages client authentication and
+        authorization for the Rackspace Cloud. A client sends
+        credentials to the Rackspace Identity service; through the
+        Cloud Contol panel, or programmatically by submitting a
+            <command>POST tokens</command> API service request. If the
+        credentials are valid, the Identity service returns an
+        authentication token and service an authentication token and a
+        service catalog that contains a list of all services and
+        endpoints available for this token. Because the authentication
+        token expires after 24 hours, you must generate a token once a
+        day.</para><!-- .SVG exists but doesn't use the right fonts: .PNG matches the source .VSD 
+    at 100% natural size as exported, the .PNG fits HTML but is too large for PDF --><figure
+        xml:id="token-flow">
+        <title>Rackspace Cloud Services: Authenticaiton and
+            authorization work flow</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata scale="75"
+                    fileref="../figures/auth-keystone-identity-manager.png"
+                    format="PNG" align="center"/>
+            </imageobject>
+        </mediaobject>
+    </figure>
+    <para>In subsequent service requests, the client includes the
+    authentication token as proof of identity. The Identity service
+    checks the validity of the token for the client requesting
+    service.</para> <itemizedlist>
+        <listitem>
+            <para>If the token is valid and includes authorization to
+                complete the requested operation, the service
+                completes the operation and returns a response that
+                indicates success and includes any other information
+                returned by the API.</para>
+        </listitem>
+        <listitem>
+            <para>If the token is expired or does not provide
+                permissions to complete the operation, the Identity
+                service returns a <returnvalue>401
+                    unauthorized</returnvalue> error message or other
+                error message. If the token is expired, the user can
+                re-authenticate to get a valid token and retry the
+                operation.</para>
+        </listitem>
+    </itemizedlist>
+    <para>To learn more about the Rackspace Identity
+        service components and processes, review <citetitle>Identity
+            concepts.</citetitle>
     </para>
-    <para>Based on the information returned,  the service determines whether the client is
-        authorized to complete the requested operation. If authorization is successful, the service
-        processes the request. Otherwise, the client receives an error message prompting the user to
-        retry the operation with a valid token.</para>
-    <para>To learn more about the Rackspace Identity service components and processes, review
-            <citetitle>Identity concepts.</citetitle>
-    </para>
-    <xi:include href="section_identity-concepts.xml"/>
-</section>
+    <xi:include href="section_identity-concepts.xml"
+    /></section>
