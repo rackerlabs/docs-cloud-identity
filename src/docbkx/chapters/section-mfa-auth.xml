@@ -18,24 +18,22 @@
       <listitem><para><itemizedlist>
         <listitem><para>Valid username and password credentials for a Rackspace Cloud account that has been enabled for multi-factor authentication.</para></listitem>
         <listitem><para>Access to the phone linked to your &CLOUD; account.</para></listitem>
-        <listitem><para>User account not locked as a result of too many failed
-          authentication attempts.</para></listitem>
       </itemizedlist></para></listitem>
     </varlistentry>
   </variablelist>
-  <orderedlist>
+  <orderedlist xml:id="mfa_auth_steps">
       <listitem>
         <para>Send a POST tokens authentication request to the Identity services with your
           <parameter>username</parameter> and
           <parameter>password</parameter>:</para>
         <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
  -X POST \
- -d '{"auth":{"passwordCredentials":{"username":"theUserName","password":"thePassword"}}}' \
+ -d '{"auth":{"passwordCredentials":{"username":"myUserName","password":"thePassword"}}}' \
  -H "Content-type: application/json"  --verbose -k</programlisting>
-        <para>&CIS; returns a 401
-          message that includes a <code>sessionId</code> in the WWW-Authenticate header and
-          a request for additional
-          credentials:<screen><computeroutput>
+        <para>&CIS; returns a 401 message that includes a
+          <code>sessionId</code> in the <code>WWW-Authenticate</code>
+        header and a request for additional
+        credentials:<screen><computeroutput>
 &lt; HTTP/1.1 401 Unauthorized
 * Server Apache-Coyote/1.1 is not blacklisted
 &lt; Server: Apache-Coyote/1.1
@@ -68,11 +66,12 @@
       <variablelist>
         <varlistentry>
           <term><emphasis role="bold">cURL POST token request with
-            multi-factor authentication
+            multi-factor authentication 
             credentials</emphasis></term>
           <listitem>
             <para>
-              <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl -X POST https://identity.api.rackspacecloud.com/v2.0/tokens \
+              <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl https://identity.api.rackspacecloud.com/v2.0/tokens \
+       -X POST \
        -d '{"auth": {"RAX-AUTH:passcodeCredentials": {"passcode":"1411594"}}}'\
        -H "X-SessionId: $SESSION_ID" \
        -H "Content-Type: application/json" --verbose -k </programlisting>
@@ -97,14 +96,14 @@
                 "PASSWORD"
             ],
             "expires": "2014-01-09T15:08:53.645-06:00",
-            "id": "xxxxx-yyyyy-xxxxxx-yyyyy-zzzzzzz"
+            "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         }, 
         "user": {
             "RAX-AUTH:defaultRegion": "ORD",
             "RAX-AUTH:federated": false,
             "RAX-AUTH:multiFactorEnabled": true,
             "id": "a64ee2047fc14cc7bc977caa3cfff35f",
-            "name": "jqsmith",
+            "name": "myUserName",
             "roles": [
                 {
                     "description": "User Admin Role.",
@@ -122,11 +121,13 @@
   </orderedlist>
   <para>For additional information, see the following topics: <itemizedlist>
     <listitem>
-      <para>
-        <link xlink:href="proc_mfa_manage.html">Manage
-          multi-factor authentication settings and
+        <para><link xlink:href="proc_mfa_setup.html">Set up multi-factor authentication</link></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="proc_mfa_manage.html">Manage
+            multi-factor authentication settings and
           operation</link></para>
-    </listitem>
+      </listitem>
     <listitem condition="admin">
       <para><link xlink:href="Multifactor_Calls.html">API
         reference: Multi-factor authentication

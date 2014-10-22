@@ -248,8 +248,8 @@
           multifactor-enabled user account</link></para>
     </listitem>
     <listitem><para>
-      <link xlink:href="proc_mfa_manage.html">Authenticate from a
-        multifactor-enabled user account</link></para></listitem>
+          <link xlink:href="proc_mfa_manage.html">Manage
+            multifactor-enabled accounts</link></para></listitem>
     <listitem condition="admin">
       <para><link xlink:href="Multifactor_Calls.html">API
         reference: Multi-factor authentication

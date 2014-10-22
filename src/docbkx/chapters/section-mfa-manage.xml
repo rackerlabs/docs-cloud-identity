@@ -9,14 +9,12 @@
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="proc_mfa_manage">
-    <title>Manage multi-factor authentication settings and operation</title>
+    <title>Manage multifactor-enabled accounts</title>
     <important>
       <para>Multi-factor authentication is supported only by Rackspace
-        Cloud Identity Service version 2.0 or later. After an account
-        is enabled for multi-factor authentication, the user cannot
-        authenticate using &CIS; v1.0 or v1.1. This feature is
-        currently only available to customers enrolled in the Early
-        Access program.</para>
+      Cloud Identity Service version 2.0 or later. After an account is
+      enabled for multi-factor authentication, the user cannot
+      authenticate using &CIS; v1.0 or v1.1. </para>
     </important>
     <para><xref linkend="manage_mfa_ops"/> describes the API
       operations for managing multi-factor authentication capabilities
@@ -55,21 +53,21 @@
           <td valign="top">Recover account </td>
           <td valign="top">
             <para>If you cannot get the multi-factor authentication
-              passcode from the device associated with your account,
-              contact Rackspace Support.</para>
+            passcode from the device associated with your account, and
+            you do not have any bypasscodes for your account, contact
+            Rackspace Support.</para>
           </td>
         </tr>
         <tr condition="admin">
           <td valign="top">Recover account</td>
           <td valign="top">
-            <para>If a user cannot get the passcode from the device
-              associated with their account,  an Identity
-              administrator or user manager can use the following cURL
-              request to generate a single, one-time use bypass code
-              that can be substituted for a multi-factor
-              authentication passcode. The default expiration for the
-              bypass code is 30 minutes after it is generated. Users
-              cannot recover their own account.</para>
+            <para>If a user does not have a multi-factor
+            authentication passcode or bypass code, an Identity
+            administrator or User manager can use the following cURL
+            request to generate a single, one-time use bypass code
+            that can be used for authentication. The default
+            expiration for the bypass code is 30 minutes after it is
+            generated.</para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \      
        -X POST \
        -d '{"RAX-AUTH:bypassCodes"{"validityDuration":"PT30M"}}'\
@@ -91,20 +89,17 @@
         </tr>
         <tr>
           <td valign="top">
-            <para condition="admin"><link
+            <para><link
                 xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html"
                 >Generate bypass code</link></para>
-            <para condition="client"><link
-                xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html"
-                >Generate bypass codes</link></para>
           </td>
           <td valign="top">
-            <para>Users that cannot retrieve the multi-factor
-              authentication mobile passcode can submit the following
-              cURL request to generate a bypass code that can be used
-              in lieu of the passcode.</para>
+            <para>Users can submit the following cURL request to
+            generate and save bypass codes that can be used in place
+            of the multi-factor authentication passcode if the phone
+            associated with the account is not available.</para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> $ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/bypass-codes \
-       -d '{"RAX-AUTH:bypassCodes":{"validityDuration":"PT30M"}}' 
+       -d '{"RAX-AUTH:bypassCodes":{"validityDuration":"PT30M"}, "numberofCodes": "1"}' 
        -H "Content-Type: application/json" \
        -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
           </td>
@@ -229,6 +224,27 @@
         </tr>
       </tbody>
     </table>
+    <para>For more information, see the following topics: <itemizedlist>
+      <listitem>
+        <para>
+          <link xlink:href="proc_mfa_setup.html">Authenticate from a
+            multifactor-enabled user account</link></para>
+      </listitem>
+      <listitem><para>
+        <link xlink:href="proc_mfa_auth.html">Manage
+          multifactor-enabled accounts</link></para></listitem>
+      <listitem condition="admin">
+        <para><link xlink:href="Multifactor_Calls.html">API
+          reference: Multi-factor authentication
+          operations</link></para>
+      </listitem>
+      <listitem condition="client">
+        <para><link xlink:href="Multifactor_Calls_client.html">API
+          reference: Multi-factor authentication
+          operations</link></para>
+      </listitem>
+    </itemizedlist>
+    </para>
     <para condition="admin">For detailed API reference information, see 
       <link xlink:href="Multifactor_Calls.html">Multi-factor
         operations</link></para> 

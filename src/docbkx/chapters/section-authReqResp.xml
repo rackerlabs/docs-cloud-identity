@@ -8,7 +8,7 @@
   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" 
   xml:id="Sample_Request_Response-d1e64">
-		<title>Sample Authentication Request and Response</title>
+		<title>Authentication request and response</title>
 		<para>The sample request and response in this section illustrate a
 			general case. In your authentication request, use your own
 			credentials rather than the sample values shown here for
@@ -17,16 +17,32 @@
 			successfully, the response to your authentication request
 			will include a catalog of the services to which you have
 			subscribed rather than the sample values shown here. </para>
+	<para>The authenticate operation provides clients with an
+		authentication token and a list of regional cloud endpoints.
+		The sample requests and responses in this section illustrate a
+		general case. In your authentication request, use your own
+		credentials rather than the sample values shown here for
+		username and apiKey. When you authenticate successfully, the
+		response to your authentication request includes a catalog of
+		the services to which you have subscribed rather than the
+		sample values shown here.</para>
 			<note><title>Notes</title>
 				<itemizedlist>
 					<listitem>
 						<para>For information about other authentication methods with examples, 
 							see <link xlink:href="Token_Calls.html">Authentication tokens</link>.</para></listitem>
 					<listitem>
-						<para>If a user account has been set up to use multi-factor authentication, credentials are required after 
-							submitting the login credentials. For details, see 
-							<link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens_Token_Calls.html">Authenticate with multifactor passcode credentials.</link>
-						</para>
+						<para>If a user account has been set up to use multi-factor
+					authentication, the Identity service sends a
+					passcode to the phone associated with the account
+					and returns a 401 response in response to valid
+					login credentials. To complete the authentication
+					request, you need to supplly the multi-factor
+					authentication Session ID and passcode
+					credentials. For details, see <link
+						xlink:href="proc_mfa_auth.html">Authenticate
+						from a multifactor-enabled user
+						account.</link>. </para>
 				</listitem>
 				</itemizedlist>
 			</note>
@@ -100,44 +116,45 @@ Accept: application/json
 				
 			</tbody>
 		</table>			
-		<para>A successful authentication response includes a token and a
-			service catalog. For each service in the service catalog,
-			only relevant details are returned. Service descriptions
-			vary depending on how the service has been configured. For
-			example, some service endpoints might be associated with a
-			default region. For those services, the <code>region</code> specification is included in the
-			description. If the service endpoint does not have a
-			default region defined, the service description does not
-			include <code>region</code>.</para>
+		<para>A successful authentication response includes a token ID and a
+		catalog of available services. For each service in the
+		catalog, only relevant details are returned. Service
+		descriptions vary depending on how the service has been
+		configured. For example, some service endpoints might be
+		associated with a default region. For those services, the
+			<code>region</code> specification is included in the
+		description. If the service endpoint does not have a default
+		region defined, the service description does not include
+			<code>region</code>.</para>
 		<para><xref linkend="xml_auth_resp"/> and <xref
-				linkend="json_auth_resp"/> showsample responses in XML
-			and JSON format. In these examples, the authentication token returned provides access to the following services: 
-			<itemizedlist>
-				<listitem>
-					<para>Compute: Cloud Servers OpenStack and Cloud
-						Servers</para>
-				</listitem>
-				<listitem>
-					<para>Object storage: Cloud Files Content
-						Distribution Service (CDN) and Cloud
-						Files.</para>
-				</listitem>
-				<listitem>
-					<para>Database</para>
-				</listitem>
-				<listitem>
-					<para>DNS</para>
-				</listitem>
-				<listitem>
-					<para>Load Balancers</para>
-				</listitem>
-				<listitem>
-					<para>Monitoring</para>
-				</listitem>
-			</itemizedlist>
-			The catalog listing for each service provides the URL for the API endpoint to access the service, 
-			along with information about the API version, and the region or tenant, if applicable. For information about the 
-			attributes included in the response, see <xref linkend="auth_attributes"/>.</para>
+			linkend="json_auth_resp"/> show sample responses in XML
+		and JSON format. In these examples, the authentication token
+		returned provides access to the following services: <itemizedlist>
+			<listitem>
+				<para>Compute: Cloud Servers OpenStack and Cloud
+					Servers</para>
+			</listitem>
+			<listitem>
+				<para>Object storage: Cloud Files Content Distribution
+					Service (CDN) and Cloud Files.</para>
+			</listitem>
+			<listitem>
+				<para>Cloud Databases</para>
+			</listitem>
+			<listitem>
+				<para>Cloud DNS</para>
+			</listitem>
+			<listitem>
+				<para>Cloud Load Balancers</para>
+			</listitem>
+			<listitem>
+				<para>Cloud Monitoring</para>
+			</listitem>
+		</itemizedlist>The catalog listing for each service provides
+		the URL for the API endpoint to access the service, along with
+		information about the API version, and the region or tenant,
+		if applicable. For information about the attributes included
+		in the response, see <xref linkend="auth_attributes"/>.</para>
 	  <example xml:id="xml_auth_resp">
 		<title>Service Catalog in Authentication Response with Headers: XML</title>
 		<programlisting language="xml">
