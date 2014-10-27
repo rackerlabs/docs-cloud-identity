@@ -165,5 +165,7 @@
             <link xlink:href="https://feedback.rackspace.com/forums/71021-product-feedback/category/81960-identity-auth">rackspace.uservoice.com</link>.</para>
     </section>
     <xi:include href="identity-endpoints.xml"/>
-    <xi:include href="identity-releasenotes-v20-admin.xml"/>
+    <xi:include condition="admin" href="identity-releasenotes-v20-admin.xml"/>
+    <xi:include condition="client" href="identity-releasenotes-v20-client.xml"/>
+
 </chapter>
