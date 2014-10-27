@@ -154,7 +154,6 @@
 			
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 					<wadl:method href="#addUserRole"/>
-					<wadl:method href="#getUserRole"/>
 					<wadl:method href="#deleteUserRole"/>
 				</wadl:resource>	
 				

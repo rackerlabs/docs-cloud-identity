@@ -52,6 +52,12 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2014-10-27</date>
+				<revdescription>
+					<para>Corrected <link xlink:href="Service_Calls.html">Service operations</link> to include the OS-KSADM extension in the URI.</para>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-10-22</date>
 				<revdescription>
 					<itemizedlist>
@@ -603,7 +609,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added visibility note to 
-								<link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Add role to user</link></para>
+								<link xlink:href="PUT_addUserRole_v2.0_users_userId_roles_OS-KSADM_roleid_Role_Calls.html">Add role to user</link></para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -1148,7 +1154,7 @@
 			<raxm:priority>15</raxm:priority>
 		</raxm:metadata>
 	</info>
-	<xi:include href="chapters/identity-overview-admin.xml"/>
+	<xi:include href="chapters/identity-overview.xml"/>
 	<xi:include href="chapters/identity-admin-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-admin.xml"/>

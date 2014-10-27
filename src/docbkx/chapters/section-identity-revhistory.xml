@@ -157,12 +157,12 @@
 						<listitem>
 							<para> Added some examples of what a service is, since you can filter on serviceId in <olink
 									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
+									targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles_roleId_Role_Calls"
 									>“Secret Questions and Answers”</olink>. </para>
 						</listitem>
 						<listitem>
 							<para> Removed Category Role table from <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
+								targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles_roleId_Role_Calls"
 								/>. </para>
 						</listitem>
 						<listitem>
@@ -711,7 +711,7 @@
 								<link xlink:href="Extensions-d1e688.html">API extensions</link>.</para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="GET_listCredentials_v2.0_users__userid__OS-KSADM_credentials_User_Calls.html">List credentials operation</link>
+							<para> Updated <link xlink:href="GET_listCredentials_v2.0_users_userid_OS-KSADM_credentials_User_Calls.html">List credentials operation</link>
 								 and <link xlink:href="Account-User-d1e20.html">Account user</link> to state that account
 								users must authenticate with their passwords. </para>
 						</listitem>
