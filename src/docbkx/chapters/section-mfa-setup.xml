@@ -58,7 +58,7 @@
        -d '{"auth": {"passwordCredentials": {"username":"jqsmith", "password":"Password1"}}}' \ 
        -H "Content-Type: application/json"</programlisting>
               <para>The Identity service returns a 200 response code
-                that includes the authtication token ID.</para>
+                that includes the authentication token ID.</para>
               <para>
                 <programlisting><![CDATA[< HTTP/1.1 200 OK
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
@@ -127,7 +127,7 @@
           <term><emphasis role="bold">Response</emphasis></term>
           <listitem>
             <para>The Identity service returns a 201 response that
-              includes the system-generated phone ID.<programlisting><![CDATA[< HTTP/1.1 201 Created
+                includes the system-generated phone ID.<programlisting><![CDATA[< HTTP/1.1 201 Created
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Location: http://localhost:8083/idm/cloud/v2.0/users/a64ee2047fc14cc7bc977caa3cfff35f/RAX-AUTH/multi-factor/mobile-phones/889a7245f49e4ab789ebaebf91c0f1eb
 < Content-Type: application/json
@@ -136,7 +136,7 @@
 <
 {
     "RAX-AUTH:mobilePhone": {
-        "id": "845321245f49e4ab789ebaebf91c0f1eb",
+        "id": "1234321245f49e4ab789ebaebf91c0f1eb",
         "number": "+1 512-555-0100"
     }
 } ]]></programlisting></para>
@@ -145,9 +145,9 @@
         
       </variablelist></para>
       <tip><para>Export the phone <parameter>id</parameter> value to an
-        environment variable, so you can use it to complete the
-        phone verification process:
-        <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT PHONE_ID=""845321245f49e4ab789ebaebf91c0f1eb"</programlisting></para></tip>
+          environment variable, so you can use it to complete the
+          phone verification process:
+          <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT PHONE_ID=""1234321245f49e4ab789ebaebf91c0f1eb"</programlisting></para></tip>
     </listitem>
     <!--Step 3 Verify PIN code -->
     <listitem>
@@ -187,7 +187,7 @@
       <!-- Step 4  Send verification code -->
       <para>Return the verification PIN code to complete the phone verification process.<variablelist>
         <varlistentry>
-          <term><emphasis role="bold">Requestt</emphasis></term>
+          <term><emphasis role="bold">Request</emphasis></term>
           <listitem>
             <para>
               <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verify \
@@ -220,10 +220,10 @@
             <listitem>
               <para>
                 <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
-       -X POST \
+       -X PUT \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
-       -d '{"RAX-AUTH:multiFactor: { "enabled"="true" }}' \
+       -d '{"RAX-AUTH:multiFactor: { "enabled": true }}' \
        -H "X-Auth-Token: $AUTH_TOKEN" \
        | python -m json.tool</programlisting>
               </para>

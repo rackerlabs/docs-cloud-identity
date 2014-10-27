@@ -11,7 +11,7 @@
     xml:id="MFA_Ops">
     
   <title>Multifactor authentication</title>
-    <para>Multifactor authentication is for Rackspace Cloud Customers who require a greater level of 
+    <para>Multi-factor authentication is for Rackspace Cloud Customers who require a greater level of 
       security when accessing Rackspace Cloud resources. When multifactor authentication is added to 
       user accounts, users have an additional layer of identity verification that offers various methods 
       to obtain the second factor for authentication. Additionally, Rackspace provides user administrators 
@@ -20,7 +20,7 @@
     <para>With multifactor authentication enabled, authentication is a two-step process:<orderedlist>
       <listitem>
         <para>A user submits an inital <command>POST tokens</command> request to the Identity Service endpoint,
-          including either API key or password credentials.</para>
+         with username and password credentials.</para>
         <para>The response body returned by the Identity service includes an X-SessionId header and
           a request for additional credentials. The Identity service also sends an SMS text message
           with a passcode to the phone number associated with the account.</para>
@@ -35,7 +35,7 @@
         <important><para>Multifactor authentication is supported only by Rackspace Cloud
             Identity Service version 2.0 or later. User accounts set
             up for multifactor authentication cannot authenticate by using 
-            version 1.0 or 1.1 of the service.</para></important>
+            version 1.0 or 1.1 of the service. This feature is currently available only to customers enrolled in the Early Access program for this feature.</para></important>
       </listitem>
     </orderedlist></para>
     <para>Figure <xref linkend="mfa_auth"
@@ -59,12 +59,19 @@
       xrefstyle="select: labelnumber"/> provides an overview of the
     work flow to complete these tasks.</para><figure xml:id="mfa_workflow_setup">
       <title>Multifactor authentication user account set up work flow </title>
-      <mediaobject>
+      <mediaobject condition="admin">
         <imageobject>
           <imagedata fileref="../figures/multifactor_setup_user.png"
             contentdepth="100%" contentwidth="100%" format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
+  <mediaobject condition="client">
+        <imageobject>
+          <imagedata fileref="../figures/multifactor_setup_user1.png"
+            contentdepth="100%" contentwidth="100%" align="center"/>
+        </imageobject>
+      </mediaobject>
+
     </figure>
     <para>For information about using multifactor authentication capabilities through the Cloud Identity API, 
       see the following topics:

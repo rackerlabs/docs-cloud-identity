@@ -3,7 +3,6 @@
 <!ENTITY % common SYSTEM "../../common/common.ent">
 %common;
 ]>
-
 <chapter xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
@@ -72,7 +71,7 @@
 			<term><guilabel>Content-Type header syntax</guilabel></term>
 				<listitem>
 					<para>The Content-Type header is required for API operations that
-						have a request body.  </para>
+						have a request body.</para>
 				<para>
 					<programlisting>Content-Type: application/<replaceable>format</replaceable></programlisting>
 				</para>
@@ -1252,7 +1251,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	</section>
 	<xi:include href="section-extensions.xml"/>
 	<xi:include href="section-namespaces.xml"/>
-	<section xml:id="Limits-d1e909">
+	<section condition="admin" xml:id="Limits-d1e909">
 		<title>Limits</title>
 		<para>Rate limits control the frequency at which the user can issue specific API requests. Limits
 			can be applied to any of the following entities, depending on the data available in the
@@ -1664,7 +1663,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 				</listitem>
 				<listitem>
 					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="GET_listCredentials_v2.0_users__userid__OS-KSADM_credentials_User_Calls">
+						targetptr="GET_listCredentials_v2.0_users_userid_OS-KSADM_credentials_User_Calls">
 						Delete role from account user</olink></para>
 				</listitem>
 			</itemizedlist>

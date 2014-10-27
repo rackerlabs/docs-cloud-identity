@@ -1784,14 +1784,11 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> 
-        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="Bad Request">No multi-factor device on user account.</doc>
+        <response status="204"><doc title="OK">No multi-factor device on user account.</doc>
             <representation mediaType="application/json"/>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
-        </response>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/></response> 
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="Bad Request">multi-factor phone on account is not verified.</doc>
+            <doc title="Bad Request">Possible reasons: No multifactor device on user account; multifactor phone on account is not verified.</doc>
             <representation mediaType="application/json"/>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
         </response>
