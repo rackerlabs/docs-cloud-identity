@@ -949,11 +949,11 @@
 			</para>
 		</note>
 		<wadl:resources  xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#services">
-				<wadl:method href="#listServices"/>
-			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#service">
 				<wadl:method href="#addService"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#services">
+				<wadl:method href="#listServices"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#serviceId">
 				<wadl:method href="#getServiceById"/>
