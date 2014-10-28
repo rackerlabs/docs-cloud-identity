@@ -92,10 +92,9 @@
     }
 }</programlisting>
                 <tip>
-                  <para>To run the cURL commands in the following
-                    steps, export the authentication token to an
-                    environment variable:
-                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT AUTH_TOKEN="xxxxxxxxxxxxxxxx"</programlisting>
+                  <para>To run the cURL commands in the following steps, export the authentication
+                    token to an environment variable:
+                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT AUTH_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</programlisting>
                   </para>
                 </tip>
               </para>
@@ -223,7 +222,7 @@
        -X PUT \
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
-       -d '{"RAX-AUTH:multiFactor: { "enabled": true }}' \
+       -d '{"RAX-AUTH:multiFactor": {"enabled": true }}' \
        -H "X-Auth-Token: $AUTH_TOKEN" \
        | python -m json.tool</programlisting>
               </para>

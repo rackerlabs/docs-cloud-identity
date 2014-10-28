@@ -1409,12 +1409,11 @@
             </representation>
         </request>
         <response status="200">
-            <doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></doc>
+            <doc title="OK">Success</doc>
             <representation mediaType="text/xml">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
-                    <para>OK</para>
+                <doc xml:lang="EN" title="Authenticate with multifactor credentials: XML response with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.xml"/>
-                </wadl:doc>           
+                </doc>           
             </representation>
             
             <representation mediaType="text/json">
@@ -1452,7 +1451,7 @@
                 SSO password, and the Rackspace domain ID.</para>
             <para>When you authenticate, the Identity Service 
                 validates the authentication request through internal Rackspace eDirectory (eDir) service, maps your Racker credentials to the Identity 
-               service permissions and roles, and returns an authentication response.</para>
+               service roles and permissions, and returns an authentication response with a token granting the corresponding access rights and permissions.</para>
             <para>User, group, and role configuration for Racker accounts are managed through 
                 the eDir service. You can view, manage, and submit eDir service 
                 requests by using either of these resources: 
@@ -1476,8 +1475,15 @@
                     because your account is not associated with a tenant.</para>
                 </listitem>
                 <listitem>
-                    <para>Because role configuration for Racker accounts is managed through the eDir service, 
-                        you cannot manage RBAC roles by using the role operations available in the Identity service API. 
+                    <para>Racker accounts do not use identity roles such as <code>identity:admin</code>, <code>identity:default</code>, 
+                        <code>identity:user-admin</code>. <code>identity:user-manage.</code> Racker account groups and permissions are managed 
+                            through eDir gropus and mapped to Identity roles during the authentication process. Consequently, you cannot use Racker accounts 
+                            to manage RBAC roles by using the role operations available in the Identity service API. To add or change 
+                            role assignments, submit a request through RackerApp or the Rackspace Service Desk.
+                    </para>
+                </listitem> 
+                <listitem>
+                    <para>You cannot manage RBAC roles by using the role operations available in the Identity service API.
                         To add or change role assignments, submit a request through RackerApp or the Rackspace Service Desk.</para>
                 </listitem>
                 <listitem>

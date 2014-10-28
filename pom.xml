@@ -109,7 +109,7 @@
 							<branding>rackspace</branding>
 							<feedbackEmail>margaret.eker@rackspace.com</feedbackEmail>
 							<socialIcons>1</socialIcons>
-							<enableDisqus>1</enableDisqus>
+							<enableDisqus>internet</enableDisqus>
 							<enableGoogleAnalytics>1</enableGoogleAnalytics>
 							
 							<chapterAutolabel>0</chapterAutolabel>
@@ -162,8 +162,15 @@
 							
 							<!-- These parameters only apply to webhelp -->
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
+							<enableDisqus>intranet</enableDisqus>
 							<feedbackEmail>margaret.eker@rackspace.com</feedbackEmail>
 							
+							
+							<chapterAutolabel>0</chapterAutolabel>
+							<appendixAutolabel>0</appendixAutolabel>
+							<sectionAutolabel>0</sectionAutolabel>
+							<tocSectionDepth>1</tocSectionDepth>
+							<formalProcedures>0</formalProcedures>
                             <generateToc>
 								appendix toc,title
 								article/appendix nop

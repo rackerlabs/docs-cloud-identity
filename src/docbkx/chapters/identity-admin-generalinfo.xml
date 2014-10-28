@@ -1445,7 +1445,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 						<para>(Account owner)</para>
 					</td>
 					<td>
-						<para>identity-user-admin</para>
+						<para>identity:user-admin</para>
 					</td>
 					<td><para>When a &CLOUD; customer account is created, it is
 							associated with one user, the User
