@@ -1476,10 +1476,8 @@
                 </listitem>
                 <listitem>
                     <para>Racker accounts do not use identity roles such as <code>identity:admin</code>, <code>identity:default</code>, 
-                        <code>identity:user-admin</code>. <code>identity:user-manage.</code> Racker account groups and permissions are managed 
-                            through eDir gropus and mapped to Identity roles during the authentication process. Consequently, you cannot use Racker accounts 
-                            to manage RBAC roles by using the role operations available in the Identity service API. To add or change 
-                            role assignments, submit a request through RackerApp or the Rackspace Service Desk.
+                        <code>identity:user-admin</code>, and <code>identity:user-manage.</code> Racker account groups and permissions are managed 
+                            through eDir gropus and mapped to Identity roles during the authentication process.
                     </para>
                 </listitem> 
                 <listitem>
