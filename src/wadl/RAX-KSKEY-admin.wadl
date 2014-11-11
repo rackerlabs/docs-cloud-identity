@@ -75,7 +75,6 @@
                                             size.</para></wadl:doc>
                                 </param> -->
                                 <method href="#listCredentials"/>
-                            </resource>
                             <resource id="userCredentialsByType"
                                 path="RAX-KSKEY:apiKeyCredentials">
                                 <method href="#updateUserCredential"/>
@@ -85,6 +84,7 @@
                         </resource>
                     </resource>
                    </resource>
+                </resource>
                 </resource>
     </resources>
 
