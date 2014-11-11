@@ -58,7 +58,6 @@
 				</revdescription>
 			</revision>
 			<revision>
-			<revision>
 				<date>2014-10-27</date>
 				<revdescription>
 					<para>Corrected <link xlink:href="Service_Calls.html">Service operations</link> to include the OS-KSADM extension in the URI.</para>
