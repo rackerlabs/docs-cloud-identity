@@ -51,6 +51,12 @@
 				Identity Service.</para>
 		</abstract>
 		<revhistory>
+		       	<revision>
+				<date>2014-11-11</date>
+				<revdescription>
+					<para>Corrected URI in <link xlink:href="GET_getUserCredential_v2.0_users__userId__OS-KSADM_credentials_RAX-KSKEYapiKeyCredentials_User_Calls.html">Get user API credentials</link> operation.</para>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-10-27</date>
 				<revdescription>
