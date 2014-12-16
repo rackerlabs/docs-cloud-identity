@@ -1,0 +1,23 @@
+    
+    <serviceCatalog>
+         <service type="compute" name="cloudServersOpenStack">
+            <endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.servers.api.rackspacecloud.com/v2/123ab1">
+                <version id="2" info="https://iad.servers.api.rackspacecloud.com/v2" list="https://iad.servers.api.rackspacecloud.com/"/>
+            </endpoint>
+            <endpoint region="DFW" tenantId="123ab1" publicURL="https://dfw.servers.api.rackspacecloud.com/v2/123ab1">
+                <version id="2" info="https://dfw.servers.api.rackspacecloud.com/v2" list="https://dfw.servers.api.rackspacecloud.com/"/>
+            </endpoint>
+            <endpoint region="SYD" tenantId="123ab1" publicURL="https://syd.servers.api.rackspacecloud.com/v2/123ab1">
+                <version id="2" info="https://syd.servers.api.rackspacecloud.com/v2" list="https://syd.servers.api.rackspacecloud.com/"/>
+            </endpoint>
+            <endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.servers.api.rackspacecloud.com/v2/123ab1">
+                <version id="2" info="https://hkg.servers.api.rackspacecloud.com/v2" list="https://hkg.servers.api.rackspacecloud.com/"/>
+            </endpoint>
+        </service>
+        
+       <service type="network" name="cloudNetworks">
+            <endpoint region="IAD" tenantId="123456" publicURL="https://iad.networks.api.rackspacecloud.com/v2.0"/>
+            <endpoint region="LON" tenantId="123456" publicURL="https://lon.networks.api.rackspacecloud.com/v2.0"/>
+        </service>
+
+    </serviceCatalog>

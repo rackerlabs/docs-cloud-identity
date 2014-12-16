@@ -1,0 +1,11 @@
+        {
+        "token": {
+            "id": "abcdef123ghi4j5k67m8910n12op3qrs",
+            "expires": "2014-12-05T17:36:38.662Z",
+            "tenant": {
+                "id": "123456abc",
+                "name": "123456abc"
+                }}
+        }
+                
+                

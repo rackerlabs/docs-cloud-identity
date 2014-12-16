@@ -1,0 +1,8 @@
+    
+    <user id="abcdefghik1236718712345890412345" name="demoauthor" rax-auth:defaultRegion="IAD">
+        <roles>
+            <role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods" tenantId="yourTenantAlias_123ab1" rax-auth:propagate="true"/>
+            <role id="6" name="compute:default" description="A Role that allows a user access to keystone Service methods" tenantId="123ab1" rax-auth:propagate="true"/>
+            <role id="3" name="identity:user-admin" description="User Admin Role." rax-auth:propagate="false"/>
+        </roles>
+    </user>
