@@ -28,46 +28,7 @@
     <grammars>
         <include href="../common/xsd/RAX-AUTH.xsd"/>
     </grammars>
-    <!-- 2014-07-29 by Margaret Eker
-        ++ Added API operation to generate multi-factor authentication bypass code.-->
-    
-    <!-- 2014-06-20 by Margaret Eker
-        ++ Added multifactor and mobile phone resources and methods. -->
-    
-    <!-- 2014-05-04 by Margaret Eker
-      ++ Corrected spelling error in "Get token by SAML assertion" request example. Corrected error in response examples 
-         per QA request: changed "user" value from user-admin to identity:default and updated user example -->
-    
-    <!-- 2013-02-07 by Rose Coste
-      ++ adding new RESOURCES and METHODS & deleting unused & reordering to synch this writer-maintained RAX-AUTH with developer-maintained RAX-AUTH 
-         at https://github.rackspace.com/ServiceAPIContracts/global-auth-keystone-extensions/blob/master/src/wadl/RAX-AUTH.wadl  
-         For 15 new samples supporting added METHODS, include as ../common/samples/formattedsamples/keystone/
-            -->
-    
-    
-    <!-- 2013-01-17 by Rose Coste
-      ++ adding SECRETQA-related content to Auth 2.0 Admin DevGuide ++
-                samples were included as ../formattedsamples/ 
-                 I changed for consistency with other RAX- samples to
-                 ../common/samples/formattedsamples/keystone/
-            -->
-    
-    <!-- 2012-12-13 by Cat Lookabaugh
-      ++ adding and updating multiple operations based on 
-      https://service-contracts.corp.rackspace.com:9443/snapshots/globalauth-keystone-extensions/site/
-            -->
-    <!-- 2012-03-13 by Rose Coste
-      ++ adding IMPERSONATION-related content to Auth 2.0 Admin DevGuide ++
-                samples were included as ../../formattedsamples/keystone/ 
-                 I changed for consistency with other RAX- samples to
-                 ../common/samples/formattedsamples/keystone/
-            -->
-    <!-- 2012-09-25 by Rose Coste
-      ++ adding DOMAIN-related content to Auth 2.0 Admin DevGuide ++
-                samples were included as ../formattedsamples/ 
-                 I changed for consistency with other RAX- samples to
-                 ../common/samples/formattedsamples/keystone/
-            -->
+
     <!-- ======================================================================================= -->
     <!-- Resources -->
     <!-- ======================================================================================= -->
@@ -167,7 +128,7 @@
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="template" type="xsd:string" required="true">
+                    <param name="userId" style="template" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The user id for the account.</para></wadl:doc>          
                     </param>
                            <method href="#createMobilePhone"/> 
@@ -175,14 +136,14 @@
                            <method href="#removeMultifactorForUser"/>
                            <method href="#updateMultifactorSettings"/>
                     <resource id="multifactor_vcode" path="{phoneId}/verificationcode">
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneId" style="template" type="xsd:string" required="true">
+                    <param name="phoneId" style="template" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The ID for the phone associated with the user account.
                             </para></wadl:doc>          
                         </param>
                     <method href="#sendVerifyCode"/>
                     </resource>
                     <resource id="mfa_PIN" path="{phoneId}/verify">
-                        <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="template" type="xsd:string" required="true">
+                        <param name="phoneid" style="template" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when a phone is added to an account.</para></wadl:doc>          
                         </param>   
                     <method href="#verifyDevice"/>                        
@@ -409,12 +370,12 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/SecretQAForSave.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>The ID of the secret question to add to the account.</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="answer" style="plain" type="xsd:string" required="true">
+                <param name="answer" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The answer that the user can provide to verify an account.</para>
                     </wadl:doc>
                 </param>
@@ -425,10 +386,11 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK">The request succeeded.</doc>
         </response>
-        <response status="409">
+        <response status="409" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Conflict">The request could not be completed due to a conflict with the current state of the resource.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
@@ -437,27 +399,27 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get user secret Q&amp;A list">
             <para role="shortdesc">Returns the list of secret questions and answers for a user account.</para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/SecretQAList.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="questions" style="plain" type="RAX-AUTH:Questions" required="true">
+                <param name="questions" style="plain" type="RAX-AUTH:Questions" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>An object that contains the collection of secret questions that can be added to user accounts.</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="question" style="plain" type="RAX-AUTH:Question" required="true">
+                <param name="question" style="plain" type="RAX-AUTH:Question" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>An object that contains the ID and text for a secret question.</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when the question was created.</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="question" style="plain" type="xsd:string" required="true">
+                <param name="question" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The text for the question.</para>
                     </wadl:doc>
                 </param>
@@ -478,8 +440,8 @@
                 tokens. Administrators can use the Revoke Token operation to invalidate 
                 the token for a user.</para>
         </wadl:doc>
-        <response status="200">
-                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
@@ -533,8 +495,8 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200">
-                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ImpersonationResponse.xml"/>
@@ -555,8 +517,8 @@
                 access to domains by the token having access to a tenant that exists in the domain. If the token belongs to
                 an admin user, a list of all domains may be returned. </para>
         </wadl:doc>
-        <response status="200">
-                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DomainList.xml"/>
@@ -574,8 +536,8 @@
  title="Get a domain">
             <para role="shortdesc"> Get a domain. </para>
         </wadl:doc>
-        <response status="200">
-                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Domain.xml"/>
@@ -605,39 +567,47 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="createDomain" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Create a domain">
-            <para role="shortdesc"> Create a domain. </para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Create a domain">
+            <para role="shortdesc">Create a domain.</para>
             <para> Clients must specify the domain ID in the request body. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Domain.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Domain.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201">
+        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Created">The request has been fulfilled. The domain has been created.</doc>
         </response> &commonFaults; &postPutFaults; </method>
 
     <method id="deleteDomain" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Delete a domain">
             <para role="shortdesc"> Delete a domain. </para>
-            <para> This operation fails unless no entities such as users and tenants exist in this domain. Only an empty
-                domain can be deleted. </para>
+            <para>This operation fails unless no entities such as users and tenants exist in this domain. Only an empty
+                domain can be deleted.</para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> 
+        &commonFaults; 
+        &getFaults; </method>
 
     <method id="getDomainUsers" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -654,11 +624,10 @@
                 </wadl:doc>
             </param>
         </request>
-        <response status="200">
-                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UserList.xml"/>
                 </wadl:doc>
             </representation>
@@ -671,17 +640,19 @@
         </response> &commonFaults; &getFaults; </method>
 
     <method id="addUserToDomain" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Add user to domain">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add user to domain">
             <para role="shortdesc"> Add a user to a domain. </para>
             <para> A user can exist in only one domain at a time. When you add a user to a domain, the user is
                 automatically removed from any prior domain. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getDomainTenants" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get tenants in domain">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get tenants in domain">
             <para role="shortdesc"> Get tenants in a domain. </para>
             <para> Tenants can be used to create logical organization within a domain. For example, an entertainment
                 business might use two tenants to separately identify resources related to two kinds of activity: manage Star Wars
@@ -697,41 +668,44 @@
                 </wadl:doc>
             </param>
         </request>
-        <response status="200">
-                <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/TenantList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/TenantList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="addTenantToDomain" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Add tenant to domain">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add tenant to domain">
             <para role="shortdesc"> Add a tenant to a domain. </para>
             <para> A tenant can only exist in one domain at a time. When you add a tenant to a domain, the tenant is
                 automatically removed from any prior domain. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="removeTenantFromDomain" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Remove tenant from domain">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove tenant from domain">
             <para role="shortdesc"> Remove a tenant from a domain. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="setDefaultRegionServices" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Set default region services">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Set default region services">
             <para role="shortdesc">Sets the list of services that restrict the default regions their users can set.</para>
             
             <para xmlns="http://docbook.org/ns/docbook">Users can modify their own default regions, but only within limits.
@@ -742,105 +716,95 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DefaultRegionServices.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DefaultRegionServices.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getDefaultRegionServices" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get default region services">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get default region services">
             <para role="shortdesc"> Gets the list of services that restrict the default regions their users can set.
             </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DefaultRegionServices.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DefaultRegionServices.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getAccessibleDomainsForUser" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get accessible domains">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get accessible domains">
             <para role="shortdesc"> Gets a list of accessible domains. </para>
             <para> The operation returns a list of domains to which the user has access. A user has access to a domains if
                 the user has a role in a tenant that exists in the domain. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DomainList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DomainList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getAccesibleDomainEndpointsForUser" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get accessible domain endpoints">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get accessible domain endpoints">
             <para role="shortdesc"> Get endpoints for a user restricted by domain. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
     
     <method id="getDomainEndpoints" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get endpoints for domain">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get endpoints for domain">
             <para role="shortdesc"> Get endpoints restricted to a domain. </para>
             <para>This operation returns a list of domain endpoints for which the supplied token provides access. If a token 
                 has access to a tenant that exists in the domain, then the token has access to the domain.  If the token belongs 
                 to an admin user, a list of all domain endpoints may be returned. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointList.json"/>
                 </wadl:doc>
             </representation>
@@ -854,29 +818,26 @@
                 account if they have questions or need assistance regarding user
                 and/or role management. This request returns the following identifying information about the administrator: domain name, domain ID, email address, status, user ID and user name.</para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UserAdminList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UserAdminList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getPolicies" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get all policies">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get all policies">
             <para role="shortdesc"> Get all Policies. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
@@ -890,8 +851,7 @@
         </response> &commonFaults; &getFaults; </method>
 
     <method id="createPolicy" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Create a policy">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Create a policy">
             <para role="shortdesc"> Create a policy. </para>
         </wadl:doc>
         <request>
@@ -906,19 +866,19 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201">
+        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Created">The request has been fulfilled. The policy has been created.</doc>
             <param name="Location" style="header" type="xsd:string" required="true">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Location of the URI of the newly-created policy</para></wadl:doc>
             </param>
         </response> &commonFaults; &postPutFaults; </method>
 
     <method id="getPolicy" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get a policy">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get a policy">
             <para role="shortdesc"> Gets a policy. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Policy.xml"/>
@@ -932,8 +892,7 @@
         </response> &commonFaults; &getFaults; </method>
 
     <method id="updatePolicy" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Update a policy">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update a policy">
             <para role="shortdesc"> Update a Policy. </para>
         </wadl:doc>
         <request>
@@ -948,136 +907,138 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; </method>
 
     <method id="deletePolicy" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Delete a policy">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete a policy">
             <para role="shortdesc"> Delete a policy. </para>
             <para> A policy can only be deleted if it is not tied to any entity. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getPolicyBlob" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get detailed policy content">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get detailed policy content">
             <para role="shortdesc"> Gets a policy content. </para>
             <para> The representation of the policy is different from the author's perspective and the policy enforcer's
                 perspective. This API is intended for policy enforcers; it gives clear, fully detailed, non-verbose
                 descriptions of the policy. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyBlob.xml"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getEndpointTemplatePolicies" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get policies">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get policies">
             <para role="shortdesc"> Get all policies for endpoint template. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="updateEndpointTemplatePolicies" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Update policies">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update policies">
             <para role="shortdesc"> Update all policies for endpoint template </para>
             <para> This allows clients to update all the policies for an endpoint template at once. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicyList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UpdatePolicyList.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; </method>
 
     <method id="addPolicyToEndpointTemplate" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Add policy">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add policy">
             <para role="shortdesc"> Add a Policy to an endpoint template. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="removePolicyFromEndpointTemplate" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Remove policy">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove policy">
             <para role="shortdesc"> Remove a policy from an endpoint template. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getServiceApis" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get service APIs">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get service APIs">
             <para role="shortdesc"> Gets a list of service APIs. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ServiceApiList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ServiceApiList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getCapabilities" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get capabilities">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get capabilities">
             <para role="shortdesc"> Get the capabilities for an endpoint template. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/CapabilityList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/CapabilityList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="updateCapabilities" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Update capabilities">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update capabilities">
             <para role="shortdesc"> Update the capabilities for a Service API. </para>
             <para>Any capabilities that previously existed for this endpoint template will be overridden. There will be
                 future support to update capabilities by specifying a WADL as the payload. A WADL describes all the
@@ -1089,94 +1050,93 @@
          -->
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/CapabilityList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/CapabilityList.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="removeCapabilities" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Remove capabilities">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove capabilities">
             <para role="shortdesc"> Remove capabilities from an endpoint template. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="getRegions" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get regions">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get regions">
             <para role="shortdesc"> Gets a list of regions. </para>
             <para> The operation returns a list of regions. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/RegionList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/RegionList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getRegion" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get a region">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get a region">
             <para role="shortdesc"> Gets a region. </para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Region.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Region.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="updateRegion" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Update a region">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update a region">
             <para role="shortdesc"> Updates a region. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Region.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Region.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="createRegion" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Create a region">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Create a region">
             <para role="shortdesc"> Creates a region. </para>
             <para>Clients must specify the region name in the request body. </para>
             <para>Clients must specify whether or not the region is default in the request body. When a user is created,
@@ -1187,29 +1147,30 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Region.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Region.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201">
+        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
         </response> &commonFaults; &postPutFaults; </method>
 
     <method id="deleteRegion" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Delete a region">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete a region">
             <para role="shortdesc"> Deletes a region. </para>
             <para>This request only succeeds if the region default is set to false. The default value must be false
                 before this operation will be allowed.</para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; </method>
 
     <method id="getQuestions" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get questions">
@@ -1217,8 +1178,8 @@
             <para> The list includes secret questions and associated IDs required to manage questions by using the Identity 
                 service API. questions.</para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/QuestionList.xml"/>
@@ -1232,12 +1193,11 @@
         </response> &commonFaults; &getFaults; </method>
 
     <method id="getQuestion" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get a question">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get a question">
             <para role="shortdesc">Get a secret question by question ID.</para>
         </wadl:doc>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Question.xml"/>
@@ -1267,7 +1227,11 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults; &postPutFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="createQuestion" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Create a secret question">
@@ -1295,12 +1259,13 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201">
+        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
             <param name="LOCATION" style="header" type="URI" required="true">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Location of the URI for the newly-created question that includes the question ID assigned by the Identity service.</para></wadl:doc>
             </param>
         </response>
-        <response status="409">
+        <response status="409" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Conflict">The request could not be completed due to a conflict with the current state of the resource.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
@@ -1313,11 +1278,14 @@
              You can remowith a user account, the operation fails. 
                 The question must be removed from any users before this operation will be allowed. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &getFaults; </method>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; </method>
 
     <method id="getEndpointTemplates" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Get endpoint templates">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get endpoint templates">
             <para role="shortdesc">Get users in a domain. </para>
         </wadl:doc>
         <request>
@@ -1334,17 +1302,15 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Allows us to filter by region. </para></wadl:doc>
             </param>
         </request>
-        <response status="200">
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointTemplateList.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointTemplateList.json"/>
                 </wadl:doc>
             </representation>
@@ -1408,8 +1374,8 @@
                 </wadl:doc>       
             </representation>
         </request>
-        <response status="200">
-            <doc title="OK">Success</doc>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="text/xml">
                 <doc xml:lang="EN" title="Authenticate with multifactor credentials: XML response with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.xml"/>
@@ -1422,23 +1388,23 @@
                 </wadl:doc>           
             </representation>
         </response>
-        <response status="401">
-            <wadl:doc title="Unauthorized" xmlns="http://docbook.org/ns/docbook"><para>Unauthorized error can occur if the passcode is not valid, or if the user 
+        <response status="401" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Unauthorized" xml:lang="EN">Unauthorized error can occur if the passcode is not valid, or if the user 
                 account is locked because the user has exceeded the maximum number of attempts to authenticate. Use the Unlock user account operation to 
-                remove the account lock.</para></wadl:doc>
+                remove the account lock.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response>
         
-        <response status="403">
-            <wadl:doc title="User Disabled" xmlns="http://docbook.org/ns/docbook">User account has been disabled.
-            </wadl:doc>
+        <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="User Disabled" xml:lang="EN">User account has been disabled.
+            </doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response>
         
-        <response status="500">
-            <wadl:doc title="serviceFault" xmlns="http://docbook.org/ns/docbook">Passcode not accepted.</wadl:doc>
+        <response status="500" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="serviceFault" xml:lang="EN">Passcode not accepted.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &postPutFaults; 
@@ -1446,13 +1412,13 @@
     <method id="authenticateAsRacker" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate as a Racker">
             <para role="shortdesc">Authenticate using Racker credentials.</para>
-            <para>Rackers can use the POST tokens operation to authenticate to the Identity 
+            <para>Rackers can use the <command>POST tokens</command> operation to authenticate to the Identity 
                 service by supplying the following information in the request: Rackspace username, 
                 SSO password, and the Rackspace domain ID.</para>
             <para>When you authenticate, the Identity Service 
-                validates the authentication request through internal Rackspace eDirectory (eDir) service, maps your Racker credentials to the Identity 
+                validates the authentication request through the internal Rackspace eDirectory (eDir) service, maps your Racker credentials to the Identity 
                service roles and permissions, and returns an authentication response with a token granting the corresponding access rights and permissions.</para>
-            <para>User, group, and role configuration for Racker accounts are managed through 
+            <para>User, group, and role configuration for Racker accounts is managed through 
                 the eDir service. You can view, manage, and submit eDir service 
                 requests by using either of these resources: 
                <itemizedlist>
@@ -1498,17 +1464,17 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Racker SSO authentication request: XML">
                     <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="username" style="template" type="xsd:string" required="true">
+                <param name="username" style="template" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The Rackspace account user name.</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="password" style="template" type="xsd:string" required="true">
+                <param name="password" style="template" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The SSO password for the specified user account</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="RAX:AUTH:domain" style="plain" type="xsd:string" required="true">
+                <param name="RAX:AUTH:domain" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Specify the Rackspace domain name.<code>name="Rackspace"</code>.</para>
                     </wadl:doc>
@@ -1526,34 +1492,31 @@
               </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Racker RSA token authentication request: JSON">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Racker RSA token authentication request: JSON">
                     <xsdxt:code href="../common/samples/RackerRSATokenAuthenticationRequest.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200">
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/RackerAuthenticationResponse.xml"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/RackerAuthenticationResponse.json"/>
                </wadl:doc>
             </representation>
         </response>
-        <response status="409">
+        <response status="409" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Conflict">The request could not be completed due to a conflict with the current state of the resource.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
     
     <method id="createMobilePhone" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
- title="Add a mobile phone">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone">
             <para role="shortdesc">Adds a mobile phone number to the specified user account to support multi-factor authentication.</para>
             <para>Updates the specified user account with a phone number for multi-factor authentication. 
             The same phone number can be associated with multiple accounts.</para>
@@ -1561,42 +1524,49 @@
                 <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
                 <code>+1 235-435-623</code> or <code>+44 42 1123 4567</code> for example.
              </para>
-      </wadl:doc>
-        <request>
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request in cURL command">
-                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+            <example><title>Add mobile phone cURL request</title>
+            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X POST \
        -H "Content-Type: application/json" \
+       -H "X-Auth-Token: $AUTH_TOKEN"
        -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
        | python -m json.tool</programlisting>
-                    <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to environment variables:</para></note>
+            </example>
+            <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to these environment variables: <code>AUTH_URL, USER_ID</code> and <code>AUTH_TOKEN</code>.</para></note>
+      </wadl:doc>
+        <request>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <param name="number" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>The phone number of the mobile phone in <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
+                            <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example.</para>
+                    </wadl:doc>
+                </param>
+                <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.xml"/>
+            </representation>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request">
+                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.json"/>
                 </wadl:doc>                
             </representation> 
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneNumber" style="plain" type="xsd:string" required="true">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <para>The phone number of the mobile phone in <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
-                        <code>+1 235-435-623</code>+1 235-435-623 or <code>+31 42 1123 4567</code> for example.</para>
-                </wadl:doc>
-            </param></representation>
         </request>
-        <response status="201">
+        
+        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Created">The request has been fulfilled. The mobile phone has been added.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML response">
                     <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.xml"/>
                </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The userId for the account to update.</para></wadl:doc>          
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="phoneid" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when a phone is added to an account.</para></wadl:doc>          
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="verified" style="plain" type="boolean" required="false">
+                <param name="verified" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
+                        verified by using the Send verification code and Verify device operations.</para></wadl:doc>          
+                </param>
+                <param name="number" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates whether the phone can be used to authenticate to &CIS;. Phones can be  
-                            verified by using the Send verification code and Verify device operations.</para>
+                        <para>The phone number for the mobile phone you want to add in <link xlink:href="https://www.itu.int/rec/T-REC-E.123-200102-I/en">E.123 format</link>. +1 235-435-623 or +44 42 1123 4567 for example.</para>
                     </wadl:doc>
                 </param>
                 
@@ -1636,7 +1606,10 @@
            environment variables.</para></note></wadl:doc>
             </representation>
         </request>
-        <response status="202"/> &commonFaults; &getFaults;     
+        <response status="202" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Accepted" xml:lang="EN">The request was accepted for processing.</doc>
+        </response>    
+            &commonFaults; &getFaults;    
     </method>
     
     <method id="verifyDevice" name="POST">        
@@ -1656,27 +1629,29 @@
         </wadl:doc>
         
         <request>
-         
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: JSON request">
-                    <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.json"/>
-                </wadl:doc>
-            </representation>
             
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: XML request">
                     <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="code" style="plain" type="xsd:string" required="true">
+                <param name="code" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</para>
                     </wadl:doc>
                 </param>
             </representation>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: JSON request">
+                    <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.json"/>
+                </wadl:doc>
+            </representation>
         </request>
         
-        <response status="204">
-            <wadl:doc title="No Content">Accepted</wadl:doc></response> &commonFaults; &postPutFaults;     
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &postPutFaults;     
     </method>
         
     <method id="getMobilePhonesForUser" name="GET">
@@ -1686,13 +1661,10 @@
             verification status for all phones associated with the specified user.</para>
             <para>If you don't know the userId, use the List operation to find it.</para>
         </wadl:doc>
-        <response status="204">
-            <wadl:doc title="No Content">Accepted.</wadl:doc>
-           
-        
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
->
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.json"/>
                 </wadl:doc>
         </representation>
@@ -1701,27 +1673,27 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
                 </wadl:doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="id" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>A unique, system-generated string that identifies the mobile phone 
                             in the &CIS;.</para>
                     </wadl:doc>          
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="number" style="plain" type="xsd:string" required="true">
+                <param name="number" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Phone number of the device associated with the user account. Use the Add mobile phone operation 
                             to add a phone to the account. Use the Remove multi-factor operation to remove phones from the account.</para>
                     </wadl:doc>
                 </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02" name="verified" style="plain" type="boolean" required="false">
+                <param name="verified" style="plain" type="boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates whether the phone can be used to authenticate to &CIS;. Phones can be  
+                        <para>A boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
                             verified by using the Send verification code and Verify device operations.</para>
                     </wadl:doc>
                 </param>
             </representation>
         
-        </response>&commonFaults; &getFaults;
+        </response> &commonFaults; &getFaults;
     </method>
     
     <method id="removeMultifactorForUser" name="DELETE">
@@ -1735,7 +1707,11 @@
                 Attempts to run it for a different userId result in a 403 error message.
             </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults;
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults;
     </method>
      
     <method id="updateMultifactorSettings" name="PUT">
@@ -1755,7 +1731,6 @@
                 operation.</para>
         </wadl:doc>
         <request>
-          
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: JSON request">
                     <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
@@ -1788,9 +1763,11 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="204"><doc title="OK">No multi-factor device on user account.</doc>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/></response> 
+        </response>
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="Bad Request">Possible reasons: No multifactor device on user account; multifactor phone on account is not verified.</doc>
             <representation mediaType="application/json"/>
@@ -1884,24 +1861,18 @@
                 </param>
             </representation>
         </request>
-        <response status="200">
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
-                </wadl:doc>
-            </representation>
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/BypassCodesResponse.xml" />
                 </wadl:doc>
-                <param name="RAX-AUTH:bypassCodess"  style="plain" required="false">
+                <param name="RAX-AUTH:bypassCodes"  style="plain" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>
-                            This object returns the list of bypass codes and the 
-                            <parameter>validityDuration</parameter> value that 
-                            <parameter>numberofcodes</parameter> attributes for the Generate 
-                            bypass codes operation.  See the XML and JSON request examples for 
-                            the correct syntax.
+                            This object returns the list of <parameter>bypass codes</parameter> and the 
+                            <parameter>validityDuration</parameter> setting that specifies how long the codes are valid. 
+                            See the XML and JSON request examples for the correct syntax.
                         </para>
                     </wadl:doc>
                 </param>
@@ -1910,10 +1881,15 @@
                 </param>
                 <param name="validityDuration" style="plain" type="xsd:duration" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>The time interval that specifies how long the code is valid.
+                        <para>The time interval that specifies how long the generated codes remain valid.
                         </para>
                     </wadl:doc>
                 </param>
+            </representation>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
@@ -1923,8 +1899,8 @@
     <method id="unlockMultifactorForUser" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock user account">
             <para role="shortdesc">Unlocks an account that was disabled because of too many failed login attempts or disablement.</para>
-            <para>&CIS; has a system-configured threshold for failed authentication attempts from a multifactor-enabled device.
-                The default threshold is 6. If a user enters incorrect multi-factor authentication credentials more than 6 times, &CIS; locks 
+            <para>The Identity service has a system-configured threshold for failed authentication attempts from a multifactor-enabled device.
+                The default threshold is 6. If a user enters incorrect multi-factor authentication credentials more than 6 times, the Identity service locks 
                 the account.
             </para>
                 
@@ -1959,7 +1935,11 @@
                 </param> -->
             </representation>
         </request>
-        <response status="204"/> &commonFaults; &getFaults;
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults;
     </method> 
     
     <method id="getTokenBySAML" name="POST">
@@ -1983,7 +1963,8 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200">
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Token SAML response: XML">
                     <xsdxt:code href="../common/samples/TokenSAMLRsp.xml"/>

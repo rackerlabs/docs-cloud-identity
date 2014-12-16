@@ -43,7 +43,7 @@
             </param>
             <resource id="users" path="users">
                 <resource id="userById" path="{userId}">
-                    <param xmlns="http://wadl.dev.java.net/2009/02" name="userId" style="template" type="xsd:string" required="true">
+                    <param name="userId" style="template" type="xsd:string" required="true">
                         <wadl:doc  xmlns="http://docbook.org/ns/docbook">
                             <para>The user ID assigned by system when user is added.</para>
                         </wadl:doc>

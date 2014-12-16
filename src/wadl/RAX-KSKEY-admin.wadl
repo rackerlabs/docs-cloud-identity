@@ -248,7 +248,11 @@
                 obtain complete identifying information about the user.
             </para>
         </wadl:doc>
-        <response status="204"/>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response>
         &commonFaults;
         &postPutFaults;
         &getFaults;
@@ -262,6 +266,7 @@
             </para>
         </wadl:doc>
         <response status="200 203">
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                <xsdxt:code href="../common/samples/apiKeyCredentials.xml"/>

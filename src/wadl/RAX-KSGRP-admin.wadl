@@ -55,7 +55,7 @@
     </resources>
     
     <method name="GET" id="listUserGroups">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Groups for User">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List groups for user">
             <p xmlns="http://www.w3.org/1999/xhtml">List all the groups for a user.</p>
             
         </wadl:doc>
