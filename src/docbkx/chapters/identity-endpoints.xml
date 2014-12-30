@@ -6,13 +6,14 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Endpoints-d1e180">
     <title>Authentication Endpoints</title>
-    <para>You can use the Rackspace Cloud Identity authentication
-        endpoints from version 1.1 or version 2.0. The legacy v1.1 API
-        endpoint only supports authentication services, but you can
-        use tokens from version 1.1 in version 2.0 API calls.</para>
+    <para>You can use the Rackspace Cloud Identity authentication endpoints from version 1.1 or
+        version 2.0. The legacy v1.1 API endpoint only supports authentication services, but you can
+        use tokens from version 1.1 in version 2.0 API calls. </para>
+    <para>You can authenticate from either of the endpoint URLs included in <xref linkend="AuthEndpoints" xrefstyle="select: quotedtitle"/>. For better regional 
+    performance, we recommend that Rackspace UK customers use the UK-based endpoint.</para>
 
-    <table rules="all">
-        <caption>Authentication Endpoints</caption>
+    <table rules="all" xml:id="AuthEndpoints">
+        <caption>Authentication Endpoints and documentation resource links</caption>
         <col width="13%"/>
         <col width="48%"/>
         <col width="48%"/>
