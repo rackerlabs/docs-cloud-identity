@@ -45,8 +45,8 @@ format="SVG" scale="60"/>
     <para>To run the cURL request examples shown in this guide, copy each example from the HTML version of this guide
         directly to the command line or a script.</para>
 
-    <para>The following command is an example cURL command to retrieve Rackspace Cloud account
-        information by user name:</para>
+    <para>The following example shows the cURL command syntax for the List users API operation to
+        retrieve Rackspace Cloud account information by user name:</para>
 
     <example xml:id="json_example">
         <title>cURL Command Example: JSON Request</title>
