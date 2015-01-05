@@ -29,9 +29,7 @@
                 <resource id="groups" path="groups" type="#GroupList">
                     <param name="X-Auth-Token" style="header"
                         type="xsd:string" required="true">
-                        <wadl:doc
-                            xmlns="http://docbook.org/ns/docbook"
-                            xml:lang="EN">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                             <para>A valid authentication token for an
                                 administrative user.</para>
                         </wadl:doc>
@@ -104,15 +102,13 @@
 
     <!-- Methods -->
     <method id="listGroups" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="List groups">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List groups">
             <para role="shortdesc">Lists groups.</para>
         </wadl:doc>
-        <response status="200 203">
-            <representation mediaType="application/xml"
-                element="grp:groups">
-                <wadl:doc xml:lang="EN"
-                    xmlns="http://docbook.org/ns/docbook">
+        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK">The request completed successfully.</doc>
+            <representation mediaType="application/xml" element="grp:groups">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
                         href="../common/samples/groups.xml"/>
                 </wadl:doc>
@@ -132,21 +128,17 @@
                         href="../common/samples/groups.json"/>
                 </wadl:doc>
             </representation>
-        </response>
-        <!-- commonFaults --> &commonFaults; </method>
+        </response> &commonFaults;
+    </method>
     <method id="addGroup" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Add group">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add group">
             <para role="shortdesc">Adds a group.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml"
-                element="grp:group">
-                <wadl:doc xml:lang="EN"
-                    xmlns="http://docbook.org/ns/docbook">
+            <representation mediaType="application/xml" element="grp:group">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../common/samples/group-for-create.xml"
-                    />
+                        href="../common/samples/group-for-create.xml"/>
                 </wadl:doc>
                 <param name="group" style="plain" required="true"
                     type="grp:GroupForCreate" path="/grp:group"/>
@@ -155,12 +147,12 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../common/samples/group-for-create.json"
-                    />
+                        href="../common/samples/group-for-create.json"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201">
+        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK">Created.</doc>
             <representation mediaType="application/xml"
                 element="grp:group">
                 <wadl:doc xml:lang="EN"
@@ -192,7 +184,7 @@
             <para role="shortdesc">Gets information for a group by
                 ID.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
             <representation mediaType="application/xml"
                 element="grp:group">
                 <wadl:doc xml:lang="EN"
