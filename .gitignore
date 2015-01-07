@@ -50,3 +50,24 @@ src/common/samples/RAX-GRPADM-old/samples/group-for-create.json
 src/wadl/identity-api/.DS_Store
 
 src/wadl/identity-api/openstack-identity-api/.DS_Store
+
+*.xpr
+
+*.zip
+
+
+*.jpeg
+
+*.bak
+
+src/common/xsd/docHtml.css
+
+src/common/xsd/RAX-AUTH.json
+
+src/common/xsd/RAX-AUTH.xsd
+
+src/docbkx/out/xhtml-chunks/.rst
+
+src/docbkx/authDevGuideCompiled.xml
+
+src/common/js/xslt/schema.xslt
