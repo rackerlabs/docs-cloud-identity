@@ -5,6 +5,7 @@
 ]>
 <chapter xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:db="http://docbook.org/ns/docbook" 
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Overview-Keystone-API-d1e62">
  
@@ -23,884 +24,150 @@
 	
 	<!--Note the Admin concepts section contains a workflow diagram not included in Dev guide.  
 		That's why the xi:include content is conditional.-->
-	
 	<xi:include href="identity-concepts-admin.xml"/>
+	<xi:include href="section-identity-concepts.xml"/>
+    <xi:include href="../shared/section_gs_curl_how_curl_works.xml"/>
+	<xi:include href="section-ReqRespTypes.xml"/>
+	<xi:include href="section-authReqResp_annotated.xml"/>
+	<xi:include href="section-service-catalog.xml"/>
+    <xi:include href="section-identity-multfactorauth.xml"/>
+<section xml:id="Role_Based_Access_Control-d1e808">
+	<?dbhtml stop-chunking?>
+		<title>Role Based Access Control</title>
+		<para>The Rackspace Cloud Identity service provides Role Based
+			Access Control (RBAC) so that customers can restrict
+			access to Cloud services and capabilities to authorized
+			users only.  RBAC is an opt-in feature available to all
+			Rackspace Cloud customers. </para>
+		<para>Role-based access control assigns the following role types: 
+       <itemizedlist>
+				<listitem>
+					<para>Identity service, administrative, and user
+						roles</para>
+				</listitem>
+				<listitem>
+					<para>RBAC product and global roles to manage
+						access and capabilities for other Rackspace
+						Cloud Services.</para>
+				</listitem>
+			</itemizedlist>
+        </para>
 
-	<section xml:id="Request_Response_Types-d1e149">
-		<title>Request/Response Types</title>
-		<para>The &CIS; v2 API supports both the JSON and XML data serialization request and response
-			formats. Some operations also support the Atom Syndication Format for responses. If you
-			do not specify a format type, <code>JSON</code> is the default. <xref
-				linkend="Response_Types"/> provides a summary of the available formats.</para>
-
-				<table rules="all" width="884" xml:id="Response_Types">
-			<caption>Supported Request and Response formats</caption>
-			<col width="7%"/>
-			<col width="35%"/>
-			<col width="222pt"/>
-			<col width="14%"/>
-			<col width="160px"/>
-			<thead valign="baseline">
-				<tr>
-					<td>Format</td>
-					<th>Content-Type  header</th>
-					<td>Accept header</td>
-					<td>Query Extension for request URI</td>
-					<td>Default</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>JSON</td>
-					<td>Content-Type application/json</td>
-					<td>application/json</td>
-					<td>.json</td>
-					<td>Yes</td>
-				</tr>
-				<tr>
-					<td>XML</td>
-					<td>Content-Type application/xml</td>
-					<td>application/xml</td>
-					<td>.xml</td>
-					<td>No</td>
-				</tr>
-			</tbody>
-		</table>
-		<variablelist>
-			<varlistentry>
-			<term><guilabel>Content-Type header syntax</guilabel></term>
-				<listitem>
-					<para>The Content-Type header is required for API operations that
-						have a request body.</para>
-				<para>
-					<programlisting>Content-Type: application/<replaceable>format</replaceable></programlisting>
-				</para>
-				<para>Where <replaceable>format </replaceable> is either
-							<literal>json</literal> or
-							<literal>xml</literal>.</para>
-				</listitem>
-		</varlistentry>
-		</variablelist>
-		<variablelist>
-			<varlistentry>
-				<term><guilabel>Accept header syntax</guilabel></term>
-				<listitem>
-					<para>For the Accept header, you can use the
-						following syntax or use the Query extension
-						format.</para>
-					<para>
-						<programlisting>Accept: application/<replaceable>format</replaceable></programlisting> 
-					</para>
-					<para>Where <code>format</code> can be either <code>json</code> or 
-						<code>xml</code>.</para>
-				</listitem>
-			</varlistentry>
-			<varlistentry>
-				<term><guilabel>Query extension syntax</guilabel></term>
-				<listitem>
-					<para>Add an <code>.xml</code> or <code>.json</code> extension to the request
-						URI. For example, the <code>.xml</code> extension in the following URI
-						request specifies that the response body is returned in XML format.</para>
-					<para>
-						<programlisting>POST /v2/tokens.xml</programlisting>
-					</para>
-					<para>
-						If you specify different formats for the Accept header and the query extension, the format
-						specified in the query extension takes precedence. For example, if the query
-						extension is <code>.xml</code> and the Accept header specifies
-						<code>application/json</code>, the response is returned in XML
-						format.
-					</para>
-				</listitem>
-			</varlistentry>
-		</variablelist>
-		<para>You can serialize a response in a different format from the request format. <xref linkend="JSON_req"/> and
-			<xref linkend="diff-serialization"/> show a request body in JSON format and a response body in XML format. </para>
-		<example xml:id="JSON_req">
-			<title>Authentication Request with Headers: JSON</title>
+<!-- Include separate sections for Identity and RBAC role documentation -->
 			
-			<programlisting language="json">
-<![CDATA[
-<POST /v2.0/tokens HTTP/1.1
-Host: identity.api.rackspacecloud.com
-Content-Type: application/json
-Accept: application/json
+		<xi:include href="section-identity-roles.xml"/>
+		<xi:include href="section-rbac-roles.xml"/>
 
-{
-  "auth": {
-    "passwordCredentials": {
-      "username": "demoauthor",
-      "password": "mypass"
-    },
-    "tenantId": "1234"
-  }
-}]]>
-</programlisting>
-</example>
-		
-		<para><xref linkend="diff-serialization"/> shows the headers and XML response returned by the JSON request.</para>
-		<example xml:id="diff-serialization">
-			<title>Response with Headers: XML</title>
-			<programlisting>
-<![CDATA[HTTP/1.1 200 OK
-Date: Sun, 29 Jun 2014 03:35:05 GMT
-Content-Type: application/xml
-Content-Length: 1060
-Connection: keep-alive
-vary: Accept, Accept-Encoding, X-Auth-Token]]>
-<![CDATA[
-<access 
-	xmlns:atom="http://www.w3.org/2005/Atom" 
-	xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-	xmlns="http://docs.openstack.org/identity/api/v2.0" 
-	xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-	xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-	xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-	xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-	xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
-    
-    <token id="yyyyxxxaxxxxyyyyyyxxxxxxxyyyyy" expires="2014-06-29T21:09:34.085Z">
-          <rax-auth:authenticatedBy>
-               <rax-auth:credential>PASSWORD</rax-auth:credential>
-          </rax-auth:authenticatedBy>
-     </token>
-    
-    <user name="demoauthor" rax-auth:defaultRegion="DFW" rax-auth:federated="false">
-          <roles>
-               <role id="1" name="identity:admin" description="Admin Role."/>
-          </roles>
-     </user>
-     <serviceCatalog/>
-</access>
-]]>
-			</programlisting>
-		</example>
-	</section>
-	<section xml:id="Sample_Request_Response-d1e64">
-		<title>Sample Authentication Request and Response</title>
-		<para>The sample request and response in this section illustrate a general
-			case using the user name and password credentials
-			associated with &CIS; cloud account. 
-			In your authentication request, use your own credentials rather
-			than the sample values shown here for <code>user
-				name</code>, <code>password</code>. and
-				<code>tenantId</code>. When you authenticate
-			successfully, the response to your authentication request
-			includes a catalog of available services along with
-				<glossterm>endpoint</glossterm> URLs to access each
-			service.</para>
-		<note><title>Notes</title><para>
+<!-- Assign roles -->
+		<section xmlns="http://docbook.org/ns/docbook"
+			xmlns:xi="http://www.w3.org/2001/XInclude"
+			xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+			xml:id="section_assign_roles_3">
+			<title>Assigning roles to account users</title>
+			<para>The account owner, <literal>identity:user-admin</literal>) can create account users, 
+				<literal>identity:default)</literal> on the account and then assign roles to 
+				those users. The roles grant the account users specific permissions for accessing the 
+				Cloud services and capabilities. Each account has only one account owner, and that role 
+				is assigned by default to any Rackspace Cloud account when the account is created. Account 
+				owners cannot hold any additional roles because they already have full access to all services 
+				and capabilities.
+			</para>
+			<para>
+				You can assign roles programmatically through the API or by using the Cloud Control panel
+				interface.
+			</para>
+			<para>Use the following API operations to add account users and manage role assignments:</para>
+					<itemizedlist condition="client">
+				<listitem>
+					<para>
+						<link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add account user</link>
+					</para>
+				</listitem>
+				<listitem>
+					<para><link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Assign role to account users</link></para>
+				</listitem>
+				<listitem>
+					<para><link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Delete role from account user</link></para>
+				</listitem>
+			</itemizedlist>
+			<itemizedlist condition="admin">
+				<listitem>
+					<para>
+						<link xlink:href="POST_admin-addUser_v2.0_users_User_Calls.html">Add account user</link>
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+					<link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Assign role to account users</link>
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						<link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Delete user role</link>
+                   </para>
+                   </listitem>
+			</itemizedlist>
+			<para>For information about implementing RBAC by using the Cloud
+				Control panel and other RBAC-related topics, see the
+				following Rackspace Knowledge Center articles:</para>
 			<itemizedlist>
 				<listitem>
-					<para>For information about other authentication methods with examples, 
-						see <link xlink:href="Token_Calls.html">Authentication tokens</link>.</para></listitem>
+				<para>
+					<link
+						xlink:href="http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac"
+						>Managing Role-based access control through Cloud Control panel</link>
+				</para>
+			</listitem>
 				<listitem>
-					<para>If a user account has been set up to use
-					multi-factor authentication, additional
-					credentials are required after submitting the log
-					in credentials. For details, see <link xlink:href="proc_mfa_auth.html">Authenticate from a multifactor-enabled user account</link>
-					</para></listitem>
-			</itemizedlist>
-		    </para></note>
-		 	<example>
-	  		<title>Authentication Request with Headers: JSON</title>
-	  		
-	  		<programlisting language="json">
-<![CDATA[POST /v2.0/tokens HTTP/1.1
-Host: identity.api.rackspacecloud.com
-Content-Type: application/json
-Accept: application/json
-
-{
-  "auth": {
-    "passwordCredentials": {
-      "username": "demoauthor",
-      "password": "mypass"
-    },
-    "tenantId": "1234"
-  }
-}]]>
-</programlisting>
-	  	</example>
-		<para>The attributes in this example have the following definitions:</para>
-		<para><xref linkend="auth_req_attributes"/> describes the attributes for the authentication response.</para>
-		<table rules="all" xml:id="auth_req_attributes">
-			<caption>Authentication request attribute descriptions</caption>
-			<col width="24%"/>
-			<col width="76%"/>
-			<thead>
-				<tr>
-					<th valign="top">Attribute</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><parameter>username</parameter></td>
-					<td>
-						<para> 
-							This is the <parameter>username</parameter> that you use to login to the Rackspace
-							Cloud Control Panel at <link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com</link></para>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>password</parameter></td>
-					<td>
-						<para> 
-							This is the password you use to login to the Rackspace Cloud Control Panel.
-							The password must meet the following criteria:</para>
-						<itemizedlist>
-							<listitem><para>Length must be at least 8 characters; no maximum.</para></listitem>
-							<listitem><para>Includes at least one uppercase and one lower case character.</para></listitem>
-							<listitem><para>Can include special characters.</para></listitem>
-							<listitem><para>Cannot begin with a space.</para></listitem>			
-						</itemizedlist>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>tenantId</parameter></td>
-					<td>
-						<para> 
-							Tenant is an optional specification. 
-							Some services use multi-level authentication, with service-specific credentials
-							in addition to vendor-specific credentials. 
-							In such cases, associating a user with a tenant can
-							be a method of passing that additional level of identifying information to the service.</para>
-					</td>
-				</tr>
-				
-			</tbody>
-		</table>			
-			
-
-		<para>A successful authentication response includes a token and a
-			service catalog, along with information about the user .
-			For each service in the service catalog, only relevant
-			details are returned. Service descriptions vary depending
-			on how the service has been configured. For example, some
-			service endpoints might be associated with a default
-			region. For those services, the <code>region</code>
-			specification is included in the description. If the
-			service endpoint does not have a default region defined,
-			the service description does not include
-				<code>region</code>.</para>
-		<para><xref linkend="xml_auth_resp" xrefstyle="select: quotedtitle"
-			/> and <xref linkend="json_auth_resp"
-				xrefstyle="select: quotedtitle"/> show sample
-			authenticaion responses in XML and JSON format. In these
-			examples, the authentication token returned provides
-			access to the following services: <itemizedlist>
-				<listitem>
-					<para>Compute: Cloud Servers OpenStack and Cloud
-						Servers</para>
-				</listitem>
-				<listitem>
-					<para>Object storage: Cloud Files Content
-						Distribution Service (CDN) and Cloud
-						Files.</para>
-				</listitem>
-				<listitem>
-					<para>Database</para>
-				</listitem>
-				<listitem>
-					<para>DNS</para>
-				</listitem>
-				<listitem>
-					<para>Load Balancers</para>
-				</listitem>
-				<listitem>
-					<para>Monitoring</para>
-				</listitem>
-			</itemizedlist>The catalog listing for each service
-			provides the URL for the API endpoint to access the
-			service, along with information about the API version, and
-			the region or tenant, if applicable, See <xref
-				linkend="auth_resp_attributes"/> for information about
-			the attributes included in the response. </para>
-	  <example xml:id="xml_auth_resp">
-		<title>Service Catalog in Authentication Response with Headers: XML</title>
-	  	<programlisting language="javascript">
-		<xi:include href="../samples/auth-annotated.xml" parse="text"/>
-		</programlisting>	
-	  </example>
-		<example xml:id="json_auth_resp">
-			<title>Service Catalog in Authentication Response: JSON</title>
-				<programlisting language="javascript">
-<xi:include href="../samples/auth-annotated.json" parse="text"/>
-		</programlisting>	
-		</example>
-		<para><xref linkend="auth_resp_attributes"/> describes the attributes for the authentication response.</para>
-		<table xml:id="auth_resp_attributes" rules="all">
-			<caption>Authentication response attribute descriptions</caption>
-			<col width="24%"/>
-			<col width="76%"/>
-			<thead>
-				<tr>
-					<th>Attribute</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><parameter>xmlns</parameter> namespaces</td>
-					<td>
-						<para>In XML responses only, a list of
-							namespaces identifies API extensions that
-							add functionality to the core API. </para>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>access</parameter> object</td>
-					<td><para>The access object returns the authentication token, service
-							catalog, and user objects that specify the
-							token scope and provide information for
-							accessing available Rackspace Cloud
-							resources.</para></td>
-				</tr>
-				<tr>
-					<td><parameter>token</parameter> object</td>
-					<td>
-						<para>The token object supplies the authentication token id
-							required to access &CLOUD; services
-							through the API. It also determines how
-							long the token remains valid. The token
-							object has the following
-							attributes.</para>
-						
-						<variablelist>
-								<varlistentry>
-								<term>id</term>
-									<listitem><para>A string value that can be presented to a service as evidence of
-								authentication. Tokens are valid
-								for a finite duration; a token's
-								default lifespan is twenty-four
-								hours.  In the authentication
-								response example, the token is
-								<code>aaaaa-bbbbb-ccccc-dddd</code>.</para></listitem>
-								</varlistentry>
-							
-								<varlistentry>
-								<term>expires</term>
-									<listitem><para>A timestamp that indicates when the token expires.</para>
-										<para>By default, a token id expires 24-hours after 
-										being generated, unless the token is revoked before 
-										it expires. Clients are encouraged to cache the token 
-										until it expires. After the token expires, client users and 
-										applications must re-authenticate to get a new token.</para></listitem>
-								</varlistentry>
-							</variablelist>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>role</parameter>
-					</td>
-					<td>
-						<para>Users can be assigned multiple roles, with each role
-							providing specific privileges.  In this
-							example, <code>demoauthor</code> is the
-							administrative user for the account,
-							holding the fully-privileged
-								<code>identity:user-admin</code> role.
-							Other users might hold other roles with
-							different privileges. Roles need not be
-							associated with actual job functions such
-							as Administrator, Operator, Developer,
-							Tester, or Trainer. </para>
-						<para>For information about roles, see
-							<link xlink:href="Account-Users-d1e910.html"/></para>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>serviceCatalog</parameter></td>
-					<td>
-						<para>Returns a list of service objects that provide the
-							endpoint and description for each service
-							that can be accessed using the
-							authentication token.</para>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>service</parameter></td>
-					<td>In XML responses, the service object returns
-						information about each service along with the
-						endpoint URL to access the service.</td>
-				</tr>
-				<tr>
-					<td><parameter>endpoints</parameter></td>
-					<td>
-						<para>In JSON responses, the endpoints object returns
-							information about each service available
-							to the authenticated user. <variablelist>
-								<varlistentry>
-								<term>endpoint</term>
-								<listitem>
-								<para>An endpoint object returns
-								one or more URLs to access the
-								specified service, API version
-								information, and any relevant
-								information regions and
-								tenants.</para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>name</term>
-								<listitem>
-								<para>The service name attribute
-								identifies each unique service in
-								the catalog. After a service is
-								created, its name does not change.
-								However, new services of the same
-								service type can be added to the
-								catalog with new names.<important>
-								<para> When you parse an
-								authentication response
-								programmatically, use <code>service
-								type</code> rather than
-								<code>service name</code> as the
-								basis for determining whether a
-								user has access to a particular
-								kind of service. Service type is
-								stable across all releases; new
-								service types can be added, but
-								existing service types are not
-								renamed. In this example,
-								<code>type="compute"</code>
-								identifies all the available
-								compute services, one of which is
-								named cloudServers and one of which
-								is named
-								<literal>cloudServersOpenStack</literal>.
-								New compute service names may be
-								added in future releases; whatever
-								the compute services are named, you
-								can always recognize them by
-								parsing for
-								<code>type="compute"</code> in the
-								authentication response's service
-								catalog. </para>
-								</important></para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>type</term>
-								<listitem>
-								<para>The type of service provided
-								at the specified endpoint,
-								<parameter>compute</parameter>,
-								<parameter>object-store</parameter>,
-								or
-								<parameter>rax:loadbalancer</parameter>
-								for example.</para>
-								<para>Service types categorize the
-								services registered with OpenStack
-								or custom types registered with the
-								&CIS;. For a list of service types,
-								see <link
-								xlink:href="Service_Types-d1e265.html"
-								xrefstyle="select:title"/></para>
-								</listitem>
-								</varlistentry>
-							</variablelist>
-						</para>
-						<important>
-							<para> Use service type as the primary
-								value for locating a service. If
-								multiple endpoints of the same service
-								type exist in the same region, use
-								service name as the tiebreaker.</para>
-						</important>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>endpoint</parameter></td>
-					<td>
-						<para>The endpoint object provides the URL for the API endpoints
-							to access a service, API version details,
-							and information about the region and
-							tenant scope for accessing the service.
-							The information returned for a service is
-							detemined by the &CIS;, not all fields are
-							returned for all services. service
-							configuration. different regions as
-							specified by the
-								<parameter>region</parameter>
-							attribute. Regional endpoints allow
-							clients to provision resources in a manner
-							that provides high availability. <variablelist>
-								<varlistentry>
-								<term>publicURL, internalURL, and
-								AdminURL</term>
-								<listitem>
-								<para>An endpoint can be assigned
-								public, internal, and adminstrative
-								service URLs. Access to a public
-								URL usually incurs traffic charges.
-								Internal and Admin URLs are only
-								accessible to services within the
-								same region. Access to an internal
-								URL is free of charge.</para>
-								<para>The URL includes the API
-								version and tenantId for services
-								that require it. For example, in
-								the
-								<code>https://ord.servers.api.rackspacecloud.com/v2/12345"</code>
-								URL, the <code>versionId=2</code>
-								and the
-								<code>tenantId=12345</code>. (The
-								<code>tenantId</code> is also
-								referred to as the account
-								number.)</para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>region</term>
-								<listitem>
-								<para>The location of the Rackspace data center where the
-								specified service is hosted. </para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>tenantId</term>
-								<listitem>
-								<para>Some services recognize
-								specification of a tenant. If a
-								service does recognize tenants, the
-								format of the tenant specification
-								is defined only by the service; for
-								details about whether and how to
-								specify a tenant, check the
-								documentation for the service you
-								are using.</para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>versionId</term>
-								<listitem>
-								<para>Specifies the API version for
-								the endpoint. The API version is
-								also included in the URL to access
-								the service.</para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>versionInfo</term>
-								<listitem><para>URI to get information about the specified API
-								version. You can also retrieve
-								information about an API version by
-								using the Show version details API
-								operation for the specified
-								service, <code>GET
-								<replaceable>endpointURL//</replaceable><parameter>v</parameter><replaceable>version_number</replaceable></code>
-								for example.</para></listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>versionList</term>
-								<listitem>
-								<para>URI to get information about all versions. You can also
-								retrieve this infomation by using
-								the List versions API operation for
-								the specified service, <code>GET
-								<replaceable>endpointURL</replaceable></code>
-								for example.</para>
-								</listitem>
-								</varlistentry>
-							</variablelist></para>
-					</td>
-				</tr>
-				<tr>
-					<td><parameter>User</parameter></td>
-					<td><para>The user object returns account information for the
-							authenticated user.<variablelist>
-								<varlistentry>
-								<term>RAX-AUTH:defaultRegion</term>
-								<listitem>
-								<para>Users can be assigned a
-								default region so that, when there
-								is a choice between multiple
-								endpoints associated with a service
-								in the user's catalog, the endpoint
-								for the user's default region will
-								be selected if it is available. In
-								this example, the user's default
-								region is <code>DFW</code> and
-								several of the services in the
-								user's catalog offer endpoints in
-								that region and the
-								<code>ORD</code> region; this
-								user's work will be directed to the
-								<code>DFW</code> region whenever
-								possible.</para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>id</term>
-								<listitem>
-								<para>The user id.</para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>name</term>
-								<listitem>
-								<para>The user name.</para>
-								</listitem>
-								</varlistentry>
-								<varlistentry>
-								<term>roles</term>
-								<listitem>
-								<para>The roles object returns information about roles
-								assigned to the user account. Each
-								role is returned as a role object
-								that can contain the following
-								information: <itemizedlist>
-								<listitem>
-								<para>Role
-								<parameter>name</parameter>, along
-								with the role
-								<parameter>id</parameter> and
-								<parameter>description</parameter>
-								if available.</para>
-								</listitem>
-								<listitem><para>If the role is associated
-								with a specific tenant, the
-								response returns the tenant
-								information, including the
-								<parameter>id</parameter>,
-								<parameter>name</parameter>, and
-								<parameter>tentnatId</parameter>.</para></listitem>
-								</itemizedlist></para>
-								</listitem>
-								</varlistentry>
-							</variablelist>
-						</para>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<section xml:id="Service_Types-d1e265">
-			<title>Service Types in the Service Catalog</title>
-			<para> As shown in <xref
-					linkend="Sample_Request_Response-d1e64"/>, every
-				service listed in the service catalog is associated
-				with a service type. You can use the service type to
-				recognize services that perform similar functions,
-				whatever those services are named. The following table
-				shows all the available service types and relates them
-				to their corresponding OpenStack projects and those
-				projects' documentation. </para>
-			<table rules="all">
-				<caption>Service Types</caption>
-				<col width="24%"/>
-				<col width="76%"/>
-				<thead>
-					<tr>
-						<th>Service Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><code>compute</code></td>
-						<td>
-							<para> Services of this type are
-								compatible with the OpenStack Compute
-								(Nova) API 1.1 as documented at <link
-								xlink:href="http://nova.openstack.org/"
-								>http://nova.openstack.org/</link>. </para>
-							<para>
-								<emphasis role="italic">Cloud Servers,
-								a Rackspace service of this type,
-								is documented at <link
-								xlink:href="http://docs.rackspace.com/api/"
-								>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>identity</code></td>
-						<td>
-							<para> Services of this type are
-								compatible with the OpenStack Keystone
-								API 2.0 as documented at <link
-								xlink:href="http://keystone.openstack.org/"
-								>http://keystone.openstack.org/</link>. </para>
-							<para>
-								<emphasis role="italic">Cloud
-								Identity, a Rackspace service of
-								this type, is documented at <link
-								xlink:href="http://docs.rackspace.com/api/"
-								>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>image-service</code></td>
-						<td>
-							<para> Services of this type are
-								compatible with the OpenStack Glance
-								API as documented at <link
-								xlink:href="http://glance.openstack.org/"
-								>http://glance.openstack.org/</link>. </para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>object-store</code></td>
-						<td>
-							<para> Services of this type are
-								compatible with the OpenStack Swift
-								API as documented at <link
-								xlink:href="http://swift.openstack.org/"
-								>http://swift.openstack.org/</link>. </para>
-							<para>
-								<emphasis role="italic">Cloud Files, a
-								Rackspace service of this type, is
-								documented at <link
-								xlink:href="http://docs.rackspace.com/api/"
-								>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>rax:database</code></td>
-						<td>
-							<para>
-								<emphasis role="italic">Cloud Databases, a Rackspace service 
-									of this type, is
-									documented at <link
-										xlink:href="http://docs.rackspace.com/api/"
-										>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>rax:dns</code></td>
-						<td>
-							<para>
-								<emphasis role="italic">Cloud DNS, a
-									Rackspace service of this type, is
-									documented at <link
-										xlink:href="http://docs.rackspace.com/api/"
-										>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>rax:load-balancer</code></td>
-						<td>
-							<para>
-								<emphasis role="italic">Cloud Load
-								Balancers, a Rackspace service of
-								this type, is documented at <link
-								xlink:href="http://docs.rackspace.com/api/"
-								>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>rax:monitor</code></td>
-						<td>
-							<para>
-								<emphasis role="italic">Cloud
-									Monitoring, a Rackspace service of
-									this type, is documented at <link
-										xlink:href="http://docs.rackspace.com/api/"
-										>http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-					<tr>
-						<td><code>rax:object-cdn</code></td>
-						<td>
-							<para>
-								<emphasis role="italic">Cloud Files CDN, a
-								Rackspace service that supports a
-								Content Distribution Network (CDN),
-								is documented at <link xlink:href="http://docs.rackspace.com/api/">http://docs.rackspace.com/api/</link>.</emphasis>
-							</para>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+					<para>
+						<link
+							xlink:href="http://www.rackspace.com/knowledge_center/article/getting-started-with-role-based-access-control-rbac-0">Getting Started with Role-based access control (RBAC)</link>
+					</para>
+				</listitem></itemizedlist>
 		</section>
-		<section xml:id="Sample_Catalog_Workflow-d1e266">
-			<title>Suggested Work flow for Processing a Service Catalog Response</title>
-			<para> When your client issues a successful authentication request,
-				the Cloud Identity Service responds with a catalog
-				showing the services available to that client, with
-				one endpoint listed for each available service; you
-				can find an annotated example of such a response in
-					<xref linkend="Sample_Request_Response-d1e64"/>. </para>
-			<para> As the client developer, you must decide how your client
-				should use the contents of its service catalog. The
-				first step may be to identify a service to which your
-				client should be connected. Here is one possible
-				work flow for processing the service catalog response
-				to identify available services and their endpoints: </para>
-			<orderedlist>
-			<listitem>
-					<para> 
-						If the service catalog lists only one endpoint, use it.
-						This will connect your client to the only
-						service available to that client.
-					</para>
-				</listitem>
-				<listitem>
-					<para> 
-						If the service catalog lists multiple endpoints,
-						you must establish a process for choosing an endpoint to connect your client to:
-					</para>
-					<orderedlist numeration="loweralpha">
-						<listitem>
-							<para> If the user has not specified which endpoint to use,
-								generate an error. </para>
-						</listitem>
-						<listitem>
-							<para> If the user has specified which endpoint to use, help
-								the user identify that endpoint from
-								within the catalog: </para>
-							<orderedlist numeration="lowerroman">
-								<listitem>
-									<para>
-										Support filtering by 
-										endpoint name, service name, service type, region name, and version.
-									</para>
-								</listitem>
-								<listitem>
-									<para>
-										Support manual specification of an endpoint via a URL parameter. 
-									</para>
-								</listitem>
-							</orderedlist>
-						</listitem>
-					</orderedlist>
-				</listitem>
-			</orderedlist>
-					<para> Authentication endpoints follow the process described
-				above. </para>
+		<section xml:id="RBAC_Role_Conflict-dle808">
+			<title>Resolving Conflicts Between RBAC Multiproduct (Global) vs. Custom (Product) Roles</title>
+			<para>The account owner can set roles for both multiproduct and custom (product-specific) scope,
+				and it is important to understand how any potential conflicts among these roles are
+				resolved. When two roles appear to conflict, the role that provides the more
+				extensive permissions takes precedence. Therefore, admin roles take precedence over
+				observer roles, because admin roles provide more permissions. </para>
 			<para>
-				To connect a client to an endpoint listed as
-					<code>type="compute"</code>, do the following: 
+				The following table shows two examples of how potential conflicts between user roles in the Control Panel are resolved:
 			</para>
-				<orderedlist>
-					<listitem>
-						<para>
-							Go that compute service's endpoint and use its <code>WWW-Authenticate</code>
-							header to determine what authentication server it uses.
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Go to that authentication server and authenticate.
-						</para>
-					</listitem>
-					<listitem>
-						<para>
-							Return to the compute endpoint and proceed with using the compute service.
-						</para>
-					</listitem>
-				</orderedlist>
+			<para>
+				<informaltable rules="all">		
+					<thead>
+						<tr align="center">
+							<td>Permission Configuration</td>
+							<td>View of Permission in the Control Panel </td>
+							<td>Can the User Perform Product Admin Functions in the Control Panel?</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>User is assigned the following roles: multiproduct <emphasis role="bold">observer</emphasis> and product <emphasis
+								role="bold">admin</emphasis></td>
+							<td>Appears that the user has only the multiproduct <emphasis role="bold">observer</emphasis> role</td>
+							<td>Yes, for specified product only. The user has the <emphasis role="bold">observer</emphasis> role for the rest of
+								the products.</td>
+						</tr>
+						<tr>
+							<td>User is assigned the following roles: multiproduct <emphasis role="bold">admin</emphasis> and product <emphasis
+								role="bold">observer</emphasis></td>
+							<td>Appears that the user has only the multiproduct <emphasis role="bold">admin</emphasis> role</td>
+							<td>Yes, for all of the products. The specified product <emphasis role="bold">observer</emphasis> role is
+								ignored.</td>
+						</tr>
+					</tbody>
+				</informaltable>
+			</para>
+				<para>For information about using RBAC with specific products, see the 
+					<link xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each product.</para>
+			
 		</section>
 	</section>
+
 	<section xml:id="Content_Compression-d1e262">
 	  <title>Content Compression</title>
 	  <para>Request and response body data can be encoded with gzip
@@ -934,12 +201,12 @@ Accept: application/json
 	  </table>
 	</section>
 	<section security="writeronly" xml:id="Paginated_Collections-d1e325">
-		<title>Paginated Collections</title>
+		<title>Paginated collections</title>
 		<annotation>
 			<remark>"Paginated Collections" is not yet implemented as of v2.0;
 				hide it for now and reveal it when the feature is working." </remark>
 		</annotation>
-		<para> To reduce load on the service, list operations will return a
+		<para>To reduce load on the service, list operations return a
 			maximum number of items at a time. The maximum number of
 			items returned is determined by the Identity provider. To
 			navigate the collection, the parameters
@@ -990,32 +257,32 @@ Accept: application/json
 		<example>
 			<title>Tenant Collection, First Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/tenants-1.xml" parse="text"/>
+<xi:include href="../../common/samples/tenants-1.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, First Page: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/tenants-1.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/tenants-1.json" parse="text"/></programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Second Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/tenants-2.xml" parse="text"/>
+<xi:include href="../../common/samples/tenants-2.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Second Page: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/tenants-2.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/tenants-2.json" parse="text"/></programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Last Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/tenants-3.xml" parse="text"/>
+<xi:include href="../../common/samples/tenants-3.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Last Page: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/tenants-3.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/tenants-3.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			In the JSON representation, paginated collections contain
@@ -1032,21 +299,22 @@ Accept: application/json
 		<example>
 			<title>Paginated Roles in a User: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/getuser-1.xml" parse="text"/>
+<xi:include href="../../common/samples/getuser-1.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Paginated Roles in a User: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/getuser-1.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/getuser-1.json" parse="text"/></programlisting>
 		</example>
 	</section>
 	<section xml:id="Versions-d1e472">
 		<title>Contract versions</title>
 		<para>The contract version denotes the data model and behavior that the API supports.
-			The &CIS; API uses a URI version scheme.</para>
+			The Identity API uses a URI version scheme.</para>
 		<important>
 			<para>The Rackspace implementation of the OpenStack Keystone Identity
-				Service v2.0 does not yet support MIME-type version.</para>
+				Service v2.0 does not
+				yet support MIME-type version. </para>
 		</important>
 		<para> All client requests to the API must specify the target
 			version identifier in the first element of the URI path.
@@ -1056,18 +324,68 @@ Accept: application/json
 			check for the GET version API request that returns
 			available API versions supported at the specified
 			endpoint. </para>
-		<para>The folloiwng example shows an XML request that uses 
+
+<!-- Information about MIME type support not included in the production output. -->
+
+		<para security="writeronly">
+			The authentication service API uses two version schemes, one based on the URI 
+			and the other based on MIME type.
+			<annotation>
+				<remark>MIME-type version support has not been implemented in v2.0;
+					meanwhile, using URI-only text borrowed from Auth
+					1.1. </remark>
+			</annotation>
+			<itemizedlist>
+				<listitem>
+					<para>			
+						In the URI version scheme, the first
+						element of the path contains the target version
+						identifier. For example, in <code>https://identity.api.openstack.org/
+						v2.0/&hellip;</code>, the target version is identified as <code>v2.0</code>. 
+					</para>
+				</listitem>	
+				<listitem>
+					<para>
+						The MIME-type version scheme uses
+						HTTP content negotiation where the <code>Accept</code>
+						or <code>Content-Type</code> header contains a MIME
+						type that includes the version ID as a parameter.
+						For example, in <code>
+						application/vnd.openstack.identity+xml;version=1.1</code>, 
+						the target version is identified as <code>1.1</code>. 
+						A version MIME type is always linked to a base MIME type
+						such as <code>application/xml</code> or <code>application/json</code>. 
+					</para>
+				</listitem>
+			</itemizedlist>
+			If conflicting
+			versions are specified using both a MIME type and a
+			URI, the URI takes precedence.
+		</para>
+		<example security="writeronly">
+			<title>Request with MIME-Type version scheme</title>
+			<literallayout class="monospaced">
+GET /tenants HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Accept: application/vnd.openstack.identity+xml;version=1.1
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+			</literallayout>
+		</example>
+<para>The folloiwng example shows an XML request that uses 
 			URI versioning.
-			<example>
-				<title>Request with URI version scheme</title>
-				<literallayout class="monospaced">
+		<example>
+			<title>Request with URI version scheme</title>
+			<literallayout class="monospaced">
 GET /v2.0/tenants HTTP/1.1
 Host: identity.api.rackspacecloud.com
 Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
-			</example></para>
-	    <para>The URI scheme for API contracts supports the following development practices: <itemizedlist>
+		</example>
+</para>
+
+
+		<para>The URI scheme for API contracts supports the following development practices: <itemizedlist>
 				<listitem>
 					<para>New features and functionality that do not break API compatibility are
 						introduced in the current version of the API as <link
@@ -1185,18 +503,18 @@ Host: identity.api.rackspacecloud.com
 		<example>
 			<title>Versions List Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/versions.xml" parse="text"/>
+<xi:include href="../../common/samples/versions.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Versions List Response: Atom</title>
 			<programlisting language="xml">
-<xi:include href="../samples/versions-atom.xml" parse="text"/>
+<xi:include href="../../common/samples/versions-atom.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Versions List Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/versions.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/versions.json" parse="text"/></programlisting>
 		</example>
 		<para>You can obtain additional detailed information about a specific version by performing a
 			&GET; on the base version URL. For example,
@@ -1224,18 +542,18 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<example>
 			<title>Version Details Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/version.xml" parse="text"/>
+<xi:include href="../../common/samples/version.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Version Details Response: Atom</title>
 			<programlisting language="xml">
-<xi:include href="../samples/version-atom.xml" parse="text"/>
+<xi:include href="../../common/samples/version-atom.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Version details response: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/version.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/version.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			The detailed version response contains pointers to
@@ -1278,7 +596,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			restarted, the last properties set for any of the &CIS; versions are loaded to all
 			nodes.</para>
 		
-		<para>&CIS; Service administrators and developers manage the rate limit settings and configuration, 
+		<para>&CIS; administrators and developers manage the rate limit settings and configuration, 
 			but Identity administrators can use the Rate limit API operations to get information about 
 			rate limit configuration and events to troubleshoot problems.</para>
 		
@@ -1371,376 +689,14 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<example>
 			<title>Item Not Found Fault: XML</title>
 			<programlisting language="xml">
-				<xi:include href="../samples/item_not_found.xml" parse="text"/>
+				<xi:include href="../../common/samples/item_not_found.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Item Not Found Fault: JSON</title>
 			<programlisting language="javascript">
-				<xi:include href="../samples/item_not_found.json" parse="text"/>
+				<xi:include href="../../common/samples/item_not_found.json" parse="text"/>
 			</programlisting>
 		</example>
 	</section>
-	<section xml:id="Account-Users-d1e910">
-		<title>Identity user types and default roles</title>
-		<para>In the &CLOUD;, users are represented as accounts created for specific individuals.
-			Typically, a user has a password and email associated with the account. When a user is
-			created, the &CIS; automatically assigns a user type and a default role to the account,
-			based on the default &CIS; system configuration. The role defines access rights and
-			permissions for the &CIS; and other &CLOUD; services as shown <xref
-				xlink:href="#Identity_tbl_usr"/>
-		</para>
-		<table xml:id="Identity_tbl_usr " rules="all" width="958">
-			<caption>&CIS; Accounts: User types and default role assignments</caption>
-			<col width="15%"/>
-			<col width="17%"/>
-			<col width="686pt"/>
-			<thead>
-				<tr>
-					<th>
-						<para>User type</para>
-					</th>
-					<th>
-						<para>Default role assignment</para>
-					</th>
-					<th>
-						<para>Description</para>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td valign="top">
-						<para>Service administrator</para>
-					</td>
-					<td valign="top">
-						<para>identity:service-admin</para>
-					</td>
-					<td>
-						<para>The Service administrator user type is reserved for the &CIS;
-							operations team members. Service administrators hold the
-								<literal>identity:service-admin</literal> role that provides full
-							administrative rights and privileges to manage the Identity service. </para>
-						<para>Service developers that want to update an existing &CLOUD; service or
-							add a new one work together with the &CIS; Operations team to create an
-							endpoint template and add the service to the Service catalog. </para>
-					</td>
-				</tr>
-				<tr valign="top">
-					<td>
-						<para>Administrator</para>
-					</td>
-					<td>
-						<para>identity:admin</para>
-					</td>
-					<td>
-						<para>The Administrator user type is reserved for &CLOUD; services that
-							require access to the &CIS; to validate tokens and retrieve user
-							information.</para>
-					</td>
-				</tr>
-				<tr valign="top">
-					<td>
-						<para>User Administrator</para>
-						<para>(Account owner)</para>
-					</td>
-					<td>
-						<para>identity:user-admin</para>
-					</td>
-					<td><para>When a &CLOUD; customer account is created, it is
-							associated with one user, the User
-							Administrator.</para><para>The &CIS;
-						automatically assigns the <literal
-							xmlns:db="http://docbook.org/ns/docbook"
-							>identity:user-admin</literal> role to the
-						account, giving the User Administrator full
-						administrative privileges to manage the
-						administrative account and all sub-user
-						accounts created as children of the User
-						administrator account. Exactly one
-						administrative user exists for each account.
-						The User Administrator account user is also
-						referred to as the Account Owner.</para></td>
-				</tr>
-				<tr valign="top">
-					<td>
-						<para>Account User</para>
-						<para>(sub-user)</para>
-					</td>
-					<td>
-						<para>identity:default</para>
-					</td>
-					<td>
-						<para>Account users, sometimes referred to as sub-users, are created and
-							managed by User administrators. A user's &CLOUD; account has the
-							following characteristics:</para>
-						<itemizedlist>
-							<listitem>
-								<para>The account is child of the User Administrator account,
-									inheriting the tenant information, group memberships, and
-									endpoints from the administrator account. </para>
-							</listitem>
-							<listitem>
-								<para>Automatically configured with the
-										<literal>identity:default</literal> role, with the
-									associated rights and privileges.</para>
-							</listitem>
-						</itemizedlist>
-						<para>The <literal>identity:default</literal> role only provides rights and
-							privileges to manage the user's own account. For example, account users
-							can update user information and passwords on their own accounts, but
-							they cannot update information on other accounts. An account user can
-							submit a List users request, but the response only returns information
-							about the account owner. </para>
-					</td>
-				</tr>
-				<tr valign="top">
-					<td>User Manager</td>
-					<td>identity:user-manage</td>
-					<td>
-						<para>The User manager is a customer-based user type designated as an
-							administrator on a &CLOUD; account along with the User
-							administrator.</para>
-						<para>User Manager accounts hold the <literal>user-admin</literal> role by
-							default, with the same access rights and privileges as the User
-							administrator.</para>
-						<para>User and Service administrators can update an existing or
-							new sub-user account with the
-								<literal>identity:default</literal>
-							role to change the account to a User
-							Manager account.</para>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<para>All users, including account users, can authenticate with a combination of their user
-			name and password. Only administrative users can authenticate either with a combination
-			of their user name and API key or with a combination of their tenant ID and API
-			key.</para>
-		<note>
-			<para>When managing &CIS; accounts as the User Administrator, keep the following points
-				in mind to prevent unexpected changes to the sub-user accounts associated with the
-				User administrator account. <itemizedlist>
-					<listitem>
-						<para> When a new account user is created, the account inherits group
-							memberships from the User administrator account. </para>
-					</listitem>
-					<listitem>
-						<para>If the User administrator account is assigned to a new group, its
-							account users are also added to the group.</para>
-					</listitem>
-					<listitem>
-						<para>If a User administrator account is removed from a group, the account
-							users are also removed.</para>
-					</listitem>
-					<listitem>
-						<para>If a service attempts to assign an account user to a group, the
-							attempt fails with the following error message:
-								<errorcode>400</errorcode><errortext>Cannot add sub-users directly
-								to a group, must assign their parent user.</errortext>. To correct
-							the problem, assign the User administrator parent account to the group
-							so that the account user inherits the assignment.</para>
-					</listitem>
-					<listitem>
-						<para>Administrators can directly assign Account users to a particular
-							tenant so that the users behave as if they are contained within that
-							tenant.</para>
-					</listitem>
-				</itemizedlist></para>
-		</note>
-	</section>
-	<xi:include href="section-identity-multfactorauth.xml"/>
-	
-	
-	<section xml:id="Role_Based_Access_Control-d1e808">
-		<title>Role Based Access Control</title>
-		<para>The Rackspace Cloud Identity service provides Role Based Access Control (RBAC) so that
-			customers can restrict access to Cloud services and capabilities to authorized users
-			only. RBAC is an opt-in feature available to all Rackspace Cloud customers. The account
-			owner user (<literal>identity:user-admin</literal>) can activate RBAC by adding users to
-			the account and assigning roles to users via the API, the Cloud Control Panel, or by
-			calling Customer support. </para>
-		
-		<para>
-			Rackspace-defined roles provide specific permissions that determine the services a user can
-			access and the types of operations they can complete. For example, an account owner can assign 
-			an <literal>admin</literal> role to user accounts that require access to create, read, update, and delete 
-			capabilities for all API services included in the service catalog for that account. 
-		</para>
-		
-		<para>
-			Role assignments can be global or custom. Global roles manage access and permissions across 
-			multiple API services. Custom roles manage access and permissions on a per-product basis. 
-			For both global and custom roles, the user has access only to designated products. 
-			<xref linkend="RBAC_roledesc_table"/> describes the
-			RBAC roles available.</para> 
-		<table rules="all" width="100%" xml:id="RBAC_roledesc_table">
-				<caption>Rackspace Cloud RBAC Roles and Capabilities</caption>
-				<thead>
-					<tr>
-						<th>Role</th>
-						<th>Type</th>
-						<th>Role Description</th>
-						<th>Example Role</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>admin (full access)</td>
-						<td>Global</td>
-						<td>The admin role provides Create, Read, Update, and Delete permissions
-							in all Cloud products, where access is granted. Full access is given
-							to current and future products as they become RBAC-enabled. Each
-							account can have only one admin </td>
-						<td>admin</td>
-					</tr>
-					<tr>
-						<td>observer (read-only access)</td>
-						<td>Global</td>
-						<td>The observer role provides Read permission in all products where
-							access is granted. Read-only access is given to current and future
-							products as they become RBAC-enabled.</td>
-						<td>observer</td>
-					</tr>
-					<tr>
-						<td>product:admin</td>
-						<td>Custom</td>
-						<td>The product:admin role provides Create, Read, Update, and Delete
-							permissions for a specified product, where access is granted.</td>
-						<td>nova:admin</td>
-					</tr>
-					<tr>
-						<td>product:creator</td>
-						<td>Custom</td>
-						<td>The product:creator role provides Create, Read, and Update
-							permissions for a specified product, where access is granted. The
-							user cannot delete resources.</td>
-						<td>cloudFiles:creator</td>
-					</tr>
-					<tr>
-						<td>product:observer</td>
-						<td>Custom</td>
-						<td>This product:observer role provides Read permission for a specified
-							product, where access is granted.</td>
-						<td>cdb:observer</td>
-					</tr>
-				</tbody>
-			</table><important>
-				<para xml:id="Account_Owner-dle808">All RBAC roles are subordinate to the account owner user
-				(identity:user-admin) designated by the customer as the primary contact. Only an
-				account owner can create account users (identity:default) and assign RBAC roles. Account owners 
-				cannot hold any additional roles because they already have full access to all services and 
-				capabilities.</para>
-			</important>
-		<section xmlns="http://docbook.org/ns/docbook"
-			xmlns:xi="http://www.w3.org/2001/XInclude"
-			xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-			xml:id="section_assign_roles_3">
-			<title>Assigning roles to account users</title>
-			<para>The account owner, <literal>identity:user-admin</literal>) can create account users, 
-				<literal>identity:default)</literal> on the account and then assign roles to 
-				those users. The roles grant the account users specific permissions for accessing the 
-				Cloud services and capabilities. Each account has only one account owner, and that role 
-				is assigned by default to any Rackspace Cloud account when the account is created. Account 
-				owners cannot hold any additional roles because they already have full access to all services 
-				and capabilities.
-			</para>
-			<para>
-				You can assign roles programmatically through the API or by using the Cloud Control panel
-				interface.
-			</para>
-			<para>Use the following API operations to add account users and manage role assignments:</para>
-			<itemizedlist condition="client">
-				<listitem>
-					<para>
-						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser_v2.0_users_User_Calls.html">Add account user</olink>
-					</para>
-				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="PUT_addUserRole_v2.0_users_OS-KSADM_roles__roleId__Role_Calls"
-						>Assign role to account users</olink></para>
-				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="GET_listCredentials_v2.0_users_userid_OS-KSADM_credentials_User_Calls">
-						Delete role from account user</olink></para>
-				</listitem>
-			</itemizedlist>
-			<itemizedlist condition="admin">
-				<listitem>
-					<para>
-						<olink targetdoc="Identity-Admin-Developer-Guide"
-							targetptr="POST_admin-addUser_v2.0_users_User_Calls">Add account user</olink>
-					</para>
-				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Assign role to account users</olink></para>
-				</listitem>
-				<listitem>
-					<para>
-						<olink targetdoc="Identity-Admin-Developer-Guide" targetptr="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Delete role from account user</olink></para>
-				</listitem>
-			</itemizedlist>
-			<para>For information about implementing RBAC by using the Cloud
-				Control panel and other RBAC-related topics, see the
-				following Rackspace Knowledge Center articles:</para>
-			<itemizedlist>
-				<listitem>
-				<para>
-					<link
-						xlink:href="http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac"
-						>Managing Role-based access control through Cloud Control panel</link>
-				</para>
-			</listitem>
-				<listitem>
-					<para>
-						<link
-							xlink:href="http://www.rackspace.com/knowledge_center/article/getting-started-with-role-based-access-control-rbac-0">Getting Started with Role-based access control (RBAC)</link>
-					</para>
-				</listitem></itemizedlist>
-		</section>
-		<section xml:id="RBAC_Role_Conflict-dle808">
-			<title>Resolving Conflicts Between RBAC Multiproduct (Global) vs. Custom (Product) Roles</title>
-			<para>The account owner can set roles for both multiproduct and custom (product-specific) scope,
-				and it is important to understand how any potential conflicts among these roles are
-				resolved. When two roles appear to conflict, the role that provides the more
-				extensive permissions takes precedence. Therefore, admin roles take precedence over
-				observer roles, because admin roles provide more permissions. </para>
-			<para>
-				The following table shows two examples of how potential conflicts between user roles in the Control Panel are resolved:
-			</para>
-			<para>
-				<informaltable rules="all">		
-					<thead>
-						<tr align="center">
-							<td>Permission Configuration</td>
-							<td>View of Permission in the Control Panel </td>
-							<td>Can the User Perform Product Admin Functions in the Control Panel?</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>User is assigned the following roles: multiproduct <emphasis role="bold">observer</emphasis> and product <emphasis
-								role="bold">admin</emphasis></td>
-							<td>Appears that the user has only the multiproduct <emphasis role="bold">observer</emphasis> role</td>
-							<td>Yes, for specified product only. The user has the <emphasis role="bold">observer</emphasis> role for the rest of
-								the products.</td>
-						</tr>
-						<tr>
-							<td>User is assigned the following roles: multiproduct <emphasis role="bold">admin</emphasis> and product <emphasis
-								role="bold">observer</emphasis></td>
-							<td>Appears that the user has only the multiproduct <emphasis role="bold">admin</emphasis> role</td>
-							<td>Yes, for all of the products. The specified product <emphasis role="bold">observer</emphasis> role is
-								ignored.</td>
-						</tr>
-					</tbody>
-				</informaltable>
-			</para>
-				<para>For information about using RBAC with specific products, see the 
-					<link xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each product.</para>
-		</section>
-	</section>
-
     </chapter>
