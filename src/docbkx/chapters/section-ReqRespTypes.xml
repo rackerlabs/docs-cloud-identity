@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<section 
+	xmlns="http://docbook.org/ns/docbook" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+	xml:id="Request_Response_Types-d1e149">
+	<title>Request/Response Types</title>
+	<para>The &CIS; v2 API supports both the JSON and XML data serialization request and response
+		formats. If you not specify a format type, JSON is the default. <xref linkend="Response_Types"/> provides 
+		a summary of the available formats.</para>
+	
+	<table rules="all" width="80%" xml:id="Response_Types">
+		<caption>Supported Request and Response formats</caption>
+		<col width="10%"/>
+		<col width="35%"/>
+		<col width="25%"/>
+		<col width="20%"/>
+		<col width="10%"/>
+		<thead valign="baseline">
+			<tr>
+				<td>Format</td>
+				<th>Content-Type  header</th>
+				<td>Accept header</td>
+				<td>Query Extension for request URI</td>
+				<td>Default</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>JSON</td>
+				<td><code>Content-Type application/json</code></td>
+				<td><code>application/json</code></td>
+				<td>.json</td>
+				<td>Yes</td>
+			</tr>
+			<tr>
+				<td>XML</td>
+				<td><code>Content-Type application/xml</code></td>
+				<td><code>application/xml</code></td>
+				<td>.xml</td>
+				<td>No</td>
+			</tr>
+		</tbody>
+	</table>
+	<variablelist>
+		<varlistentry>
+			<term><guilabel>Content-Type header syntax</guilabel></term>
+			<listitem>					
+				<para>The Content-Type header is required for API operations that have a request body.</para>
+				<para>
+					<programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
+				</para>
+				<para>The <parameter><replaceable>format</replaceable></parameter> type can be either <literal>json</literal> or <literal>xml</literal>.</para>
+			</listitem>
+		</varlistentry>
+	</variablelist>
+	<variablelist>
+		<varlistentry>
+			<term><guilabel>Accept header syntax</guilabel></term>
+			<listitem>
+				<para>For the Accept header, you can use either the
+					following syntax or the Query extension
+					format.</para>
+				<para>
+					<programlisting>Accept: application/<replaceable>format</replaceable></programlisting> 
+				</para>
+				<para>Where <code>format</code> can be either <code>json</code> or 
+					<code>xml</code>.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Query extension syntax</guilabel></term>
+			<listitem>
+				<para>Add an <code>.xml</code> or <code>.json</code> extension to the request
+					URI. For example, the <code>.xml</code> extension in the following URI
+					request specifies that the response body is returned in XML format.</para>
+				<para>
+					<programlisting>POST /v2/tokens.xml</programlisting>
+				</para>
+			</listitem>
+		</varlistentry>
+	</variablelist>
+	<para>If you specify different formats for the Accept header and the query extension, the format 
+		specified in the query extension takes precedence. For example, if the query extension is <code>.xml</code> 
+		and the Accept header specifies <code>application/json</code>, the response is returned in xml format.</para>
+	<para>You can serialize a response in a different format from the request format as shown in <xref linkend="JSON_req"/> and
+		<xref linkend="diff-serialization"/>. This request body is in JSON format with the Accept header specified as XML. The 
+		which returns the response body in XML format as shown in xref linkend="diff-serialization"/>.</para>
+	<example xml:id="JSON_req">
+		<title>Authentication Request with Headers: JSON</title>
+		
+		<programlisting language="json">
+<![CDATA[&amp;lt; &amp;lt; POST /v2.0/tokens HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Content-Type: application/json
+Accept: application/xml
+
+{
+  "auth": {
+    "passwordCredentials": {
+      "username": "demoauthor",
+      "password": "mypass"
+    },
+    "tenantId": "1234"
+  }
+}]]>
+</programlisting>
+	</example>
+	
+	<example xml:id="diff-serialization">
+		<title>Response with Headers: XML</title>
+		<programlisting>
+<![CDATA[HTTP/1.1 200 OK
+Date: Sun, 29 Jun 2014 03:35:05 GMT
+Content-Type: application/xml
+Content-Length: 1060
+Connection: keep-alive
+vary: Accept, Accept-Encoding, X-Auth-Token]]>
+<![CDATA[
+<access xmlns:atom="http://www.w3.org/2005/Atom" 
+xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+xmlns="http://docs.openstack.org/identity/api/v2.0" 
+xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+     <token id="yyyyxxxaxxxxyyyyyyxxxxxxxyyyyy" expires="2014-06-29T21:09:34.085Z">
+          <rax-auth:authenticatedBy>
+               <rax-auth:credential>PASSWORD</rax-auth:credential>
+          </rax-auth:authenticatedBy>
+     </token>
+     <user name="demoauthor" rax-auth:defaultRegion="DFW" rax-auth:federated="false">
+          <roles>
+               <role id="1" name="identity:admin" description="Admin Role."/>
+          </roles>
+     </user>
+     <serviceCatalog/>
+</access>]]>
+			</programlisting>
+	</example>
+</section>
