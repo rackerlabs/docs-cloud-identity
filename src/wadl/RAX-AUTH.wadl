@@ -1956,8 +1956,6 @@
         </request>
         <response status="204" >
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
-            <representation mediaType="application/xml" element="identity:noContent"/>
-            <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults;
     </method> 
     
