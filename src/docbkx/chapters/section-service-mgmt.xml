@@ -8,6 +8,7 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
 	xml:id="Sample_Catalog_Workflow-d1e266">
+	<?dbhtml stop-chunking?>
 			<title>Suggested work flow for processing a Service Catalog response</title>
 			<para>When your client issues a successful authentication request, the Cloud Identity Service
 			returns a service catalog that shows the services available to that client, with one

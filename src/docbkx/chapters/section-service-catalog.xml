@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<section 
+    xmlns="http://docbook.org/ns/docbook" 
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+	xml:id="Svc_Catalog_ovw">
+	<?dbhtml stop-chunking?>
+	<title>Service catalog</title>
+	<para>The Service catalog provides information about all Rackspace Cloud services available to an
+		end-user. The catalog is returned by the Rackspace Identity service API in response to a
+		successful authentication request as shown in the examples in the <citetitle><link
+			xlink:href="Sample_Request_Response-d1e64.html">Annotated authentication request and
+			response</link></citetitle> documentation.</para>
+	<para>The following sections provide information about the service types supported by Rackspace
+		Cloud APIs included in the service catalog and information about processing the service
+		catalog returned by the Identity service.</para>
+	<para condition="admin">Service and Identity administrators can use the Identity API to manage service configuration and the API capablities supported by a service. 
+		For details, see the following documentation:<itemizedlist>
+		<listitem>
+			<para><link xlink:href="Service_Calls.html">Service operations</link></para>
+		</listitem>
+		<listitem>
+			<para><link xlink:href="Service_API_Calls.html">Service API operations</link></para>
+		</listitem>
+	</itemizedlist>
+	</para>
+	<xi:include href="section-service-types.xml"/>
+	<xi:include href="section-service-mgmt.xml"/>
+		</section>
