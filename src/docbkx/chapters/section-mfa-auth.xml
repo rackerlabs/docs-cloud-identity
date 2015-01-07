@@ -29,7 +29,7 @@
         <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
  -X POST \
  -d '{"auth":{"passwordCredentials":{"username":"myUserName","password":"thePassword"}}}' \
- -H "Content-type: application/json"  --verbose -k</programlisting>
+ -H "Content-type: application/json"  --verbose | python -m json.tool</programlisting>
         <para>&CIS; returns a 401 message that includes a
           <code>sessionId</code> in the <code>WWW-Authenticate</code>
         header and a request for additional
@@ -74,7 +74,7 @@
        -X POST \
        -d '{"auth": {"RAX-AUTH:passcodeCredentials": {"passcode":"1411594"}}}'\
        -H "X-SessionId: $SESSION_ID" \
-       -H "Content-Type: application/json" --verbose -k </programlisting>
+       -H "Content-Type: application/json" --verbose | python -m json.tool</programlisting>
             </para>
             <para>The authentication response returns the
                 authentication token ID and the service catalong with

@@ -12,8 +12,7 @@
     Developers</olink> are enabled by a combination of the
     core Identity API and multiple API extensions. You can
     read more about extensions, including how to request
-    details about all or specific extensions, at <xref
-      linkend="Extensions-d1e688"/>. </para>
+    details about all or specific extensions, at <link xlink:href="Extensions-d1e688.html">Extensions</link>.</para>
   <para> 
     Depending upon which operations you perform, you may see
     evidence of one or several extensions involved in
@@ -49,7 +48,7 @@
         <area xml:id="namespace.xml.apikey" units="linecolumn" coords="12 27"/>
       </areaspec>	
       <programlisting language="xml">
-      <xi:include href="../samples/namespace-demo.xml" parse="text"/>
+      <xi:include href="../../common/samples/namespace-demo.xml" parse="text"/>
 </programlisting>
     </programlistingco>			
   </example>
