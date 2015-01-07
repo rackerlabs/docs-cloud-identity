@@ -9,6 +9,7 @@
 	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
 	xml:id="RBAC-roles">
+	<?dbhtml stop-chunking?>
 	
 	<title>RBAC roles</title>
 	<para> RBAC roles are cusotmer-managed roles with specific

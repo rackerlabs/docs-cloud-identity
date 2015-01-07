@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossary [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<section 
+	xmlns="http://docbook.org/ns/docbook"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+	xml:id="Account-Users-d1e910">
+	<?dbhtml stop-chunking?>
+	
+	<title>Identity service, admin, and user roles</title>
+	<para>Identity roles are Rackspace-defined roles that the Identity service uses to make access control decsions when a user or service 
+	submits an API request to the Identity API.</para>
+	<para>In the &CLOUD;, users are represented as accounts created for
+		specific individuals. Typically, a user has a password and
+		email associated with the account. When a user is created, the
+		&CIS; automatically assigns a default Identity role to the
+		account, based on the &CIS; system configuration. The Identity
+		role defines the access rights and permissions for using the
+		&CIS; as shown in  <xref xlink:href="#Identity_tbl_usr"
+		/>.</para>
+	<table xml:id="Identity_tbl_usr " rules="all" width="100%">
+		<caption>&CIS; Accounts: User types and default role assignments</caption>
+		<col width="15%"/>
+		<col width="19%"/>
+		<col width="66%"/>
+		<thead>
+			<tr>
+				<th>
+					<para>Role name</para>
+				</th>
+				<th>Account user type</th>
+				<th>
+					<para>Description</para>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td valign="top">
+					<para>identity:service-admin</para>
+				</td>
+				<td>Service administrator</td>
+				<td>
+					<para>A Rackspace-restricted role that provides full
+						administrative rights and privileges to manage
+						the Identity service. This role is assigned
+						only to Cloud Identity Operations team member
+						accounts.</para>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td>
+					<para>identity:admin</para>
+				</td>
+				<td>Identity administrator</td>
+				<td>
+					<para>A Service role that allows Rackspace Cloud Services like
+						Cloud Servers and Cloud Load Balancers to
+						access the &CIS; to validate tokens and
+						retrieve user information.</para>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td>identity:user-admin</td>
+				<td>Identity user administrator Account owner</td>
+				<td>
+					<para>A customer role that is assigned automatically when a user
+						creates a &CLOUD; account. The
+							<literal>identity:user-admin</literal>
+						provides full administrative privileges to
+						manage the primary account and all user
+						accounts created within the account.</para>
+					<para>Each &CLOUD; account has exactly one administrative user.
+						This user is also referred to as the Account
+						Owner or User Administrator.</para>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td>identity:user-manage</td>
+				<td>Identity user manager<?sbr?></td>
+				<td>
+					<para>A customer role that provides the same access rights and
+						privlieges as the
+						<literal>identity:user-admin</literal>
+						role. </para>
+					<para>A &CLOUD; User Administrator can grant administrative privileges to a user that holds the
+							<literal>identity:default</literal> role  by assigning the
+							<literal>identity:user-manage</literal> role to that account. </para>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td>
+					<para>identity:default</para>
+				</td>
+				<td><para>Identity sub-user</para>
+				<para>Account user</para></td>
+				<td>
+					<para>A customer role that is assigned automatically to user
+						accounts that a User Administrator or User
+						Manager creates  within a &CLOUD; account. </para>
+					<para>The <literal>identity:default</literal> role
+						provides users with the rights and privileges
+						to manage their own account. For example,
+						account users can update user information and
+						passwords on their own accounts, but they
+						cannot update information on other accounts. A
+						user with the
+							<literal>identity:default</literal> role
+						can submit a List users request, but the
+						response only returns information about the
+						account owner. </para>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<para>Typically, a user account has only one Identity role that is
+		assigned when the account is created or updated.  However, if
+		the User Administrator updates a sub-user account to add the
+			<literal>identity:user-manage</literal> role the account
+		has two Identity roles: <literal>identity:default</literal>
+		and <literal>identity:user-manage</literal>.</para>
+	<para>The account owner user (<parameter>identity:user-admin</parameter>) can activate RBAC by
+		adding users to the account and assigning roles to users via the API, the Cloud Control
+		Panel, or by calling Customer support. An account can have additional customer-managed RBAC
+		product or global roles assigned to manage access and permissions for other Rackspace
+		services. For details, see <link
+			xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Role_Based_Access_Control-d1e808.html"
+			>Rackspace Cloud RBAC Roles and Capabilities</link>.</para>
+	<note>
+		<title>Notes</title>
+		<para>When managing &CLOUD; accounts as the User Administrator, keep
+			the following points in mind to prevent unexpected changes
+			to the sub-user accounts associated with the User
+			administrator account. <itemizedlist>
+				<listitem>
+					<para>When a new account user is created, the
+						account inherits the tenant information, group
+						memberships. amd endpoints from the User
+						administrator account. </para>
+				</listitem>
+				<listitem>
+					<para>If the User administrator account is
+						assigned to a new group, its account users are
+						also added to the group.</para>
+				</listitem>
+				<listitem>
+					<para>If a User administrator account is removed
+						from a group, the account users are also
+						removed.</para>
+				</listitem>
+				<listitem>
+					<para>If a service attempts to assign an account
+						user to a group, the attempt fails with the
+						following error message:
+							<errorcode>400</errorcode>
+						<errortext>Cannot add sub-users directly to a
+							group, must assign their parent
+							user.</errortext> To correct the problem,
+						assign the User administrator parent account
+						to the group so that the account user inherits
+						the assignment.</para>
+				</listitem>
+				<listitem>
+					<para>Administrators can directly assign account users to a particular tenant so that the users
+						behave as if they are contained within that tenant.</para>
+				</listitem>
+			</itemizedlist></para>
+	</note>
+</section>
