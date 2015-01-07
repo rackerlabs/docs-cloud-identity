@@ -46,7 +46,7 @@
         <imageobject>
           <imagedata format="png"
             fileref="../figures/multifactor_auth.png"
-            contentdepth="100%" contentwidth="100%" align="center"/>
+            contentdepth="80%" contentwidth="80%" align="center"/>
         </imageobject>
       </mediaobject>
     </figure>
@@ -61,14 +61,14 @@
       <title>Multifactor authentication user account set up work flow </title>
       <mediaobject condition="admin">
         <imageobject>
-          <imagedata fileref="../figures/multifactor_setup_user.png"
-            contentdepth="100%" contentwidth="100%" format="PNG" align="center"/>
+          <imagedata fileref="../figures/multifactor_setup_user.png" scale="60"
+            format="PNG" align="center"/>
         </imageobject>
       </mediaobject>
   <mediaobject condition="client">
         <imageobject>
-          <imagedata fileref="../figures/multifactor_setup_user1.png"
-            contentdepth="100%" contentwidth="100%" align="center"/>
+          <imagedata fileref="../figures/multifactor_setup_user1.png" scale="60"
+            align="center"/>
         </imageobject>
       </mediaobject>
 

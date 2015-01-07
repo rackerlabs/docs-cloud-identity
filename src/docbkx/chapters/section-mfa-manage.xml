@@ -21,10 +21,10 @@
       for &CLOUD; accounts and shows the cURL command to make the
       request. For more detailed information about an operation, click
       the link in the Task column.</para>
-    <table xml:id="manage_mfa_ops" rules="all" width="1031">
+    <table xml:id="manage_mfa_ops" rules="all" width="90%">
       <caption>Multi-factor authentication management tasks</caption>
-      <col width="94pt"/>
-      <col width="929pt"/>
+      <col width="20%"/>
+      <col width="80%"/>
       <thead>
         <tr>
           <th>Task</th>

@@ -415,7 +415,7 @@
             <representation>
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:sample title="Authenticate with API key credentials and optional tenant ID: XML request">
-                        <xsdxt:code href="../common/samples/auth_with_apikey.XML"/>
+                        <xsdxt:code href="../common/samples/auth_with_apikey.xml"/>
                     </xsdxt:sample>
                 </wadl:doc>
             </representation>
