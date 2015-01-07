@@ -32,7 +32,7 @@
                     <itemizedlist>
                     <listitem>
                         <para>
-                            <link xlink:href="Account-Users-d1e910.html">Account users</link>
+                            <link xlink:href="Account-Users-d1e910.html">Identity service, admin, and user roles</link>
                         </para>
                     </listitem>
                         
@@ -53,9 +53,8 @@
             <term><emphasis role="bold"
                 >Authentication</emphasis></term>
             <listitem>
-                <para>The act of passing in <glossterm baseform="Credentials-d1e03"
-                        >credentials</glossterm>, confirming an identity, and returning a token
-                    representation of the verified identity. </para>
+                <para>The act of passing in <glossterm baseform="Credentials-d1e03">credentials</glossterm>, confirming an identity, and returning a token
+                    representation of the verified identity.</para>
                 <para>In the &CLOUD;, you authenticate by submitting a <command>POST tokens</command> API request with
                     valid credentials to the &CIS; endpoint. Credentials are typically a user name
                     and API key. However, other types of credentials can be accepted based on
@@ -93,13 +92,33 @@
         </varlistentry>
         <varlistentry>
             <term><emphasis role="bold">Authentication token</emphasis></term><listitem>
-                <para>In the &CLOUD; an authentication token is an encrypted string returned by
-                    &PRODNAME; in response to an authentication request submitted with valid
-                    credentials. The response also includes a service catalog with a list of &CLOUD;
-                    services that can be accessed with the token. </para>
-                <para audience="client">Authentication tokens expire after 24 hours. To get a new
-                    token, users must submit another authentication request to the &CIS;.</para>
-                <para audience="admin">Authentication tokens expire after 24 hours. An
+                <para>An authentication token is an encrypted string returned by
+                    the Identity service when you submit an authentication request with valid
+                    credentials. Each time that you submit an API request, you include this authentication 
+                    token. Because the token expires after 24 hours, you must generate a new token once 
+                    each day. The token stores information about a suer's credentials and, optionally, user 
+                    identity information, as well as a time stamp and a digital signature. If necessary, 
+                    administrators and users can invalidate a token before it expires by submitting a Revoke token 
+                    API request. 
+                </para>
+                <para security="internal" condition="admin">The Identity service issues different types of tokens based on the 
+                    authentication method.
+                <itemizedlist>
+                    <listitem><para>Provisioned user tokens are issued to users that authenticate with their Rackspace Cloud credentials.</para></listitem>
+                    <listitem><para>Racker tokens are issued to Rackspace employees that authenticate with their SSO ID and RSA credentials.</para></listitem>
+                    <listitem><para>Impersonation tokens are issued to authorized Rackspace employees or Identity service administrators so they can assume 
+                        the identity of a provisioned or federated user.</para></listitem>
+                    <listitem><para>Federated tokens issued to external providers like MyRack that establish their identity through SAML assertion.</para></listitem>
+                    <listitem><para>Passcode tokens are issued to users that authenticate to the Rackspace Cloud by using multi-factor authentication.</para></listitem>
+                    <listitem><para>Multi-factor authentication tokens are issued to provisioned users that are required to set up multi-factor authentication 
+                        on their account in order to access a Cloud service.</para></listitem>
+                </itemizedlist></para>
+
+                <para>Authentication tokens expire in 24 hours. The expiration 
+                    date is included in the authentication response. If necessary, Administrators 
+                    and users can revoke a token before its expiration date. After a token expires or becomes invalid, 
+                the Identity service returns 404 errors until you authenticate again.</para>
+                <para condition="admin">Authentication tokens expire after 24 hours. An
                     administrator or process can revoke a token before its expiration, if necessary.
                     To get a new token, you must submit another authentication request to the
                     &CIS;.</para>
@@ -171,13 +190,16 @@
         <varlistentry>
             <term><emphasis role="bold">Tenant</emphasis></term>
             <listitem>
-                <para>A tenant is a container that can be used to group or isolate resources and
-                    identity objects. Depending on the service provider, a tenant can map to a
-                    customer, account, organization, or project.</para>
-                <para>In the &CLOUD;, tenants allow service providers to organize computing and
+                <para>A tenant represents logical groups of users to which resources are assigned.
+                    In the &CLOUD;, tenants allow service providers to organize computing and
                     storage resources without assigning them to user accounts directly. For example,
                     Virtual machines (Cloud Servers) and containers (Cloud Files) are assigned to
                     tenants, not to users directly.</para>
+                <para>Depending on the service provider, a tenant can map to a customer, account,
+                    organization, or project.   Identity users can be part of more than one tenant,
+                    and can have different types of roles defined for each tenant that they're a
+                    part of. The Identity service allows you to create and delete tenants, and also
+                    enable and disable them. </para>
                 <para>&CLOUD; has two tenant types: <itemizedlist>
                         <listitem>
                             <para>The Mosso tenant (Mosso account) includes the collection of
@@ -196,7 +218,7 @@
                     tenants. Service administrators can also assign users and groups to one or more
                     tenants. Because each tenant can have its own role configuration, user can have
                     different roles, or different rights and privileges for the same role on
-                    different tenants. </para>
+                    different tenants.</para>
             </listitem>
         </varlistentry>
         <varlistentry>
@@ -308,16 +330,34 @@
         <varlistentry>
             <term><emphasis role="bold">Service catalog</emphasis></term>
             <listitem>
-                <para>The service catalog is the list of services available to authenticated users with a valid 
-                    <glossterm xml:base="Token-d1e13">authentication token</glossterm>. The catalog is 
-                    returned along with the <glossterm xml:base="Token-d1e13">authentication token</glossterm> required 
-                    to use the service. Each service listing includes at least one endpoint URL to access the 
-                    service along with other information relevant to using the service such as region, tenant, and version 
-                    information. Typically, the service catalog returned to a System administrator has additional 
-                    information that might not be visible to User administrators or Account users.</para>
+                <para> Taken as a whole, all the service endpoints defined in Keystone are
+                    the service catalog, defining all services available to OpenStack. </para>
+                <para>The service catalog is the list of all the service endpoints defined in the
+                    Identity service that represent all services available in the Rackspace Cloud.
+                    When a user authenticates, the authentication response returns a subset of the
+                    service catalog that includes only the services and information that the user
+                    can access. Each service listing includes at least one endpoint URL to access
+                    the service along with other information relevant to using the service such as
+                    region, tenant, and version information. Typically, the service catalog returned
+                    to a System administrator has additional information that might not be visible
+                    to User administrators or Account sub-users.</para>
                     
                     <para>All the services in the catalog are available as long as you have a valid
                     authentication token.</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><emphasis role="bold">Federated identity management</emphasis></term>
+            <listitem>
+                <para>Federated identity management (FIdM) consists of a 
+                    set of policies, practices and protocols that can be used to manage authentication and authorization 
+                    of users, processes, and devices across organizations. The goal of identity federation is to enable users 
+                    of one domain to securely access data or systems of another domain seamlessly by passing an authentication token that 
+                    was issued by a trusted Identity Provider. Unlike SSO, which allows users 
+                    to log in to different domains with the same credentials, federated identity management allows users to authenticate through a 
+                    trusted Identity provider and gain access to any systems that accept identity information from that provider without providing 
+                    any additional authentication.
+                </para>
             </listitem>
         </varlistentry>
     </variablelist>   
