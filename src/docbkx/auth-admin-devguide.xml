@@ -51,10 +51,58 @@
 				Identity Service.</para>
 		</abstract>
 		<revhistory>
+			<revision>
+				<date>2015-01-07</date>
+				<revdescription>
+					<itemizedlist>
+					<listitem>
+						<para>Created seperate section for Service Catalog documentation and updated the Service types 
+							to include all Rackspace Cloud services available to customers. 
+							See <link xlink:href="Svc_Catalog_ovw.html">Service catalog</link>.</para>
+					</listitem>
+					<listitem>
+						<para>Updated multi-factor authentication documentation to correct parameter descriptions and 
+							list error messages in table format. See <link xlink:href="Multifactor_Calls.html">Multi-factor operations</link>.</para>
+					</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-12-08</date>
+				<revdescription>
+					<para><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/QuickStart-000.html">QuickStart Guide</link> updates</para>
+					<itemizedlist>
+						<listitem>
+							<para>Updated annotated authentication request and response section to provide separate sections for token, service catalog, and user samples and attribute definitions.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			    <revision>
+			    	<date>2014-11-20</date>
+			    	<revdescription>
+			    		<para><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/QuickStart-000.html">QuickStart Guide</link> updates</para>
+			    		<itemizedlist>
+			    			<listitem>
+			    				<para>Moved QuickStart Guide to top-level of contents for better visibility.</para>
+			    			</listitem>
+			    			<listitem>
+			    				<para>Corrected Cloud Files endpoint in the <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/QuickStart-000.html#submit_API_request">Submit an API request to a Rackspace Cloud service</link> example.</para>
+			    			</listitem>
+			    		</itemizedlist>
+			    	</revdescription>
+			    </revision>
 		       	<revision>
 				<date>2014-11-11</date>
 				<revdescription>
 					<para>Corrected URI in <link xlink:href="GET_getUserCredential_v2.0_users__userId__OS-KSADM_credentials_RAX-KSKEYapiKeyCredentials_User_Calls.html">Get user API credentials</link> operation.</para>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2014-10-28</date>
+				<revdescription>
+					<para>Corrected <link xlink:href="Tenant_Calls.html">List tenants</link> operation to include 
+						option to retrieve tenant information by tenant name.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -602,7 +650,7 @@
 									Types”</olink> to include warning about potential delays.</para>
 						</listitem>
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="RBAC_roledesc_tbl"
+							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="RBAC_roledesc_table"
 									>Table 6, “Rackspace RBAC Roles”</olink> to be consistent with
 								Knowledge Center articles. </para>
 						</listitem>
@@ -902,9 +950,8 @@
 						    </para>
 						</listitem>
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Service_Types-d1e265">“Service Types in the Service
-									Catalog”</olink> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. </para>
+							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service Types in the service
+									catalog</link> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. </para>
 						</listitem>
 						<listitem>
 							<para>Simplified references to the Cloud
@@ -971,7 +1018,7 @@
 								. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html"/> to
+							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types in the service catalog</link> to
 								provide link to publicly-available
 								documentation on Cloud Databases.
 							</para>
@@ -1060,7 +1107,7 @@
 								service types. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types</link> to
+							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types in the service catalog</link> to
 								show new service types. </para>
 						</listitem>
 					</itemizedlist>
@@ -1161,6 +1208,7 @@
 		</raxm:metadata>
 	</info>
 	<xi:include href="chapters/identity-overview.xml"/>
+	<xi:include href="chapters/identity-quickstart.xml"/>
 	<xi:include href="chapters/identity-admin-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-admin.xml"/>
