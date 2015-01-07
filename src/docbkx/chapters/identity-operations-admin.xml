@@ -110,37 +110,41 @@
 	<!-- USERS -->
 	<section xml:id="User_Calls">
 		<title>Users</title>
-		<para>The operations described in this section allow &CIS; service administrators to manage users.</para>
-		<para> When these requests are issued by an account user, they act
-			only upon that account user. You can learn more about
-			account users, also called sub-accounts, at <olink targetdoc="Identity-Admin-Developer-Guide"
-				targetptr="Account-Users-d1e910">“Account
-				Users”</olink>.</para>
+		<para>You can use the Identity API operations described in this section to view, add, and manage
+			Rackspace Cloud user accounts. </para>
+		<para>Typically, a user account is created for an individual user with an associated password and
+			email address. You can create new Rackspace Cloud accounts through the Rackspace Cloud
+			control panel. You can add additional account users through the Control panel or through
+			the Identity API.</para>
+		<para>The operations and options available for user management depend on the Identity role
+			assigned to the account.  For example,  Rackspace Cloud account owner you can add
+			additional users to the account, as well as manage administrative and configuration
+			tasks for all account users and other resources available throught the Identity API. If
+			you have been added to the account as a user, any user requests that you submit affect
+			only your own account. For more information about roles, see <link
+				xlink:href="Role_Based_Access_Control-d1e808.html">Role-based access
+			control.</link></para>
 		<warning>
-			<para>
-				Before making any change to a user, confirm that you are changing the user you intend to change. 
-				You can do this by treating every change as a two-step operation: first, check the target of the change; second, 
-				make the change.  
-			</para>
-			<para>For example, both "Update User" and "Delete User" act upon
-				the user specified by <code>userId</code>. Before
-				attempting to update or delete a user, use  
-				<link xlink:href= "GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html">Get User Admin</link>
-				to obtain the user name, email account, and status
-				associated with <code>userId</code>. That's Step 1.
-				Check the returned information carefully; if you are
-				certain that it describes the user you intend to
-				change, proceed with Step 2, updating or deleting the
-				user you just examined.</para>
+			<para> Before modifying a user account,  confirm that you are changing the user you intend to
+				change. You can do this by treating every change as a two-step operation: first,
+				check the target of the change; second, make the change. </para>
+			<para>For example, both the Update user and Delete user API operations act upon the user
+				specified by <code>userId</code>. Before attempting to update or delete a user, use
+					<link
+					xlink:href="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html"
+					>Get User Admin</link> to obtain the user name, email account, and status
+				associated with <code>userId</code>. That's Step 1. Check the returned information
+				carefully; if you are certain that it describes the user you intend to change,
+				proceed with Step 2, updating or deleting the user you just examined.</para>
 		</warning>
 		<note>
-			<para> Some of the functionality described in this section is
-				provided by the <code>OS-KSADM</code>,
-					<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code>
-				extensions to the core Identity API. For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.</para>
+			<para> Some of the functionality described in this section is provided by the
+					<code>OS-KSADM</code>, <code>RAX-AUTH</code>, and <code>RAX-KSKEY</code>
+				extensions to the core Identity API. For details, see <olink condition="admin"
+					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"
+					>Extensions</olink><olink condition="client"
+					targetdoc="Identity-Developer-Guide" targetptr="Extensions-d1e688"
+					>Extensions</olink>.</para>
 		</note>
 		
 		<!-- User API operations -->
@@ -357,6 +361,14 @@
 			<wadl:resource href="../../wadl/identity-admin.wadl#sessionId_mfa">
 				<wadl:method href="#authenticateWithMultiFactor"/>					
 			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#tokens">
+				<!-- authenticate as Racker -->
+				<wadl:method href="#authenticateAsRacker"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#federation">
+				<!-- federation - get token by SAML -->
+				<wadl:method href="#getTokenBySAML"/>
+			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
 				<!-- validate token -->
 				<wadl:method href="#validateToken"/>
@@ -369,14 +381,6 @@
 				<!-- list endpoints for token -->
 				<wadl:method href="#listEndpointsForToken"/>
 			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#tokens">
-				<!-- authenticate as Racker -->
-				<wadl:method href="#authenticateAsRacker"/>
-			</wadl:resource>
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#federation">
-				<!-- federation - get token by SAML -->
-				<wadl:method href="#getTokenBySAML"/>
-			</wadl:resource>
 		</wadl:resources>
 	</section>
 	
@@ -387,25 +391,24 @@
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#tenants">
 				<wadl:method href="#addTenant"/>
+			</wadl:resource>
 				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#tenantById">
 					<wadl:method href="#updateTenant"/>
 					<wadl:method href="#deleteTenant"/>
-					<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#usersForTenant">
-						<wadl:method href="#listUsersForTenant"/>
-						<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userSpecificRoleForTenant">
-							<wadl:method href="#addRolesToUserOnTenant"/>
-							<wadl:method href="#deleteRoleFromUserOnTenant"/>
-						</wadl:resource>
-					</wadl:resource>
 				</wadl:resource>
-			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tenants">
 				<wadl:method href="#listTenants"/>
-				<wadl:method href="#getTenantByName"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tenantById">
 				<wadl:method href="#getTenantById"/>
 			</wadl:resource>
+				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#usersForTenant">
+					<wadl:method href="#listUsersForTenant"/>
+				</wadl:resource>	
+				<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userSpecificRoleForTenant">
+						<wadl:method href="#addRolesToUserOnTenant"/>
+						<wadl:method href="#deleteRoleFromUserOnTenant"/>
+				</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#userRolesForTenant">
 				<wadl:method href="#listRolesForUserOnTenant">
 					<wadl:doc>
@@ -979,8 +982,7 @@
 			</para>
 			<note><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension
 				to the core Identity API. For more information, see <olink condition="admin"
-					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"
-					>Extensions</olink>. </para></note>
+					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688">Extensions</olink>. </para></note>
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#createMobilePhone"/>		
