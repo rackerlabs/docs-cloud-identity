@@ -105,7 +105,7 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List groups">
             <para role="shortdesc">Lists groups.</para>
         </wadl:doc>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/xml" element="grp:groups">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
@@ -151,7 +151,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201" >
             <doc title="OK">Created.</doc>
             <representation mediaType="application/xml"
                 element="grp:group">
@@ -184,7 +184,7 @@
             <para role="shortdesc">Gets information for a group by
                 ID.</para>
         </wadl:doc>
-        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <representation mediaType="application/xml"
                 element="grp:group">
                 <wadl:doc xml:lang="EN"
@@ -298,13 +298,17 @@
             title="Add user to group">
             <para role="shortdesc">Adds a user to a group.</para>
         </wadl:doc>
-        <response status="204"/>
+        <response status="204">
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+        </response>
         <!-- Common, GET --> &commonFaults; &getFaults; </method>
     <method id="removeUserFromGroup" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Remove user from group">
             <para role="shortdesc">Removes a user from a group.</para>
         </wadl:doc>
-        <response status="204"/>
+        <response status="204">
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+        </response>
         <!-- Common, GET --> &commonFaults; &getFaults; </method>
 </application>

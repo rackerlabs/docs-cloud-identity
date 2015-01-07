@@ -185,7 +185,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201">
             <doc title="Created">The request has been fulfilled. The tenant has been created.</doc>
             <representation mediaType="application/xml" element="tenant">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -216,7 +216,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="tenant">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -235,7 +235,7 @@
             <para role="shortdesc">Deletes a tenant.</para>
            <para >Delete a tenant.</para>
         </wadl:doc>
-        <response status="204"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
@@ -254,7 +254,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
             </param>
         </request>
-        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="UserList">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -274,7 +274,7 @@
             <para role="shortdesc">Adds a specific role to a user for a tenant.</para>
            <para>Add a specific role to a user for a tenant.</para>
         </wadl:doc>
-        <response status="201"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201">
             <doc title="Created">The request has been fulfilled. The role has been created.</doc> 
             </response>&commonFaults; &postPutFaults; &getFaults; </method>
 
@@ -283,7 +283,7 @@
             <para role="shortdesc">Deletes a specific role from a user for a tenant.</para>
            <para >Delete a specific role from a user for a tenant.</para>
         </wadl:doc>
-        <response status="204"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
@@ -397,7 +397,7 @@
                 </wadl:doc>
             </representation>  -->
         </request>
-        <response status="201"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201">
             <doc title="Created">The request has been fulfilled. The user has been created.</doc>
             <representation mediaType="application/xml" element="User">
                 <doc xml:lang="EN">
@@ -510,7 +510,7 @@
                 </wadl:doc>
             </param>
         </request>
-        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
                 <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="identity:UserList">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -533,7 +533,7 @@
                 This operation returns the following information for each account associated with the specified user ID:
                 email address, username, user ID, status, default region, and domain id.</para>
         </wadl:doc>
-        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <!-- Pull in shared response parameters by using entity from common.ent file -->
             <representation mediaType="application/xml" element="identity:User">
@@ -567,7 +567,7 @@
                 <link condition="admin" xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>
                 section.</para>
         </wadl:doc>
-        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -719,7 +719,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/json" element="identity:User">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -748,7 +748,7 @@
            <para>To delete a user, specify the user ID in the request. If you don't have the ID, use the List users operation to 
                find it.</para>
         </wadl:doc>
-        <response status="204"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
@@ -782,7 +782,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -826,7 +826,7 @@
                 </itemizedlist>
             </note>
         </wadl:doc>
-        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -898,7 +898,7 @@
                 </wadl:doc>
             </para>-->
         </wadl:doc>
-        <response status="201"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201">
             <doc title="Created">The request has been fulfilled. The tenant has been created.</doc>
             </response>&commonFaults; &postPutFaults; &getFaults; </method>
     <method name="GET" id="getUserRole">
@@ -906,7 +906,7 @@
             <para role="shortdesc">Returns information about a specified role assigned to a specified user.</para>
             <para>Get information about a global role that belongs to a user.</para>
         </wadl:doc>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -935,7 +935,7 @@
                 identity:rack_connect and identity:rax_managed cannot be managed by customers to prevent them from revoking
                 privileges unintentionally.</para>
         </wadl:doc>
-        <response status="204"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
@@ -964,7 +964,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201">
             <doc title="Created">The request has been fulfilled. The credential has been added.</doc>
             
             <representation mediaType="application/json">
@@ -1007,7 +1007,7 @@
             <param name="limit" style="query" required="false" type="xsd:int"/>
         </request>
         -->
-        <response status="200"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1021,7 +1021,7 @@
                 </wadl:doc>
             </representation>
         </response>
-        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200">
             <doc title="OK">Request completed successfuly.</doc>
             </response>&commonFaults; &getFaults; </method>
 
@@ -1041,7 +1041,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
             </param>
         </request>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1075,7 +1075,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1097,7 +1097,7 @@
             <para role="shortdesc">Deletes user credentials.</para>
            <para >Delete user credentials.</para>
         </wadl:doc>
-        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
@@ -1108,7 +1108,7 @@
             <para role="shortdesc">Gets user credentials.</para>
            <para >Get user credentials.</para>
         </wadl:doc>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1133,9 +1133,8 @@
                 tokens. Administrators can use the Revoke Token operation to invalidate 
                 the token for a user.</para>
         </wadl:doc>
-        <response status="200"  xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="OK">Request completed successfuly.</doc>
-            <wadl:doc title="OK" xmlns="http://docbook.org/ns/docbook"><para>The request succeeded.</para></wadl:doc>
+        <response status="200">
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
@@ -1191,7 +1190,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201">
             <doc title="Created">The request has been fulfilled. The role has been added.</doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1223,7 +1222,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
             </param> -->
         </request>
-        <response status="203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1244,7 +1243,7 @@
             <para role="shortdesc">Gets a role by name.</para>
             <para >Get a role by name.</para>
         </wadl:doc>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">  
+        <response status="200 203">  
         <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1289,7 +1288,7 @@
             <para> This call lists detailed information (<code>id</code>,
                 <code>name</code>, <code>description</code>) for a specified role. </para>
         </wadl:doc>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1308,7 +1307,7 @@
             <para role="shortdesc">Deletes a role.</para>
            <para >Delete a role.</para>
         </wadl:doc>
-        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204">
             <doc xml:lang="EN" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
@@ -1319,7 +1318,7 @@
             <para role="shortdesc">Gets users that have the specified role.</para>
            <para >This operation does not require a request body.</para>
         </wadl:doc>
-        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="Users">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1372,7 +1371,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201">
             <doc title="Created">The request has been fulfilled. The service has been added.</doc>
             
             <representation mediaType="application/xml" element="OS-KSADM:service">
@@ -1401,7 +1400,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
             </param>
         </request>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="OS-KSADM:services">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1426,7 +1425,7 @@
  <!--       <request>
             <param name="name" style="query" type="xsd:string" required="true"/>
         </request> -->
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02"> 
+        <response status="200 203"> 
             <doc title="OK">Request completed successfuly.</doc>
             <representation mediaType="application/xml" element="OS-KSADM:service">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1448,7 +1447,7 @@
            <para >If you don't know the <code>serviceid</code>, use the List services operation 
                 to find it.</para>
         </wadl:doc>
-        <response status="200 203" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203">
             <doc title="OK">Request completed successfuly.</doc>
            
             <representation mediaType="application/xml" element="OS-KSADM:service">
@@ -1470,7 +1469,7 @@
             <para role="shortdesc">Deletes a service.</para>
            <para >Delete a service.</para>
         </wadl:doc>
-        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>

@@ -636,28 +636,20 @@
                 </doc>
             </representation>
         </response>
-         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-                <doc title="identity:badRequest">Missing requred parameters.</doc>
-                <representation mediaType="application/xml" element="identity:badRequest"/>
-                <representation mediaType="application/json"/>
+         <response status="400">
+                <doc title="Bad Request">Missing requred parameters.</doc>
          </response>
                 
          <response status="401">
             <doc title="Unauthorized">Authentication has failed. The authentication token has expired. Use the POST token operation 
             to get a new token.</doc>
-            <representation mediaType="application/xml" element="identity:userDisabled"/>
-            <representation mediaType="application/json"/>
         </response>
         <response status="403">
             <doc title="Unauthorized">Permission denied, adjusting authentication credentials will not help.</doc>
-            <representation mediaType="application/xml" element="identity:userDisabled"/>
-            <representation mediaType="application/json"/>
         </response>
          <response status="404">
              <doc title="Unauthorized">The requested resource was not found.The subject token in X-Subject-Token  
                  has expired or is no longer available. Use the POST token request to get a new token.</doc>
-            <representation mediaType="application/xml" element="identity:userDisabled"/>
-            <representation mediaType="application/json"/>
         </response>
         </method>      
 

@@ -542,7 +542,8 @@
                 </wadl:doc>
             </response>
             <response status="403">
-                <wadl:doc title="User disabled">Permission denied, adjusting authentication credentials will not help.</wadl:doc>
+                <doc title="User disabled">The request is valid, but you do not have permission to access the requested resource. 
+                    Check with the account administrator to request access.</doc>
             </response>
             <response status="404">
                 <doc title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  
@@ -694,7 +695,8 @@
             </doc>
         </response>
         <response status="403">
-            <wadl:doc title="User disabled">Permission denied, adjusting authentication credentials will not help.</wadl:doc>
+            <wadl:doc title="User disabled">The request is valid, but you do not have permission to access the requested resource.
+                Check with the account administrator to request access.</wadl:doc>
         </response>
         <response status="404">
             <doc title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  
@@ -711,10 +713,8 @@
             <note><title>Notes</title>
                 <para>
                     <itemizedlist><listitem><para>User accounts that use multifactor authentication must
-                    authenticate with &CIS; version 2.0 or later. Attempts to
+                    authenticate with Identity service version 2.0 or later. Attempts to
                     authenticate with earlier API versions will fail.</para></listitem>
-                    <listitem><para>Multi-factor authentication is currently available only to
-                        customers enrolled in the Early Access program for this feature.</para></listitem>
                 </itemizedlist>
                 </para>
             </note>

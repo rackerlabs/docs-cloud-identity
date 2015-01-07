@@ -246,7 +246,7 @@
                 </param>
             </representation>
         </request>
-        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201" >
             <doc title="OK">Created.</doc>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplate">
                 <doc>
@@ -332,7 +332,7 @@
                 </doc>
             </representation>
         </request>
-        <response status="201" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="201" >
             <doc title="OK">Created.</doc>
             <representation mediaType="application/xml" element="identity:endpoint">
                 <doc xml:lang="EN">
@@ -354,7 +354,7 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List endpoints for tenant">
             <para>List all endpoints available to a tenant.</para>
         </wadl:doc>
-        <response status="200"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200"  >
             <doc title="OK">The request has completed successfully.</doc>
             <representation mediaType="application/xml" element="identity:endpoints">
                 <doc xml:lang="EN">
@@ -376,7 +376,7 @@
             <p xmlns="http://www.w3.org/1999/xhtml">Get an endpoint available to a tenant.</p>
             
         </doc>
-        <response status="200 203"  xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200 203"  >
                 <doc title="OK">The request has completed successfully.</doc>
             <representation mediaType="application/xml" element="identity:endpoint">
                 <doc xml:lang="EN">
@@ -397,7 +397,7 @@
         <doc xml:lang="EN" title="Delete endpoint from tenant">
             <p xmlns="http://www.w3.org/1999/xhtml">Delete an endpoint from a tenant.</p>
         </doc>
-        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="204" >
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
