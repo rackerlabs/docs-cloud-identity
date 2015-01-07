@@ -56,8 +56,7 @@
         </listitem>
     </itemizedlist>
     <para>To learn more about the Rackspace Identity
-        service components and processes, review <citetitle>Identity
-            concepts.</citetitle>
+        service components and processes, review <link xlink:href="Identity-Concepts.html"><citetitle>Identity
+            concepts.</citetitle></link>
     </para>
-    <xi:include href="section_identity-concepts.xml"
-    /></section>
+  </section>
