@@ -31,7 +31,7 @@ format="SVG" scale="60"/>
 <!-- Product names -->
 <!ENTITY PRODNAME 'Rackspace Cloud Identity Service'>
 <!ENTITY CLOUD 'Rackspace Cloud'>
-<!ENTITY CIS 'Rackspace Cloud Identity Service'>
+<!ENTITY CIS 'Identity Service'>
 <!ENTITY CAS 'Rackspace Cloud Authentication Service'>
 <!ENTITY fgCS 'first generation Cloud Servers'>
 <!ENTITY ngCS 'next generation Cloud Servers'>
@@ -51,29 +51,25 @@ This operation does not require a request body.</para>'>
 
  <!ENTITY commonFaults
            '
-        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:badRequest"/>
-            <representation mediaType="application/json"/>
+        <response status="400">
+             <doc title="Bad Request">The request is missing one or more elements, or the values of some 
+                elements are invalid.</doc>
         </response>
-        <response status="401" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:unauthorized"/>
-            <representation mediaType="application/json"/>
+        <response status="401">
+            <doc title="Unauthorized">Yau are not authorized to complete this operation. This error can occur if the request is submitted with an invalid authentication token.</doc>
         </response>
-        <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:forbidden"/>
-            <representation mediaType="application/json"/>
+        <response status="403">
+            <doc title="Forbidden">The request was valid, but the server is refusing to respond because you do not have permission to access the requested resource. 
+            Submit a request to your account administrator to determine how to gain access.</doc>
         </response>
-        <response status="405" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:badMethod"/>
-            <representation mediaType="application/json"/>
+        <response status="405">
+            <doc title="Invalid Method">The method specified in the request is not valid for the resource identitified in the request URI.</doc>
         </response>
-        <response status="413" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:overLimit"/>
-            <representation mediaType="application/json"/>
+        <response status="413">
+            <doc title="Over Limit">The number of items returned is above the allowed limit.</doc>
         </response>
-        <response status="503" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:serviceUnavailable"/>
-            <representation mediaType="application/json"/>
+        <response status="503">
+            <doc title="Service Fault">Service is not available.</doc>
         </response>
            '>
       <!--
@@ -81,9 +77,8 @@ This operation does not require a request body.</para>'>
       -->
      <!ENTITY getFaults
            '
-        <response status="404" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:itemNotFound"/>
-            <representation mediaType="application/json"/>
+        <response status="404">
+             <doc title="Not Found">The requested resource was not found.</doc>
         </response>
            '>
            
@@ -92,8 +87,7 @@ This operation does not require a request body.</para>'>
      <!ENTITY postPutFaults
            '
         <response status="415" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:badMediaType"/>
-            <representation mediaType="application/json"/>
+            <doc title="Bad Media Type">Bad media type. This may result if the wrong media type is used in the cURL request.</doc>
         </response>
            '>
            
@@ -101,40 +95,98 @@ This operation does not require a request body.</para>'>
 
 <!ENTITY MultifactorVerifyFaults
            '
-<response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="Bad Request">The request could not be understood by the server due to malformed syntax.</doc>
-            <representation mediaType="application/xml" element="files:badRequest"/>
-            <representation mediaType="application/json"/>
-        </response>
-
-
-        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="400">
         <doc title="Bad Request">This error is returned in these cases: The request could not be understood by the server due to malformed syntax. The phone has already been verified.</doc>
-            <representation mediaType="application/xml" element="identity:badRequest"/>
-            <representation mediaType="application/json"/>
         </response>
-        <response status="401" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:unauthorized"/>
-            <representation mediaType="application/json"/>
+        <response status="401">
+           <doc title="Unauthorized">Yau are not authorized to complete this operation. This error can occur if 
+           the request is submitted with an invalid authentication token.</doc>
         </response>
-        <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:forbidden"/>
-            <representation mediaType="application/json"/>
+        <response status="403">
+            <doc title="Forbidden">The request was valid, but the server is refusing to respond because you do not have permission to access the requested resource. 
+            Submit a request to your account administrator to determine how to gain access.</doc>
         </response>
-        <response status="405" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:badMethod"/>
-            <representation mediaType="application/json"/>
+        <response status="405">
+            <doc title="Invalid Method">The method specified in the request is not valid for the resource identitified in the request URI.</doc>
         </response>
-        <response status="413" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:overLimit"/>
-            <representation mediaType="application/json"/>
-        </response>
-        <response status="503" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="identity:serviceUnavailable"/>
-            <representation mediaType="application/json"/>
+        <response status="503">
+             <doc title="Service Fault">Service is not available.</doc>
         </response>
            '>
            
-
+<!ENTITY UserAttributes 
+   '
+                  <param name="RAX-AUTH:defaultRegion" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Provides the ID for the default regional data center associated with the user account, if one exists.
+                            Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para> 
+                        <para xmlns="http://www.w3.org/1999/xhtml">If a user account is associated with a default region, and the service catalog is available in 
+                            multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>. 
+                            For example of services available in multiple regions, see 
+                            <link xlink:href="Sample_Request_Response-d1e64.html">Sample Authentication Request and Response</link></para>
+                        
+                        <para>
+                            Use the <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_updateUser_v2.0_users__userId__.html">"Update user"</link> 
+                            API operation to add, remove, or update the defaultRegion setting on an account. 
+                        </para>               
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:domainID" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the ID for the domain associated with the user account if one exists. 
+                        </para>
+                        <para>
+                            A domain ID associates the user with a specific domain. The association can be 
+                            established during account creation and update operations.
+                        </para>
+                        <para>
+                            A domain establishes an administrative boundary for a customer and a container for customer tenants (accounts) and users.
+                            Generally, the <code>domainId</code> value matches the value associated with the primary tenant ID 
+                            for the &CLOUD; account.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:multiFactorEnabled" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the ID for the domain associated with the user account if one exists. 
+                        </para>
+                        <para>
+                            A domain ID associates the user with a specific domain. The association can be 
+                            established during account creation and update operations.
+                        </para>
+                        <para>
+                            A domain establishes an administrative boundary for a customer and a container for customer tenants (accounts) and users.
+                            Generally, the <code>domainId</code> value matches the value associated with the primary tenant ID 
+                            for the &CLOUD; account.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="username" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            The name of the user on the account. 
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="email" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Returns the email address on the user account if one has been defined.</para>
+                    </wadl:doc>
+                </param>
+                <param name="enabled" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>
+                            Indicates whether the user can authenticate to the &CIS;. If <code>enabled="false"</code>,
+                            the user cannot authenticate. Typically, the <code>enabled</code> setting is set 
+                            and stored by a back-end system integrated with &CIS;. To restore account access, 
+                            work with the &CIS; System and user administrators to resolve any issues on the account.
+                        </para>
+                    </wadl:doc>
+                </param>
+                ' >
                 
       
