@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<section 
+	xmlns="http://docbook.org/ns/docbook"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" 
+	xml:id="Service_Types-d1e265">
+	<?dbhtml stop-chunking?>
+	
+	<title>Service types in the Service catalog</title>
+		<para>Every service listed in the service catalog is associated with a service type. You can use
+		the service type to recognize services that perform similar functions, whatever those
+		services are named. The following table shows all the available service types and provides
+		information about any related OpenStack services. To learn more about any of the Rackspace
+		services listed, see the <link xlink:href="http://docs.rackspace.com/api/">Rackspace
+			developer documentation.</link></para>
+		<table rules="all" width="80%">
+		<caption>Service Types</caption>
+		<col width="392pt"/>
+		<col width="66%"/>
+		<thead>
+			<tr>
+				<th>Service Type</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><code>compute</code></td>
+				<td>
+					<para>Services of this type provide managed VMs and bare-metal servers in the
+						cloud. </para>
+					<para><emphasis role="italic">Cloud Servers</emphasis> is the name of a Rackspace service of
+						this type. This Rackspace service is compatible with the OpenStack Compute
+						(Nova) API 1.1 as documented at <link
+							xlink:href="http://nova.openstack.org/"
+							>http://nova.openstack.org/</link>. </para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>identity</code></td>
+				<td>
+					<para>Services of this type provide authentication, authorization, administration, and audit
+						capabilities to provision and manage users that request access to Rackspace
+						Cloud service endpoints.  </para>
+					<para><emphasis role="italic">Cloud Identity</emphasis> is the name of the Rackspace service of
+						this type. The Rackspace service is compatible with OpenStack Keystone API
+						2.0 as documented at <link xlink:href="http://keystone.openstack.org/"
+							>http://keystone.openstack.org/</link>. </para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>image</code></td>
+				<td>
+					<para>Services of this type offer retrieval, storage, and metadata assignment for Rackspace
+						Cloud Server images. </para>
+					<para><emphasis role="italic">Cloud Images</emphasis> is the name of the Rackspace service of
+						this type. The Rackspace service is compatible with the OpenStack Glance API
+						as documented at <link xlink:href="http://glance.openstack.org/"
+							>http://glance.openstack.org/</link>. </para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>object-store</code></td>
+				<td>
+					<para>Services of this type provide scalable cloud object storage for files and
+						media. </para>
+					<para><emphasis role="italic">Cloud Files</emphasis> is the name of the Rackspace service of
+						this type. The Rackspace service is compatible with the OpenStack Swift API
+						as documented at <link xlink:href="http://swift.openstack.org/"
+							>http://swift.openstack.org/</link>. </para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>network</code></td>
+				<td><para>Services of this type enable you to create isolated networks that provision
+					server instances with Rackspace networks or the isolated networks you
+					create.</para>
+					<para>Rackspace supports two services of this type: <emphasis role="italic">Cloud
+							Networks</emphasis>, which is compatible with the <link
+							xlink:href="http://docs.openstack.org/api/openstack-network/2.0/content/index.html"
+							>OpenStack Networking service</link> and the <emphasis role="italic"
+							>nova-network</emphasis> component of the <emphasis role="italic"
+							>Rackspace Cloud Servers</emphasis> API, which is compatible with the
+						network component of the <link
+							xlink:href="http://docs.openstack.org/developer/nova/devref/index.html"
+							>OpenStack Nova API.</link>
+					</para></td>
+			</tr>
+			<tr>
+				<td><code>volume</code></td>
+				<td>
+					<para>Services of this type provide online object storage for files and allow
+						customers to mount drives or volumes to their Rackspace Next Generation
+						Cloud Servers™. </para>
+					<para><emphasis role="italic">Cloud BlockStorage</emphasis> is the name of a Rackspace service
+						of this type. The Rackspace service is built on the <link
+							xlink:href="http://docs.openstack.org/api/openstack-block-storage/1.0/content/"
+							>OpenStack Cinder project</link>.</para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>rax:autoscale</code></td>
+				<td><para>Services of this type enable you to define policies to dynamically scale cloud resources in
+					response to changing workloads.</para>
+					<para><emphasis role="italic">Auto Scale</emphasis> is the name of a Rackspace service of this
+						type.</para></td>
+			</tr>
+			<tr>
+				<td><code>rax:backup</code></td>
+				<td><para>Services of this type enable you to create and manage backup versions of cloud server files
+						and folders that you select, and to restore files to their original location
+						or to another server.</para>
+					<para><emphasis role="italic">Cloud Backup</emphasis> is the name of a Rackspace service of
+						this type.</para></td>
+			</tr>
+			<tr>
+				<td><code>rax:bigdata</code></td>
+				<td><para>Services of this type provide on-demand Apache Hadoop service available in the Rackspace Cloud
+						that enable you to deploy, manage, and scale Hadoop clusters.</para>
+						<para><emphasis role="italic">Cloud BigData</emphasis> is the name of a Rackspace service of
+						this type.</para></td>
+			</tr>
+			<tr>
+				<td><code>rax:database</code></td>
+				<td>
+					<para>Services of this type provide fast, scalable, fully managed MySQL
+						databases in the Rackspace Cloud.</para>
+					<para><emphasis role="italic">Cloud Databases</emphasis> is the name of a Rackspace service of
+						this type. </para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>rax:dns</code></td>
+				<td>
+					<para>Services of this type simplify and automate DNS management.</para>
+					<para><emphasis role="italic">Cloud DNS</emphasis> is the name of a Rackspace service of this
+						type. </para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>rax:feeds</code></td>
+				<td>
+					<para>Services if this type enable customers on the Rackspace public cloud to access and
+						collect near real-time usage and system event data that can be used for
+						analysis, monitoring, and automation.</para>
+					<para><emphasis role="italic">Cloud Feeds</emphasis> is the name of a Rackspace service of this
+						type.</para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>rax:load-balancer</code></td>
+				<td><para>Services of this type provide on-demand, scalable traffic management.</para>
+					<para><emphasis role="italic">Cloud Load Balancers</emphasis> is the name of a Rackspace Cloud service of this type.
+					</para></td>
+			</tr>
+			<tr>
+				<td><code>rax:cloudmetrics</code></td>
+				<td><para>Services of this type allow users to collect and analyze various metrics  and to quickly
+						iterate through the data with queries and set up dashboard metrics for
+						ongoing metrics monitoring.</para>
+					<para><emphasis role="italic">Cloud Metrics</emphasis> is the name of a
+						Rackspace service of this type.</para></td>
+			</tr>
+			<tr>
+				<td><code>rax:monitor</code></td>
+				<td>
+					<para>Services of this type enable you to create custom infrastructure monitoring with
+						real-time alerts, always-on notifcations, and flexible configurations. </para>
+					<para><emphasis role="italic">Cloud Monitoring</emphasis> is the name of a Rackspace service of
+						this type. </para>
+				</td>
+			</tr>
+			<tr condition="admin">
+				<td><code>rax:object-cdn</code></td>
+				<td>
+					<para>Services of this type enable you to distribute content globally in order to optimize
+						response times for users accessing web page and media content. </para>
+					<para><emphasis role="italic">Content Delivery Network (CDN)</emphasis> is the
+						name of a Rackspace service of this type.</para>
+				</td>
+			</tr>
+			<tr>
+				<td><code>rax:orchestration</code></td>
+				<td><para>Services of this type enable you to automate and standardize cloud infrastructure
+					setup and management.</para>
+					<para>Cloud Orchestration is the name of the Rackspace service of this type. The Rackspace
+						service is compatible with the <link
+							xlink:href="http://docs.openstack.org/developer/heat/">OpenStack Heat
+							API</link>.</para></td>
+			</tr>
+			<tr>
+				<td><code>rax:queues</code></td>
+				<td>
+					<para>Services of this type  provide an open source, scalable, and highly
+						available message and notifications service.  </para>
+					<para><emphasis role="italic">Cloud Queues</emphasis> is the name of a Rackspace
+						service of this type.</para>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
