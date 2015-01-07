@@ -28,7 +28,7 @@
             authorization work flow</title>
         <mediaobject>
             <imageobject>
-                <imagedata scale="75"
+                <imagedata scale="5"
                     fileref="../figures/auth-keystone-identity-manager.png"
                     format="PNG" align="center"/>
             </imageobject>
