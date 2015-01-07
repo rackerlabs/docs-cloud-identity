@@ -3,7 +3,6 @@
 <!ENTITY % common SYSTEM "../../common/common.ent">
 %common;
 ]>
-
 <chapter xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:db="http://docbook.org/ns/docbook" 
@@ -26,146 +25,133 @@
 	<!--Note the Admin concepts section contains a workflow diagram not included in Dev guide.  
 		That's why the xi:include content is conditional.-->
 	
-	<xi:include condition="client" href="section_identity-concepts.xml"/>
-	<section xml:id="Request_Response_Types-d1e149">
-		<title>Request/Response Types</title>
-		<para>The &CIS; v2 API supports both the JSON and XML data serialization request and response
-			formats. If you not specify a format type, JSON is the default. <xref linkend="Response_Types"/> provides 
-			a summary of the available formats.</para>
-		
-		<table rules="all" width="80%" xml:id="Response_Types">
-			<caption>Supported Request and Response formats</caption>
-			<col width="10%"/>
-			<col width="35%"/>
-			<col width="10%"/>
-			<col width="14%"/>
-			<col width="31%"/>
-			<thead valign="baseline">
-				<tr>
-					<td>Format</td>
-					<th>Content-Type  header</th>
-					<td>Accept header</td>
-					<td>Query Extension for request URI</td>
-					<td>Default</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>JSON</td>
-					<td><code>Content-Type application/json</code></td>
-					<td><code>application/json</code></td>
-					<td>.json</td>
-					<td>Yes</td>
-				</tr>
-				<tr>
-					<td>XML</td>
-					<td><code>Content-Type application/xml</code></td>
-					<td><code>application/xml</code></td>
-					<td>.xml</td>
-					<td>No</td>
-				</tr>
-			</tbody>
-		</table>
-		<variablelist>
-			<varlistentry>
-				<term><guilabel>Content-Type header syntax</guilabel></term>
+	<xi:include href="section-identity-concepts.xml"/>
+	<xi:include href="../shared/section_gs_curl_how_curl_works.xml"/>
+    <xi:include href="section-ReqRespTypes.xml"/>
+	<xi:include href="section-authReqResp_annotated.xml"/>
+	<xi:include href="section-service-catalog.xml"/>
+    <xi:include href="section-identity-multfactorauth.xml"/>
+<section xml:id="Role_Based_Access_Control-d1e808">
+		<title>Role Based Access Control</title>
+		<para>The Rackspace Cloud Identity service provides Role Based
+			Access Control (RBAC) so that customers can restrict
+			access to Cloud services and capabilities to authorized
+			users only.  RBAC is an opt-in feature available to all
+			Rackspace Cloud customers. </para>
+		<para>The RBAC implementation relies on two role types: 
+        <itemizedlist>
 				<listitem>
-					
-					<para>The Content-Type header is required for API operations that
-						have a request body.</para>
-					<para>
-						<programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
-					</para>
-					<para>The <parameter>format</parameter> type can be either <literal>json</literal> or <literal>xml</literal>.</para>
+					<para>Identity service, administrative, and user
+						roles</para>
 				</listitem>
-			</varlistentry>
-		</variablelist>
-		<para>For the Accept header, you can use the following syntax or use the Query extension format.</para>
-		<variablelist>
-			<varlistentry>
-				<term><guilabel>Accept header syntax</guilabel></term>
 				<listitem>
-					<para>
-						<programlisting>Accept: application/format</programlisting> 
-					</para>
-					<para>Where <code>format</code> can be either <code>json</code> or 
-						<code>xml</code>.</para>
+					<para>RBAC product and global roles to manage
+						access and capabilities for other Rackspace
+						Cloud Services.</para>
 				</listitem>
-			</varlistentry>
-			<varlistentry>
-				<term><guilabel>Query extension syntax</guilabel></term>
-				<listitem>
-					<para>Add an <code>.xml</code> or <code>.json</code> extension to the request
-						URI. For example, the <code>.xml</code> extension in the following URI
-						request specifies that the response body is returned in XML format.</para>
-					<para>
-						<programlisting>POST /v2/tokens.xml</programlisting>
-					</para>
-				</listitem>
-			</varlistentry>
-		</variablelist>
-        <para>If you specify different formats for the Accept header and the query extension, the format 
-specified in the query extension takes precedence. For example, if the query extension is <code>.xml</code> 
-and the Accept header specifies <code>application/json</code>, the response is returned in XML format.</para>
-		<para>You can serialize a response in a different format from the request format. <xref linkend="JSON_req"/> and
-			<xref linkend="diff-serialization"/> show a request body in JSON format and a response body in XML format. </para>
-		<example xml:id="JSON_req">
-			<title>Authentication Request with Headers: JSON</title>
-			
-			<programlisting language="json">
-<![CDATA[&amp;lt; &amp;lt; POST /v2.0/tokens HTTP/1.1
-Host: identity.api.rackspacecloud.com
-Content-Type: application/json
-Accept: application/json
+			</itemizedlist>
+        </para>
 
-{
-  "auth": {
-    "passwordCredentials": {
-      "username": "demoauthor",
-      "password": "mypass"
-    },
-    "tenantId": "1234"
-  }
-}]]>
-</programlisting>
-		</example>
-		
-		<para><xref linkend="diff-serialization"/> shows the headers and XML response returned by the JSON request.</para>
-		<example xml:id="diff-serialization">
-			<title>Response with Headers: XML</title>
-			<programlisting>
-<![CDATA[HTTP/1.1 200 OK
-Date: Sun, 29 Jun 2014 03:35:05 GMT
-Content-Type: application/xml
-Content-Length: 1060
-Connection: keep-alive
-vary: Accept, Accept-Encoding, X-Auth-Token]]>
-<![CDATA[
-<access xmlns:atom="http://www.w3.org/2005/Atom" 
-xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-xmlns="http://docs.openstack.org/identity/api/v2.0" 
-xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
-     <token id="yyyyxxxaxxxxyyyyyyxxxxxxxyyyyy" expires="2014-06-29T21:09:34.085Z">
-          <rax-auth:authenticatedBy>
-               <rax-auth:credential>PASSWORD</rax-auth:credential>
-          </rax-auth:authenticatedBy>
-     </token>
-     <user name="demoauthor" rax-auth:defaultRegion="DFW" rax-auth:federated="false">
-          <roles>
-               <role id="1" name="identity:admin" description="Admin Role."/>
-          </roles>
-     </user>
-     <serviceCatalog/>
-</access>]]>
-			</programlisting>
-		</example>
+
+<!-- Include separate sections for Identity and RBAC role documentation -->
+			
+		<xi:include href="section-identity-roles.xml"/>
+		<xi:include href="section-rbac-roles.xml"/>
+
+<!-- Assign roles -->
+		<section xmlns="http://docbook.org/ns/docbook"
+			xmlns:xi="http://www.w3.org/2001/XInclude"
+			xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+			xml:id="section_assign_roles_3">
+			<title>Assigning roles to account users</title>
+			<para>The account owner, <literal>identity:user-admin</literal>) can create account users, 
+				<literal>identity:default)</literal> on the account and then assign roles to 
+				those users. The roles grant the account users specific permissions for accessing the 
+				Cloud services and capabilities. Each account has only one account owner, and that role 
+				is assigned by default to any Rackspace Cloud account when the account is created. Account 
+				owners cannot hold any additional roles because they already have full access to all services 
+				and capabilities.
+			</para>
+			<para>
+				You can assign roles programmatically through the API or by using the Cloud Control panel
+				interface.
+			</para>
+			<para>Use the following API operations to add account users and manage role assignments:</para>
+					<itemizedlist condition="client">
+				<listitem>
+					<para>
+						<link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add account user</link>
+					</para>
+				</listitem>
+				<listitem>
+					<para><link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Assign role to account users</link></para>
+				</listitem>
+				<listitem>
+					<para><link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Delete role from account user</link></para>
+				</listitem>
+			</itemizedlist>
+
+			<para>For information about implementing RBAC by using the Cloud
+				Control panel and other RBAC-related topics, see the
+				following Rackspace Knowledge Center articles:</para>
+			<itemizedlist>
+				<listitem>
+				<para>
+					<link
+						xlink:href="http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac"
+						>Managing Role-based access control through Cloud Control panel</link>
+				</para>
+			</listitem>
+				<listitem>
+					<para>
+						<link
+							xlink:href="http://www.rackspace.com/knowledge_center/article/getting-started-with-role-based-access-control-rbac-0">Getting Started with Role-based access control (RBAC)</link>
+					</para>
+				</listitem></itemizedlist>
+		</section>
+
+		<section xml:id="RBAC_Role_Conflict-dle808">
+			<title>Resolving Conflicts Between RBAC Multiproduct (Global) vs. Custom (Product) Roles</title>
+			<para>The account owner can set roles for both multiproduct and custom (product-specific) scope,
+				and it is important to understand how any potential conflicts among these roles are
+				resolved. When two roles appear to conflict, the role that provides the more
+				extensive permissions takes precedence. Therefore, admin roles take precedence over
+				observer roles, because admin roles provide more permissions. </para>
+			<para>
+				The following table shows two examples of how potential conflicts between user roles in the Control Panel are resolved:
+			</para>
+			<para>
+				<informaltable rules="all">		
+					<thead>
+						<tr align="center">
+							<td>Permission Configuration</td>
+							<td>View of Permission in the Control Panel </td>
+							<td>Can the User Perform Product Admin Functions in the Control Panel?</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>User is assigned the following roles: multiproduct <emphasis role="bold">observer</emphasis> and product <emphasis
+								role="bold">admin</emphasis></td>
+							<td>Appears that the user has only the multiproduct <emphasis role="bold">observer</emphasis> role</td>
+							<td>Yes, for specified product only. The user has the <emphasis role="bold">observer</emphasis> role for the rest of
+								the products.</td>
+						</tr>
+						<tr>
+							<td>User is assigned the following roles: multiproduct <emphasis role="bold">admin</emphasis> and product <emphasis
+								role="bold">observer</emphasis></td>
+							<td>Appears that the user has only the multiproduct <emphasis role="bold">admin</emphasis> role</td>
+							<td>Yes, for all of the products. The specified product <emphasis role="bold">observer</emphasis> role is
+								ignored.</td>
+						</tr>
+					</tbody>
+				</informaltable>
+			</para>
+				<para>For information about using RBAC with specific products, see the 
+					<link xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each product.</para>
+			
+		</section>
 	</section>
-	
-    <xi:include href="section-authReqResp.xml"/>
 	<section xml:id="Content_Compression-d1e262">
 	  <title>Content Compression</title>
 	  <para>Request and response body data can be encoded with gzip
@@ -255,35 +241,35 @@ xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
 		<example>
 			<title>Tenant Collection, First Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/tenants-1.xml" parse="text"/>
+<xi:include href="../../common/samples/tenants-1.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, First Page: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="../samples/tenants-1.json" parse="text"/></programlisting>
+			href="../../common/samples/tenants-1.json" parse="text"/></programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Second Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/tenants-2.xml" parse="text"/>
+<xi:include href="../../common/samples/tenants-2.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Second Page: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="../samples/tenants-2.json" parse="text"/></programlisting>
+			href="../../common/samples/tenants-2.json" parse="text"/></programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Last Page: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/tenants-3.xml" parse="text"/>
+<xi:include href="../../common/samples/tenants-3.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Tenant Collection, Last Page: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="../samples/tenants-3.json" parse="text"/></programlisting>
+			href="../../common/samples/tenants-3.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			In the JSON representation, paginated collections contain
@@ -300,13 +286,13 @@ xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
 		<example>
 			<title>Paginated Roles in a User: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/getuser-1.xml" parse="text"/>
+<xi:include href="../../common/samples/getuser-1.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Paginated Roles in a User: JSON</title>
 			<programlisting language="javascript"><xi:include
-			href="../samples/getuser-1.json" parse="text"/></programlisting>
+			href="../../common/samples/getuser-1.json" parse="text"/></programlisting>
 		</example>
 	</section>
 	<section xml:id="Versions-d1e472">
@@ -318,17 +304,17 @@ xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
 				Service v2.0 does not
 				yet support MIME-type version. </para>
 		</important>
-		<para>The first element of
-			the URI path contains the target version identifier. For example, this URI targets API version 2.0: 
-			&ENDPOINT-US;&hellip;. Other than requests to query for version, all requests must contain a target version. 
-		</para>
-	    <para>
-			Any features or functionality
-			changes that would necessitate a break in API compatibility will require a new
-			version, which will result in the URI version being updated accordingly. When new
-			API versions are released, older versions will be marked as <code>DEPRECATED</code>.
-			Rackspace will work with developers and partners to ensure that there is adequate time to
-			migrate to the new version before deprecated versions are discontinued. </para>
+		<para> All client requests to the API must specify the target
+			version identifier in the first element of the URI path.
+			For example, v2.0 is the target version in this enddpoint
+			URI: <programlisting>&ENDPOINT-US;</programlisting>The
+			only access available without the target version are to
+			check for the GET version API request that returns
+			available API versions supported at the specified
+			endpoint. </para>
+
+<!-- Information about MIME type support not included in the production output. -->
+
 		<para security="writeronly">
 			The authentication service API uses two version schemes, one based on the URI 
 			and the other based on MIME type.
@@ -373,6 +359,8 @@ Accept: application/vnd.openstack.identity+xml;version=1.1
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
 		</example>
+<para>The folloiwng example shows an XML request that uses 
+			URI versioning.
 		<example>
 			<title>Request with URI version scheme</title>
 			<literallayout class="monospaced">
@@ -382,6 +370,80 @@ Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 			</literallayout>
 		</example>
+</para>
+
+
+		<para>The URI scheme for API contracts supports the following development practices: <itemizedlist>
+				<listitem>
+					<para>New features and functionality that do not break API compatibility are
+						introduced in the current version of the API as <link
+							linkend="Extensions-d1e688">extensions</link>. The URI version stays the
+						same. For example, the &CIS; is developing the RAX-AUTH extension to develop
+						new services and resources to support the Rackspace implementation of
+						OpenStack Keystone v2.0.</para>
+				</listitem>
+				<listitem>
+					<para> Service providers must change the API contract version anytime they
+						introduce or deprecate features or functionality that make the API
+						incompatible with previously released versions. When the version changes,
+						the target version in the URI is updated, from v2.0 to v3.0 for
+						example.</para>
+				</listitem>
+				<listitem>
+					<para>When new API versions are released, older versions are
+							<code>DEPRECATED</code>. Because a service endpoint can host multiple
+						API versions, service providers can work with developers and partners to
+						ensure adequate time to migrate to the new version before removing the
+						deprecated version from service.</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+<!--		
+		<para security="writeronly">
+			The authentication service API uses two version schemes, one based on the URI 
+			and the other based on MIME type.
+			<annotation>
+				<remark>MIME-type version support has not been implemented in v2.0;
+					meanwhile, using URI-only text borrowed from Auth
+					1.1. </remark>
+			</annotation>
+			<itemizedlist>
+				<listitem>
+					<para>			
+						In the URI version scheme, the first
+						element of the path contains the target version
+						identifier. For example, in <code>https://identity.api.openstack.org/
+						v2.0/&hellip;</code>, the target version is identified as <code>v2.0</code>. 
+					</para>
+				</listitem>	
+				<listitem>
+					<para>
+						The MIME-type version scheme uses
+						HTTP content negotiation where the <code>Accept</code>
+						or <code>Content-Type</code> header contains a MIME
+						type that includes the version ID as a parameter.
+						For example, in <code>
+						application/vnd.openstack.identity+xml;version=1.1</code>, 
+						the target version is identified as <code>1.1</code>. 
+						A version MIME type is always linked to a base MIME type
+						such as <code>application/xml</code> or <code>application/json</code>. 
+					</para>
+				</listitem>
+			</itemizedlist>
+			If conflicting
+			versions are specified using both a MIME type and a
+			URI, the URI takes precedence.
+		</para>
+		<example security="writeronly">
+			<title>Request with MIME-Type version scheme</title>
+			<literallayout class="monospaced">
+GET /tenants HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Accept: application/vnd.openstack.identity+xml;version=1.1
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+			</literallayout>
+		</example>
+		
 		<note security="writeronly">
 			<para>
 				The MIME-type version approach supports the
@@ -405,48 +467,14 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
 		<example security="writeronly">
 			<title>Multiple Choices Response: JSON</title>
 			<programlisting language="javascript"><xi:include href="../samples/choices.json" parse="text"/></programlisting>
-		</example>
-		<para>Features or functionality changes that would disrupt API
-			compatibility will require a new version, which will
-			result in the URI version being updated accordingly. When
-			new API versions are released, older versions will be
-			marked as <code>DEPRECATED</code>. Providers should work
-			with developers and partners to ensure there is adequate
-			time to migrate to the new version before deprecated
-			versions are discontinued. <itemizedlist>
-				<listitem>
-					<para> New features and functionality that do not
-						break API compatibility will be introduced in
-						the current version of the API as <link
-							linkend="Extensions-d1e688"
-							>extensions</link> and the URI will remain
-						unchanged. </para>
-				</listitem>
-				<listitem>
-					<para>Features or functionality changes that would
-						disrupt API compatibility will require a new
-						version, which will result in the URI version
-						being updated accordingly. </para>
-				</listitem>
-				<listitem>
-					<para>When new API versions are released, older
-						versions will be marked as
-							<code>DEPRECATED</code>. </para>
-				</listitem>
-			</itemizedlist></para>
-		<para>
-			You can programmatically determine
-			available API versions by performing a &GET; on the
-			root URL returned from the
-			authentication system. In the root URL, the version and everything to the
-			right of it is truncated.
-			An Atom
-			representation of the version's resources is supported
-			when issuing a request with the <code>Accept</code>
-			header containing <code>application/atom+xml</code> or by adding 
-			<code>.atom</code> to the request URI.  This allows standard Atom
-			clients to track version changes.
-		</para>
+		</example>  -->
+		
+		<para>You can programmatically determine available API versions by performing a &GET; on the root
+			URL returned from the authentication system. In the root URL, the version and everything
+			to the right of it is truncated. An Atom representation of the version's resources is
+			supported when issuing a request with the <code>Accept</code> header containing
+				<code>application/atom+xml</code> or by adding <code>.atom</code> to the request
+			URI. This allows standard Atom clients to track version changes. </para>
 		<example>
 			<title>Versions List Request</title>
 			<literallayout class="monospaced">
@@ -463,18 +491,18 @@ Host: identity.api.rackspacecloud.com
 		<example>
 			<title>Versions List Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/versions.xml" parse="text"/>
+<xi:include href="../../common/samples/versions.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Versions List Response: Atom</title>
 			<programlisting language="xml">
-<xi:include href="../samples/versions-atom.xml" parse="text"/>
+<xi:include href="../../common/samples/versions-atom.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Versions List Response: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/versions.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/versions.json" parse="text"/></programlisting>
 		</example>
 		<para>You can obtain additional detailed information about a specific version by performing a
 			&GET; on the base version URL. For example,
@@ -502,18 +530,18 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<example>
 			<title>Version Details Response: XML</title>
 			<programlisting language="xml">
-<xi:include href="../samples/version.xml" parse="text"/>
+<xi:include href="../../common/samples/version.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Version Details Response: Atom</title>
 			<programlisting language="xml">
-<xi:include href="../samples/version-atom.xml" parse="text"/>
+<xi:include href="../../common/samples/version-atom.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Version details response: JSON</title>
-			<programlisting language="javascript"><xi:include href="../samples/version.json" parse="text"/></programlisting>
+			<programlisting language="javascript"><xi:include href="../../common/samples/version.json" parse="text"/></programlisting>
 		</example>
 		<para>
 			The detailed version response contains pointers to
@@ -529,186 +557,6 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	</section>
 	<xi:include href="section-extensions.xml"/>
 	<xi:include href="section-namespaces.xml"/>
-	<section xml:id="Account-Users-d1e910">
-		<title>Identity user types and default roles</title>
-		
-		<para>In the &CLOUD;, users are represented as accounts created for specific individuals.
-			Typically, a user has a password and email associated with the account. When a user is
-			created, the &CIS; automatically assigns a user type and a default role to the account,
-			based on the default &CIS; system configuration. The role defines access rights and
-			permissions for the &CIS; and other &CLOUD; services as shown in <xref
-				linkend="Identity_tbl_usr"/>.
-		</para>
-		<table xml:id="Identity_tbl_usr " rules="all" width="958">
-			<caption>&CIS; Accounts: User types and default role assignments</caption>
-			<col width="15%"/>
-			<col width="17%"/>
-			<col width="686pt"/>
-			<thead>
-				<tr>
-					<th>
-						<para>User type</para>
-					</th>
-					<th>
-						<para>Default role assignment</para>
-					</th>
-					<th>
-						<para>Description</para>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<para>Service administrator</para>
-					</td>
-					<td>
-						<para>identity:service-admin</para>
-					</td>
-					<td>
-						<para>The Service administrator user type is reserved for the &CIS; operations team members.
-							Service administrators hold the
-								<literal>identity:service-admin</literal> role that provides full
-							administrative rights and privileges to manage the Identity service. </para>
-						<para>Service developers that want to update an existing &CLOUD; service or add a new one work
-							together with the &CIS; Operations team to create an endpoint template
-							and add the service to the Service catalog. </para>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<para>Administrator</para>
-					</td>
-					<td>
-						<para>identity:admin</para>
-					</td>
-					<td>
-						<para>The Administrator user type is reserved for &CLOUD; services that
-							require access to the &CIS; to validate tokens and retrieve user
-							information.</para>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<para>User Administrator</para>
-						<para>(Account owner)</para>
-					</td>
-					<td>
-						<para>identity:user-admin</para>
-					</td>
-					<td>
-						<para>When a &CLOUD; customer account is created, it is associated with one
-							user, the User administrator.</para>
-						<para>The &CIS; automatically assigns the
-								<literal>identity:user-admin</literal>
-							role to the account, giving the User
-							Administrator full administrative
-							privileges to manage the administrative
-							account and all sub-user accounts created
-							as children of the User administrator
-							account. Exactly one administrative user
-							exists for each account. The User
-							Administrator account user is also
-							referred to as the Account Owner.</para>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<para>Account User</para>
-						<para>(sub-user)</para>
-					</td>
-					<td>
-						<para>identity:default</para>
-					</td>
-					<td>
-						<para>Account users, sometimes called sub-users, are created and managed by
-							User administrators. An account user has these characteristics:</para>
-						<itemizedlist>
-							<listitem>
-								<para>Their account is a child of the User Administrator
-									account.</para>
-							</listitem>
-							<listitem>
-								<para>Hold the <literal>identity:default</literal> role, with the associated rights and
-									privileges.</para>
-							</listitem>
-							<listitem>
-								<para>Share the tenant information, group memberships, and endpoints
-									from the parent User Administrator account.</para>
-							</listitem>
-						</itemizedlist>
-						<para>The <literal>identity:default</literal> role only provides rights and privileges to
-							manage the user's own account. For example, account users can update
-							user information and passwords on their own accounts, but they cannot
-							update information on other accounts. An account user can submit a List
-							users request, but the response only returns information about the
-							account owner. </para>
-						<para>Administrators can directly assign sub-users to a particular tenant so
-							that the users behave as if they are contained within that tenant
-						</para>
-					</td>
-				</tr>
-				<tr>
-					<td>User Manager</td>
-					<td>identity:user-manage</td>
-					<td>
-						   <para>The User manager is a customer-based
-								user type designated as an
-								administrator on a &CLOUD; account
-								along with the User
-								administrator.</para>
-							<para>User Manager accounts hold the
-								<literal>user-admin</literal> role
-								by default, with the same access
-								rights and privileges as the User
-								administrator.</para>
-							<para>User and Service administrators can
-								update an existing or new sub-user
-								account with the
-								<literal>identity:default</literal>
-								role to change the account to a User
-								Manager account.</para>
-						</td>
-				</tr>
-			</tbody>
-		</table>
-		<para><?oxy_comment_start author="marg7175" timestamp="20140612T001831-0500" comment="Does the section about valid authentication credentials require update?"?>All<?oxy_comment_end?>
-			users, including account users, can authenticate with a combination of their user name
-			and password. Only administrative users can authenticate either with a combination of
-			their user name and API key or with a combination of their tenant ID and API key.</para>
-			<note>
-				<para>When managing &amp;CIS; accounts for the User Administrator, keep the following points in
-				mind to prevent unexpected changes to the sub-user accounts associated with the User
-				Administrator account. <itemizedlist>
-					<listitem>
-						<para> When a new account user is created, it inherits its parent's groups.
-						</para>
-					</listitem>
-					<listitem>
-						<para> When a parent is assigned to a new group, its account users inherit
-							that group. </para>
-					</listitem>
-					<listitem>
-						<para> When a parent is removed from a group, its account users are removed,
-							too. </para>
-					</listitem>
-					<listitem>
-						<para> When a service attempts to assign an account user to a group, that
-							attempt fails. A <errorcode>400</errorcode> error is returned, with the
-							following message: "Cannot add sub-users directly to a group, must
-							assign their parent user." To assign an account user to a group, assign
-							its parent to that group; the account user will inherit the new group
-							assignment from its parent. </para>
-					</listitem>
-					<listitem>
-						<para>Administrators can directly assign Account users to a particular
-							tenant so that the users behave as if they are contained within that
-							tenant.</para>
-					</listitem>
-				</itemizedlist></para>
-			</note> 
-	</section>
-	<xi:include href="section-identity-multfactorauth.xml"/>
 
 <section xml:id="Limits-d1e909">
 		<title>Limits</title>
@@ -737,7 +585,8 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			Limits”</olink>. </para>
 	</tip>
 </section>
-	<section xml:id="Faults-d1e908">
+
+<section xml:id="Faults-d1e908">
 		<title>Faults</title>
 		<para>
 			When an error occurs, the system returns an HTTP error response code denoting the type of error. The system 
@@ -819,188 +668,15 @@ Host: identity.api.rackspacecloud.com/v1.0/
 		<example>
 			<title>Item Not Found Fault: XML</title>
 			<programlisting language="xml">
-				<xi:include href="../samples/item_not_found.xml" parse="text"/>
+				<xi:include href="../../common/samples/item_not_found.xml" parse="text"/>
 			</programlisting>
 		</example>
 		<example>
 			<title>Item Not Found Fault: JSON</title>
 			<programlisting language="javascript">
-				<xi:include href="../samples/item_not_found.json" parse="text"/>
+				<xi:include href="../../common/samples/item_not_found.json" parse="text"/>
 			</programlisting>
 		</example>
 	</section>
-	<section xml:id="Role_Based_Access_Control-d1e808">
-		<title>Role Based Access Control</title>
-		<para>The Rackspace Cloud Identity service provides Role Based Access Control (RBAC) so that
-			customers can restrict access to Cloud services and capabilities to authorized users
-			only. RBAC is an opt-in feature available to all Rackspace Cloud customers. The account
-			owner user (<literal>identity:user-admin</literal>) can activate RBAC by adding users to
-			the account and assigning roles to users via the API, the Cloud Control Panel, or by
-			calling Customer support. </para>
-		
-		<para>
-			Rackspace-defined roles provide specific permissions that determine the services a user can
-			access and the types of operations they can complete. For example, an account owner can assign 
-			an <literal>admin</literal> role to user accounts that require access to create, read, update, and delete 
-			capabilities for all API services included in the service catalog for that account. 
-		</para>
-		
-		<para>
-			Role assignments can be global or custom. Global roles manage access and permissions across 
-			multiple API services. Custom roles manage access and permissions on a per-product basis. 
-			For both global and custom roles, the user has access only to designated products. 
-			<xref linkend="RBAC_roledesc_tbl"/> describes the
-			RBAC roles available.</para> 
-		<table rules="all" width="100%" xml:id="RBAC_roledesc_tbl">
-				<caption>Rackspace Cloud RBAC Roles and Capabilities</caption>
-				<thead>
-					<tr>
-						<th>Role</th>
-						<th>Type</th>
-						<th>Role Description</th>
-						<th>Example Role</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>admin (full access)</td>
-						<td>Global</td>
-						<td>The admin role provides Create, Read, Update, and Delete permissions
-							in all Cloud products, where access is granted. Full access is given
-							to current and future products as they become RBAC-enabled. Each
-							account can have only one admin </td>
-						<td>admin</td>
-					</tr>
-					<tr>
-						<td>observer (read-only access)</td>
-						<td>Global</td>
-						<td>The observer role provides Read permission in all products where
-							access is granted. Read-only access is given to current and future
-							products as they become RBAC-enabled.</td>
-						<td>observer</td>
-					</tr>
-					<tr>
-						<td>product:admin</td>
-						<td>Custom</td>
-						<td>The product:admin role provides Create, Read, Update, and Delete
-							permissions for a specified product, where access is granted.</td>
-						<td>nova:admin</td>
-					</tr>
-					<tr>
-						<td>product:creator</td>
-						<td>Custom</td>
-						<td>The product:creator role provides Create, Read, and Update
-							permissions for a specified product, where access is granted. The
-							user cannot delete resources.</td>
-						<td>cloudFiles:creator</td>
-					</tr>
-					<tr>
-						<td>product:observer</td>
-						<td>Custom</td>
-						<td>This product:observer role provides Read permission for a specified
-							product, where access is granted.</td>
-						<td>cdb:observer</td>
-					</tr>
-				</tbody>
-			</table><important>
-				<para xml:id="Account_Owner-dle808">All RBAC roles are subordinate to the account owner user
-				(identity:user-admin) designated by the customer as the primary contact. Only an
-				account owner can create account users (identity:default) and assign RBAC roles. Account owners 
-				cannot hold any additional roles because they already have full access to all services and 
-				capabilities.</para>
-			</important>
-		<section xmlns="http://docbook.org/ns/docbook"
-			xmlns:xi="http://www.w3.org/2001/XInclude"
-			xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-			xml:id="section_assign_roles_3">
-			<title>Assigning roles to account users</title>
-			<para>The account owner, <literal>identity:user-admin</literal>) can create account users, 
-				<literal>identity:default)</literal> on the account and then assign roles to 
-				those users. The roles grant the account users specific permissions for accessing the 
-				Cloud services and capabilities. Each account has only one account owner, and that role 
-				is assigned by default to any Rackspace Cloud account when the account is created. Account 
-				owners cannot hold any additional roles because they already have full access to all services 
-				and capabilities.
-			</para>
-			<para>
-				You can assign roles programmatically through the API or by using the Cloud Control panel
-				interface.
-			</para>
-			<para>Use the following API operations to add account users and manage role assignments:</para>
-					<itemizedlist condition="client">
-				<listitem>
-					<para>
-						<olink targetdoc="Identity-Developer-Guide" targetptr="POST_addUser__v2.0_users_User_Calls">Add account user</olink>
-					</para>
-				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Assign role to account users</olink></para>
-				</listitem>
-				<listitem>
-					<para><olink targetdoc="Identity-Developer-Guide"
-						targetptr="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Delete role from account user</olink></para>
-				</listitem>
-			</itemizedlist>
-
-			<para>For information about implementing RBAC by using the Cloud
-				Control panel and other RBAC-related topics, see the
-				following Rackspace Knowledge Center articles:</para>
-			<itemizedlist>
-				<listitem>
-				<para>
-					<link
-						xlink:href="http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac"
-						>Managing Role-based access control through Cloud Control panel</link>
-				</para>
-			</listitem>
-				<listitem>
-					<para>
-						<link
-							xlink:href="http://www.rackspace.com/knowledge_center/article/getting-started-with-role-based-access-control-rbac-0">Getting Started with Role-based access control (RBAC)</link>
-					</para>
-				</listitem></itemizedlist>
-		</section>
-		<section xml:id="RBAC_Role_Conflict-dle808">
-			<title>Resolving Conflicts Between RBAC Multiproduct (Global) vs. Custom (Product) Roles</title>
-			<para>The account owner can set roles for both multiproduct and custom (product-specific) scope,
-				and it is important to understand how any potential conflicts among these roles are
-				resolved. When two roles appear to conflict, the role that provides the more
-				extensive permissions takes precedence. Therefore, admin roles take precedence over
-				observer roles, because admin roles provide more permissions. </para>
-			<para>
-				The following table shows two examples of how potential conflicts between user roles in the Control Panel are resolved:
-			</para>
-			<para>
-				<informaltable rules="all">		
-					<thead>
-						<tr align="center">
-							<td>Permission Configuration</td>
-							<td>View of Permission in the Control Panel </td>
-							<td>Can the User Perform Product Admin Functions in the Control Panel?</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>User is assigned the following roles: multiproduct <emphasis role="bold">observer</emphasis> and product <emphasis
-								role="bold">admin</emphasis></td>
-							<td>Appears that the user has only the multiproduct <emphasis role="bold">observer</emphasis> role</td>
-							<td>Yes, for specified product only. The user has the <emphasis role="bold">observer</emphasis> role for the rest of
-								the products.</td>
-						</tr>
-						<tr>
-							<td>User is assigned the following roles: multiproduct <emphasis role="bold">admin</emphasis> and product <emphasis
-								role="bold">observer</emphasis></td>
-							<td>Appears that the user has only the multiproduct <emphasis role="bold">admin</emphasis> role</td>
-							<td>Yes, for all of the products. The specified product <emphasis role="bold">observer</emphasis> role is
-								ignored.</td>
-						</tr>
-					</tbody>
-				</informaltable>
-			</para>
-				<para>For information about using RBAC with specific products, see the 
-					<link xlink:href="http://docs.rackspace.com/">API Developer Guide</link> for each product.</para>
-			
-		</section>
-	</section>
+	
     </chapter>
