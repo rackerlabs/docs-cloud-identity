@@ -75,14 +75,13 @@
 					
 				</executions>
 			</plugin>
+		
 
 <!--Generate webhelp for auth-client-devguide -->
 			<plugin>
 				
-				<groupId>com.rackspace.cloud.api</groupId>
-				
-				<artifactId>clouddocs-maven-plugin</artifactId>
-				
+				<groupId>com.rackspace.cloud.api</groupId>				
+				<artifactId>clouddocs-maven-plugin</artifactId>	
 				<version>2.1.3</version>
 				
 				<executions>
@@ -111,12 +110,7 @@
 							<socialIcons>1</socialIcons>
 							<enableDisqus>internet</enableDisqus>
 							<enableGoogleAnalytics>1</enableGoogleAnalytics>
-							
-							<chapterAutolabel>0</chapterAutolabel>
-							<appendixAutolabel>0</appendixAutolabel>
-							<sectionAutolabel>0</sectionAutolabel>
-							<tocSectionDepth>1</tocSectionDepth>
-							<formalProcedures>0</formalProcedures>
+
 							<generateToc>
 								appendix toc,title
 								article/appendix nop
@@ -165,12 +159,6 @@
 							<enableDisqus>intranet</enableDisqus>
 							<feedbackEmail>margaret.eker@rackspace.com</feedbackEmail>
 							
-							
-							<chapterAutolabel>0</chapterAutolabel>
-							<appendixAutolabel>0</appendixAutolabel>
-							<sectionAutolabel>0</sectionAutolabel>
-							<tocSectionDepth>1</tocSectionDepth>
-							<formalProcedures>0</formalProcedures>
                             <generateToc>
 								appendix toc,title
 								article/appendix nop
@@ -218,7 +206,8 @@
 					<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 					
 					<publicationNotificationEmails>margaret.eker@rackspace.com; angela.molock@rackspace.com</publicationNotificationEmails>
-				</configuration>
+				
+</configuration>
 				
 			</plugin>
 			
@@ -245,8 +234,9 @@
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
-		
+
 	</build>
 	
 	<properties>
