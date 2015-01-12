@@ -31,10 +31,10 @@
           accounts, but the phone must be verified separately
           for each account.</para>
       </listitem>
-      <listitem><para>When a user account is updated to require multi-factor authentication, all existing 
-        tokens for the acount obtained by using username and password credentials are revoked immediately. 
-        To regain access, the user must complete the multi-factor authentication process to 
-        generate a new token.</para></listitem>
+      <listitem><para>When a user account is updated to require multi-factor authentication, all existing tokens for
+          the account obtained by using username and password credentials are revoked immediately.
+          To regain access, the user must complete the multi-factor authentication process to
+          generate a new token.</para></listitem>
     </itemizedlist>
   </note>
   <orderedlist>
