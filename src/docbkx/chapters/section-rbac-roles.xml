@@ -8,28 +8,26 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-	xml:id="RBAC-roles">
+	xml:id="RBAC-roles" xreflabel="RBAC roles">
 	<?dbhtml stop-chunking?>
 	
 	<title>RBAC roles</title>
 	<para> RBAC roles are cusotmer-managed roles with specific
 		permissions that determine the services a user can access and
 		the types of operations they can complete. For example, an
-		account user with the <literal>identity:user-admin</literal>
-		or <literal>identity:user-manage</literal> role can assign a
-		global <literal>admin</literal> role to user accounts that
-		require access to create, read, update, and delete
-		capabilities for all API services included in the service
-		catalog for that account. </para>
-	<para>All RBAC roles are subordinate to the
+		account user with the <literal>lbaas:admin</literal> role has create, read, 
+		update, and delete permissions for the Cloud Loadbalancer service.
+		</para>
+	<para>All RBAC roles are subordinate to the 
 			<literal>identity:user-admin</literal> or  the
-			<literal>identity:user-manage</literal> roles that are
-		assigned to Rackspace Cloud account owners.   Only account
-		owners   can create account users
-			(<literal>identity:default</literal>) and assign RBAC
+			<literal>identity:user-manage</literal> roles that the Identity 
+		service assigns to Rackspace Cloud accounts held by the account owner or by 
+		an account designated to manage user accounts. Only Identity administrators 
+		and managers can create account users (<literal>identity:default</literal>) and assign RBAC
 		roles. Account owners cannot hold any additional roles because
 		they already have full access to all services and
-		capabilities.</para>
+		capabilities. Account managers can have both the <parameter>identity:user-manage</parameter> and the 
+		<parameter>identity:default</parameter>.</para>
 	<para>Role assignments can be global or custom. Global roles manage
 		access and permissions across multiple API services. Custom
 		roles manage access and permissions on a per-product basis.

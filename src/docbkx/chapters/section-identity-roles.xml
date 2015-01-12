@@ -8,12 +8,13 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-	xml:id="Account-Users-d1e910">
+	xml:id="Account-Users-d1e910" xreflabel="Service Managed roles">
 	<?dbhtml stop-chunking?>
 	
 	<title>Identity service, admin, and user roles</title>
-	<para>Identity roles are Rackspace-defined roles that the Identity service uses to make access control decsions when a user or service 
-	submits an API request to the Identity API.</para>
+	<para>Identity roles are service managed roles defined and managed by Rackspacee that the Identity
+		service uses to make access control decsions when a user or service submits an API request
+		to the Identity API. </para>
 	<para>In the &CLOUD;, users are represented as accounts created for
 		specific individuals. Typically, a user has a password and
 		email associated with the account. When a user is created, the
@@ -66,14 +67,12 @@
 			</tr>
 			<tr valign="top">
 				<td>identity:user-admin</td>
-				<td>Identity user administrator Account owner</td>
+				<td>Identity User Administrator also known as the Account owner</td>
 				<td>
-					<para>A customer role that is assigned automatically when a user
-						creates a &CLOUD; account. The
-							<literal>identity:user-admin</literal>
-						provides full administrative privileges to
-						manage the primary account and all user
-						accounts created within the account.</para>
+					<para>A customer role that is assigned automatically when a user creates a &CLOUD; account. The
+							<literal>identity:user-admin</literal> provides full administrative
+						privileges to manage the primary account and all user accounts created
+						within the account.</para>
 					<para>Each &CLOUD; account has exactly one administrative user.
 						This user is also referred to as the Account
 						Owner or User Administrator.</para>
@@ -81,7 +80,7 @@
 			</tr>
 			<tr valign="top">
 				<td>identity:user-manage</td>
-				<td>Identity user manager<?sbr?></td>
+				<td>Identity User Manager<?sbr?></td>
 				<td>
 					<para>A customer role that provides the same access rights and
 						privlieges as the
