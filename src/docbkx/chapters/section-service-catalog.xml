@@ -18,7 +18,7 @@
 	<para>The following sections provide information about the service types supported by Rackspace
 		Cloud APIs included in the service catalog and information about processing the service
 		catalog returned by the Identity service.</para>
-	<para condition="admin">Service and Identity administrators can use the Identity API to manage service configuration and the API capablities supported by a service. 
+	<para condition="admin">Service and Identity administrators can use the Identity API to manage service configuration and the API capabilities supported by a service. 
 		For details, see the following documentation:<itemizedlist>
 		<listitem>
 			<para><link xlink:href="Service_Calls.html">Service operations</link></para>

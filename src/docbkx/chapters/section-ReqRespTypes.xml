@@ -87,9 +87,10 @@
 	<para>If you specify different formats for the Accept header and the query extension, the format 
 		specified in the query extension takes precedence. For example, if the query extension is <code>.xml</code> 
 		and the Accept header specifies <code>application/json</code>, the response is returned in xml format.</para>
-	<para>You can serialize a response in a different format from the request format as shown in <xref linkend="JSON_req"/> and
-		<xref linkend="diff-serialization"/>. This request body is in JSON format with the Accept header specified as XML. The 
-		which returns the response body in XML format as shown in xref linkend="diff-serialization"/>.</para>
+	<para>You can serialize a response in a different format from the request format as shown in <xref
+			linkend="JSON_req"/> and <xref linkend="diff-serialization"/>. In these examples, the
+		request body is in JSON format with the Accept header specified as XML. When the request is
+		submitted, the response is returned in XML format.</para>
 	<example xml:id="JSON_req">
 		<title>Authentication Request with Headers: JSON</title>
 		

@@ -144,9 +144,10 @@
                         <para>A valid authentication token issued to a user with administrative privileges.</para>
                     </wadl:doc>
                 </param>
-                 <param name="name" style="query" type="xsd:string" required="false">
-                     <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The name of the tenant to look up.
-                     </wadl:doc>
+                 <param xmlns="http://wadl.dev.java.net/2009/02" name="name" style="query"
+                     type="xsd:string" required="true">
+                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The name of the
+                         tenant.</wadl:doc>
                  </param>
                 <method href="#listTenants"/>
              </resource>  
@@ -156,9 +157,8 @@
                               <para>A valid authentication token issued to a user with administrative privileges.</para>
                           </wadl:doc>
                       </param>
-                    <param name="tenantId" style="template"
-                        type="xsd:string" required="true">
-                        <wadl:doc xml:lang="EN">The tenant ID.</wadl:doc>
+                    <param name="tenantId" style="template" type="capi:UUID" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The unique ID assigned to the tenant account.</wadl:doc>
                     </param>
                     <method href="#getTenantById"/>
                   </resource>
@@ -170,8 +170,8 @@
                             </wadl:doc>
                             </param>
                             <param name="tenantId" style="template"
-                                type="xsd:string" required="true">
-                                <wadl:doc xml:lang="EN">The tenant ID.</wadl:doc>
+                                type="UUID" required="true">
+                                <wadl:doc xml:lang="EN">The unique ID assigned to the tenant account.</wadl:doc>
                             </param>
                             <param name="userId" style="template" type="xsd:string" required="true">
                                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -359,51 +359,49 @@
             </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="auth">
-                <param name="RAX-KSKEY:APIKeyCredentials" style="plain"
-                    required="false" type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>An <code>APIKeyCredentials</code>
-                            object to specify the <code>username</code> and <code>APIkey</code> string values associated with the &CLOUD; account. 
-                            Cannot be specified with <literal>passwordCredentials</literal> or <literal>token</literal>.</para></wadl:doc>
-                </param>
-                <param name="passwordCredentials" style="plain"
-                    required="false" type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>A <code>passwordCredentials</code> object to specify the 
-                            <code>username</code> and <code>password</code> string values associated with the &CLOUD; account.
-                            Cannot be specified with <literal>APIKeyCredentials</literal> or <literal>token</literal>.</para>
-                    </wadl:doc>
-                </param>
-                <param name="tenantName" style="plain" required="false"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>Specify the name of the tenant for the specified user account 
-                            or token. Both the
-                            <code>tenantId</code> and
-                            <code>tenantName</code> attributes are
-                            optional. However, they cannot be specified
-                            together. If both attributes are specified,
-                            the server responds with a <code>400</code>
-                            <code>Bad Request</code>.</para></wadl:doc>
-                </param>
-                <param name="tenantId" style="plain" required="false"
-                    type="capi:UUID">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The tenant ID. Both the
-                        <code>tenantId</code> and
-                        <code>tenantName</code> attributes are
-                        optional, but should not be specified
-                        together. If both attributes are specified,
-                        the server responds with a <code>400</code>
-                        <code>Bad Request</code>.</para></wadl:doc>
-                </param>
-            </representation>
                 <representation>
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:sample title="Authenticate with password credentials: XML request">
                         <xsdxt:code href="../common/samples/auth_with_password.xml"/>
                     </xsdxt:sample>
                     </wadl:doc>
+                    <param name="RAX-KSKEY:APIKeyCredentials" style="plain"
+                        required="false" type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>An <code>APIKeyCredentials</code>
+                                object to specify the <code>username</code> and <code>APIkey</code> string values associated with the &CLOUD; account. 
+                                Cannot be specified with <literal>passwordCredentials</literal> or <literal>token</literal>.</para></wadl:doc>
+                    </param>
+                    <param name="passwordCredentials" style="plain"
+                        required="false" type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>A <code>passwordCredentials</code> object to specify the 
+                                <code>username</code> and <code>password</code> string values associated with the &CLOUD; account.
+                                Cannot be specified with <literal>APIKeyCredentials</literal> or <literal>token</literal>.</para>
+                        </wadl:doc>
+                    </param>
+                    <param name="tenantName" style="plain" required="false"
+                        type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>Specify the name of the tenant for the specified user account 
+                                or token. Both the
+                                <code>tenantId</code> and
+                                <code>tenantName</code> attributes are
+                                optional. However, they cannot be specified
+                                together. If both attributes are specified,
+                                the server responds with a <code>400</code>
+                                <code>Bad Request</code>.</para></wadl:doc>
+                    </param>
+                    <param name="tenantId" style="plain" required="false"
+                        type="capi:UUID">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The tenant ID. Both the
+                            <code>tenantId</code> and
+                            <code>tenantName</code> attributes are
+                            optional, but should not be specified
+                            together. If both attributes are specified,
+                            the server responds with a <code>400</code>
+                            <code>Bad Request</code>.</para></wadl:doc>
+                    </param>
             </representation>
             <representation>
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -478,7 +476,7 @@
                                 <listitem><para>RSAKey</para></listitem>
                                 <listitem><para>PASSCODE issued to the user by Rackspace verification service. 
                                     This authentication method is available on user accounts that have been configured 
-                                    for Multifactor authentication.</para>
+                                    for Multi-factor authentication.</para>
                                 </listitem>
                                 <listitem><para>FEDERATED indicates that the user authenticated through a third party Identity provider.</para>
                                 </listitem>
@@ -490,7 +488,7 @@
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                             <para>
                                 A user object that returns the following information about the user, if available for the account: 
-                            id, name, assigned roles, default region, domain, multifactor-authentication status.</para></wadl:doc>
+                            id, name, assigned roles, default region, domain, multi-factor authentication status.</para></wadl:doc>
                     </param>
                 <param name="tenant" style="template" required="true"
                     type="xsd:string">
@@ -534,7 +532,7 @@
                         <listitem security="internal">
                             <para>Additional authentication credentials required. To complete the authentication process, 
                                 users with multi-factor enabled accounts must submit a second authentication request  
-                                with multi-factor authentication credentials: the <code>WWW-Authenticate: OS-MF sessionId</code> value in the header from the inital authentication request.  Retrieve the passcode from the mobile phone associated with the user account. See 
+                                with multi-factor authentication credentials: the <code>WWW-Authenticate: OS-MF sessionId</code> value in the header from the initial authentication request.  Retrieve the passcode from the mobile phone associated with the user account. See 
                                 <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/proc_mfa_auth.html">Authenticate with multi-factor authentication. </link>.
                             </para>
                         </listitem>
@@ -565,7 +563,7 @@
                         <para><parameter>tenantName</parameter> and <parameter>token</parameter> or</para></listitem>
                     <listitem>
                         <para><parameter>tenantId</parameter> and 
-                        <parameter>tokenId</parameter></para>
+                        <parameter>token ID</parameter></para>
                      </listitem>
                 </itemizedlist>
             </para>
@@ -591,9 +589,9 @@
                             If you use this value in the request, do not include the tenant ID.</para></wadl:doc>
                 </param>
                 <param name="tenantId" style="plain" required="false"
-                    type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify the ID for the 
-                        tenant. If you use this value in the request, do not include the tenant name.
+                    type="capi:UUID">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify the unique ID for the 
+                        tenant account. If you use this value in the request, do not include the tenant name.
                       </para></wadl:doc>
                 </param>
                 <param name="token" style="plain" required="true"
@@ -709,19 +707,19 @@
     
     <method id="authenticateWithMultiFactor" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor passcode credentials">
-            <para role="shortdesc">Authenticate with multifactor passcode credentials.</para>
+            <para role="shortdesc">Authenticate with multi-factor passcode credentials.</para>
             <note><title>Notes</title>
                 <para>
-                    <itemizedlist><listitem><para>User accounts that use multifactor authentication must
+                    <itemizedlist><listitem><para>User accounts that use multi-factor authentication must
                     authenticate with Identity service version 2.0 or later. Attempts to
                     authenticate with earlier API versions will fail.</para></listitem>
                 </itemizedlist>
                 </para>
             </note>
-            <para>If an account is enabled to use muliti-factor authentication, authentication is a two-step process: 
+            <para>If an account is enabled to use multi-factor authentication, authentication is a two-step process: 
                 <orderedlist>
                     <listitem>
-                        <para>Send an inital POST token authentication request with either password or API credentials. 
+                        <para>Send an initial POST token authentication request with either password or API credentials. 
                         </para>
                         <para>In response to the authentication request, the Identity service returns 
                             a 401 message that includes the X-SessionId parameter in the WWW-Authenticate header 
@@ -891,7 +889,7 @@
             <warning xmlns="http://docbook.org/ns/docbook">
                 <para>Account sub-users created using the Add user operation can only access Rackspace Cloud resources through the API. 
                     Only the Administrator user can access the account from the Cloud Control panel. The Administrator 
-                    user is assigned when the Rackspace Cloud account is created during the Rackspace signup process.
+                    user is assigned when the Rackspace Cloud account is created during the Rackspace sign up process.
                 </para>
             </warning>
             <para xmlns="http://docbook.org/ns/docbook">In the Create user request, include the required values for the user name, email, and 
@@ -972,8 +970,8 @@
                            meets the following criteria:
                             <itemizedlist>
                                 <listitem><para>Start with an alpha character.</para></listitem>
-                                <listitem><para>Minimum length: 1 characcter</para></listitem>
-                                <listitem><para>Can contain upper and lowercase charcaters.</para></listitem>
+                                <listitem><para>Minimum length: 1 character</para></listitem>
+                                <listitem><para>Can contain upper and lowercase characters.</para></listitem>
                                 <listitem><para>Can contain any of the following special characters:  &#x002E;, (period), &#x002D; (hyphen), &#x0040; ,  &#x005F; (underscore)</para>
                                 </listitem>
                         </itemizedlist></para></wadl:doc>
@@ -1119,8 +1117,8 @@
                 </param>
                 <param name="RAX-AUTH:multiFactorEnabled" type="boolean" required="false">
                     <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                        <para>If an account has been configured to use multifactor authentication, this field indicates 
-                            whether multifactor-authentication is currently enabled or disabled.</para>
+                        <para>If an account has been configured to use multi-factor authentication, this field indicates 
+                            whether multi-factor authentication is currently enabled or disabled.</para>
                     </wadl:doc>
                 </param>
                 <param name="RAX-AUTH:multiFactorState" type="RAX" required="false">
@@ -1146,7 +1144,7 @@
     
     <method name="GET" id="admin-getUserById">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User by ID">
-            <para role="shortdesc">Get detailed account information for a specific user, by userid.</para>
+            <para role="shortdesc">Get detailed account information for a specific user, by user ID.</para>
             <para>
                 This request returns the following information for each account associated with the specified user ID: 
                 email address, user name, user ID, status, default region, and domain id.</para>
@@ -1450,7 +1448,7 @@
         </request>
     -->    
         <response status="200 203">
-            <doc title="OK">The request completed sucessfully.</doc>
+            <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/json" element="apiKeyCredentials">
             <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                 <xsdxt:code href="../common/samples/credentialswithapikey.json"/>
@@ -1473,12 +1471,12 @@
     <method name="GET" id="admin-getUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user API key credentials">
             <para role="shortdesc">Get user credentials.</para>
-            <para>To list API key credentials for a specified user, include the userid in the request. If you don't know the ID, 
+            <para>To list API key credentials for a specified user, include the user ID in the request. If you don't know the ID, 
                 use the <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> operation to find it.
             </para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">The request completed sucessfully.</doc>
+            <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/json" element="apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
@@ -1523,7 +1521,7 @@
           
         </request>
         <response status="200">
-            <doc title="OK">The request completed sucessfully.</doc>
+            <doc title="OK">The request completed successfully.</doc>
             <doc title="OK">Success. The tenant is authenticated.</doc>
             <representation mediaType="application/json" element="apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -1605,11 +1603,19 @@
         </request>
         -->
         <response status="200 203">
-            <doc title="OK">The request completed sucessfully.</doc>
+            <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/xml" element="tenants">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN" title="List tenants: XML response">
                     <xsdxt:code href="../common/samples/tenants.xml"/>
                 </wadl:doc>
+                    <param name="tenants" style="plain" type="string" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The tenants object returns a collection of 
+                            tenant resources that match any query parameters specified in the List operations request.</para></wadl:doc>
+                    </param>
+                    <param name="tenant" style="plain" type="string" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>The tenant object returns the following tenant 
+                            account information: name, tenant id, account status, and description.</para></wadl:doc>
+                    </param>
             </representation>
                 <representation mediaType="application/json" element="tenants">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List tenants: JSON response">
@@ -1629,12 +1635,12 @@
         </response> &commonFaults; &getFaults; </method>
     <method name="GET" id="getTenantById">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Tenant by ID">
-            <para role="shortdesc"> Return detailed information about a tenant, by ID. </para>
-            <para>This request returns identifying information about the tenant with the
-                specified tenant ID. Identifying information includes the tenant's ID, name, description, and status. </para>
+            <para role="shortdesc">Returns information about a tenant, by ID.</para>
+            <para>This request returns the following information for the tenant with the specified ID: 
+                 tenant's ID, name, description, and status.</para>
         </wadl:doc>
             <response status="200 203">
-                <doc title="OK">The request completed sucessfully.</doc>
+                <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/json" element="tenant">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/tenant.json"/>
@@ -1657,7 +1663,7 @@
                 <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html">"Sample Authentication Request and Response"</link>.</para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">The request completed sucessfully.</doc>
+            <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/json" element="endpoints">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/endpoints.json"/>
@@ -1681,7 +1687,7 @@
                 you can use the Get user by name and Get tenant by name operations to retrieve the value.</para>
         </wadl:doc>
         <response status="200 203">
-                <doc title="OK">The request completed sucessfully.</doc>
+                <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/json" element="roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/roles.json"/>
