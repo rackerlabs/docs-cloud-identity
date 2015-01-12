@@ -42,11 +42,11 @@
             <para>Use the following cURL request to restore access to
               a user account that has been locked as a result of too
               many failed authentication attempts.</para>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID \
-       -X PUT  \
-       -d '{"RAX-AUTH:multiFactor": { "unlock": "true" }}'
-       -H "Content-Type: application/json" \
-       -H "X-Auth-Token": $AUTHTOKEN | python -m json.tool</programlisting>
+            <para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl https://identity.api.rackspacecloud.com/v2.0/tokens \
+       -X POST \
+       -d '{"auth": {"RAX-AUTH:passcodeCredentials": {"passcode":"1411594"}}}'\
+       -H "X-SessionId: $SESSION_ID" \
+       -H "Content-Type: application/json" --verbose | python -m json.tool</programlisting></para>
           </td>
         </tr>
         <tr condition="client">

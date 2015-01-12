@@ -13,53 +13,50 @@
   <para>Use these instructions to set up multi-factor
     authentication for a user account using Identity service API
     operations. You can also complete this process through the Cloud Control panel.</para>
-  <important>
-    <para>Multi-factor authentication is supported only by Rackspace
-      Cloud Identity Service version 2.0 or later. After an account
-      is enabled for multi-factor authentication, the user cannot
-      authenticate using &CIS; v1.0 or v1.1. This feature is
-      currently only available to customers enrolled in the Early
-      Access program.</para>
-  </important>
-  
+
+  <note><title>Notes</title>
+    <itemizedlist>
+      <listitem>
+        <para>Multi-factor authentication is supported only by Rackspace
+        Cloud Identity Service version 2.0 or later. After an account
+        is enabled for multi-factor authentication, the user cannot
+        authenticate using &CIS; v1.0 or v1.1. This feature is
+        currently only available to customers enrolled in the Early
+        Access program.</para>
+      </listitem>
+      <listitem><para>A user account can have only one phone number for use with
+        multi-factor authentication. </para></listitem>
+      <listitem>
+        <para>The same phone number can be used for multiple
+          accounts, but the phone must be verified separately
+          for each account.</para>
+      </listitem>
+      <listitem><para>When a user account is updated to require multi-factor authentication, all existing 
+        tokens for the acount obtained by using username and password credentials are revoked immediately. 
+        To regain access, the user must complete the multi-factor authentication process to 
+        generate a new token.</para></listitem>
+    </itemizedlist>
+  </note>
   <orderedlist>
-    <variablelist>
-      <varlistentry><term>Notes</term>
-        <listitem><itemizedlist>
-          <listitem><para>A user account can have only one phone number for use with
-            multi-factor authentication. </para></listitem>
-          <listitem>
-            <para>The same phone number can be used for multiple
-              accounts, but the phone must be verified separately
-              for each account.</para>
-          </listitem>
-          <listitem>
-            <para>After an account has been enabled with
-              multi-factor authentication, the user must submit
-              two requests to authenticate: an initial request
-              with API key or password credentials to obtain the
-              multi-factor credentials, followed by a request with
-              the multi-factor authentication sessionId and
-              passcode credentials.</para>
-          </listitem>
-        </itemizedlist>      
-        </listitem></varlistentry>
-    </variablelist>
     <!-- Step 1 Authenticate -->
     <listitem xml:id="Step_authenticate">
       <para>Authenticate to the Identity service to obtain an
         authentication token. <variablelist>
           <varlistentry>
-            <term>Request</term>
+            <term><emphasis role="bold">Request</emphasis></term>
             <listitem>
               <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens \
        -X POST \
        -H "Accept: application/json" \
        -d '{"auth": {"passwordCredentials": {"username":"jqsmith", "password":"Password1"}}}' \ 
        -H "Content-Type: application/json"</programlisting>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">Response</emphasis></term>
+            <listitem>
               <para>The Identity service returns a 200 response code
-                that includes the authentication token ID.</para>
-              <para>
+                that includes the authentication token ID.
                 <programlisting><![CDATA[< HTTP/1.1 200 OK
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Content-Type: application/json
@@ -90,14 +87,7 @@
             ]
         }
     }
-}</programlisting>
-                <tip>
-                  <para>To run the cURL commands in the following steps, export the authentication
-                    token to an environment variable:
-                    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT AUTH_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</programlisting>
-                  </para>
-                </tip>
-              </para>
+}</programlisting></para>
             </listitem>
           </varlistentry>
         </variablelist></para>
@@ -126,7 +116,7 @@
           <term><emphasis role="bold">Response</emphasis></term>
           <listitem>
             <para>The Identity service returns a 201 response that
-                includes the system-generated phone ID.<programlisting><![CDATA[< HTTP/1.1 201 Created
+              includes the system-generated phone ID.<programlisting><![CDATA[< HTTP/1.1 201 Created
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Location: http://localhost:8083/idm/cloud/v2.0/users/a64ee2047fc14cc7bc977caa3cfff35f/RAX-AUTH/multi-factor/mobile-phones/889a7245f49e4ab789ebaebf91c0f1eb
 < Content-Type: application/json
@@ -144,9 +134,9 @@
         
       </variablelist></para>
       <tip><para>Export the phone <parameter>id</parameter> value to an
-          environment variable, so you can use it to complete the
-          phone verification process:
-          <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT PHONE_ID=""1234321245f49e4ab789ebaebf91c0f1eb"</programlisting></para></tip>
+        environment variable, so you can use it to complete the
+        phone verification process:
+        <?sbr?><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> EXPORT PHONE_ID=""1234321245f49e4ab789ebaebf91c0f1eb"</programlisting></para></tip>
     </listitem>
     <!--Step 3 Verify PIN code -->
     <listitem>
