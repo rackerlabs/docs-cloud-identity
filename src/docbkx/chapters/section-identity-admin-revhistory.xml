@@ -633,7 +633,7 @@
 						</listitem>
 						<listitem>
 							<para>Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html">Additional resources</link>, 
-								adding links to Rackspace Knowledge Center and customer <link xlink:href="https://rackspace.uservoice.com/forums/71021-product-feedback/category/81960-identity-auth">feedback</link> site.</para>
+								adding links to Rackspace Knowledge Center and customer <link xlink:href="https://feedback.rackspace.com/">Rackspace Product Feedback</link> site.</para>
 						</listitem>
 						<listitem>
 							<para> Added Statuses section listing all possible account statuses. </para>
@@ -661,7 +661,7 @@
 								Repaired broken link to <link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response</link>. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service Types</link> to
+							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service Types</link> to
 								provide link to publicly-available
 								documentation on Cloud Databases.
 							</para>
@@ -694,7 +694,7 @@
 						</listitem>
 						<listitem>
 							<para> 
-								Added <link xlink:href="Account-Users-d1e910.html">Account users</link> section;
+								Added <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910">Account users</link> section;
 								moved most of the details from the
 								Account User glossary item into that
 								section, along with additional details
@@ -748,7 +748,7 @@
 								annotated XML example to show new service types. </para>
 						</listitem>
 						<listitem>
-							<para>Updated <link xlink:href="Service_Types-d1e265.html">Service Types</link> to
+							<para>Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service Types</link> to
 								show new service types. </para>
 						</listitem>
 					</itemizedlist>

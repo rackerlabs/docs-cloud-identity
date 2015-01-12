@@ -1619,8 +1619,11 @@
                 phone associated with the account and waiting for the user to verify possession of the phone by returning the 
                 code to the &CIS; through the Verify device API operation.
             </para>
-            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
+            <para security="internal">When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
                 <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
+                operation to get it.</para>
+            <para security="external">When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
+                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">List phones for user</link> 
                 operation to get it.</para>
             <para>After you submit the Send verfication code to mobile phone request, the Rackspace verification service sends a PIN to the specified phone 
                 via SMS text message. Each PIN has a system-defined expiration time determined by the Identity service system configuration.
@@ -1659,7 +1662,10 @@
                 to authenticate to &CIS; if the associated account has been enabled for multi-factor authentication. See the Enable multi-factor 
                 authentication operation.</para>
             
-            <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
+            <para security="internal">When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
+                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
+                operation to get it.</para>
+            <para security="external">When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
                 <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
                 operation to get it.</para>
 

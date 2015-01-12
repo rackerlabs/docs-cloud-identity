@@ -846,7 +846,7 @@ Cache-Control: no-cache
 							catalog. Service names are defined in the Identity Service configuration
 							and do not change. However, new services of the same service type can be
 							added to the catalog with new names. For a list of Rackspace Cloud
-							services, see <link xlink:href="Service_Types-d1e265.html">Service
+							services, see <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service
 								Types in the service catalog</link>.</para>
 					                   </td>
 				                 </tr>
@@ -860,7 +860,7 @@ Cache-Control: no-cache
 							<parameter>compute</parameter>, <parameter>object-store</parameter>,
 							or <parameter>rax:loadbalancer</parameter> for example.</para>
 						                     <para>Service types categorize the services registered with OpenStack or custom types
-							registered with the Rackspace Cloud Identity Service. For a list of service types, see <link xlink:href="Service_Types-d1e265.html">Service Types</link>
+						                         registered with the Rackspace Cloud Identity Service. For a list of service types, see <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service Types</link>
 							.</para>
 						                     <para>
 							                       <important>
@@ -976,7 +976,7 @@ Cache-Control: no-cache
 		             <para>The user object returns account information for the authenticated user that includes user
 			name, ID, default region assignment, and information about role assignments.</para>
 		             <para>Users can have multiple roles, with each role providing specific privileges.
-                For example, each account has an <link xlink:href="Account-Users-d1e910.html"
+		                 For example, each account has an <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910"
                     >Identity role</link> such as <code>Identity:default</code> to authenticate and
                 gain access to Identity service capabilities and any other <link
                     xlink:href="Role_Based_Access_Control-d1e808.html">RBAC roles</link> assigned to

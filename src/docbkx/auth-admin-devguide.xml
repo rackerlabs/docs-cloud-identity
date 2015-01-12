@@ -230,7 +230,7 @@
 						</listitem>
 						<listitem>
 							<para>Updated <link
-								xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls_client.html"
+								xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls.html"
 								>Send verification code to mobile
 								phone</link> operation to include
 								the <parameter>phoneId</parameter> URI
@@ -244,7 +244,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated <link xlink:href="GET_listUsers__v2.0_users__User_Calls.html">List users</link> 
+							<para>Updated <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> 
 								operation to add the <parameter>name</parameter> and <parameter>email</parameter> query parameters.
 								Removed Get User by name operation.
 							</para>
@@ -255,10 +255,6 @@
 						</listitem>
 						<listitem>
 							<para>Removed List role by name operation which is not supported by &CIS;.</para>
-						</listitem>
-						<listitem>
-							<para>Updated <link xlink:href="POST_sendVerifyCode_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones__phoneId__verificationcode_Multifactor_Calls_client.html">Send verification code to 
-								mobile phone</link> operation to include the <parameter>phoneId</parameter> URI parameter.</para>
 						</listitem>
 						<listitem>
 							<para>Removed Check token and Validate token operations from the Developer.</para>
@@ -292,9 +288,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>Updated <link xlink:href="Role_Calls.html">Role</link> API operations to correct URI paths and broken links.</para></listitem>
-						<listitem>
-							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
-						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
+						<listitem><para>Updated <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html">Generate bypass codes</link> operation to fix URI and add element values to the body parameters table. </para></listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
@@ -304,9 +298,6 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>Added <link xlink:href="POST_admin-addUser_v2.0_users_User_Calls.html">Create user</link> API operation.</para></listitem>
-						<listitem>
-							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
-						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
@@ -385,7 +376,7 @@
 							<para>Added the following sections to Multi-factor operations section to add information about Multi-factor authentication and attributes. 
 								<itemizedlist>
 										<listitem>
-											<para><link xlink:href="mfa_processes.html">Multi factor authentication set up, operation, and management</link></para></listitem>
+											<para><link xlink:href="MFA_Ops.html">Multi factor authentication</link></para></listitem>
 										<listitem>
 											<para><link xlink:href="proc_mfa_setup.html">Set up multi factor authentication</link></para></listitem>
 									<listitem>
@@ -403,11 +394,8 @@
 										<para>Added section for extended responses and actions:
 												<link xlink:href="extended_actions.html">Extended responses and actions</link>.</para>
 									</listitem>
-								</itemizedlist><itemizedlist>
-									<listitem>
-										<para><link xlink:href="mfa_processes.html">Using Multi-factor authentication</link></para>
-									</listitem>
-								</itemizedlist></para>
+								</itemizedlist>
+								</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -559,13 +547,13 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated many RAX-AUTH operations to
+							<para>Updated many RAX-AUTH operations to
 								have consistent examples. Added
 								Multi-factor and Federation,
 								internal-only. </para>
 						</listitem>
 						<listitem>
-							<para> Corrected JSON response in <link xlink:href="GET_listUserGlobalRoles__v2.0_users__userId__OS-KSADM_roles_Role_Calls.html"
+							<para>Corrected JSON response in <link xlink:href="GET_listUserGlobalRoles__v2.0_users__userId__roles_OS-KSADM_Role_Calls.html"
 								>List available roles by userId</link>.</para>
 						</listitem>
 						<listitem>
@@ -578,7 +566,7 @@
 								body.</para>
 						</listitem>
 						<listitem>
-							<para> Removed Category Role table from <link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Add role to user</link>.</para>
+							<para>Removed Category Role table from <link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Add role to user</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
@@ -676,7 +664,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added visibility note to 
-								<link xlink:href="PUT_addUserRole_v2.0_users_userId_roles_OS-KSADM_roleid_Role_Calls.html">Add role to user</link></para>
+								<link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Add role to user</link></para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -917,7 +905,7 @@
 							<para> Expanded <link xlink:href="Secret_Calls.html">Secret questions and answers</link>. </para>
 						</listitem>
 						<listitem>
-							<para> Added <link xlink:href="Region_Calls">Region</link>.</para>
+							<para> Added <link xlink:href="Region_Calls.html">Region</link>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -963,7 +951,7 @@
 						    </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service Types in the service
+							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service Types in the service
 									catalog</link> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. </para>
 						</listitem>
 						<listitem>
@@ -998,7 +986,7 @@
 								targetptr="Impersonation_Calls"/>, showing use of <code>expire-in-seconds</code>.</para>
 						</listitem>
 						<listitem>
-							<para>Updated illustration in <link xlink:href="Identity-Concpts"/>
+							<para>Updated authentication workflow diagram in <link xlink:href="Identity-Service-Concepts-admin.html">Identity Service authentication and authorization</link>.
 							</para>
 						</listitem>
 						<listitem>
@@ -1031,7 +1019,7 @@
 								. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types in the service catalog</link> to
+							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service types in the service catalog</link> to
 								provide link to publicly-available
 								documentation on Cloud Databases.
 							</para>
@@ -1120,7 +1108,7 @@
 								service types. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types in the service catalog</link> to
+							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service types in the service catalog</link> to
 								show new service types. </para>
 						</listitem>
 					</itemizedlist>

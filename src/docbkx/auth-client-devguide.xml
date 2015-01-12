@@ -59,7 +59,7 @@
 					<itemizedlist>
 						<listitem>
 							<para>Updated multi-factor authentication documentation to correct parameter descriptions and 
-								list error messages in table format. See <link xlink:href="Multifactor_Calls.html">Multi-factor operations</link>.</para>
+								list error messages in table format. See <link xlink:href="Multifactor_Calls_client.html">Multi-factor operations</link>.</para>
 						</listitem>
 						<listitem>
 							<para>Updated <link xlink:href="QuickStart-000.html">QuickStart Guide</link> to add information about 
@@ -73,18 +73,9 @@
 									catalog</link>.</para>
 						</listitem>
 						<listitem>
-							<para>Updated multi-factor authentication documentation to correct parameter descriptions and 
-								list error messages in table format. See <link xlink:href="Multifactor_Calls.html">Multi-factor operations</link>.</para>
-						</listitem>
-						<listitem>
 							<para>Updated <link xlink:href="Role_Based_Access_Control-d1e808.html">role documentation</link> to provide additional information about
 								role types, assignments, and differences between Identity service roles and 
 								RBAC roles.</para>
-						</listitem>
-						<listitem>
-							<para>Updated the request documentation for the 
-								<link xlink:href="Impersonation_Calls.html">Impersonation</link> operation to add example 
-							showing how to impersonate a federated user.</para>
 						</listitem>
 						<listitem>
 							<para>Updated copyright for 2015.</para>
@@ -117,7 +108,7 @@
 			<revision>
 				<date>2014-11-11</date>
 				<revdescription>
-					<para>Corrected URI in <link xlink:href="GET_getUserCredential_v2.0_users__userId__OS-KSADM_credentials_RAX-KSKEYapiKeyCredentials_User_Calls.html">Get user API credentials</link> operation.</para>
+					<para>Corrected URI in <link xlink:href="GET_getUserCredential__v2.0_users__userId__OS-KSADM_credentials__User_Calls.html">Get user API credentials</link> operation.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -125,12 +116,6 @@
 				<revdescription>
 					<para>Corrected <link xlink:href="Tenant_Calls.html">List tenants</link> operation to include 
 						option to retrieve tenant information by tenant name.</para>
-				</revdescription>
-			</revision>
-			<revision>
-				<date>2014-10-27</date>
-				<revdescription>
-					<para>Corrected <link xlink:href="Service_Calls.html">Service operations</link> to include the OS-KSADM extension in the URI.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -273,7 +258,7 @@
 								service catalog) to attributies reference table.
 							</para></listitem>
 						<listitem>
-							<para>Added syntax requirements for specify the user name in the <link xlink:href="POST_addUser_v2.0_users_User_Calls.html">Add user</link> operation.
+							<para>Added syntax requirements to specify the user name in the <link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add user</link> operation.
 							</para></listitem>
 					</itemizedlist>
 				</revdescription>
@@ -284,9 +269,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>Updated <link xlink:href="Role_Calls.html">Role</link> API operations to correct URI paths and broken links.</para></listitem>
-						<listitem>
-							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
-						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
+						<listitem><para>Updated <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls_client.html">Generate bypass codes operation</link> to fix URI and add element values to the body parameters table. </para></listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
@@ -295,8 +278,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Corrected API version number in the URIs for the <link xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls">Roles</link> API operations.</para></listitem>
-						<listitem><para>Updated Generate bypass codes operation to fix URI and add element values to the body parameters table. </para></listitem>
+							<para>Corrected API version number in the URIs for the <link xlink:href="Role_Calls.html">Roles</link> API operations.</para></listitem>
 					</itemizedlist>
 				</revdescription>
 			</revision>
@@ -336,7 +318,7 @@
 			<revision>
 				<date>2014-07-26</date>
 				<revdescription>
-						<para>Added documentation for <link xlink:href="mfa_processes.html">Using Multifactor authentication</link>.</para>
+					<para>Added documentation for using <link xlink:href="MFA_Ops.html">Multi-factor authentication</link>.</para>
 					</revdescription>
 			</revision>
 			<revision>
@@ -624,7 +606,7 @@
 									</para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types in the service catalog.</link>
+							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service types in the service catalog.</link>
 								and supporting examples to show <code>rax:dns</code>as the service
 								type for Cloud DNS. </para>
 						</listitem>
@@ -686,7 +668,7 @@
 						</listitem>
 						<listitem>
 							<para>
-								Updated <link xlink:href="Service_Types-d1e265.html">Service types in the service catalog</link> to provide link to publicly-available documentation on Cloud Databases.
+								Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service types in the service catalog</link> to provide link to publicly-available documentation on Cloud Databases.
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -758,8 +740,8 @@
 								users added via API cannot use the control panel. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="GET_listCredentials_v2.0_users_OS-KSADM_credentials_User_Calls.html"/>
-								and <link xlink:href="Account-Users-d1e910.html"/> to state that account users must
+							<para> Updated <link xlink:href="GET_listCredentials__v2.0_users__userId__OS-KSADM_credentials_User_Calls.html"/>
+								and <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910"/> to state that account users must
 								authenticate with their passwords.</para>
 						</listitem>
 						<listitem>
@@ -769,7 +751,7 @@
 								example to show new service types. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Service_Types-d1e265.html">Service types in the service catalog</link> to show new
+							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service types in the service catalog</link> to show new
 								service types. </para>
 						</listitem>
 					</itemizedlist>
@@ -817,8 +799,8 @@
 							<para> Added information about account users (also known as sub-accounts). See </para>
 						</listitem>
 						<listitem>
-							<para> Clarified <link xlink:href="GET_listCredentials_v2.0_users_OS-KSADM_credentials_User_Calls.html"
-								/> to say that user passwords cannot be retrieved. </para>
+							<para>Updated <link xlink:href="GET_listCredentials__v2.0_users__userId__OS-KSADM_credentials_User_Calls.html"
+								/> overview to indicate that user passwords cannot be retrieved. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>

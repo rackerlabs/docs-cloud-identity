@@ -614,7 +614,7 @@
 						<listitem>
 							<para> Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html">Additional resources</link>
 								, adding links to Rackspace
-								Knowledge Center and <link xlink:href="https://rackspace.uservoice.com/forums/71021-product-feedback/category/81960-identity-auth">customer feedback</link>
+								Knowledge Center and <link xlink:href="https://feedback.rackspace.com/">Rackspace Product Feedback</link>
 								site. </para>
 						</listitem>
 						<listitem>
@@ -669,7 +669,7 @@
 							identity before submitting update or delete request.</para>
 						</listitem>
 						<listitem>
-							<para> Added <link xlink:href="Account-Users-d1e910.html">Account users</link>;
+							<para> Added <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910">Account users</link>;
 								moved most of the details from the
 								Account User glossary item into that
 								section, along with additional details
