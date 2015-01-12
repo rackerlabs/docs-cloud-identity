@@ -12,9 +12,10 @@
 	
 <title>Annotated authentication request and response</title>
 	
-	<para>The annotated authentication request and response illustrates a general use case for authenticating to the Rackspace Cloud using username and password credentials. For
-		additional information about authentication, see <link xlink:href="QuickStart-000.html">Step-by-step authentication instructions using cURL</link>.
-    </para>
+	<para>The annotated authentication request and response illustrates a general use case for
+        authenticating to the Rackspace Cloud using username and password credentials. For
+        step-by-step authentication instructions, see the <link xlink:href="QuickStart-000.html"
+            >Quick Start</link>. </para>
 	
          <section xml:id="annotated_auth_req">
 	           <title>Sample authentication request</title>
@@ -66,34 +67,45 @@ Cache-Control: no-cache
 	           </example>
 	           <para>
                <xref linkend="auth_req_attributes"/> describes the attributes for the authentication request.</para>
-	           <table rules="all" xml:id="auth_req_attributes" width="80%">
+	           <table rules="all" xml:id="auth_req_attributes" width="100%">
 			            <caption>Authentication request attribute descriptions</caption>
-			            <col width="25%"/>
-			            <col width="75%"/>
+            <col width="25%"/>
+            <col width="10%"/>
+            <col width="70%"/>
 			            <thead>
 				              <tr>
 					                <th valign="top">Attribute</th>
+                    <th>Type</th>
 					                <th>Description</th>
 				              </tr>
 			            </thead>
 			            <tbody>
 				              <tr>
 					                <td>
-                        <parameter>username</parameter>
-                     </td>
+                        <parameter>auth</parameter>
+                    </td>
+                    <td/>
 					                <td>
-						                  <para> This is the <parameter>username</parameter> to log in to the Rackspace Cloud Control
-							Panel at 
-							<link xlink:href="http://mycloud.rackspace.com/">http://mycloud.rackspace.com</link>
-                        </para>
+						                  <para>The auth object provides the credentials for the authentication
+                            request.</para>
 					                </td>
 				              </tr>
+                <tr>
+                    <td><parameter>username</parameter>
+                    </td>
+                    <td>String</td>
+                    <td>This is the <parameter>username</parameter> to log in to the Rackspace Cloud
+                        Control Panel at <link xlink:href="http://mycloud.rackspace.com/"
+                            >http://mycloud.rackspace.com</link>
+                    </td>
+                </tr>
 				              <tr>
 					                <td>
                         <parameter>passwordCredentials</parameter>
                      </td>
+                    <td>String</td>
 					                <td>
-						                  <para> The password you use to log in to the Rackspace Cloud Control Panel.
+						                  <para>The password you use to log in to the Rackspace Cloud Control Panel.
 							The password must meet the following criteria:</para>
 						                  <itemizedlist>
 							                    <listitem>
@@ -122,6 +134,7 @@ Cache-Control: no-cache
 					                <td>
                         <parameter>tenantId</parameter>
                      </td>
+                    <td>String</td>
 					                <td>
 						                  <para>Tenant is an optional specification. Some services use multi-level
 							authentication, with service-specific credentials in addition to
@@ -133,17 +146,36 @@ Cache-Control: no-cache
 			            </tbody>
 		          </table>	
          </section>
-	        <section xml:id="annotated_auth_resp">
+	        <section xml:id="annotated_auth_resp" xreflabel="authentication response">
 		<?dbhtml stop-chunking?>
 		          <title>Sample authentication response</title>
-		          <para>When you submit a <guilabel>POST tokens</guilabel> authentication request with valid
-			credentials, the Identity service returns a response that includes an access object with
-			token, service catalog, and user objects that provide information for using the
-			Rackspace Cloud services.</para>
+		          <para>When you submit a <guilabel>POST tokens</guilabel> authentication request with
+            valid credentials, the Identity service returns a response that includes the following
+            information:</para>
+	            <itemizedlist>
+	                <listitem>
+	                    <para>
+                    <guilabel>Authentication token.</guilabel> The <xref linkend="authTokenResp"/>
+                    returns a scoped authentication token that can be used to access Rackspace Cloud
+                    services for the specified tenant. Token scope is determined by tenant and user
+                    role assignments for the authenticated user. </para>
+	                </listitem>
+	                <listitem>
+	                    <para><guilabel>User account information. </guilabel>The <xref
+                        linkend="authUserResp"/> returns the user name, ID, default Cloud Service
+                    region, and information about the roles assigned to the user. User role
+                    assignments determine the API operations available to a user after
+                    authenticating to a Rackspace Cloud Service.</para>
+	                </listitem>
+	                <listitem>
+	                    <para><guilabel>Service catalog.</guilabel> The <xref linkend="authSvccatResp"
+                    /> returns a list of service objects that provide the endpoint and description
+                    for each service that can be accessed using the authentication token. </para>
+	                </listitem>
+	            </itemizedlist>
 		          <para>
                <xref linkend="xml_auth_resp" xrefstyle="select: label"/> and <xref linkend="json_auth_resp" xrefstyle="select: label"/> show sample
 			authentication responses in XML and JSON format.  </para>
-		          <para>For details on the information included in the response, see <xref linkend="authAccessAttribResponse" xrefstyle="select: label title"/>.</para>
 		          <example xml:id="xml_auth_resp">
 			            <title>Authentication Response: XML</title>
 			            <programlisting language="javascript">
@@ -522,70 +554,9 @@ Cache-Control: no-cache
 
 		</programlisting>
 		          </example>
-		          <para>
-               <xref linkend="authAccessAttribResponse"/> describes the attributes for the
-			<parameter>access</parameter> object.</para>
-		          <table xml:id="authAccessAttribResponse" rules="all" width="80%">
-			            <caption>Authentication response: Access object attribute descriptions</caption>
-			            <col width="18%"/>
-			            <col width="14%"/>
-			            <col width="68%"/>
-			            <thead>
-				              <tr>
-					                <th>Resource</th>
-					                <th>Attribute</th>
-					                <th>Description</th>
-				              </tr>
-			            </thead>
-			            <tbody>
-				              <tr>
-					                <td/>
-					                <td>
-                        <parameter>xmlns</parameter> namespaces</td>
-					                <td>
-						                  <para>In XML responses only, the list of namespaces identifies API extensions that add
-							functionality to the core API. </para>
-					                </td>
-				              </tr>
-				              <tr>
-					                <td>
-                        <parameter>token</parameter>
-                     </td>
-					                <td>See <xref linkend="authTokenResp"/>.</td>
-					                <td>
-						                  <para>The token object supplies a scoped authentication token that can be used to access
-							Rackspace Cloud services for the specified tenant. Token scope is determined by
-							tenant and user role assignments for the authenticated user.</para>
-					                </td>
-				              </tr>
-				              <tr>
-					                <td>
-                        <parameter>serviceCatalog</parameter>
-                     </td>
-					                <td>See <xref linkend="authSvccatResp"/>.</td>
-					                <td>
-						                  <para>Returns a list of service objects that provide the endpoint
-							and description for each service that can be accessed using the
-							authentication token.</para>
-					                </td>
-				              </tr>
-				              <tr>
-					                <td>
-                        <parameter>User</parameter>
-                     </td>
-					                <td>See <xref linkend="authUserResp"/>.</td>
-					                <td>
-						                  <para>The user object returns the user name, ID, default Cloud Service region, and
-							information about the roles assigned to the user. User role assignments
-							determine the API operations available to a user after authenticating to
-							a Rackspace Cloud Service.  </para>
-					                </td>
-				              </tr>
-			            </tbody>
-		          </table>
-		          <section xml:id="authTokenResp">
+		          <section xml:id="authTokenResp" xreflabel="Token object">
 	<?dbhtml stop-chunking?>
-               <title>Token resource response attributes</title>
+               <title>Token resource: Authentication response attributes</title>
 	              <para>The token object supplies a scoped authentication token that can be
 		used to access Rackspace Cloud services for the specified tenant. Token scope is
 		determined by tenant and user role assignments for the authenticated
@@ -630,7 +601,7 @@ Cache-Control: no-cache
                   <xref linkend="authTokenAttribsResp"/> provides information
 			about the token resource attributes.</para>
 	
-	              <table rules="all" width="80%" xml:id="authTokenAttribsResp">
+	              <table rules="all" width="100%" xml:id="authTokenAttribsResp">
 		                <caption>Token object response attributes</caption>
 		                <col width="21%"/>
 		                <col width="13%"/>
@@ -735,7 +706,7 @@ Cache-Control: no-cache
 								                         <listitem condition="admin">
 									                           <para>
                                        <literal>IMPERSONATION</literal> if an authorized user 
-									has authenticated by assuming the idenity of a provisionsed or federated user.
+									has authenticated by assuming the idenity of a provisioned or federated user.
 									</para>
 								                         </listitem>
 							                          <listitem>
@@ -750,12 +721,12 @@ Cache-Control: no-cache
 		                </tbody>
 	              </table>
 	           </section>
-	           <section xml:id="authSvccatResp">
+	           <section xml:id="authSvccatResp" xreflabel="Service catalog object">
 		<?dbhtml stop-chunking?>
-		             <title>Service catalog resource response attributes</title>
+		             <title>Service catalog resource: Authentication response attributes</title>
 		             <para>The Service catalog object provides service and endpoint information for services that you
 			can access with the authentication token returned in the authentication response.</para>
-		             <para>The information returned for a service is detemined by the Identity service
+		             <para>The information returned for a service is determined by the Identity service
                 configuration and the tenant and role assignments of the authenticated user. For
                 example, if a service has an endpoint for administrative use that endpoint is
                 classified as an AdminURL. The AdminURL is only visible to authenticated Service
@@ -768,7 +739,7 @@ Cache-Control: no-cache
 			<xref linkend="authSrvcatAttribsResp"/>
 		             </para>
 		             <example xml:id="svcCatResp-xml">
-			               <title>Authentication Response: Service object in XML format</title>
+			               <title>Authentication Response: Service catalog object in XML format</title>
 			               <programlisting>.             
 		    
     &lt;serviceCatalog&gt;
@@ -796,7 +767,7 @@ Cache-Control: no-cache
 		</programlisting>
 		             </example>
 		             <example xml:id="svcCatResp-json">
-			               <title>Authentication Response: Service object in JSON format</title>
+			               <title>Authentication Response: Service catalog object in JSON format</title>
 			               <programlisting language="javascript">
 		
         "serviceCatalog": [
@@ -847,15 +818,17 @@ Cache-Control: no-cache
                   <xref linkend="authSrvcatAttribsResp"/> provides
 			information about service catalog resource attributes that are included in the
 			authentication response.</para>
-		             <table xml:id="authSrvcatAttribsResp" rules="all" width="80%">
+		             <table xml:id="authSrvcatAttribsResp" rules="all" width="100%">
 			               <caption>Authentication response attributes</caption>
-			               <col width="10%"/>
-			               <col width="15%"/>
-			               <col width="75%"/>
+                <col width="15%"/>
+                <col width="20%"/>
+                <col width="15%"/>
+                <col width="50%"/>
 			               <thead>
 				                 <tr>
 					                   <th valign="top">Applies to</th>
 					                   <th>Attribute</th>
+                        <th>Type</th>
 					                   <th>Description</th>
 				                 </tr>
 			               </thead>
@@ -867,6 +840,7 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>name</parameter>
                         </td>
+                        <td>String</td>
 					                   <td>
 						                     <para>The service name attribute identifies each unique service in the
 							catalog. Service names are defined in the Identity Service configuration
@@ -880,6 +854,7 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>type</parameter>
                         </td>
+                        <td>String</td>
 					                   <td>
 						                     <para>The type of service provided at the specified endpoint,
 							<parameter>compute</parameter>, <parameter>object-store</parameter>,
@@ -911,6 +886,7 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>region</parameter>
                         </td>
+                        <td>String</td>
 					                   <td>
 						                     <para>The location of the Rackspace data center where the specified service
 							is hosted. Accessing a service from a regional endpoint allows clients
@@ -922,6 +898,7 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>tenantId</parameter>
                         </td>
+                        <td>String</td>
 					                   <td>
 						                     <para>Some services recognize specification of a tenant. If a service does
 							recognize tenants, the format of the tenant specification is defined
@@ -937,6 +914,7 @@ Cache-Control: no-cache
                            <?sbr?>
 						                     <parameter>AdminURL</parameter>
                         </td>
+                        <td>URI</td>
 					                   <td>
 						                     <para>An endpoint can be assigned public, internal, and administrative service URLs. Access to
 							a public URL usually incurs traffic charges. Internal and Admin URLs are
@@ -954,6 +932,7 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>versionId</parameter>
                         </td>
+                        <td>String</td>
 					                   <td>
 						                     <para>Specifies the API version for the endpoint. The API version is also
 							included in the URL to access the service.</para>
@@ -963,6 +942,7 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>versionInfo</parameter>
                         </td>
+                        <td>URI</td>
 					                   <td>
 						                     <para>URI to get information about the specified API version. You can also
 							retrieve information about an API version by using the Show version
@@ -978,9 +958,10 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>versionList</parameter>
                         </td>
+                        <td>URI</td>
 					                   <td>
 						                     <para>URI to get information about all versions. You can also retrieve this
-							infomation by using the List versions API operation for the specified
+							information by using the List versions API operation for the specified
 							service, <code>GET <replaceable>endpointURL</replaceable>
                               </code> for
 							example.</para>
@@ -989,16 +970,17 @@ Cache-Control: no-cache
 			               </tbody>
 		             </table>
 	           </section>
-	           <section xml:id="authUserResp">
+	           <section xml:id="authUserResp" xreflabel="User object">
 		<?dbhtml stop-chunking?>
-		             <title>User resource response attributes</title>
+		             <title>User resource: authentication response attributes</title>
 		             <para>The user object returns account information for the authenticated user that includes user
-			name, ID, default region assignment, and the roles object that identifies the roles
-			assigned to the user account.</para>
-		             <para>Users can be assigned multiple roles, with each role providing specific privileges. User
-			acounts have an Identity role such as well as one an Identity can have roles for the
-			Identity service and different roles For more information about roles, see <link xlink:href="Account-Users-d1e910.html">Identity service, admin, and user roles</link>
-               </para>
+			name, ID, default region assignment, and information about role assignments.</para>
+		             <para>Users can have multiple roles, with each role providing specific privileges.
+                For example, each account has an <link xlink:href="Account-Users-d1e910.html"
+                    >Identity role</link> such as <code>Identity:default</code> to authenticate and
+                gain access to Identity service capabilities and any other <link
+                    xlink:href="Role_Based_Access_Control-d1e808.html">RBAC roles</link> assigned to
+                the account.</para>
 		             <para>
 			               <xref linkend="userResp-xml" xrefstyle="select: label"/> and <xref linkend="userResp-json" xrefstyle="select: label"/> show a sample
 			token object from the authentication response. For attribute descriptions, see 
@@ -1053,7 +1035,7 @@ Cache-Control: no-cache
 		             <para>
                   <xref linkend="authUserAttribsResp"/> provides information
 			about user resource attributes included in the authentication response.</para>
-		             <table xml:id="authUserAttribsResp" rules="all" width="80%">
+		             <table xml:id="authUserAttribsResp" rules="all" width="100%">
 			               <caption>Authentication response: User resource attributes</caption>
 			               <col width="20%"/>
 			               <col width="10%"/>
@@ -1123,7 +1105,7 @@ Cache-Control: no-cache
                            <parameter>tenantID</parameter>
                         </td>
 					                   <td>
-						                     <para>Identitifies the tenant for which the role is scoped.</para>
+						                     <para>Identifies the tenant for which the role is scoped.</para>
 					                   </td>
 				                 </tr>
 			               </tbody>
@@ -1131,4 +1113,3 @@ Cache-Control: no-cache
 	           </section>
 	        </section>
       </section>
-
