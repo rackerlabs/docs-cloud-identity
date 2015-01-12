@@ -24,6 +24,11 @@
         currently only available to customers enrolled in the Early
         Access program.</para>
       </listitem>
+      <listitem>
+      <para>Multi-factor authentication is only available for username and password credentials. 
+      The system does not allow the user to enable multi-factor authentication for username and 
+      API key credentials.</para>
+     </listitem>
       <listitem><para>A user account can have only one phone number for use with
         multi-factor authentication. </para></listitem>
       <listitem>
