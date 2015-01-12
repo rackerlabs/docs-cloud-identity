@@ -191,14 +191,14 @@
                                                 <listitem>
                                                   <para>The passcode from the mobile phone
                                                   associated with your user account.</para>
-                                                </listitem>
-                                            </itemizedlist>
-                                            <example><title>Authentication request with multi-factor authentication credentials</title>
-                                                <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl https://identity.api.rackspacecloud.com/v2.0/tokens \
+                                                    <example><title>Authentication request with multi-factor authentication credentials</title>
+                                                        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl https://identity.api.rackspacecloud.com/v2.0/tokens \
        -X POST \
        -d '{"auth": {"RAX-AUTH:passcodeCredentials": {"passcode":"1411594"}}}'\
        -H "X-SessionId: $SESSION_ID" \
        -H "Content-Type: application/json" --verbose | python -m json.tool</programlisting></example>
+                                                </listitem>
+                                            </itemizedlist>
                                             </para>
                                  </td>
                                 </tr>

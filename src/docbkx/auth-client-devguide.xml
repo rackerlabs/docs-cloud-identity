@@ -58,13 +58,36 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Created seperate section for Service Catalog documentation and updated the Service types 
-								to include all Rackspace Cloud services available to customers. 
-								See <link xlink:href="Svc_Catalog_ovw.html">Service catalog</link>.</para>
+							<para>Updated multi-factor authentication documentation to correct parameter descriptions and 
+								list error messages in table format. See <link xlink:href="Multifactor_Calls.html">Multi-factor operations</link>.</para>
+						</listitem>
+						<listitem>
+							<para>Updated <link xlink:href="QuickStart-000.html">QuickStart Guide</link> to add information about 
+							using different clients to interact with the API. Added cURL command example to instructions for multi-factor authentication. 
+							</para>
+						</listitem>
+						<listitem>
+							<para>Created separate section for Service Catalog documentation and updated the Service
+								types to include all Rackspace Cloud services available to
+								customers. See <link xlink:href="Svc_Catalog_ovw.html">Service
+									catalog</link>.</para>
 						</listitem>
 						<listitem>
 							<para>Updated multi-factor authentication documentation to correct parameter descriptions and 
 								list error messages in table format. See <link xlink:href="Multifactor_Calls.html">Multi-factor operations</link>.</para>
+						</listitem>
+						<listitem>
+							<para>Updated <link xlink:href="Role_Based_Access_Control-d1e808.html">role documentation</link> to provide additional information about
+								role types, assignments, and differences between Identity service roles and 
+								RBAC roles.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the request documentation for the 
+								<link xlink:href="Impersonation_Calls.html">Impersonation</link> operation to add example 
+							showing how to impersonate a federated user.</para>
+						</listitem>
+						<listitem>
+							<para>Updated copyright for 2015.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -72,24 +95,21 @@
 			<revision>
 				<date>2014-12-08</date>
 				<revdescription>
-					<para><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/QuickStart-000.html">QuickStart Guide</link> updates</para>
-					<itemizedlist>
-						<listitem>
-							<para>Updated annotated authentication request and response section to provide separate sections for token, service catalog, and user samples and attribute definitions.</para>
-						</listitem>
-					</itemizedlist>
+					<para>Updated <link xlink:href="Sample_Request_Response-d1e64.html">annotated authentication request and response</link> section to provide separate sections
+						for token, service catalog, and user samples and attribute
+						definitions.</para>
 				</revdescription>
 			</revision>
 			<revision>
 				<date>2014-11-20</date>
 				<revdescription>
-					<para><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/QuickStart-000.html">QuickStart Guide</link> updates</para>
+					<para><link xlink:href="QuickStart-000.html">QuickStart Guide</link> updates</para>
 					<itemizedlist>
 						<listitem>
 							<para>Moved QuickStart Guide to top-level of contents for better visibility.</para>
 						</listitem>
 						<listitem>
-							<para>Corrected Cloud Files endpoint in the <link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/QuickStart-000.html#submit_API_request">Submit an API request to a Rackspace Cloud service</link> example.</para>
+							<para>Corrected Cloud Files endpoint in the <link xlink:href="QuickStart-000.html#submit_API_request">Submit an API request to a Rackspace Cloud service</link> example.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
