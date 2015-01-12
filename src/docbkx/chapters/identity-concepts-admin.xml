@@ -10,22 +10,20 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
     xml:id="Identity-Service-Concepts-admin"
     xmlns:db="http://docbook.org/ns/docbook"><title>&CIS;
-        authentication and authorization</title><para>The Rackspace
-        Identity service manages client authentication and
-        authorization for the Rackspace Cloud. A client sends
-        credentials to the Rackspace Identity service; through the
-        Cloud Contol panel, or programmatically by submitting a
-            <command>POST tokens</command> API service request. If the
-        credentials are valid, the Identity service returns an
-        authentication token and service an authentication token and a
-        service catalog that contains a list of all services and
-        endpoints available for this token. Because the authentication
-        token expires after 24 hours, you must generate a token once a
-        day.</para><!-- .SVG exists but doesn't use the right fonts: .PNG matches the source .VSD 
+        authentication and authorization</title><para>The Rackspace Identity service manages client authentication and authorization for the
+        Rackspace Cloud. A client sends credentials to the Rackspace Identity service; through the
+        Cloud Control panel, or programmatically by submitting a <command>POST tokens</command> API
+        service request. If the credentials are valid, the Identity service returns an
+        authentication token and service an authentication token and a service catalog that contains
+        a list of all services and endpoints available for this token. Because the authentication
+        token expires after 24 hours, you must generate a token once a day.</para>
+    <para><xref linkend="token-flow" xrefstyle="select: label"/> shows an example of a simple authentication flow 
+    based on username and password credentials. &CIS; has different authentication workflows to support additional 
+    use cases such as <link xlink:href="MFA_Ops.html">multi-factor authentication</link> and <link xlink:href="Impersonation_Calls.html"> impersonation</link>.
+  </para><!-- .SVG exists but doesn't use the right fonts: .PNG matches the source .VSD 
     at 100% natural size as exported, the .PNG fits HTML but is too large for PDF --><figure
         xml:id="token-flow">
-        <title>Rackspace Cloud Services: Authenticaiton and
-            authorization work flow</title>
+        <title>Rackspace Cloud Services: Authentication and authorization work flow</title>
         <mediaobject>
             <imageobject>
                 <imagedata scale="5"
