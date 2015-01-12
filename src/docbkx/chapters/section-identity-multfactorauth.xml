@@ -42,6 +42,10 @@
     </para>
         <important>
           <itemizedlist>
+           <listitem>
+             <para>Multi-factor authentication is only available for username and password credentials. 
+             The system does not allow the user to enable multi-factor authentication for username and API key credentials.</para>
+           </listitem>
             <listitem>
               <para>When multi-factor is enabled on an account, any existing tokens for that user are immediately revoked.
               </para>
