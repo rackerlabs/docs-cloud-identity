@@ -1,0 +1,9 @@
+{
+  "RAX-AUTH:impersonation": {
+      "user": {
+          "username": "john.smith",
+          "RAX-AUTH:federatedIdp": "http://test.rackspace.com"
+      },
+      "expire-in-seconds": 10800
+  }
+}  

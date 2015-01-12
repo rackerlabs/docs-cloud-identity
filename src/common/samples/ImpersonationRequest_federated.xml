@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<impersonation
+    xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+    xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:identity="http://docs.openstack.org/identity/api/v2.0"
+    xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
+    <user username="john.smith" RAX-AUTH:federatedidp="http:/>/test.rackspace.com"/>
+    <expire-in-seconds>10800</expire-in-seconds>
+</impersonation>
