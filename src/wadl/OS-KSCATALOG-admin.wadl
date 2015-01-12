@@ -46,8 +46,8 @@
                     <doc>A valid authentication token.</doc>
                 </param>
                 <resource id="tenantId" path="{tenantId}">
-                    <param name="tenantId" style="template" type="xsd:string" required="true">
-                        <doc>A tenant Id</doc>
+                    <param name="tenantId" style="template" type="capi:UUID" required="true">
+                        <doc>The unique ID assigned to the tenant account.</doc>
                     </param>
                     <resource id="endpoints-OS-KSCATALOG" path="OS-KSCATALOG">
                         <resource id="endpoints" path="endpoints">

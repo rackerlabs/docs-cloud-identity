@@ -196,6 +196,9 @@
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token for the impersonator</para></wadl:doc>
                     </param>
+                    <param name="user" style="plain" type="xsd:string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Specify the username </para></wadl:doc>
+                    </param>
                     <method href="#impersonateUser"/>
                 </resource>
           
@@ -244,8 +247,8 @@
                             <method href="#getDomainTenants"/>
 
                             <resource id="domain_tenant" path="{tenantId}">
-                                <param name="tenantId" type="xsd:string" style="template" required="true">
-                                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A tenant, or account, ID.</para></wadl:doc>
+                                <param name="tenantId" type="capi:UUID" style="template" required="true">
+                                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A unique ID for the tenant account.</para></wadl:doc>
                                 </param>
                                 <method href="#addTenantToDomain"/>
                             </resource>
@@ -485,12 +488,22 @@
             </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user: XML request">
                     <xsdxt:code href="../common/samples/ImpersonationRequest.xml"/>
                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user: JSON request">
+                    <xsdxt:code href="../common/samples/ImpersonationRequest.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate a Federated user: XML request">
+                    <xsdxt:code href="../common/samples/ImpersonationRequest_federated.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate a Federated user: JSON request">
                     <xsdxt:code href="../common/samples/ImpersonationRequest.json"/>
                 </wadl:doc>
             </representation>
@@ -812,7 +825,7 @@
 
     <method id="getUserAdmin" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get user admin">
-            <para role="shortdesc"> Get the user admininistrator or point of contact for an account</para>
+            <para role="shortdesc"> Get the user administrator or point of contact for an account</para>
             <para>Account users with the <parameter>identity:user-admin</parameter> or 
                 <parameter>identity:default</parameter> role can use this operation to identify the administrator or point of contact for a user 
                 account if they have questions or need assistance regarding user
@@ -1274,10 +1287,10 @@
     <method id="deleteQuestion" name="DELETE">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete a question">
             <para role="shortdesc"> Delete a question. </para>
-            <para>Identity administrators can remove a secret question by question ID. 
-             If the question is associated with any user accounts, use the 
-             You can remowith a user account, the operation fails. 
-                The question must be removed from any users before this operation will be allowed. </para>
+            <para>Identity administrators can delete a secret question by question ID. 
+                Before deleting a question, remove the question from all user accounts. 
+                If you try to delete a question that is associated with a user account, the operation fails.
+                </para>
         </wadl:doc>
         <response status="204" >
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
@@ -1444,7 +1457,7 @@
                 <listitem>
                     <para>Racker accounts do not use identity roles such as <code>identity:admin</code>, <code>identity:default</code>, 
                         <code>identity:user-admin</code>, and <code>identity:user-manage.</code> Racker account groups and permissions are managed 
-                            through eDir gropus and mapped to Identity roles during the authentication process.
+                            through eDir groups and mapped to Identity roles during the authentication process.
                     </para>
                 </listitem> 
                 <listitem>
@@ -1533,7 +1546,7 @@
        -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
        | python -m json.tool</programlisting>
             </example>
-            <note><para>This example assumes that the endpoint URL, userId, and authentication token have been exported to these environment variables: <code>AUTH_URL, USER_ID</code> and <code>AUTH_TOKEN</code>.</para></note>
+            <note><para>This example assumes that the endpoint URL, user ID, and authentication token have been exported to these environment variables: <code>AUTH_URL, USER_ID</code> and <code>AUTH_TOKEN</code>.</para></note>
       </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1601,17 +1614,24 @@
     <method id="sendVerifyCode" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Send verification code to a mobile phone">
             <para role="shortdesc">Sends a verification code to a mobile phone associated with a user account to verify that the user has the phone.</para>
-            <para>Before a user can authenticate using a mobile phone, &CIS; must verify that the user 
-                has the phone.
+            <para>Before a user can authenticate using a mobile phone, Rackspace must verify that the user 
+                has the phone. This is accomplished by sending a verification code to the 
+                phone associated with the account and waiting for the user to verify possession of the phone by returning the 
+                code to the &CIS; through the Verify device API operation.
             </para>
             <para>When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
                 <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
                 operation to get it.</para>
-            <para>In response to the Send Verify operation request, the Rackspace verification service sends a PIN to the specified phone 
+            <para>After you submit the Send verfication code to mobile phone request, the Rackspace verification service sends a PIN to the specified phone 
                 via SMS text message. Each PIN has a system-defined expiration time determined by the Identity service system configuration.
                 After receiving the PIN, use the Verify device operation to submit the PIN to the Identity service to confirm the device for use 
                 with multi-factor authentication services. 
             </para>
+            <important>
+                <para>In the Send Verify request, the <code>X-Auth-Token</code> header parameter value must specify a valid authentication token ID 
+                    for the user account associated with the mobile phone. If you submit an authentication token from any other account, the operation 
+                fails.</para>
+            </important>
         </wadl:doc>
         <request>
             <representation mediaType="application/json" element="capi:element">
@@ -1621,7 +1641,7 @@
        -H "Content-Type: application/json" \
        -H "Accept: application/json" \
        -H "X-Auth-Token: $AUTH_TOKEN"
-       | python -m json.tool</programlisting><note><para>This example assumes that the endpoint URL, userId, and your authentication token have been exported to
+       | python -m json.tool</programlisting><note><para>This example assumes that the endpoint URL, user ID, and your authentication token have been exported to
            environment variables.</para></note></wadl:doc>
             </representation>
         </request>
@@ -1678,7 +1698,7 @@
             <para role="shortdesc">Lists phones associated with the specified user account.</para>
             <para>Use this operation to get the phone number, ID, and the multi-factor 
             verification status for all phones associated with the specified user.</para>
-            <para>If you don't know the userId, use the List operation to find it.</para>
+            <para>If you don't know the user ID, use the List operation to find it.</para>
         </wadl:doc>
         <response status="204" >
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
@@ -1723,7 +1743,7 @@
                 all phones associated with the account. To disable the feature without removing phones, use 
                 the Disable multi-factor setting operation.</para>
             <para>This operation can only be completed from the user account submitting the request.
-                Attempts to run it for a different userId result in a 403 error message.
+                Attempts to run it for a different user ID result in a 403 error message.
             </para>
         </wadl:doc>
         <response status="204" >
@@ -1742,12 +1762,15 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook">     
             <para>After verifying the first mobile phone number associated with a user account, use this operation  
                 to enable multi-factor authentication. After the feature is enabled, users can authenticate to 
-                &CIS; with any verified mobile phone number associated with their account.</para>
+                &CIS; by using the mobile phone number associated with their account.</para>
             <para>
                 To disable multi-factor authentication temporarily, without removing associated 
                 mobile phone numbers, run the Update mullti-factor authentication setting operation with <code>enable=false</code>. 
                 To remove multi-factor authentication capabilities from an account completely, use the Remove multi-factor 
                 operation.</para>
+            <important>
+                <para>When multi-factor is enabled on an account, any existing tokens for that user are immediately revoked.</para>
+            </important>
         </wadl:doc>
         <request>
             <representation mediaType="application/json">
@@ -1788,7 +1811,7 @@
             <representation mediaType="application/json"/>
         </response>
         <response status="400" >
-            <doc title="Bad Request">Possible reasons: No multifactor device on user account; multifactor phone on account is not verified.</doc>
+            <doc title="Bad Request">Possible reasons: No multi-factor device on user account; multi factor phone on account is not verified.</doc>
             <representation mediaType="application/json"/>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
         </response>
