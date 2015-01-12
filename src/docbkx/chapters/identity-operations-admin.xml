@@ -119,7 +119,7 @@
 		<para>The operations and options available for user management depend on the Identity role
 			assigned to the account.  For example,  Rackspace Cloud account owner you can add
 			additional users to the account, as well as manage administrative and configuration
-			tasks for all account users and other resources available throught the Identity API. If
+			tasks for all account users and other resources available through the Identity API. If
 			you have been added to the account as a user, any user requests that you submit affect
 			only your own account. For more information about roles, see <link
 				xlink:href="Role_Based_Access_Control-d1e808.html">Role-based access
@@ -309,17 +309,17 @@
 				<literal>/v2.0/tokens </literal> supplied as the path and a payload of credentials
 			in the body. Credentials can be any of the following: <itemizedlist spacing="compact">
 				<listitem>
-					<para>Password credentials: user name and password</para>
+					<para>Password credentials: username and password</para>
 				</listitem>
 				<listitem>
-					<para>API Key credentials: user name and API key</para>
+					<para>API Key credentials: username and API key</para>
 				</listitem>
 				<listitem>
 					<para>Token and tenant Id or tenant name (requires Administrator
 						privileges)</para>
 				</listitem>
 				<listitem>
-					<para>Passcode credentials: multifactor authentication sessionId and passcode
+					<para>Passcode credentials for multi-factor authenticated accounts: session Id and passcode
 						values</para>
 				</listitem>
 				<listitem audience="admin">
@@ -335,7 +335,7 @@
 			associating a user with a tenant can be a method of passing that additional level of
 			identifying information to the service. Also, if a user account is assigned to multiple
 			tenants, then including the tenant information generates the authentication token for
-			the specfied tenant. </para>
+			the specified tenant. </para>
 		<para>See the following sections for details on the Token operations available in the &CIS;
 			API. </para>
 		<note>
@@ -969,9 +969,6 @@
 		<!-- MULTIFACTOR OPERATIONS -->	
 		<section xml:id="Multifactor_Calls">
 			<title>Multi-factor operations</title>
-			<note>
-				<para>Multi-factor authentication is currently available only to
-					customers enrolled in the Early Access program for this feature.</para></note>
 			
 			<para>The &CIS; API operations described in this section implement multifactor authentication
 			capabilities for &CLOUD; accounts. For more information, see 

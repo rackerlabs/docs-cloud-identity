@@ -184,7 +184,7 @@
 						privileges).</para>
 				</listitem>
 				<listitem>
-					<para>Passcode credentials: multifactor authentication session ID and passcode
+					<para>Passcode credentials: multi-factor authentication session ID and passcode
 						values</para>
 				</listitem>
 			</itemizedlist>
@@ -196,7 +196,7 @@
 		In such cases, associating a user with a tenant can be a method of passing that 
 		additional level of identifying information to the service. Also, if a user account 
 		is assigned to multiple tenants, then including the tenant information generates the authentication 
-		token for the specfied tenant.
+		token for the specified tenant.
 	</para>
 	<para>See the following sections for details on the Token operations available in the &CIS; API. </para>
 	<note>
@@ -247,7 +247,7 @@
 	<section xml:id="Secret_Calls_client">
 		<title>Secret questions and answers</title>
 		<para>The operations described in this section allow administrators and users to manage 
-			secret questions and answers. Secret questions and answers can be used to identify a user to Racksapce support via telephone.</para>
+			secret questions and answers. Secret questions and answers can be used to identify a user to Rackspace support via telephone.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
@@ -268,8 +268,8 @@
 		</wadl:resources>
 	</section>
 	<section xml:id="Multifactor_Calls_client">
-		<title>Multifactor operations</title>
-		<para>The &CIS; API operations described in this section implement multifactor authentication
+		<title>Multi-factor operations</title>
+		<para>The &CIS; API operations described in this section implement multi-factor authentication
 			capabilities for &CLOUD; accounts. For more information, see 
 			<link xlink:href="MFA_Ops.html">Using multi-factor authentication</link>.
 			<!--
