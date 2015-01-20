@@ -239,6 +239,31 @@
 
 	</build>
 	
+	<repositories>                                                                                  
+    <repository>
+      <id>docs-staging/id>
+      <name>Staging Docbook server</name>
+      <url>http://docs-nexus.rackspace.com/nexus/content/repositories/docs-staging</url>
+      <layout>default</layout>
+      <releases>
+           <enabled>true</enabled>
+       </releases>      
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+     <repository>                                                                                
+          <id>docs-prod</id>                                                             
+          <name>Release Docbook server</name>                                              
+          <url>http://docs-nexus.rackspace.com/nexus/content/repositories/docs-prod/</url>        
+          <releases>
+              <enabled>true</enabled>
+          </releases>      
+          <snapshots>
+               <enabled>false</enabled>
+          </snapshots>
+      </repository>                                                                               
+ </repositories> 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
