@@ -784,10 +784,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated authentication endpoints to
-								&ENDPOINT-US; (for US-based accounts)
-								and &ENDPOINT-UK; (for UK-based
-								accounts). </para>
+							<para> Updated authentication endpoints.</para>
 						</listitem>
 						<listitem>
 							<para>Added 

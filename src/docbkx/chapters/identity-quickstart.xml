@@ -108,25 +108,9 @@
                     </variablelist></para>
             </listitem>
             <listitem>
-                <para>Choose either of the following Identity service
-                    API endpoints to submit the authentication
-                        request:<itemizedlist spacing="compact">
-                        <listitem>
-                            <para>US endpoint: <link
-                                   xlink:href="&ENDPOINT-US;"
-                                   >&ENDPOINT-US;</link>. </para>
-                        </listitem>
-                        <listitem>
-                            <para>UK endpoint: <link
-                                   xlink:href="&ENDPOINT-UK;"
-                                   >&ENDPOINT-UK;</link>. </para>
-                        </listitem>
-                    </itemizedlist></para>
-            </listitem>
-            <listitem>
                 <para>Submit a <command>POST tokens</command> request
-                    with valid credentials to the chosen endpoint as
-                    shown in the following <link
+                    with valid credentials to the Identity service API endpoint as
+                    shown in this <link
                         xlink:href="http://curl.haxx.se/">cURL</link>
                     example: <itemizedlist>
                         <listitem>

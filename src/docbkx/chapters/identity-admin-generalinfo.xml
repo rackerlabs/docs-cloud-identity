@@ -184,7 +184,7 @@
 		<para> All client requests to the API must specify the target
 			version identifier in the first element of the URI path.
 			For example, v2.0 is the target version in this enddpoint
-			URI: <programlisting>&ENDPOINT-US;</programlisting>The
+			URI: <programlisting>&ENDPOINT-IdentityVersion;</programlisting>The
 			only access available without the target version are to
 			check for the GET version API request that returns
 			available API versions supported at the specified
@@ -387,7 +387,7 @@ Host: identity.api.rackspacecloud.com
 			which <code>v2.0</code> is the initial version of the API. All version request URLs end
 			with a trailing slash (/). If the slash is omitted, the server might respond with a
 				<returnvalue>302</returnvalue> redirection request. You can add format extensions
-			after the trailing slash. For example, <code> &ENDPOINT-US;.xml</code> includes
+			after the trailing slash. For example, <code>&ENDPOINT-IdentityVersion;.xml</code> includes
 				<code>.xml</code> as a format extension. Note that this is a special case that does
 			not hold true for other API requests. In general, requests such as
 				<code>/tenants.xml</code> and <code>/tenants/.xml</code> are handled equivalently. </para>

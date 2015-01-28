@@ -257,58 +257,20 @@
                     be accessed.</para>
                 <para>Various &CLOUD; systems can query the &CIS; for the service endpoints required
                     to complete processes and operations. Users must know the URL for a service
-                    endpoint in order to use the service.</para>
-                <para> The &CIS; service endpoint, which is the entry point for the &CLOUD; can be
-                    accessed from these endpoints: <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>
-                                <link xlink:href="&ENDPOINT-US;">&ENDPOINT-US;</link>
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para><link xlink:href="&ENDPOINT-UK;">&ENDPOINT-UK;</link></para>
-                        </listitem>
-                    </itemizedlist>
-                </para>
+                    endpoint in order to use the service.  An API might offer several regional endpoints for a single API.</para>
+                <para>The Rackspace Identity service provides one global endpoint: <link
+                    xlink:href="&ENDPOINT-IdentityGlobal;">&ENDPOINT-IdentityGlobal;</link>. To see
+                    supported API versions, browse to the endpoint URL. To use a specific version of the
+                    API, append the version number to the global endpoint: 
+                    <link xlink:href="&ENDPOINT-IdentityVersion;">&ENDPOINT-IdentityVersion;</link>.</para>
                 <para>To get the URLs for other service endpoints, submit an authentication request
                     with valid credentials to a &CIS; endpoint. If authentication is successful, he
                     Identity service returns an authentication token and a service catalog with
-                    information about available services, including the endpoints to access each service.<note>
-                        <para>In the &CIS; version 1.1 implementation, an endpoint is known as a
-                                <literal>baseURL</literal>.</para>
+                    information about available services, including the endpoints to access each service.
+                    <note>
+                        <para>In the &CIS; version 1.1 implementation, an endpoint is known as a <literal>baseURL</literal>.</para>
                     </note></para>
-            </listitem>
-        </varlistentry>
-        <varlistentry condition="admin">
-            <term><emphasis role="bold">Endpoint</emphasis></term>
-            <listitem>
-                <para> A network accessible address, usually described by a URL, where a service can
-                    be accessed.</para>
-                <para> Various &CLOUD; systems query the &CIS; for the service endpoints required to
-                    complete processes and operations. Users must know the URL for a service
-                    endpoint in order to use the service.</para>
-                <para> The &CIS; service endpoint, which is the entry point for the &CLOUD; can be
-                    accessed from these endpoints: <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>
-                                <link xlink:href="&ENDPOINT-US;">&ENDPOINT-US;</link>
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>
-                                <link xlink:href="&ENDPOINT-UK;">&ENDPOINT-UK;</link>
-                            </para>
-                        </listitem>
-                    </itemizedlist>
-                </para>
-                <para> To get the URLs for other service endpoints, submit an authentication request
-                    with valid credentials to a &CIS; endpoint. After successful authentication, the
-                    &CIS; returns an authentication token and a service catalog with information
-                    about available services, including the endpoints to access each service.<note>
-                        <para>In &CIS; version 1.1, an endpoint was known as a <emphasis
-                                role="italic">baseURL</emphasis>.</para>
-                    </note></para>
-                <para>Service developers can create and delete endpoints. They can also customize
+                <para condition="admin">Service developers can create and delete endpoints. They can also customize
                     service availability and operation by defining multiple, region-specific service
                     endpoints for the same &CLOUD; service.</para>
             </listitem>

@@ -761,10 +761,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated authentication endpoints to
-								&ENDPOINT-US; (for US-based accounts)
-								and &ENDPOINT-UK; (for UK-based
-								accounts). </para>
+							<para> Updated authentication endpoints.</para>
 						</listitem>
 						<listitem>
 							<para>Added <link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response"</link>, focused on interpreting

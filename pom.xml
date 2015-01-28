@@ -7,6 +7,12 @@
 <!-- 06/16/2014 Added canonical URL based. -->
 <!-- 06/16/2014 Still need  sectionLabelIncludesComponentLabel -->
 	
+	<parent>
+		<groupId>com.rackspace.cloud.api</groupId>
+		<artifactId>rackspace-docs-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	
 	<!-- POM Build file for the Cloud Identity (akd Auth 2.0, based on Keystone) Developer Guides: -client-devguide and -admin-devguide -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rackspace.cloud.apidocs</groupId>
@@ -14,6 +20,11 @@
 	<version>2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Cloud Identity v2.0 Docs</name>
+	
+	<!-- ################################################ -->
+	<!-- USE "mvn clean generate-sources" to run this POM -->
+	<!-- Made a comment change -->
+	<!-- ################################################ -->
 	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -27,7 +38,7 @@
 		  	<groupId>com.rackspace.cloud.api</groupId>
 		    
 		  		<artifactId>olink-maven-plugin</artifactId>
-		    	<version>1.2.6</version>
+<!--		    	<version>1.2.6</version>
 		  	
 		    	<executions>
 		      		<execution>
@@ -39,7 +50,7 @@
 		      			
 		      	</execution>
 		    		
-		    	</executions>
+		    	</executions> -->
 				
 		  </plugin>
 			
@@ -81,8 +92,7 @@
 			<plugin>
 				
 				<groupId>com.rackspace.cloud.api</groupId>				
-				<artifactId>clouddocs-maven-plugin-docbook</artifactId>	
-				<version>2.1.5-SNAPSHOT</version>
+				<artifactId>rackspace-docs-maven-plugin</artifactId>	
 				
 				<executions>
 					<execution>		
@@ -98,7 +108,7 @@
 							
 							<includes>auth-client-devguide.xml</includes>
 							
-							<canonicalUrlBase>http://docs.rackspace.com/identity/api/v2.0/auth-client-devguide-devguide/content</canonicalUrlBase>
+							<canonicalUrlBase>http://docs.rackspace.com/identity/api/v2.0/auth-client-devguide/content</canonicalUrlBase>
 							
 							<!-- Only print elements that have condition = client -->
 							<profileCondition>client</profileCondition>
@@ -239,31 +249,6 @@
 
 	</build>
 	
-	<repositories>                                                                                  
-    <repository>
-      <id>docs-staging/id>
-      <name>Staging Docbook server</name>
-      <url>http://docs-nexus.rackspace.com/nexus/content/repositories/docs-staging</url>
-      <layout>default</layout>
-      <releases>
-           <enabled>true</enabled>
-       </releases>      
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-     <repository>                                                                                
-          <id>docs-prod</id>                                                             
-          <name>Release Docbook server</name>                                              
-          <url>http://docs-nexus.rackspace.com/nexus/content/repositories/docs-prod/</url>        
-          <releases>
-              <enabled>true</enabled>
-          </releases>      
-          <snapshots>
-               <enabled>false</enabled>
-          </snapshots>
-      </repository>                                                                               
- </repositories> 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

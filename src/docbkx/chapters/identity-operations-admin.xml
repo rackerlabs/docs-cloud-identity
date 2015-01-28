@@ -990,7 +990,7 @@
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#mfa_PIN">
 					<wadl:method href="#verifyDevice"/>
 				</wadl:resource>
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_update">
 					<wadl:method href="#updateMultifactorSettings"/>
 				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">

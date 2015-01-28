@@ -104,15 +104,19 @@
                         </param>
                         <method href="#generateBypassCodes"/>
                 </resource>
-                <resource id="multifactor_unlock" path="users/{userId}/RAX-AUTH/multi-factor">
+                 
+                <resource id="multifactor_update" path="users/{userId}/RAX-AUTH/multi-factor">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
                     <param name="userId" style="template" type="xsd:string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>The unique, system-generated user ID for the user account to be unlocked.</para>
-                    </wadl:doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>The unique, system-generated user ID for the user account to generate codes for.</para>
+                        </wadl:doc>
                     </param>
+                    <method href="#updateMultifactorSettings"/>
+                </resource>  
+                    <resource id="multifactor_unlock" path="users/{userId}/RAX-AUTH/multi-factor"> 
                     <param name="unlock" style="template" type="xsd:boolean" required="false">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook">
                             <para>A boolean value that indicates the lock status on a user account enabled 
@@ -134,7 +138,7 @@
                            <method href="#createMobilePhone"/> 
                            <method href="#getMobilePhonesForUser"/>
                            <method href="#removeMultifactorForUser"/>
-                           <method href="#updateMultifactorSettings"/>
+                       
                     <resource id="multifactor_vcode" path="{phoneId}/verificationcode">
                     <param name="phoneId" style="template" type="xsd:string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The ID for the phone associated with the user account.

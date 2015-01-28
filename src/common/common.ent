@@ -1,9 +1,8 @@
 
 
 <!-- Rackspace Endpoints  -->
-
-<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v2.0/">
-<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v2.0/">
+<!ENTITY ENDPOINT-IdentityGlobal "https://identity.api.rackspacecloud.com">
+<!ENTITY ENDPOINT-IdentityVersion "https://identity.api.rackspacecloud.com/v2.0/">
 
 
 <!-- Some entities borrowed from HTML -->

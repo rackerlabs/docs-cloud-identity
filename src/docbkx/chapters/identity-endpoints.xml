@@ -9,8 +9,10 @@
     <para>You can use the Rackspace Cloud Identity authentication endpoints from version 1.1 or
         version 2.0. The legacy v1.1 API endpoint only supports authentication services, but you can
         use tokens from version 1.1 in version 2.0 API calls. </para>
-    <para>You can authenticate from either of the endpoint URLs included in <xref linkend="AuthEndpoints" xrefstyle="select: quotedtitle"/>. For better regional 
-    performance, we recommend that Rackspace UK customers use the UK-based endpoint.</para>
+    <para/>
+    <note><para>If your Rackspace Cloud account requires multi-factor authentication, you can only authenticate with Identity API version 2.0 or later.</para></note>
+    <para>You can authenticate from the Identity service global endpoints shown in <xref
+            linkend="AuthEndpoints" xrefstyle="select: quotedtitle"/>.</para>
 
     <table rules="all" xml:id="AuthEndpoints">
         <caption>Authentication Endpoints and documentation resource links</caption>
@@ -26,22 +28,12 @@
         </thead>
         <tbody>
             <tr>
-                <td>US-Based Endpoint</td>
+                <td>Global  Endpoint</td>
                 <td>
                     <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">
                         https://identity.api.rackspacecloud.com/v2.0</link></td>
                 <td><link xlink:href="https://identity.api.rackspacecloud.com/v1.1">
                         https://identity.api.rackspacecloud.com/v1.1</link>
-                </td>
-            </tr>
-            <tr>
-                <td>UK-Based Endpoint</td>
-                <td>
-                    <link xlink:href="https://lon.identity.api.rackspacecloud.com/v2.0">
-                        https://lon.identity.api.rackspacecloud.com/v2.0</link>
-                </td>
-                <td><link xlink:href="https://lon.identity.api.rackspacecloud.com/v1.1">
-                        https://lon.identity.api.rackspacecloud.com/v1.1</link>
                 </td>
             </tr>
             <tr>

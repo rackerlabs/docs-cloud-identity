@@ -57,6 +57,26 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
+							<para>Updated Identity API endpoint documentation to remove references to regional endpoints.
+								All customers can authenticate using the &ENDPOINT-IdentityGlobal;
+								global endpoint, regardless of geographic location.</para>
+						</listitem>
+						<listitem>
+							<para>Added search feature so that customers can do a local search in the content that they are viewing.</para>
+						</listitem>
+						<listitem>
+							<para>Corrected the URI for the 
+								<link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Update multi-factor authentication configuration on user account 
+									operation.</link></para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-01-07</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
 							<para>Updated multi-factor authentication documentation to correct
 								parameter descriptions and list error messages in table format. See
 								<link xlink:href="Multifactor_Calls.html">Multi-factor
@@ -1145,10 +1165,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated authentication endpoints to
-								&ENDPOINT-US; (for US-based accounts)
-								and &ENDPOINT-UK; (for UK-based
-								accounts). </para>
+							<para> Updated authentication endpoints.</para>
 						</listitem>
 						<listitem>
 							<para>Added <link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response</link>, focused on interpreting
