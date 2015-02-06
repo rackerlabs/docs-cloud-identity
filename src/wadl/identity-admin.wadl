@@ -1277,7 +1277,7 @@
                 <parameter>userId</parameter> match the account you want to update.</para>
             
             <para>Only include those user data elements that you wish to modify in the request body. 
-                For example, if you only need to update the user's email, for example, don't include 
+                For example, if you only need to update the user's email, for  don't include 
                 the other body parameters like <parameter>id</parameter>, 
                 <parameter>enabled</parameter>, or <parameter>rax-auth:domainId</parameter>.
             </para>
@@ -1314,23 +1314,23 @@
                         name. The first character of the name must be an alpha character.</wadl:doc>
                 </param>
                 <param name="email" style="plain"
-                    type="xsd:string" required="true">
+                    type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
                         email.</wadl:doc>
                 </param>
                 <param name="enabled" style="plain"
-                    type="xsd:boolean" required="true">
+                    type="xsd:boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
                         the user is enabled (true) or disabled (false). Users cannot update the 
                         <parameter>enabled</parameter> status on their own account.</wadl:doc>
                 </param>
-                <param name="region" type="xsd:string" style="plain">
+                <param name="region" type="xsd:string" style="plain" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>The region the user is assigned to. Must be one of the regions available in the service catalog.                   
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="password" type="xsd:string" style="plain">
+                <param name="password" type="xsd:string" style="plain" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A password string that meets the following criteria:
                             <itemizedlist>

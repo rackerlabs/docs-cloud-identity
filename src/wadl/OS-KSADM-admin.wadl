@@ -670,26 +670,31 @@
                 a user account, use the <link xlink:href="GET_getUserById_users_User_Calls.html">Get user by id</link> operation
                 to verify that the user name, email account, and status associated with
                 <parameter>userId</parameter> match the account you want to update.</para>
-            <para condition="admin" xmlns="http://docbook.org/ns/docbook">You can change a user default region, but the new value must be
-                one of the regions listed for a Cloud Compute endpoint in the service catalog.</para>
-           <para >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <tip>
-                        <para>In the request, include only the user data elements that you want to change.
-                            For example, if you want to update the email address, submit a POST request that includes the <parameter>email</parameter>
-                             address in the request body.
-                        </para>
-                    </tip>
-                </wadl:doc>
+            <para>Only include those user data elements that you wish to modify in the request body. 
+                For example, if you only need to update the user's email, for  don't include 
+                the other body parameters like <parameter>id</parameter>, 
+                <parameter>enabled</parameter>, or <parameter>rax-auth:domainId</parameter>.
             </para>
+
+               <note xmlns="http://docbook.org/ns/docbook">
+                   <itemizedlist>
+                       <listitem>
+                           <para>Users who hold the admin role can update users who hold the user role (<code>identity:default</code>) or
+                               the admin role (<code>identity:user-admin</code>) for the same tenant. </para>
+                       </listitem>
+                       <listitem>
+                           <para>Administrators can change the default region for another user, but the new value must be 
+                               one of the regions listed for a Cloud Compute endpoint in the service catalog.</para>
+                       </listitem>
+                       <listitem>
+                           <para>Administrators can change a user default region, but the new value must be 
+                               one of the regions listed for a Cloud Compute endpoint in the service catalog.</para>
+                       </listitem>
+                   </itemizedlist>
+               </note>
+            
         </wadl:doc>
         <request>
-           
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user request: JSON">
-                    <xsdxt:code href="../common/samples/updateuser.json"/>
-                </wadl:doc>
-            </representation>
             <representation mediaType="application/xml" element="identity:User">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user request: XML">
                     <xsdxt:code href="../common/samples/updateuser.xml"/>
@@ -705,23 +710,23 @@
                         name. The first character of the username must be an alpha character.</wadl:doc>
                 </param>
                 <param name="email" style="plain"
-                    type="xsd:string" required="true">
+                    type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
                         email.</wadl:doc>
                 </param>
                 <param name="enabled" style="plain"
-                    type="xsd:boolean" required="true">
+                    type="xsd:boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
                         the user is enabled (true) or disabled (false). Users cannot update the
                         <parameter>enabled</parameter> status on their own account.</wadl:doc>
                 </param>
-                <param name="RAX-AUTH:defaultRegion" type="xsd:string" style="plain">
+                <param name="RAX-AUTH:defaultRegion" type="xsd:string" style="plain" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>The default region that the user is assigned to. Must be one of the regions available in the service catalog.
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="OS-KSADM:password" type="xsd:string" style="plain">
+                <param name="OS-KSADM:password" type="xsd:string" style="plain" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A password string that meets the following criteria:
                             <itemizedlist><listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
@@ -733,28 +738,34 @@
                     </wadl:doc>
                 </param>
             </representation>
-         
-            <representation mediaType="application/json" element="identity:User">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user password request: JSON">
-                    <xsdxt:code href="../common/samples/userupdatepw.json"/>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user request: JSON">
+                    <xsdxt:code href="../common/samples/updateuser.json"/>
                 </wadl:doc>
             </representation>
+ 
             <representation mediaType="application/xml" element="identity:User">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user password request: XML">
                     <xsdxt:code href="../common/samples/userupdatepw.xml"/>
                 </wadl:doc>
             </representation>
+            <representation mediaType="application/json" element="identity:User">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user password request: JSON">
+                    <xsdxt:code href="../common/samples/userupdatepw.json"/>
+                </wadl:doc>
+            </representation>
         </request>
         <response status="200">
             <doc title="OK">Request completed successful.</doc>
-            <representation mediaType="application/json" element="identity:User">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/user.json"/>
-                </wadl:doc>
-            </representation>
+     
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/user.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json" element="identity:User">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/user.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
