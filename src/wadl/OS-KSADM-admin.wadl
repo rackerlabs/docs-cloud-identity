@@ -101,7 +101,7 @@
             </resource>
             <resource id="tenants" path="tenants">
                 <method href="#addTenant"/>
-                <resource id="tenantById" path="tenants/{tenantId}">
+                <resource id="tenantById" path="{tenantId}">
                     <param name="tenantId" style="template" type="capi:UUID" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The unique ID assigned to the tenant account.</wadl:doc>
                     </param>
