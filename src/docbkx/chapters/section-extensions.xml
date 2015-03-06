@@ -8,7 +8,6 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
   xml:id="Extensions-d1e688">
-  
   <title>Extensions</title>
   <para>The authentication service API is extensible, meaning that the
     API is structured so that some functions are implemented in the

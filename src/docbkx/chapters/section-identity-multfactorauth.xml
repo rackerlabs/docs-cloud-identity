@@ -43,9 +43,18 @@
         <important>
           <itemizedlist>
            <listitem>
-             <para>Multi-factor authentication is only available for username and password credentials. 
-             The system does not allow the user to enable multi-factor authentication for username and API key credentials.</para>
-           </listitem>
+        <para>Multi-factor authentication applies only to username and password credentials. You
+          cannot use it to secure username and API key credentials.</para>
+      </listitem>
+      <listitem>
+        <para>Users with a multi-factor authenticated account can only use OpenStack or Rackspace
+          CLI tools that support username and API key authentcation or token authentication, like
+          the Nova client. </para>
+        <para>For token authentication, submit an authentication request. Then, export the returned
+          token to the  CLI environment variable, <envar>OS_TOKEN</envar> or
+            <code>OS_AUTH_TOKEN</code> for example. After you set the token, you can submit API
+          requests by using the CLI. </para>
+      </listitem>
             <listitem>
               <para>When multi-factor is enabled on an account, any existing tokens for that user are immediately revoked.
               </para>

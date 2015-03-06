@@ -31,7 +31,7 @@
                     interacting with the Rackspace Cloud API services by using <link
                         xlink:href="https://developer.rackspace.com/sdks/">Rackspace SDKs</link> or
                         <link xlink:href="https://wiki.openstack.org/wiki/OpenStackClients"
-                        >OpenStack client</link> applications </para>
+                        >OpenStack client</link> applications.  </para>
         </listitem>
             <listitem>
             <para>For API testing and workflow management in a graphical environment, try interacting with the 

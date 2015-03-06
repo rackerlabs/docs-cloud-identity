@@ -52,6 +52,12 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-03-04</date>
+				<revdescription>
+					<para>Added information about the <link xlink:href="MFA_Ops.html">limitations of using CLI tools</link> with multi-factor authentication.</para>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-02-06</date>
 				<revdescription>
 					<para>Corrected the 

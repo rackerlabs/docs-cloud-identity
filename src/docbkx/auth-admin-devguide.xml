@@ -53,6 +53,19 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-03-04</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added information about the <link xlink:href="MFA_Ops.html">limitations of using CLI tools</link> with multi-factor authentication.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the <link xlink:href="POST_impersonateUser_v2.0_RAX-AUTH_impersonation-tokens_Impersonation_Calls.html">Impersonation</link> operation to correct examples and add body parameter descriptions.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-02-06</date>
 				<revdescription>
 					<para>Corrected the 
