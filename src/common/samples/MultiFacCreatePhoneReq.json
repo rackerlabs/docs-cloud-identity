@@ -1,5 +1,6 @@
-<programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
-       -X POST \
-       -H "Content-Type: application/json" \
-       -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
-       | python -m json.tool</programlisting>
+     
+ {
+    "RAX-AUTH:mobilePhone": {
+    "number": "+1 512-555-1000"
+    }
+ }

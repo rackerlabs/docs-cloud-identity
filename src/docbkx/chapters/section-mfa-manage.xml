@@ -89,9 +89,11 @@
         </tr>
         <tr>
           <td valign="top">
-            <para><link
+            <para condition="admin"><link
                 xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls.html"
                 >Generate bypass code</link></para>
+            <para condition="client"><link
+              xlink:href="POST_generateBypassCodes_v2.0_users__userId__RAX-AUTH_multi-factor_bypass-codes_Multifactor_Calls_client.html">Generate bypass code</link></para>
           </td>
           <td valign="top">
             <para>Users can submit the following cURL request to
@@ -111,7 +113,7 @@
                 >Check multi-factor status on user
               account</link></para>
             <para condition="client"><link
-                xlink:href="GET_getUserById_v2.0_users__userId__User_Calls.html"
+              xlink:href="GET_getUserById__v2.0_users__userId__User_Calls.html"
                 >Check multi-factor status on user
               account</link></para>
           </td>
@@ -134,9 +136,8 @@
               >List multifactor-enabled devices by user id</link>
           </td>
           <td valign="top">
-            <para>Use the following cURL request to list the devices
-              that are associated with a user account for the purpose
-              of multi-factor authentication.</para>
+            <para>A user or Identity administrator impersonating a user can use the following cURL request to list the devices that are associated with the user
+            account for the purpose of multi-factor authentication.</para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X PUT \
        -H "Content-Type: application/json" \
@@ -149,8 +150,8 @@
               >List multifactor-enabled devices by user id</link>
           </td>
           <td valign="top">
-            <para>Use the following cURL request to list the devices
-              that associated with a user account for the purpose of
+            <para>Users can use the following cURL request to list the devices
+              that are associated with their account for the purpose of
               multi-factor authentication.</para>
             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X PUT \
@@ -159,9 +160,8 @@
           </td>
         </tr>
         <tr condition="admin">
-          <td valign="top"><link
-              xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
-              >Disable multi-factor authentication</link></td>
+          <td valign="top">
+            <link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Disable multi-factor authentication</link></td>
           <td>
             <para>Use the folowing cURL request to disable
                 (<code>enabled=false</code>) multi-factor for the
@@ -175,7 +175,7 @@
         </tr>
         <tr condition="client">
           <td valign="top"><link
-              xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html"
+            xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls_client.html"
               >Disable multi-factor authentication</link></td>
           <td>
             <para>Use the folowing cURL request to disable
@@ -191,7 +191,7 @@
         <tr condition="admin">
           <td valign="top">
             <para><link
-                xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
+              xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html"
                 >Remove the multi-factor settings and phone from a
                 user account</link></para>
           </td>
@@ -207,10 +207,8 @@
         </tr>
         <tr condition="client">
           <td valign="top">
-            <para><link
-                xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html"
-                >Remove the multi-factor settings and phone from a
-                user account</link></para>
+            <para>
+              <link xlink:href="DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">Remove the multi-factor settings and phone from a user account</link></para>
           </td>
           <td valign="top">
             <para>Use the following cURL request to remove

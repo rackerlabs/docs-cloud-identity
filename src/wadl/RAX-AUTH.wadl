@@ -48,10 +48,10 @@
                 <!-- ADD_USER_SECRETQA resource(s) -->
                 <!-- see also SECRETQA below -->
                 <resource id="add_user_secretqa" path="secretqas">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                     </param>
-                    <param name="userId" style="template" type="xsd:string" required="true">
+                    <param name="userId" style="template" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                     </param>
                     <method href="#saveSecretQA"/>
@@ -61,11 +61,11 @@
             
                 <!-- USER_USER_ADMINS resource(s) -->
             <resource id="user_user_admins" path="users/{userId}/RAX-AUTH/admins">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook">
                             <para>A valid authentication token</para></wadl:doc>
                     </param>
-                    <param name="userId" style="template" type="xsd:string" required="true">
+                    <param name="userId" style="template" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The user ID assigned by system when user is added.</para></wadl:doc>
                     </param>
                     <method href="#getUserAdmin"/>
@@ -73,16 +73,16 @@
             
                 <!-- USER_ACCESSIBLE_DOMAINS resource(s) -->
                 <resource id="user_accessible_domains" path="domains">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                     </param>
-                    <param name="userId" style="template" type="xsd:string" required="true">
+                    <param name="userId" style="template" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                     </param>
                     <method href="#getAccessibleDomainsForUser"/>
                     
                     <resource id="user_accessible_domain" path="{domainId}">
-                        <param name="domainId" type="xsd:string" style="template" required="true">
+                        <param name="domainId" type="string" style="template" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A domain ID.</para></wadl:doc>
                         </param>
                         
@@ -94,10 +94,10 @@
                 
                 <!-- MULTIFACTOR resource(s) -->
                     <resource id="bypass_codes" path="users/{userId}/RAX-AUTH/multi-factor/bypass-codes">
-                        <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <param name="X-Auth-Token" style="header" type="string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                         </param>
-                        <param name="userId" style="template" type="xsd:string">
+                        <param name="userId" style="template" type="string">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                                 <para>The unique, system-generated user ID for the user account to generate codes for.</para>
                             </wadl:doc>
@@ -106,10 +106,10 @@
                 </resource>
                  
                 <resource id="multifactor_update" path="users/{userId}/RAX-AUTH/multi-factor">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
-                    <param name="userId" style="template" type="xsd:string">
+                    <param name="userId" style="template" type="string">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook">
                             <para>The unique, system-generated user ID for the user account to generate codes for.</para>
                         </wadl:doc>
@@ -129,10 +129,10 @@
                 <!-- MULTIFACTOR Mobile phones resource(s) -->
                 
                 <resource id="user_mobile_phones" path="users/{userId}/RAX-AUTH/multi-factor/mobile-phones">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
-                    <param name="userId" style="template" type="xsd:string" required="true">
+                    <param name="userId" style="template" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The user id for the account.</para></wadl:doc>          
                     </param>
                            <method href="#createMobilePhone"/> 
@@ -140,14 +140,14 @@
                            <method href="#removeMultifactorForUser"/>
                        
                     <resource id="multifactor_vcode" path="{phoneId}/verificationcode">
-                    <param name="phoneId" style="template" type="xsd:string" required="true">
+                    <param name="phoneId" style="template" type="string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The ID for the phone associated with the user account.
                             </para></wadl:doc>          
                         </param>
                     <method href="#sendVerifyCode"/>
                     </resource>
                     <resource id="mfa_PIN" path="{phoneId}/verify">
-                        <param name="phoneid" style="template" type="xsd:string" required="true">
+                        <param name="phoneid" style="template" type="string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when a phone is added to an account.</para></wadl:doc>          
                         </param>   
                     <method href="#verifyDevice"/>                        
@@ -156,10 +156,10 @@
 
             <!-- RESET_APIKEY_CREDENTIALS resource(s) -->
             <resource id="reset_apikey_credentials" path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
-                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                <param name="X-Auth-Token" style="header" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                 </param>
-                <param name="userId" style="template" type="xsd:string" required="true">
+                <param name="userId" style="template" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                 </param>
                 <method href="#resetUserAPIKeyCredentials"/>
@@ -167,13 +167,13 @@
 
             <!-- ENDPOINT_TEMPLATES resource(s) -->
             <resource id="endpoint_templates" path="OS-KSCATALOG/endpointTemplates">
-                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                <param name="X-Auth-Token" style="header" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                 </param>
                 <method href="#getEndpointTemplates"/>
 
                 <resource id="endpoint_template" path="{endpointTemplateId}">
-                    <param name="endpointTemplateId" type="xsd:string" style="template" required="true">
+                    <param name="endpointTemplateId" type="string" style="template" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>An endpoint template Id</para></wadl:doc>
                     </param>
 
@@ -182,7 +182,7 @@
                         <method href="#updateEndpointTemplatePolicies"/>
 
                         <resource id="endpoint_template_policy" path="{policyId}">
-                            <param name="policyId" type="xsd:string" style="template" required="true">
+                            <param name="policyId" type="string" style="template" required="true">
                                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A policy Id</para></wadl:doc>
                             </param>
                             <method href="#addPolicyToEndpointTemplate"/>
@@ -197,11 +197,8 @@
 
                 <!-- IMPERSONATION resource(s) -->
                 <resource id="impersonation-tokens" path="impersonation-tokens">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token for the impersonator</para></wadl:doc>
-                    </param>
-                    <param name="user" style="plain" type="xsd:string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Specify the username </para></wadl:doc>
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A valid authentication token for the impersonator</para></wadl:doc>
                     </param>
                     <method href="#impersonateUser"/>
                 </resource>
@@ -213,7 +210,7 @@
 
                 <!-- DEFAUTLT REGIONS resource(s) -->
                 <resource id="default-region-services" path="default-region/services">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                     </param>
                     <method href="#getDefaultRegionServices"/>
@@ -222,14 +219,14 @@
 
                 <!-- DOMAINS resource(s) -->
                 <resource id="domains" path="domains">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                     </param>
                     <method href="#getDomains"/>
                     <method href="#createDomain"/>
 
                     <resource id="domain" path="{domainId}">
-                        <param name="domainId" type="xsd:string" style="template" required="true">
+                        <param name="domainId" type="string" style="template" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A domain ID.</para></wadl:doc>
                         </param>
                         <method href="#getDomain"/>
@@ -240,7 +237,7 @@
                             <method href="#getDomainUsers"/>
 
                             <resource id="domain_user" path="{userId}">
-                                <param name="userId" style="template" type="xsd:string" required="true">
+                                <param name="userId" style="template" type="string" required="true">
                                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                                 </param>
                                 <method href="#addUserToDomain"/>
@@ -266,14 +263,14 @@
 
                 <!-- POLICIES resource(s) -->
                 <resource id="policies" path="policies">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token. </para></wadl:doc>
                     </param>
                     <method href="#getPolicies"/>
                     <method href="#createPolicy"/>
 
                     <resource id="policy" path="{policyId}">
-                        <param name="policyId" type="xsd:string" style="template" required="true">
+                        <param name="policyId" type="string" style="template" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A policy ID</para></wadl:doc>
                         </param>
                         <method href="#getPolicy"/>
@@ -288,14 +285,14 @@
 
                 <!-- REGIONS resource(s) -->
                 <resource id="regions" path="regions">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                     </param>
                     <method href="#getRegions"/>
                     <method href="#createRegion"/>
 
                     <resource id="region" path="{regionId}">
-                        <param name="regionId" type="xsd:string" style="template" required="true" default="false">
+                        <param name="regionId" type="string" style="template" required="true" default="false">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A region ID</para></wadl:doc>
                         </param>
                         <method href="#getRegion"/>
@@ -309,13 +306,13 @@
                 <resource id="secretqa" path="secretqa">
 
                     <resource id="questions" path="questions">
-                        <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                        <param name="X-Auth-Token" style="header" type="string" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                         </param>
                         <method href="#getQuestions"/>
                         <method href="#createQuestion"/>
                         <resource id="question" path="{questionId}">
-                            <param name="questionId" type="xsd:string" style="template" required="true">
+                            <param name="questionId" type="string" style="template" required="true">
                                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A question ID</para></wadl:doc>
                             </param>
                             <method href="#getQuestion"/>
@@ -327,18 +324,18 @@
 
                 <!-- SERVICE_APIS resource(s) -->
                 <resource id="service_apis" path="service-apis">
-                    <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <param name="X-Auth-Token" style="header" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                     </param>
                     <method href="#getServiceApis"/>
 
                     <resource id="service_api_capabilities" path="{type}/{version}/capabilities">
-                        <param name="type" type="xsd:string" style="template" required="true">
+                        <param name="type" type="string" style="template" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                                 <para>The service type, compute, object-store, and rax-dns for example.</para>
                             </wadl:doc>
                         </param>
-                        <param name="version" type="xsd:string" style="template" required="true">
+                        <param name="version" type="string" style="template" required="true">
                             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                                 <para>
                                     The service version, v1 or v2.0 for example.
@@ -377,12 +374,12 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/SecretQAForSave.xml"/>
                 </wadl:doc>
-                <param name="id" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>The ID of the secret question to add to the account.</para>
                     </wadl:doc>
                 </param>
-                <param name="answer" style="plain" type="xsd:string" required="true">
+                <param name="answer" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The answer that the user can provide to verify an account.</para>
                     </wadl:doc>
                 </param>
@@ -422,11 +419,11 @@
                         <para>An object that contains the ID and text for a secret question.</para>
                     </wadl:doc>
                 </param>
-                <param name="id" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when the question was created.</para>
                     </wadl:doc>
                 </param>
-                <param name="question" style="plain" type="xsd:string" required="true">
+                <param name="question" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The text for the question.</para>
                     </wadl:doc>
                 </param>
@@ -463,25 +460,24 @@
 
     <method id="impersonateUser" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user">
-           <para class="shortdesc">Impersonates a specific user.</para>
-            <para xmlns="http://docbook.org/ns/docbook">To impersonate a user, you must first authenticate as yourself. The
-                response to this authentication request includes a current Racker token; you must already hold a
-                service token. After you have authenticated and have the necessary privileges, issue this
-                impersonation call with your Racker token, identifying the <code>username</code> you wish to impersonate.</para>
+           <para role="shortdesc">Impersonates a specific user.</para>
+            <para xmlns="http://docbook.org/ns/docbook">Authenticated Rackers that have the Identity admin role can use this 
+                operation to impersonate a user. When you submit the request, include the <code>username</code> for the account 
+                user that you want to impersonate.</para>
             
-            <para xmlns="http://docbook.org/ns/docbook">You can specify the number of seconds you want the impersonation to
+            <para xmlns="http://docbook.org/ns/docbook">You can also specify the number of seconds you want the impersonation to
                 remain valid. For example, <code>&lt;expire-in-seconds&gt;10800&lt;/expire-in-seconds&gt;</code> asks for
                 10,800 seconds (180 minutes, or 3 hours) of impersonation. Whether or not you requested a specific expiration
-                time, your impersonation period will be limited. The response to your impersonation request will include the
-                time at which the impersonation becomes invalid.</para>
+                time, your impersonation period will be limited. The response to your impersonation request returns the timestamp 
+                for the token expiration.</para>
             
             <itemizedlist>
                 <listitem>
-                    <para> In an impersonation <emphasis>request</emphasis>, express your request for time as a number of
-                        seconds </para>
+                    <para>In an impersonation <emphasis>request</emphasis>, express your request for time as a number of
+                        seconds.</para>
                 </listitem>
                 <listitem>
-                    <para> In an impersonation <emphasis>response</emphasis>, the expiration time granted to you is expressed
+                    <para>In an impersonation <emphasis>response</emphasis>, the expiration time granted to you is expressed
                         as a timestamp. </para>
                 </listitem>
             </itemizedlist>
@@ -495,6 +491,15 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user: XML request">
                     <xsdxt:code href="../common/samples/ImpersonationRequest.xml"/>
                </wadl:doc>
+                <param name="user" style="plain" type="string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN"><para>Specify the username </para></wadl:doc>
+                </param>
+                <param name="RAX-AUTH:federatedIdp" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN"><para>Specifies the URI of the Identity provider used to authenticfederated user.</para></wadl:doc>
+                </param>
+                <param name="expire-in-seconds" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN"><para>Specifies the number of seconds that the impersonation remains valid.</para></wadl:doc>
+                </param>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate user: JSON request">
@@ -508,7 +513,7 @@
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Impersonate a Federated user: JSON request">
-                    <xsdxt:code href="../common/samples/ImpersonationRequest.json"/>
+                    <xsdxt:code href="../common/samples/ImpersonationRequest_federated.json"/>
                 </wadl:doc>
             </representation>
         </request>
@@ -632,7 +637,7 @@
             <para role="shortdesc"> Get users in a domain. </para>
         </wadl:doc>
         <request>
-            <param name="enabled" style="query" type="xsd:string">
+            <param name="enabled" style="query" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">     
                     <para>A boolean value that filters the list of tenants based on account status.
                         Specify <code>enabled=true</code> to list active (enabled) tenants; specify
@@ -676,7 +681,7 @@
                 games and manage Star Wars pictures.</para>
         </wadl:doc>
         <request>
-            <param name="enabled" style="template" type="xsd:string">
+            <param name="enabled" style="template" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"> 
                     <para>A boolean value that filters the list of tenants based on account status.
                         Specify <code>enabled=true</code> to list active (enabled) tenants; specify
@@ -885,7 +890,7 @@
         </request>
         <response status="201" >
             <doc title="Created">The request has been fulfilled. The policy has been created.</doc>
-            <param name="Location" style="header" type="xsd:string" required="true">
+            <param name="Location" style="header" type="string" required="true">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Location of the URI of the newly-created policy</para></wadl:doc>
             </param>
         </response> &commonFaults; &postPutFaults; </method>
@@ -1265,7 +1270,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/QuestionForCreate.xml"/>
                 </wadl:doc>
-                    <param name="question" style="plain" type="xsd:string" required="true">
+                    <param name="question" style="plain" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook">
                             <para>Specifies the text for a secret question.</para>
                         </wadl:doc>
@@ -1307,16 +1312,16 @@
             <para role="shortdesc">Get users in a domain. </para>
         </wadl:doc>
         <request>
-            <param name="serviceId" style="template" type="xsd:string">
+            <param name="serviceId" style="template" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by service id.</para></wadl:doc>
             </param>
-            <param name="type" style="template" type="xsd:string">
+            <param name="type" style="template" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by service type: compute, object-store, or rax:dns for example.</para></wadl:doc>
             </param>
-            <param name="version" style="template" type="xsd:string">
+            <param name="version" style="template" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by version.</para></wadl:doc>
             </param>
-            <param name="region" style="template" type="xsd:string">
+            <param name="region" style="template" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Allows us to filter by region. </para></wadl:doc>
             </param>
         </request>
@@ -1482,17 +1487,17 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Racker SSO authentication request: XML">
                     <xsdxt:code href="../common/samples/RackerSSOAuthenticationRequest.xml"/>
                 </wadl:doc>
-                <param name="username" style="template" type="xsd:string" required="true">
+                <param name="username" style="template" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The Rackspace account user name.</para>
                     </wadl:doc>
                 </param>
-                <param name="password" style="template" type="xsd:string" required="true">
+                <param name="password" style="template" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The SSO password for the specified user account</para>
                     </wadl:doc>
                 </param>
-                <param name="RAX:AUTH:domain" style="plain" type="xsd:string" required="true">
+                <param name="RAX:AUTH:domain" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Specify the Rackspace domain name.<code>name="Rackspace"</code>.</para>
                     </wadl:doc>
@@ -1557,7 +1562,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML request">
                 <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.xml"/>
                 </wadl:doc>
-                <param name="number" style="plain" type="xsd:string" required="true">
+                <param name="number" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The phone number for the mobile phone you want to add in <link xlink:href="https://www.itu.int/rec/T-REC-E.123-200102-I/en">E.123 format</link>. +1 235-435-623 or +44 42 1123 4567 for example.</para>
                     </wadl:doc>
@@ -1576,14 +1581,14 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML response">
                     <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.xml"/>
                </wadl:doc>
-                <param name="id" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned to the phone added to the account.</para></wadl:doc>          
                 </param>
                 <param name="verified" style="plain" type="boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
                         verified by using the Send verification code and Verify device operations.</para></wadl:doc>          
                 </param>
-                <param name="number" style="plain" type="xsd:string" required="true">
+                <param name="number" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The phone number added to the user account for use with multi-factor authentication services.<link xlink:href="https://www.itu.int/rec/T-REC-E.123-200102-I/en">E.123 format</link>. +1 235-435-623 or +44 42 1123 4567 for example.</para>
                     </wadl:doc>
@@ -1670,7 +1675,7 @@
                 <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
                 operation to get it.</para>
             <para security="external">When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
-                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List phones for user</link> 
+                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">List phones for user</link> 
                 operation to get it.</para>
 
             <para>This operation can only be completed from the user account that the phone is associated with. The operation fails if
@@ -1683,7 +1688,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify device: XML request">
                     <xsdxt:code href="../common/samples/MultiFacVerifyDeviceReq.xml"/>
                 </wadl:doc>
-                <param name="code" style="plain" type="xsd:string" required="true">
+                <param name="code" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>The unique PIN code from the SMS text message sent by the Rackspace Cloud verification service.</para>
                     </wadl:doc>
@@ -1706,8 +1711,8 @@
     <method id="getMobilePhonesForUser" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List phones for user">
             <para role="shortdesc">Lists phones associated with the specified user account.</para>
-            <para>Use this operation to get the phone number, ID, and the multi-factor 
-            verification status for all phones associated with the specified user.</para>
+            <para>A user or Identity administrator impersonating a user can use this operation to list the phone number, ID, and the multi-factor 
+            verification status for all phones associated with the user account.</para>
             <para>If you don't know the user ID, use the List operation to find it.</para>
         </wadl:doc>
         <response status="204" >
@@ -1722,13 +1727,13 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
                 </wadl:doc>
-                <param name="id" style="plain" type="xsd:string" required="true">
+                <param name="id" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>A unique, system-generated string that identifies the mobile phone 
                             in the &CIS;.</para>
                     </wadl:doc>          
                 </param>
-                <param name="number" style="plain" type="xsd:string" required="true">
+                <param name="number" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Phone number of the device associated with the user account. Use the Add mobile phone operation 
                             to add a phone to the account. Use the Remove multi-factor operation to remove phones from the account.</para>

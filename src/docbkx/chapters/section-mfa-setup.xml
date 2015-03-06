@@ -25,9 +25,9 @@
         Access program.</para>
       </listitem>
       <listitem>
-      <para>Multi-factor authentication is only available for username and password credentials. 
-      The system does not allow the user to enable multi-factor authentication for username and 
-      API key credentials.</para>
+      <para>Multi-factor authentication applies only to username and password credentials. You
+          cannot use it to secure username and API credentials.  The system does not allow the user
+          to enable multi-factor authentication for username and API key credentials.</para>
      </listitem>
       <listitem><para>A user account can have only one phone number for use with
         multi-factor authentication. </para></listitem>
