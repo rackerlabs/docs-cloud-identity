@@ -222,9 +222,6 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/tenant.xml"/>
                 </wadl:doc>
-                    <param name="tenantId" style="plain" type="capi:UUID" required="false">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify a unique ID for the tenant account.</para></wadl:doc>
-                    </param>
                     <param name="name" style="plain" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify a unique name for the tenant account.</para></wadl:doc>
                     </param>
