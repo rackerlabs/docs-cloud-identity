@@ -17,29 +17,27 @@
   <note><title>Notes</title>
     <itemizedlist>
       <listitem>
-        <para>Multi-factor authentication is supported only by Rackspace
-        Cloud Identity Service version 2.0 or later. After an account
-        is enabled for multi-factor authentication, the user cannot
-        authenticate using &CIS; v1.0 or v1.1. This feature is
-        currently only available to customers enrolled in the Early
-        Access program.</para>
+        <para>Multi-factor authentication applies only to username and password credentials. You
+          cannot use it to secure username and API key credentials.</para>
       </listitem>
       <listitem>
-      <para>Multi-factor authentication applies only to username and password credentials. You
-          cannot use it to secure username and API credentials.  The system does not allow the user
-          to enable multi-factor authentication for username and API key credentials.</para>
-     </listitem>
-      <listitem><para>A user account can have only one phone number for use with
-        multi-factor authentication. </para></listitem>
-      <listitem>
-        <para>The same phone number can be used for multiple
-          accounts, but the phone must be verified separately
-          for each account.</para>
+        <para>Users with a multi-factor authenticated account can only use OpenStack or Rackspace
+          CLI tools that support username and API key authentcation or token authentication, like
+          the Nova client. </para>
+        <para>For token authentication, submit an authentication request. Then, export the returned
+          token to the  CLI environment variable, <envar>OS_TOKEN</envar> or
+          <code>OS_AUTH_TOKEN</code> for example. After you set the token, you can submit API
+          requests by using the CLI. </para>
       </listitem>
-      <listitem><para>When a user account is updated to require multi-factor authentication, all existing tokens for
-          the account obtained by using username and password credentials are revoked immediately.
-          To regain access, the user must complete the multi-factor authentication process to
-          generate a new token.</para></listitem>
+      <listitem>
+        <para>When multi-factor is enabled on an account, any existing tokens for that user are immediately revoked.
+        </para>
+      </listitem>
+      <listitem>
+        <para>Multi-factor authentication requires Rackspace Cloud Identity Service, version 2.0 or later. User accounts 
+          that have been configured for multi-factor authentication cannot authenticate using Identity API version 1.1 or 
+          earlier.</para>
+      </listitem>
     </itemizedlist>
   </note>
   <orderedlist>

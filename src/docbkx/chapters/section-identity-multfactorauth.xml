@@ -21,51 +21,24 @@
       with account level controls that can be configured to require all users within an organization to 
       use multifactor authentication. -->
     </para>
-    <para>With multi-factor authentication enabled, authentication is a two-step process:
-      <orderedlist>
+    <para>With multi-factor authentication enabled, authentication is a two-step process: <orderedlist>
       <listitem>
-        <para>A user submits an initial <command>POST tokens</command> request to the Identity Service endpoint,
-         with username and password credentials.</para>
+        <para>A user submits an initial <command>POST tokens</command> request to the Identity
+          Service endpoint, with username and password credentials.</para>
         <para>The response body returned by the Identity service includes an X-SessionId header and
           a request for additional credentials. The Identity service also sends an SMS text message
           with a passcode to the phone number associated with the account.</para>
       </listitem>
       <listitem>
-        <para>To complete the authentication process, the user submits
-          a second <command>POST tokens</command> request, including
-          the session ID header and passcode as credentials.</para>
+        <para>To complete the authentication process, the user submits a second <command>POST
+            tokens</command> request, including the session ID header and passcode as
+          credentials.</para>
         <para>If the credentials are valid, the Identity service returns an authentication response
           that includes the authentication token and a service catalog showing the available
-          services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for each service.</para>
+          services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for
+          each service.</para>
       </listitem>
-      </orderedlist>
-    </para>
-        <important>
-          <itemizedlist>
-           <listitem>
-        <para>Multi-factor authentication applies only to username and password credentials. You
-          cannot use it to secure username and API key credentials.</para>
-      </listitem>
-      <listitem>
-        <para>Users with a multi-factor authenticated account can only use OpenStack or Rackspace
-          CLI tools that support username and API key authentcation or token authentication, like
-          the Nova client. </para>
-        <para>For token authentication, submit an authentication request. Then, export the returned
-          token to the  CLI environment variable, <envar>OS_TOKEN</envar> or
-            <code>OS_AUTH_TOKEN</code> for example. After you set the token, you can submit API
-          requests by using the CLI. </para>
-      </listitem>
-            <listitem>
-              <para>When multi-factor is enabled on an account, any existing tokens for that user are immediately revoked.
-              </para>
-            </listitem>
-            <listitem>
-              <para>Multi-factor authentication requires Rackspace Cloud Identity Service, version 2.0 or later. User accounts 
-              that have been configured for multi-factor authentication cannot authenticate using Identity API version 1.1 or 
-              earlier.</para>
-            </listitem>
-          </itemizedlist>
-        </important>
+    </orderedlist></para>
 
     <para>Figure <xref linkend="mfa_auth"
       xrefstyle="select: labelnumber"/> shows the multi-factor
