@@ -59,19 +59,19 @@
     <!-- Methods -->
     
     <method id="getRateLimit" name="GET" >
-        <doc xml:lang="EN" title="Get User Rate Limits">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Get rate limits for a user.</p>
-        </doc>
-        <doc>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User Rate Limits">
+            <para role="shortdesc">Get rate limits for a user.</para>
+        </wadl:doc>
+        <wadl:doc>
+            <para xmlns="http://docbook.org/ns/docbook">
                 The response body describes the user's current rate limits.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <response status="200 203">
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/ratelimit-list1user-response.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
@@ -79,20 +79,20 @@
     </method>
     
     <method id="updateRateLimit" name="POST">
-        <doc xml:lang="EN" title="Update User Rate Limits">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update rate limits for a user.</p>
-        </doc>
-        <doc>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update User Rate Limits">
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Update rate limits for a user.</para>
+        </wadl:doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>
                 The values specified become the current rate limits. 
                 For example, if <code>interval</code> is specified as 40, 40 seconds becomes the new interval for the specified user.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/ratelimit-update1user-request.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </request>
         <response status="200">
@@ -141,24 +141,24 @@
     </method>
     
     <method id="deleteWhitelistEntry" name="DELETE">
-        <doc xml:lang="EN" title="Delete Entry from Rate Limit Whitelist">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Remove specified entry from the whitelist.</p>
-        </doc>
-        <doc>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete Entry from Rate Limit Whitelist">
+            <para xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Remove specified entry from the whitelist.</para>
+        </wadl:doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>
                 If an entry in the whitelist matches any of the comma-delimited values specified for <code>keys</code>, 
                 that entry will be removed from the whitelist.
                 For example, <code>/rtadm?keys=10.5.55.108,Alex</code> requests removal from the whitelist 
                 of all entries associated with IP address <code>10.5.55.108</code> or userID <code>Alex</code>.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
             <param name="keys" style="query" required="true" type="xsd:string">
-                <doc xml:lang="EN">
-                    <p xmlns="http://www.w3.org/1999/xhtml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>
                         Identify which entry to remove.
-                    </p>
-                </doc>
+                    </para>
+                </wadl:doc>
             </param>
         </request>
         <response status="200">
@@ -167,20 +167,20 @@
     </method>
     
     <method id="replaceWhitelist" name="PUT">
-        <doc xml:lang="EN" title="Replace Rate Limit Whitelist">
-            <p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">Replace the entire whitelist.</p>
-        </doc>
-        <doc>
-            <p xmlns="http://www.w3.org/1999/xhtml">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Replace Rate Limit Whitelist">
+            <para role="shortdesc">Replace the entire whitelist.</para>
+        </wadl:doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>
                 The values specified become the entire whitelist. 
                 For example, if IP 10.5.55.108 is specified, it becomes the only IP included in the whitelist.
-            </p>
-        </doc>
+            </para>
+        </wadl:doc>
         <request>
             <representation mediaType="application/xml">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/ratelimit-whitelist-replace-all-request.xml"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </request>
         <response status="200">
