@@ -1,6 +1,10 @@
 {
     "OS-KSCATALOG:endpointTemplate":{
+        "id": 1,
         "region":"North",
+        "enabled":true
+        "global":false,
+        "default":false,
         "name":"Compute",
         "type":"compute",
         "publicURL":"https://compute.north.public.com/v1",

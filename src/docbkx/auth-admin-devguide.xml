@@ -53,6 +53,40 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-03-31</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated endpoint template operations: Documented Identity administrator capability to 
+								<link xlink:href="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_Endpoint_Template_Calls.html">create a new endpoint template</link>. 
+								Added the 
+								<link xlink:href="PUT_updateEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates__endpointTemplateId__Endpoint_Template_Calls.html">Update enndpoint template operation</link> to 
+							    that allows Identity Service administrators to enable automated endpoint management when an endpoint is ready for production.
+								</para>
+						</listitem>
+						<listitem>
+							<para>Corrected URI for <link xlink:href="GET_listUserGlobalRoles__v2.0_users__userId__roles_Role_Calls.html">List global roles for user</link> 
+								operation that allows Identity administrators to create new service endpoints for Rackspace Cloud services.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-03-17</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Update <link xlink:href="DELETE_revokeToken_v2.0_tokens__token_Token_Calls.html">Revoke token</link> operation to indicate that the <code>tokenID</code> is optional and 
+								explain how users can revoke their own token and how administrators can revoke tokens for other users.</para>
+						</listitem>
+						<listitem>
+							<para>Updated broken links for <link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Get user by Id</link>.</para>
+						</listitem>
+						
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-03-04</date>
 				<revdescription>
 					<itemizedlist>
@@ -69,7 +103,7 @@
 				<date>2015-02-06</date>
 				<revdescription>
 					<para>Corrected the 
-						<link xlink:href="POST_updateUser__v2.0_users__userId__User_Calls.html">Update user information 
+						<link xlink:href="POST_admin-updateUser_v2.0_users__userId__User_Calls.html">Update user information 
 							and password</link> operation to indicate required and optional parameters.</para>
 				</revdescription>
 			</revision>
@@ -1246,8 +1280,8 @@
 			<raxm:priority>15</raxm:priority>
 		</raxm:metadata>
 	</info>
-	<xi:include href="chapters/identity-overview.xml"/>
 	<xi:include href="chapters/identity-quickstart.xml"/>
+	<xi:include href="chapters/identity-overview.xml"/>
 	<xi:include href="chapters/identity-admin-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-admin.xml"/>

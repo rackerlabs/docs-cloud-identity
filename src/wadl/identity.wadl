@@ -780,7 +780,7 @@
             </representation>
         </response> &commonFaults; &getFaults; </method>
     <method name="GET" id="getUserById-client">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User by ID">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by Id">
             <para role="shortdesc">Get detailed account information for a specific user, by userid.</para>
             <para>
                 This request returns the following information for each account associated with the specified user ID: 

@@ -14,11 +14,12 @@
 	<title>Service types in the Service catalog</title>
 		<para>Every service listed in the service catalog is associated with a service type. You can use
 		the service type to recognize services that perform similar functions, whatever those
-		services are named. The following table shows all the available service types and provides
-		information about any related OpenStack services. To learn more about any of the Rackspace
-		services listed, see the <link xlink:href="http://docs.rackspace.com/api/">Rackspace
-			developer documentation.</link></para>
-		<table rules="all" width="80%">
+		services are named.  </para>
+	<para>This table provides information about the service types supported by the Rackspace Cloud.
+		To learn more about any of the Rackspace services listed, see the <link
+			xlink:href="http://docs.rackspace.com/api/">Rackspace developer
+		documentation.</link></para>
+		<table xml:id="ServiceTypes_tbl" rules="all" width="80%">
 		<caption>Service Types</caption>
 		<col width="40%"/>
 		<col width="60%"/>

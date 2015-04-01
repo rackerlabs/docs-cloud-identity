@@ -62,7 +62,7 @@ This operation does not require a request body.</para>'>
             Submit a request to your account administrator to determine how to gain access.</doc>
         </response>
         <response status="405">
-            <doc title="Invalid Method">The method specified in the request is not valid for the resource identitified in the request URI.</doc>
+            <doc title="Invalid Method">The method specified in the request is not valid for the resource identified in the request URI.</doc>
         </response>
         <response status="413">
             <doc title="Over Limit">The number of items returned is above the allowed limit.</doc>
@@ -90,7 +90,7 @@ This operation does not require a request body.</para>'>
         </response>
            '>
            
-<!-- Faults on Multifactor Authentication Verfy -->    
+<!-- Faults on Multifactor Authentication Verify -->    
 
 <!ENTITY MultifactorVerifyFaults
            '
@@ -98,7 +98,7 @@ This operation does not require a request body.</para>'>
         <doc title="Bad Request">This error is returned in these cases: The request could not be understood by the server due to malformed syntax. The phone has already been verified.</doc>
         </response>
         <response status="401">
-           <doc title="Unauthorized">Yau are not authorized to complete this operation. This error can occur if 
+           <doc title="Unauthorized">You are not authorized to complete this operation. This error can occur if 
            the request is submitted with an invalid authentication token.</doc>
         </response>
         <response status="403">
@@ -106,7 +106,7 @@ This operation does not require a request body.</para>'>
             Submit a request to your account administrator to determine how to gain access.</doc>
         </response>
         <response status="405">
-            <doc title="Invalid Method">The method specified in the request is not valid for the resource identitified in the request URI.</doc>
+            <doc title="Invalid Method">The method specified in the request is not valid for the resource identified in the request URI.</doc>
         </response>
         <response status="503">
              <doc title="Service Fault">Service is not available.</doc>

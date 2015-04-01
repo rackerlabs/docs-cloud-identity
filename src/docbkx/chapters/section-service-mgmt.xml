@@ -11,20 +11,17 @@
 	<?dbhtml stop-chunking?>
 			<title>Suggested work flow for processing a Service Catalog response</title>
 			<para>When your client issues a successful authentication request, the Cloud Identity Service
-			returns a service catalog that shows the services available to that client, with one
-			endpoint listed for each available service. (See <link xlink:href="Sample_Request_Response-d1e64.html">Annotated authentication request and response</link> 
-				for a service catalog example.)</para>
+		returns a service catalog that lists the available services and endpoints to access them.
+		(See <link xlink:href="Sample_Request_Response-d1e64.html">Annotated authentication request
+			and response</link> for a service catalog example.)</para>
 			<para>As the client developer, you must decide how your client can use the contents of its
-			service catalog. The first step is to identify a service that you want the client to
-			access. Here is one possible work flow for processing the service catalog response to
-			identify available services and their endpoints: </para>
+		service catalog. The first step is to identify a service that you want the client to access.
+		Here is one possible work flow for processing the service catalog response to identify
+		available services and their endpoints: </para>
 			<orderedlist>
 			<listitem>
-					<para> 
-						If the service catalog lists only one endpoint, use it.
-						This endpoint connects your client to the only
-						service available to that client.
-					</para>
+					<para>If the service catalog lists only one endpoint, use it.</para>
+				<para>This endpoint connects your client to the only service available.</para>
 				</listitem>
 				<listitem>
 					<para> If the service catalog lists multiple endpoints, establish a process for the client to

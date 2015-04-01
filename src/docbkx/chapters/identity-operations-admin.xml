@@ -252,10 +252,6 @@
 			<!-- add a global role -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#role-service-OS-KSADM-v2.0">
 				<wadl:method href="#addRole"/>
-			</wadl:resource>
-			
-			<!-- list roles -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#role-service-OS-KSADM-v2.0">
 				<wadl:method href="#listRoles"/>
 			</wadl:resource>
 			
@@ -279,19 +275,14 @@
 				<wadl:method href="#getUsersWithRole"/>
 			</wadl:resource>
 			
-			<!-- list global roles for a specified user -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRolesOSKSADM">
-					<wadl:method href="#listUserGlobalRoles"/>
-			   </wadl:resource>
-			
 			<!-- Manage user roles -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRole">
-				<wadl:method href="#getUserRole"/>
+				<wadl:method href="#listUserGlobalRoles"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="#addUserRole"/>
 				<wadl:method href="#deleteUserRole"/>
-			</wadl:resource>	
+			</wadl:resource>
 		</wadl:resources>
 	</section>
 	
@@ -374,7 +365,9 @@
 				<wadl:method href="#validateToken"/>
 				<!-- check token -->
 				<wadl:method href="#checkToken"/>
-				<!-- revoke token -->
+			</wadl:resource>
+			<!-- revoke token -->
+			<wadl:resource href="../../wadl/identity-admin.wadl#token">
 				<wadl:method href="#revokeToken"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#endpointsForToken">
@@ -444,11 +437,14 @@
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="#listEndpointTemplates"/>
 			</wadl:resource>
+			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplateId">
+				<wadl:method href="#getEndpointTemplate"/>
+			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplates">
 				<wadl:method href="#addEndpointTemplate"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplateId">
-				<wadl:method href="#getEndpointTemplate"/>
+				<wadl:method href="#updateEndpointTemplate"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/OS-KSCATALOG-admin.wadl#endpointTemplateId">
 				<wadl:method href="#deleteEndpointTemplate"/>
@@ -933,7 +929,7 @@
 			<!-- list available service APIs -->
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#service_apis" />
 			<!-- get/update/remove capabilities of service APIs -->
-			<wadl:resource href="../../wadl/RAX-AUTH.wadl#service_api_capabilities" />
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#service_api_capabilities"/>
 		</wadl:resources>
 	</section>
 	

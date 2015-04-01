@@ -83,14 +83,14 @@
 		<itemizedlist condition="client">
 			<listitem>
 				<para>
-					<link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add account user</link>
+					<link xlink:href="POST_addUser_v2.0_users_User_Calls.html">Add account user</link>
 				</para>
 			</listitem>
 			<listitem>
-				<para><link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Assign role to account users</link></para>
+				<para><link xlink:href="PUT_addUserRole__v2.0_users__userId__OS-KSADM__roleid__Role_Calls.html">Assign role to account users</link></para>
 			</listitem>
 			<listitem>
-				<para><link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls">Delete role from account user</link></para>
+				<para><link xlink:href="DELETE_deleteUserRole__v2.0_users__userId__OS-KSADM__roleid__Role_Calls.html">Delete role from account user</link></para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist condition="admin">

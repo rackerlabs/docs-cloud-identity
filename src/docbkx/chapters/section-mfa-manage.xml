@@ -112,10 +112,9 @@
                 xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html"
                 >Check multi-factor status on user
               account</link></para>
-            <para condition="client"><link
-              xlink:href="GET_getUserById__v2.0_users__userId__User_Calls.html"
-                >Check multi-factor status on user
-              account</link></para>
+            <para condition="client">
+              <link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Check multi-factor status on user
+              account</link>.</para>
           </td>
           <td valign="top">
             <para>Use the following cURL request to review the

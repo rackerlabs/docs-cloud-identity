@@ -41,49 +41,34 @@
             </param>
             <resource id="user_osksadm" path="users">
                 <method href="#addUser"/>
-                
-                <resource id="usr_list">
-                    <param name="name" style="query" type="xsd:string" required="false">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                                <para>Specify the user name to look up.</para>
-                            </wadl:doc>
-                        </param>
-                    <param name="email" style="query" type="xsd:string" required="false">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                                <para>User email address.</para>
-                            </wadl:doc>
-                        </param>
                 <method href="#listUsers"/>
-                </resource>  
-                
-                    <resource id="userid" path="{userId}">
-                        <param name="userId" style="template" type="xsd:string" required="true">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A user ID assigned by system when user is added.</wadl:doc>
+               <resource id="userid" path="{userId}">
+                       <param name="userId" style="template" type="xsd:string" required="true">
+                           <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The ID of the user for
+                               which you want to perform the
+                               request.</wadl:doc>
                         </param>
                         <method href="#getUserById"/>
                         <method href="#updateUser"/>
                         <method href="#deleteUser"/>
-                    <resource id="userRole" path ="roles">
+                   <resource id="userRole" path ="roles">
                         <method href="#getUserRole"/>
-                        
-                        <resource id="userRolesOSKSADM" path="/OS-KSADM">
                         <method href="#listUserGlobalRoles"/>
-                            <resource id="userRoleById" path="{roleid}">
-                                <param name="roleId" type="xsd:string" style="template" required="true">
-                                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A role Id.</para></wadl:doc>
-                                </param>
-                                <method href="#addUserRole"/>
-                                 <method href="#deleteUserRole"/>
-                             </resource>
-                            </resource>
-                    </resource>
+                        <resource id="userRoleById" path="{roleid}">
+                           <param name="roleId" type="xsd:string" style="template" required="true">
+                               <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A role Id.</para></wadl:doc>
+                           </param>
+                           <method href="#addUserRole"/>
+                           <method href="#deleteUserRole"/>
+                       </resource>
+                   </resource>
+                
   <!--                      <resource id="enabled" path="enabled">
                             <method href="#setUserEnabled"/>
                         
                         </resource> -->
                         <resource id="userCredentials" path="OS-KSADM/credentials">
                             <method href="#addUserCredential"/>
-                            <method href="#listCredentials"/>
                             <resource id="userCredentialsByType">
                                 <param name="credentialType" style="template" type="OS-KSADM:extensibleCredentialsType"
                                     required="true">
@@ -143,6 +128,7 @@
                            <method href="#getUsersWithRole"/>
                      </resource>
                   </resource>
+           
             </resource>
             <resource id="service" path="OS-KSADM/services">
                         <method href="#addService"/>
@@ -368,14 +354,16 @@
                 </param>
                 <param name="OS-KSADM:password" style="plain" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>The name to assign to the user. Specify a value that 
-                            meets the following criteria:
-                            <itemizedlist>
-                                <listitem><para>Start with an alpha character.</para></listitem>
-                                <listitem><para>Minimum length: 8 characters</para></listitem>
-                                <listitem><para>Must contain at least one uppercase character, one lowercase character, and one numeric character.</para></listitem>
-                                <listitem><para>Can contain any of the following special characters:  &#x002E; &#x002D; &#x0040;  &#x005F; </para></listitem>
-                            </itemizedlist></para>
+                        <para>Specify an initial password for the user account. If this value is not specified, the 
+                            Identity service automatically generates a password.
+                        </para>
+                        <para>Ensure that the value you specify meets the following criteria:
+                        <itemizedlist><listitem><para>Length must be at least 8 characters; no maximum.</para></listitem>
+                                <listitem><para>Can include uppercase, lower case, and numeric characters.</para></listitem>
+                                <listitem><para>Can start with or include any of the following special characters: ~ ! @ # % ^ &amp; * _ -  | \ ( ) { } [ ] : ; " ' &lt; > , . ? / </para></listitem>
+                                <listitem><para>Password cannot begin with a space, but it can contain a space.</para></listitem>
+                       </itemizedlist>
+                        </para>     
                     </wadl:doc>
                 </param> 
                 
@@ -550,11 +538,11 @@
  
    
     <method name="GET" id="getUserById">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User by ID">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by Id">
             <para role="shortdesc">Gets detailed account information for a user with the specified ID.</para>
             <para>
                 This operation returns the following information for each account associated with the specified user ID:
-                email address, username, user ID, status, default region, and domain id.</para>
+                email address, user name, user ID, status, default region, and domain id.</para>
         </wadl:doc>
         <response status="200 203">
             <doc title="OK">Request completed successful.</doc>
@@ -577,7 +565,7 @@
             <para role="shortdesc">Gets detailed information about a specific user, by
                 user email.</para>
             <para>This request returns the following information for
-                all accounts with the specified user email address: email address, username,
+                all accounts with the specified user email address: email address, user name,
                 user ID, status, domain, creation date, update date, default region, and domain id.</para>
             <para>Default region, indicated by <code>defaultRegion</code>, associates this
                 user with a specific regional data center: typical values include DFW, ORD and LON. A blank value is also
@@ -664,7 +652,7 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user information and password">
             <para role="shortdesc">Updates user information, settings, and password.</para>
             <para>The Update user operation acts upon the user specified by <parameter>userId</parameter>. Before you update
-                a user account, use the <link xlink:href="GET_getUserById_users_User_Calls.html">Get user by id</link> operation
+                a user account, use the <link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Get user by Id</link> operation
                 to verify that the user name, email account, and status associated with
                 <parameter>userId</parameter> match the account you want to update.</para>
             <para>Only include those user data elements that you wish to modify in the request body. 
@@ -703,8 +691,8 @@
                 </param>
                 <param name="name" style="plain"
                     type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
-                        name. The first character of the username must be an alpha character.</wadl:doc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user name. The
+                        value must begin with an alpha character.</wadl:doc>
                 </param>
                 <param name="email" style="plain"
                     type="xsd:string" required="false">
@@ -727,9 +715,9 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A password string that meets the following criteria:
                             <itemizedlist><listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
-                                <listitem><para>Includes at least one uppercase, one lower case character, and one numeric character.</para></listitem>
-                                <listitem><para>Can include special characters.</para></listitem>
-                                <listitem><para>Password cannot begin with a space.</para></listitem>
+                                <listitem><para>Can include uppercase, lower case, and numeric characters.</para></listitem>
+                                <listitem><para>Can start with or include any of the following special characters: ~ ! @ # % ^ &amp; * _ -  | \ ( ) { } [ ] : ; " ' &lt; > , . ? / </para></listitem>
+                                <listitem><para>Password cannot begin with a space, but it can contain a space.</para></listitem>
                             </itemizedlist>
                         </para>
                     </wadl:doc>
@@ -773,7 +761,7 @@
             <para>Before making any change to a user, confirm that you are changing the user you intend 
                 to change. You can do this by treating every change as a two-step operation: first, check the target of the change; second, make the change.</para>
             <para>Delete User" acts upon the user specified by <code>userId</code>. Before attempting to update a user, first use 
-                <xref linkend="GET_getUserById__v2.0_users__userId__User_Calls" xrefstyle="select: quotedtitle nopage"/> to 
+                <link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Get user by Id</link> to 
                 obtain the user name, email account, and status associated with <code>userId</code>. That's Step 1.
                 Check the returned information carefully; if you are certain that it describes the user you intend to 
                 change, proceed with Step 2, deleting the user you just examined. </para>
@@ -831,53 +819,10 @@
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
     <!--User Roles-->
-    <method name="GET" id="listUserGlobalRoles">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List global roles for a user">
-            <para role="shortdesc">Returns global roles for a specific user.</para>
-            <para>
-                This operation returns a list of global roles associated with the user with
-                the specified user ID. If you don't know the ID, use the List user operation to find it.</para>
-            <para>For each role listed, the response includes
-                identifying information such as the role ID(such as <code>123</code>), name (such as <code>Admin</code>,
-                and description (such as <code>All Access</code>). The list of global roles excludes any tenant roles
-                associated with this user.</para>
-            <note><title>Notes</title>
-                <itemizedlist>
-                    <listitem>
-                        <para>This call is available to users who hold either the
-                            admin role
-                            (<code>identity:user-admin</code>)
-                            or the user role
-                            (<code>identity:default</code>). </para>
-                    </listitem>
-                    <listitem>
-                        <para>For users holding the <code>user</code> role, the call
-                            is valid only if <code>userId</code>
-                            and the <code>user-default</code>
-                            token have the same value for
-                            <code>tenant</code>.</para>
-                    </listitem>
-                </itemizedlist>
-            </note>
-        </wadl:doc>
-        <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
-            <representation mediaType="application/xml" element="roles">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/roles.xml"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json" element="roles">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/roles.json"/>
-                </wadl:doc>
-            </representation>
-            
-        </response>
-        &commonFaults; &getFaults; </method>
+
     <method name="PUT" id="addUserRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add role to user">
-            <para role="shortdesc">Adds a specific multiproduct or custom (product-specific) role to a user.</para>
+            <para role="shortdesc">Adds a specific multi-product or custom (product-specific) role to a user.</para>
            <para>To add a role to a user, specify the <parameter>roleId</parameter> and the 
                <parameter>userId</parameter> in the request. Use the List roles and List users operations to find the ids.</para>
            <para>If a &CIS; Administrator (identity:service-admin) assigns a role to an account owner (identity:user-admin), the 
@@ -960,7 +905,7 @@
     </method>
     <method name="DELETE" id="deleteUserRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete global role from user">
-            <para role="shortdesc">Deletes a multiproduct or custom (product-specific) role from a user.</para>
+            <para role="shortdesc">Deletes a multi-product or custom (product-specific) role from a user.</para>
             <para>Use this operation to delete a role from a user account. 
                 Include the system-assigned role <code>id</code> and user <code>id</code> in the request. Use the 
                 List role and List user operations to find the correct ids.</para>
@@ -1015,51 +960,7 @@
             
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
 
-    <method name="GET" id="listCredentials">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List credentials">
-            <para role="shortdesc">Lists credentials, other than passwords, for all
-                authentication methods.</para>
-            <para>This operation is available to users who hold either the admin role
-                (<code>identity:user-admin</code>) or the user role (<code>identity:default</code>). 
-                The operation returns only the credentials for the user who issued the request.</para>
-           <para >A user's password cannot be obtained by this or any other means. To list
-               non-password credentials for all authentication methods available to that user, include the user Id in the 
-               request. Use the List User operation to find the id.</para>
-           <para >API credentials are currently not available for account users. Account
-                users, also called sub-accounts, are users who were created by the administrative user. Account users can
-                access API features with their password credentials. The administrative user holds the
-                    <code>identity:user-admin</code> role, giving it full administrative privileges to manage the account.
-                Account users hold the <code>identity:default</code> role and their privileges are limited. </para>
-        </wadl:doc>
-        <!-- 2012-03-12 by Rose Coste per Joe Savak:
-             hide marker & limit: not implemented.
-             used later when this returns credentials for multiple methods of authentication 
-             (SMS-text, push notification, RSA-key, etc);
-             today, API key only, so "List All Credentials" = "Get API Key Credentials"
-        <request>
-            <param name="marker" style="query" required="false" type="xsd:string"/>
-            <param name="limit" style="query" required="false" type="xsd:int"/>
-        </request>
-        -->
-        <response status="200">
-            <doc title="OK">Request completed successful.</doc>
-            <representation mediaType="application/xml" element="credentials">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/credentials-response-apikey-nopw.xml"/>
-                </wadl:doc>
-            </representation>
-            
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/credentials-response-apikey-nopw.json"/>
-                </wadl:doc>
-            </representation>
-        </response>
-        <response status="200">
-            <doc title="OK">Request completed successful.</doc>
-            </response>&commonFaults; &getFaults; </method>
-
-    <method name="GET" id="listCredentialsByType">
+        <method name="GET" id="listCredentialsByType">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List credentials by type">
             <para role="shortdesc">Lists credentials by type.</para>
            <para >List credentials by type.</para>
@@ -1180,7 +1081,52 @@
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
-    <!--Roles-->    
+    <!--Roles--> 
+    
+    <method name="GET" id="listUserGlobalRoles">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List global roles for a user">
+            <para role="shortdesc">Returns global roles associated with a user account.</para>
+            <para>This operation returns a list of <link xlink:href="Identity-Concpts.html#role-def">global roles</link> that are assigned to the account with 
+                the specified user Id. If you don't know the ID, use the <link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Get user by Id</link> operation to find it.</para>
+            <para>For each role listed, the response includes
+                identifying information such as the role ID (such as <code>123</code>), name (such as <code>Admin</code>,
+                and description (such as <code>All Access</code>). The list of global roles excludes any tenant roles
+                associated with this user.</para>
+            <note><title>Notes</title>
+                <itemizedlist>
+                    <listitem>
+                        <para>This call is available to users who hold either the
+                            admin role
+                            (<code>identity:user-admin</code>)
+                            or the user role
+                            (<code>identity:default</code>). </para>
+                    </listitem>
+                    <listitem>
+                        <para>For users holding the <code>user</code> role, the call
+                            is valid only if <code>userId</code>
+                            and the <code>user-default</code>
+                            token have the same value for
+                            <code>tenant</code>.</para>
+                    </listitem>
+                </itemizedlist>
+            </note>
+        </wadl:doc>
+        <response status="200 203">
+            <doc title="OK">Request completed successful.</doc>
+            <representation mediaType="application/xml" element="roles">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/roles.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json" element="roles">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/roles.json"/>
+                </wadl:doc>
+            </representation>
+            
+        </response>
+        &commonFaults; &getFaults; </method>
+    
     <method name="POST" id="addRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add role">
             <para role="shortdesc">Adds a role.</para>
@@ -1214,8 +1160,10 @@
                         to help administrators and users understand its scope and purpose.</wadl:doc>
                 </param>
                 <param name="tenantId" style="plain" required="false" type="capi:UUID">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">If the role is intended for use with a specific tenant, and the 
-                        tenantId has not been defined, use this attribute to specify a unique ID for the tenant.</wadl:doc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">If the role is
+                        intended for use with a specific tenant, and the tenant Id has not been
+                        defined, use this attribute to specify a unique ID for the
+                        tenant.</wadl:doc>
                 </param>
             </representation>
             <representation mediaType="application/json" element="role">

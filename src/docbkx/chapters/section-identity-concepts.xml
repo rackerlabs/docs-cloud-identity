@@ -137,7 +137,8 @@
             </listitem>
         </varlistentry>
         <varlistentry>
-            <term><emphasis role="bold">Role</emphasis></term>
+            <term xml:id
+                ="role_def"><emphasis role="bold">Role</emphasis></term>
             <listitem>
                 <para>A common security construct for assigning a specific set of access
                     rights and privileges to a user or group of users. Service administrators can
@@ -261,7 +262,7 @@
                     API, append the version number to the global endpoint: 
                     <link xlink:href="&ENDPOINT-IdentityVersion;">&ENDPOINT-IdentityVersion;</link>.</para>
                 <para>To get the URLs for other service endpoints, submit an authentication request
-                    with valid credentials to a &CIS; endpoint. If authentication is successful, he
+                    with valid credentials to a &CIS; endpoint. If authentication is successful, the
                     Identity service returns an authentication token and a service catalog with
                     information about available services, including the endpoints to access each service.
                     <note>
@@ -277,19 +278,19 @@
             <listitem>
                 <para>Endpoint templates provide Cloud Service providers with a method to manage API
                     service endpoints that apply to many or all tenants without having to add each
-                    endpoint on each tenant manually.  For example, a Service developer can define a
+                    endpoint on each tenant manually. For example, a Service developer can define a
                     global endpoint template that is automatically included in the Service catalog
                     for all tenants authorized to use that service. The endpoint template also
                     specifies the URLs for the internal, administrative, and public endpoints that
-                    provide access to the service. </para>
-                <para>See <link xlink:href="Endpoint_Template_ Calls.html" xrefstyle="select: title"/> for
+                    provide access to the service.</para>
+                <para>See <link xlink:href="Endpoint_Template_Calls.html">Endpoint template calls</link> for
                     detailed information. </para>
             </listitem>
         </varlistentry>
         <varlistentry>
             <term><emphasis role="bold">Service catalog</emphasis></term>
             <listitem>
-                <para> Taken as a whole, all the service endpoints defined in Keystone are
+                <para>Taken as a whole, all the service endpoints defined in Keystone are
                     the service catalog, defining all services available to OpenStack. </para>
                 <para>The service catalog is the list of all the service endpoints defined in the
                     Identity service that represent all services available in the Rackspace Cloud.

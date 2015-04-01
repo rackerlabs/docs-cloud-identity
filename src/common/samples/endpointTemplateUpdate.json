@@ -1,0 +1,8 @@
+{
+    "OS-KSCATALOG:endpointTemplate":{
+        "id": 1,
+        "enabled":true,
+        "default":false,
+        "global":false,  
+    }
+}

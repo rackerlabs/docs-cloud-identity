@@ -52,6 +52,33 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-03-31</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated  
+								<link xlink:href="POST_saveSecretQA_v2.0_users__userId__RAX-AUTH_secretqas_Secret_Calls_client.html">Add secret question to a user account</link> to add 
+								sample response header.</para>
+						</listitem>
+						<listitem>
+							<para>Corrected URI for <link xlink:href="GET_listUserGlobalRoles__v2.0_users__userId__roles_Role_Calls.html">List global roles for user</link> 
+								operation that allows Identity administrators to create new service endpoints for Rackspace Cloud services.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-03-17</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Update <link xlink:href="DELETE_revokeToken_v2.0_tokens__token_Token_Calls.html">Revoke token</link> operation to indicate that the <code>tokenID</code> is optional and 
+								explain how users can revoke their own token and how administrators can revoke tokens for other users.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-03-04</date>
 				<revdescription>
 					<para>Added information about the <link xlink:href="MFA_Ops.html">limitations of using CLI tools</link> with multi-factor authentication.</para>
@@ -724,10 +751,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>For "Update User" and "Delete User" operations, added suggestion to use <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="GET_getUserById__v2.0_users__userId__User_Calls"/> to confirm
-								that the intended user will be changed. </para>
+							<para>For "Update User" and "Delete User" operations, added suggestion to use 
+								<link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Get user by Id</link> to confirm
+								that the intended user will be changed.</para>
 						</listitem>
 						<listitem>
 							<para> Added <xref linkend="Account-Users-d1e910"/>;<olink
@@ -767,9 +793,8 @@
 							</para>
 						</listitem>
 						<listitem>
-							<para> Linked <xref linkend="QuickStart-000"/> to <olink targetdoc="Identity-Developer-Guide"
-								targetptr="POST_addUser__v2.0_users_User_Calls"/> with note that account
-								users added via API cannot use the control panel. </para>
+							<para> Linked <xref linkend="QuickStart-000"/> to <link xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add user</link> 
+								operation with note that account users added via API cannot use the control panel. </para>
 						</listitem>
 						<listitem>
 							<para> Updated <link xlink:href="GET_listCredentials__v2.0_users__userId__OS-KSADM_credentials_User_Calls.html"/>
@@ -813,16 +838,13 @@
 								functionality provided by extensions to the core Identity API. </para>
 						</listitem>
 						<listitem>
-							<para> Added examples of creating a user with a password in <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_addUser__v2.0_users_User_Calls"/>. In the same section,
+							<para> Added examples of creating a user with a password in <link
+								xlink:href="POST_addUser__v2.0_users_User_Calls.html">Add user</link>. In the same section,
 								added information that an account can have up to 100 account users. </para>
 						</listitem>
 						<listitem>
-							<para> Added examples of changing a user's password in <olink
-									targetdoc="Identity-Developer-Guide"
-									targetptr="POST_updateUser__v2.0_users__userId__User_Calls">“Role-based
-									access control”</olink>.</para>
+							<para> Added examples of changing a user's password in <link xlink:href="POST_admin-updateUser_v2.0_users__userId__User_Calls.html">
+									Update user information and password operation</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Added information about account users (also known as sub-accounts). See </para>
@@ -900,8 +922,8 @@
 		  <raxm:priority>10</raxm:priority>
 		</raxm:metadata> 
 	</info>
-	<xi:include href="chapters/identity-overview.xml"/>
 	<xi:include href="chapters/identity-quickstart.xml"/>
+	<xi:include href="chapters/identity-overview.xml"/>
 	<xi:include href="chapters/identity-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-client.xml"/>

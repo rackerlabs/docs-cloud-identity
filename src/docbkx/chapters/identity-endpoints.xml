@@ -9,10 +9,6 @@
     <para>You can use the Rackspace Cloud Identity authentication endpoints from version 1.1 or
         version 2.0. The legacy v1.1 API endpoint only supports authentication services, but you can
         use tokens from version 1.1 in version 2.0 API calls. </para>
-    <para/>
-    <note><para>If your Rackspace Cloud account requires multi-factor authentication, you can only authenticate with Identity API version 2.0 or later.</para></note>
-    <para>You can authenticate from the Identity service global endpoints shown in <xref
-            linkend="AuthEndpoints" xrefstyle="select: quotedtitle"/>.</para>
 
     <table rules="all" xml:id="AuthEndpoints">
         <caption>Authentication Endpoints and documentation resource links</caption>
@@ -49,5 +45,6 @@
                 </td>
             </tr>
         </tbody>
-    </table>    
+    </table>  
+    <important><para>If your Rackspace Cloud account requires multi-factor authentication, you can only authenticate with Identity API version 2.0 or later.</para></important>
 </section>

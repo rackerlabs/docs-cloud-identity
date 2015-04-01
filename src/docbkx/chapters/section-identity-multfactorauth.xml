@@ -38,7 +38,8 @@
           services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for
           each service.</para>
       </listitem>
-    </orderedlist></para>
+    </orderedlist>
+    </para>
 
     <para>Figure <xref linkend="mfa_auth"
       xrefstyle="select: labelnumber"/> shows the multi-factor

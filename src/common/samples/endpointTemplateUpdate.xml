@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpointTemplate
+  xmlns="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0"
+  id="1"
+  global="false"
+  default="false"
+  enabled="true">
+</endpointTemplate>

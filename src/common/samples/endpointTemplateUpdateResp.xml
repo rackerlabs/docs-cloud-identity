@@ -3,6 +3,9 @@
 <endpointTemplate
   xmlns="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0"
   region="North" 
+  enabled="true"
+  default="false"
+  global="false"
   name="Compute"
   type="compute"
   publicURL="https://service-public.com/v1"

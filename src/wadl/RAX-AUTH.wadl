@@ -390,8 +390,15 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200">
-            <doc title="OK">The request succeeded.</doc>
+        
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN">
+                    <xsdxt:code href="../common/samples/SecretQAforSave_Resp.txt"/>					
+                </wadl:doc>
+            </representation>
         </response>
         <response status="409" >
             <doc title="Conflict">The request could not be completed due to a conflict with the current state of the resource.</doc>

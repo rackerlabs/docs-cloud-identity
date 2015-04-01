@@ -80,10 +80,12 @@
                </param>
                <method href="#authenticateWithMultiFactor"/>
             </resource> 
+   
+               
            
            <!-- Token manaagement resources -->
-           
-           <resource id="tokenById" path="{tokenId}">
+                               
+              <resource id="tokenById" path="{tokenId}">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A valid authentication token with administrative access.</para>
@@ -91,16 +93,31 @@
                 </param>
                 <param name="tokenId" style="template" type="xsd:string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                            <para>The unique ID for the authentication token issued by &CIS;.</para>
+                            <para>The unique authentication token ID for the token to be revoked.</para>
                         </wadl:doc>
-                </param>        
-                        <method href="#revokeToken"/>
+               </param>        
                         <method href="#validateToken"/>
                         <method href="#checkToken"/>
                         <resource id="endpointsForToken" path="endpoints">
                             <method href="#listEndpointsForToken"/>
                         </resource>
                 </resource>
+               
+               <!-- Revoke token -->
+               
+               <resource id="token">
+                   <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                       <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                           <para>A valid authentication token with administrative access.</para>
+                       </wadl:doc>
+                   </param>
+                   <param name="tokenId" style="template" type="xsd:string" required="false">
+                       <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                           <para>The unique authentication token ID for the token to be revoked.</para>
+                       </wadl:doc>
+                   </param>   
+                   <method href="#revokeToken"/>
+               </resource>   
        </resource>
         
         <!-- User management resources -->
@@ -111,7 +128,8 @@
                     <para>A valid admin authentication token.</para>
                 </wadl:doc>
             </param>
-            <method href="#admin-addUser"/>    
+            <method href="#admin-addUser"/>
+            <method href="#addUser"/>
             <method href="#admin-listUsers"/>
         <resource id="admin-userid" path="{userId}">
             <param name="userId" style="template" type="xsd:string" required="true">
@@ -578,7 +596,7 @@
         <request>
             <representation mediaType="application/xml" element="auth">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authenticate with Tenant ID and Token Credentials: XML request">
+                    <xsdxt:sample title="Authenticate with tenant ID and token credentials: XML request">
                         <xsdxt:code href="../common/samples/auth_with_token_tenantId.xml"/>
                     </xsdxt:sample>
                 </wadl:doc>
@@ -603,7 +621,7 @@
             </representation>
             <representation mediaType="application/json" element="auth">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">                                       
-                    <xsdxt:sample title="Authenticate with Tenant ID and Token Credentials: JSON request">
+                    <xsdxt:sample title="Authenticate with tenant ID and token credentials: JSON request">
                         <xsdxt:code href="../common/samples/auth_with_token_tenantId.json"/>
                     </xsdxt:sample>                   
                 </wadl:doc>
@@ -776,7 +794,7 @@
     </method>
 
     <method name="GET" id="validateToken">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Validate Token">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Validate token">
             <para role="shortdesc">Verify that the specified token is valid, 
                 and owned by the specified tenant.</para>
             
@@ -862,7 +880,10 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Revoke token">
             <para role="shortdesc">Revoke token.</para>
             <para>This call revokes a token, returning code <code>204</code>. if successful
-                and <code>404</code> if token in URI is invalid. </para>
+                and <code>404</code> if the token specified in the URI is invalid.</para>
+            <para>A user can revoke their own authentication token by submitting the DELETE request without specifying the <code>tokenId</code> parameter.</para>
+            <para>Identity and User administrators can revoke the token for another user by including the 
+                <code>tokenId</code> parameter in the request.</para>
         </wadl:doc>
         
         <!-- no request or response body-->
@@ -1050,6 +1071,193 @@
         &commonFaults;
         &postPutFaults;
     </method>
+    
+    <!-- Add user call for Identity Admin and Identity User Admin users -->
+    <method name="POST" id="addUser">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add user">
+            <para role="shortdesc">Adds a user.</para>
+            <para>User and Identity administrators can add accounts to an existing Rackspace Cloud account by using the 
+                Add user API operation. Administrators can add up to 100 users to an account.</para>
+            <para>In the Add user request, include the required values for the user name and email and specify optional 
+                attributes as needed.
+            </para>
+            <para>You can specify an initial password for the user by including it in the request. 
+                If you don't specify a password, the &CIS; generates one and returns it in the response. In either case, 
+                make a note of the password so you can provide it to the user.  After the user is created, you cannot 
+                retrieve the password by any means. However, you can update the password by using the Update user API operation or 
+                by changing the value from the User Management page in the Cloud Control panel.  
+            </para>
+            <note><title>Notes</title>
+                <itemizedlist>
+                    <listitem><para>Users with the User Admin role can manage sub-user accounts through the API or from the 
+                        <link xlink:href="https://mycloud.rackspace.com/cloud/929418/account#users">Cloud Control panel</link>. 
+                        Use the Control panel to add the user's full name, contact information, and configure account security.
+                    </para></listitem>
+                    <listitem><para>If you try to create an account with the user name from an existing account,  
+                        the Add user operation returns an <errorcode>HTTP error 409</errorcode> message.</para></listitem>
+                </itemizedlist>
+            </note>
+        </wadl:doc>
+        
+        <request>
+            <representation mediaType="application/xml" element="user">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userwithoutid.xml"/>
+                </wadl:doc>
+                <param name="username" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The name to assign to the user. Specify a value that 
+                            meets the following criteria:
+                            <itemizedlist>
+                                <listitem><para>Start with an alpha character.</para></listitem>
+                                <listitem><para>Minimum length: 1 character</para></listitem>
+                                <listitem><para>Can contain upper and lowercase characters.</para></listitem>
+                                <listitem><para>Can contain any of the following special characters:  &#x002E; &#x002D; &#x0040;  &#x005F; </para></listitem>
+                            </itemizedlist></para>
+                    </wadl:doc>
+                </param>
+                <param name="email" style="plain"
+                    type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Email address for the user account, <code>jqsmith@test.com</code> for example.</para></wadl:doc>
+                </param>
+                <param name="enabled" style="plain"
+                    type="xsd:bool" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether the user can authenticate after the user account is created. 
+                        If no value is specified, the default value is specified: <code>enabled=true</code>.</wadl:doc>
+                </param>
+                <param name="OS-KSADM:password" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Specify an initial password for the user account. If this value is not specified, the 
+                            Identity service automatically generates a password.
+                        </para>
+                        <para>Ensure that the value you specify meets the following criteria:
+                            <itemizedlist><listitem><para>Length must be at least 8 characters; no maximum.</para></listitem>
+                                <listitem><para>Can include uppercase, lower case, and numeric characters.</para></listitem>
+                                <listitem><para>Can start with or include any of the following special characters: ~ ! @ # % ^ &amp; * _ -  | \ ( ) { } [ ] : ; " ' &lt; > , . ? / </para></listitem>
+                                <listitem><para>Password cannot begin with a space, but it can contain a space.</para></listitem>
+                            </itemizedlist>
+                        </para>     
+                    </wadl:doc>
+                </param> 
+                
+                <!-- Secret Question and answer parameter not available to client users 
+                    
+                <param name="RAX-KSQA:secretQA" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>This object specifies   
+                        the secret <parameter>question</parameter> and <parameter>answer</parameter> attributes that 
+                        can be used to verify the identity of the user.</para>
+                    </wadl:doc>
+                </param> -->
+            </representation>
+            
+            <representation mediaType="application/json" element="user">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/userwithoutid.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/xml" element="user">
+                <wadl:doc xml:lang="EN" title="Add user with password request: XML">
+                    <xsdxt:code href="../common/samples/userwithpw.xml"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/json" element="user">
+                <wadl:doc xml:lang="EN" title="Add user with password request: JSON">
+                    <xsdxt:code href="../common/samples/userwithpw.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <!-- Not available to client users yet.           
+            <representation mediaType="application/xml">
+                <wadl:doc xml:lang="EN" title="Add user with secret question request: XML">
+                    <xsdxt:code href="../common/samples/userwithsq.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation security="internal" mediaType="application/json">
+                <wadl:doc xml:lang="EN" title="Add user with secret question request: JSON">
+                    <xsdxt:code href="../common/samples/userwithsq.json"/>
+                </wadl:doc>
+            </representation>  -->
+        </request>
+        <response status="201">
+            <doc title="Created">The request has been fulfilled. The user has been created.</doc>
+            <representation mediaType="application/xml" element="User">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/addUser_response.xml"/>
+                </doc>
+                <param name="user" style="plain" type="identity:User" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>A <parameter>user</parameter> object that contains the user account information.
+                            <code>{"user": {"username": "test", "OS-KSADM:password": "xxxxxxxx", "email": "jqsmith@test.com"}</code></para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:defaultRegion" style="plain" type="identity:User" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Specifies the default region for the user account. This value is inherited from the user administrator when the account is created..</para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:domainId" style="plain" type="identity:User" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Identifies the domain that contains the user account. This value is inherited from the user administrator when the account is created.</para>
+                    </wadl:doc>
+                </param>
+                <param name="id" style="plain"
+                    type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A unique system-generated ID  for the user account. 
+                        The ID generated for the account cannot be modified.</wadl:doc>
+                </param>
+                <param name="username" style="plain" type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The name that the user can use to authenticate to the Rackspace Cloud. 
+                            You can change this value through the API or the Cloud Control panel.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="OS-KSADM:password" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The password value that the user needs for authentication. If the Add user request included a password value, this 
+                            attribute is not included in the response.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="email" style="plain"
+                    type="xsd:string" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Email address for the user account, <code>jqsmith@test.com</code> for example.</para></wadl:doc>
+                </param>
+                <param name="enabled" style="plain"
+                    type="xsd:bool" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether the user has permission to authenticate 
+                        using the user name and password credentials for the new user.
+                        This value defaults to <code>enabled=true</code>.</wadl:doc>
+                </param>
+            </representation>
+            <representation mediaType="application/json" element="User">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/addUser_response.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <!-- Add user with Secret Question is not available to client users yet
+            
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xml:lang="EN" title="Add User with secret question response: XML">
+                    <xsdxt:code href="../common/samples/usersq.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" title="Add user with secret question response: JSON">
+                    <xsdxt:code href="../common/samples/usersq.json"/>
+                </wadl:doc>
+            </representation> -->
+            
+        </response> &commonFaults; &getFaults; &postPutFaults; </method>
+    
+    
+    
     <!--User Operations-->
 
     <method name="GET" id="admin-listUsers">
@@ -1143,7 +1351,7 @@
     
     
     <method name="GET" id="admin-getUserById">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User by ID">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by Id">
             <para role="shortdesc">Get detailed account information for a specific user, by user ID.</para>
             <para>
                 This request returns the following information for each account associated with the specified user ID: 
@@ -1266,13 +1474,12 @@
             </representation>
         </response> &commonFaults; &getFaults; </method>
         -->
-    
     <!-- Update a user -->
     <method name="POST" id="admin-updateUser">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Update user information and password">
             <para role="shortdesc">Update user information and password.</para>
             <para>The Update user operation acts upon the user specified by <parameter>userId</parameter>. Before you update 
-                a user account, use the <link xlink:href="GET_getUserById_users_User_Calls.html">Get user by id</link> operation 
+                a user account, use the <link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Get user by id</link> operation 
                 to verify that the user name, email account, and status associated with 
                 <parameter>userId</parameter> match the account you want to update.</para>
             
@@ -1310,8 +1517,8 @@
                 </param>
                 <param name="name" style="plain"
                     type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
-                        name. The first character of the name must be an alpha character.</wadl:doc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user name. The
+                        value must begin with an alpha character.</wadl:doc>
                 </param>
                 <param name="email" style="plain"
                     type="xsd:string" required="false">
@@ -1321,24 +1528,23 @@
                 <param name="enabled" style="plain"
                     type="xsd:boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
-                        the user is enabled (true) or disabled (false). Users cannot update the 
+                        the user is enabled (true) or disabled (false). Users cannot update the
                         <parameter>enabled</parameter> status on their own account.</wadl:doc>
                 </param>
-                <param name="region" type="xsd:string" style="plain" required="false">
+                <param name="RAX-AUTH:defaultRegion" type="xsd:string" style="plain" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <para>The region the user is assigned to. Must be one of the regions available in the service catalog.                   
+                        <para>The default region that the user is assigned to. Must be one of the regions available in the service catalog.
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="password" type="xsd:string" style="plain" required="false">
+                <param name="OS-KSADM:password" type="xsd:string" style="plain" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A password string that meets the following criteria:
-                            <itemizedlist>
-                                <listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
-                                <listitem><para>Includes at least one uppercase and one lower case character</para></listitem>
-                                <listitem><para>Can include special characters.</para></listitem>
-                                <listitem><para>Password cannot begin with a space.</para></listitem>
-                            </itemizedlist>                     
+                            <itemizedlist><listitem><para>Length must be at least 8 characters; no maximum</para></listitem>
+                                <listitem><para>Can include uppercase, lower case, and numeric characters.</para></listitem>
+                                <listitem><para>Can start with or include any of the following special characters: ~ ! @ # $ ^ &amp; _ - + = `|\(){}[]:;"'&lt; &gt; , . ? </para></listitem>
+                                <listitem><para>Password cannot begin with a space, but it can contain a space.</para></listitem>
+                            </itemizedlist>
                         </para>
                     </wadl:doc>
                 </param>
@@ -1430,7 +1636,7 @@
     
     <!-- List user credentials -->
     <method name="GET" id="admin-listCredentials">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List Credentials">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List credentials">
             <para role="shortdesc">
                 List credentials.
             </para>
@@ -1567,7 +1773,7 @@
     <!-- Reset a user's API key -->
     <method id="admin-resetUserAPIKeyCredentials" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Reset API key credentials">
-            <para role="shortdesc"> Reset a user's API Key.</para>para>
+            <para role="shortdesc">Reset a user's API Key.</para>para>
             <para>We recommend that you routinely reset passwords and API keys. 
                 This API key reset operation returns the new API key for the user account. 
                 Unlike updating the password, the API key reset does not revoke existing 
@@ -1591,7 +1797,7 @@
     <!-- Tenant Operations -->
 
     <method name="GET" id="listTenants">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Tenants">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List tenants">
             <para role="shortdesc">Get a list of tenants, or look up a tenant by name.</para>
             <para>Identity administrators can use this operation to retrieve a list of tenants or an individual tenant by 
                 name.</para>
@@ -1653,7 +1859,7 @@
             </representation>
         </response> &commonFaults; &getFaults; </method>
     <method name="GET" id="listEndpointsForToken">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Endpoints for Token">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List endpoints for token">
             <para role="shortdesc">Return a list of endpoints associated with a specific
                 token. </para>
             <para>This call returns a list of endpoints associated with a specific token.
@@ -1679,7 +1885,7 @@
         </response> &commonFaults; &getFaults; </method>
 
     <method name="GET" id="listRolesForUserOnTenant">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Roles for User on Tenant">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List roles for user on tenant">
             <para role="shortdesc">List roles for a specified user on a specified tenant.</para>
             <para>This operation returns a list of roles for a specified user within a
                 specified tenant. The list of roles excludes any global roles associated with this user.</para>
