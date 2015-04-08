@@ -1,5 +1,5 @@
 {
-    "OS-KSCATALOG:endpointsTemplates": [
+    "OS-KSCATALOG:endpointTemplates": [
             {
                 "id": 1,
                 "region": "North",
@@ -56,5 +56,5 @@
                 "enabled": true
             }
         ],
-    "OS-KSCATALOG:endpointsTemplates_links": []
+    "OS-KSCATALOG:endpointTemplates_links": []
 }
