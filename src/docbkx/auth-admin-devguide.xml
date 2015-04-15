@@ -53,6 +53,10 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-04-09</date>
+				
+			</revision>
+			<revision>
 				<date>2015-03-31</date>
 				<revdescription>
 					<itemizedlist>
@@ -76,7 +80,7 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Update <link xlink:href="DELETE_revokeToken_v2.0_tokens__token_Token_Calls.html">Revoke token</link> operation to indicate that the <code>tokenID</code> is optional and 
+							<para>Update <link xlink:href="DELETE_revokeToken_v2.0_tokens__Token_Calls.html">Revoke token</link> operation to indicate that the <code>tokenID</code> is optional and 
 								explain how users can revoke their own token and how administrators can revoke tokens for other users.</para>
 						</listitem>
 						<listitem>
@@ -264,14 +268,14 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Updates to <xref linkend="Role_Calls" xrefstyle="select: title"/>
+							<para>Updates to <link xlink:href="Role_Calls.html">Role operations</link> 
 								fix URI path to get, add, and delete user role operations.  
 							</para>
 						</listitem>
 						<listitem>
 							<para>
 								Updated notes about authenticating with tenant and token operation to clarify which attributes are required and 
-								optional in the request payload. See <xref linkend="Token_Calls" xrefstyle="select: title"/>.
+								optional in the request payload. See <link xlink:href="Token_Calls.html">Token operations</link>.
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -425,20 +429,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>
-								<itemizedlist>
-									<listitem>
-										<para>Updated Multi-factor authentication overview section to include authentication process work flow.</para></listitem>
-								</itemizedlist>
-							</para>
+							<para>Updated Multi-factor authentication overview section to include authentication process 
+								work flow.</para>
 						</listitem>
 						<listitem>
-							<para>
-								<itemizedlist>
-									<listitem>
-										<para>Corrected code samples in Update User operation.</para></listitem>
-								</itemizedlist>
-							</para>
+							<para>Corrected code samples in Update User operation.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -459,8 +454,8 @@
 									</itemizedlist></para>
 						</listitem>
 						<listitem>
-							<para>Cleaned up <olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Extensions-d1e688"/>:<itemizedlist>
+							<para>Cleaned up <link xlink:href="Extensions_operations.html">Extensions documentation</link>
+									<itemizedlist>
 									<listitem>
 										<para>Moved information about Extensions API operations to
 												<link xlink:href="Extensions_operations.html">Extensions</link></para>
@@ -485,11 +480,10 @@
 								See <link xlink:href="Token_Calls.html">Authentication tokens</link></para>
 						</listitem>
 						<listitem security="internal">
-							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Token_Calls"
-								>“Identity Concepts”</olink> to correct role value and description errors
+							<para>Updated <link xlink:href="Token_Calls.html">Token</link> operations to correct role value and description errors
 								in Get token by SAML assertion operation.</para>
 						</listitem>
-						<listitem><para>Updated the <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Account-Users-d1e910">“Account users”</olink> 
+						<listitem><para>Updated the <link xlink:href="Role_Based_Access_Control-d1e808.html">Account users</link> 
 							information to add information about the default identity role assignments.</para></listitem>
 					</itemizedlist>
 				</revdescription>
@@ -500,8 +494,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>Added Multi factor and Mobile phone resources and operations for multifactor-authentication support.
-								See <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Multifactor_Calls">“Multi-factor Operations”</olink> </para>
+								See <link xlink:href="Multifactor_Calls.html">Multi-factor Operations</link>.</para>
 						</listitem>
 						<listitem security="internal">
 							<para>Added support for pop-up glossary terms.</para>
@@ -514,16 +507,13 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated Get token by SAML assertion in <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Token_Calls"
-								>“Get token by SAML assertion"</olink> code samples to correct spelling 
-							    error and role value and description.
+							<para>Updated Get token by SAML assertion in <link xlink:href="Token_Calls.html">Get token by SAML assertion</link>
+							 code samples to correct spelling error and role value and description.
 							</para>
 						</listitem>
 						<listitem>
-							<para>Revised <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Role_Based_Access_Control-d1e808">“Role-based access
-									control”</olink> sections to consolidate overview and role
+							<para>Revised <link xlink:href="Role_Based_Access_Control-d1e808.html">Role-based access
+								control</link> sections to consolidate overview and role
 								descriptions, and add cross-references to Knowledge Center articles.
 								</para>
 						</listitem>
@@ -536,40 +526,32 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added endpoint template term to the <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Identity-Concpts">Concepts section</olink></para>
+							<para>Added endpoint template term to the <link xlink:href="Identity-Concpts.html">Concepts section</link>.</para>
 						</listitem>
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_"
-									>“Add endpoint template</olink> call and examples to include
-									<literal>tenantAlias</literal>, an optional parameter that can
-								be used to concatenate a tenant id string pattern to an endpoint. </para>
+							<para>Updated 
+								<link xlink:href="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_Endpoint_Template_Calls.html">“Add endpoint template</link> 
+								call and examples to include <literal>tenantAlias</literal>, an optional parameter that can
+								be used to concatenate a tenant id string pattern to an endpoint.</para>
 						</listitem>
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Impersonation_Calls">“Impersonations”</olink> flow
+							<para>Updated <link xlink:href="Impersonation_Calls.html">Impersonations</link> flow
 								diagram to reflect current product behavior.</para>
 						</listitem>
 						<listitem>
-							<para>Updated sample in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Versions-d1e472">“Contract versions”</olink> section
-								to reflect current API status for version 1.1 and 2.0.</para>
+							<para>Updated sample in <link xlink:href="Version_operations.html">Contract versions</link> to reflect 
+								current API status for version 1.1 and 2.0.</para>
 						</listitem>
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Endpoints-d1e180">“Alternate Authentication
-									Endpoints”</olink> section to remove the Legacy endpoint table
+							<para>Updated <link xlink:href="Endpoints-d1e180.html">Authentication endpoints</link> 
+								section to remove the Legacy endpoint table
 								that duplicated information in the Authentication endpoints
 								table.</para>
 						</listitem>
 						<listitem>
 							<para>Removed obsolete API status section. Account status values are no
 								longer managed through the Identity API, and the API status values
-								are covered in the <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Versions-d1e472">“Contract versions”</olink>
-								section.</para>
+								are covered in the <link xlink:href="Version_operations.html">Contract versions</link> section.</para>
 						</listitem>
 						<listitem>
 							<para>Removed outdated information about differences between US and UK
@@ -610,9 +592,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Developer-Guide" targetptr="User_Calls">“User
-									operations</olink> to add new parameters from RAX-AUTH
-								extension. </para>
+							<para>Updated <link xlink:href="User_Calls.html">User operations</link> to add new parameters from RAX-AUTH extension.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -628,8 +608,8 @@
 								internal-only. </para>
 						</listitem>
 						<listitem>
-							<para>Corrected JSON response in <link xlink:href="GET_listUserGlobalRoles__v2.0_users__userId__roles_OS-KSADM_Role_Calls.html"
-								>List available roles by userId</link>.</para>
+							<para>Corrected JSON response in 
+								<link xlink:href="GET_listUserGlobalRoles__v2.0_users__userId__roles_OS-KSADM_Role_Calls.html">List available roles by userId</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Added simple definitions to many
@@ -637,15 +617,15 @@
 						</listitem>
 						<listitem>
 							<para> Mentioned that elements not being updated in 
-								<olink targetdoc="Identity-Admin-Developer-Guide" targetptr="POST_admin-updateUser_v2.0_users__userId__User_Calls">“Update user”</olink> do not need to be included in request
+								<link xlink:href="POST_admin-updateUser_v2.0_users__userId__User_Calls.html">Update user</link> do not need to be included in request
 								body.</para>
 						</listitem>
 						<listitem>
 							<para>Removed Category Role table from <link xlink:href="PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html">Add role to user</link>.</para>
 						</listitem>
 						<listitem>
-							<para> Added information about domain ID to <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="User_Calls"/></para>
+							<para> Added information about domain ID to <link xlink:href="User_Calls.html">User</link> API operations.
+						    </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -655,8 +635,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added error to <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="POST_admin-addUser_v2.0_users_User_Calls"/>. </para>
+							<para> Added error to <link xlink:href="POST_admin-addUser_v2.0_users_User_Calls.html">Create user</link>. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -666,9 +645,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated samples to Racker token authentication in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Token_Calls"/>. </para>
+							<para> Updated samples to Racker token authentication in <link xlink:href="Token_Calls.html">Token</link> operations.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -678,10 +655,9 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected links to endpoint documentation <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Additional_Resources-d1e130">“Additional
-									Resources”</olink>. </para>
+							<para> Corrected links to endpoint documentation 
+								<link xlink:href="Additional_Resources-d1e130.html">“Additional
+									Resources”</link>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -707,7 +683,7 @@
 						</listitem>
 						<listitem>
 							<para> Added domain id to 
-								<olink targetdoc="Identity-Developer-Guide" targetptr="User_Calls">“User operations”</olink>.</para>
+								<link xlink:href="User_Calls">User operations</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Fixed some erroneous examples.
@@ -721,14 +697,12 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Developer-Guide"
-									targetptr="Request_Response_Types-d1e149">“Request/Response
-									Types”</olink> to include warning about potential delays.</para>
+							<para>Updated <link xlink:href="Request_Response_Types-d1e149.html">Request/Response
+									Types</link> to include warning about potential delays.</para>
 						</listitem>
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Developer-Guide" targetptr="RBAC_roledesc_table"
-									>Table 6, “Rackspace RBAC Roles”</olink> to be consistent with
-								Knowledge Center articles. </para>
+							<para> Updated <link xlink:href="Role_Based_Access_Control-d1e808.html#RBAC_roledesc_table">Rackspace RBAC Roles</link> 
+								information to be consistent with Rackspace Knowledge Center articles. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -749,27 +723,22 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected update JSON user request and response (<olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="User_Calls">“User operations”</olink>) </para>
+							<para> Corrected update JSON user request and response (<link
+								xlink:href="User_Calls.html">User operations</link>) </para>
 						</listitem>
 						<listitem>
-							<para> Added Region calls (<olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Region_Calls">“Regions”</olink>) </para>
+							<para> Added Region calls (<link xlink:href="Region_Calls.html">Regions</link>).</para>
 						</listitem>
 						<listitem>
-							<para> Updated Add User to reflect default region (<olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="POST_admin-addUser_v2.0_users_User_Calls">Add user</olink>) </para>
+							<para> Updated Add User to reflect default region (<link
+									xlink:href="POST_admin-addUser_v2.0_users_User_Calls">Add user</link>).</para>
 						</listitem>
 						<listitem>
-							<para> Updated Update User operation to reflect default region (<olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="User_Calls">“User operations”</olink>) ) </para>
+							<para> Updated Update User operation to reflect default region (<link
+								xlink:href="User_Calls">“User operations”</link>).</para>
 						</listitem>
 						<listitem>
-							<para>Fixed broken link (<olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="User_Calls"/>) </para>
+							<para>Fixed broken link in <link xlink:href="User_Calls.html">User</link> API operations section.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -779,8 +748,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Replaced "sub-user" with "account
-								users" everywhere. </para>
+							<para> Replaced "sub-user" with "account users" everywhere. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -790,8 +758,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added discussion of apparent role
-								conflicts in RBAC </para>
+							<para> Added discussion of apparent role conflicts in RBAC </para>
 						</listitem>
 						<listitem>
 							<para> Corrected JSON example for
@@ -816,14 +783,12 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Corrected URI path for <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls"
-									>“Secret Questions and Answers”</olink>.</para>
+							<para> Corrected URI path for <link xlink:href="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html"
+									>“Secret Questions and Answers”</link>.</para>
 						</listitem>
 						<listitem>
-							<para> Corrected credential listing (adding tenant ID to token) for <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Token_Calls"/>. </para>
+							<para> Corrected credential listing (adding tenant ID to token) for <link
+									xlink:href="Token_Calls.html">Token</link> operations.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -833,14 +798,12 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Role_Based_Access_Control-d1e808"></olink>. 
+							<para>Added <link xlink:href="Role_Based_Access_Control-d1e808.html">Roles and role assignments</link>. 
 							</para>
 						</listitem>
 						<listitem>
-							<para> Removed references to deprecated endpoint v1 <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Endpoints-d1e180">“Authentication Endpoints”</olink>. </para>
+							<para> Removed references to deprecated endpoint v1 
+								<link xlink:href="Endpoints-d1e180.html">“Authentication Endpoints”</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Including several API calls from
@@ -870,8 +833,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Updated xref links to oinks in <olink targetdoc="Identity-Developer-Guide"
-									targetptr="User_Calls">“Users”</olink>.</para>
+							<para>Updated xref links to oinks in <link xlink:href="User_Calls.html">Users</link>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -927,24 +889,21 @@
 							</para>
 						</listitem>
 						<listitem>
-							<para> Added <olink targetdoc="Identity-Admin-Developer-Guide" targetptr="Service_API_Calls"
-									>“Service APIs”</olink></para>
+							<para> Added <link xlink:href="Service_API_Calls.html"
+									>Service APIs</link> operations.</para>
 						</listitem>
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="User_Calls">“User operations”</olink> to include the following operations: 
+							<para> Updated <link xlink:href="User_Calls.html">User operations</link> to include the following operations: 
 								resetting API key credentials, listing accessible domains, and
 								listing domain endpoints. </para>
 						</listitem>
 						<listitem>
-							<para> Add List domains operation to <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Domain_Calls">“Domains”</olink>, add
+							<para> Add List domains operation to <link xlink:href="Domain_Calls.html">“Domains”</link>, add
 								added getting a list of domains.
 							</para>
 						</listitem>
 						<listitem>
-							<para>Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Token_Calls">“Token operations”</olink> to add authentication as a Racker example.
+							<para>Updated <link xlink:href="Token_Calls.html">Token operations</link> to add authentication as a Racker example.
 							</para>
 						</listitem>
 					</itemizedlist>
@@ -956,9 +915,7 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Added examples demonstrating different format of <code>expires</code> for US and UK
-								endpoints in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Token_Calls">“Tokens”</olink>.</para>
+								endpoints in <link xlink:href="Token_Calls.html">Tokens</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Improved introductory text for
@@ -1003,14 +960,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Repaired broken link in <olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Token_Calls">“Tokens”</olink>.</para>
+							<para>Repaired broken link in <link xlink:href="Token_Calls.html">Tokens</link>.</para>
 						</listitem>
 						<listitem>
-							<para> Updated samples to show <code>defaultRegion</code> in <link xlink:href="Sample_Request_Response-d1e64.html">Sample request and response</link> and the <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Token_Calls">Token operations</olink>.</para>
+							<para>Updated samples to show <code>defaultRegion</code> in <link xlink:href="Sample_Request_Response-d1e64.html">Sample 
+								request and response</link> and the <link xlink:href="Token_Calls.html">Token operations</link>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -1020,13 +974,11 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para> Added information about <code>defaultRegion</code> for <olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="User_Calls">“User operations”</olink>
+							<para> Added information about <code>defaultRegion</code> for <link xlink:href="User_Calls.html">“User operations”</link>
 						    </para>
 						</listitem>
 						<listitem>
-							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service Types in the service
+							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265.html">Service Types in the service
 									catalog</link> and supporting examples to show <code>rax:dns</code>as the service type for Cloud DNS. </para>
 						</listitem>
 						<listitem>
@@ -1051,24 +1003,19 @@
 							<para> Removed "BETA" designation. </para>
 						</listitem>
 						<listitem>
-							<para>Expanded explanation and examples in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Token_Calls">“Tokens”</olink>, showing use of tenant
+							<para>Expanded explanation and examples in <link xlink:href="Token_Calls.html">Tokens</link>, showing use of tenant
 								name and tenant ID as authentication credentials. </para>
 						</listitem>
 						<listitem>
-							<para>Expanded explanation and examples in <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="Impersonation_Calls"/>, showing use of <code>expire-in-seconds</code>.</para>
+							<para>Expanded explanation and examples in <link xlink:href="Impersonation_Calls.html">Impersonations</link> section, showing use of <code>expire-in-seconds</code>.</para>
 						</listitem>
 						<listitem>
 							<para>Updated authentication workflow diagram in <link xlink:href="Identity-Service-Concepts-admin.html">Identity Service authentication and authorization</link>.
 							</para>
 						</listitem>
 						<listitem>
-							<para>Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html"
-								/>, adding links to Rackspace
-								Knowledge Center and customer feedback
-								site. </para>
+							<para>Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html">Addional Resources</link>, adding links to Rackspace
+								Knowledge Center and customer feedback site. </para>
 						</listitem>
 						<listitem>
 							<para>Added Statuses section listing all possible account statuses. </para>
@@ -1121,13 +1068,10 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para> Updated Update user and Delete user operations to add suggestion about using “GET user by
-								id operation to confirm the user before running the update or delete operation. See <olink
-								targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="User_Calls"></olink>.</para>
+								id operation to confirm the user before running the update or delete operation. See <link xlink:href="User_Calls.html">User operations</link>.</para>
 						</listitem>
 						<listitem>
-							<para> Added  <olink targetdoc="Identity-Developer-Guide" targetptr="Account-Users-d1e910"
-									>“Identity user types and default roles”</olink>moved most of
+							<para> Added  <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910">Identity user types and default roles</link>moved most of
 								the details from the Account User glossary item into that section,
 								along with additional details on account users' inheritance of
 								groups from parents. </para>
@@ -1169,11 +1113,9 @@
 								extensions</link>. </para>
 						</listitem>
 						<listitem>
-							<para> Updated <olink targetdoc="Identity-Admin-Developer-Guide"
-								targetptr="GET_admin-listCredentials_v2.0_users__userId__OS-KSADM_credentials_User_Calls"
-								/> and  <olink targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="Account-Users-d1e910">“Identity user types and
-									default roles”</olink>to state that account users must
+							<para> Updated <link xlink:href=" href=GET_admin-listCredentials_v2.0_users__userId__OS-KSADM_credentials_User_Calls.html">List credentials</link> 
+							 and  <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910.html">Identity user types and
+									default roles</link>to state that account users must
 								authenticate with their passwords. </para>
 						</listitem>
 						<listitem>
@@ -1197,16 +1139,13 @@
 							<para>Simplified the structure of <link xlink:href="API_Operations.html">API Operations</link>. </para>
 						</listitem>
 						<listitem>
-							<para> Updated Add user operation with example of creating a user with a password in <olink
-									targetdoc="Identity-Developer-Guide" targetptr="User_Calls"
-									>“User operations”</olink>. In the same section, added
+							<para> Updated Add user operation with example of creating a user with a password in 
+								<link xlink:href="User_Calls.html">User operations</link>. In the same section, added
 								information that an account can have up to 100 account users. </para>
 						</listitem>
 						<listitem>
-							<para> Updated Add user operation with example of creating a user with a password in <olink
-									targetdoc="Identity-Admin-Developer-Guide"
-									targetptr="User_Calls">“User
-									operations”</olink>. </para>
+							<para> Updated Add user operation with example of creating a user with a password in 
+								<link xlink:href="User_Calls.html">User operations</link>.</para>
 						</listitem>
 						<listitem>
 							<para> Added information about account

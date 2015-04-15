@@ -137,7 +137,7 @@
 							</generateToc>
 							
 							<!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
-							<sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>
+							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 							
 						</configuration>
 					</execution>
@@ -168,9 +168,24 @@
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 							<enableDisqus>intranet</enableDisqus>
 							<feedbackEmail>margaret.eker@rackspace.com</feedbackEmail>
- 
+							
+							<generateToc>
+								appendix toc,title
+								article/appendix nop
+								article toc,title
+								book toc,title,figure,table,equation
+								chapter toc
+								part toc,title
+								preface nop
+								qandadiv toc
+								qandaset toc
+								reference toc,title
+								section toc
+								set toc,title
+							</generateToc>
+							
 							<!-- delete sectionLabelIncludesComponentLabel after plugin 1.7.1      -->
-							<sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>
+							<sectionLabelIncludesComponentLabel>1</sectionLabelIncludesComponentLabel>
 						</configuration>
 						
 					</execution>

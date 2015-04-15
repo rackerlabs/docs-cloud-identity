@@ -86,7 +86,8 @@
 	<!--Extensions-->
 	<section xml:id="Extensions_operations">
 		<title>Extensions</title>
-		<para xml:id="Extensions_ovw">The Rackspace Cloud Identity Service deploys API extensions to add user and administrative features to 
+		<para xml:id="Extensions_ovw">The Rackspace Cloud Identity Service deploys 
+			<link xlink:href="Extensions-d1e688.html">API extensions</link> to add user and administrative features to 
 			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
 			endpoint for information about the extensions available for the specified service.</para>
 		
@@ -103,7 +104,6 @@
 				<wadl:method href="#admin-getExtension"/>
 			</wadl:resource>
 		</wadl:resources>
-		<xi:include href="section-extended-response.xml"/>
 	</section>
 	
 	
@@ -121,30 +121,23 @@
 			additional users to the account, as well as manage administrative and configuration
 			tasks for all account users and other resources available through the Identity API. If
 			you have been added to the account as a user, any user requests that you submit affect
-			only your own account. For more information about roles, see <link
-				xlink:href="Role_Based_Access_Control-d1e808.html">Role-based access
-			control.</link></para>
+			only your own account. For more information about roles, see 
+			<link xlink:href="Role_Based_Access_Control-d1e808.html">Role-based access control.</link></para>
 		<warning>
 			<para> Before modifying a user account,  confirm that you are changing the user you intend to
 				change. You can do this by treating every change as a two-step operation: first,
 				check the target of the change; second, make the change. </para>
 			<para>For example, both the Update user and Delete user API operations act upon the user
 				specified by <code>userId</code>. Before attempting to update or delete a user, use
-					<link
-					xlink:href="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html"
-					>Get User Admin</link> to obtain the user name, email account, and status
+				<link xlink:href="GET_getUserAdmin_v2.0_users__userId__RAX-AUTH_admins_User_Calls.html">Get User Admin</link> to obtain the user name, email account, and status
 				associated with <code>userId</code>. That's Step 1. Check the returned information
 				carefully; if you are certain that it describes the user you intend to change,
 				proceed with Step 2, updating or deleting the user you just examined.</para>
 		</warning>
 		<note>
-			<para> Some of the functionality described in this section is provided by the
-					<code>OS-KSADM</code>, <code>RAX-AUTH</code>, and <code>RAX-KSKEY</code>
-				extensions to the core Identity API. For details, see <olink condition="admin"
-					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688"
-					>Extensions</olink><olink condition="client"
-					targetdoc="Identity-Developer-Guide" targetptr="Extensions-d1e688"
-					>Extensions</olink>.</para>
+			<para>Some of the functionality described in this section is provided by the <code>OS-KSADM</code>, 
+				<code>RAX-AUTH</code>, and <code>RAX-KSKEY</code> extensions to the core Identity API. For details, see 
+				<link xlink:href="Extensions-d1e688.html">Extensions</link>.</para>
 		</note>
 		
 		<!-- User API operations -->
@@ -172,7 +165,16 @@
 			<wadl:resource href="../../wadl/RAX-KSGRP-admin.wadl#user-groups-RAX-KSGRP">
 				<wadl:method href="#listUserGroups"/>
 			</wadl:resource>
-		
+			
+			<!-- get domains that a user can access -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domains">
+				<wadl:method href="#getAccessibleDomainsForUser"/>
+			</wadl:resource>
+			
+			<!-- get endpoints for the domains that a user can access -->
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domain_endpoints">
+				<wadl:method href="#getAccesibleDomainEndpointsForUser"/>
+			</wadl:resource>
 			<!-- OS-KSADM credentials -->
 		
 		
@@ -218,9 +220,7 @@
 				Some of the functionality described in this section is
 				provided by the <code>RAX-GRPADM</code>, <code>RAX-KSGRP</code>, <code>RAX-KSKEY</code> extensions to the
 				core Identity API. For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-							targetptr="Extensions-d1e688">Extensions</olink>.  
+				<link xlink:href="Extensions-d1e688.html">Extensions</link>.  
 				</para> 
 		</note>
 		
@@ -233,18 +233,14 @@
 		<para>The operations described in this section allow service developers to configure and manage
 			user access to Cloud services and operations by using the Rackspace role-based access
 			control (RBAC) feature. For an overview of the Rackspace RBAC implementation and role
-			descriptions, see <olink targetdoc="Identity-Admin-Developer-Guide"
-				targetptr="Role_Based_Access_Control-d1e808" condition="admin">“Role-based access
-				control”</olink>.</para>
+			descriptions, see <link xlink:href="Role_Based_Access_Control-d1e808.html">Role-based access control</link>.</para>
 		<note>
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSADM</code> extension to the
 				core Identity API. 
 				For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>. 
+				<link xlink:href="Extensions-d1e688.html">Extensions</link>. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -336,9 +332,7 @@
 				core Identity API. 
 					The functionality described in this section is provided by the <code>OS-KSADM</code> 
 					extension to the core Identity API.  For more information, see 
-					<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-							targetptr="Extensions-d1e688">Extensions</olink>.  				
+					<link xlink:href="Extensions-d1e688.html">Extensions</link>.  				
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -427,9 +421,7 @@
 				provided by the <code>OS-KSCATALOG</code> extension to the
 				core Identity API. 
 				For more information about extensions, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink> section.  
+				<link xlink:href="Extensions-d1e688.html">Extensions</link> section.  
 			</para>
 		</note>
 		 
@@ -460,9 +452,7 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>OS-KSCATALOG</code> extension to the
-				core Identity API. For more information, see <olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Admin-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.
+				core Identity API. For more information, see the <link xlink:href="Extensions-d1e688.html">Extensions</link> section.
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -490,10 +480,7 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> and <code>RAX-KSQA</code> extensions to the
-				core Identity API. For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.
+				core Identity API. For more information, see the <link xlink:href="Extensions-d1e688.html">Extensions</link> section.
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -551,11 +538,7 @@
 			<para> 
 				Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
-				core Identity API. 
-				For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.  
+				core Identity API. For more information, see the <link xlink:href="Extensions-d1e688.html">Extensions</link> section.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -727,10 +710,7 @@
 		<note>
 			<para> Some of the functionality described in this section is
 				provided by the <code>RAX-AUTH</code> extension to the
-				core Identity API. For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.</para>
+				core Identity API. For more information, see the <link xlink:href="Extensions-d1e688.html">Extensions</link> section.</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#domains">
@@ -832,11 +812,8 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>RAX-AUTH</code> extension to the
+				provided by the <link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to the
 				core Identity API. 
-				You can learn more about API extensions in the <olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688"/><olink condition="admin" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688"/>.  
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -885,11 +862,8 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>RAX-AUTH</code> extension to the
-				core Identity API. For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.
+				provided by the <link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to the
+				core Identity API. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -918,11 +892,9 @@
 		</important>
 		<note>
 			<para> 
-				Some of the functionality described in this section is provided by the <code>RAX-AUTH</code> 
-				extension to the core Identity API. For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.  
+				Some of the functionality described in this section is
+				provided by the <link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to the
+				core Identity API. 
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -940,11 +912,9 @@
 		services correspond to the OpenStack Keystone services.</para>
 		<note>
 			<para> 
-				The functionality described in this section is provided by the <code>OS-KSADM</code> 
-				extension to the core Identity API.  For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.  
+				Some of the functionality described in this section is
+				provided by the <link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to the
+				core Identity API. 
 			</para>
 		</note>
 		<wadl:resources  xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -974,8 +944,7 @@
 							attributes</link></para>-->
 			</para>
 			<note><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension
-				to the core Identity API. For more information, see <olink condition="admin"
-					targetdoc="Identity-Admin-Developer-Guide" targetptr="Extensions-d1e688">Extensions</olink>. </para></note>
+				to the core Identity API. For more information, see <link xlink:href="Extensions-d1e688.html">Extensions</link>. </para></note>
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#createMobilePhone"/>		

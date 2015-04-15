@@ -77,8 +77,7 @@
                             </listitem>
                         </varlistentry>
                         <varlistentry>
-                            <term><code>username</code> and
-                                   <code>APIKey</code></term>
+                            <term><code>username</code> and <code>apiKey</code></term>
                             <listitem>
                                 <para>You can find your API key on the
                                    <guilabel>Account

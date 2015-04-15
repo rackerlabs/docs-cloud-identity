@@ -2,9 +2,9 @@
 <user xmlns="http://docs.openstack.org/identity/api/v2.0"
       xmlns:ns2="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-      id="123456" username="jqsmith"
+      id="123456" username="newUser"
       enabled="true"
-      email="john.smith@example.org"
+      email="newUser@example.com"
       RAX-AUTH:defaultRegion="DFW"
       RAX-AUTH:domainId="5830280" >
 </user>

@@ -9,13 +9,11 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
 	xml:id="Svc_Catalog_ovw">
 	<?dbhtml stop-chunking?>
-	<title>Service catalog</title>
-	<para>The Service catalog provides information about all Rackspace Cloud services available to an
-		end-user. The catalog is returned by the Rackspace Identity service API in response to a
-		successful authentication request as shown in the examples in the <citetitle><link
-				xlink:href="Sample_Request_Response-d1e64.html">Annotated authentication request and
-				response</link></citetitle> documentation. Each service has a unique name and an
-		associated service type that identities the function that the service provides. </para>
+	<title>Service types</title>
+	<para>The Service catalog provides information about Rackspace Cloud services available to customers that have successfully 
+		authenticated, including the API service endpoints to access the service. Customers can view <link xlink:href="Sample_Request_Response-d1e64.html#authSvccatRespservice">service catalog details</link> 
+		in the authentication response returned by the Identity service.</para> 
+	<para>Each service has a unique name and an associated service type that identities the function that the service provides.</para>
 	<para condition="admin">Service and Identity administrators can use the Identity API to manage service configuration and the API capabilities supported by a service. 
 		For details, see the following documentation:<itemizedlist>
 		<listitem>

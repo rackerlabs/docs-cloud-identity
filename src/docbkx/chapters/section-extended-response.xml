@@ -1,76 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section [
-<!-- Some useful entities borrowed from HTML -->
-<!ENTITY ndash  "&#x2013;">
-<!ENTITY mdash  "&#x2014;">
-<!ENTITY hellip "&#x2026;">
-<!ENTITY plusmn "&#xB1;">
-
-<!-- Useful for describing APIs -->
-<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
-<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
-<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
-<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
-
-<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-<imageobject>
-<imagedata fileref="figures/Check_mark_23x20_02.svg"
-format="SVG" scale="60"/>
-</imageobject>
-</inlinemediaobject>'>
-
-<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-<imageobject>
-<imagedata fileref="figures/Arrow_east.svg"
-format="SVG" scale="60"/>
-</imageobject>
-</inlinemediaobject>'>
-<!ENTITY CIS 'Rackspace Cloud Identity Service'>
-<!ENTITY CAS 'Rackspace Cloud Authentication Service'>
-<!ENTITY fgCS 'first generation Cloud Servers'>
-<!ENTITY ngCS 'next generation Cloud Servers'>
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
 ]>
 <section xmlns="http://docbook.org/ns/docbook" 
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" 
-  xml:id="extended_actions">
+  xml:id="extended_actions_reqResp">
   
   <title>Extended Responses and Actions</title>
-  <para>Use extensions to define new data types, parameters, actions, headers, states, and resources.</para>
-  <para>In XML, you can define additional elements and attributes. Define these elements in the namespace for the
-    extension. </para>
-  <para>In JSON, you must use the alias. The domainId and defaultRegion attributes in the
-    <xref linkend="IdentityLSTUSRX" xrefstyle="template: Examples %n"/> and
-    <xref linkend="IdentityLSTUSRJ" xrefstyle="select: labelnumber"/> are defined in the
-    <code>RAX-AUTH</code> namespace. </para>
-  <para>Actions work in exactly the same manner as illustrated in the Create region request shown in 
-    <xref linkend="IdentityGETRGNX" xrefstyle="template: Examples %n"/> and
-    <xref linkend="IdentityGETRGNJ" xrefstyle="select: labelnumber"/>. Extended headers are always prefixed with
-    <code>X-</code> followed by the alias and a dash: (<code>X-AUTH-TOKEN</code>). You must prefix states
-    and parameters with the extension alias followed by a colon. For example, a user can be in the 
-    <code>RAX-AUTH:multiFactorEnabled</code> state.</para>
-  <important>
-    <para>During application development, make sure to code for cases where the application must ignore response data 
-      that contains extension elements if the extension is not available. If the application does not support 
-      an extension, treat all state information as state <code>UNKNOWN</code> Applications must also check to see if 
-      an extension is available before submitting an extended request. Use the GET extension operation to check 
-      available extension in the application environment.
+  <?dbhtml stop-chunking?>
+  <para>Extensions define new data types, parameters, actions, headers, states, and resources that
+    are added to the core OpenStack APIs.
+    <important>
+      <para>During application development, make sure to code for cases where the application must ignore response data 
+        that contains extension elements if the extension is not available. If the application does not support 
+        an extension, treat all state information as state <code>UNKNOWN</code>. Applications must also check whether 
+        an extension is available before submitting an extended request. Use the 
+        <link xlink:href="GET_admin-listExtensions_v2.0_extensions_Extensions_operations.html">List extensions</link> operation to 
+        find out which extensions are available in the application environment.
+      </para>
+    </important></para>
+  <section xml:id="extendedJSON">
+    <?dbhtml stop-chunking?>
+    <title>JSON requests and responses with extensions</title>
+    <para>In JSON, use the alias to reference extended resources and attributes. In this Add
+      user API request, you see aliased references to the password attribute that is provided
+      by the OS-KSADM extension. <example xml:id="IdentityAddUser">
+        <title>Extended Action: JSON Request</title>
+        <programlisting language="json"><?db-font-size 70%?><xi:include href="../../common/samples/userwithpw.json" parse="text"/></programlisting>
+      </example></para>
+    <para>The API response shows aliases for  any elements and attributes that are provided
+      by extensions. In this example showing a List users response, the <code>defaultRegion</code> and
+      <code>domainId</code> are provided by the RAX-AUTH extension.<example xml:id="IdentityLSTUSRJ">
+        <title>Extended Server response: JSON</title>
+        <programlisting language="json"><?db-font-size 70%?><xi:include href="../../common/samples/extended_listuser.json" parse="text"/></programlisting>
+      </example>
     </para>
-  </important>
-  <example xml:id="IdentityLSTUSRX">
-    <title>Extended &CIS;: XML Response</title>
-    <programlisting language="xml"><?db-font-size 70%?><xi:include href="../../common/samples/extended_listuser.xml" parse="text"/></programlisting>
-  </example>
-  <example xml:id="IdentityLSTUSRJ">
-    <title>Extended Server: JSON Response</title>
-    <programlisting language="json"><?db-font-size 70%?><xi:include href="../../common/samples/extended_listuser.json" parse="text"/></programlisting>
-  </example>
-  <example xml:id="IdentityGETRGNX">
-    <title>Extended Action: XML Request</title>
-    <programlisting language="xml"><?db-font-size 70%?><xi:include href="../../common/samples/Region.xml" parse="text"/></programlisting>
-  </example>
-  <example xml:id="IdentityGETRGNJ">
-    <title>Extended Action: JSON Request</title>
-    <programlisting language="json"><?db-font-size 70%?><xi:include href="../../common/samples/Region.json" parse="text"/></programlisting>
-  </example>
+    <para>
+      Extended headers are always prefixed with
+      <code>X-</code> followed by the alias and a dash: (<code>X-AUTH-TOKEN</code>). You must prefix states
+      and parameters with the extension alias followed by a colon. For example, a user can be in the 
+      <code>RAX-AUTH:multiFactorEnabled</code> state.</para>
+  </section>
+  <section xml:id="extendedXML">
+    <title>JSON requests and responses with extensions</title>
+    <?dbhtml stop-chunking?>
+    <para>In XML, additional elements and attributes are defined in the namespace for the extension.
+      To use these elements and attributes in an API request, include the namespace in the API request as shown in this example.
+      <example xml:id="IdentityGETRGNX">
+        <title>Extended Action: XML Request</title>
+        <programlisting language="xml"><?db-font-size 70%?><xi:include href="../../common/samples/Region.xml" parse="text"/></programlisting>
+      </example></para>
+    <para>The API response includes the namespaces for core API and extensions resources
+      available to the API service.<example xml:id="IdentityLSTUSRX">
+        <title>Extended &CIS;: XML Response</title>
+        <programlisting language="xml"><?db-font-size 70%?><xi:include href="../../common/samples/extended_listuser.xml" parse="text"/></programlisting>
+      </example></para>
+  </section>
 </section>

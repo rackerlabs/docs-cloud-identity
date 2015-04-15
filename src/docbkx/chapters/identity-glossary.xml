@@ -78,13 +78,11 @@
     <glossentry xml:id="EndpointTemplate">
         <glossterm><emphasis role="bold">Endpoint Template</emphasis></glossterm>
         <glossdef>
-            <para>Endpoint templates provide Cloud Service providers with a method to define
+            <para><link xlink:href="Endpoint_Template_Calls.hmtl">Endpoint templates</link> provide Cloud Service providers with a method to define
                 endpoints that apply to many or all tenants without having to create each endpoint
                 on each tenant manually. For example, you can define an endpoint template and set
                 the global attribute to true so that endpoint is automatically included in the
-                Service catalog for all tenants authorized to use that service. For more
-                information, see <olink targetdoc="Identity-Admin-Developer-Guide"
-                    targetptr="Endpoint_Template_Calls">“Endpoint Templates”</olink>.</para>
+                Service catalog for all tenants authorized to use that service.</para>
         </glossdef>
       
     </glossentry>

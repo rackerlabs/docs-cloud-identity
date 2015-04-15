@@ -93,7 +93,7 @@
     
     <method name="GET" id="listEndpointTemplates">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List endpoint templates">
-            <para role="shortdesc">List endpoint templates.</para>
+            <para role="shortdesc">Lists endpoint templates.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://docbook.org/ns/docbook" name="serviceId" style="query" type="xsd:string">
@@ -119,7 +119,7 @@
     
     <method name="GET" id="getEndpointTemplate">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get endpoint template">
-            <para role="shortdesc">Get an endpoint template.</para>
+            <para role="shortdesc">Retrieves an endpoint template.</para>
         </wadl:doc>
         <response status="200 203">
             <doc title="OK">The request has completed successfully.</doc>
@@ -411,7 +411,7 @@
     
     <method name="DELETE" id="deleteEndpointTemplate">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN" title="Delete endpoint template">
-            <para role="shortdesc">Delete an endpoint template.</para>
+            <para role="shortdesc">Deletes an endpoint template.</para>
         </wadl:doc>
         <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
@@ -426,7 +426,7 @@
    
     <method name="POST" id="addEndpoint">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add endpoint to tenant">
-            <para role="shortdesc">Add an endpoint to a tenant.</para>
+            <para role="shortdesc">Adds an endpoint to a tenant.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplate">
@@ -463,7 +463,7 @@
     
     <method name="GET" id="listEndpoints">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List endpoints for tenant">
-            <para role="shortdesc">List all endpoints available to a tenant.</para>
+            <para role="shortdesc">Lists all endpoints available to a tenant.</para>
         </wadl:doc>
         <response status="200"  >
             <doc title="OK">The request has completed successfully.</doc>

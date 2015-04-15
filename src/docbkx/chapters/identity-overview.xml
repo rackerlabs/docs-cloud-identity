@@ -17,7 +17,7 @@
                     client. Then, that token is used to confirm
                     identity when requesting access to systems or
                     resources defined in the Cloud Identity Service
-                    service catalog.  </para>
+                    service catalog.</para>
             </listitem>
             <listitem>
                 <para>Authorization determines the resources and
@@ -43,7 +43,7 @@
         <para condition="client">This Administration Guide is intended for Rackspace software developers interested in developing applications that use
             the Keystone Identity Admin API for authentication. The Rackspace Cloud Identity Service, also known as the
             authentication service or "Auth", allows these developers to obtain an authentication token and a list of
-            regional service endpoints to the various Rackspace services available. </para>
+            regional service endpoints to access available Rackspace services.</para>
         <para condition="admin">This Developer Guide is intended for software developers
             who want to use the Rackspace Cloud Identity Service, an
             implementation of the OpenStack Keystone Identity Service.
@@ -58,107 +58,47 @@
         <para>This version of the Developer Guide applies only to v2.0 of the API. The most recent changes are described in
             the table below:</para>
         <?rax revhistory?>
-    </section>
+    </section> 
     <section xml:id="Additional_Resources-d1e130">
         <title>Additional Resources</title>
-        <para> Descriptive information about this service is also published in its Web Application Description Language
-            (WADL) and XML Schema Definition (XSD). You are welcome to read this information, but please use the appropriate
-            US-based or UK-based version. </para>
-        <para condition="admin"> A customer's account can be based in either the US or the UK. The location is not determined by the customer's
-            physical location but by the location of the Rackspace retail site which was used to create that account:</para>
         <itemizedlist>
             <listitem>
-                <para> If an account was created via
-                    <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based
-                    account. <itemizedlist>
-                        <listitem>
-                            <para> The US-based WADL is
-                                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth.wadl">
-                                    http://docs.rackspace.com/auth/api/v2.0/auth.wadl</link>.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para> The US-based XSDs are
-                                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/common/xsd/api.xsd">
-                                    http://docs.rackspace.com/auth/api/v2.0/common/xsd/api.xsd</link>
-                                and
-                                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/common/xsd/api-common.xsd">
-                                    http://docs.rackspace.com/auth/api/v2.0/common/xsd/api-common.xsd</link>.
-                            </para>
-                        </listitem>
-                    </itemizedlist>
+                <para>Read the <link xlink:href="http://docs.rackspace.com/">Rackspace API
+                        Documentation</link> to learn about APIs for other Rackspace
+                    services.</para>
+            </listitem>
+            <listitem>
+                <para>Visit the <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> to 
+                    learn how to use Rackspace services from the <link xlink:href="https://mycloud.rackspace.com/">Rackspace Cloud Control panel</link>.
                 </para>
             </listitem>
             <listitem>
-                <para> If an account was created via
-                    <link xlink:href="http://www.rackspace.co.uk">http://www.rackspace.co.uk</link>, it is a UK-based account. 
-                    <itemizedlist>
-                        <listitem>
-                            <para> The UK-based WADL is
-                                <link xlink:href="http://docs.rackspace.com/auth/api/uk/v2.0/auth.wadl">
-                                    http://docs.rackspace.com/auth/api/uk/v2.0/auth.wadl</link>.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para> The UK-based XSDs are
-                                <link xlink:href="http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api.xsd">
-                                    http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api.xsd</link>
-                                and
-                                <link xlink:href="http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api.xsd">
-                                    http://docs.rackspace.com/auth/api/uk/v2.0/common/xsd/api-common.xsd</link>.
-                            </para>
-                        </listitem>
-                    </itemizedlist>
+                <para>Find information about Rackspace SDKs and developer-focused articles and information on the 
+                    <link xlink:href="https://developer.rackspace.com/">Rackspace Developer site</link>.
                 </para>
+            </listitem>
+            <listitem>
+                <para>Visit the <link xlink:href="https://feedback.rackspace.com">Rackspace Product Feedback forum</link> to share 
+                    feedback and suggestions about Rackspace products and services, including this one.</para>
+            </listitem>
+            <listitem>
+                <para>Review the 
+                    <link xlink:href="http://docs.openstack.org/developer/keystone/">OpenStack Keystone documentation</link> to learn about 
+                        the reference architecture for the Rackspace Cloud Identity service implementation.</para>
             </listitem>
         </itemizedlist>
-        <para> If you are unsure how an account was created, use the Rackspace contact information at either site to ask for
-            help. </para>
-        <para> In addition to this API documentation and its related WADLs and XSDs, you might find relevant information in
-            several other places: </para>
-        <itemizedlist>
-            <listitem>
-                <para>To see how the Cloud Authentication Service is used by another Rackspace service, read that service's
-                    API documentation at
-                    <link xlink:href="http://docs.rackspace.com/api/">
-                        docs.rackspace.com</link>. You
-                    might also find useful articles and tutorials in the Rackspace Knowledge Center at
-                    <link xlink:href="http://www.rackspace.com/knowledge_center/">rackspace.com/knowledge_center/</link>.
-                </para>
-            </listitem>
-            <listitem>
-                <para> To learn about v1.1 of the Cloud Authentication Service, which supports Rackspace authentication but
-                    does not implement the OpenStack Keystone Identity Service, read the Rackspace Cloud Authentication
-                    Client Developer Guide for API v1.1 at
-                    <link xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf">
-                        http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide-latest.pdf</link>.
-                </para>
-            </listitem>
-            <listitem>
-                <para> To learn about Keystone, read the OpenStack Keystone documentation at
-                    <link xlink:href="http://keystone.openstack.org/">
-                        keystone.openstack.org</link>.
-                </para>
-            </listitem>
-            <listitem>
-                <para>To connect with Rackspace customers and others who are interested in discussing the same things that
-                    you are interested in, visit the Rackspace Open Cloud Community at
-                    <link xlink:href="https://community.rackspace.com/">community.rackspace.com</link>.
-                </para>
-            </listitem>
-        </itemizedlist>
-        <tip>
+        <tip security="internal">
             <para>
-                <emphasis role="bold">For Rackspace-internal use only:</emphasis> Check the Cloud Authentication and Identity
-                wiki pages, beginning at
-                <link xlink:href="https://one.rackspace.com/display/auth/">one.rackspace.com/display/auth/</link>, for very
-                current operational information. This wiki also contains some step-by-step guidance on commonly-performed
-                procedures. For example, the
-                <link xlink:href="https://one.rackspace.com/display/auth/Create+New+Admin+Users+in+Auth">Create New Service Users in Auth</link>
-                page outlines creation of service users (identity:admin users) for Auth 1.0, 1.1, and 2.0.</para>
+                <emphasis role="bold">For Rackspace-internal use only:</emphasis> Check the Cloud
+                Authentication and Identity wiki pages, beginning at <link
+                    xlink:href="https://one.rackspace.com/display/auth/">Cloud Authentication and
+                    Identity wiki</link>, for current operational information. The wiki also
+                contains some step-by-step guidance on commonly-performed procedures. For example,
+                the <link
+                    xlink:href="https://one.rackspace.com/display/auth/Create+New+Admin+Users+in+Auth"
+                    >Create New Service Users in Auth</link> page outlines creation of service users
+                (identity:admin users) for Auth 1.1, and 2.0.</para>
         </tip>
-        <para> If you have a suggestion about any Rackspace product or service, including this one, please share it at
-            <link xlink:href="https://feedback.rackspace.com">Rackspace Product Feedback</link>.</para>
     </section>
     <xi:include href="identity-endpoints.xml"/>
     <xi:include condition="admin" href="identity-releasenotes-v20-admin.xml"/>

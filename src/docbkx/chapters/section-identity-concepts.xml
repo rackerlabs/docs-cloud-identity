@@ -38,11 +38,8 @@
                         
                     <listitem condition="admin">
                             <para>
-                                <olink targetdoc="Identity-Admin-Developer-Guide"
-                                    targetptr="section_assign_roles_3">“Assigning roles to account
-                                    users”</olink><olink targetdoc="Identity-Developer-Guide"
-                                    targetptr="section_assign_roles_3">“Assigning Roles to Account
-                                    Users”</olink></para>
+                                <link xlink:href="section_assign_roles_3.html">Assigning roles to account
+                                    users</link></para>
                         
                         </listitem>
                    </itemizedlist>

@@ -12,16 +12,11 @@
   <para>The authentication service API is extensible, meaning that the
     API is structured so that some functions are implemented in the
     core API and others are implemented via optional extensions to
-    that core. Extensions serve two purposes:<itemizedlist>
-      <listitem>
-        <para> Extensions allow Service providers to introduce new features in the API without
-          changing the contract version.</para>
-      </listitem>
-      <listitem>
-        <para> Extensions allow Service providers to implement custom functionality in their
-          implementation of the OpenStack architecture.</para>
-      </listitem>
-    </itemizedlist>Every service provider can add extensions to the
+    that core. Extensions allow Service providers to introduce new features in the API without
+    changing the contract version and to add custom functionality in their implementation of 
+    the OpenStack architecture.</para>
+
+    <para>Every service provider can add extensions to the
     core API based on service requirements.</para>
   <para>Each extension has two unique identifiers: a
     <property>namespace</property> and an
@@ -40,7 +35,7 @@
     following OpenStack and Rackspace extensions.</para>
   <itemizedlist>
     <listitem>
-      <para><emphasis role="bold">OS-KSADM OpenStack</emphasis>. Supports Create, Read, Update, and Delete
+      <para><emphasis role="bold">OpenStack KSADM</emphasis>. Supports Create, Read, Update, and Delete
         (CRUD) operations for the following resource types: Users, Tenants, Roles, and Services.
         Requires Administrator privileges.<itemizedlist>
           <listitem>
@@ -141,12 +136,7 @@
             xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"</code></para></listitem>
         </itemizedlist></para>
     </listitem>
-  </itemizedlist>
-  <para>For more information, see these topics:</para>
-  <itemizedlist>
-    <listitem><para><link xlink:href="Extensions_operations.html">Extensions API operations</link></para></listitem>
-    <listitem><para><link xlink:href="extended_actions.html">Learn about developing and using
-              extensions</link></para>
-              </listitem>
-          </itemizedlist>
+  </itemizedlist><?dbhtml stop-chunking?>
+  <para>You can use the <link xlink:href="Extensions_operations.html">Extensions API operations</link> to view and manage the extensions available with the Identity service.</para>
+   <xi:include href="section-extended-response.xml"/>
 </section>

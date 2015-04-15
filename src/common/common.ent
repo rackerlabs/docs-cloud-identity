@@ -86,7 +86,7 @@ This operation does not require a request body.</para>'>
      <!ENTITY postPutFaults
            '
         <response status="415" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="Bad Media Type">Bad media type. This may result if the wrong media type is used in the cURL request.</doc>
+            <doc title="Bad Media Type">Bad media type. This may result if the wrong media type is used in the API request. Check the content-type and accept headers included in the request.</doc>
         </response>
            '>
            
@@ -112,6 +112,38 @@ This operation does not require a request body.</para>'>
              <doc title="Service Fault">Service is not available.</doc>
         </response>
            '>
+           
+<!ENTITY AuthRespAttributes
+    '
+     <param name="access" style="plain" required="true" type="xsd:string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>An <code>access</code> object that returns token, user, and service information upon successful authentication.</para>
+        </wadl:doc>
+     </param>
+     
+      <param name="token" style="plain" required="true" type="xsd:string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>The <link xlink:href="Sample_Request_Response-d1e64.html#authTokenResp">token object</link> supplies a scoped authentication token that can 
+            be used to access Rackspace Cloud services for the specified tenant.</para>
+        </wadl:doc> 
+     </param>
+     
+     <param name="user" style="plain" required="true" type="xsd:string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                <para>A <link xlink:href="Sample_Request_Response-d1e64.html#authUserResp">user object</link> that returns the following information 
+                about the user, if available for the account: id, name, assigned roles, default region, domain, multi-factor authentication status.
+                </para>
+        </wadl:doc>
+    </param>
+    
+    <param name="serviceCatalog" style="plain" required="true" type="xsd:string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>The <link xlink:href="Sample_Request_Response-d1e64.html#authSvccatResp">service catalog object</link> provides information about 
+            each service available to the authenticated user along with the service endpoints for API requests.</para>
+         </wadl:doc>
+    </param>
+    
+    '>           
            
 <!ENTITY UserAttributes 
    '

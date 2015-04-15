@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <user xmlns:ns1="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
     xmlns:ns2="http://docs.openstack.org/identity/api/v2.0"
-    username="cmarin1subX2" 
-    email="cmarin1-sub@example.com" 
+    username="newUser" 
+    email="newUser@example.com" 
     enabled="true" 
     ns1:password="Password48"/>

@@ -60,7 +60,6 @@
 				<wadl:method href="#admin-getExtension"/>
 			</wadl:resource>
 		</wadl:resources>
-		<xi:include href="section-extended-response.xml"/>
 	</section>
 	
 	<!--User operations-->
@@ -71,18 +70,14 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>OS-KSADM</code> and <code>RAX-KSKEY</code> extensions to the
+				provided by the <link xlink:href="Extensions-d1e688.html">OS-KSADM and RAX-KSKEY extensions</link> to the
 				core Identity API. 
-				You can learn more about API extensions at
-				<olink condition="client" targetdoc="Identity-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink>.  
 			</para>
 		</note>
 		<para>
-			When these requests are issued by an account user, they act only upon that account user. To learn more about account users, see <olink
-				targetdoc="Identity-Developer-Guide"
-				targetptr="Account-Users-d1e910">“Account
-				Users”</olink>. </para>
+			When these requests are issued by an account user, they act only upon that account user. To learn more about Identity account users, 
+			see <link xlink:href="Role_Based_Access_Control-d1e808.html">Roles and role assignments</link>.
+		</para>
 		
 		<!--- this section comes from 3 WADLs: core identity-admin + extensions OS-KSADM-admin & RAX-KSKEY-admin that have been merged into the identity-admin.wadl  -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -202,13 +197,8 @@
 	<note>
 		<para> 
 			Some of the functionality described in this section is
-			provided by the <code>RAX-AUTH</code> extension to the
-			core Identity API. 
-			The functionality described in this section is provided by the <code>OS-KSADM</code> 
-			extension to the core Identity API.  For more information, see 
-			<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-				targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink>.  				
+			provided by the <link xlink:href="Extensions-d1e688.html">OS-KSADM and RAX-AUTH extensions</link> to the
+			core Identity API. 				
 		</para>
 	</note>
 	<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -251,11 +241,8 @@
 		<note>
 			<para> 
 				Some of the functionality described in this section is
-				provided by the <code>RAX-AUTH</code> and <code>RAX-KSQA</code> extensions to the
-				core Identity API. For more information, see 
-				<olink condition="admin" targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Extensions-d1e688">Extensions</olink><olink condition="client" targetdoc="Identity-Developer-Guide"
-						targetptr="Extensions-d1e688">Extensions</olink>.
+				provided by the <link xlink:href="Extensions-d1e688.html">OS-KSADM and RAX-KSQA extensions</link> to the
+				core Identity API. 				
 			</para>
 		</note>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">

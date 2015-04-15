@@ -5,10 +5,8 @@
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
   xml:id="Namespaces-d1e910">
   <title>Namespaces</title>
-  <para> The API operations described in <olink
-    targetdoc="Identity-Admin-Developer-Guide"
-    targetptr="API_Operations">API Operations for Service
-    Developers</olink> are enabled by a combination of the
+  <para> The API operations described in <link xlink:href="API_Operations.html">API Operations for Service
+    Developers</link> are enabled by a combination of the
     core Identity API and multiple API extensions. You can
     read more about extensions, including how to request
     details about all or specific extensions, at <link xlink:href="Extensions-d1e688.html">Extensions</link>.</para>

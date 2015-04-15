@@ -466,10 +466,7 @@ Host: identity.api.rackspacecloud.com/v1.0/
 			rate limit configuration and events to troubleshoot problems.</para>
 		
 		<tip condition="admin">
-			<para> You can learn about rate limiting operations in <olink
-					targetdoc="Identity-Admin-Developer-Guide"
-					targetptr="Ratelimiting_Calls">“Rate
-					Limits”</olink>.</para>
+			<para> You can learn about rate limiting operations in <link xlink:href="Ratelimiting_Calls.html">Rate Limits</link>.</para>
 		</tip>
 	</section>
 	<section xml:id="Faults-d1e908">
