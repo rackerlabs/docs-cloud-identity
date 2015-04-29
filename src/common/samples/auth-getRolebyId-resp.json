@@ -1,0 +1,9 @@
+{
+  "role": {
+    "id": "123",
+    "serviceId": "abc4321ebabeeabb70a0e702a4626977c331d5c4"
+    "description": "Admin role for database service",
+    "name": "database:admin",
+    "RAX-AUTH:propagate": false
+  }
+}

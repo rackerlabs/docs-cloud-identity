@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
 <!--*******************************************************-->
 <!-- Import Common XML Entities -->
@@ -47,7 +48,7 @@
                 </param>
                 <resource id="tenantId" path="{tenantId}">
                     <param name="tenantId" style="template" type="capi:UUID" required="true">
-                        <doc>The unique ID assigned to the tenant account.</doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The unique ID assigned to the tenant account.</wadl:doc>
                     </param>
                     <resource id="endpoints-OS-KSCATALOG" path="OS-KSCATALOG">
                         <resource id="endpoints" path="endpoints">
@@ -55,7 +56,7 @@
                             <method href="#addEndpoint"/>
                             <resource id="endpoint" path="{endpointId}">
                                 <param name="endpointId" style="template" type="xsd:string" required="true">
-                                    <doc>An endpoint Id</doc>
+                                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">An endpoint Id</wadl:doc>
                                 </param>
                                 <method href="#getEndpoint"/>
                                 <method href="#deleteEndpoint"/>
@@ -65,16 +66,16 @@
                 </resource>
             </resource>
             
-            <resource id="role-service-OS-KSCATALOG" path="OS-KSCATALOG">
+            <resource id="endpointTemplate-OS-KSCATALOG" path="OS-KSCATALOG">
                 <resource id="endpointTemplates" path="endpointTemplates">
                     <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                        <doc>A valid authentication token.</doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">A valid authentication token.</wadl:doc>
                     </param>
                     <method href="#listEndpointTemplates"/>
                     <method href="#addEndpointTemplate"/>
                     <resource id="endpointTemplateId" path="{endpointTemplateId}">
                         <param name="endpointTemplateId" style="template" type="xsd:string" required="true">
-                            <doc>An endpoint template Id</doc>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">An endpoint template Id</wadl:doc>
                         </param>
                         <method href="#getEndpointTemplate"/>
                         <method href="#updateEndpointTemplate"/>
@@ -92,25 +93,26 @@
     <!-- EndPoint Templates -->
     
     <method name="GET" id="listEndpointTemplates">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List endpoint templates">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List endpoint templates">
             <para role="shortdesc">Lists endpoint templates.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://docbook.org/ns/docbook" name="serviceId" style="query" type="xsd:string">
-                <wadl:doc> Allows us to filter by service id.</wadl:doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Allows us to filter by service id.</wadl:doc>
             </param>
         </request>
         <response status="200 203">
-            <doc title="OK">The request has completed successfully.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="OK">The request has completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplates">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN">
                     <xsdxt:code href="../common/samples/endpointTemplates.xml"/>
-                </doc>
+                </wadl:doc>
+                &endpointTempResp; 
             </representation>
             <representation mediaType="application/json">
-                <doc xml:lang="EN">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN">
                     <xsdxt:code href="../common/samples/endpointTemplates.json"/>
-                </doc>
+                </wadl:doc>
             </representation>
         </response>
         &commonFaults;
@@ -163,11 +165,16 @@
                 </itemizedlist></note>
         </wadl:doc>        
         <request>
+            <representation mediaType="application/json">
+                <wadl:doc>
+                    <xsdxt:code href="../common/samples/auth_CreateEndPointTemplate_curl.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplate">
                 <wadl:doc>
                     <xsdxt:code href="../common/samples/endpointTemplate.xml"/>
                 </wadl:doc>
-                <param name="id" style="plain" required="false" path="$.id" type="xsd:string">
+                <param name="id" style="plain" required="true" path="$.id" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>A unique ID for the endpoint. If you don't specify a value, the system automatically generates a unique ID.</para></wadl:doc>
                 </param>
@@ -216,17 +223,17 @@
                             should never see it. 
                         </para></wadl:doc>
                 </param>
-                <param name="tenantAlias" style="plain" required="false" path="$.TenantAlias" default="{tenant}" type="xsd:string">
+                <param name="RAX-AUTH:tenantAlias" style="plain" required="false" path="$.TenantAlias" default="{tenant}" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>Tenant alias to be concatenated to the endpoint. The default value is <code>'{tenant}"</code>
                             When this parameter is specified for endpointTemplate, it appends 
-                            the pattern to an endpoint. Example values: <code>tenantAlias: '{tenant}'</code>, 
+                            the pattern to an endpoint. Example values: <code>RAX-AUTH:tenantAlias: '{tenant}'</code>, 
                             <code>'NastPrefix{tenant}'</code>, or 
                             <code>''</code> (empty). If the value is blank, the pattern for a tenant id is not 
                             concatenated to the endpoint.
                         </para></wadl:doc>
                 </param>
-                <param name="version" style="plain" required="false" path="$.version" type="xsd:boolean">
+                <param name="versionId" style="plain" required="false" path="$.version" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>Version details.
                         </para>
@@ -274,7 +281,7 @@
             <para role="shortdesc">Updates an endpoint template to change configuration and enable automated management.</para>
             <para>When an endpoint template is initially created, you have to add the associated endpoint to tenants and users manually. After 
                 the endpoint has beeen tested and is ready for production, Identity service administrators can update the endpoint template 
-                attributes to support automated endpoint management. When automation is enabled, the Identity service can add endpoints to 
+                attributes to support automated endpoint management. With automation enabled, the Identity service can add endpoints to 
                 tenants and users automatically based on the settings configured for the following attributes: <parameter>enabled</parameter>, 
                 <parameter>global</parameter> and <parameter>default</parameter>.
             </para>
@@ -350,11 +357,11 @@
                             should never see it. 
                         </para></wadl:doc>
                 </param>
-                <param name="tenantAlias" style="plain" required="false" path="$.TenantAlias" default="{tenant}" type="xsd:string">
+                <param name="RAX-AUTH:tenantAlias" style="plain" required="false" path="$.TenantAlias" default="{tenant}" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>Tenant alias to be concatenated to the endpoint. The default value is <code>'{tenant}"</code>
                             When this parameter is specified for endpointTemplate, it appends 
-                            the pattern to an endpoint. Example values: <code>tenantAlias: '{tenant}'</code>, 
+                            the pattern to an endpoint. Example values: <code>RAX-AUTH:tenantAlias: '{tenant}'</code>, 
                             <code>'NastPrefix{tenant}'</code>, or 
                             <code>''</code> (empty). If the value is blank, the pattern for a tenant id is not 
                             concatenated to the endpoint.
@@ -366,9 +373,9 @@
                             value is <code>false</code>. An endpoint template can only be added if it is enabled.
                         </para></wadl:doc>
                 </param>
-                <param name="version" style="plain" required="false" path="$.version" type="xsd:boolean">
+                <param name="versionId" style="plain" required="false" path="$.version" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        xml:lang="EN"><para>Version details.
+                        xml:lang="EN"><para>API Version level for the endpoint.
                         </para>
                     </wadl:doc>
                 </param>

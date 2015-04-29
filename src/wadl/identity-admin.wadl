@@ -603,7 +603,7 @@
                 has expired or is no longer available. Use the POST token request to get a new token.</wadl:doc>
         </response>
         <response status="500">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" mvtitle="Service Fault">Service is not available</wadl:doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Service Fault">Service is not available</wadl:doc>
         </response>
     </method>
     
@@ -863,7 +863,7 @@
                 <param name="RAX-AUTH:domainId" style="plain"
                     type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>To assign the user to a domain,
-                        specify the domain ID. If you don't know the domain ID, use the Get domains operation to 
+                        specify the domain ID. If you don't know the domain ID, use the Retrieve domains operation to 
                         list the available domains.</para>
                     </wadl:doc>
                 </param>

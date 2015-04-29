@@ -1,0 +1,48 @@
+GET /v2.0/OS-KSADM/roles?limit=5 HTTP/1.1
+Host: staging.identity-internal.api.rackspacecloud.com
+Accept: */*
+Content-type: application/json
+X-Auth-Token: 349abdd56ceb74c858ce59538738fea3e
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 708
+Connection: keep-alive
+Link: <http://staging.identity-internal.api.rackspacecloud.com/cloud/v2.0/OS-KSADM/roles?marker=1130&limit=5>; rel="last", 
+      <http://staging.identity-internal.api.rackspacecloud.com/cloud/v2.0/OS-KSADM/roles?marker=5&limit=5>; rel="next"
+vary: Accept, Accept-Encoding, X-Auth-Token
+
+{
+    "roles": [
+        {
+            "description": "Rackspace DevOps Customer",
+            "id": "100",
+            "name": "rax_devops",
+            "serviceId": "bde1268ebabeeabb70a0e702a4626977c331d5c4"
+        },
+        {
+            "description": "RackConnect Administrators",
+            "id": "10000280",
+            "name": "rackconnect:admin",
+            "serviceId": "bde1268ebabeeabb70a0e702a4626977c331d5c4"
+        },
+        {
+            "description": "Sign Up Service Public role",
+            "id": "10007636",
+            "name": "signup:public",
+            "serviceId": "bde1268ebabeeabb70a0e702a4626977c331d5c4"
+        },
+        {
+            "description": "Sign Up Service Trusted role",
+            "id": "10007637",
+            "name": "signup:trusted",
+            "serviceId": "bde1268ebabeeabb70a0e702a4626977c331d5c4"
+        },
+        {
+            "description": "admin role for cloud files",
+            "id": "10007653",
+            "name": "cloudfiles:admin",
+            "serviceId": "bde1268ebabeeabb70a0e702a4626977c331d5c4"
+        }
+    ]
+}

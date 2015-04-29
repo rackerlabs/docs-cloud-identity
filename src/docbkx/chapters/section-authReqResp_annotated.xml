@@ -678,8 +678,8 @@ Cache-Control: no-cache
 				                    <td>
 					                      <para>The tenant object provides the
 						<parameter>name</parameter> and
-						<parameter>ID</parameter> for the tenant that the
-						token applies to.</para>
+						<parameter>ID</parameter> for the tenant that users can access 
+						with the supplied token.</para>
 				                    </td>
 			                  </tr>
 			                  <tr>
@@ -830,7 +830,7 @@ Cache-Control: no-cache
                 <col width="50%"/>
 			               <thead>
 				                 <tr>
-					                   <th valign="top">Applies to</th>
+					                   <th valign="top">Object</th>
 					                   <th>Attribute</th>
                         <th>Type</th>
 					                   <th>Description</th>
@@ -1039,7 +1039,7 @@ Cache-Control: no-cache
 			               <col width="60%"/>
 			               <thead>
 				                 <tr>
-					                   <th valign="top">Applies to</th>
+					                   <th valign="top">Object</th>
 					                   <th>Attribute</th>
 					                   <th>Description</th>
 				                 </tr>

@@ -117,7 +117,7 @@
                 <method href="#addRole"/>
                 <method href="#listRoles"/>
                 <resource id="roleId" path="{roleId}">
-                    <param name="id" style="plain" type="xsd:string">
+                    <param name="id" style="template" type="xsd:string">
                           <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                                 <para>The role ID.</para>
                            </wadl:doc>
@@ -226,7 +226,7 @@
             </representation>
         </request>
         <response status="200">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="tenant">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/tenant.xml"/>
@@ -253,7 +253,7 @@
     <method name="GET" id="listUsersForTenant">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List users for tenant">
             <para role="shortdesc">Lists all users for a tenant.</para>
-           <para >List all the users for a tenant.</para>
+           <para>List all the users for a tenant.</para>
         </wadl:doc>
         <request>
             <param name="marker" style="query" required="false" type="xsd:string">
@@ -522,7 +522,7 @@
             </param>
         </request>
         <response status="200 203">
-                <doc title="OK">Request completed successful.</doc>
+                <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="identity:UserList">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/users.xml"/>
@@ -545,7 +545,7 @@
                 email address, user name, user ID, status, default region, and domain id.</para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <!-- Pull in shared response parameters by using entity from common.ent file -->
             <representation mediaType="application/xml" element="identity:User">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -579,7 +579,7 @@
                 section.</para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/userbyemailresponse.xml"/>
@@ -741,7 +741,7 @@
             </representation>
         </request>
         <response status="200">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
      
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -805,7 +805,7 @@
             </representation>
         </request>
         <response status="200">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/user.xml"/>
@@ -886,7 +886,7 @@
             <para>Get information about a global role that belongs to a user.</para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/role.xml"/>
@@ -977,7 +977,7 @@
             </param>
         </request>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/credentials.xml"/>
@@ -1011,7 +1011,7 @@
             </representation>
         </request>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/passwordcredentials.json"/>
@@ -1044,7 +1044,7 @@
            <para >Get user credentials.</para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
@@ -1112,7 +1112,7 @@
             </note>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/roles.xml"/>
@@ -1186,38 +1186,44 @@
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
     <method name="GET" id="listRoles">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List roles">
-            <para role="shortdesc">Lists roles.</para>
-            <para >Use the List roles API operation to retrieve a list of roles 
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Retrieve roles">
+            <para role="shortdesc">Lists available roles for managing access to Rackspace Cloud services.</para>
+            <para>Use the List roles API operation to retrieve the available roles. The response 
+                returns the roles object with information about each role, including the id for the 
+                service that the role applies to. 
             </para>
+            <para>If you use the limit and marker parameter, the previous and next links are in the header.</para>
         </wadl:doc>
         <request>
-       
-       <!-- The following query parameters are not supported in the Rackspace Identity implementation 
-            <param name="serviceId" style="query" required="false" type="xsd:string">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to filter by service id. </wadl:doc>
-            </param>
-            <param name="marker" style="query" required="false" type="xsd:string">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to page through list of users. This is the numeric id of the item to start the list.</wadl:doc>
-            </param>
-            <param name="limit" style="query" required="false" type="xsd:int">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
-            </param> -->
-        </request>
-        <response status="203">
-            <doc title="OK">Request completed successful.</doc>
-            <representation mediaType="application/xml" element="roles">
+            &limitMarkerReqParameter;
+            <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/roles.xml"/>
+                    <xsdxt:code href="../common/samples/auth-getRoles-request-json-http.txt"/>
                 </wadl:doc>
             </representation>
-           
+        </request>
+        <response status="203">
+            <doc title="OK">Request completed successfully.</doc>
+            <representation mediaType="application/xml" element="roles">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-getRoles-resp-xml-http.txt"/>
+                    <xsdxt:code href="../common/samples/roles.xml"/>
+                </wadl:doc>
+                <param name="roles" style="plain" required="true" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Role object.</para>
+                    </wadl:doc>
+                </param>
+                &roleResponse;
+            </representation>
             <representation mediaType="application/json" element="roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-getRoles-resp-json-http.txt"/>
                     <xsdxt:code href="../common/samples/roles.json"/>
                 </wadl:doc>
             </representation>
-        </response>&commonFaults; &getFaults; </method>
+        </response>
+        &commonFaults; &getFaults; </method>
     
     <!--  This call doesn't work per Joe Savak Sept 2014 
     <method name="GET" id="getRoleByName">
@@ -1271,15 +1277,18 @@
                 <code>name</code>, <code>description</code>) for a specified role. </para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/role.xml"/>
+                    <xsdxt:code href="../common/samples/auth-getRolebyId-resp-xml-http.txt"/>
+                    <xsdxt:code href="../common/samples/auth-getRolebyID-resp.xml"/>
                 </wadl:doc>
+                &roleResponse;
             </representation>
             <representation mediaType="application/json" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/role.json"/>
+                    <xsdxt:code href="../common/samples/auth-getRolebyId-resp-json-http.txt"/>
+                    <xsdxt:code href="../common/samples/auth-getRolebyId-resp.json"/>
                 </wadl:doc>
             </representation>
         </response>&commonFaults; &postPutFaults; &getFaults; </method>
@@ -1301,7 +1310,7 @@
            <para >This operation does not require a request body.</para>
         </wadl:doc>
         <response status="200">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="Users">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/userswithroles.xml"/>
@@ -1383,7 +1392,7 @@
             </param>
         </request>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="OS-KSADM:services">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/services.xml"/>
@@ -1401,14 +1410,14 @@
     <method name="GET" id="getServiceByName">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get service by name">
             <para role="shortdesc">Gets a service by name.</para>
-           <para >If you don't know the service name, use the List services operation to 
+           <para>If you don't know the service name, use the List services operation to 
             find it.</para>
         </wadl:doc>
  <!--       <request>
             <param name="name" style="query" type="xsd:string" required="true"/>
         </request> -->
         <response status="200 203"> 
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="OS-KSADM:service">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/service.xml"/>
@@ -1430,7 +1439,7 @@
                 to find it.</para>
         </wadl:doc>
         <response status="200 203">
-            <doc title="OK">Request completed successful.</doc>
+            <doc title="OK">Request completed successfully.</doc>
            
             <representation mediaType="application/xml" element="OS-KSADM:service">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">

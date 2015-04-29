@@ -65,7 +65,7 @@
 		</tbody>
 	  </table>
 	</section>
-	<section security="writeronly" xml:id="Paginated_Collections-d1e325">
+	<section xml:id="Paginated_Collections-d1e325">
 		<title>Paginated collections</title>
 		<annotation>
 			<remark>"Paginated Collections" is not yet implemented as of v2.0;

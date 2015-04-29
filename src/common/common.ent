@@ -220,4 +220,176 @@ This operation does not require a request body.</para>'>
                 </param>
                 ' >
                 
-      
+ <!ENTITY limitMarkerReqParameter 
+ '
+<param name="limit" style="query" required="false" type="xsd:int">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>
+                Requests a specified page size of returned items from the query.
+                Returns a number of items up to the specified limit value. Use the
+                <code>limit</code> parameter to make an initial limited request
+                and use the ID of the last-seen item from the response as the
+                <code>marker</code> parameter value in a subsequent limited request.
+             </para>
+        </wadl:doc>
+</param>
+<param name="marker" style="query" required="false" type="xsd:string">
+    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+        <para>
+        Specifies the ID of the last-seen item. Use the <code>limit</code>
+        parameter to make an initial limited request and use the ID of the
+        last-seen item from the response as the <code>marker</code>
+        parameter value in a subsequent limited request.
+        </para>
+    </wadl:doc>
+    </param>
+' >
+
+<!ENTITY roleResponse 
+'
+<param name="id" style="plain" required="true" type="xsd:int">
+    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+        xml:lang="EN">
+        <para>The role ID.</para>
+     </wadl:doc>
+</param>
+
+<param name="name" style="plain" required="true" type="xsd:string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>The role name.</para>
+        </wadl:doc>
+</param>
+<param name="description" style="plain"
+            required="true" type="xsd:string">
+    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+        <para>The role description.</para>
+    </wadl:doc>
+</param>
+<param name="serviceId" style="plain" required="true" type="xsd:string">
+    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+        <para>The id for the Rackspace Cloud service to which the role applies.</para>
+    </wadl:doc>
+</param>
+<param name="RAX-AUTH:propagate" style="plain" required="false"
+                    type="boolean">
+                    <wadl:doc
+                        xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>Indicates whether this role is assigned to an account owner (identity:user-admin) and 
+                            automatically inherited by all account users (identity:default).
+                        </para>
+                    </wadl:doc>
+                </param>
+'>
+                
+<!ENTITY endpointTempResp
+'
+<param name="OS-KSCATALOG:endpointTemplates" style="plain" type="object">
+                   <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Object that provides the endpoint template collection for Rackspace Cloud services.</para>
+                 </wadl:doc>
+                 </param>
+         <param name="endpointTemplate" style="plain" type="object">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>Object that provides the attributes for an endpoint template that has been added to the Rackspace Cloud environment.</para>
+                 </wadl:doc>  
+                 </param>          
+<param name="region" style="plain" required="true" path="$.region" default="false" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>Indicates the data center for service hosting. Examples: <code>ORD</code>, 
+                            <code>DFW</code>, <code>HKG</code>, <code>LON</code>, <code>SYN</code></para></wadl:doc>
+                </param>
+                <param name="global" style="plain" required="false" path="$.global" type="boolean">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN">
+                        <para>Specifies whether the endpoint applies to all tenant users. If this value is 
+                            <code>true</code> and the endpoint has been enabled, the Identity service automatically 
+                            includes the endpoint in all service catalogs. If the value is <code>false</code>, the 
+                            template only shows up when it is added to a tenant manually. The default value is <code>false</code>.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="default" style="plain" required="false" path="$.default" type="boolean">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN">
+                        
+                        <para>Indicates whether the endpoint template is a default endpoint that is added automatically when a 
+                            user is created. The value defaults to <code>false</code>. You only need to specify this parameter if 
+                            data center operating policies prevent you from using the global parameter to assign endpoints automatically across 
+                            regions.
+                        </para></wadl:doc>
+                </param>
+                <param name="type" style="plain" required="false" path="$.type" type="identity:ExtensibleServiceType">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN">
+                        <para>Specifies the OpenStack-registered type for core Keystone services or extensions.
+                            Examples of core service types: <code>compute</code>, <code>object-store</code>, 
+                            <code>image</code>. Examples of extension types: <code>rax:database</code>, <code>rax:load-balancer</code>, 
+                            <code>rax:monitor</code>.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="name" style="plain" required="false" path="$.name" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>Specifies the commercial name for the service, 
+                            <code>Cloud Servers</code> for example.
+                        </para></wadl:doc>
+                </param>
+                <param name="publicURL" style="plain" required="false" path="$.publicURL" type="xsd:anyURI">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>The URL that clients use to access the 
+                            endpoint over the internet.
+                        </para></wadl:doc>
+                </param>
+                <param name="internalURL" style="plain" required="false" path="$.internalURL" type="xsd:anyURI">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>The URL to use for communication between services. 
+                            In general, this URL is used for communication between services 
+                            over a high bandwidth, low latency, unmetered (free, no
+                            bandwidth charges) network. For example, to avoid racking up 
+                            bandwidth charges, use the internalURL to access a Cloud Files 
+                            cluster from inside your Cloud Server VMs to ensure local communication that 
+                            does not go over a public network.
+                        </para></wadl:doc>
+                </param>
+                <param name="adminURL" style="plain" required="false" path="$.adminURL" type="xsd:anyURI">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>The URL for service administration. 
+                            This URL is only shown to users with the appropriate rights. Customers 
+                            should never see it. 
+                        </para></wadl:doc>
+                </param>
+                <param name="RAX-AUTH:tenantAlias" style="plain" required="false" path="$.TenantAlias" default="{tenant}" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>Tenant alias to be concatenated to the endpoint. The default value is <code>{tenant}</code>
+                            When this parameter is specified for endpointTemplate, it appends 
+                            the pattern to an endpoint. Example values: <code>RAX-AUTH:tenantAlias: `{tenant}`</code>, 
+                            <code>`NastPrefix{tenant}`</code>, or 
+                            <code>``</code> (empty). If the value is blank, the pattern for a tenant id is not 
+                            concatenated to the endpoint.
+                        </para></wadl:doc>
+                </param>
+                <param name="enabled" style="plain" required="false" path="$.enabled" default="false" type="xsd:boolean">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>Indicates whether the endpoint template is activated (enabled). The default 
+                            value is <code>false</code>. An endpoint template can only be added if it is enabled.
+                        </para></wadl:doc>
+                </param>
+                <param name="versionId" style="plain" required="false" path="$.version" type="xsd:string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                        xml:lang="EN"><para>API Version level for the endpoint.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="versioninfo" style="plain" required="false" path="$.versioninfo" type="xsd:anyURI">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the URL that can be called to get information about the API version. 
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="versionlist" style="plain" required="false" path="$.versionlist" type="xsd:anyURI">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the URL that can be called to determine what API versions are supported at the endpoint. 
+                        </para>
+                    </wadl:doc>
+                </param>      
+'>

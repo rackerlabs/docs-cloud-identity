@@ -115,7 +115,7 @@
       <para><emphasis role="bold">Rackspace Keystone Extension</emphasis>. Rackspace implementation
         that adds or extends support for the following resources: Tokens, Users, Multifactor
         (multifactor authentication), Domains, Impersonation, Federation, Regions, Secret Question
-        and Answer,; Secret Question and Answer management.<itemizedlist>
+        and Answer, along with Secret Question and Answer management.<itemizedlist>
           <listitem>
             <para> Alias: RAX-AUTH</para>
           </listitem>
