@@ -1,5 +1,0 @@
-curl -X POST $ENDPOINT/v2.0/OS-KSCATALOG/endpointTemplates \
-  -d '{"OS-KSCATALOG:endpointTemplate":{"id":"'$TMP_ID'", "publicURL":"'$PBL_URL'", "type":"'objectStore'", "name":"TmpA"}}' \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -H "X-Auth-Token: $ADMIN_TOKEN" --verbose | python -m json tool \
