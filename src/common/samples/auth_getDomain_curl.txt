@@ -1,0 +1,3 @@
+$ curl -X -i GET identity.api.rackspacecloud.com/v2.0/RAX-AUTH/domains/$DOMAIN_ID \
+   -H "Content-type: application/json" \
+   -H "X-Auth-Token: $ADMIN_AUTH_TOKEN" --verbose | python -m json tool

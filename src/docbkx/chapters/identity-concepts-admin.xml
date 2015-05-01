@@ -26,7 +26,7 @@
         <title>Rackspace Cloud Services: Authentication and authorization work flow</title>
         <mediaobject>
             <imageobject>
-                <imagedata scale="5"
+                <imagedata scale="50"
                     fileref="../figures/auth-keystone-identity-manager.png"
                     format="PNG" align="center"/>
             </imageobject>

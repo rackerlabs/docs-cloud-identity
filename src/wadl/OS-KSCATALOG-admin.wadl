@@ -239,13 +239,13 @@
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="versioninfo" style="plain" required="false" path="$.versioninfo" type="xsd:anyURI">
+                <param name="versionInfo" style="plain" required="false" path="$.versionInfo" type="xsd:anyURI">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Specifies the URL that can be called to get information about the API version. 
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="versionlist" style="plain" required="false" path="$.versionlist" type="xsd:anyURI">
+                <param name="versionList" style="plain" required="false" path="$.versionList" type="xsd:anyURI">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Specifies the URL that can be called to determine what API versions are supported at the endpoint. 
                         </para>
@@ -379,13 +379,13 @@
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="versioninfo" style="plain" required="false" path="$.versioninfo" type="xsd:anyURI">
+                <param name="versionInfo" style="plain" required="false" path="$.versionInfo" type="xsd:anyURI">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Specifies the URL that can be called to get information about the API version. 
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="versionlist" style="plain" required="false" path="$.versionlist" type="xsd:anyURI">
+                <param name="versionList" style="plain" required="false" path="$.versionList" type="xsd:anyURI">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Specifies the URL that can be called to determine what API versions are supported at the endpoint. 
                         </para>

@@ -53,7 +53,19 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2015-04-09</date>
+				<date>2015-04-29</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated <link xlink:href="Endpoint_Template_Calls.htmll">Endpoint templates</link> operations to correct parameter descriptions.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Updated <link xlink:href="GET_listRoles__v2.0_OS-KSADM_roles_Role_Calls.html">List roles</link> operation to add limit 
+								and marker parameters.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
 				
 			</revision>
 			<revision>
@@ -1044,19 +1056,6 @@
 							<para> Updated <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service types in the service catalog</link> to
 								provide link to publicly-available
 								documentation on Cloud Databases.
-							</para>
-						</listitem>
-					</itemizedlist>
-				</revdescription>
-			</revision>
-			<revision security="writeronly">
-				<!-- move namespace change to probably next time -->
-				<date>2012-06-16</date>
-				<revdescription>
-					<itemizedlist spacing="compact">
-						<listitem>
-							<para> Added details to namespaces section,
-								describing new standards and defaults.
 							</para>
 						</listitem>
 					</itemizedlist>

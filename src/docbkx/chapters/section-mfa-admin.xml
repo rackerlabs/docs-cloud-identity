@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossary [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<section 
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+  xml:id="proc_mfa_admin">
+  <title>Add multi-factor authentication enforcement policy to Rackspace Cloud accounts</title> 
+  <?dbhtml stop-chunking?>
+    
+  
+  <para>Rackspace Cloud Account administrators can configure account-wide multi-factor
+    authentication enforcement settings across a domain or customize them at the user level.
+  </para>
+
+    <para>To set domain level enforcement, use the <link
+      xlink:href="PUT_updateDomainMultiFactorEnforcement_v2.0_RAX-AUTH_domains__domainId__multi-factor_Multifactor_Calls.html"
+      >update domain settings for multi-factor authentication</link> API operation to enforce
+    multi-factor authentication requirements for all user accounts within a specified domain.</para>
+    <itemizedlist>
+      <listitem>
+        <para>Set the level to <userinput>REQUIRED</userinput> to make multi-factor authentication
+        mandatory for accounts within a specified domain. </para>
+      </listitem>
+      <listitem>
+        <para>Set the level to <userinput>OPTIONAL</userinput> to make multi-factor authentication optional for 
+          all users.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Administrators can update the domain setting from the API or the Cloud Control panel. This
+    figure shows the API work flow for updating domain enforcement settings. 
+    
+      <figure xml:id="mfa_domainEnforce_setup">
+      <title>Multi-factor authentication domain level enforcement API workflow</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="../figures/mfa-domain-level-state-transitions.png" scale="50"
+            format="PNG" align="center"/>
+        </imageobject>
+      </mediaobject>
+    </figure></para>
+      
+    <para>This example shows the API request to update domain enforcement settings. The example
+    assumes the following credentials and account information: an authenticated user administrator
+    with a valid admin token (<code>$ADMIN_TOKEN</code>) and the id of the domain
+      (<code>$DOMAIN_ID</code>) to update. Use the <link
+      xlink:href="GET_getDomains_v2.0_RAX-AUTH_domains_Domain_Calls.html"> Retrieve domains</link>
+    operation to retrieve the domain id.</para>  
+    
+<!-- Update domain enforcement setting cURL example -->
+    
+    <example><title>Update domain to require multi-factor authentication for all users: cURL json request</title>    
+    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl -X -i PUT https://identity.api.rackspacecloud.com/v2.0/RAX-AUTH/domains/$DOMAIN_ID/multi-factor \
+     -d '{"RAX-AUTH:multiFactorDomain": {"domainMultiFactorEnforcementLevel": "REQUIRED" }}' \
+     -H "Content-type: application/json" \
+     -H "X-Auth-Token: $ADMIN_TOKEN" | python -m json.tool 
+    </programlisting>
+    </example>  
+      <para>Successful requests return a HTTP  <literal>204 No Content</literal> message. To verify
+    the change, submit a <command>GET domain by id</command> request.</para>
+  
+  <!-- Verify update to domain settings -->
+  
+      <example><title>Verify domain settings after update</title>
+    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl -X -i GET identity.api.rackspacecloud.com/v2.0/RAX-AUTH/domains/$DOMAIN_ID \
+     -H "Content-type: application/json" \
+     -H "X-Auth-Token: $ADMIN_AUTH_TOKEN" --verbose | python -m json tool
+    </programlisting>
+        <screen><computeroutput>
+          GET /v2.0/RAX-AUTH/domains//1234567 HTTP/1.1
+          Host: identity.api.rackspacecloud.com
+          Accept: */*
+          Content-type: application/json
+          X-Auth-Token: 12365424dd864ab287a90f06a2069e81
+
+          HTTP/1.1 200 OK
+          Content-Type: application/json
+          
+          {
+            "RAX-AUTH:domain": {
+                 "domainMultiFactorEnforcementLevel": "REQUIRED",
+                 "enabled": true,
+                 "id": "6159798"
+            }
+          }
+        </computeroutput></screen>
+    </example>
+      
+    <para>As soon as the domain enforcement level changes to <userinput>REQUIRED</userinput>, the
+      Identity service revokes all tokens that were not obtained by using the multi-factor
+      authentication flow. To regain account access, users that have not enabled multi-factor
+      authentication can request a scoped
+      mfa-setup token that they can use to add multi-factor authentication to their
+      account.</para>
+      <para>
+    <variablelist>
+      <varlistentry>
+        <term><guilabel>Next steps</guilabel></term>
+        <listitem>
+          <para>
+            <itemizedlist>
+              <listitem>
+                <para><link xlink:href="proc_mfa_admin.html#mfa_required">Request a scoped
+              mfa-setup token</link> to set up multi-factor authentication</para>
+              </listitem>
+              <listitem>
+                <para>
+                  <link xlink:href="proc_mfa_auth.html">Log in to a multi-factor enabled user
+                    account</link>
+                </para>
+              </listitem>
+              <listitem>
+                <para><link xlink:href="mfa_admin_config_user.html">Customize multi-factor
+                    authentication enforcement settings for specific users</link></para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </para>
+  
+  <section xml:id="mfa_admin_config_user">
+    <title>Update user level enforcement for multi-factor authentication</title>
+    <?dbhtml stop-chunking?>
+    <para>Rackspace Cloud Identity and user administrators can use the Update multi-factor
+      authentication settings operation to customize the multi-factor enforcement level for specific
+      users.</para>
+    <itemizedlist>
+      <listitem>
+        <para>Set the level to <code>REQUIRED</code> to require multi-factor authentication on the account 
+          regardless of the domain level enforcement setting.</para> 
+       </listitem>
+      <listitem>
+          <para>Set the level to <code>OPTIONAL</code> to allow the user to select or opt out of multifactor authentication.</para>
+      </listitem>
+      <listitem>
+        <para>Set the level to <code>DEFAULT</code> to allow the user account to inherit the domain level enforcement setting.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Administrators can update the user enforcement setting from the API or the Cloud Control panel. This figure 
+      shows the API work flow for updating the user enforcement level with state transitions.</para>
+    <figure xml:id="mfa-user-level-enforce">
+        <title>Multi-factor authentication user account set up work flow </title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="../figures/mfa-user-level-enforce.png" scale="50"
+              format="PNG" align="center"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    <para>The following example assumes the following accounts and credentials: an authenticated
+      User Administrator account with a valid authentication token and a user account within the
+      same domain.</para>      
+    
+    <!-- Update user enforcement level for multi-factor authentication -->
+    
+    <example><title>Require user to log in by using multi-factor authentication</title>  
+      
+      <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> 
+        curl -X PUT https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+         -d `{"RAX-AUTH:multiFactor": { "userMultiFactorEnforcementLevel": "REQUIRED" }}` \
+         -H "Content-type: application/json" \
+         -H "X-Auth-Token: $ADMIN_AUTH_TOKEN" --verbose | json
+    </programlisting> 
+      <programlisting language="bash" role="gutter: false"> 
+       HTTP/1.1 204 No Content
+       Vary:  Accept, Accept-Encoding, X-Auth-Token
+    </programlisting>
+    </example>
+    <para>As soon as the user level enforcement level changes to <userinput>REQUIRED</userinput>,
+      the Identity service revokes all tokens for the user that were not obtained by using the
+      multi-factor authentication process. To regain account access, users can  <link
+        xlink:href="proc_mfa_admin.html#mfa_required">request for a scoped mfa-setup
+      token</link>that they can use to update their account configuration.</para>
+    <para>The account user must submit another authentication request to retrieve a scoped authentication token that 
+      allows access to the Identity service to set up multi-factor authentication on the user account.</para>
+  </section>
+  <section xml:id="mfa_required"><title>Request a scoped <emphasis role="italic">mfa-setup token</emphasis> to set up multi-factor
+    authentication</title><?dbhtml stop-chunking?>
+  <para>If a Rackspace Cloud account requires multi-factor authentication, users that have not set
+      up and enabled multi-factor authentication get this response when they authenticate:
+    <screen><computeroutput>HTTP/1.1 403 Forbidden
+       Vary:  Accept, Accept-Encoding, X-Auth-Token
+       Content-Type: application/json
+      {
+        "forbidden": {
+        "code": 403,
+        "message": "User must setup multi-factor"
+         }
+      }
+    </computeroutput></screen></para>
+    <para>These users have cannot retrieve an authentication token until they set up multi-factor
+      authentication on their accounts. To complete this process, users can submit an authentication
+      request for a scoped mfa-setup token that provides limited access to the Identity service for
+      account configuration. </para>
+    <example>
+      <title>User authentication request for a scoped mfa-setup token</title>
+      <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl -X POST $AUTH_URL/v2.0/tokens \
+        -d '{"auth": {"RAX-AUTH:scope": "SETUP-MFA", "passwordCredentials": {"username":"'$USER_ADMIN_USERNAME'", "password":"'$PWD'"}}}'\
+        -H "Content-type: application/json" --verbose | python -m json.tool
+    </programlisting>
+      <programlisting language="bash" role="gutter: false">
+HTTP/1.1 200 OK
+Vary:  Accept, Accept-Encoding, X-Auth-Token
+Content-Type: application/json
+Transfer-Encoding: chunked
+Server: Jetty(6.1.25)
+{
+"access": {
+    "token":  {
+        "RAX-AUTH:authenticatedBy": [
+               "PASSWORD"
+             ],
+            "expires": "2014-01-09T15:08:53.645-06:00",
+            "id": "449f04aca3594ce38e5b0b18fce6b"
+      }
+"user": {
+          "RAX-AUTH:defaultRegion": "DFW",
+          "id": "161418",
+          "name": "mfaTestUser",
+          "roles": [
+            {
+            "description": "User Admin Role.",
+            "id": "3",
+            "name": "identity:user-admin"
+        }
+     ]
+ }}}
+      </programlisting>
+    </example>
+    <para>Note that the service catalog is not returned in the response. The mfa-setup token in the
+      response provides users with the capabillities to set up multi-factor authentication for their accounts. 
+     .</para>
+    <figure
+      xml:id="scoped-mfa-token-capabilties">
+      <title>Capabilities available with a scoped mfa-setup token</title><mediaobject>
+        <imageobject>
+          <imagedata  scale="40"
+            fileref="../figures/mfa-setup-token-capabilities.png"
+            format="PNG" align="center"/>  
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para/>
+    <para>After receiving the scoped mfa-setup token, the user can export it to an environment
+      variable, and use it to complete the steps to add and verify a phone during the <link xlink:href="proc_mfa_setup.html">multi-factor
+        authentication set up process</link>.</para>
+    <example>
+      <title>Export scoped token</title>
+      <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> export MFA_SETUP_TOKEN="449f04aca3594ce38e5b0b18fce6b"
+    </programlisting>
+    </example>
+    <note>
+      <para>As soon as the user has added a multi-factor authentication device to their account, the scoped
+        token is revoked, and the user can follow the <link xlink:href="proc_mfa_auth.html">multi-factor authentication process</link> 
+        to log in.</para>
+    </note>
+</section>
+</section>

@@ -166,15 +166,16 @@
 				<wadl:method href="#listUserGroups"/>
 			</wadl:resource>
 			
-			<!-- get domains that a user can access -->
+			<!-- get domains that a user can access
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domains">
 				<wadl:method href="#getAccessibleDomainsForUser"/>
-			</wadl:resource>
+			</wadl:resource> -->
 			
-			<!-- get endpoints for the domains that a user can access -->
+			<!-- get endpoints for the domains that a user can access 
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_accessible_domain_endpoints">
 				<wadl:method href="#getAccesibleDomainEndpointsForUser"/>
-			</wadl:resource>
+			</wadl:resource> -->
+			
 			<!-- OS-KSADM credentials -->
 		
 		
@@ -306,7 +307,7 @@
 						privileges)</para>
 				</listitem>
 				<listitem>
-					<para>Passcode credentials for multi-factor authenticated accounts: session Id and passcode
+					<para>Passcode credentials for accounts that require multi-factor authentication: session Id and passcode
 						values</para>
 				</listitem>
 				<listitem audience="admin">
@@ -654,7 +655,7 @@
 			these unique request identifiers relate the request to the user who submitted the request. The key-generation algorithm is illustrated below:
 		</para>
 		<figure>
-			<title> A request key for rate limiting can be generated from an IP
+			<title>A request key for rate limiting can be generated from an IP
 				address, a header value, or a valid token. </title>
 			<!-- this is Alex Silva's drawing, 
 				from http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting 
@@ -969,6 +970,9 @@
 				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_unlock">
 					<wadl:method href="#unlockMultifactorForUser"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_domainEnforce">
+					<wadl:method href="#updateDomainMultiFactorEnforcement"></wadl:method>
 				</wadl:resource>
 			</wadl:resources>
 			<!-- <section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 

@@ -702,19 +702,6 @@
 					</itemizedlist>
 				</revdescription>
 			</revision>
-			<revision security="writeronly">
-				<!-- move namespace change to probably next time -->
-				<date>2012-06-16</date>
-				<revdescription>
-					<itemizedlist spacing="compact">
-						<listitem>
-							<para> 
-								Added details to Namespaces, describing new standards and defaults. 
-							</para>
-						</listitem>
-					</itemizedlist>
-				</revdescription>
-			</revision>
 			<revision>
 				<date>2012-05-16</date>
 				<revdescription>

@@ -219,7 +219,13 @@
         <varlistentry>
             <term><emphasis role="bold">Domain</emphasis></term>
             <listitem>
-                <para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.</para>
+                <para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
+                    Individual domains can represent an individual, company, or operator-owned space within the Rackspace Cloud Identity Service.</para>
+                <para>In the Identity Service API, the domain resource provides a mechanism to expose administratve actitivites directly to system 
+                    users. Specifically, an Identity service administrator can create tenants, users, and groups within a domain and 
+                    assign roles to users and groups. User administrators that have domain administrator capabilities can view and manage 
+                    the domain associated with their Rackspace Cloud account. 
+                </para>
             </listitem>
         </varlistentry>
         <varlistentry audience="client">

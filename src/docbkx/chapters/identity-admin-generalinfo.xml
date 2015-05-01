@@ -32,7 +32,6 @@
 	<xi:include href="section-service-catalog.xml"/>
     <xi:include href="section-identity-multfactorauth.xml"/>
 	<xi:include href="section-roles.xml"/>
-
 	<section xml:id="Content_Compression-d1e262">
 	  <title>Content Compression</title>
 	  <para>Request and response body data can be encoded with gzip
@@ -65,52 +64,44 @@
 		</tbody>
 	  </table>
 	</section>
-	<section security="writeronly" xml:id="Paginated_Collections-d1e325">
-		<title>Paginated collections</title>
-		<annotation>
-			<remark>"Paginated Collections" is not yet implemented as of v2.0;
-				hide it for now and reveal it when the feature is working." </remark>
-		</annotation>
-		<para>To reduce load on the service, list operations return a
-			maximum number of items at a time. The maximum number of
-			items returned is determined by the Identity provider. To
-			navigate the collection, the parameters
-				<parameter>limit</parameter> and
-				<parameter>marker</parameter> can be set in the URI
-				(e.g.?<parameter>limit</parameter>=100&amp;<parameter>marker</parameter>=1234).
-			The <parameter>marker</parameter> parameter is the ID of
-			the last item in the previous list. Items are sorted by
-			update time; when an update time is not available, they
-			are sorted by ID. The <parameter>limit</parameter>
-			parameter sets the page size. Both the
-				<parameter>limit</parameter> and
-				<parameter>marker</parameter> parameters are optional.
-			If the client requests a <parameter>limit</parameter>
-			beyond that which is supported by the deployment, an
-			<literal>overLimit</literal> (<errorcode>413</errorcode>) fault may be
-			thrown. A <parameter>marker</parameter> with an invalid ID
-			will return an <literal>itemNotFound</literal> (<errorcode>404</errorcode>)
-			fault. </para>
+	<!-- Commenting out because this feature does not seem to work properly 
+	
+	<section xml:id="Paginated_Collections-d1e664">
+		<title>Paginated Collections</title>
+		<para>To reduce load on the service, list operations return a maximum number of items at a time.
+			The maximum number of items returned is determined by the Identity provider.</para>
+		<para>To navigate the collection, you can set the <parameter>limit</parameter> and <parameter>marker</parameter>
+			parameters in the URI request. For example:</para>
+		<programlisting>?<parameter>limit</parameter>=100&amp;<parameter>marker</parameter>=1234</programlisting>
+		<para>The <parameter>marker</parameter> parameter is the ID of the last item in the previous list.
+			Items are sorted by update time in descending order. When an update time is not
+			available, the items are sorted by ID. A marker with an ID that is not valid returns an
+			itemNotFound (<errorcode>404</errorcode>) fault. </para>
+		<para>The <parameter>limit</parameter> parameter sets the page size. If the client specifies a
+			<parameter>limit</parameter> value that is greater than the supported limit, an overLimit
+			(<errorcode>413</errorcode>) fault might be thrown. </para>
+		<para>Both parameters are optional. </para>
 		<note>
-			<para>
-				Paginated collections never return <code>itemNotFound</code> (<errorcode>404</errorcode>) faults when the
-				collection is empty; clients should be prepared to
-				handle an empty collection.</para>
+			<para>Paginated collections never return itemNotFound (<errorcode>404</errorcode>) faults when
+				the collection is empty &mdash; clients should be prepared to handle an empty
+				collection. </para>
 		</note>
 		<para>Paginated collections contain "next" and "previous"
-			Atom links. The first page in the list will not contain a
+			links. The first page in the list will not contain a
 			"previous" link; similarly, the last page in the list will
 			not contain a "next" link. 
 		</para>
-		<para>
-			In the following examples, a paginated collection of tenants
-			is returned as three linked pages. 
-			The
-			first page is retrieved via a &GET; to
-			<code>http://identity.api.openstack.org/v2.0/1234/tenants?limit=1</code>;
-			the second page is retrieved by following the "next" link from the first page;
-			the third page is retrieved by following the "next" link from the second page.
-		</para>	
+		<para>The following examples show pages in a collection of Identity role definitions. </para>
+		<para>To get the first page, issue a &GET; request to the following endpoint and set the
+				<parameter>limit</parameter> parameter to the page size of a single item:
+			<programlisting>http://identity.api.rackspacecloud.com/OS-KSADM/roles?limit=1</programlisting></para>
+		<para>Subsequent links honor the initial page size. A client can follow links to traverse a paginated collection. </para>
+		<?hard-pagebreak?>
+		<para> In the following examples, a Roles collection is returned as three linked pages. The first page is
+			retrieved via a &GET; to
+				<code>http://identity.api.openstack.org/v2.0/1234/roles?limit=1</code>; the second
+			page is retrieved by following the "next" link from the first page; the third page is
+			retrieved by following the "next" link from the second page. </para>	
 		<para>	
 			The <parameter>limit</parameter>
 			parameter sets the page size;
@@ -119,59 +110,23 @@
 			size. Thus, a client may follow links to traverse a
 			paginated collection without having to input the
 				<parameter>marker</parameter> parameter. </para>
+		
 		<example>
-			<title>Tenant Collection, First Page: XML</title>
-			<programlisting language="xml">
-<xi:include href="../../common/samples/tenants-1.xml" parse="text"/>
-			</programlisting>
+			<title>Roles Collection, First Page: JSON</title>
+			<programlisting language="javascript"><xi:include href="../../common/samples/auth-getRoleid-pagination-header-1.json" parse="text"/></programlisting>
+		</example>
+		
+		<example>
+			<title>Roles Collection, Second Page: JSON</title>
+			<programlisting language="javascript"><xi:include href="../../common/samples/auth-getRoleid-pagination-header-2.json" parse="text"/></programlisting>
 		</example>
 		<example>
-			<title>Tenant Collection, First Page: JSON</title>
-			<programlisting language="javascript"><xi:include href="../../common/samples/tenants-1.json" parse="text"/></programlisting>
+			<title>Roles Collection, Last Page: JSON</title>
+			<programlisting language="javascript"><xi:include href="../../common/samples/auth-getRoleid-pagination-header-3.json" parse="text"/></programlisting>
 		</example>
-		<example>
-			<title>Tenant Collection, Second Page: XML</title>
-			<programlisting language="xml">
-<xi:include href="../../common/samples/tenants-2.xml" parse="text"/>
-			</programlisting>
-		</example>
-		<example>
-			<title>Tenant Collection, Second Page: JSON</title>
-			<programlisting language="javascript"><xi:include href="../../common/samples/tenants-2.json" parse="text"/></programlisting>
-		</example>
-		<example>
-			<title>Tenant Collection, Last Page: XML</title>
-			<programlisting language="xml">
-<xi:include href="../../common/samples/tenants-3.xml" parse="text"/>
-			</programlisting>
-		</example>
-		<example>
-			<title>Tenant Collection, Last Page: JSON</title>
-			<programlisting language="javascript"><xi:include href="../../common/samples/tenants-3.json" parse="text"/></programlisting>
-		</example>
-		<para>
-			In the JSON representation, paginated collections contain
-			a <property>values</property> property that contains the
-			items in the collections.  Links are accessed via the
-			<property>links</property> property. This approach allows
-			for extensibility of both the collection members and of
-			the paginated collection itself. It also allows
-			collections to be embedded in other objects as shown in the example 
-			below. Here, a subset of groups is presented within a
-			user. To continue retrieving 
-			additional groups belonging to a user, a client must follow the "next" link.
-		</para>
-		<example>
-			<title>Paginated Roles in a User: XML</title>
-			<programlisting language="xml">
-<xi:include href="../../common/samples/getuser-1.xml" parse="text"/>
-			</programlisting>
-		</example>
-		<example>
-			<title>Paginated Roles in a User: JSON</title>
-			<programlisting language="javascript"><xi:include href="../../common/samples/getuser-1.json" parse="text"/></programlisting>
-		</example>
+		
 	</section>
+	-->
 	<section xml:id="Versions-d1e472">
 		<title>Contract versions</title>
 		<para>The contract version denotes the data model and behavior that the API supports.

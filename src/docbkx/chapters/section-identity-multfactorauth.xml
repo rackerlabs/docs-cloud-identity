@@ -11,16 +11,16 @@
     xml:id="MFA_Ops">
     
   <title>Multi-factor authentication</title>
-    <para>Multi-factor authentication is for Rackspace Cloud Customers who require a greater level of 
-      security when accessing Rackspace Cloud resources. When multi-factor authentication is added to 
-      user accounts, users have an additional layer of identity verification that offers various methods 
-      to obtain the second factor for authentication. 
-      
-      <!-- Commenting out until domain enforcement feature is enabled. -->
-      <!-- Additionally, Rackspace provides user administrators 
-      with account level controls that can be configured to require all users within an organization to 
-      use multifactor authentication. -->
-    </para>
+    <para>Multi-factor authentication is for Rackspace Cloud Customers who require a greater level
+    of security when accessing Rackspace Cloud resources. When multi-factor authentication is added
+    to user accounts, users have an additional layer of identity verification that offers various
+    methods to obtain the second factor for authentication.</para>
+    <para>Additionally, Identity and user administrators can enforce multi-factor authentication
+    policy at the domain and user level.  For example, if you want to require multi-factor
+    authentication, you can configure the domain to restrict user access for new and existing users
+    until they update and enable  their account  with a multi-factor authenticaiton device.  When
+    this feature is enabled, users are prompted to set up multi-factor authentication before they
+    can access Cloud resources.</para>
     <para>With multi-factor authentication enabled, authentication is a two-step process: <orderedlist>
       <listitem>
         <para>A user submits an initial <command>POST tokens</command> request to the Identity
@@ -83,12 +83,18 @@
           <para><link xlink:href= "proc_mfa_setup.html">Set up multi-factor authentication</link></para>
         </listitem>
         <listitem>
+          <para>
+          <link xlink:href="proc_mfa_admin.html">Add multifactor authentication enforcement policy to Rackspace Cloud accounts</link>
+        </para>
+        </listitem>
+        <listitem>
           <para><link xlink:href= "proc_mfa_auth.html">Authenticate from a multi-factor-enabled user account</link></para>
         </listitem>
         <listitem><para><link xlink:href= "proc_mfa_manage.html">Manage multi-factor authentication settings and operation</link></para></listitem>
       </itemizedlist>
     </para>
     <xi:include href="section-mfa-setup.xml"/>
+    <xi:include href="section-mfa-admin.xml"/>
     <xi:include href="section-mfa-auth.xml"/>
     <xi:include href="section-mfa-manage.xml"/>
   </section>

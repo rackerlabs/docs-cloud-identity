@@ -375,6 +375,19 @@
                 is assigned to multiple tenants, then including the tenant information generates the authentication 
                 token for the specified tenant.
             </para>
+                <para>If the Identity service returns either of the following messages in response to the initial authentication request, 
+                    your account uses multi-factor authentication and requires additional steps to complete the authentication process. 
+                    <itemizedlist>
+                        <listitem>
+                            <para><code>403 Forbidden: User must set up multi-factor.</code> 
+                                (See <link xlink:href="proc_mfa_admin.html#mfa_required">Configure multi-factor authentication.</link> 
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para><code>401 Unauthorized: Additional authentication credentials required.</code>(See 
+                                <link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens__Token_Calls.html">Authenticate with multi-factor authentication</link>.)</para>
+                        </listitem>
+                    </itemizedlist></para>   
         </wadl:doc>
         <request>
                 <representation>
@@ -396,6 +409,15 @@
                             <para>A <code>passwordCredentials</code> object to specify the 
                                 <code>username</code> and <code>password</code> string values associated with the &CLOUD; account.
                                 Cannot be specified with <literal>APIKeyCredentials</literal> or <literal>token</literal>.</para>
+                        </wadl:doc>
+                    </param>
+                    <param name="RAX-AUTH:scope" style="plain"
+                        required="false" type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>Indicates that the authentication request is for a 
+                                scoped multi-factor authentication token that provides capabilities for a user 
+                                to set up and enable multi-factor authentication on an account.
+                            </para>
                         </wadl:doc>
                     </param>
                     <param name="tenantName" style="plain" required="false"
@@ -486,10 +508,12 @@
                         <listitem>
                             <para>You are not authorized to complete this operation.</para>
                         </listitem>
-                        <listitem security="internal">
-                            <para>Additional authentication credentials required. To complete the authentication process, 
-                                users with multi-factor enabled accounts must submit a second authentication request  
-                                with multi-factor authentication credentials: the <code>WWW-Authenticate: OS-MF sessionId</code> value in the header from the initial authentication request.  Retrieve the passcode from the mobile phone associated with the user account. See 
+                        <listitem>
+                            <para>Additional authentication credentials required. Submit a second authentication request with  
+                                <link xlink:href="POST_authenticateWithMultiFactor_v2.0_tokens__Token_Calls.html">multi-factor authentication credentials</link>. 
+                                
+                                requires multi-factor authentication credentials. 
+                                multi-factor authentication passcode and session id to complete the authentication process. 
                                 <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/proc_mfa_auth.html">Authenticate with multi-factor authentication. </link>.
                             </para>
                         </listitem>
@@ -591,12 +615,33 @@
                     tenant name and ID in the request.</wadl:doc>
         </response>
         <response status="401">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Unauthorized">You are not authorized to complete this operation.
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Unauthorized">
+                <para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>You are not authorized to complete this operation.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Additional authentication credentials required. To complete the authentication process, 
+                                users with multi-factor enabled accounts must submit a second authentication request  
+                                with multi-factor authentication credentials: the <code>WWW-Authenticate: OS-MF sessionId</code> value in the header from the initial authentication request.  Retrieve the passcode from the mobile phone associated with the user account. See 
+                                <link xlink:href="proc_mfa_auth.html">Authenticate with multi-factor authentication. </link>.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
             </wadl:doc>
         </response>
         <response status="403">
-            <wadl:doc title="User disabled">The request is valid, but you do not have permission to access the requested resource.
-                Check with the account administrator to request access.</wadl:doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="User disabled">
+                <para>The request is valid, but you do not have permission to access the requested resource. 
+                    Check with the account administrator to request access.</para></wadl:doc>
+        </response>
+        <response status="403">
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Forbidden">
+                <para>The request is valid, but your account requires  
+                    multi-authentication. <link xlink:href="proc_mfa_admin.html">Request a scoped multi-factor authentication token (SETUP-MFA)</link> 
+                    to set up multi-factor authentication for your account. Check with the account administrator to request access.</para></wadl:doc>
         </response>
         <response status="404">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  

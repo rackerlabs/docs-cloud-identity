@@ -1,0 +1,4 @@
+$ curl -X -i PUT identity.api.rackspacecloud.com/v2.0/RAX-AUTH/domains/$DOMAIN_ID/multi-factor \
+   -d '{"RAX-AUTH:multiFactorDomain": {"domainMultiFactorEnforcementLevel": "OPTIONAL"}}` \
+   -H "Content-type: application/json" \
+  -H "X-Auth-Token: $ADMIN_AUTH_TOKEN" --verbose | python -m json tool

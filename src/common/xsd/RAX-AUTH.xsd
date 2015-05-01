@@ -33,6 +33,7 @@
     <attribute name="propagate" type="xsd:boolean"/>
     <attribute name="default" type="xsd:boolean"/>
     <attribute name="federatedIdp" type="xsd:string"/>
+    <attribute name="contactId" type="xsd:string"/>"
     <attribute name="tenantAlias" type="xsd:string"/>
     <attribute name="multiFactorEnabled" type="xsd:boolean"/>
     <attribute name="multiFactorState" type="RAX-AUTH:MultiFactorStateEnum"/>

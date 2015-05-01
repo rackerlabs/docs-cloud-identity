@@ -1,0 +1,4 @@
+$ curl -X PUT https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+  -d `{"RAX-AUTH:multiFactor": { "userMultiFactorEnforcementLevel": "DEFAULT" }}` \
+  -H "Content-type: application/json" \
+  -H "X-Auth-Token: 1314a02332c642ddbc57fd3abac7153e" --verbose | json

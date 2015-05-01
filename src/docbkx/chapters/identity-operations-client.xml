@@ -233,6 +233,27 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
+	<section xml:id="Domain_Calls">
+	<title>Domains</title>
+	<para>Rackspace Cloud account owners and users can use the Domain operations supplied by the 
+		<link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to get information about the 
+		domains that they can access with the authentication supplied in the API request.</para>
+	<para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.</para>
+	<note><para>Typically, only Identity service administrators have the capabilities to create, update, and delete 
+		domains.</para></note>
+	<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+		
+		<!-- GET domains Path: /v2.0/RAX-AUTH/domains -->
+		<wadl:resource href="../../wadl/RAX-AUTH.wadl#domains">
+			<wadl:method href="#getDomains"/>
+		</wadl:resource>
+		
+		<!-- GET domain by id  Path: /v2.0/RAX-AUTH/domains/{domainId} -->
+		<wadl:resource href="../../wadl/RAX-AUTH.wadl#domain">
+			<wadl:method href="#getDomain"/>
+		</wadl:resource>
+	</wadl:resources>
+	</section>
 	
 	<section xml:id="Secret_Calls_client">
 		<title>Secret questions and answers</title>
@@ -290,6 +311,12 @@
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#bypass_codes">
 					<wadl:method href="#generateBypassCodes"/>
 				</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_unlock">
+				<wadl:method href="#unlockMultifactorForUser"/>
+			</wadl:resource>
+			<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_domainEnforce">
+				<wadl:method href="#updateDomainMultiFactorEnforcement"></wadl:method>
+			</wadl:resource>
 		</wadl:resources>
 		<!-- <section xml:id="mfa_api_ovw"><title>Multifactor elements and attributes</title> 
 				

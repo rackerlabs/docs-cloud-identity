@@ -38,6 +38,10 @@
           that have been configured for multi-factor authentication cannot authenticate using Identity API version 1.1 or 
           earlier.</para>
       </listitem>
+      <listitem>
+        <para>If the authentication response returns a <code>403 Forbidden</code> error message with a request to setup multi-factor authentication, your account has 
+        been restricted. To regain access, <link xlink:href="proc_mfa_admin.html">submit a request for a multi-factor scoped authentication token</link> that you can use to set up your account.</para>
+     </listitem>
     </itemizedlist>
   </note>
   <orderedlist>

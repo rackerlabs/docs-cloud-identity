@@ -1,0 +1,4 @@
+$ curl -X GET identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+  -d '{"RAX-AUTH:multiFactor": { "enabled": "true" }}' \
+  -H "Content-type: application/json" \
+  -H "X-Auth-Token: $AUTH_TOKEN" --verbose | python -m json tool

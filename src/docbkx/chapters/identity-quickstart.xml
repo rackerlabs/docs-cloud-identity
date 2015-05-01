@@ -192,7 +192,7 @@
                                         <para>Verify the authentication credentials submitted in the authentication request. If necessary, contact your Rackspace Cloud Administrator or Rackspace Support 
                                     to get valid credentials.</para></td>
                                 </tr>
-                                <tr security="writeronly">
+                                <tr>
                                     <td><code>403</code></td>
                                     <td><para><code>message: setup-mfa: You must first enable multifactor for
                                         this account. Please request a scoped setup-mfa token to
