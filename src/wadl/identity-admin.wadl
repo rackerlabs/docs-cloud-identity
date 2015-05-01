@@ -416,7 +416,8 @@
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                             <para>Indicates that the authentication request is for a 
                                 scoped multi-factor authentication token that provides capabilities for a user 
-                                to set up and enable multi-factor authentication on an account.
+                                to set up and enable multi-factor authentication on an account. Specify the 
+                                following value: <code>SETUP-MFA</code>
                             </para>
                         </wadl:doc>
                     </param>
@@ -443,6 +444,7 @@
                             <code>Bad Request</code>.</para></wadl:doc>
                     </param>
             </representation>
+
             <representation>
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:sample title="Authenticate with password credentials: JSON request">
@@ -452,14 +454,28 @@
             </representation>
             <representation>
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authenticate with API key credentials and optional tenant ID: XML request">
+                    <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: XML request">
+                        <xsdxt:code href="../common/samples/auth_password_scoped_req.xml"/>
+                    </xsdxt:sample>
+                </wadl:doc>
+            </representation>
+            <representation>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: JSON request">
+                        <xsdxt:code href="../common/samples/auth_password_scoped_req.json"/>
+                    </xsdxt:sample>
+                </wadl:doc>
+            </representation>
+            <representation>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Authenticate with API key credentials">
                         <xsdxt:code href="../common/samples/auth_with_apikey.xml"/>
                     </xsdxt:sample>
                 </wadl:doc>
             </representation>
             <representation>
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Authenticate with API key credentials and optional tenant ID: JSON request">
+                    <xsdxt:sample title="Authenticate with API key credentials: JSON request">
                         <xsdxt:code href="../common/samples/auth_with_apikey.json"/>
                     </xsdxt:sample>
                 </wadl:doc>

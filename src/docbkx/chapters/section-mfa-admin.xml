@@ -148,7 +148,7 @@
         <title>Multi-factor authentication user account set up work flow </title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="../figures/mfa-user-level-enforce.png" scale="50"
+            <imagedata fileref="../figures/mfa-user-level-enforce.png" scale="30"
               format="PNG" align="center"/>
           </imageobject>
         </mediaobject>
@@ -161,16 +161,15 @@
     
     <example><title>Require user to log in by using multi-factor authentication</title>  
       
-      <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> 
-        curl -X PUT https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
+      <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl -X PUT https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
          -d `{"RAX-AUTH:multiFactor": { "userMultiFactorEnforcementLevel": "REQUIRED" }}` \
          -H "Content-type: application/json" \
          -H "X-Auth-Token: $ADMIN_AUTH_TOKEN" --verbose | json
     </programlisting> 
-      <programlisting language="bash" role="gutter: false"> 
+      <screen><computeroutput> 
        HTTP/1.1 204 No Content
        Vary:  Accept, Accept-Encoding, X-Auth-Token
-    </programlisting>
+    </computeroutput></screen>
     </example>
     <para>As soon as the user level enforcement level changes to <userinput>REQUIRED</userinput>,
       the Identity service revokes all tokens for the user that were not obtained by using the
@@ -194,18 +193,17 @@
          }
       }
     </computeroutput></screen></para>
-    <para>These users have cannot retrieve an authentication token until they set up multi-factor
-      authentication on their accounts. To complete this process, users can submit an authentication
-      request for a scoped mfa-setup token that provides limited access to the Identity service for
-      account configuration. </para>
+    <para>These users have cannot access their account until they set up multi-factor
+      authentication. To complete the set up, users must request a scoped mfa-setup token that provides limited access to the Identity service for
+      account configuration.</para>
     <example>
       <title>User authentication request for a scoped mfa-setup token</title>
       <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl -X POST $AUTH_URL/v2.0/tokens \
         -d '{"auth": {"RAX-AUTH:scope": "SETUP-MFA", "passwordCredentials": {"username":"'$USER_ADMIN_USERNAME'", "password":"'$PWD'"}}}'\
         -H "Content-type: application/json" --verbose | python -m json.tool
     </programlisting>
-      <programlisting language="bash" role="gutter: false">
-HTTP/1.1 200 OK
+      <screen><computeroutput>
+        HTTP/1.1 200 OK
 Vary:  Accept, Accept-Encoding, X-Auth-Token
 Content-Type: application/json
 Transfer-Encoding: chunked
@@ -231,11 +229,11 @@ Server: Jetty(6.1.25)
         }
      ]
  }}}
-      </programlisting>
+      </computeroutput></screen>
     </example>
     <para>Note that the service catalog is not returned in the response. The mfa-setup token in the
-      response provides users with the capabillities to set up multi-factor authentication for their accounts. 
-     .</para>
+      response provides users with limited capabillities to set up multi-factor authentication for their accounts.
+    </para>
     <figure
       xml:id="scoped-mfa-token-capabilties">
       <title>Capabilities available with a scoped mfa-setup token</title><mediaobject>
@@ -248,8 +246,8 @@ Server: Jetty(6.1.25)
     </figure>
     <para/>
     <para>After receiving the scoped mfa-setup token, the user can export it to an environment
-      variable, and use it to complete the steps to add and verify a phone during the <link xlink:href="proc_mfa_setup.html">multi-factor
-        authentication set up process</link>.</para>
+      variable, and use it to <link xlink:href="proc_mfa_setup.html">multi-factor
+        complete the steps to add and verify</link> a device that can be used to complete the multi-factor authentication process.</para>
     <example>
       <title>Export scoped token</title>
       <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> export MFA_SETUP_TOKEN="449f04aca3594ce38e5b0b18fce6b"
