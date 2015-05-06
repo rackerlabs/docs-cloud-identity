@@ -122,7 +122,8 @@
                     <resource id="multifactor_domainEnforce" path="RAX-AUTH/domains/{domainId}/multi-factor">
                         <method href="#updateDomainMultiFactorEnforcement"/>
                 </resource>
-                <!-- MULTIFACTOR Mobile phones resource(s) -->
+                
+            <!-- MULTIFACTOR Mobile phones resource(s) -->
                 
                 <resource id="user_mobile_phones" path="users/{userId}/RAX-AUTH/multi-factor/mobile-phones">
                     <param name="X-Auth-Token" style="header" type="string" required="true">
@@ -149,6 +150,28 @@
                     <method href="#verifyDevice"/>                        
                     </resource>
                 </resource>
+            
+            <!-- MULTIFACTOR OTP device(s) -->
+            
+            <resource id="user_otp_devices" path="users/{userId}/RAX-AUTH/multi-factor/otp-devices">
+                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <doc>A valid authentication token</doc>
+                </param>
+                <param name="userId" type="xsd:string" style="template" required="true"/>
+                <method href="#createOTPDeviceForUser" />
+                <method href="#getOTPDevicesForUser" />
+                
+                <resource id="user_otp_device" path="{otpDeviceId}">
+                    <param name="otpDeviceId" type="xsd:string" style="template" required="true"/>
+                    <method href="#getOTPDevice" />
+                    <method href="#deleteOTPDevice" />
+                    
+                    <resource id="verify_otp_device_code" path="verify">
+                        <method href="#verifyOTPDeviceCode" />
+                    </resource>
+                </resource>
+            </resource>
+            
 
             <!-- RESET_APIKEY_CREDENTIALS resource(s) -->
             <resource id="reset_apikey_credentials" path="users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset">
