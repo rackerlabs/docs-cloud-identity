@@ -4,5 +4,6 @@
     "enabled": true,
     "description": "A very good customer",
     "name": "GCorp"
+    "domainMultiFactorEnforcementLevel": "OPTIONAL"
   }
 }

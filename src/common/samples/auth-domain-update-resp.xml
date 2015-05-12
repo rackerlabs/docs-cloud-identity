@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain enabled="true" id="9883948" name="GCorp"
+     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+     xmlns:atom="http://www.w3.org/2005/Atom" 
+     xmlns:identity="http://docs.openstack.org/identity/api/v2.0">
+     <description>A very good customer</description>
+</domain>

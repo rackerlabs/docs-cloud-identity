@@ -968,9 +968,6 @@
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#bypass_codes">
 					<wadl:method href="#generateBypassCodes"/>
 				</wadl:resource>
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_unlock">
-					<wadl:method href="#unlockMultifactorForUser"/>
-				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_domainEnforce">
 					<wadl:method href="#updateDomainMultiFactorEnforcement"></wadl:method>
 				</wadl:resource>

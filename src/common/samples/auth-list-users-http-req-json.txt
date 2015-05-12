@@ -1,0 +1,5 @@
+GET /v2.0/users/12342b4ddb594819b697d0048614c117 HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Accept: application/json
+X-Auth-Token: 0cb090705e82443fa71471e9c3456789
+Content-type: application/json

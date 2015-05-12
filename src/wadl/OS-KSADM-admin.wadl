@@ -1280,14 +1280,14 @@
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-getRolebyId-resp-xml-http.txt"/>
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
                     <xsdxt:code href="../common/samples/auth-getRolebyID-resp.xml"/>
                 </wadl:doc>
                 &roleResponse;
             </representation>
             <representation mediaType="application/json" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-getRolebyId-resp-json-http.txt"/>
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt"/>
                     <xsdxt:code href="../common/samples/auth-getRolebyId-resp.json"/>
                 </wadl:doc>
             </representation>

@@ -11,6 +11,7 @@
         <description>High profile</description>
     </domain>
     <domain enabled="true" id="222" name="GCorp"/>
+    <domain domainMultiFactorEnforcementLevel = "OPTIONAL"/>
     <atom:link
         href="https://identity.api.rackspaecloud.com/v2.0/RAX-AUTH/domains?marker=27872354&amp;limit=3" rel="prev"/>
     <atom:link

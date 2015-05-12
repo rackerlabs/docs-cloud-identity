@@ -1,0 +1,6 @@
+{
+
+    "RAX-AUTH:multiFactorDomain": {
+        "domainMultiFactorEnforcementLevel": "REQUIRED"
+        }
+}

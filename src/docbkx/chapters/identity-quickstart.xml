@@ -155,7 +155,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr align="left" condition="admin">
+                                <tr align="left">
                                     <td><code>401</code></td>
                                     <td><para><code>message: Additional authentication credentials required.</code></para>
                                         <para>You are requesting authentication for an account that

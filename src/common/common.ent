@@ -393,3 +393,172 @@ This operation does not require a request body.</para>'>
                     </wadl:doc>
                 </param>      
 '>
+
+<!ENTITY UserInfoResponse
+'
+ <param name="user" style="plain"  required="true" type="object">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>A user object that provides user account information:</para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:defaultRegion"  style="plain" required="false" type="string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>The default region that the user is assigned to. Must be one of the regions available in the service catalog.</para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:domainId" style="plain" required="false" type="string">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>The ID for the domain that the user account has been assigned to.</para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:multiFactorEnabled" style="plain" type="boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>If an account has been configured to use multi-factor authentication, this field indicates 
+                            whether multi-factor authentication is currently enabled or disabled.</para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:multiFactorState" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>This extended attribute indicates whether a multifactor-enabled user account is locked as a result 
+                            of failed authentication attempts. If the account has been locked at any point, the value is either <literal>LOCKED</literal> 
+                            or <literal>ACTIVE</literal>. User administrators can use the Update multi-factor authentication settings on account operation to restore access to a locked account.</para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:userMultiFactorEnforcementLevel" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>If present, this extended attribute specifies the multi-factor authentication enforcement policy 
+                            that applies to the specified account.</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para><code>REQUIRED</code>The user must use multi-factor authentication to 
+                                    log in to their Rackspace Cloud account.
+                                    <link xlink:href="PUT_updateMultiFactorDomain_v2.0_RAX-AUTH_domains__domainId__multi-factor_.html">domain enforcement 
+                                    </link>domain level enforcement is configured as <parameter>Optional</parameter>.</para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    <code>OPTIONAL.</code>The user has the option to authenticate using multi-factor authentication.</para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    <code>DEFAULT.</code>The user multi-factor authentication requirements are determined by the 
+                                    domain level enforcement setting for multi-factor authentication. 
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </wadl:doc>
+                </param>
+ '>       
+ 
+ <!-- Domain parameters -->
+ 
+ <!ENTITY domain_idQueryParam '
+    <param name="domain_id" style="query" type="xsd:string" required="false">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>Filters on a domain_id.</para>
+         </wadl:doc>
+    </param>
+'>
+ 
+ <!ENTITY domainsResponseParam '
+    <param name="RAX-AUTH:domains" style="plain" type="object" required="true">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+               <para>The collection of <code>domains</code> that the authenticated user has permission to view.</para>
+         </wadl:doc>
+    </param>
+'>
+
+<!ENTITY domainResponseParam '
+    <param name="RAX-AUTH:domain" style="plain" type="object" required="true">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+               <para>An object that contains the domain configuration attribute settings.</para>
+         </wadl:doc>
+    </param>
+'>
+
+<!ENTITY domain_idRespParam '
+    <param name="id" style="plain" type="xsd:string" required="true">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>The unique id for the domain.</para>
+         </wadl:doc>
+    </param>
+'>
+    
+
+<!ENTITY domain_idRespParam '
+    <param name="id" style="plain" type="xsd:string" required="true">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>The unique id for the domain.</para>
+         </wadl:doc>
+    </param>
+'>
+
+<!ENTITY domain_descriptionRequestParam '
+    <param name="rax-auth:description" style="plain" type="xsd:string" required="false">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>The domain description.</para>
+        </wadl:doc>
+    </param>
+ '>
+ <!ENTITY domain_raxAuthObjectRequestParam '
+   <param name="RAX-AUTH:domain" style="plain" type="object" required="true">
+      <wadl:doc xmlns="http://docbook.org/ns/docbook">
+           <para>Object to specify these domain configuration settings: <code>id</code>,
+           <code>enabled</code>, <code>name</code>.</para>
+        </wadl:doc>
+    </param>
+'>
+    
+<!ENTITY domain_enabledRequestParam '
+    <param name="enabled" style="plain" type="xsd:boolean" required="false">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+           <para>Set to true to enable the domain. Otherwise, set to false.</para>
+        </wadl:doc>
+    </param>
+'>
+    
+<!ENTITY domain_nameRequestParam '
+    <param name="name" style="plain" type="xsd:string" required="true">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>The domain name.</para>
+        </wadl:doc>
+    </param>
+'>
+ 
+<!ENTITY domain-mfaResponseParam '
+    <param name="domainMultiFactorEnforcementLevel" style="plain" required="false" type="string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>If present, this extended attribute specifies the multi-factor authentication enforcement policy 
+            that applies to accounts within the specified domain.
+            <itemizedlist>
+                <listitem>
+                    <para><code>REQUIRED</code> Users within the domain must use multi-factor authentication to access 
+                    their account.</para>
+                </listitem>
+                <listitem>
+                    <para><code>OPTIONAL</code> Users have the option to authenticate using multi-factor authentication.
+                    </para>
+                </listitem>
+            </itemizedlist>
+            </para>
+        </wadl:doc>
+    </param>
+'>
+
+<!ENTITY domain-nameResponseParam '
+    <param name="name" style="plain" required="false" type="xsd:string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+            <para>The domain name.</para>
+        </wadl:doc>
+    </param>
+'>
+
+<!ENTITY domain_enabledRespParam '
+    <param name="enabled" style="plain" type="xsd:boolean" required="false">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+           <para>Indicates whether the domain is enabled.</para>
+        </wadl:doc>
+    </param>
+'>
+ 
+      

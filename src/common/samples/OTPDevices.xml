@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mobilePhones
+<otpDevices
      xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
      xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
      xmlns:atom="http://www.w3.org/2005/Atom" xmlns:identity="http://docs.openstack.org/identity/api/v2.0">
-     <mobilePhone id="889a7245f49e4ab789ebaebf91c0f1eb"," number="+1 512-555-1000", verified="true"/>
-</mobilePhones>
+     <otpDevice id="12346" name="Google Authenticator (iPhone)" verified="true"/>
+</otpDevices>

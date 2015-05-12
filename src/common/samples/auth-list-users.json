@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "rax-auth:domainId":"5830280"
+      "id": "123456",
+      "enabled": true,
+      "username": "jqsmith",
+      "email": "john.smith@example.org",
+      "rax-auth:defaultRegion":"DFW",
+      "rax-auth:multiFactorEnabled":"true",
+      "rax-auth:multiFactorState":"ACTIVE",
+      "rax-auth:userMultiFactorEnforcementLevel":"OPTIONAL"
+    },
+    {
+      "rax-auth:domainId":"5830280"
+      {
+        "id": "938439",
+        "enabled": false,
+        "username": "poejo",
+        "email": "poe.joe@example.org",
+        "rax-auth:defaultRegion":"DFW",
+        "rax-auth:multiFactorEnabled":"false"
+      },
+    }  
+  ]
+}

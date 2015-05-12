@@ -8,11 +8,10 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-  xml:id="proc_mfa_setup">
-  <title>Set up multi-factor authentication</title>
-  <para>Use these instructions to set up multi-factor
-    authentication for a user account using Identity service API
-    operations. You can also complete this process through the Cloud Control panel.</para>
+  xml:id="proc_mfa_setup-phone">
+  <title>Configure Rackspace Cloud accounts for multi-factor authentication with a mobile phone</title>
+  <para>Use these instructions to add a mobile phone to a Rackspace Cloud account and configure it for multi-factor
+    authentication by using the Identity service API. You can also complete this process through the Cloud Control panel.</para>
 
   <note><title>Notes</title>
     <itemizedlist>
@@ -148,11 +147,10 @@
     <!--Step 3 Verify PIN code -->
     <listitem>
       <para>Send a verification code to your phone to confirm that
-        you possess the phone associated with your account. In the
-        request, include the phone <parameter>id</parameter> value
+        you possess the phone associated with your account.</para>
+          <para>Include the phone <parameter>id</parameter> value
         (or the $PHONE_ID environment variable that you exported)
-        from the add mobile phone operation. from the Add mobile
-        phone operation in this request.<variablelist>
+        from the add mobile phone operation response in the API request.<variablelist>
           <varlistentry>
             <term><emphasis role="bold">Request</emphasis></term>
             <listitem>

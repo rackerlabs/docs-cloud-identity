@@ -39,14 +39,28 @@
                 >Unlock user account</link></para>
           </td>
           <td valign="top">
-            <para>Use the following cURL request to restore access to
-              a user account that has been locked as a result of too
-              many failed authentication attempts.</para>
-            <para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl https://identity.api.rackspacecloud.com/v2.0/tokens \
+            <para condition="admin">The Identity service has a system-defined threshold for 
+              failed authentication attempts from a multifactor-enabled device. The default threshold 
+              is 6. If a user enters incorrect multi-factor authentication credentials more than 6 times, 
+              the Identity service locks the account.</para>
+            <para>Administrators can use the following cURL request to restore access to
+              a locked account.</para>
+            <para><programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt>curl https://identity.api.rackspacecloud.com/v2.0/users/$USER_ID/RAX-AUTH/multi-factor \
        -X POST \
-       -d '{"auth": {"RAX-AUTH:passcodeCredentials": {"passcode":"1411594"}}}'\
-       -H "X-SessionId: $SESSION_ID" \
+       -d '{"RAX-AUTH:multiFactor: {"unlock": true}}'\
        -H "Content-Type: application/json" --verbose | python -m json.tool</programlisting></para>
+          </td>
+        </tr>
+        <tr condition="client">
+          <td valign="top">
+            <link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls_client.html">Unlock user account</link>
+          </td>
+          <td valign="top">
+            <para>If your account is locked as a result of failed
+              login attempts, wait 5 minutes and then try to
+              authenticate again using the passcode sent to your
+              account. If you are still not able to access your account, contact 
+              the User administrator to unlock your account.</para>
           </td>
         </tr>
         <tr condition="client">
@@ -73,18 +87,6 @@
        -d '{"RAX-AUTH:bypassCodes"{"validityDuration":"PT30M"}}'\
        -H "Content-type: application/json" \
        -H "X-Auth-Token: $AUTHTOKEN" | python -m json.tool</programlisting>
-          </td>
-        </tr>
-        <tr condition="client">
-          <td valign="top">
-            <para>Unlock user account</para>
-          </td>
-          <td valign="top">
-            <para>If your account is locked as a result of failed
-              login attempts, wait 5 minutes and then try to
-              authenticate again using the passcode sent to your
-              account, or contact the user administrator to unlock
-              your account.</para>
           </td>
         </tr>
         <tr>
@@ -224,12 +226,9 @@
     <para>For more information, see the following topics: <itemizedlist>
       <listitem>
         <para>
-          <link xlink:href="proc_mfa_setup.html">Authenticate from a
-            multifactor-enabled user account</link></para>
+          <link xlink:href="proc_mfa_setup-phone.html">Authenticate from a
+            multifactor-enabled user account via mobile phone</link></para>
       </listitem>
-      <listitem><para>
-        <link xlink:href="proc_mfa_auth.html">Manage
-          multifactor-enabled accounts</link></para></listitem>
       <listitem condition="admin">
         <para><link xlink:href="Multifactor_Calls.html">API
           reference: Multi-factor authentication
@@ -240,12 +239,9 @@
           reference: Multi-factor authentication
           operations</link></para>
       </listitem>
-    </itemizedlist>
+      <listitem>
+        <para><link xlink:href="MFA_Ops.html">About multi-factor authentication</link></para>
+      </listitem>
+    </itemizedlist> 
     </para>
-    <para condition="admin">For detailed API reference information, see 
-      <link xlink:href="Multifactor_Calls.html">Multi-factor
-        operations</link></para> 
-    <para condition="client">For detailed API reference information, see 
-      <link xlink:href="Multifactor_Calls_client.html">Multi-factor
-        operations</link>.</para>
   </section>

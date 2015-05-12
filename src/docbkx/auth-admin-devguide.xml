@@ -53,20 +53,82 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-05-11</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated list <link xlink:href="Domain_Calls.html">Domain operations</link> to add response parameters and 
+								examples showing domain enforcement settings for multi-factor authentication.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Updated examples in <link xlink:href="PUT_updateDomainMultiFactorEnforcement_v2.0_RAX-AUTH_domains__domainId__multi-factor_Multifactor_Calls.html">Update multi-factor 
+								authentication settings</link> samples to add unlock operation and fix response parameters.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-05-01</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added information about <link xlink:href="proc_mfa_admin.html">multi-factor domain and user enforcement settings for multi-factor authentication.</link> 
+								operation, including concepts, API workflow, and examples.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Updated Quick Start, authentication token operations, and user operations to add support for multi-factor enforcment operations.</para>
+						</listitem>
+						<listitem>
+							<para>Added <link xlink:href="PUT_updateDomainMultiFactorEnforcement_v2.0_RAX-AUTH_domains__domainId__multi-factor_Multifactor_Calls.html">Update domain enforcement settings for multi-factor authentication</link> 
+								operation.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Added cURL examples to <link xlink:href="Endpoint_Template_Calls.htmll">Endpoint template</link> operations.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-04-29</date>
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Updated <link xlink:href="Endpoint_Template_Calls.htmll">Endpoint templates</link> operations to correct parameter descriptions.
+							<para>Updated <link xlink:href="GET_getRolebyId__v2.0_OS-KSADM_roles__roleId__Role_Calls.html">Get role by id</link> parameters and example to include information about 
+								pagination support (limit and marker parameters).
 							</para>
 						</listitem>
 						<listitem>
-							<para>Updated <link xlink:href="GET_listRoles__v2.0_OS-KSADM_roles_Role_Calls.html">List roles</link> operation to add limit 
-								and marker parameters.</para>
+							<para>Added cURL examples to <link xlink:href="Endpoint_Template_Calls.htmll">Endpoint template</link> operations.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
 				
+			</revision>
+			<revision>
+				<date>2015-04-15</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Corrected <link xlink:href="POST_admin-addUser_v2.0_users_User_Calls.html">Create user</link> response parameter descriptions and added 
+								missing information. 
+							</para>
+						</listitem>
+						<listitem>
+							<para>Updated <link xlink:href="Extensions-d1e688.html">extended response</link> explanation and examples.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-04-08</date>
+				<revdescription>
+					<para>Corrected JSON examples for <link xlink:href="Endpoint_Template_Calls.htmll">Endpoint templates</link> operations to correct parameter descriptions.
+					</para>
+				</revdescription>
 			</revision>
 			<revision>
 				<date>2015-03-31</date>
@@ -298,7 +360,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Updated <link xlink:href="proc_mfa_setup.html">Set up multi-factor authentication</link> 
+							<para>Updated <link xlink:href="proc_mfa_setup-phone.html">Set up multi-factor authentication via mobile phone</link> 
 								instructions to include information about exporting the <parameter>phoneId</parameter> value from the 
 								Add mobile phone to user response, so you can use it to verify the phone for use with multi-factor authentication. 
 							</para>
@@ -460,7 +522,7 @@
 										<listitem>
 											<para><link xlink:href="MFA_Ops.html">Multi factor authentication</link></para></listitem>
 										<listitem>
-											<para><link xlink:href="proc_mfa_setup.html">Set up multi factor authentication</link></para></listitem>
+											<para><link xlink:href="proc_mfa_setup-phone.html">Set up multi factor authentication via mobile phone</link></para></listitem>
 									<listitem>
 										<para><link xlink:href="proc_mfa_manage.html">Manage multi factor authentication settings and operation</link></para></listitem>
 									</itemizedlist></para>

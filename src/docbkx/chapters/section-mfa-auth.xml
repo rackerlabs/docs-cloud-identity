@@ -17,8 +17,8 @@
       <term><emphasis role="bold">Prerequisites</emphasis></term>
       <listitem><para><itemizedlist>
         <listitem><para>Valid username and password credentials for a Rackspace Cloud account that has been <link
-                  xlink:href="proc_mfa_setup.html">set up for multi-factor
-                authentication</link>.</para></listitem>
+                  xlink:href="proc_mfa_setup-phone.html">set up for multi-factor
+                authentication via mobile phone</link>.</para></listitem>
         <listitem><para>Access to the phone associated with the &CLOUD; account.</para></listitem>
       </itemizedlist></para>
         <tip><para>If your account requires multi-factor authentication, make sure to <link
@@ -136,8 +136,8 @@
       xlink:href="QuickStart-000.html#submit_API_request">submit requests to Rackspace Cloud API
       services</link>. For additional information, see the following topics: <itemizedlist>
       <listitem>
-        <para><link xlink:href="proc_mfa_setup.html">Set up multi-factor
-          authentication</link></para>
+        <para><link xlink:href="proc_mfa_setup-phone.html">Set up multi-factor
+          authentication via mobile phone</link></para>
       </listitem>
       <listitem>
         <para>Troubleshooting: <link xlink:href="proc_mfa_manage.html">Manage multi-factor

@@ -1,0 +1,8 @@
+{
+  "RAX-AUTH:domain": {
+    "id": "222345",
+    "enabled": true,
+    "description": "A very good customer",
+    "name": "myNewDomain"
+  }
+}
