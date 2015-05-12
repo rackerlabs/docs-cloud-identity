@@ -13,8 +13,7 @@
   <title>Multi-factor authentication</title>
     <para>To improve security when accessing Rackspace Cloud resources, customers 
       can add multi-factor authentication capabilities to their accounts. These capabilities
-     provide additional layer of identity verification that can be implemented by using mobile phones  
-     and mobile passcode applications like Google Authenticator.</para>
+     provide additional layer of identity verification that can be implemented by using mobile phones.</para>
     <para>Additionally, Identity and user administrators can enforce multi-factor authentication
     policy at the domain and user level.  For example, if you want to require multi-factor
     authentication for all users, you can configure the domain to restrict user access for new and existing users
@@ -86,7 +85,7 @@
         </listitem>
         <listitem>
           <para>
-          <link xlink:href="proc_mfa_admin.html">Add multifactor authentication enforcement policy to Rackspace Cloud accounts</link>
+          <link xlink:href="proc_mfa_admin.html">Add multi-factor authentication enforcement policy to Rackspace Cloud accounts</link>
         </para>
         </listitem>
         <listitem>
