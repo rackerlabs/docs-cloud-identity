@@ -51,7 +51,7 @@
                         <method href="#getUserById"/>
                         <method href="#updateUser"/>
                         <method href="#deleteUser"/>
-                   <resource id="userRole" path ="roles">
+                   <resource id="userRole" path ="OS-KSADM/roles">
                         <method href="#getUserRole"/>
                         <method href="#listUserGlobalRoles"/>
                         <resource id="userRoleById" path="{roleid}">

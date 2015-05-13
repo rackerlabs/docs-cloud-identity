@@ -55,7 +55,7 @@ This operation does not require a request body.</para>'>
                 elements are invalid.</doc>
         </response>
         <response status="401">
-            <doc title="Unauthorized">Yau are not authorized to complete this operation. This error can occur if the request is submitted with an invalid authentication token.</doc>
+            <doc title="Unauthorized">You are not authorized to complete this operation. This error can occur if the request is submitted with an invalid authentication token.</doc>
         </response>
         <response status="403">
             <doc title="Forbidden">The request was valid, but the server is refusing to respond because you do not have permission to access the requested resource. 
