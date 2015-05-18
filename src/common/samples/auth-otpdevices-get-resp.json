@@ -1,0 +1,19 @@
+{
+    "RAX-AUTH:otpDevices": [
+        {
+            "id": "22eec7c1f65a4615945d89e38786a6b3",
+            "verified": false,
+            "name": "NewOTPDevice1"
+        },
+        {
+            "id": "a34b5e4a1ffe4514a8859716136dc7cb",
+            "verified": false,
+            "name": "NewOTPDevice2"
+        },
+        {
+            "id": "6b2834a8bef6461e96ef2322b4c72998",
+            "verified": true,
+            "name": "NewOTPDevice"
+        }
+    ]
+}

@@ -26,8 +26,8 @@
                 
                 <para>In the &CLOUD; Users are represented as accounts created for specific
                     individuals. When a user is created, the &CIS; assigns a user type and a default
-                    role automatically, based on the &CIS; system configuration. The user type and
-                    role determine the resources and capabilities available to the user.</para>
+                    role automatically, based on the &CIS; system configuration. The user type and role determine the 
+                    resources and capabilities available to the user.</para>
                 <para>See the following links for more information: 
                     <itemizedlist>
                     <listitem>
@@ -106,7 +106,8 @@
                     <listitem><para>Impersonation tokens are issued to authorized Rackspace employees or Identity service administrators so they can assume 
                         the identity of a provisioned or federated user.</para></listitem>
                     <listitem><para>Federated tokens issued to external providers like MyRack that establish their identity through SAML assertion.</para></listitem>
-                    <listitem><para>Passcode tokens are issued to users that authenticate to the Rackspace Cloud by using multi-factor authentication.</para></listitem>
+                    <listitem><para>Passcode tokens are issued to users that authenticate using a mobile phone associated with their account.</para></listitem>
+                    <listitem><para>OTP passcode tokens are issued to users that authenticate using an OTP device associated with their account.</para></listitem>
                     <listitem><para>Multi-factor authentication tokens are issued to provisioned users that are required to set up multi-factor authentication 
                         on their account in order to access a Cloud service.</para></listitem>
                 </itemizedlist></para>

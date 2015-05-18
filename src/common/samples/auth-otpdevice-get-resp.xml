@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rax-auth:otpDevices 
+     xmlns:atom="http://www.w3.org/2005/Atom" 
+     xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+     xmlns="http://docs.openstack.org/identity/api/v2.0" 
+     xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+     xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+     xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+     xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+     xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+     <rax-auth:otpDevice verified="true" name="NewOTPDevice" id="6b2834a8bef6461e96ef2322b4c72998"/>
+</rax-auth:otpDevices>
+

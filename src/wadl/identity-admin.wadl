@@ -550,7 +550,7 @@
         </method>
     <method name="POST" id="authenticate_token">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Authenticate as tenant with token">
-            <para role="shortdesc">Allows Administrator users to authenticate by using a tenant id or name and 
+            <para role="shortdesc">Allows administrators to authenticate by using a tenant id or name and 
                 a valid token.</para>
             <para>
                 Submit the POST token authentication request to the &CIS; endpoint URL with a payload of credentials.  
@@ -640,8 +640,10 @@
                         <listitem>
                             <para>Additional authentication credentials required. To complete the authentication process, 
                                 users with multi-factor enabled accounts must submit a second authentication request  
-                                with multi-factor authentication credentials: the <code>WWW-Authenticate: OS-MF sessionId</code> value in the header from the initial authentication request.  Retrieve the passcode from the mobile phone associated with the user account. See 
-                                <link xlink:href="proc_mfa_auth.html">Authenticate with multi-factor authentication. </link>.
+                                with multi-factor authentication credentials: the <code>WWW-Authenticate: OS-MF sessionId</code> value 
+                                in the header from the initial authentication request. Retrieve the passcode from the multi-factor 
+                                authentication device associated with the user account. See 
+                                <link xlink:href="proc_mfa_auth.html">Authenticate with multi-factor authentication.</link>
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -685,7 +687,7 @@
                         <para>Send an initial POST token authentication request with either password or API credentials. 
                         </para>
                         <para>In response to the authentication request, the Identity service returns 
-                            a 401 message that includes the X-SessionId parameter in the WWW-Authenticate header 
+                            a 401 message that includes the <code>X-SessionId</code> parameter in the WWW-Authenticate header 
                             and a request for additional credentials.  The Identity service also sends the multi-factor 
                             authentication passcode to the phone associated with the user account.                   
                            </para>                        
@@ -861,7 +863,7 @@
             <para xmlns="http://docbook.org/ns/docbook">In the Create user request, include the required values for the user name, email, and 
                 initial account status 
                 (<parameter>enabled=true</parameter> or <parameter>enabled=false</parameter>) attributes.</para>
-            <para>Users inherit the domain and defaultRegion associated with the Rackspace Cloud account. They 
+            <para>Users inherit the domain and default region associated with the Rackspace Cloud account. They 
                 also inherit group membership.  If you want to override a default value, include the new 
                 value in the Create user request.</para>
             <para>You can also include values for optional attributes such as password and role. 

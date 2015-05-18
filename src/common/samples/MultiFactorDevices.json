@@ -1,0 +1,18 @@
+{
+  "RAX-AUTH:multiFactorDevices": {
+    "otpDevice": [
+      {
+        "id": "12346",
+        "verified": true,
+        "name": "Google Authenticator (iPhone)"
+      }
+    ],
+    "mobilePhone": [
+      {
+        "id": "12345",
+        "verified": true,
+        "number": "12658943489"
+      }
+    ]
+  }
+}

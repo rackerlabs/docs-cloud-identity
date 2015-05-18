@@ -53,12 +53,36 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-05-18</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added procedure for  
+								<link xlink:href="proc_mfa_setup-OTP.html">setting up and authenticating by using an OTP device</link>. 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Updated <link xlink:href="Multifactor_Calls.html">Multifactor operations</link> to add operations to add and 
+								manage OTP devices.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-05-11</date>
 				<revdescription>
 					<itemizedlist>
 						<listitem>
 							<para>Updated list <link xlink:href="Domain_Calls.html">Domain operations</link> to add response parameters and 
 								examples showing domain enforcement settings for multi-factor authentication.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Update <link xlink:href="User_Calls.html">User operations</link> to update code samples and correct 
+								descriptions for multi-factor authentication response parameters.
 							</para>
 						</listitem>
 						<listitem>
@@ -75,11 +99,11 @@
 					<itemizedlist>
 						<listitem>
 							<para>Added information about <link xlink:href="proc_mfa_admin.html">multi-factor domain and user enforcement settings for multi-factor authentication.</link> 
-								operation, including concepts, API workflow, and examples.
+								operation, including concepts, API work flow, and examples.
 							</para>
 						</listitem>
 						<listitem>
-							<para>Updated Quick Start, authentication token operations, and user operations to add support for multi-factor enforcment operations.</para>
+							<para>Updated Quick Start, authentication token operations, and user operations to add support for multi-factor enforcement operations.</para>
 						</listitem>
 						<listitem>
 							<para>Added <link xlink:href="PUT_updateDomainMultiFactorEnforcement_v2.0_RAX-AUTH_domains__domainId__multi-factor_Multifactor_Calls.html">Update domain enforcement settings for multi-factor authentication</link> 
@@ -138,7 +162,7 @@
 							<para>Updated endpoint template operations: Documented Identity administrator capability to 
 								<link xlink:href="POST_addEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates_Endpoint_Template_Calls.html">create a new endpoint template</link>. 
 								Added the 
-								<link xlink:href="PUT_updateEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates__endpointTemplateId__Endpoint_Template_Calls.html">Update enndpoint template operation</link> to 
+								<link xlink:href="PUT_updateEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates__endpointTemplateId__Endpoint_Template_Calls.html">Update endpoint template operation</link> to 
 							    that allows Identity Service administrators to enable automated endpoint management when an endpoint is ready for production.
 								</para>
 						</listitem>
@@ -567,7 +591,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added Multi factor and Mobile phone resources and operations for multifactor-authentication support.
+							<para>Added Multi factor and Mobile phone resources and operations to support multi-factor authentication.
 								See <link xlink:href="Multifactor_Calls.html">Multi-factor Operations</link>.</para>
 						</listitem>
 						<listitem security="internal">
@@ -1084,11 +1108,11 @@
 							<para>Expanded explanation and examples in <link xlink:href="Impersonation_Calls.html">Impersonations</link> section, showing use of <code>expire-in-seconds</code>.</para>
 						</listitem>
 						<listitem>
-							<para>Updated authentication workflow diagram in <link xlink:href="Identity-Service-Concepts-admin.html">Identity Service authentication and authorization</link>.
+							<para>Updated authentication work flow diagram in <link xlink:href="Identity-Service-Concepts-admin.html">Identity Service authentication and authorization</link>.
 							</para>
 						</listitem>
 						<listitem>
-							<para>Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html">Addional Resources</link>, adding links to Rackspace
+							<para>Restructured and expanded <link xlink:href="Additional_Resources-d1e130.html">Additional Resources</link>, adding links to Rackspace
 								Knowledge Center and customer feedback site. </para>
 						</listitem>
 						<listitem>
@@ -1228,7 +1252,7 @@
 								includes annotated examples relocated
 								from the "Request/Response Types"
 								section and adds details on service
-								types and recommended workflow. In the
+								types and recommended work flow. In the
 								same section, added a note suggesting
 								service type as the primary value for
 								locating a service.</para>

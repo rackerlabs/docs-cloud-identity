@@ -53,7 +53,7 @@
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                     </param>
                     <param name="userId" style="template" type="string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                     </param>
                     <method href="#saveSecretQA"/>
                     <method href="#getUserSecretQAs"/>
@@ -66,7 +66,7 @@
                             <para>A valid authentication token</para></wadl:doc>
                     </param>
                     <param name="userId" style="template" type="string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The user ID assigned by system when user is added.</para></wadl:doc>
                     </param>
                     <method href="#getUserAdmin"/>
                 </resource>
@@ -98,7 +98,9 @@
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                         </param>
                         <param name="userId" style="template" type="string">
-                                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                                <para>The unique, system-generated user ID for the user account to generate codes for.</para>
+                            </wadl:doc>
                         </param>
                         <method href="#generateBypassCodes"/>
                 </resource>
@@ -108,10 +110,15 @@
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
                     <param name="userId" style="template" type="string">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>The unique, system-generated user ID for the user account to generate codes for.</para>
+                        </wadl:doc>
                     </param>
                     <method href="#updateMultifactorSettings"/>
                 </resource>  
+                    <resource id="multifactor_unlock" path="users/{userId}/RAX-AUTH/multi-factor"> 
+                          <method href="#unlockMultifactorForUser"/>
+                </resource>
                     <resource id="multifactor_domainEnforce" path="RAX-AUTH/domains/{domainId}/multi-factor">
                         <method href="#updateDomainMultiFactorEnforcement"/>
                 </resource>
@@ -123,7 +130,7 @@
                         <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token.</para></wadl:doc>
                     </param>
                     <param name="userId" style="template" type="string" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>          
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The user id for the account.</para></wadl:doc>          
                     </param>
                            <method href="#createMobilePhone"/> 
                            <method href="#getMobilePhonesForUser"/>
@@ -138,7 +145,7 @@
                     </resource>
                     <resource id="mfa_PIN" path="{phoneId}/verify">
                         <param name="phoneid" style="template" type="string" required="true">
-                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated ID assigned when a phone is added to an account.</para></wadl:doc>          
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when a phone is added to an account.</para></wadl:doc>          
                         </param>   
                     <method href="#verifyDevice"/>                        
                     </resource>
@@ -146,30 +153,6 @@
             
             <!-- MULTIFACTOR OTP device(s) -->
             
-            <resource id="user_otp_devices" path="users/{userId}/RAX-AUTH/multi-factor/otp-devices">
-                <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <doc>A valid authentication token</doc>
-                </param>
-                <param name="userId" type="xsd:string" style="template" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
-                </param>
-                <method href="#createOTPDeviceForUser" />
-                <method href="#getOTPDevicesForUser" />
-                
-                <resource id="user_otp_device" path="{otpDeviceId}">
-                    <param name="otpDeviceId" type="xsd:string" style="template" required="true">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                            <para>The unique system-generated ID assigned to the OTP device.</para>
-                        </wadl:doc>
-                    </param>
-                    <method href="#getOTPDevice" />
-                    <method href="#deleteOTPDevice" />
-                    
-                    <resource id="verify_otp_device" path="verify">
-                        <method href="#verifyOTPDevice" />
-                    </resource>
-                </resource>
-            </resource>
             
 
             <!-- RESET_APIKEY_CREDENTIALS resource(s) -->
@@ -178,7 +161,7 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A valid authentication token</para></wadl:doc>
                 </param>
                 <param name="userId" style="template" type="string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                 </param>
                 <method href="#resetUserAPIKeyCredentials"/>
             </resource>
@@ -257,7 +240,7 @@
 
                             <resource id="domain_user" path="{userId}">
                                 <param name="userId" style="template" type="string" required="true">
-                                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
+                                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A user ID assigned by system when user is added.</para></wadl:doc>
                                 </param>
                                 <method href="#addUserToDomain"/>
                             </resource>
@@ -411,7 +394,7 @@
         </request>
         
         <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN">
@@ -430,7 +413,7 @@
             <para role="shortdesc">Returns the list of secret questions and answers for a user account.</para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/SecretQAList.xml"/>
@@ -446,7 +429,7 @@
                     </wadl:doc>
                 </param>
                 <param name="id" style="plain" type="string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated ID assigned when the question was created.</para>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned when the question was created.</para>
                     </wadl:doc>
                 </param>
                 <param name="question" style="plain" type="string" required="true">
@@ -471,7 +454,7 @@
                 the token for a user.</para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ResetAPIKey.xml"/>
@@ -521,7 +504,7 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN"><para>Specify the username </para></wadl:doc>
                 </param>
                 <param name="RAX-AUTH:federatedIdp" style="plain" type="string" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN"><para>Specifies the URI of the Identity provider used to authenticate user.</para></wadl:doc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN"><para>Specifies the URI of the Identity provider used to authenticfederated user.</para></wadl:doc>
                 </param>
                 <param name="expire-in-seconds" style="plain" type="string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN"><para>Specifies the number of seconds that the impersonation remains valid.</para></wadl:doc>
@@ -544,7 +527,7 @@
             </representation>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ImpersonationResponse.xml"/>
@@ -560,88 +543,41 @@
     <method id="getDomains" name="GET">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Retrieve domains">
-            <para role="shortdesc">Lists domains that a customer or process can access with the specified authentication token.</para>
+            <para role="shortdesc">Lists domains that a customer or process can access with the specified authenticcation token.</para>
             <para> The operation returns a list of domains for which the supplied token provides access. Tokens have
                 access to domains by the token having access to a tenant that exists in the domain. If the token belongs to
-                an admin user, a list of all domains may be returned.</para>
-            <note><para>
-                This API operation is implemented through the <link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to the core Identity API.  
-            </para></note>
+                an admin user, a list of all domains may be returned. </para>
         </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-domains-get-req-xml.txt"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Retrieve domains: JSON request">
-                    <xsdxt:code href="../common/samples/auth-domains-get-req-json.txt"/>
-                </wadl:doc>
-            </representation>
-        </request>
         
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
-                    <xsdxt:code href="../common/samples/auth-domains-get-resp.xml"/>
+                    <xsdxt:code href="../common/samples/DomainList.xml"/>
                 </wadl:doc>
-                &domainsResponseParam;
-                &domainResponseParam;
-                &domain_idRespParam;
-                &domain_enabledRespParam;
-                &domain_descriptionRequestParam;
-                &domain-nameResponseParam;
-                &domain-mfaResponseParam;
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt"/>
-                    <xsdxt:code href="../common/samples/auth-domains-get-resp.json"/>
+                    <xsdxt:code href="../common/samples/DomainList.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
     
     <method id="getDomain" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get a domain">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook"
+ title="Get a domain">
             <para role="shortdesc">Retrieves a domain. </para>
-            <note><para>
-                This API operation is implemented through the <link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to the core Identity API.  
-            </para></note>
         </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get a domain: XML request">
-                    <xsdxt:code href="../common/samples/auth-domain-get-req-xml.txt"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get a domain: JSON request">
-                    <xsdxt:code href="../common/samples/auth-domain-get-req-json.txt"/>
-                </wadl:doc>
-            </representation>
-        </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
-                    <xsdxt:code href="../common/samples/auth-domain-get-resp.xml"/>
+                    <xsdxt:code href="../common/samples/Domain.xml"/>
                 </wadl:doc>
-                    &domainResponseParam;
-                    &domain_idRespParam;
-                    &domainResponseParam;
-                    &domain_enabledRespParam;
-                    &domain_descriptionRequestParam;
-                    &domain-nameResponseParam;
-                    &domain-mfaResponseParam;
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt"/>
-                    <xsdxt:code href="../common/samples/auth-domain-get-resp.json"/>
+                    <xsdxt:code href="../common/samples/Domain.json"/>
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
@@ -649,36 +585,24 @@
     <method id="updateDomain" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
  title="Update a domain">
-            <para role="shortdesc">Updates domain attributes.</para>
-            <para>When you submit the update request, include only the parameter values that you want to update. 
-            Administrators can change the multi-factor authentication domain enforcement setting by using the 
-                <link xlink:href="PUT_updateDomainMultiFactorEnforcement_v2.0_RAX-AUTH_domains__domainId__multi-factor_Multifactor_Calls.html">Update 
-            multi-factor authentication domain settings operation.</link>.</para>
+            <para role="shortdesc">Updates domain attributes. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-domain-update-req.xml"/>
+                    <xsdxt:code href="../common/samples/Domain.xml"/>
                 </wadl:doc>
-                &domain_raxAuthObjectRequestParam;
-                &domain_nameRequestParam;
-                &domain_enabledRequestParam;
-                &domain_descriptionRequestParam;
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-domain-update-req.json"/>
+                    <xsdxt:code href="../common/samples/Domain.json"/>
                 </wadl:doc>
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
-            <representation mediaType="application/xml" element="identity:noContent">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="204 success respone">
-                    <xsdxt:code href="../common/samples/auth-204-http-resp.txt" />
-                    <para>This operation does not return a response body.</para>
-                </wadl:doc>
-            </representation>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
 
     <method id="createDomain" name="POST">
@@ -696,19 +620,12 @@
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-domain-create-http-req-xml.txt"/>
-                    <xsdxt:code href="../common/samples/auth-domain-create-req.xml"/>
+                    <xsdxt:code href="../common/samples/Domain.xml"/>
                 </wadl:doc>
-                &domain_raxAuthObjectRequestParam;
-                &domain_idRespParam;
-                &domain_nameRequestParam;
-                &domain_enabledRequestParam;
-                &domain_descriptionRequestParam;
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-domain-create-http-req-json.txt"/>
-                    <xsdxt:code href="../common/samples/auth-domain-create-req.json"/>
+                    <xsdxt:code href="../common/samples/Domain.json"/>
                 </wadl:doc>
             </representation>
         </request>
@@ -727,7 +644,7 @@
                 domain can be deleted.</para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> 
@@ -750,7 +667,7 @@
             </param>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UserList.xml"/>
@@ -766,12 +683,12 @@
 
     <method id="addUserToDomain" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add user to domain">
-            <para role="shortdesc">Adds the specified user to a domain.</para>
+            <para role="shortdesc">Adds the spedified user to a domain.</para>
             <para> A user can exist in only one domain at a time. When you add a user to a domain, the user is
                 automatically removed from any prior domain. </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -794,7 +711,7 @@
             </param>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+                <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/TenantList.xml"/>
@@ -814,7 +731,7 @@
                 automatically removed from any prior domain. </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -824,7 +741,7 @@
             <para role="shortdesc">Removes a tenant from a domain. </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -852,7 +769,7 @@
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -863,7 +780,7 @@
             </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DefaultRegionServices.xml"/>
@@ -883,7 +800,7 @@
                 the user has a role in a tenant that exists in the domain. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/DomainList.xml"/>
@@ -901,7 +818,7 @@
             <para role="shortdesc"> Get endpoints for a user restricted by domain. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointList.xml"/>
@@ -944,7 +861,7 @@
                 and/or role management. This request returns the following identifying information about the administrator: domain name, domain ID, email address, status, user ID and user name.</para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/UserAdminList.xml"/>
@@ -962,7 +879,7 @@
             <para role="shortdesc"> Get all Policies. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
@@ -1003,7 +920,7 @@
             <para role="shortdesc">Retrieves a policy. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Policy.xml"/>
@@ -1033,7 +950,7 @@
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; </method>
@@ -1044,7 +961,7 @@
             <para> A policy can only be deleted if it is not tied to any entity. </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -1057,7 +974,7 @@
                 descriptions of the policy. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyBlob.xml"/>
@@ -1070,7 +987,7 @@
             <para role="shortdesc">Lists all policies for endpoint template </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/PolicyList.xml"/>
@@ -1101,7 +1018,7 @@
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; </method>
@@ -1111,7 +1028,7 @@
             <para role="shortdesc"> Add a Policy to an endpoint template. </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -1121,7 +1038,7 @@
             <para role="shortdesc"> Remove a policy from an endpoint template. </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -1131,7 +1048,7 @@
             <para role="shortdesc"> Gets a list of service APIs. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/ServiceApiList.xml"/>
@@ -1149,7 +1066,7 @@
             <para role="shortdesc"> Get the capabilities for an endpoint template. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/CapabilityList.xml"/>
@@ -1186,7 +1103,7 @@
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -1196,7 +1113,7 @@
             <para role="shortdesc"> Remove capabilities from an endpoint template. </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -1207,7 +1124,7 @@
             <para> The operation returns a list of regions. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/RegionList.xml"/>
@@ -1225,7 +1142,7 @@
             <para role="shortdesc"> Gets a region. </para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Region.xml"/>
@@ -1255,7 +1172,7 @@
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -1265,7 +1182,7 @@
             <para role="shortdesc"> Creates a region. </para>
             <para>Clients must specify the region name in the request body. </para>
             <para>Clients must specify whether or not the region is default in the request body. When a user is created,
-                they are assigned the default region based on which region is set as <code>“isDefault”:true</code>. This is used to assist
+                they are assigned the default region based on which region is set as “isDefault”:true. This is used to assist
                 Next Gen Compute capacity by suggesting to new users that they provision where we want them to. The user can
                 change their default region through the update user API call, but they are restricted to changing it only to
                 one of their regions listed in the service catalog for the CloudServersOpenStack service. </para>
@@ -1293,7 +1210,7 @@
                 before this operation will be allowed.</para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; </method>
@@ -1305,7 +1222,7 @@
                 service API. questions.</para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/QuestionList.xml"/>
@@ -1323,7 +1240,7 @@
             <para role="shortdesc">Get a secret question by question ID.</para>
         </wadl:doc>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/Question.xml"/>
@@ -1354,7 +1271,7 @@
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; &postPutFaults; </method>
@@ -1405,7 +1322,7 @@
                 </para>
         </wadl:doc>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; </method>
@@ -1429,7 +1346,7 @@
             </param>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK" xml:lang="EN">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointTemplateList.xml"/>
@@ -1439,7 +1356,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/EndpointTemplateList.json"/>
                 </wadl:doc>
-        </representation>
+            </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <method id="authenticateWithMultiFactor" name="POST">
@@ -1501,7 +1418,7 @@
             </representation>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="text/xml">
                 <doc xml:lang="EN" title="Authenticate with multifactor credentials: XML response with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.xml"/>
@@ -1624,7 +1541,6 @@
             </representation>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/RackerAuthenticationResponse.xml"/>
@@ -1641,9 +1557,7 @@
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
-  
-<!-- Multi-factor mobile phone methods -->
-
+    
     <method id="createMobilePhone" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone">
             <para role="shortdesc">Adds a mobile phone number to the specified user account to support multi-factor authentication.</para>
@@ -1666,7 +1580,7 @@
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML request">
-                <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-req.xml"/>
+                <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.xml"/>
                 </wadl:doc>
                 <param name="number" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -1676,7 +1590,7 @@
             </representation>
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request">
-                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-req.json"/>
+                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneReq.json"/>
                 </wadl:doc>                
             </representation> 
         </request>
@@ -1685,10 +1599,10 @@
             <doc title="Success">The mobile phone has been added to the user account.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML response">
-                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-resp.xml"/>
+                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.xml"/>
                </wadl:doc>
                 <param name="id" style="plain" type="string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated ID assigned to the phone added to the account.</para></wadl:doc>          
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned to the phone added to the account.</para></wadl:doc>          
                 </param>
                 <param name="verified" style="plain" type="boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
@@ -1702,7 +1616,7 @@
             </representation>
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a moble phone: JSON response">
-                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-resp.json"/>
+                    <xsdxt:code href="../common/samples/MultiFacCreatePhoneResp.json"/>
                 </wadl:doc>
             </representation>
         </response>
@@ -1728,14 +1642,14 @@
     
     <method id="sendVerifyCode" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Sends a verfication code to a phone">
-            <para role="shortdesc">Sends an SMS message with a PIN code to a phone added to an account for multi-factor authentication.</para>
-            <para>After you update an account with a mobile phone number for multi-factor authentication, Rackspace must confirm that the user 
+            <para role="shortdesc">Sends an SMS message with a PIN code to a phone added to an account for multifactor authentication.</para>
+            <para>After you update an account with a mobile phone number for multifactor authentication, Rackspace must confirm that the user 
                 has the phone before it can be enabled for use in the authentication process.</para>
             <para security="internal">When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
-                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List multi-factor devices associated with </link> 
+                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">List multifactor devices associated with </link> 
                 operation to get it.</para>
             <para security="external">When you send the verification code, include the <parameter>phoneId</parameter> in the API request. If you don't know the ID, use the 
-                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">List multi-factor devices for user</link> 
+                <link xlink:href="GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">List multifactor devices for user</link> 
                 operation to get it.</para>
             <para>After you submit request, the Rackspace verification service sends a PIN to the specified phone 
                 via SMS text message. Each PIN has a system-defined expiration time determined by the Identity service system configuration.
@@ -1767,7 +1681,7 @@
     </method>
     
     <method id="verifyDevice" name="POST">        
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verifies a mobile phone">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify a mobile phone">
             <para role="shortdesc">Submits the PIN code issued by Rackspace to confirm user possession of a mobile phone.</para>
             <para>Use this operation to submit the verification PIN from the SMS text message sent by Rackspace.
                 After the PIN is accepted, use the Update settings for mulit-factor authentication operation to 
@@ -1816,23 +1730,25 @@
             <para>A user or Identity administrator impersonating a user can use this operation to list the mobile phones  
                 associated with a user account. An account can have up to one mobile phone configured for multi-factor authentication..</para>
             <para>If you don't know the user ID, use the List user operation to find it.</para>
-            <example><title>Get mobile phones for user: JSON cURL request</title>
-                <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-req-cURL.txt"/>
-            </example>
         </wadl:doc>
         <request>
                 <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List multi-factor phones for user request: json cURL">
-                        <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-req-cURL.txt"/>
+                        <xsdxt:code href="../common/samples/MultifacGetUserPhone_reqCurl.txt"/>
                     </wadl:doc>
                 </representation>
         </request>
         <response status="204" >
             <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.json"/>
+                </wadl:doc>
+        </representation>
             
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-resp.xml"/>
+                    <xsdxt:code href="../common/samples/MultifacGetUserPhone_req.xml"/>
                 </wadl:doc>
                 <param name="RAX-AUTH:mobilePhones" style="plain" type="object" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -1849,7 +1765,7 @@
                 <param name="number" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Phone number of the device associated with the user account. Use the Add mobile phone operation 
-                            to add a phone to the account. Use the remove multi-factor operation to delete phones from the account.</para>
+                            to add a phone to the account. Use the Remove multi-factor operation to remove phones from the account.</para>
                     </wadl:doc>
                 </param>
                 <param name="verified" style="plain" type="boolean" required="false">
@@ -1858,11 +1774,6 @@
                             verified by using the Send verification code and Verify device operations.</para>
                     </wadl:doc>
                 </param>
-            </representation>
-            <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-resp.json"/>
-                </wadl:doc>
             </representation>
         
         </response> &commonFaults; &getFaults;
@@ -1885,11 +1796,287 @@
             <representation mediaType="application/json"/>
         </response> &commonFaults;
     </method>
-  
-  <!-- Shared multi-factor authentication operations for mobile phone and OTP devices -->
+    <method id="updateDomainMultiFactorEnforcement" name="PUT">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook"
+            title="Update domain enforcement settings for multi-factor authentication">
+            <para role="shortdesc">Updates the domain level enforcement level for multi-factor authentication.</para>
+            <para>Identity administrators can set account-wide requirements for multi-factor authentication by setting the domain enforcement level. 
+                This setting applies to all user accounts within the domain specified in the update request.
+                    <note><para>Administrators can override the domain level enforcement level for specific user accounts 
+                        by using the 
+                        <link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Update multi-factor authentication settings operation</link> to set 
+                        user level enforcement.</para></note></para>
+            <example><title>Update domain enforcement settings:json cURL request</title>
+                <xsdxt:code href="../common/samples/MultifacUpdateDomain_reqCurl.txt"/>
+                
+            </example>
+                </wadl:doc>
+            <request>
+                <representation mediaType="application/xml" element="RAX-AUTH:multi-factor">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update domain settings for multi-factor authentication: xml request">
+                        <xsdxt:code href="../common/samples/auth-updateMFADomainEnforce.xml"/>
+                    </wadl:doc>
+                    <param name="RAX-AUTH:multiFactorDomain" style="plain" type="object" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>Specifies the domain enforcement level, <code>domainMultiFactorEnforcementLevel</code> for 
+                                multi-factor authentication. Specify either of these values.
+                                <itemizedlist>
+                                    <listitem>
+                                        <para><code>domainMultiFactorEnforcementLevel: "REQUIRED"</code> makes multi-factor authentication 
+                                            mandatory for all account users.
+                                        </para>
+                                    </listitem>
+                                    <listitem>
+                                        <para>
+                                            <code>domainMultiFactorEnforcementLevel: "OPTIONAL"</code> Users within the domain can choose  
+                                            whether to use multi-factor authentication on their own accounts. 
+                                            </para>
+                                    </listitem>
+                                </itemizedlist>
+                            </para>
+                        </wadl:doc>
+                    </param>
+                </representation>
+                <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update domain settings for multi-factor authentication: json cURL request">
+                        <xsdxt:code href="../common/samples/auth-updateMFADomainEnforce-req.json"/>
+                    </wadl:doc>
+                </representation>
+            </request>
+        <response status="204" >
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json">
+                <xsdxt:code href="../common/samples/auth-updateMFADomainEnforce-resp-json-http.txt"/>
+            </representation>
+        </response>
+        <response status="400" >
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Bad Request">
+                <para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Account does not have any multi-factor devices available.</para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Attempting to enable multi-factor authentication, but device has not been verfied.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Attempting to disable multi-factor authentication on an account where it is required.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>User account is locked. Use the 
+                                <link xlink:href="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Unlock operation</link> 
+                            to enable the account, and try the update operation again.</para>
+                        </listitem>
+                    </itemizedlist></para>
+            </wadl:doc>
+                </response>
+            <response status="401">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unauthorized">
+                    <para>Unable to authenticate user with credentials provided.
+                     <link xlink:href="proc_mfa_auth.html">Re-authenticate with 
+                         multi-factor authentication</link> passcode and session id. 
+                    </para>
+                </wadl:doc>
+                <representation mediaType="application/json"/>
+                <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+            </response>
+        <response status="403" >
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="UserDisabled">
+                <para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>
+                                Possible reasons: No multi-factor device on user account; multi factor phone on account is not verified. 
+                            </para>
+                        </listitem>
+                    </itemizedlist>.</para></wadl:doc>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+        </response>
+        <response status="403" >
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Forbidden">
+                <para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>
+                                User must set up multi-factor. <link xlink:href="proc_mfa_admin.html#mfa_required">Request a scoped MFA-SETUP token</link>
+                                to set up multifactor authentication. 
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para></wadl:doc>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+        </response>
+        <response status="500" >
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Service Fault">
+                <para>Problem linking phone with &CIS; multi-factor authentication service. 
+                    Contact the &CIS; service administrator for help.</para></wadl:doc>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+        </response>
+    </method>
+    <method id="updateMultifactorSettings" name="PUT">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook"
+            title="Update multi-factor authentication account settings">
+            <para role="shortdesc">Updates the multi-factor authentication settings for the specified account.
+            </para>
+        </wadl:doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">    
+            <para>Identity user administrators and account users can use this operation to update these multi-factor authentication settings:
+                <itemizedlist>
+                    <listitem>
+                        <para>Turn multi-factor authentication capability on or off.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Change the multi-factor authentication method for a user account. For example, if the user authenticates using a mobile phone, 
+                        and they want to use a verified one-time password (OTP) device that has been added to the account, submit an update request to 
+                        change the value of <code>factorType</code> to <code>OTP</code>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Customize multi-factor authentication enforcement configuration at the user level. (Requires administrative access.)</para>
+                    </listitem>
+                    <listitem>
+                        <para><link xlink:href="PUT_unlockMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Unlock an account</link> 
+                            that has been deactivated as a result of failed attempts to authenticate. (Requires administrative access.)
+                        </para>
+                    </listitem>
+                </itemizedlist>
+                </para>
+            <note><para>To remove all multi-factor authentication devices and settings on an account, use the Remove multi-factor authentication operation.</para></note> 
+            <example><title>Enable multi-factor authentication on account: json cURL request</title>
+                <xsdxt:code href="../common/samples/MultifacUpdateSettings_reqCurl.txt"/>
+            </example>
+            <important>
+                <para>If you change the user level enforcement setting to <code>REQUIRED</code> or enable multi-factor authentication on an an account, 
+                    any existing tokens for that user are immediately revoked.</para>
+            </important>
+        </wadl:doc>
+            <request>
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: XML request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.xml"/>
+                </wadl:doc>
+                <param name="enabled" style="plain" type="xsd:boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>A boolean value that indicates whether the account is enabled for multi-factor authentication. 
+                            Specify <code>enabled=true</code> to add support for multi-factor authentication; 
+                            <code>enabled=false</code> to disable it.</para>
+                        <para>If the user account is configured with both a verified both mobile phone (SMS) and a verified  
+                            one-time passcode (OTP) device, a request to enable multi-factor authentication 
+                            must include the <code>factorType</code> parameter to specify which device to enable.
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:userMultiFactorEnforcementLevel" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the user enforcement level for multi-factor authentication:
+                            <itemizedlist>
+                                <listitem>
+                                    <para><guilabel>Required.</guilabel>The user must use multi-factor authentication to 
+                                        log in to their Rackspace Cloud account.
+                                        <link xlink:href="PUT_updateMultiFactorDomain_v2.0_RAX-AUTH_domains__domainId__multi-factor_.html">domain enforcement </link>domain level enforcement is configured as <parameter>Optional</parameter>.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>
+                                        <guilabel>Optional.</guilabel>The user has the option to authenticate using multi-factor authentication.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>
+                                        <guilabel>Default.</guilabel>The user multi-factor authentication requirements are determined by the 
+                                        domain level enforcement setting for multi-factor authentication. 
+                                    </para>
+                                </listitem>
+                            </itemizedlist>
+                        </para>
+                    </wadl:doc>
+                </param>
+                <param name="factorType" style="plain" type="xsd:string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the multi-factor authentication method: <code>SMS</code> or 
+                        <code>OTP</code>.</para>
+                        <para>If the user account is configured to support both mobile phone and OTP authentication, this 
+                        parameter is required in update requests that can apply settings to both resources, enabling multi-factor 
+                        authentication for example.</para>
+                    </wadl:doc>
+                </param>
+                        <param name="unlock" style="plain" type="xsd:boolean" required="false">
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                                <para>A boolean value that indicates the lock status on a user account that is enabled 
+                                    for multi-factor authentication. To unlock an account, specify <code>unlock=true</code> 
+                                    in the Unlock operation request.</para>.</wadl:doc>
+                        </param>
+            </representation>
+            
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: JSON request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.xml"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: JSON request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request">
+                    <xsdxt:code href="../common/samples/MultiFacUpdateOffReq.xml"/>
+                </wadl:doc>
+            </representation>
+
+                <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update user level enforcement for multifactor authentication: json cURL">
+                        <xsdxt:code href="../common/samples/MultifacUpdateSettingsEnforcement_reqCurl.txt"/>
+                    </wadl:doc>
+                </representation>
+                
+                <representation mediaType="application/json">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: JSON request">
+                        <xsdxt:code href="../common/samples/MultiFacUpdateSettingsReq.json"/>
+                    </wadl:doc>
+                </representation>
+            </request>
+        <response status="204" >
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+                <representation>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: JSON response">
+                        <xsdxt:code href="../common/samples/auth-UpdateMFASettingsEnforce-resp-json-http.txt"/>
+                    </wadl:doc>
+            </representation>
+            </response>
+        <response status="400" >
+            <doc title="Bad Request">Possible reasons: No multi-factor device on user account; multi factor phone on account is not verified.</doc>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+        </response>
+        <response status="403" >
+            <doc title="Forbidden">Possible reasons: No multi-factor device on user account; multi factor phone on account is not verified.</doc>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+        </response>
+        <response status="500" >
+            <doc title="Service Fault">Problem linking phone with &CIS; multi-factor authentication service. Contact the &CIS; service administrator for help.</doc>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
+        </response> 
+    </method>
+     
     
     <method id="generateBypassCodes" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generates bypass codes">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generate bypass codes">
             <para role="shortdesc">Generates a bypass code that can be substituted for a multi-factor authentication passcode.  
             </para>
             <para>The Generate bypass codes operation helps users recover access to an account if they cannot 
@@ -1917,9 +2104,14 @@
             </note>
         </wadl:doc>
         <request>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/BypassCodesRequest.json" />
+                </wadl:doc>
+            </representation>
+            
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-mfabypasscodes-get-http-req-xml.txt"/>
                     <xsdxt:code href="../common/samples/BypassCodesRequest.xml"/>
                 </wadl:doc>
                 <param name="RAX-AUTH:bypassCodess"  style="plain" required="false">
@@ -1963,18 +2155,11 @@
                     </wadl:doc>
                 </param>
             </representation>
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-mfabypasscodes-get-http-req-json.txt"/>
-                    <xsdxt:code href="../common/samples/BypassCodesRequest.json" />
-                </wadl:doc>
-            </representation>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
                     <xsdxt:code href="../common/samples/BypassCodesResponse.xml" />
                 </wadl:doc>
                 <param name="RAX-AUTH:bypassCodes"  style="plain" required="false">
@@ -1998,7 +2183,6 @@
             </representation>
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt"/>
                     <xsdxt:code href="../common/samples/BypassCodesResponse.json" />
                 </wadl:doc>
             </representation>
@@ -2006,475 +2190,50 @@
         &commonFaults;
         &postPutFaults;
     </method>
-
-    <!-- Multi-factor OTP devices -->
-
-    <method id="createOTPDeviceForUser" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Creates an OTP device">
-            <para role="shortdesc">adds a OTP (one-time password) device for multi-factor authentication</para>
-            <para>You can add up to five OTP devices to a user account. After adding the device, use the 
-                <link xlink:href="POST_verifyOTPDevice_v2.0_users__userId__RAX-AUTH_multi-factor_otp-devices__otpDeviceId__verify_Multifactor_Calls.html">verify OTP device</link> 
-                operation to pair the device with your account.</para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: XML request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-req-xml.txt"/>
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-req.xml" />
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: JSON request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-req-json.txt"/>
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-req.json" />
-                </wadl:doc>
-            </representation>
-        </request>
-        <response status="201">
-            <doc title="Success">The OTP device has been added to the user account.</doc>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: XML response">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-resp-xml.txt"/>
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-resp.xml"/>
-                </wadl:doc>
-                <param name="Location" style="header" type="xsd:anyURI" required="true">
-                    <wadl:doc>URI for the newly created OTP device.</wadl:doc>
-                </param>
-                <param name="id" style="plain" type="string">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated ID assigned to the OTP device.</para></wadl:doc>          
-                </param>
-                <param name="keyUri" style="plain">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The URI for the device security token.</para></wadl:doc>          
-                </param>
-                <param name="name" style="plain" type="string" >
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>The unique name assigned to the OTP device.</para>
-                    </wadl:doc>
-                </param>
-                <param name="qrcode" style="plain" type="string" >
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>The bar code to identity the OTP device to the mobile passcode application.</para>
-                    </wadl:doc>
-                </param>
-                <param name="verified" style="plain" type="Boolean" >
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Indicates whether the OTP device has been verified.</para>
-                    </wadl:doc>
-                </param>
-            </representation>
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a moble phone: JSON response">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-resp-json.txt"/>
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-resp.json"/>
-                </wadl:doc>
-            </representation>
-        </response>
-        <response status="400">
-            <doc title="Bad Request">The request is missing one or more elements, or the values of some 
-                elements are invalid.
-            </doc>
-        </response>
-        <response status="401">
-            <doc title="Unauthorized">You are not authorized to complete this operation.
-            </doc>
-        </response>
-        <response status="500">
-            <doc title="Service Fault">Service is not available.</doc>
-        </response>
-    </method>
     
-    <method id="getOTPDevice" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Retrieves the specified OTP device">
-            <para role="shortdesc">Retrieves the OTP device that matches the specified ID.
+    <method id="unlockMultifactorForUser" name="PUT">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock user account">
+            <para role="shortdesc">Unlocks an account that was disabled because of too many failed login attempts or disablement.</para>
+            <para>The Identity service has a system-defined threshold for failed authentication attempts from a multifactor-enabled device.
+                The default threshold is 6. If a user enters incorrect multi-factor authentication credentials more than 6 times, the Identity service locks 
+                the account.
             </para>
-            <para>
-                The operation returns the OTP device associated with the account.
-            </para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get OTP devices for account: XML request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-get-http-req-xml.txt"/>
-                </wadl:doc>
-                <param name="otpDevice" style="plain" type="object" >
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Returns the following information for an OTP device: ID, name, verification status.</para>
-                    </wadl:doc>
-                </param>
-                &otpdeviceGetRespParam;
-            </representation>
-            <representation mediaType="application/json" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get OTP devices for account: JSON request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-get-http-req-json.txt"/>
-                </wadl:doc>
-            </representation>
-        </request>
-        <response status="200">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt" />
-                    <xsdxt:code href="../common/samples/auth-otpdevice-get-resp.xml" />
-                </doc>
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt" />
-                    <xsdxt:code href="../common/samples//auth-otpdevice-get-resp.json" />
-                </doc>
-            </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
-    <method id="getOTPDevicesForUser" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Retrieves the OTP devices for a specified account">
-            <para role="shortdesc">Gets a list of multi-factor OTP devices for an account.</para>
-            <para>
-                Returns information about the OTP devices associated with a user account.
-            </para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get OTP devices for account: XML request">
-                    <xsdxt:code href="../common/samples/auth-otpdevices-get-http-req-xml.txt"/>
-                </wadl:doc>
-            </representation>
-            <representation mediaType="application/json" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get OTP devices for account: JSON request">
-                    <xsdxt:code href="../common/samples/auth-otpdevices-get-http-req-json.txt"/>
-                </wadl:doc>
-            </representation>
-        </request>
-        <response status="200">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
-                <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt" />
-                    <xsdxt:code href="../common/samples/auth-otpdevices-get-resp.xml" />
-                </wadl:doc>
-                <param name="otpDevices" style="plain" type="object" >
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Returns the collection of OTP devices associated with the specified account.</para>
-                    </wadl:doc>
-                </param>
-                <param name="otpDevice" style="plain" type="object" >
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Returns the following information for an OTP device: ID, name, verification status.</para>
-                    </wadl:doc>
-                </param>
-                &otpdeviceGetRespParam;
-            </representation>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt" />
-                    <xsdxt:code href="../common/samples//auth-otpdevices-get-resp.json" />
-                </doc>
-            </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    <method id="verifyOTPDevice" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verifies an OTP device">
-            <para role="shortdesc">Sends the mobile passcode from the mobile passcode 
-            application to the Identity service to pair the OTP device instance with the account.</para>
-            <para>After you <link xlink:href="proc_mfa_setup-OTP.html">set up an OTP device for multi-factor authentication</link>, 
-                this operation sends the passcode from the mobile passcode application to the Identity service to confirm that you have 
-                the device so that you can use the device for multi-factor authentication.</para>
-            <para>If your account is set up for multi-factor authentication by using a mobile phone, or if this is the first OTP device on your account, 
-                    <link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">update the multi-factor authentication settings</link> 
-                    on your account to use the OTP device. 
-                </para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify OTP devices for account: XML request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-verify-http-req-xml.txt"/>
-                </wadl:doc>
-                &otpdeviceGetRespParam;
-            </representation>
-            <representation mediaType="application/json" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify OTP devices for account: JSON request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-verify-http-req-json.txt"/>
-                </wadl:doc>
-            </representation>
-        </request>
-        <response status="204">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Verify device by ID: 204 respone">
-                    <xsdxt:code href="../common/samples/auth-204-http-resp.txt"/>
-                </wadl:doc>
-            </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    <method id="deleteOTPDevice" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Removes a specified OTP device from a user account">
-            <para role="shortdesc">Delete the OTP device that matches the specified ID.
-            </para>
-            <para>The operation deletes the OTP device with the specified ID from the user account.
-            </para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete OTP device by ID: XML request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-delete-http-req-xml.txt"/>
-                </wadl:doc>
-                &otpdeviceGetRespParam;
-            </representation>
-            <representation mediaType="application/json" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete OTP device by ID: JSON request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-delete-http-req-json.txt"/>
-                </wadl:doc>
-            </representation>
-        </request>
-        <response status="204">
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete device by ID: 204 respone">
-                    <xsdxt:code href="../common/samples/auth-204-http-resp.txt" />
-                    <para>This operation does not require a request body and does not return a response body.</para>
-                </wadl:doc>
-            </representation>
-        </response>
-        &commonFaults;
-        &getFaults;
-    </method>
-    
-    <!-- Shared multi-factor authentication operations for mobile phone and OTP devices -->
-    
-    <method id="updateMultifactorSettings" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook"
-            title="Updates multi-factor authentication settings on account">
-            <para role="shortdesc">Updates the multi-factor authentication settings for the specified account.
-            </para>
-        </wadl:doc>
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">    
+                
+            <para>A Rackspace Cloud administrator can unlock an account by submitting an Unlock request with <code>unlock=true</code> or 
+                by using the Remove multi-factor settings operation to remove multi-factor authentication capabilities from the account. 
+                Users cannot unlock their own account.</para>
+            <para>This operation cannot be used to lock an account. If you submit the 
+                request with <code>unlock=false</code>, the operation does not make any changes to the account.</para>
             <note><para>
-                This API operation is implemented through the <link xlink:href="Extensions-d1e688.html">RAX-AUTH extension</link> to the core Identity API.  
-            </para></note> 
-            <para>Identity user administrators and account users can submit an API update request to change these 
-                multi-factor authentication settings:
-                <itemizedlist>
-                    <listitem>
-                        <para>Change the multi-factor authentication status on an account to enable or disable it.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Customize multi-factor authentication enforcement configuration at the user level. (Requires administrative access.)</para>
-                    </listitem>
-                    <listitem>
-                        <para>Unlock an account that has been deactivated as a result of failed attempts to authenticate. (Requires administrative access.)
-                        </para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>The following setting updates must be submitted in separate API requests: change multi-factor status, 
-                unlock account, set user-level enforcement.</para>
-            <example><title>cURL request to enable multi-factor authentication on an account</title>
-                <xsdxt:code href="../common/samples/auth-MFAUserSettings-req-curl.txt"/>
-            </example>
-            <important>
-                <para>If you change the user level enforcement setting to <code>REQUIRED</code> or enable multi-factor authentication on an account, 
-                    any existing tokens for that user are immediately revoked.</para>
-            </important>
+                The functionality described in this section is provided by the <code>RAX-AUTH</code> 
+                extension to the core Identity API.  For more information, see 
+                <xref linkend="Extensions-d1e688"/>.  
+            </para></note>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: XML request">
-                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-xml.txt"/>
-                    <xsdxt:code href="../common/samples/auth-MFAUserEnable-req.xml"/>
+         
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/MultiFacUnlockReq.json"/>
+                    <para>This operation does not accept a response body.</para>
+               </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/MultiFacUnlockReq.xml"/>
                 </wadl:doc>
-                <param name="enabled" style="plain" type="xsd:boolean" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates whether the account is enabled for multi-factor authentication. 
-                            Specify <code>enabled=true</code> to add support for multi-factor authentication; 
-                            <code>enabled=false</code> to disable it. When you enable multi-factor authentication, 
-                        </para>
-                    </wadl:doc>
-                </param>
-                <param name="RAX-AUTH:userMultiFactorEnforcementLevel" style="plain" type="xsd:string" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Specifies the user enforcement level for multi-factor authentication:
-                            <itemizedlist>
-                                <listitem>
-                                    <para><code>REQUIRED</code>The user must use multi-factor authentication to 
-                                        log in to their Rackspace Cloud account.
-                                        <link xlink:href="PUT_updateMultiFactorDomain_v2.0_RAX-AUTH_domains__domainId__multi-factor_.html">domain enforcement 
-                                        </link>domain level enforcement is configured as <parameter>Optional</parameter>.</para>
-                                </listitem>
-                                <listitem>
-                                    <para>
-                                        <code>OPTIONAL.</code>The user has the option to authenticate using multi-factor authentication.</para>
-                                </listitem>
-                                <listitem>
-                                    <para>
-                                        <code>DEFAULT.</code>The user multi-factor authentication requirements are determined by the 
-                                        domain level enforcement setting for multi-factor authentication. 
-                                    </para>
-                                </listitem>
-                            </itemizedlist>
-                        </para>
-                    </wadl:doc>
-                </param>
                 <param name="unlock" style="plain" type="xsd:boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates the lock status on a user account that is enabled 
+                        <para>A boolean value that indicates the lock status on a user account enabled 
                             for multi-factor authentication. To unlock an account, specify <code>unlock=true</code> 
-                            in the Unlock operation request.</para>.
-                        <para>This attribute cannot be used to lock an account. 
-                            If you submit the request with <code>unlock=false</code>, the operation 
-                            does not make any changes to the account.</para></wadl:doc>
+                            in the Unlock operation request.</para>.</wadl:doc>
                 </param>
-            </representation>
-            
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable multi-factor authentication on account: JSON request">
-                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
-                    <xsdxt:code href="../common/samples/auth-MFAUserEnable-req.json"/>
-                </wadl:doc>
-            </representation>
-            
-            
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request">
-                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
-                    <xsdxt:code href="../common/samples/auth-MFAUserDisable-req.xml"/>
-                </wadl:doc>
-            </representation>
-            
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: JSON request">
-                    <xsdxt:code href="../common/samples/auth-MFAUserDisable-req.json"/>
-                </wadl:doc>
-            </representation>
-            
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock account: XML request">
-                    <xsdxt:code href="../common/samples/auth-MFAUnlockUser-req.xml"/>
-                </wadl:doc>
-            </representation>
-            
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock account: JSON request">
-                    <xsdxt:code href="../common/samples/auth-MFAUnlockUser-req.json"/>
-                    <para>This operation does not accept a response body.</para>
-                </wadl:doc>
-            </representation>
-            
-            
-            <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update user level enforcement for multifactor authentication: XML request">
-                    <xsdxt:code href="../common/samples/auth-MFAUserEnforce-req.xml"/>
-                </wadl:doc>
-            </representation>
-            
-            <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"  title="Update user level enforcement for multifactor authentication: JSON request">
-                    <xsdxt:code href="../common/samples/auth-MFAUserEnforce-req.json"/>
-                </wadl:doc>
             </representation>
         </request>
         <response status="204" >
-            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
-            <representation mediaType="application/json"/>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
-            
-        </response>
-        <response status="400" >
-            <doc title="Bad Request">Possible reasons: No multi-factor device on user account; multi factor phone on account is not verified.</doc>
-            <representation mediaType="application/json"/>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
-        </response>
-        <response status="403" >
-            <doc title="Forbidden">Possible reasons: No multi-factor device on user account; multi factor phone on account is not verified.</doc>
-            <representation mediaType="application/json"/>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
-        </response>
-        <response status="500" >
-            <doc title="Service Fault">Problem linking phone with &CIS; multi-factor authentication service. Contact the &CIS; service administrator for help.</doc>
-            <representation mediaType="application/json"/>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
-        </response> 
-    </method>
-    
-    <method id="updateDomainMultiFactorEnforcement" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Updates domain enforcement setting for multi-factor authentication">
-            <para role="shortdesc">Updates the domain level enforcement level for multi-factor authentication.</para>
-            <para>Identity administrators can set account-wide requirements for multi-factor authentication by setting the domain enforcement level. 
-                This setting applies to all user accounts within the domain specified in the update request. Before 
-                you set the domain enforcement level, the administrator account must be configured with multi-factor authentication. 
-                <note><para>Administrators can override the domain level enforcement level for specific user accounts 
-                    by using the 
-                    <link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Update multi-factor authentication settings operation</link> to set 
-                    user level enforcement.</para></note></para>
-            <example><title>Update domain enforcement settings:json cURL request</title>
-                <xsdxt:code href="../common/samples/auth-MFADomainEnforce-update-req-Curl.txt"/>
-            </example>
-        </wadl:doc>
-           <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:multi-factor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update domain settings for multi-factor authentication: xml request">
-                    <xsdxt:code href="../common/samples/auth-MFADomainEnforce-update-req.xml"/>
-                </wadl:doc>
-                <param name="RAX-AUTH:multiFactorDomain" style="plain" type="object" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>Specifies the domain enforcement level, <code>domainMultiFactorEnforcementLevel</code> for 
-                            multi-factor authentication. Specify either of these values.
-                            <itemizedlist>
-                                <listitem>
-                                    <para><code>domainMultiFactorEnforcementLevel: "REQUIRED"</code> makes multi-factor authentication 
-                                        mandatory for all account users.
-                                    </para>
-                                </listitem>
-                                <listitem>
-                                    <para>
-                                        <code>domainMultiFactorEnforcementLevel: "OPTIONAL"</code> Users within the domain can choose  
-                                        whether to use multi-factor authentication on their own accounts. 
-                                    </para>
-                                </listitem>
-                            </itemizedlist>
-                        </para>
-                    </wadl:doc>
-                </param>
-            </representation>
-            <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update domain settings for multi-factor authentication: json cURL request">
-                    <xsdxt:code href="../common/samples/auth-MFADomainEnforce-update-req.json"/>
-                </wadl:doc>
-            </representation>
-            </request>
-            <response status="204" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
-                <representation mediaType="application/xml" element="identity:noContent"/>
-                <representation mediaType="application/json">
-                </representation>
-            </response>
-            <response status="400" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Bad Request">
-                    <para>Trying to set up domain level enforcement on an account that has not been configured 
-                        with multi-factor authentication.
-                        <itemizedlist>
-                            <listitem>
-                                <para>Set up multi-factor authentication on account.</para>
-                            </listitem>
-                        </itemizedlist></para>
-                </wadl:doc>
-            </response>
-            <response status="403" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Forbidden">
-                    <para>You must set up multi-factor authentication on your account before you 
-                        can set multi-factor domain level enforcement.
-                    </para>
-                </wadl:doc>
-                <representation mediaType="application/json"/>
-                <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
-            </response>&commonFaults; &getFaults;
-            
-    </method>
+            <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+        </response> &commonFaults; &getFaults;
+    </method> 
     
     <method id="getTokenBySAML" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get token by SAML assertion">
@@ -2498,7 +2257,7 @@
             </representation>
         </request>
         <response status="200" >
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <doc title="OK">The request succeeded.</doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Token SAML response: XML">
                     <xsdxt:code href="../common/samples/TokenSAMLRsp.xml"/>

@@ -697,16 +697,26 @@ Cache-Control: no-cache
 				                    <td>
 					                      <para>Indicates the type of authentication credentials used to generate the token, which can include
 						the following values:</para>
+				                       
 					                      <para>
 						                        <itemizedlist>
+						                            <listitem>
+						                                <para>
+						                                    <literal>APIKEY</literal> for the API key assigned to the user account.</para>
+						                            </listitem>
+						                            <listitem>
+						                                <para>
+						                                    <literal>PASSCODE</literal> sent to a mobile phone associated with a user account.</para>
+						                            </listitem>
+						                            <listitem>
+						                                <para>
+						                                    <literal>OTPPASSCODE</literal> sent to an OTP (one-time passcode) device associated with a user account.</para>
+						                            </listitem>
 							                          <listitem>
 								                            <para>
                                        <literal>PASSWORD</literal> for Rackspace Cloud account password.</para>
 							                          </listitem>	
-							                          <listitem>
-								                            <para>
-                                       <literal>APIKEY</literal> for the API key assigned to the user account.</para>
-							                          </listitem>		
+							                      		
 							                          <listitem condition="admin">
 									                           <para>
                                        <literal>RSAKey</literal> for Racker SSO

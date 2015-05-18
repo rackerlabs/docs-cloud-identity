@@ -21,7 +21,7 @@
       </listitem>
       <listitem>
         <para>Users with a multi-factor authenticated account can only use OpenStack or Rackspace
-          CLI tools that support username and API key authentcation or token authentication, like
+          CLI tools that support username and API key authentication or token authentication, like
           the Nova client. </para>
         <para>For token authentication, submit an authentication request. Then, export the returned
           token to the  CLI environment variable, <envar>OS_TOKEN</envar> or
@@ -235,6 +235,7 @@
         </variablelist></para>
     </listitem>
   </orderedlist>
+  <para>After you set up and enable multi-factor authentication, you can use your mobile phone to complete the steps to authenticate to multi-factor enabled account.</para>
   <para>For more information, see the following topics: <itemizedlist>
     <listitem>
       <para>

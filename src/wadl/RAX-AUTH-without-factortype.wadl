@@ -1889,7 +1889,7 @@
   <!-- Shared multi-factor authentication operations for mobile phone and OTP devices -->
     
     <method id="generateBypassCodes" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generates bypass codes">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Generate bypass codes">
             <para role="shortdesc">Generates a bypass code that can be substituted for a multi-factor authentication passcode.  
             </para>
             <para>The Generate bypass codes operation helps users recover access to an account if they cannot 
@@ -2084,7 +2084,7 @@
     </method>
     
     <method id="getOTPDevice" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Retrieves the specified OTP device">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Retrieve the specified OTP device">
             <para role="shortdesc">Retrieves the OTP device that matches the specified ID.
             </para>
             <para>
@@ -2129,7 +2129,7 @@
     </method>
     
     <method id="getOTPDevicesForUser" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Retrieves the OTP devices for a specified account">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Retrieve the OTP devices for a specified account">
             <para role="shortdesc">Gets a list of multi-factor OTP devices for an account.</para>
             <para>
                 Returns information about the OTP devices associated with a user account.
@@ -2177,7 +2177,7 @@
         &getFaults;
     </method>
     <method id="verifyOTPDevice" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verifies an OTP device">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify an OTP device">
             <para role="shortdesc">Sends the mobile passcode from the mobile passcode 
             application to the Identity service to pair the OTP device instance with the account.</para>
             <para>After you <link xlink:href="proc_mfa_setup-OTP.html">set up an OTP device for multi-factor authentication</link>, 
@@ -2213,7 +2213,7 @@
         &getFaults;
     </method>
     <method id="deleteOTPDevice" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Removes a specified OTP device from a user account">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove a specified OTP device from a user account">
             <para role="shortdesc">Delete the OTP device that matches the specified ID.
             </para>
             <para>The operation deletes the OTP device with the specified ID from the user account.
@@ -2249,7 +2249,7 @@
     
     <method id="updateMultifactorSettings" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
-            title="Updates multi-factor authentication settings on account">
+            title="Update multi-factor authentication settings on account">
             <para role="shortdesc">Updates the multi-factor authentication settings for the specified account.
             </para>
         </wadl:doc>
@@ -2264,6 +2264,12 @@
                         <para>Change the multi-factor authentication status on an account to enable or disable it.</para>
                     </listitem>
                     <listitem>
+                        <listitem>
+                            <para>Change the passcode type accepted for multi-factor authentication: <code>SMS</code> for
+                                mobile phone passcodes, or <code>OTP</code> for one-time passcode from an OTP device. Only update this setting 
+                                if your account has both mobile phone and OTP devices and you want to change the device that you use for multi-factor 
+                                authentication.</para>
+                        </listitem>
                         <para>Customize multi-factor authentication enforcement configuration at the user level. (Requires administrative access.)</para>
                     </listitem>
                     <listitem>
@@ -2272,8 +2278,8 @@
                     </listitem>
                 </itemizedlist>
             </para>
-            <para>The following setting updates must be submitted in separate API requests: change multi-factor status, 
-                unlock account, set user-level enforcement.</para>
+            <para>The following setting updates must be submitted in separate API requests: change multi-factor status, change passcode type, 
+                set user-level enforcement, unlock account.</para>
             <example><title>cURL request to enable multi-factor authentication on an account</title>
                 <xsdxt:code href="../common/samples/auth-MFAUserSettings-req-curl.txt"/>
             </example>
@@ -2296,7 +2302,13 @@
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="RAX-AUTH:userMultiFactorEnforcementLevel" style="plain" type="xsd:string" required="false">
+                <param name="RAX-AUTH:factorType" style="plain" type="string" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Specifies the device to use for multi-factor authentication: <code>SMS</code> for mobile phone, 
+                            or <code>OTP</code> for OTP device.</para>
+                    </wadl:doc>
+                </param>
+                <param name="RAX-AUTH:userMultiFactorEnforcementLevel" style="plain" type="string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>Specifies the user enforcement level for multi-factor authentication:
                             <itemizedlist>
@@ -2352,14 +2364,34 @@
                 </wadl:doc>
             </representation>
             
+            <!-- Update device type for mutli-factor authentication -->
+            
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-xml.txt"/>
+                    <xsdxt:code href="../common/samples/auth-MFAUserfactorType-req.xml"/>
+                </wadl:doc>
+            </representation>
+            
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: JSON request">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
+                    <xsdxt:code href="../common/samples/auth-MFAUserfactorType-req.json"/>
+                </wadl:doc>
+            </representation>
+            
+            <!-- Unlock account after mfa lock out -->
+            
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock account: XML request">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-xml.txt"/>
                     <xsdxt:code href="../common/samples/auth-MFAUnlockUser-req.xml"/>
                 </wadl:doc>
             </representation>
             
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unlock account: JSON request">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
                     <xsdxt:code href="../common/samples/auth-MFAUnlockUser-req.json"/>
                     <para>This operation does not accept a response body.</para>
                 </wadl:doc>
@@ -2402,7 +2434,7 @@
     </method>
     
     <method id="updateDomainMultiFactorEnforcement" name="PUT">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Updates domain enforcement setting for multi-factor authentication">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update domain enforcement setting for multi-factor authentication">
             <para role="shortdesc">Updates the domain level enforcement level for multi-factor authentication.</para>
             <para>Identity administrators can set account-wide requirements for multi-factor authentication by setting the domain enforcement level. 
                 This setting applies to all user accounts within the domain specified in the update request. Before 

@@ -561,4 +561,18 @@ This operation does not require a request body.</para>'>
     </param>
 '>
  
-      
+<!ENTITY otpdeviceGetRespParam '
+    <param name="id" style="plain" type="string">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique system-generated ID assigned to the OTP device.</para></wadl:doc>          
+    </param>
+    <param name="name" style="plain" type="string" >
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>The unique name assigned to the OTP device.</para>
+        </wadl:doc>
+    </param>
+    <param name="verified" style="plain" type="Boolean" >
+        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+            <para>Indicates whether the OTP device has been verified.</para>
+        </wadl:doc>
+    </param>
+'>      

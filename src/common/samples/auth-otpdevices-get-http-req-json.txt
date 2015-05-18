@@ -1,0 +1,5 @@
+GET /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Accept: application/json
+X-Auth-Token: 9c069077e4eb438daf8527ba7cc0a7ad
+Content-type: application/json

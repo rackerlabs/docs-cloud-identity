@@ -308,7 +308,14 @@
 				</listitem>
 				<listitem>
 					<para>Passcode credentials for accounts that require multi-factor authentication: session Id and passcode
-						values</para>
+						sent to <link xlink:href="proc_mfa_setup-phone.html"> a
+							mobile </link> associated with the user account.</para>
+				</listitem>
+				<listitem>
+					<para>OTP passcode credentials for accounts that require multi-factor authentication: session Id and an
+						OTP passcode sent to an <link xlink:href="proc_mfa_setup-OTP.html">
+							OTP device</link> associated with the user account.
+				</para>
 				</listitem>
 				<listitem audience="admin">
 					<para>RSA credentials: Rackspace employees can authenticate with an SSO id and
@@ -947,6 +954,8 @@
 			<note><para>The functionality described in this section is provided by the <code>RAX-AUTH</code> extension
 				to the core Identity API. For more information, see <link xlink:href="Extensions-d1e688.html">Extensions</link>. </para></note>
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				
+				<!-- Mobile phone operations -->
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#createMobilePhone"/>		
 				</wadl:resource>	
@@ -956,14 +965,35 @@
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#mfa_PIN">
 					<wadl:method href="#verifyDevice"/>
 				</wadl:resource>
-				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_update">
-					<wadl:method href="#updateMultifactorSettings"/>
-				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#removeMultifactorForUser"/>
 				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_mobile_phones">
 					<wadl:method href="#getMobilePhonesForUser"/>
+				</wadl:resource>
+				
+				<!-- OTP operations -->
+				
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_otp_devices">
+					<wadl:method href="#createOTPDeviceForUser"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_otp_device">
+					<wadl:method href="#getOTPDevice"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#verify_otp_device">
+					<wadl:method href="#verifyOTPDevice"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_otp_device">
+					<wadl:method href="#deleteOTPDevice"/>
+				</wadl:resource>
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#user_otp_devices">
+					<wadl:method href="#getOTPDevicesForUser"/>		
+				</wadl:resource>	
+				
+				<!--Shared operations-->
+				
+				<wadl:resource href="../../wadl/RAX-AUTH.wadl#multifactor_update">
+					<wadl:method href="#updateMultifactorSettings"/>
 				</wadl:resource>
 				<wadl:resource href="../../wadl/RAX-AUTH.wadl#bypass_codes">
 					<wadl:method href="#generateBypassCodes"/>
