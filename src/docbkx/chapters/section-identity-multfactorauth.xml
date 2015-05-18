@@ -95,7 +95,7 @@
       </itemizedlist>
     </para>
     <xi:include href="section-mfa-setup-phone.xml"/>
-    <xi:include href="section-mfa-setup-otp.xml" condition="admin"/>
+    <xi:include href="section-mfa-setup-OTP.xml" condition="admin"/>
     <xi:include href="section-mfa-admin.xml"/>
     <xi:include href="section-mfa-auth.xml"/>
     <xi:include href="section-mfa-manage.xml"/>
