@@ -11,36 +11,23 @@
     xml:id="MFA_Ops">
     
   <title>Multi-factor authentication</title>
-    <para>To improve security when accessing Rackspace Cloud resources, customers 
-      can add multi-factor authentication capabilities to their accounts. These capabilities
-     provide additional layer of identity verification that can be implemented by using mobile phones.</para>
-    <para>Additionally, Identity and user administrators can enforce multi-factor authentication
-    policy at the domain and user level.  For example, if you want to require multi-factor
-    authentication for all users, you can configure the domain to restrict user access for new and existing users
-    until they set up multi-factor authentication on their account.</para>
-    <para>Administrators can also specify multi-factor authentication policy at the user level. 
-    For example, if the multi-factor authentication for a domain is required, and you have certain accounts where that 
-    policy is not effective, you can update the account to add the user level enforcement setting to make multi-factor 
-    authentication optional.
-    </para>
-    <para>With multi-factor authentication enabled, authentication is a two-step process: <orderedlist>
+    <para>To improve security, customers can configure Rackspace Cloud accounts to support
+    multi-factor authentication which requires users to authenticate in two steps: <orderedlist>
       <listitem>
-        <para>A user submits an initial <command>POST tokens</command> request to the Identity
-          Service endpoint, with username and password credentials.</para>
-        <para>The response body returned by the Identity service includes an X-SessionId header and
-          a request for additional credentials. The Identity service also sends passcode 
-          to the mobile phone or mobile passcode authentication application associated with the account.</para>
+        <para>Submit an initial <command>POST tokens</command> request to the Identity Service
+          endpoint, with username and password credentials.</para>
+        <para>The response body returned by the Identity service includes a session ID header and a
+          request for additional credentials. </para>
       </listitem>
       <listitem>
-        <para>To complete the authentication process, the user submits a second <command>POST
-            tokens</command> request that includes the session ID header and passcode credentials.</para>
-        <para>If the credentials are valid, the Identity service returns an authentication response
-          that includes the authentication token and a service catalog showing the available
-          services and <glossterm baseform="endpoint">endpoints</glossterm> to access the API for
-          each service.</para>
+        <para>Submit a second <command>POST tokens</command> request that includes the session ID
+          header and a passcode retrieved from a device associated with the user's account. </para>
+        <para>If the credentials are valid, the Identity service returns an authentication token and
+          service catalog that includes the API service <glossterm baseform="endpoint"
+            >endpoints</glossterm> available to the user.</para>
       </listitem>
     </orderedlist>
-    </para>
+  </para>
 
     <para>Figure <xref linkend="mfa_auth"
       xrefstyle="select: labelnumber"/> shows the multi-factor
@@ -55,13 +42,11 @@
       </mediaobject>
     </figure>
   </para>
-    <para>Users interested in enabling multi-factor authentication must update their &CLOUD; user
-    accounts to add a phone number that can be used in the authentication process, verify the phone,
-    and enable the user account for multi-factor authentication. This work can be completed from the Cloud Control panel 
-    or by using the &CIS; API.</para>
-    <para>Figure <xref linkend="mfa_workflow_setup"
-      xrefstyle="select: labelnumber"/> provides an overview of the
-    work flow to complete these tasks.</para><figure xml:id="mfa_workflow_setup">
+  <para>To enable mulit-factor authentication, users must update the account settings to add and
+    verify a device that can be used to supply the multi-factor authentication passcode. You can
+    configure account settings from the Cloud Control panel, or by using the &CIS; API.</para>
+    <para>Figure <xref linkend="mfa_workflow_setup" xrefstyle="select: labelnumber"/> shows the work
+    flow to set up multi-factor authentication on an account.</para><figure xml:id="mfa_workflow_setup">
       <title>Multi-factor authentication user account set up work flow </title>
       <mediaobject condition="admin">
         <imageobject>
@@ -77,23 +62,33 @@
       </mediaobject>
 
     </figure>
-    <para>For information about using multi-factor authentication capabilities through the Cloud Identity API, 
-      see the following topics:
-      <itemizedlist>
-        <listitem>
-          <para><link xlink:href= "proc_mfa_setup-phone.html">Set up multi-factor authentication via mobile phone</link></para>
-        </listitem>
-        <listitem>
-          <para>
-          <link xlink:href="proc_mfa_admin.html">Add multi-factor authentication enforcement policy to Rackspace Cloud accounts</link>
+  <para>Additionally, Identity and user administrators can define multi-factor authentication policy
+    for a domain by configuring the  domain enforrcement setting. For example, if the domain
+    enforcement setting is <code>Required</code>, users that have not set up multi-factor
+    authentication are requird to enable it before they can access their account.</para>
+  <para><guilabel>Learn more</guilabel></para>
+    <para>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="proc_mfa_setup-phone.html">Set up multi-factor authentication via
+            mobile phone</link></para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="proc_mfa_admin.html">Add multi-factor authentication enforcement policy
+            to Rackspace Cloud accounts</link>
         </para>
-        </listitem>
-        <listitem>
-          <para><link xlink:href= "proc_mfa_auth.html">Authenticate from a multi-factor-enabled user account</link></para>
-        </listitem>
-        <listitem><para><link xlink:href= "proc_mfa_manage.html">Manage multi-factor authentication settings and operation</link></para></listitem>
-      </itemizedlist>
-    </para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="proc_mfa_auth.html">Authenticate from a multi-factor-enabled user
+            account</link></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="proc_mfa_manage.html">Manage multi-factor authentication settings
+            and operation</link></para>
+      </listitem>
+    </itemizedlist>
+  </para>
     <xi:include href="section-mfa-setup-phone.xml"/>
     <xi:include href="section-mfa-setup-OTP.xml" condition="admin"/>
     <xi:include href="section-mfa-admin.xml"/>

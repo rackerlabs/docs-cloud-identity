@@ -235,12 +235,12 @@
         </variablelist></para>
     </listitem>
   </orderedlist>
-  <para>After you set up and enable multi-factor authentication, you can use your mobile phone to complete the steps to authenticate to multi-factor enabled account.</para>
+  <para>After you set up and enable multi-factor authentication, follow the steps to authenticate from a multi-factor enabled account.</para>
   <para>For more information, see the following topics: <itemizedlist>
     <listitem>
       <para>
         <link xlink:href="proc_mfa_auth.html">Authenticate from a
-          multifactor-enabled user account</link></para>
+          multifactor-enabled account</link></para>
     </listitem>
     <listitem><para>
           <link xlink:href="proc_mfa_manage.html">Manage
