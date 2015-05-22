@@ -128,7 +128,7 @@
                                 key</parameter>:</para>
                             <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
  -X POST \
- -d '{"auth":{"RAX-KSKEY:apiKeyCredentials"{"username":"myUserName","apiKey":"thePassword"}}}' \
+ -d '{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"myUserName","apiKey":"thePassword"}}}' \
  -H "Content-type: application/json" | python -m json.tool</programlisting>
                         </listitem>
                     </itemizedlist></para>
