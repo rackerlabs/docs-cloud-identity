@@ -1444,6 +1444,7 @@
     <method name="POST" id="admin-addUserCredential">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Adds an API key credential">
             <para role="shortdesc">Adds an API credential to a specified user account.</para>
+            <para>Identity administrators can update a user account to add an API credential.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="apiKeyCredentials">
@@ -1546,9 +1547,9 @@
             <para role="shortdesc">Update user credentials.
             </para>
             <para>
-                An API key is a credential; you can update a user's API key with this call.
-                To add a credential to a user, include the user ID in the request. If you don't know the id, 
-                use the <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> operation to find it.
+                Identity administrators can update the API key on an account with this operation. Include 
+                the user ID for the acount in the request. You can use the  
+                use the <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> operation to find the ID.
             </para>
         </wadl:doc>
         <request>
@@ -1569,7 +1570,6 @@
         </request>
         <response status="200">
             <doc title="OK">The request completed successfully.</doc>
-            <doc title="OK">Success. The tenant is authenticated.</doc>
             <representation mediaType="application/json" element="apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN">
