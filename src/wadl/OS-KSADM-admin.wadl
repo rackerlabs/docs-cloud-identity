@@ -1323,12 +1323,12 @@
         <request>
             <representation mediaType="application/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-getrolebyid-request-xml-http.txt"/>
+                    <xsdxt:code href="../common/samples/auth-getrolebyId-request-xml-http.txt"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-getrolebyid-request-json-http.txt"/>
+                    <xsdxt:code href="../common/samples/auth-getrolebyId-request-json-http.txt"/>
                 </wadl:doc>
             </representation>
         </request>
