@@ -708,7 +708,7 @@ Cache-Control: no-cache
 						                                <para>
 						                                    <literal>PASSCODE</literal> sent to a mobile phone associated with a user account.</para>
 						                            </listitem>
-						                            <listitem>
+						                            <listitem condition="admin">
 						                                <para>
 						                                    <literal>OTPPASSCODE</literal> sent to an OTP (one-time passcode) device associated with a user account.</para>
 						                            </listitem>
