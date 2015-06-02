@@ -52,6 +52,18 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-06-02</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated <link xlink:href="Role_Calls.html">Role operations</link> to add XML and JSON request 
+								examples and correct errors in URI and error response codes.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-05-11</date>
 				<revdescription>
 					<itemizedlist>

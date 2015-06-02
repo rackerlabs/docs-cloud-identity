@@ -273,9 +273,10 @@
 			</wadl:resource>
 			
 			<!-- Manage user roles -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRole">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#list_user_roles">
 				<wadl:method href="#listUserGlobalRoles"/>
 			</wadl:resource>
+			
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRoleById">
 				<wadl:method href="#addUserRole"/>
 				<wadl:method href="#deleteUserRole"/>

@@ -8,7 +8,7 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-  xml:id="proc_mfa_setup-OTP">
+  xml:id="proc_mfa_setup-OTP" condition="admin">
   <title>Configure Rackspace Cloud account for multi-factor authentication via OTP device</title>
   <para>Use these instructions to configure a Rackspace Cloud account for multi-factor
     authentication by using an OTP (one-time password) device.</para>
@@ -19,8 +19,7 @@
             Authenticator</link></para>
       </listitem>
       <listitem>
-        <para><link xlink:href="https://www.authy.com/users">Authy</link> (Scroll down to the bottom
-          of the page for application installation links.)</para>
+        <para><link xlink:href="https://www.authy.com/users">Authy</link></para>
       </listitem>
       <listitem>
         <para><link xlink:href="https://www.duosecurity.com/product/methods">Duo

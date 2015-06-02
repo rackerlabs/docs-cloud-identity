@@ -51,16 +51,18 @@
                         <method href="#getUserById"/>
                         <method href="#updateUser"/>
                         <method href="#deleteUser"/>
-                   <resource id="userRole" path ="OS-KSADM/roles">
+                   <resource id="list_user_roles" path="/roles">
+                       <method href="#listUserGlobalRoles"/>
+                   <resource id="userRole" path ="/OS-KSADM">
                         <method href="#getUserRole"/>
-                        <method href="#listUserGlobalRoles"/>
-                        <resource id="userRoleById" path="{roleid}">
+                        <resource id="userRoleById" path="/{roleid}">
                            <param name="roleId" type="xsd:string" style="template" required="true">
                                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A role Id.</para></wadl:doc>
                            </param>
                            <method href="#addUserRole"/>
                            <method href="#deleteUserRole"/>
                        </resource>
+                   </resource>
                    </resource>
                 
   <!--                      <resource id="enabled" path="enabled">
@@ -877,14 +879,27 @@
                 </wadl:doc>
             </para>-->
         </wadl:doc>
-        <response status="201">
-            <doc title="Created">The request has been fulfilled. The tenant has been created.</doc>
+        <request>
+            <representation mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-addroletouser-request-xml-http.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-addroletouser-request-json-http.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
+        <response status="200">
+            <doc title="OK">Request completed successfully.</doc>
             </response>&commonFaults; &postPutFaults; &getFaults; </method>
     <method name="GET" id="getUserRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user role information">
             <para role="shortdesc">Returns information about a specified role assigned to a specified user.</para>
             <para>Get information about a global role that belongs to a user.</para>
         </wadl:doc>
+        
         <response status="200 203">
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="role">
@@ -914,6 +929,18 @@
                 identity:rack_connect and identity:rax_managed cannot be managed by customers to prevent them from revoking
                 privileges unintentionally.</para>
         </wadl:doc>
+        <request>
+            <representation mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-deleterolefromuser-request-xml-http.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-deleterolefromuser-request-json-http.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
         <response status="204">
             <doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
@@ -930,16 +957,15 @@
                 <link xlink:href="GET_admin-getUserByName_v2.0_users_User_Calls.html"/></para>
         </wadl:doc>
         <request>
-           
-            <representation mediaType="application/json">
+            <representation mediaType="application/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/passwordcredentials.json"/>
+                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
                 </wadl:doc>
             </representation>
             
-            <representation mediaType="application/xml" element="identity:credential">
+            <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/passwordcredentials.xml"/>
+                    <xsdxt:code href="../common/samples/passwordcredentials.json"/>
                 </wadl:doc>
             </representation>
         </request>
@@ -1084,7 +1110,7 @@
     <!--Roles--> 
     
     <method name="GET" id="listUserGlobalRoles">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List global roles for a user">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List global roles assigned to a user">
             <para role="shortdesc">Returns global roles associated with a user account.</para>
             <para>This operation returns a list of <link xlink:href="Identity-Concpts.html#role-def">global roles</link> that are assigned to the account with 
                 the specified user Id. If you don't know the ID, use the <link xlink:href="GET_admin-getUserById_v2.0_users__userId__User_Calls.html">Get user by Id</link> operation to find it.</para>
@@ -1111,7 +1137,19 @@
                 </itemizedlist>
             </note>
         </wadl:doc>
-        <response status="200 203">
+        <request>
+            <representation mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-listusrglobalroles-request-xml-http.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-listusrglobalroles-request-json-http.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
+        <response status="200">
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1130,7 +1168,7 @@
     <method name="POST" id="addRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add role">
             <para role="shortdesc">Adds a role.</para>
-           <para >This operation adds a newly created global role (with user-assigned Rackspace
+           <para>Identity administrators can use this operation to add a role to manage service access (with user-assigned Rackspace
                 capabilities), allowing the customer to tailor user roles to his or her business needs.</para>
             <note>
                 <para>
@@ -1186,7 +1224,7 @@
             </representation>
         </response> &commonFaults; &postPutFaults; &getFaults; </method>
     <method name="GET" id="listRoles">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Retrieve roles">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Lists available roles to manage service access">
             <para role="shortdesc">Lists available roles for managing access to Rackspace Cloud services.</para>
             <para>Use the List roles API operation to retrieve the available roles. The response 
                 returns the roles object with information about each role, including the id for the 
@@ -1195,14 +1233,20 @@
             <para>If you use the limit and marker parameter, the previous and next links are in the header.</para>
         </wadl:doc>
         <request>
+            
             &limitMarkerReqParameter;
+            <representation mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-getRoles-request-xml-http.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/auth-getRoles-request-json-http.txt"/>
                 </wadl:doc>
             </representation>
         </request>
-        <response status="203">
+        <response status="200">
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="roles">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1276,7 +1320,19 @@
             <para> This call lists detailed information (<code>id</code>,
                 <code>name</code>, <code>description</code>) for a specified role. </para>
         </wadl:doc>
-        <response status="200 203">
+        <request>
+            <representation mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-getrolebyid-request-json-http.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-getrolebyid-request-json-http.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
+        <response status="200">
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1298,17 +1354,41 @@
             <para role="shortdesc">Deletes a role.</para>
            <para >Delete a role.</para>
         </wadl:doc>
+        <request>
+            <representation mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-deleterole-request-xml-http.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-deleterole-request-json-http.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
         <response status="204">
             <doc xml:lang="EN" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; </method>
-    
+        
     <method name="GET" id="getUsersWithRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get users with role">
             <para role="shortdesc">Gets users that have the specified role.</para>
            <para >This operation does not require a request body.</para>
         </wadl:doc>
+        <request>
+            <representation  mediaType="application/xml">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-getuserswithrole-http-xml-request.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation  mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-getuserswithrole-http-json-request.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
         <response status="200">
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="Users">

@@ -110,6 +110,7 @@
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userCredentialsByType">
 				<wadl:method href="#getUserCredential"/>
 			</wadl:resource>
+			
 			<!-- reset user's API key credentials -->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#reset_apikey_credentials" >
 				<wadl:method href="#resetUserAPIKeyCredentials"/>
@@ -138,13 +139,13 @@
 			
 			-->
 
-				<!-- get a global role by id-->
+				<!-- get a service role by id-->
 			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#roleId">
-					<wadl:method href="#getRolebyId"/>
+				<wadl:method href="#getRolebyId"/>
 				</wadl:resource>
 	
 			<!-- Manage user roles -->
-			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#userRole">
+			<wadl:resource href="../../wadl/OS-KSADM-admin.wadl#list_user_roles">
 				<wadl:method href="#listUserGlobalRoles"/>
 			</wadl:resource>
 			
@@ -152,7 +153,7 @@
 				<wadl:method href="#addUserRole"/>
 				<wadl:method href="#deleteUserRole"/>
 			</wadl:resource>
-			</wadl:resources>
+      </wadl:resources>
 	</section>
 	
 	<!-- TOKENS -->

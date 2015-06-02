@@ -1,0 +1,5 @@
+DELETE /v2.0/users/123456/roles/OS-KSADM/30007896 HTTP/1.1
+Host: identity.api.rackspacecloud.com
+X-Auth-Token:82994d2fb9a0483a85b6ba622c212345
+Accept: application/json
+Content-type: application/json
