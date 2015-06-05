@@ -15,7 +15,7 @@
           internalURL="https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee"
           name="cloudFiles"
           publicURL="https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee"
-          region="ORD"
+          region="IAD"
           tenantId="MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee" type="objectStore">
           <version id="1"
                info="https://storage101.ord1.clouddrive.com/v1" list="https://storage101.ord1.clouddrive.com"/>

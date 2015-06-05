@@ -18,7 +18,7 @@
   		
   <user 
   	rax-auth:domainId="6019514" 
-  	rax-auth:defaultRegion="ORD" 
+  	rax-auth:defaultRegion="IAD" 
   	id="000064f713e445f78ee8002917207428" 
   	username="jqsmith112326" 
   	email="jqsmith112326@thebestemailprovider.com" 

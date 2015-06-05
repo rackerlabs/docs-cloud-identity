@@ -742,7 +742,7 @@
         <request>
             <param name="enabled" style="query" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">     
-                    <para>A boolean value that filters the list of tenants based on account status.
+                    <para>A Boolean value that filters the list of tenants based on account status.
                         Specify <code>enabled=true</code> to list active (enabled) tenants; specify
                         <code>enabled=false</code> to list inactive tenants.
                     </para>              
@@ -786,7 +786,7 @@
         <request>
             <param name="enabled" style="template" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"> 
-                    <para>A boolean value that filters the list of tenants based on account status.
+                    <para>A Boolean value that filters the list of tenants based on account status.
                         Specify <code>enabled=true</code> to list active (enabled) tenants; specify
                         <code>enabled=false</code> to list inactive tenants.
                     </para> 
@@ -835,9 +835,9 @@
             
             <para xmlns="http://docbook.org/ns/docbook">Users can modify their own default regions, but only within limits.
                 Those limits are imposed by the services in the user's service catalog. Each service specifies the default
-                region for its users. For example, if the <code>openstackNova</code> service sets its default region to
-                    <code>ORD</code>, then any user whose service catalog includes the <code>openstackNova</code> service can
-                only set their default region to <code>ORD</code>.</para>
+                region for its users. For example, if the Cloud Files Service sets its default region to
+                    <code>IAD</code>, then any user whose service catalog includes the Cloud Files service can
+                only set their default region to <code>IAD</code>.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1266,7 +1266,7 @@
             <para>Clients must specify the region name in the request body. </para>
             <para>Clients must specify whether or not the region is default in the request body. When a user is created,
                 they are assigned the default region based on which region is set as <code>“isDefault”:true</code>. This is used to assist
-                Next Gen Compute capacity by suggesting to new users that they provision where we want them to. The user can
+                Next Gen Compute capacity by suggesting to new users who they provision where we want them to. The user can
                 change their default region through the update user API call, but they are restricted to changing it only to
                 one of their regions listed in the service catalog for the CloudServersOpenStack service. </para>
         </wadl:doc>
@@ -1416,7 +1416,7 @@
         </wadl:doc>
         <request>
             <param name="serviceId" style="template" type="string">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by service id.</para></wadl:doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by service ID.</para></wadl:doc>
             </param>
             <param name="type" style="template" type="string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para> Allows us to filter by service type: compute, object-store, or rax:dns for example.</para></wadl:doc>
@@ -1443,7 +1443,7 @@
         </response> &commonFaults; &getFaults; </method>
 
     <method id="authenticateWithMultiFactor" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor passcode credentials">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication passcode credentials">
             <para role="shortdesc">Authenticate with multi-factor passcode credentials.</para><important>
                 <para>User accounts that use multi-factor authentication must
                     authenticate with &CIS; version 2.0 or later. Attempts to
@@ -1495,7 +1495,7 @@
                 </wadl:doc>           
             </representation>
             <representation mediaType="text/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON request with header">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication credentials: JSON request with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.json"/>
                 </wadl:doc>       
             </representation>
@@ -1503,7 +1503,7 @@
         <response status="200" >
             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
             <representation mediaType="text/xml">
-                <doc xml:lang="EN" title="Authenticate with multifactor credentials: XML response with header">
+                <doc xml:lang="EN" title="Authenticate with multi-factor authentication credentials: XML response with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.xml"/>
                 </doc>           
             </representation>
@@ -1541,7 +1541,7 @@
             <para>Rackers can use the <command>POST tokens</command> operation to authenticate to the Identity 
                 service by supplying the following information in the request: Rackspace username, 
                 SSO password, and the Rackspace domain ID.</para>
-            <para>When you authenticate, the Identity Service 
+            <para>When you authenticate, the Identity service 
                 validates the authentication request through the internal Rackspace eDirectory (eDir) service, maps your Racker credentials to the Identity 
                service roles and permissions, and returns an authentication response with a token granting the corresponding access rights and permissions.</para>
             <para>User, group, and role configuration for Racker accounts is managed through 
@@ -1647,21 +1647,17 @@
     <method id="createMobilePhone" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone">
             <para role="shortdesc">Adds a mobile phone number to the specified user account to support multi-factor authentication.</para>
-            <para>Updates the specified user account with a phone number for multi-factor authentication. 
+            <para>The operation updates the specified user account with a phone number for multi-factor authentication. 
             The same phone number can be associated with multiple accounts.</para>
-            <para>Specify the phone number in 
-                <link xlink:href="http://tools.ietf.org/html/rfc4517#ref-E.123">E.123 format</link>. 
-                <code>+1 235-435-623</code> or <code>+44 42 1123 4567</code> for example.
-             </para>
-            <example><title>Add mobile phone cURL request</title>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
+            <example><title>Add mobile phone: cURL request</title>
+            <programlisting language="bash" role="gutter: false">$ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
        -X POST \
        -H "Content-Type: application/json" \
        -H "X-Auth-Token: $AUTH_TOKEN"
-       -d '{"RAX-AUTH:mobilePhone": { "number": "+1 512-555-1000" }}' \ 
+       -d '{"RAX-AUTH:mobilePhone": { "number": "+1 210-312-4600" }}' \ 
        | python -m json.tool</programlisting>
             </example>
-            <note><para>This example assumes that the endpoint URL, user ID, and authentication token have been exported to these environment variables: <code>AUTH_URL, USER_ID</code> and <code>AUTH_TOKEN</code>.</para></note>
+            <note><para>This example assumes that the endpoint URL, user ID, and authentication token have been exported to these environment variables: <code>AUTH_URL, USER_ID</code>, and <code>AUTH_TOKEN</code>.</para></note>
       </wadl:doc>
         <request>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
@@ -1690,8 +1686,8 @@
                 <param name="id" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated ID assigned to the phone added to the account.</para></wadl:doc>          
                 </param>
-                <param name="verified" style="plain" type="boolean" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
+                <param name="verified" style="plain" type="Boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>A Boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
                         verified by using the Send verification code and Verify device operations.</para></wadl:doc>          
                 </param>
                 <param name="number" style="plain" type="string" required="true">
@@ -1721,7 +1717,7 @@
             </doc>
         </response>
         <response status="500">
-            <doc title="Service Fault">Service is not available.</doc>
+            <doc title="Service Fault">The service is not available.</doc>
         </response>
     </method>
 
@@ -1811,7 +1807,7 @@
     </method>
         
     <method id="getMobilePhonesForUser" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Lists multifactor phones for user">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Lists multi-factor phones for user">
             <para role="shortdesc">Lists the mobile phones associated with the specified user account.</para>
             <para>A user or Identity administrator impersonating a user can use this operation to list the mobile phones  
                 associated with a user account. An account can have up to one mobile phone configured for multi-factor authentication..</para>
@@ -1852,9 +1848,9 @@
                             to add a phone to the account. Use the remove multi-factor operation to delete phones from the account.</para>
                     </wadl:doc>
                 </param>
-                <param name="verified" style="plain" type="boolean" required="false">
+                <param name="verified" style="plain" type="Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
+                        <para>A Boolean value that indicates whether the phone can be used to authenticate to the Identity service. Phones can be  
                             verified by using the Send verification code and Verify device operations.</para>
                     </wadl:doc>
                 </param>
@@ -2288,9 +2284,9 @@
                     <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-xml.txt"/>
                     <xsdxt:code href="../common/samples/auth-MFAUserEnable-req.xml"/>
                 </wadl:doc>
-                <param name="enabled" style="plain" type="xsd:boolean" required="false">
+                <param name="enabled" style="plain" type="xsd:Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates whether the account is enabled for multi-factor authentication. 
+                        <para>A Boolean value that indicates whether the account is enabled for multi-factor authentication. 
                             Specify <code>enabled=true</code> to add support for multi-factor authentication; 
                             <code>enabled=false</code> to disable it. When you enable multi-factor authentication, 
                         </para>
@@ -2304,7 +2300,7 @@
                                     <para><code>REQUIRED</code>The user must use multi-factor authentication to 
                                         log in to their Rackspace Cloud account.
                                         <link xlink:href="PUT_updateMultiFactorDomain_v2.0_RAX-AUTH_domains__domainId__multi-factor_.html">domain enforcement 
-                                        </link>domain level enforcement is configured as <parameter>Optional</parameter>.</para>
+                                        </link>domain-level enforcement is configured as <parameter>Optional</parameter>.</para>
                                 </listitem>
                                 <listitem>
                                     <para>
@@ -2313,16 +2309,16 @@
                                 <listitem>
                                     <para>
                                         <code>DEFAULT.</code>The user multi-factor authentication requirements are determined by the 
-                                        domain level enforcement setting for multi-factor authentication. 
+                                        domain-level enforcement setting for multi-factor authentication. 
                                     </para>
                                 </listitem>
                             </itemizedlist>
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="unlock" style="plain" type="xsd:boolean" required="false">
+                <param name="unlock" style="plain" type="xsd:Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                        <para>A boolean value that indicates the lock status on a user account that is enabled 
+                        <para>A Boolean value that indicates the lock status on a user account that is enabled 
                             for multi-factor authentication. To unlock an account, specify <code>unlock=true</code> 
                             in the Unlock operation request.</para>.
                         <para>This attribute cannot be used to lock an account. 
@@ -2367,13 +2363,13 @@
             
             
             <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update user level enforcement for multifactor authentication: XML request">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Update user level enforcement for multi-factor authentication: XML request">
                     <xsdxt:code href="../common/samples/auth-MFAUserEnforce-req.xml"/>
                 </wadl:doc>
             </representation>
             
             <representation mediaType="application/json">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"  title="Update user level enforcement for multifactor authentication: JSON request">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"  title="Update user level enforcement for multi-factor authentication: JSON request">
                     <xsdxt:code href="../common/samples/auth-MFAUserEnforce-req.json"/>
                 </wadl:doc>
             </representation>
@@ -2403,11 +2399,11 @@
     
     <method id="updateDomainMultiFactorEnforcement" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Updates domain enforcement setting for multi-factor authentication">
-            <para role="shortdesc">Updates the domain level enforcement level for multi-factor authentication.</para>
+            <para role="shortdesc">Updates the domain-level enforcement level for multi-factor authentication.</para>
             <para>Identity administrators can set account-wide requirements for multi-factor authentication by setting the domain enforcement level. 
                 This setting applies to all user accounts within the domain specified in the update request. Before 
                 you set the domain enforcement level, the administrator account must be configured with multi-factor authentication. 
-                <note><para>Administrators can override the domain level enforcement level for specific user accounts 
+                <note><para>Administrators can override the domain-level enforcement level for specific user accounts 
                     by using the 
                     <link xlink:href="PUT_updateMultifactorSettings_v2.0_users__userId__RAX-AUTH_multi-factor_Multifactor_Calls.html">Update multi-factor authentication settings operation</link> to set 
                     user level enforcement.</para></note></para>
@@ -2455,7 +2451,7 @@
             </response>
             <response status="400" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Bad Request">
-                    <para>Trying to set up domain level enforcement on an account that has not been configured 
+                    <para>Trying to set up domain-level enforcement setting on an account that has not been configured 
                         with multi-factor authentication.
                         <itemizedlist>
                             <listitem>
@@ -2467,7 +2463,7 @@
             <response status="403" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Forbidden">
                     <para>You must set up multi-factor authentication on your account before you 
-                        can set multi-factor domain level enforcement.
+                        can set multi-factor domain-level enforcement.
                     </para>
                 </wadl:doc>
                 <representation mediaType="application/json"/>

@@ -3,14 +3,6 @@
         "serviceCatalog": [
             {
                 "endpoints": [
-                   {
-                        "publicURL": "https://ord.servers.api.rackspacecloud.com/v2/12345",
-                        "region": "ORD",
-                        "tenantId": "12345",
-                        "versionId": "2",
-                        "versionInfo": "https://ord.servers.api.rackspacecloud.com/v2",
-                        "versionList": "https://ord.servers.api.rackspacecloud.com/"
-                    },
                     {
                         "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/12345",
                         "region": "DFW",
@@ -26,11 +18,6 @@
             {
                 "endpoints": [
                     {
-                        "publicURL": "https://ord.databases.api.rackspacecloud.com/v1.0/12345",
-                        "region": "ORD",
-                        "tenantId": "12345"
-                    },
-                    {
                         "publicURL": "https://dfw.databases.api.rackspacecloud.com/v1.0/12345",
                         "region": "DFW",
                         "tenantId": "12345"
@@ -41,11 +28,6 @@
             },
             {
                 "endpoints": [
-                    {
-                        "publicURL": "https://ord.loadbalancers.api.rackspacecloud.com/v1.0/12345",
-                        "region": "ORD",
-                        "tenantId": "645990"
-                    },
                     {
                         "publicURL": "https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/12345",
                         "region": "DFW",
@@ -62,11 +44,6 @@
                         "region": "DFW",
                         "tenantId": "MossoCloudFS_aaaa-bbbb-cccc "
                     },
-                    {
-                        "publicURL": "https://cdn2.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
-                        "region": "ORD",
-                        "tenantId": "MossoCloudFS_aaaa-bbbb-cccc "
-                    }
                 ],
                 "name": "cloudFilesCDN",
                 "type": "rax:object-cdn"
@@ -110,12 +87,6 @@
                         "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
                         "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
                         "region": "DFW",
-                        "tenantId": "MossoCloudFS_aaaa-bbbb-cccc"
-                    },
-                    {
-                        "internalURL": "https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
-                        "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbb-cccc ",
-                        "region": "ORD",
                         "tenantId": "MossoCloudFS_aaaa-bbbb-cccc"
                     }
                 ],

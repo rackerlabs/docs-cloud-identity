@@ -16,7 +16,7 @@
 		tokens that can be used to access cloud services such as those
 		provided by Rackspace and OpenStack.</para>
 	
-	<para>The authentication service API is implemented using a ReSTful
+	<para>The authentication service API is implemented using a RESTful
 			web service interface. All requests to authenticate and
 			operate against the authentication service should be 
 			performed using SSL over HTTP (HTTPS) on TCP port

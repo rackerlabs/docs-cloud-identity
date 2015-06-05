@@ -114,7 +114,7 @@
     <listitem>
       <para><emphasis role="bold">Rackspace Keystone Extension</emphasis>. Rackspace implementation
         that adds or extends support for the following resources: Tokens, Users, Multifactor
-        (multifactor authentication), Domains, Impersonation, Federation, Regions, Secret Question
+        (multi-factor authentication), Domains, Impersonation, Federation, Regions, Secret Question
         and Answer, along with Secret Question and Answer management.<itemizedlist>
           <listitem>
             <para> Alias: RAX-AUTH</para>
@@ -137,6 +137,6 @@
         </itemizedlist></para>
     </listitem>
   </itemizedlist><?dbhtml stop-chunking?>
-  <para>You can use the <link xlink:href="Extensions_operations.html">Extensions API operations</link> to view and manage the extensions available with the Identity service.</para>
+  <para>You can use the <link xlink:href="Extensions_operations.html">Extensions API operations</link> to view and manage the extensions available with the Identity Service.</para>
    <xi:include href="section-extended-response.xml"/>
 </section>

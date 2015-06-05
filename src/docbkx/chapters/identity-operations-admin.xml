@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section [
-<!-- Common entities for Identity Service source files -->
+<!-- Common entities for Identity service source files -->
 <!ENTITY % common SYSTEM "../../common/common.ent">
 %common;
 ]>
@@ -50,7 +50,7 @@
 				<td>HTTP/1.1 Request</td>
 				<td><code>X-Auth-Token</code></td>
 				<td>
-					<para> aaaaaaaa-1111-bbbb-2222-ccc3d5e6f777</para>
+					<para>aaaaaaaa-1111-bbbb-2222-ccc3d5e6f777</para>
 				</td>
 			</tr>
 		</tbody>
@@ -86,7 +86,7 @@
 	<!--Extensions-->
 	<section xml:id="Extensions_operations">
 		<title>Extensions</title>
-		<para xml:id="Extensions_ovw">The Rackspace Cloud Identity Service deploys 
+		<para xml:id="Extensions_ovw">The Rackspace Cloud Identity service deploys 
 			<link xlink:href="Extensions-d1e688.html">API extensions</link> to add user and administrative features to 
 			the core OpenStack Keystone v2.0 API. You can use the Extensions API operations to query the API service 
 			endpoint for information about the extensions available for the specified service.</para>
@@ -286,8 +286,8 @@
 	
 	<!-- TOKENS -->
 	<section xml:id="Token_Calls">
-		<title>Authentication tokens</title>
-		<para>The &CIS; is a <glossterm baseform="REST">ReSTful</glossterm> web service that provides authentication services  
+		<title>Tokens</title>
+		<para>The &CIS; is a <glossterm baseform="REST">RESTful</glossterm> web service that provides authentication services  
 			for the &CLOUD;. To gain access, users and administrators can use the <command>POST tokens</command> operation 
 			to request an authentication token from the &CIS;, or generate a new token after a previously 
 			issued token has expired. In subsequent requests to &CIS; or other services, 
@@ -410,7 +410,7 @@
 					<wadl:doc>
 						<important>
 							<para>
-								The Rackspace implementation of the OpenStack Identity Service v2.0 
+								The Rackspace implementation of the OpenStack Identity service v2.0 
 								supports <code>GET v2.0/tenants/{tenantId}/users/{userId}/roles</code>
 								for internal users only.  Customers do not have access to this call.
 							</para>
@@ -945,7 +945,7 @@
 		<section xml:id="Multifactor_Calls">
 			<title>Multi-factor operations</title>
 			
-			<para>The &CIS; API operations described in this section implement multifactor authentication
+			<para>The &CIS; API operations described in this section implement multi-factor authentication
 			capabilities for &CLOUD; accounts. For more information, see 
 				<link xlink:href="MFA_Ops.html">Multi-factor authentication</link>.
 				<!--
@@ -1008,16 +1008,16 @@
 				<para>Multifactor authentication features are implemented in the 
 					RAX-AUTH extension to the core OpenStack Keystone v2.0 API. This section 
 					provides information about the extended elements, attributes, and resources 
-					required to set up, use, and manage multifactor authentication capabilities.
+					required to set up, use, and manage multi-factor authentication capabilities.
 						<variablelist>
 						<varlistentry>
 							<term><guilabel>RAX-AUTH:MobilePhone</guilabel></term>
 							<listitem>
 								<para>The <code>RAX-AUTH:MobilePhone</code> element contains
 									information about a phone designated for use with
-									multifactor authentication. In the Identity API, a mobile
+									multi-factor authentication. In the Identity API, a mobile
 									phone can be associated with one or more user accounts for
-									the purpose of multifactor authentication. Phones are
+									the purpose of multi-factor authentication. Phones are
 									added to user accounts, and then verfied to establish that
 									the user has possession of the phone. Phones have the
 									following attributes:<variablelist>
@@ -1044,9 +1044,9 @@
 										<varlistentry>
 											<term><guilabel>verified</guilabel></term>
 											<listitem>
-												<para>Verified is a boolean value that indicates
+												<para>Verified is a Boolean value that indicates
 													whether a phone has been verified for use with
-													multifactor authentication. A verified phone is
+													multi-factor authentication. A verified phone is
 													also known as a multifactor-enabled device.</para>
 											</listitem>
 										</varlistentry>
@@ -1059,7 +1059,7 @@
 								account</guilabel></term>
 							<listitem>
 								<para>Multifactor settings are attributes on a user account
-									that provide information about the multifactor
+									that provide information about the multi-factor
 									authentication capabilities available on the account.<variablelist>
 										<varlistentry>
 											<term><guilabel>RAX-AUTH:multiFactorEnabled
@@ -1067,13 +1067,13 @@
 											<listitem>
 												<para>The <code>RAX-AUTH:multiFactorEnabled</code>
 													element contains the <code>enabled</code>
-													attribute, a boolean value that indicates whether
+													attribute, a Boolean value that indicates whether
 													a user can authenticate using a
 													multifactor-enabled device. This value can only be
 													set on accounts that are associated with a
 													verified multifactor-enabled device. If you remove
-													multifactor authentication capabilities from an
-													account using the Delete multifactor configuration
+													multi-factor authentication capabilities from an
+													account using the Delete multi-factor configuration
 													operation, the ç attribute is no longer included
 													on the account record.</para>
 											</listitem>
@@ -1083,8 +1083,8 @@
 											<listitem>
 												<para>The <code>RAX-AUTH:multiFactorState</code>
 													element contains two attributes that indicate the
-													state of multifactor capabilities on the account:
-													<code>ACTIVE</code> indicates that multifactor
+													state of multi-factor capabilities on the account:
+													<code>ACTIVE</code> indicates that multi-factor
 													authentication capabilities are available for use;
 													<code>LOCKED</code> indicates that the user
 													account is locked as a result of too many login
@@ -1095,7 +1095,7 @@
 										</varlistentry><varlistentry>
 											<term><guilabel>Unlock</guilabel></term>
 											<listitem>
-												<para>The <code>Unlock</code> attribute is a boolean value that can 
+												<para>The <code>Unlock</code> attribute is a Boolean value that can 
 													be used to restore access to a locked account by using the 
 													Unlock user account operation with <code>unlock="true"</code>.
 												</para>
@@ -1112,13 +1112,13 @@
 								<para>&CIS; uses a verification service to link phones and
 									user accounts and to send verification and authentication
 									codes and messages to the user. Verification services are
-									managed by Identity Service administrators. <variablelist>
+									managed by Identity service administrators. <variablelist>
 										<varlistentry>
 											<term><emphasis role="bold">Verification
 												code</emphasis></term>
 											<listitem>
 												<para>Verification code is a unique,
-													system-generated string used to verify multifactor
+													system-generated string used to verify multi-factor
 													devices. The Send verification code operation
 													triggers the verification service to send the code
 													to the phone associated with the user account. To
@@ -1150,7 +1150,7 @@
 										<varlistentry>
 											<term><guilabel>SMS text messages</guilabel></term>
 											<listitem>
-												<para>During the multifactor authentication process, the verification 
+												<para>During the multi-factor authentication process, the verification 
 													service sends text messages to a user's multifactor-enabled device in response to API requests and state 
 													changes such as Send verification code; send authentication passcode; and too many authentication attempts. 
 													These messages are managed by Service Administrators and can be customized upon request.</para>
@@ -1167,14 +1167,14 @@
 								Token</guilabel></term>
 							<listitem>
 								<para>Authentication settings extend the Tokens resource to
-									add support for multifactor authentication.<variablelist>
+									add support for multi-factor authentication.<variablelist>
 										<varlistentry>
 											<term><guilabel>RAX-AUTH:PasscodeCredentials</guilabel></term>
 											<listitem>
 												<para>The RAX-AUTH:PasscodeCredentials element contains the
 													<parameter>passcode</parameter> attribute that can be used to return the
 													passcode from the Rackspace verification service to &CIS; to complete the
-													multifactor authentication process.</para>
+													multi-factor authentication process.</para>
 											</listitem>
 										</varlistentry>
 										<varlistentry>
@@ -1193,13 +1193,13 @@
 															<para>RSAKey indicates RSA key credentials.</para>
 														</listitem>
 														<listitem>
-															<para>PASSCODE indicates the multifactor authentication passcode
+															<para>PASSCODE indicates the multi-factor authentication passcode
 																credentials (RAX-AUTH: Passcode credentials).</para>
 														</listitem>
 													</itemizedlist> When a user successfully authenticates by using a
 													multifactor-enabled device, the <parameter>authenticatedBy</parameter> element
 													lists two credential types; the type used for the initial authentication to
-													the Identity service, and PASSCODE for the multifactor authentication
+													the Identity service, and PASSCODE for the multi-factor authentication
 													step.</para>
 											</listitem>
 										</varlistentry>

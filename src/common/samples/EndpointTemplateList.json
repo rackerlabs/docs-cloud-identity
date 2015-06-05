@@ -13,7 +13,7 @@
       "internalURL": "https://dfw.servers.api.rackspacecloud.com/v2/2882983"
     },
     {
-      "region": "ORD",
+      "region": "IAD",
       "id": "5",
       "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee",
       "name": "cloudFiles",

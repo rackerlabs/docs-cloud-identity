@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <users>
-    <RAX-AUTH:defaultRegion>ORD</RAX-AUTH:defaultRegion>
+    <RAX-AUTH:defaultRegion>IAD</RAX-AUTH:defaultRegion>
     <RAX-AUTH:domainId>12345</RAX-AUTH:domainId>
     <RAX-AUTH:multiFactorEnabled>false</RAX-AUTH:multiFactorEnabled>
     <created>2013-04-30T13:27:32.908-04:00</created>
@@ -11,7 +11,7 @@
     <username>juser123</username>
 </users>
 <users>
-    <RAX-AUTH:defaultRegion>ORD</RAX-AUTH:defaultRegion>
+    <RAX-AUTH:defaultRegion>IAD</RAX-AUTH:defaultRegion>
     <RAX-AUTH:domainId>12345</RAX-AUTH:domainId>
     <RAX-AUTH:multiFactorEnabled>false</RAX-AUTH:multiFactorEnabled>
     <created>2013-04-30T15:51:48.520-04:00</created>

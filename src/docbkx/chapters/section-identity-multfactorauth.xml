@@ -14,7 +14,7 @@
     <para>To improve security, customers can configure Rackspace Cloud accounts to support
     multi-factor authentication which requires users to authenticate in two steps: <orderedlist>
       <listitem>
-        <para>Submit an initial <command>POST tokens</command> request to the Identity Service
+        <para>Submit an initial <command>POST tokens</command> request to the Identity service
           endpoint, with username and password credentials.</para>
         <para>The response body returned by the Identity service includes a session ID header and a
           request for additional credentials. </para>
@@ -64,7 +64,7 @@
     </figure>
   <para>Additionally, Identity and user administrators can define multi-factor authentication policy
     for a domain by configuring the  domain enforrcement setting. For example, if the domain
-    enforcement setting is <code>Required</code>, users that have not set up multi-factor
+    enforcement setting is <code>Required</code>, users who have not set up multi-factor
     authentication are requird to enable it before they can access their account.</para>
   <para><guilabel>Learn more</guilabel></para>
     <para>
@@ -72,6 +72,10 @@
       <listitem>
         <para><link xlink:href="proc_mfa_setup-phone.html">Set up multi-factor authentication via
             mobile phone</link></para>
+      </listitem>
+      <listitem condition="admin">
+        <para><link xlink:href="proc_mfa_setup-otp.html">Set up multi-factor authentication via OTP
+            device</link></para>
       </listitem>
       <listitem>
         <para>

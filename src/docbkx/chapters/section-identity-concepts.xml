@@ -32,7 +32,7 @@
                     <itemizedlist>
                     <listitem>
                         <para>
-                            <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910">Identity service, admin, and user roles</link>
+                            <link xlink:href="Role_Based_Access_Control-d1e808.html#Account-Users-d1e910">Identity Service, admin, and user roles</link>
                         </para>
                     </listitem>
                         
@@ -101,14 +101,14 @@
                 <para security="internal" condition="admin">The Identity service issues different types of tokens based on the 
                     authentication method.
                 <itemizedlist>
-                    <listitem><para>Provisioned user tokens are issued to users that authenticate with their Rackspace Cloud credentials.</para></listitem>
+                    <listitem><para>Provisioned user tokens are issued to users who authenticate with their Rackspace Cloud credentials.</para></listitem>
                     <listitem><para>Racker tokens are issued to Rackspace employees that authenticate with their SSO ID and RSA credentials.</para></listitem>
                     <listitem><para>Impersonation tokens are issued to authorized Rackspace employees or Identity service administrators so they can assume 
                         the identity of a provisioned or federated user.</para></listitem>
                     <listitem><para>Federated tokens issued to external providers like MyRack that establish their identity through SAML assertion.</para></listitem>
-                    <listitem><para>Passcode tokens are issued to users that authenticate using a mobile phone associated with their account.</para></listitem>
-                    <listitem><para>OTP passcode tokens are issued to users that authenticate using an OTP device associated with their account.</para></listitem>
-                    <listitem><para>Multi-factor authentication tokens are issued to provisioned users that are required to set up multi-factor authentication 
+                    <listitem><para>Passcode tokens are issued to users who authenticate using a mobile phone associated with their account.</para></listitem>
+                    <listitem><para>OTP passcode tokens are issued to users who authenticate using an OTP device associated with their account.</para></listitem>
+                    <listitem><para>Multi-factor authentication tokens are issued to provisioned users who are required to set up multi-factor authentication 
                         on their account in order to access a Cloud service.</para></listitem>
                 </itemizedlist></para>
 
@@ -221,8 +221,8 @@
             <term><emphasis role="bold">Domain</emphasis></term>
             <listitem>
                 <para>A domain establishes an administrative boundary for a customer and a container for a customer's tenants (accounts) and users.
-                    Individual domains can represent an individual, company, or operator-owned space within the Rackspace Cloud Identity Service.</para>
-                <para>In the Identity Service API, the domain resource provides a mechanism to expose administratve actitivites directly to system 
+                    Individual domains can represent an individual, company, or operator-owned space within the Rackspace Cloud Identity service.</para>
+                <para>In the Identity service API, the domain resource provides a mechanism to expose administratve actitivites directly to system 
                     users. Specifically, an Identity service administrator can create tenants, users, and groups within a domain and 
                     assign roles to users and groups. User administrators that have domain administrator capabilities can view and manage 
                     the domain associated with their Rackspace Cloud account. 

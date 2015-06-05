@@ -396,12 +396,38 @@
                         <xsdxt:code href="../common/samples/auth_with_password.xml"/>
                     </xsdxt:sample>
                     </wadl:doc>
-                    <param name="RAX-KSKEY:APIKeyCredentials" style="plain"
-                        required="false" type="xsd:string">
+                    <param name="auth" style="plain" required="true" type="object">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                            <para>An <code>APIKeyCredentials</code>
-                                object to specify the <code>username</code> and <code>APIkey</code> string values associated with the &CLOUD; account. 
-                                Cannot be specified with <literal>passwordCredentials</literal> or <literal>token</literal>.</para></wadl:doc>
+                        The auth object provides the credentials for the authentication request.
+                        </wadl:doc>
+                    </param>
+                    <param name="username" style="plain"
+                        required="true" type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>This is the user name that you use to log in to your Rackspace Cloud control. 
+                                <code>username</code> and <code>password</code> string values associated with the &CLOUD; account.
+                                Cannot be specified with <literal>APIKeyCredentials</literal> or <literal>token</literal>.</para>
+                            <para>These credentials are the same ones used to log in by using the Rackspace Cloud Control Panel.
+                                The password must meet the following criteria:</para>
+                            <itemizedlist>
+                                <listitem>
+                                    <para>At least 1 character long; no maximum</para>
+                                </listitem>
+                                <listitem>
+                                    <para>Can include both uppercase and one lower case
+                                        character</para>
+                                </listitem>
+                                <listitem>
+                                    <para>Can include alpha, numeric, and special characters</para>
+                                </listitem>
+                                <listitem>
+                                    <para>Cannot begin with or contain a space</para>
+                                </listitem>
+                                <listitem>
+                                    <para>Cannot begin with a numeric or special character</para>
+                                </listitem>
+                            </itemizedlist>
+                        </wadl:doc>
                     </param>
                     <param name="passwordCredentials" style="plain"
                         required="false" type="xsd:string">
@@ -409,6 +435,47 @@
                             <para>A <code>passwordCredentials</code> object to specify the 
                                 <code>username</code> and <code>password</code> string values associated with the &CLOUD; account.
                                 Cannot be specified with <literal>APIKeyCredentials</literal> or <literal>token</literal>.</para>
+                        </wadl:doc>
+                    </param>
+                    <param name="RAX-KSKEY:APIKeyCredentials" style="plain"
+                        required="false" type="object">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>An <code>APIKeyCredentials</code>
+                                object to specify the <code>username</code> and <code>apiKey</code> string values associated with the &CLOUD; account. 
+                                Cannot be specified with <literal>passwordCredentials</literal> or <literal>token</literal>.</para></wadl:doc>
+                    </param>
+                    
+                    <param name="apiKey" style="plain"
+                        required="false" type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>
+                                The API key associated with the Rackspace Cloud account. 
+                                You can find your API key on the Account Settings page in 
+                                the Cloud Control panel. After logging in, click your user ID. 
+                                Then, select Account Settings from the menu.
+                            </para>
+                        </wadl:doc>
+                    </param>
+                    <param name="password" style="plain"
+                        required="false" type="xsd:string">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                            <para>This is the password that you use to log in to a Rackspace Cloud account.
+                                The password must meet the following criteria:</para>
+                            <itemizedlist>
+                                <listitem>
+                                    <para>At least 8 characters long; no maximum</para>
+                                </listitem>
+                                <listitem>
+                                    <para>Includes at least one uppercase and one lower case
+                                        character</para>
+                                </listitem>
+                                <listitem>
+                                    <para>Can include special characters</para>
+                                </listitem>
+                                <listitem>
+                                    <para>Cannot begin with a space</para>
+                                </listitem>
+                            </itemizedlist>
                         </wadl:doc>
                     </param>
                     <param name="RAX-AUTH:scope" style="plain"
@@ -449,20 +516,6 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:sample title="Authenticate with password credentials: JSON request">
                         <xsdxt:code href="../common/samples/auth_with_password.json"/>
-                    </xsdxt:sample>
-                </wadl:doc>
-            </representation>
-            <representation>
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: XML request">
-                        <xsdxt:code href="../common/samples/auth_password_scoped_req.xml"/>
-                    </xsdxt:sample>
-                </wadl:doc>
-            </representation>
-            <representation>
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: JSON request">
-                        <xsdxt:code href="../common/samples/auth_password_scoped_req.json"/>
                     </xsdxt:sample>
                 </wadl:doc>
             </representation>
@@ -509,6 +562,20 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <xsdxt:sample title="Authentication Response: JSON">
                             <xsdxt:code href="../common/samples/auth-annotated.json"/>
+                        </xsdxt:sample>
+                    </wadl:doc>
+                </representation>
+                <representation>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: XML request">
+                            <xsdxt:code href="../common/samples/auth_password_scoped_req.xml"/>
+                        </xsdxt:sample>
+                    </wadl:doc>
+                </representation>
+                <representation>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: JSON request">
+                            <xsdxt:code href="../common/samples/auth_password_scoped_req.json"/>
                         </xsdxt:sample>
                     </wadl:doc>
                 </representation>
@@ -671,7 +738,7 @@
     </method>
     
     <method id="authenticateWithMultiFactor" name="POST">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor passcode credentials">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication passcode credentials">
             <para role="shortdesc">Authenticate with multi-factor passcode credentials.</para>
             <note><title>Notes</title>
                 <para>
@@ -702,12 +769,12 @@
         </wadl:doc>
         <request>
             <representation mediaType="text/xml" element="auth">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML request with header">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication credentials: XML request with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.xml"/>
                 </wadl:doc>           
             </representation>
             <representation mediaType="text/json" element="auth">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON request with header">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication credentials: JSON request with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthReqWithHeader.json"/>
                 </wadl:doc>       
             </representation>
@@ -716,12 +783,12 @@
             <wadl:doc  xmlns="http://docbook.org/ns/docbook" title="OK">Success. The tenant is authenticated.
             </wadl:doc>
             <representation mediaType="text/xml" element="access">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: XML response with header">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication credentials: XML response with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.xml"/>
                 </wadl:doc>           
             </representation>
             <representation mediaType="text/json" element="access">
-                <wadl:doc  xmlns="http://docbook.org/ns/docbook" title="Authenticate with multifactor credentials: JSON response with header">
+                <wadl:doc  xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication credentials: JSON response with header">
                     <xsdxt:code href="../common/samples/MultiFacAuthRespWithHeader.json"/>
                 </wadl:doc>           
             </representation>
@@ -1270,7 +1337,7 @@
                 </wadl:doc>
                 <param name="users" style="plain" type="object" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>Returns the collection of users that match the specification in the List user API request.</para>
+                    <para>Returns the collection of users who match the specification in the List user API request.</para>
                     </wadl:doc>
                 </param>
                 &UserInfoResponse;
@@ -1368,7 +1435,7 @@
                         email.</wadl:doc>
                 </param>
                 <param name="enabled" style="plain"
-                    type="xsd:boolean" required="false">
+                    type="xsd:Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
                         the user is enabled (true) or disabled (false). Users cannot update the
                         <parameter>enabled</parameter> status on their own account.</wadl:doc>
@@ -1426,7 +1493,7 @@
         <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Deletes a user">
             <para role="shortdesc">Deletes a user.</para>
             <para>
-            This operation is available only to users that have the admin role (<code>identity:user-admin</code>).
+            This operation is available only to users who have the admin role (<code>identity:user-admin</code>).
             Using the admin role, you can delete a user who holds the user role (<code>identity:default</code>) 
             for the same tenant.</para>
             <para>To delete a user, specify the user ID in the request. If you know the

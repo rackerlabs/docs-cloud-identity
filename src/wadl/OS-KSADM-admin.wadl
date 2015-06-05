@@ -172,8 +172,8 @@
                 <param name="name" style="plain" type="string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify a unique name for the tenant account.</para></wadl:doc>
                 </param>
-                <param name="enabled" style="plain" type="boolean" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A boolean value that determines whether the tenant account is active. Specify 
+                <param name="enabled" style="plain" type="Boolean" required="false">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A Boolean value that determines whether the tenant account is active. Specify 
                         <code>enabled="true"</code> or <code>enabled="false"</code>.</para></wadl:doc>
                 </param>
                 <param name="description" style="plain" type="string" required="false">
@@ -213,8 +213,8 @@
                     <param name="name" style="plain" type="string" required="true">
                         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>Specify a unique name for the tenant account.</para></wadl:doc>
                     </param>
-                    <param name="enabled" style="plain" type="boolean" required="false">
-                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A boolean value that determines whether the tenant account is active. Specify 
+                    <param name="enabled" style="plain" type="Boolean" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"><para>A Boolean value that determines whether the tenant account is active. Specify 
                             <code>enabled="true"</code> or <code>enabled="false"</code>.</para></wadl:doc>
                     </param>
                     <param name="description" style="plain" type="string" required="false">
@@ -570,7 +570,7 @@
                 all accounts with the specified user email address: email address, user name,
                 user ID, status, domain, creation date, update date, default region, and domain id.</para>
             <para>Default region, indicated by <code>defaultRegion</code>, associates this
-                user with a specific regional data center: typical values include DFW, ORD and LON. A blank value is also
+                user with a specific regional data center: typical values include DFW, IAD and LON. A blank value is also
                 acceptable, indicating that no default region has been assigned for this user. If a default region has been
                 assigned and a service in this user's service catalog is available in multiple regions, API service requests
                 are managed in the <code>defaultRegion</code>.
@@ -590,7 +590,7 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Provides the ID for the default regional data center associated with the user account, if one exists.
-                            Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para>
+                            Sample values include: <code>DFW</code>, <code>IAD</code>, or <code>LON</code>.</para>
                         <para >If a user account is associated with a default region, and the service catalog is available in
                             multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>.
                             For example of services available in multiple regions, see
@@ -631,7 +631,7 @@
                             Returns the email address on the user account if one has been defined.</para>
                     </wadl:doc>
                 </param>
-                <param name="enabled" style="plain" type="boolean" required="false">
+                <param name="enabled" style="plain" type="Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Indicates whether the user can authenticate to the &CIS;. If the value is false, 
@@ -702,7 +702,7 @@
                         email.</wadl:doc>
                 </param>
                 <param name="enabled" style="plain"
-                    type="xsd:boolean" required="false">
+                    type="xsd:Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Indicates whether
                         the user is enabled (true) or disabled (false). Users cannot update the
                         <parameter>enabled</parameter> status on their own account.</wadl:doc>
@@ -1374,7 +1374,7 @@
         
     <method name="GET" id="getUsersWithRole">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get users with role">
-            <para role="shortdesc">Gets users that have the specified role.</para>
+            <para role="shortdesc">Gets users who have the specified role.</para>
            <para >This operation does not require a request body.</para>
         </wadl:doc>
         <request>

@@ -33,7 +33,7 @@
         </para>
       </listitem>
       <listitem>
-        <para>Multi-factor authentication requires Rackspace Cloud Identity Service, version 2.0 or later. User accounts 
+        <para>Multi-factor authentication requires Rackspace Cloud Identity service, version 2.0 or later. User accounts 
           that have been configured for multi-factor authentication cannot authenticate using Identity API version 1.1 or 
           earlier.</para>
       </listitem>
@@ -80,7 +80,7 @@
             "id": "xxxxxxxxxxxxxxxxxxx"
         },
         "user": {
-            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:defaultRegion": "IAD",
             "RAX-AUTH:federated": false,
             "id": "a64ee2047fc14cc7bc977caa3cfff35f",
             "name": "jqsmith",
@@ -197,7 +197,7 @@
         <varlistentry>
           <term><emphasis role="bold">Response</emphasis></term>
           <listitem>
-            <para>The Identity Service returns a 202 response.<programlisting><![CDATA[< HTTP/1.1 202 Accepted
+            <para>The Identity service returns a 202 response.<programlisting><![CDATA[< HTTP/1.1 202 Accepted
 < Vary:  Accept, Accept-Encoding, X-Auth-Token
 < Content-Type: application/json
 < Server: Jetty(6.1.25) ]]></programlisting></para>

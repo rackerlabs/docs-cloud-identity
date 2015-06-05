@@ -9,7 +9,7 @@
             "username": "alicecuser513104"
         },
         {
-            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:defaultRegion": "IAD",
             "RAX-AUTH:domainId": "6019514",
             "email": "jqsmith112326@thebestemailprovider.com",
             "enabled": true,

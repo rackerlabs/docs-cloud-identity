@@ -143,7 +143,7 @@
     <glossentry xml:id="Service">
         <glossterm>Service</glossterm>
         <glossdef>
-            <para>Rackspace Cloud Identity Service allows you to define services, which are logical
+            <para>The Rackspace Cloud Identity service allows you to define services, which are logical
                 names for parts of Rackspace Cloud that provide internal or external capabilities,
                 for things such as identity services, as well as compute and storage services. A
                 service provides one or more endpoints through which users can access resources and

@@ -1,0 +1,12 @@
+
+    <user id="187345" name="yourUserName" rax-auth:defaultRegion="DFW">
+        <roles>
+            <role id="10000150" name="checkmate" description="Checkmate Access role" rax-auth:propagate="false"/>
+            <role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods" 
+                tenantId="MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f" rax-auth:propagate="true"/>
+            <role id="6" name="compute:default" description="A Role that allows a user access to keystone Service methods" 
+                tenantId="123456" rax-auth:propagate="true"/>
+            <role id="3" name="identity:user-admin" description="User Admin Role." rax-auth:propagate="false"/>
+        </roles>
+    </user>
+   

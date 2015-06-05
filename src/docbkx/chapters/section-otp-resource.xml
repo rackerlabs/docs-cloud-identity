@@ -23,11 +23,11 @@
     multi-factor authentication requirements for all user accounts within a specified domain.</para>
     <itemizedlist>
       <listitem>
-        <para>Set the level to <userinput>REQUIRED</userinput> to make multi-factor authentication
+        <para>Set the enforcement levelto <userinput>REQUIRED</userinput> to make multi-factor authentication
         mandatory for accounts within a specified domain. </para>
       </listitem>
       <listitem>
-        <para>Set the level to <userinput>OPTIONAL</userinput> to make multi-factor authentication optional for 
+        <para>Set the enforcement levelto <userinput>OPTIONAL</userinput> to make multi-factor authentication optional for 
           all users.</para>
       </listitem>
     </itemizedlist>
@@ -91,8 +91,8 @@
     </example>
       
     <para>As soon as the domain enforcement level changes to <userinput>REQUIRED</userinput>, the
-      Identity service revokes all tokens that were not obtained by using the multi-factor
-      authentication flow. To regain account access, users that have not enabled multi-factor
+      Identity Service revokes all tokens that were not obtained by using the multi-factor
+      authentication flow. To regain account access, users who have not enabled multi-factor
       authentication can request a scoped
       mfa-setup token that they can use to add multi-factor authentication to their
       account.</para>
@@ -132,14 +132,14 @@
       users.</para>
     <itemizedlist>
       <listitem>
-        <para>Set the level to <code>REQUIRED</code> to require multi-factor authentication on the account 
+        <para>Set the enforcement levelto <code>REQUIRED</code> to require multi-factor authentication on the account 
           regardless of the domain level enforcement setting.</para> 
        </listitem>
       <listitem>
-          <para>Set the level to <code>OPTIONAL</code> to allow the user to select or opt out of multifactor authentication.</para>
+          <para>Set the enforcement levelto <code>OPTIONAL</code> to allow the user to select or opt out of multi-factor authentication.</para>
       </listitem>
       <listitem>
-        <para>Set the level to <code>DEFAULT</code> to allow the user account to inherit the domain level enforcement setting.</para>
+        <para>Set the enforcement levelto <code>DEFAULT</code> to allow the user account to inherit the domain level enforcement setting.</para>
       </listitem>
     </itemizedlist>
     <para>Administrators can update the user enforcement setting from the API or the Cloud Control panel. This figure 
@@ -181,7 +181,7 @@
   </section>
   <section xml:id="mfa_required"><title>Request a scoped <emphasis role="italic">mfa-setup token</emphasis> to set up multi-factor
     authentication</title><?dbhtml stop-chunking?>
-  <para>If a Rackspace Cloud account requires multi-factor authentication, users that have not set
+  <para>If a Rackspace Cloud account requires multi-factor authentication, users who have not set
       up and enabled multi-factor authentication get this response when they authenticate:
     <screen><computeroutput>HTTP/1.1 403 Forbidden
        Vary:  Accept, Accept-Encoding, X-Auth-Token

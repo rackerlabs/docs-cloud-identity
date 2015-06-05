@@ -43,10 +43,10 @@
 		</legalnotice>
 		<abstract>
 			<para>This Developer Guide is intended for software developers who
-				want to use the Rackspace Cloud Identity Service v2.0
+				want to use the Rackspace Cloud Identity service v2.0
 				API for identity management and authentication to
 				Rackspace Cloud Services, which is an implementation of the 
-				OpenStack Keystone Identity Service. Developers will learn how
+				OpenStack Identity (keystone) service. Developers will learn how
 				to use the v2.0 API for authentication, identity
 				administration, and access control.</para>
 		</abstract>

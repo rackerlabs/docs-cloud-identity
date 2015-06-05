@@ -9,7 +9,7 @@
             "username": "ccdefaultuser513104"
         },
         {
-            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:defaultRegion": "IAD",
             "RAX-AUTH:domainId": "6019514",
             "email": "PerfTest112326@rackspace.com",
             "enabled": true,

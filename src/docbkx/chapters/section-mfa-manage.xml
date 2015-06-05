@@ -12,7 +12,7 @@
     <title>Manage multifactor-enabled accounts</title>
     <important>
       <para>Multi-factor authentication is supported only by Rackspace
-      Cloud Identity Service version 2.0 or later. After an account is
+      Cloud Identity service version 2.0 or later. After an account is
       enabled for multi-factor authentication, the user cannot
       authenticate using &CIS; v1.0 or v1.1. </para>
     </important>

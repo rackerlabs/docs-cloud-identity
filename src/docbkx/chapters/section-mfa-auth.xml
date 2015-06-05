@@ -112,7 +112,7 @@
             "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         }, 
         "user": {
-            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:defaultRegion": "IAD",
             "RAX-AUTH:federated": false,
             "RAX-AUTH:multiFactorEnabled": true,
             "id": "a64ee2047fc14cc7bc977caa3cfff35f",

@@ -28,10 +28,10 @@ format="SVG" scale="60"/>
 </inlinemediaobject>'>
 
 <!-- Product names -->
-<!ENTITY PRODNAME 'Rackspace Cloud Identity Service'>
+<!ENTITY PRODNAME 'Rackspace Cloud Identity service'>
 <!ENTITY CLOUD 'Rackspace Cloud'>
-<!ENTITY CIS 'Identity Service'>
-<!ENTITY CAS 'Rackspace Cloud Authentication Service'>
+<!ENTITY CIS 'Identity service'>
+<!ENTITY CAS 'Rackspace Cloud Authentication service'>
 <!ENTITY fgCS 'first generation Cloud Servers'>
 <!ENTITY ngCS 'next generation Cloud Servers'>
 
@@ -151,7 +151,7 @@ This operation does not require a request body.</para>'>
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Provides the ID for the default regional data center associated with the user account, if one exists.
-                            Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para> 
+                            Sample values include: <code>DFW</code>, <code>IAD</code>, or <code>LON</code>.</para> 
                         <para xmlns="http://www.w3.org/1999/xhtml">If a user account is associated with a default region, and the service catalog is available in 
                             multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>. 
                             For example of services available in multiple regions, see 
@@ -208,7 +208,7 @@ This operation does not require a request body.</para>'>
                             Returns the email address on the user account if one has been defined.</para>
                     </wadl:doc>
                 </param>
-                <param name="enabled" style="plain" type="boolean" required="false">
+                <param name="enabled" style="plain" type="Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Indicates whether the user can authenticate to the &CIS;. If <code>enabled="false"</code>,
@@ -271,7 +271,7 @@ This operation does not require a request body.</para>'>
     </wadl:doc>
 </param>
 <param name="RAX-AUTH:propagate" style="plain" required="false"
-                    type="boolean">
+                    type="Boolean">
                     <wadl:doc
                         xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>Indicates whether this role is assigned to an account owner (identity:user-admin) and 
@@ -295,10 +295,10 @@ This operation does not require a request body.</para>'>
                  </param>          
 <param name="region" style="plain" required="true" path="$.region" default="false" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        xml:lang="EN"><para>Indicates the data center for service hosting. Examples: <code>ORD</code>, 
+                        xml:lang="EN"><para>Indicates the data center for service hosting. Examples: <code>IAD</code>, 
                             <code>DFW</code>, <code>HKG</code>, <code>LON</code>, <code>SYN</code></para></wadl:doc>
                 </param>
-                <param name="global" style="plain" required="false" path="$.global" type="boolean">
+                <param name="global" style="plain" required="false" path="$.global" type="Boolean">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN">
                         <para>Specifies whether the endpoint applies to all tenant users. If this value is 
@@ -308,7 +308,7 @@ This operation does not require a request body.</para>'>
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="default" style="plain" required="false" path="$.default" type="boolean">
+                <param name="default" style="plain" required="false" path="$.default" type="Boolean">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN">
                         
@@ -368,7 +368,7 @@ This operation does not require a request body.</para>'>
                             concatenated to the endpoint.
                         </para></wadl:doc>
                 </param>
-                <param name="enabled" style="plain" required="false" path="$.enabled" default="false" type="xsd:boolean">
+                <param name="enabled" style="plain" required="false" path="$.enabled" default="false" type="xsd:Boolean">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>Indicates whether the endpoint template is activated (enabled). The default 
                             value is <code>false</code>. An endpoint template can only be added if it is enabled.
@@ -411,7 +411,7 @@ This operation does not require a request body.</para>'>
                         <para>The ID for the domain that the user account has been assigned to.</para>
                     </wadl:doc>
                 </param>
-                <param name="RAX-AUTH:multiFactorEnabled" style="plain" type="boolean" required="false">
+                <param name="RAX-AUTH:multiFactorEnabled" style="plain" type="Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">
                         <para>If an account has been configured to use multi-factor authentication, this field indicates 
                             whether multi-factor authentication is currently enabled or disabled.</para>
@@ -510,7 +510,7 @@ This operation does not require a request body.</para>'>
 '>
     
 <!ENTITY domain_enabledRequestParam '
-    <param name="enabled" style="plain" type="xsd:boolean" required="false">
+    <param name="enabled" style="plain" type="xsd:Boolean" required="false">
         <wadl:doc xmlns="http://docbook.org/ns/docbook">
            <para>Set to true to enable the domain. Otherwise, set to false.</para>
         </wadl:doc>
@@ -554,7 +554,7 @@ This operation does not require a request body.</para>'>
 '>
 
 <!ENTITY domain_enabledRespParam '
-    <param name="enabled" style="plain" type="xsd:boolean" required="false">
+    <param name="enabled" style="plain" type="xsd:Boolean" required="false">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
            <para>Indicates whether the domain is enabled.</para>
         </wadl:doc>

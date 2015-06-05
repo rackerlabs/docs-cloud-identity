@@ -246,7 +246,7 @@
     <method name="GET" id="getVersionInfo_rack">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Version Details"> 
             <para role="shortdesc">Gets detailed information about the specified version of the
-                Identity Service API.</para>
+                Identity service API.</para>
         </wadl:doc>
         <response status="200 203">
             <param name="location" style="plain" type="xsd:anyURI" required="true"
@@ -548,7 +548,7 @@
                         <code>null</code>.</para></wadl:doc>
             </param>
             <param name="enabled" style="plain" required="true"
-                type="xsd:boolean">
+                type="Boolean">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     ><para>Indicates whether the tenant is enabled
                         or disabled.</para></wadl:doc>
@@ -704,7 +704,7 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Provides the ID for the default regional data center associated with the user account, if one exists.
-                            Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para> 
+                            Sample values include: <code>DFW</code>, <code>IAD</code>, or <code>LON</code>.</para> 
                         <para>If a user account is associated with a default region, and the service catalog is available in 
                             multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>. 
                             For example of services available in multiple regions, see  
@@ -727,7 +727,7 @@
                 <param name="RAX-AUTH:multiFactorEnabled" style="plain" type="boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
-                            Indicates whether the account is enabled for multifactor authentication by mobile phone.
+                            Indicates whether the account is enabled for multi-factor authentication.
                         </para>
                     </wadl:doc>
                 </param>
@@ -808,7 +808,7 @@
                 all accounts with the specified user email address: email address, username,
                 user ID, status, domain, creation date, update date, default region, and domain id.</para>
             <para>Default region, indicated by <code>defaultRegion</code>, associates this
-                user with a specific regional datacenter: typical values include DFW, ORD and LON. A blank value is also
+                user with a specific regional datacenter: typical values include DFW, IAD and LON. A blank value is also
                 acceptable, indicating that no default region has been assigned for this user. If a default region has been
                 assigned and a service in this user's service catalog is available in multiple regions, API service requests
                 are managed in the <code>defaultRegion</code>. 
@@ -823,7 +823,7 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>
                             Provides the ID for the default regional data center associated with the user account, if one exists.
-                            Sample values include: <code>DFW</code>, <code>ORD</code>, or <code>LON</code>.</para> 
+                            Sample values include: <code>DFW</code>, <code>IAD</code>, or <code>LON</code>.</para> 
                         <para xmlns="http://www.w3.org/1999/xhtml">If a user account is associated with a default region, and the service catalog is available in 
                             multiple regions, service requests are directed to the region specified by <code>defaultRegion</code>. 
                             For example of services available in multiple regions, see 
@@ -921,7 +921,7 @@
                     </wadl:doc>
                 </param>
 
-                <param name="enabled" style="plain" type="xsd:boolean" required="false">
+                <param name="enabled" style="plain" type="Boolean" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>A boolean value that indicates whether the tenant is enabled. A user,
                             process, or application can only authenticate if the tenant associated

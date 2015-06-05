@@ -16,7 +16,7 @@
         enabled="true"/>
     
     <user rax-auth:domainId="6019514" 
-        rax-auth:defaultRegion="ORD" 
+        rax-auth:defaultRegion="IAD" 
         id="000064f713e445f78ee8002917207428" 
         username="PerfTest112326" 
         email="PerfTest112326@rackspace.com" 

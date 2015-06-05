@@ -31,22 +31,10 @@
           <service type="rax:database" name="cloudDatabases">
                <endpoint region="DFW" tenantId="12345"
                     publicURL="https://dfw.databases.api.rackspacecloud.com/v1.0/12345"/>
-               <endpoint region="ORD" tenantId="12345"
-                    publicURL="https://ord.databases.api.rackspacecloud.com/v1.0/12345"/>
-          </service>
-          <service type="rax:load-balancer" name="cloudLoadBalancers">
-               <endpoint region="ORD" tenantId="12345"
-                    publicURL="https://ord.loadbalancers.api.rackspacecloud.com/v1.0/12345"/>
-               <endpoint region="DFW" tenantId="12345"
-                    publicURL="https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/12345"/>
           </service>
           <service type="rax:object-cdn" name="cloudFilesCDN">
                <endpoint region="DFW" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-                    publicURL="https://cdn1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-               />
-               <endpoint region="ORD" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-                    publicURL="https://cdn2.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-               />
+                    publicURL="https://cdn1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"/>
           </service>
           <service type="rax:monitor" name="cloudMonitoring">
                <endpoint tenantId="12345"
@@ -55,12 +43,7 @@
           <service type="object-store" name="cloudFiles">
                <endpoint region="DFW" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
                     publicURL="https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-                    internalURL="https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-               />
-               <endpoint region="ORD" tenantId="MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-                    publicURL="https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-                    internalURL="https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"
-               />
+                    internalURL="https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaa-bbbbbb-ccccc-ddddd"/>
           </service>
           <service type="compute" name="cloudServers">
                <endpoint tenantId="12345"
@@ -74,11 +57,6 @@
                     publicURL="https://dfw.servers.api.rackspacecloud.com/v2/12345">
                     <version id="2" info="https://dfw.servers.api.rackspacecloud.com/v2"
                          list="https://dfw.servers.api.rackspacecloud.com/"/>
-               </endpoint>
-               <endpoint region="ORD" tenantId="12345"
-                    publicURL="https://ord.servers.api.rackspacecloud.com/v2/12345">
-                    <version id="2" info="https://ord.servers.api.rackspacecloud.com/v2"
-                         list="https://ord.servers.api.rackspacecloud.com/"/>
                </endpoint>
           </service>
           <service type="rax:dns" name="cloudDNS">

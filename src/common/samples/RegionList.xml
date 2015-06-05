@@ -5,5 +5,5 @@
      xmlns:atom="http://www.w3.org/2005/Atom" 
      xmlns:identity="http://docs.openstack.org/identity/api/v2.0">
      <region enabled="true" isDefault="true" name="DFW"/>
-     <region enabled="true" isDefault="false" name="ORD"/>
+     <region enabled="true" isDefault="false" name="IAD"/>
 </regions>

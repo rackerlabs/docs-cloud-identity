@@ -6,7 +6,7 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Overview-d1e65">
     <title>Overview</title>
- <para>The Rackspace Cloud Identity Service v2.0, an implementation of OpenStack Keystone Service
+ <para>The Rackspace Cloud Identity service v2.0, an implementation of OpenStack Keystone Service
         v2.0, provides common, token-based authentication and authorization services that allow
         seamless access to Rackspace Cloud products and services.</para>
 <para>
@@ -16,7 +16,7 @@
                     valid credentials submitted by a user, process, or
                     client. Then, that token is used to confirm
                     identity when requesting access to systems or
-                    resources defined in the Cloud Identity Service
+                    resources defined in the Cloud Identity service
                     service catalog.</para>
             </listitem>
             <listitem>
@@ -24,14 +24,14 @@
                     actions available to a user, client, or process
                     based on access control capabilities that can be
                     defined and managed using the Rackspace Cloud
-                    Identity Service.</para>
+                    Identity service.</para>
             </listitem>
         </itemizedlist>
     </para>
-    <para>Earlier versions of the Rackspace Identity Service API, v1.0
+    <para>Earlier versions of the Rackspace Identity service API, v1.0
         and v1.1 are known as the Rackspace Cloud Authentication
         service. These versions are not based on the OpenStack
-        Keystone Identity Service and only provide authentication
+        Keystone Identity service and only provide authentication
         services. </para>
     <para>Although each version of the API implements different
         features, you can use tokens generated from any API version to
@@ -41,16 +41,16 @@
     <section xml:id="Intended_Audience-d1e73">
         <title>Intended Audience</title>
         <para condition="client">This Administration Guide is intended for Rackspace software developers interested in developing applications that use
-            the Keystone Identity Admin API for authentication. The Rackspace Cloud Identity Service, also known as the
+            the Keystone Identity Admin API for authentication. The Rackspace Cloud Identity service, also known as the
             authentication service or "Auth", allows these developers to obtain an authentication token and a list of
             regional service endpoints to access available Rackspace services.</para>
         <para condition="admin">This Developer Guide is intended for software developers
-            who want to use the Rackspace Cloud Identity Service, an
-            implementation of the OpenStack Keystone Identity Service.
+            who want to use the Rackspace Cloud Identity service, an
+            implementation of the OpenStack Keystone Identity service.
             Developers can learn how to develop applications that use
-            the Identity Service API for authentication,
+            the Identity service API for authentication,
             authorization, and service administration. </para>
-        <para>To use this guide effectively, readers should be familiar with ReSTful web services, HTTP/1.1,
+        <para>To use this guide effectively, readers should be familiar with RESTful web services, HTTP/1.1,
             and JSON and/or XML serialization formats.</para>
     </section>
     <section xml:id="Document_Change_History-d1e85">

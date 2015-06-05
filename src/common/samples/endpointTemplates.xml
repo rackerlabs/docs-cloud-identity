@@ -43,7 +43,7 @@
   </endpointTemplate>
   <endpointTemplate
    id="4" 
-   region="ORD"
+   region="IAD"
    type="compute"
    name="Compute"
    publicURL="https://service2.public.com/v1" 

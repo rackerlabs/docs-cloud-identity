@@ -13,21 +13,26 @@
 <title>Annotated authentication request and response</title>
 	
 	<para>The annotated authentication request and response illustrates a general use case for
-        authenticating to the Rackspace Cloud using username and password credentials. For
-        step-by-step authentication instructions, see the <link xlink:href="QuickStart-000.html"
-            >Quick Start</link>. </para>
+		authenticating to the Rackspace Cloud by using user name and API key credentials. </para>
+    <note><para>For more information, see the <link xlink:href="QuickStart-000.html">step-by-step
+                authentication instructions in the Quickstart Guide</link> and additional
+            authentication examples in <link xlink:href="Token_Calls.html">Token operations API
+                reference</link>.</para></note>
 	
          <section xml:id="annotated_auth_req">
 	           <title>Sample authentication request</title>
-	           <para>
-	               The authentication request <link xlink:href="Sample_Request_Response-d1e64.html#authReqXML">XML</link> and 
-	               <link xlink:href="Sample_Request_Response-d1e64.html#authReqJson">JSON</link> examples show the authentication header
-			and request body for the <guilabel>POST tokens</guilabel> API operation. When you
-			authenticate, use your own credentials for <code>username</code>, <code>password</code>
-	               rather than the sample values shown in the examples. For attribute descriptions, see <link xlink:href="Sample_Request_Response-d1e64.html#auth_req_attributes">Authentication request attribute descriptions</link>.</para>
+	           <para> The following authentication request <link
+                xlink:href="Sample_Request_Response-d1e64.html#authReqJson">JSON</link> and <link
+                xlink:href="Sample_Request_Response-d1e64.html#authReqXML">XML</link> examples show
+            the authentication header and request body for the <guilabel>POST tokens</guilabel> API
+            operation. When you authenticate, use your own credentials for user name and API key
+            rather than the sample values shown in the examples. For attribute descriptions, see the
+                <link xlink:href="Sample_Request_Response-d1e64.html#auth_req_attributes"
+                >authentication request attribute descriptions</link> in the table following the
+            examples.</para>
 
 	           <example xml:id="authReqJson">
-		             <title>Authentication Request with Headers: JSON</title>
+		             <title>Authentication request with headers: JSON</title>
 		
 		             <programlisting language="json">
 POST /v2.0/tokens HTTP/1.1
@@ -35,42 +40,37 @@ Host: identity.api.rackspacecloud.com
 Content-Type: application/json
 Accept: application/json
 
-{
-  "auth": {
-    "passwordCredentials": {
-      "username": "demoauthor",
-      "password": "myPassword01"
-    },
-    "tenantId": "1234"
-  }
+{"auth": 
+ {"RAX-KSKEY:apiKeyCredentials": 
+		{"username":"yourUserName", 
+		  "apiKey":"a4bbc55a951242c48b03e88e32123456"}
+	}
 }
 </programlisting>
 	           </example>
 	           <example xml:id="authReqXML">
-		             <title>Authentication Request with Headers: XML</title>
+		             <title>Authentication request with headers: XML</title>
 		
 		             <programlisting language="xml">
 POST /v2.0/tokens HTTP/1.1
 Host: identity.api.rackspacecloud.com
 Accept: application/xml
-Content-type: application/json
-Cache-Control: no-cache
-{
-  "auth": {
-    "passwordCredentials": {
-      "username": "demoauthor",
-      "password": "mypass"
-    },
-    "tenantId": "1234"
-  }
-}
+Content-type: application/xml
+
+  &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+  &lt;auth&gt;
+    &lt;apiKeyCredentials 
+         xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+         username="yourUserName"
+         apiKey="a4bbc55a951242c48b03e88e32123456"/&gt;
+    &lt;/auth&gt;
 </programlisting>
 	           </example>
 	           <table rules="all" xml:id="auth_req_attributes" width="100%">
 			            <caption>Authentication request attribute descriptions</caption>
-            <col width="25%"/>
-            <col width="10%"/>
-            <col width="70%"/>
+            <col width="31%"/>
+            <col width="6%"/>
+            <col width="611px"/>
 			            <thead>
 				              <tr>
 					                <th valign="top">Attribute</th>
@@ -83,505 +83,150 @@ Cache-Control: no-cache
 					                <td>
                         <parameter>auth</parameter>
                     </td>
-                    <td/>
+                    <td>Object</td>
 					                <td>
 						                  <para>The auth object provides the credentials for the authentication
                             request.</para>
 					                </td>
 				              </tr>
-                <tr>
-                    <td><parameter>username</parameter>
-                    </td>
-                    <td>String</td>
-                    <td>This is the <parameter>username</parameter> to log in to the Rackspace Cloud
-                        Control Panel at <link xlink:href="http://mycloud.rackspace.com/"
-                            >http://mycloud.rackspace.com</link>
-                    </td>
-                </tr>
 				              <tr>
 					                <td>
-                        <parameter>passwordCredentials</parameter>
-                     </td>
+                        <parameter>RAX-KSKEY:apiKeyCredentials</parameter>
+                    </td>
                     <td>String</td>
 					                <td>
-						                  <para>The password you use to log in to the Rackspace Cloud Control Panel.
-							The password must meet the following criteria:</para>
-						                  <itemizedlist>
-							                    <listitem>
-								                      <para>Length must be at least 8 characters; no maximum.</para>
-							                    </listitem>
-							                    <listitem>
-								                      <para>Includes at least one uppercase and one lower case
-									character.</para>
-							                    </listitem>
-							                    <listitem>
-								                      <para>Can include special characters.</para>
-							                    </listitem>
-							                    <listitem>
-								                      <para>Cannot begin with a space.</para>
-							                    </listitem>
-						                  </itemizedlist>
-						                  <note>
-							                    <para> The Identity service also supports authentication with other
-								types of credentials like API key and multi-factor authentication
-								passcode. For details, see the API reference information for <link xlink:href="Token_Calls.html">Authentication
-								tokens</link>.</para>
-						                  </note>
+					                    <para>The API key associated with the Rackspace Cloud account. You can find
+                            your API key on the Account Settings page in the Cloud Control panel.
+                            After logging in, click your user ID. Then, select Account Settings from
+                            the menu. </para>
+                        <para>You can authenticate using other credentials like password or
+                            multi-factor authentication passcode. For details, see the <link
+                                xlink:href="Token_Calls.html">Tokens API operation
+                            reference</link>.</para>
 					                </td>
 				              </tr>
+			                <tr>
+			                    <td><parameter>username</parameter>
+			                    </td>
+			                    <td>String</td>
+			                    <td>This value is the user name that you use to log in to the Rackspace Cloud
+			                        Control Panel at <link xlink:href="http://mycloud.rackspace.com/"
+			                            >http://mycloud.rackspace.com</link>.</td>
+			                </tr>
 				              <tr>
 					                <td>
                         <parameter>tenantId</parameter>
                      </td>
-                    <td>String</td>
+                    <td>String<?sbr?>(Optional)</td>
 					                <td>
-						                  <para>Tenant is an optional specification. Some services use multi-level
-							authentication, with service-specific credentials in addition to
-							vendor-specific credentials. In such cases, associating a user with a
-							tenant can be a method of passing that additional level of identifying
-							information to the service.</para>
+						                  <para>Some services have multiple layers of authentication, with
+                            service-specific credentials in addition to vendor-specific credentials.
+                            In such cases, associating a user with a tenant can be a method of
+                            passing that additional level of identifying information to the
+                            service.</para>
 					                </td>
 				              </tr>
 			            </tbody>
-		          </table>	
+		          </table>
          </section>
 	        <section xml:id="annotated_auth_resp" xreflabel="authentication response">
 		<?dbhtml stop-chunking?>
 		          <title>Sample authentication response</title>
 		          <para>When you submit a <guilabel>POST tokens</guilabel> authentication request with
-            valid credentials, the Identity service returns a response that includes the following
-            information:</para>
+            valid credentials, the Identity service returns a response. The following authentication
+            response  <link xlink:href="Sample_Request_Response-d1e64.html#json_auth_resp"
+                >JSON</link> and <link xlink:href="Sample_Request_Response-d1e64.html#xml_auth_resp"
+                >XML</link> examples show the entire authentication response header and body
+            content. </para>
+        <para>The sections that follow these examples provide detailed information about the
+            following parts of the response: </para>
 	            <itemizedlist>
 	                <listitem>
 	                    <para>
-	                        <guilabel>Authentication token.</guilabel> The 
-	                        <link xlink:href="Sample_Request_Response-d1e64.html#authTokenAttribsResp">token object</link>
-                    returns a scoped authentication token that can be used to access Rackspace Cloud
-                    services for the specified tenant. Token scope is determined by tenant and user
-                    role assignments for the authenticated user.</para>
+                    <guilabel>Token resource.</guilabel> The <link
+                        xlink:href="Sample_Request_Response-d1e64.html#authTokenAttribsResp">token
+                        object</link> returns a scoped authentication token that can be used to
+                    access Rackspace Cloud services for the specified tenant. Token scope is
+                    determined by tenant and user role assignments for the authenticated
+                    user.</para>
 	                </listitem>
 	                <listitem>
-	                    <para><guilabel>User account information. </guilabel>The 
-	                    <link xlink:href="Sample_Request_Response-d1e64.html#authUserResp">user object</link>
-                        returns the user name, ID, default Cloud Service
-                    region, and information about the roles assigned to the user. User role
-                    assignments determine the API operations available to a user after
-                    authenticating to a Rackspace Cloud Service.</para>
+	                    <para><guilabel>Service catalog resource</guilabel> The <link
+                        xlink:href="Sample_Request_Response-d1e64.html#authSvccatResp">service
+                        catalog object</link> returns a list of service objects that provide the
+                    endpoint and description for each service that can be accessed using the
+                    authentication token.</para>
+	                <para audience="admin">Identity administrators can create, view, and manage
+                    endpoint and service information by using the following API resources: <itemizedlist>
+                        <listitem>
+                            <para>
+                                <link xlink:href="Endpoint_Calls.html">Endpoint</link> and <link
+                                    xlink:href="Endpoint_Template_Calls.html">Endpoint
+                                    templates</link>
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <link xlink:href="Service_API_Calls.html">Service APIs</link> and
+                                    <link xlink:href="Service_Calls.html">Service</link>
+                            </para>
+                        </listitem>
+                    </itemizedlist></para>
 	                </listitem>
 	                <listitem>
-	                    <para><guilabel>Service catalog.</guilabel> The 
-	                        <link xlink:href="Sample_Request_Response-d1e64.html#authSvccatResp">service catalog object</link> 
-                     returns a list of service objects that provide the endpoint and description
-                    for each service that can be accessed using the authentication token.</para>
-	                <para audience="admin">Identity administrators can create, view, and manage endpoint and service information using these API resources:
-	                <itemizedlist>
-	                    <listitem>
-	                        <para>
-	                            <link xlink:href="Endpoint_Calls.html">Endpoint</link> and <link xlink:href="Endpoint_Template_Calls.html">Endpoint templates</link>
-	                        </para>
-	                    </listitem>
-	                    <listitem>
-	                        <para>
-	                           <link xlink:href="Service_API_Calls.html">Service APIs</link> and <link xlink:href="Service_Calls.html">Service</link>
-	                        </para>
-	                    </listitem>
-	                </itemizedlist></para>
+	                    <para><guilabel>User resource </guilabel>The <link
+                        xlink:href="Sample_Request_Response-d1e64.html#authUserResp">user
+                        object</link> returns the user name, ID, default Cloud service region, and
+                    information about the roles assigned to the user. User role assignments
+                    determine the API operations available to a user after authenticating to a
+                    Rackspace Cloud service.</para>
 	                </listitem>
 	            </itemizedlist>
-	            <para>The authentication request <link xlink:href="Sample_Request_Response-d1e64.html#xml_auth_resp">XML</link> and 
-	            <link xlink:href="Sample_Request_Response-d1e64.html#json_auth_resp">JSON</link> examples show the authentication 
-	            response header and body content.
-			  </para>
-		          <example xml:id="xml_auth_resp">
-			            <title>Authentication Response: XML</title>
-			            <programlisting language="javascript">
-		&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
-&lt;access 
-    xmlns:atom="http://www.w3.org/2005/Atom" 
-    xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-    xmlns="http://docs.openstack.org/identity/api/v2.0" 
-    xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-    xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
-    xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-    xmlns:ns7="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-    xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"&gt;
-    
-    &lt;token id="abcdef123ghi4j5k67m8910n12op3qrs" expires="2014-12-05T17:36:38.662Z"&gt;
-        &lt;tenant id="123ab1" name="123ab1"/&gt;
-        &lt;rax-auth:authenticatedBy&gt;
-            &lt;rax-auth:credential&gt;PASSWORD&lt;/rax-auth:credential&gt;
-        &lt;/rax-auth:authenticatedBy&gt;
-    &lt;/token&gt;
-    &lt;user id="abcdefghik1236718712345890412345" name="demoauthor" rax-auth:defaultRegion="IAD"&gt;
-        &lt;roles&gt;
-            &lt;role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods" tenantId="yourTenantAlias_123ab1" rax-auth:propagate="true"/&gt;
-            &lt;role id="6" name="compute:default" description="A Role that allows a user access to keystone Service methods" tenantId="123ab1" rax-auth:propagate="true"/&gt;
-            &lt;role id="3" name="identity:user-admin" description="User Admin Role." rax-auth:propagate="false"/&gt;
-        &lt;/roles&gt;
-    &lt;/user&gt;
-    &lt;serviceCatalog&gt;
-        &lt;service type="volume" name="cloudBlockStorage"&gt;
-            &lt;endpoint region="DFW" tenantId="123ab1" publicURL="https://dfw.blockstorage.api.rackspacecloud.com/v1/123ab1"/&gt;
-            &lt;endpoint region="SYD" tenantId="123ab1" publicURL="https://syd.blockstorage.api.rackspacecloud.com/v1/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="image" name="cloudImages"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.images.api.rackspacecloud.com/v2"/&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.images.api.rackspacecloud.com/v2"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:queues" name="cloudQueues"&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.queues.api.rackspacecloud.com/v1/123ab1" internalURL="https://snet-hkg.queues.api.rackspacecloud.com/v1/123ab1"/&gt;
-            &lt;endpoint region="SYD" tenantId="123ab1" publicURL="https://syd.queues.api.rackspacecloud.com/v1/123ab1" internalURL="https://snet-syd.queues.api.rackspacecloud.com/v1/123ab1"/&gt;
-        &lt;service type="rax:bigdata" name="cloudBigData"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.bigdata.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-            &lt;endpoint region="DFW" tenantId="123ab1" publicURL="https://dfw.bigdata.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="orchestration" name="cloudOrchestration"&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.orchestration.api.rackspacecloud.com/v1/123ab1"/&gt;
-            &lt;endpoint region="DFW" tenantId="123ab1" publicURL="https://dfw.orchestration.api.rackspacecloud.com/v1/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="compute" name="cloudServersOpenStack"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.servers.api.rackspacecloud.com/v2/123ab1"&gt;
-                &lt;version id="2" info="https://iad.servers.api.rackspacecloud.com/v2" list="https://iad.servers.api.rackspacecloud.com/"/&gt;
-            &lt;/endpoint&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:autoscale" name="autoscale"&gt;
-            &lt;endpoint region="DFW" tenantId="123ab1" publicURL="https://dfw.autoscale.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.autoscale.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:database" name="cloudDatabases"&gt;
-            &lt;endpoint region="DFW" tenantId="123ab1" publicURL="https://dfw.databases.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:backup" name="cloudBackup"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.backup.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.backup.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="network" name="cloudNetworks"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.networks.api.rackspacecloud.com/v2.0"/&gt;
-            &lt;endpoint region="LON" tenantId="123ab1" publicURL="https://lon.networks.api.rackspacecloud.com/v2.0"/&gt;
-            &lt;endpoint region="ORD" tenantId="123ab1" publicURL="https://ord.networks.api.rackspacecloud.com/v2.0"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:load-balancer" name="cloudLoadBalancers"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.loadbalancers.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.loadbalancers.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:cloudmetrics" name="cloudMetrics"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://global.metrics.api.rackspacecloud.com/v2.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:feeds" name="cloudFeeds"&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.feeds.api.rackspacecloud.com/123ab1" internalURL="https://atom.prod.hkg1.us.ci.rackspace.net/123ab1"/&gt;
-            &lt;endpoint region="SYD" tenantId="123ab1" publicURL="https://syd.feeds.api.rackspacecloud.com/123ab1" internalURL="https://atom.prod.syd2.us.ci.rackspace.net/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:monitor" name="cloudMonitoring"&gt;
-            &lt;endpoint tenantId="123ab1" publicURL="https://monitoring.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="rax:dns" name="cloudDNS"&gt;
-            &lt;endpoint tenantId="123ab1" publicURL="https://dns.api.rackspacecloud.com/v1.0/123ab1"/&gt;
-        &lt;/service&gt;
-        &lt;service type="object-store" name="cloudFiles"&gt;
-            &lt;endpoint region="IAD" tenantId="yourTenantAlias_123ab1" publicURL="https://storage101.iad3.clouddrive.com/v1/yourTenantAlias_123ab1" internalURL="https://snet-storage101.iad3.clouddrive.com/v1/yourTenantAlias_123ab1"/&gt;
-        &lt;/service&gt;
-    &lt;/serviceCatalog&gt;
-&lt;/access&gt;
-
-		</programlisting>
-		          </example>
 		          <example xml:id="json_auth_resp">
-			            <title>Authentication Response: JSON</title>
-			            <programlisting language="javascript">
-{
-    "access": {
-        "token": {
-            "id": "986c8c7ac81a4301a3cead3b5b065992",
-            "expires": "2014-12-13T16:34:34.407Z",
-            "tenant": {
-                "id": "123ab1",
-                "name": "123ab1"
-            },
-            "RAX-AUTH:authenticatedBy": [
-                "PASSCODE"
-            ]
-        },
-        "serviceCatalog": [
-            {
-                "name": "cloudBlockStorage",
-                "endpoints": [
-                    {
-                        "region": "DFW",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://dfw.blockstorage.api.rackspacecloud.com/v1/123ab1"
-                    },
-                    {
-                        "region": "SYD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://syd.blockstorage.api.rackspacecloud.com/v1/123ab1"
-                    }
-                ],
-                "type": "volume"
-            },
-            {
-                "name": "cloudImages",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://iad.images.api.rackspacecloud.com/v2"
-                    },
-                    {
-                        "region": "HKG",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://hkg.images.api.rackspacecloud.com/v2"
-                    }
-                ],
-                "type": "image"
-            },
-            {
-                "name": "cloudQueues",
-                "endpoints": [
-                    {
-                        "region": "HKG",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://hkg.queues.api.rackspacecloud.com/v1/123ab1",
-                        "internalURL": "https://snet-hkg.queues.api.rackspacecloud.com/v1/123ab1"
-                    },
-                    {
-                        "region": "SYD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://syd.queues.api.rackspacecloud.com/v1/123ab1",
-                        "internalURL": "https://snet-syd.queues.api.rackspacecloud.com/v1/123ab1"
-                    }
-                ],
-                "type": "rax:queues"
-            },
-            {
-                "name": "cloudBigData",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://iad.bigdata.api.rackspacecloud.com/v1.0/123ab1"
-                    },
-                    {
-                        "region": "DFW",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://dfw.bigdata.api.rackspacecloud.com/v1.0/123ab1"
-                    }
-                ],
-                "type": "rax:bigdata"
-            },
-            ,
-            {
-                "name": "cloudOrchestration",
-                "endpoints": [
-                    {
-                        "region": "HKG",
-                        "tenantId": "929418",
-                        "publicURL": "https://hkg.orchestration.api.rackspacecloud.com/v1/929418"
-                    },
-                    {
-                        "region": "DFW",
-                        "tenantId": "929418",
-                        "publicURL": "https://dfw.orchestration.api.rackspacecloud.com/v1/929418"
-                    },
-                    {
-                        "region": "IAD",
-                        "tenantId": "929418",
-                        "publicURL": "https://iad.orchestration.api.rackspacecloud.com/v1/929418"
-                    },
-                    {
-                        "region": "SYD",
-                        "tenantId": "929418",
-                        "publicURL": "https://syd.orchestration.api.rackspacecloud.com/v1/929418"
-                    }
-                ],
-                "type": "orchestration"
-            },
-            {
-                "name": "cloudServersOpenStack",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "929418",
-                        "publicURL": "https://iad.servers.api.rackspacecloud.com/v2/929418",
-                        "versionInfo": "https://iad.servers.api.rackspacecloud.com/v2",
-                        "versionList": "https://iad.servers.api.rackspacecloud.com/",
-                        "versionId": "2"
-                    },
-                    {
-                        "region": "DFW",
-                        "tenantId": "929418",
-                        "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/929418",
-                        "versionInfo": "https://dfw.servers.api.rackspacecloud.com/v2",
-                        "versionList": "https://dfw.servers.api.rackspacecloud.com/",
-                        "versionId": "2"
-                    },
-               
-            {
-                "name": "autoscale",
-                "endpoints": [
-                    {
-                        "region": "DFW",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://dfw.autoscale.api.rackspacecloud.com/v1.0/123ab1"
-                    },
-                    {
-                        "region": "HKG",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://hkg.autoscale.api.rackspacecloud.com/v1.0/123ab1"
-                    }
-                ],
-                "type": "rax:autoscale"
-            },
-            {
-                "name": "cloudDatabases",
-                "endpoints": [
-                    {
-                        "region": "DFW",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://dfw.databases.api.rackspacecloud.com/v1.0/123ab1"
-                    }
-            {
-                "name": "cloudBackup",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://iad.backup.api.rackspacecloud.com/v1.0/123ab1"
-                    },
-                    {
-                        "region": "HKG",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://hkg.backup.api.rackspacecloud.com/v1.0/123ab1"
-                    }
-                ],
-                "type": "rax:backup"
-            },
-            {
-                "name": "cloudNetworks",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://iad.networks.api.rackspacecloud.com/v2.0"
-                    },
-                    {
-                        "region": "LON",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://lon.networks.api.rackspacecloud.com/v2.0"
-                    }
-                ],
-                "type": "network"
-            },
-            {
-                "name": "cloudLoadBalancers",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://iad.loadbalancers.api.rackspacecloud.com/v1.0/123ab1"
-                    },
-                    {
-                        "region": "HKG",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://hkg.loadbalancers.api.rackspacecloud.com/v1.0/123ab1"
-                    }
-                ],
-                "type": "rax:load-balancer"
-            },
-            {
-                "name": "cloudMetrics",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://global.metrics.api.rackspacecloud.com/v2.0/123ab1"
-                    }
-                ],
-                "type": "rax:cloudmetrics"
-            },
-            {
-                "name": "cloudFeeds",
-                "endpoints": [
-                    {
-                        "region": "HKG",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://hkg.feeds.api.rackspacecloud.com/123ab1",
-                        "internalURL": "https://atom.prod.hkg1.us.ci.rackspace.net/123ab1"
-                    },
-                    {
-                        "region": "SYD",
-                        "tenantId": "123ab1",
-                        "publicURL": "https://syd.feeds.api.rackspacecloud.com/123ab1",
-                        "internalURL": "https://atom.prod.syd2.us.ci.rackspace.net/123ab1"
-                    }
-
-                 ], 
-                "type": "rax:feeds"
-            },
-            {
-                "name": "cloudMonitoring",
-                "endpoints": [
-                    {
-                        "tenantId": "123ab1",
-                        "publicURL": "https://monitoring.api.rackspacecloud.com/v1.0/123ab1"
-                    }
-                ],
-                "type": "rax:monitor"
-            },
-
-            {
-                "name": "cloudFiles",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "MossoCloudFS_123ab1",
-                        "publicURL": "https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_123ab1",
-                        "internalURL": "https://snet-storage101.iad3.clouddrive.com/v1/MossoCloudFS_123ab1"
-                    }
-                ],
-                "type": "object-store"
-            }
-        ],
-        "user": {
-            "id": "10d2c2d0f3b644b9abea0d9fe80669e4",
-            "roles": [
-                {
-                    "tenantId": "MossoCloudFS_123ab1",
-                    "id": "5",
-                    "description": "A Role that allows a user access to keystone Service methods",
-                    "name": "object-store:default"
-                },
-                {
-                    "tenantId": "123ab1",
-                    "id": "6",
-                    "description": "A Role that allows a user access to keystone Service methods",
-                    "name": "compute:default"
-                },
-                {
-                    "id": "3",
-                    "description": "User Admin Role.",
-                    "name": "identity:user-admin"
-                }
-            ],
-            "name": "demoAuthor",
-            "RAX-AUTH:defaultRegion": "IAD"
-        }
-    }
-}
+			            <title>Authentication response: JSON</title>
+			            <programlisting language="json"><xi:include href="../../common/samples/auth-annotated.json" parse="text"/>
 
 		</programlisting>
 		          </example>
+	            <example xml:id="xml_auth_resp">
+	                <title>Authentication response: XML</title>
+	                <programlisting language="xml"><xi:include href="../../common/samples/auth-annotated.xml" parse="text"/>
+		</programlisting>
+	            </example>
 		          <section xml:id="authTokenResp" xreflabel="Token object">
 	<?dbhtml stop-chunking?>
-               <title>Token resource: Authentication response attributes</title>
-	              <para>
-	                  The token object supplies a scoped authentication token that customers and processes can use to access Rackspace Cloud 
-	                  services for the specified tenant. Token scope is determined by tenant and user role assignments for the authenticated 
-	                  user. Responses can be in <link xlink:href="Sample_Request_Response-d1e64.html#tokenResp-xml">XML</link> 
-	                  or <link xlink:href="Sample_Request_Response-d1e64.html#tokenResp-json">JSON</link>. For details, see
-		              <link xlink:href="Sample_Request_Response-d1e64#authTokenAttribsResp">token object attribute descriptions</link>.
-		<example xml:id="tokenResp-xml">
-			                  <title>Authentication Response: Token object  in XML format</title>
-			                  <programlisting>
+               <title>Token resource: authentication response attributes</title>
+	              <para> The token object supplies a scoped authentication token that customers and
+                processes can use to access Rackspace Cloud services for the specified tenant. Token
+                scope is determined by tenant and user role assignments for the authenticated user.
+                Responses can be in <link
+                    xlink:href="Sample_Request_Response-d1e64.html#tokenResp-json">JSON</link> or
+	                  <link xlink:href="Sample_Request_Response-d1e64.html#tokenResp-xml">XML</link>
+                as shown in the following examples. For details, see the  <link
+                    xlink:href="Sample_Request_Response-d1e64.html#authTokenAttribsResp">token object
+                    attribute descriptions</link> in the table following the examples. 
+	                  
+	                  <example
+                    xml:id="tokenResp-json">
+                    <title>Authentication response: Token object in JSON format</title>
+                    <programlisting language="json">
+		        {
+        "token": {
+            "id": "d74f592f986e4d6e995853ccf0123456",
+            "expires": "2015-06-05T16:24:57.637Z",
+            "tenant": {
+                "id": "123456",
+                "name": "123456"
+            },
+            "RAX-AUTH:authenticatedBy": [
+                "APIKEY"
+            ]
+        }
+		</programlisting>
+                </example>
+                <example xml:id="tokenResp-xml">
+                    <title>Authentication response: Token object in XML format</title>
+                    <programlisting>
 		
     &lt;token id="abcdef123ghi4j5k67m8910n12op3qrs" expires="2014-12-05T17:36:38.662Z"&gt;
         &lt;tenant id="123456" name="123456"/&gt;
@@ -591,25 +236,8 @@ Cache-Control: no-cache
     &lt;/token&gt;
 
 		</programlisting>
-		                </example>
-		                <example xml:id="tokenResp-json">
-			                  <title>Authentication Response: Token object in JSON format</title>
-			                  <programlisting language="javascript">
-		        {
-        "token": {
-            "id": "abcdef123ghi4j5k67m8910n12op3qrs",
-            "expires": "2014-12-05T17:36:38.662Z",
-            "tenant": {
-                "id": "123456abc",
-                "name": "123456abc"
-                }}
-        }
-                
-                
-
-		</programlisting>
-		                </example>
-		             </para>
+                </example>
+            </para>
 	              <table rules="all" width="100%" xml:id="authTokenAttribsResp">
 		                <caption>Authentication response: Token object attributes descriptions</caption>
 		                <col width="21%"/>
@@ -751,87 +379,22 @@ Cache-Control: no-cache
                 classified as an AdminURL. The AdminURL is only visible to authenticated Service
                 administrators (role = <code>service:admin</code>) and Idenity administrators (role
                 = <code>identity:admin</code>).</para>
-	               <para>Responses can be in <link xlink:href="Sample_Request_Response-d1e64.html#svcCatResp-xml">XML</link> 
-	                   or <link xlink:href="Sample_Request_Response-d1e64.html#svcCatResp-json">JSON</link>. For details, see
-	                   <link xlink:href="Sample_Request_Response-d1e64#authSrvcatAttribsResp">token object attribute descriptions</link>.
-		
-		             <example xml:id="svcCatResp-xml">
-			               <title>Authentication Response: Service catalog object in XML format</title>
-			               <programlisting>.             
-		    
-    &lt;serviceCatalog&gt;
-         &lt;service type="compute" name="cloudServersOpenStack"&gt;
-            &lt;endpoint region="IAD" tenantId="123ab1" publicURL="https://iad.servers.api.rackspacecloud.com/v2/123ab1"&gt;
-                &lt;version id="2" info="https://iad.servers.api.rackspacecloud.com/v2" list="https://iad.servers.api.rackspacecloud.com/"/&gt;
-            &lt;/endpoint&gt;
-            &lt;endpoint region="DFW" tenantId="123ab1" publicURL="https://dfw.servers.api.rackspacecloud.com/v2/123ab1"&gt;
-                &lt;version id="2" info="https://dfw.servers.api.rackspacecloud.com/v2" list="https://dfw.servers.api.rackspacecloud.com/"/&gt;
-            &lt;/endpoint&gt;
-            &lt;endpoint region="SYD" tenantId="123ab1" publicURL="https://syd.servers.api.rackspacecloud.com/v2/123ab1"&gt;
-                &lt;version id="2" info="https://syd.servers.api.rackspacecloud.com/v2" list="https://syd.servers.api.rackspacecloud.com/"/&gt;
-            &lt;/endpoint&gt;
-            &lt;endpoint region="HKG" tenantId="123ab1" publicURL="https://hkg.servers.api.rackspacecloud.com/v2/123ab1"&gt;
-                &lt;version id="2" info="https://hkg.servers.api.rackspacecloud.com/v2" list="https://hkg.servers.api.rackspacecloud.com/"/&gt;
-            &lt;/endpoint&gt;
-        &lt;/service&gt;
-        
-       &lt;service type="network" name="cloudNetworks"&gt;
-            &lt;endpoint region="IAD" tenantId="123456" publicURL="https://iad.networks.api.rackspacecloud.com/v2.0"/&gt;
-            &lt;endpoint region="LON" tenantId="123456" publicURL="https://lon.networks.api.rackspacecloud.com/v2.0"/&gt;
-        &lt;/service&gt;
-    &lt;/serviceCatalog&gt;
-
+	               <para>Responses can be in <link
+					xlink:href="Sample_Request_Response-d1e64.html#svcCatResp-xml">XML</link> or
+					<link xlink:href="Sample_Request_Response-d1e64.html#svcCatResp-json"
+					>JSON</link>. For details, see <link
+					xlink:href="Sample_Request_Response-d1e64.html#authSrvcatAttribsResp">service
+					resource object attribute descriptions</link>. <example xml:id="svcCatResp-json">
+					<title>Authentication response: Service catalog object in JSON format</title>
+					<programlisting language="json"><xi:include href="../../common/samples/auth-annotated-svccat.json" parse="text"/>
 		</programlisting>
-		             </example>
-		             <example xml:id="svcCatResp-json">
-			               <title>Authentication Response: Service catalog object in JSON format</title>
-			               <programlisting language="javascript">
-		
-        "serviceCatalog": [
-            {
-                "name": "cloudServersOpenStack",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123456abc",
-                        "publicURL": "https://iad.servers.api.rackspacecloud.com/v2/123456abc",
-                        "versionInfo": "https://iad.servers.api.rackspacecloud.com/v2",
-                        "versionList": "https://iad.servers.api.rackspacecloud.com/",
-                        "versionId": "2"
-                    },
-                    {
-                        "region": "DFW",
-                        "tenantId": "123456abc",
-                        "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/123456abc",
-                        "versionInfo": "https://dfw.servers.api.rackspacecloud.com/v2",
-                        "versionList": "https://dfw.servers.api.rackspacecloud.com/",
-                        "versionId": "2"
-                    }
-                ],
-                "type": "compute"
-            },
-
-            {
-                "name": "cloudNetworks",
-                "endpoints": [
-                    {
-                        "region": "IAD",
-                        "tenantId": "123456abc",
-                        "publicURL": "https://iad.networks.api.rackspacecloud.com/v2.0"
-                    },
-                    {
-                        "region": "LON",
-                        "tenantId": "123456abc",
-                        "publicURL": "https://lon.networks.api.rackspacecloud.com/v2.0"
-                    }
-                ],
-                "type": "network"
-            }
-}
-
-		</programlisting>
-		             </example>
-	               </para>
+				</example>
+				<example xml:id="svcCatResp-xml">
+					<title>Authentication response: Service catalog object in XML format</title>
+					<programlisting language="xml"><xi:include href="../../common/samples/auth-annotated-svccat.xml" parse="text"/>         
+		                 </programlisting>
+				</example>
+			</para>
 		             <table xml:id="authSrvcatAttribsResp" rules="all" width="100%">
 			               <caption>Authentication response: Service catalog object attribute descriptions</caption>
                 <col width="15%"/>
@@ -857,7 +420,7 @@ Cache-Control: no-cache
                         <td>String</td>
 					                   <td>
 						                     <para>The service name attribute identifies each unique service in the
-							catalog. Service names are defined in the Identity Service configuration
+							catalog. Service names are defined in the Identity service configuration
 							and do not change. However, new services of the same service type can be
 							added to the catalog with new names.</para>
 					                   </td>
@@ -868,27 +431,26 @@ Cache-Control: no-cache
                         </td>
                         <td>String</td>
 					                   <td>
-						                     <para>The type of service provided at the specified endpoint,
-							<parameter>compute</parameter>, <parameter>object-store</parameter>,
-							or <parameter>rax:loadbalancer</parameter> for example.</para>
-						                     <para>Service types categorize the services registered with OpenStack or custom types
-						                         registered with the Rackspace Cloud Identity Service. For a list of service types, see <link xlink:href="Svc_Catalog_ovw.html#Service_Types-d1e265">Service Types</link>
-							.</para>
-						                     <para>
-							                       <important>
-								                         <para> Use service type as the primary value for locating a service.
-									If multiple endpoints of the same service type exist in the same
-									region, use service name as the tiebreaker. See <link xlink:href="Sample_Catalog_Workflow-d1e266.html">Suggested
-										workflow for processing a Service Catalog
-										response</link>
-                                 </para>
-							                       </important>
-						                     </para>
+						                     <para>The type of service provided at the specified endpoint-- for
+								example <parameter>compute</parameter>,
+									<parameter>object-store</parameter>, or
+									<parameter>rax:loadbalancer</parameter>.</para>
+						                     <para>Service types categorize the services registered with OpenStack or
+								custom types registered with the Rackspace Cloud Identity service.
+								For a list of service types, see <link
+									xlink:href="Svc_Catalog_ovw.html">Service
+									types</link>.</para>
+					                   	<para><emphasis role="bold">Important: </emphasis>Use service type as the
+								primary value for locating a service. If multiple endpoints of the
+								same service type exist in the same region, use service name as the
+								tiebreaker. See <link
+									xlink:href="Svc_Catalog_ovw.html#Sample_Catalog_Workflow-d1e266">Suggested
+									workflow for processing a Service Catalog
+								response</link>.</para>
 					                   </td>
 				                 </tr>
 				                 <tr>
 					                   <td rowspan="6">
-						                     <para>Service:</para>
 						                     <para>
                               <parameter>endpoints</parameter> (JSON)</para>
 						                     <para>or</para>
@@ -912,10 +474,11 @@ Cache-Control: no-cache
                         </td>
                         <td>String</td>
 					                   <td>
-						                     <para>Some services recognize specification of a tenant. If a service does
-							recognize tenants, the format of the tenant specification is defined
-							only by the service; for details about whether and how to specify a
-							tenant, check the documentation for the service you are using.</para>
+						                     <para>Some services recognize specification of a tenant. If a service
+								recognizes tenants, the format of the tenant specification is
+								defined only by the service.  For details about whether and how to
+								specify a tenant, check the documentation for the service you are
+								using.</para>
 					                   </td>
 				                 </tr>
 				                 <tr>
@@ -928,16 +491,15 @@ Cache-Control: no-cache
                         </td>
                         <td>URI</td>
 					                   <td>
-						                     <para>An endpoint can be assigned public, internal, and administrative service URLs. Access to
-							a public URL usually incurs traffic charges. Internal and Admin URLs are
-							only accessible to services within the same region. Access to an
-							internal URL is free of charge.</para>
-						                     <para>The URL includes the API version and tenantId for services that
-							require it. For example, in the
-							<code>https://ord.servers.api.rackspacecloud.com/v2/12345"</code>
-							URL, the <code>versionId=2</code> and the <code>tenantId=12345</code>.
-							(The <code>tenantId</code> is also referred to as the account
-							number.)</para>
+						                     <para>An endpoint can be assigned public, internal, and administrative
+								service URLs. Access to a public URL usually incurs traffic charges.
+								Internal and admin URLs are accessible only to services within the
+								same region. Access to an internal URL is free of charge.</para>
+						                     <para>The URL includes the API version and tenant ID for services that
+								require it. For example, in the
+									<code>https://iad.servers.api.rackspacecloud.com/v2/12345</code>
+								URL, the version ID is 2 and the tenant ID is 12345. (The tenant ID
+								is also referred to as the account number.)</para>
 					                   </td>
 				                 </tr>
 				                 <tr>
@@ -956,14 +518,13 @@ Cache-Control: no-cache
                         </td>
                         <td>URI</td>
 					                   <td>
-						                     <para>URI to get information about the specified API version. You can also
-							retrieve information about an API version by using the Show version
-							details API operation for the specified service, <code>GET
-								<replaceable>endpointURL//</replaceable>
-                                 <parameter>v</parameter>
-                                 <replaceable>version_number</replaceable>
-                              </code>
-							for example.</para>
+						                     <para>URI to get information about the specified API version. You can
+								also retrieve information about an API version by using the Show
+								version details API operation for the specified service--for
+								example,  <code>GET <replaceable>endpointURL//</replaceable>
+									<parameter>v</parameter>
+									<replaceable>version_number</replaceable>
+								</code> .</para>
 					                   </td>
 				                 </tr>
 				                 <tr>
@@ -993,64 +554,36 @@ Cache-Control: no-cache
                 gain access to Identity service capabilities and any other <link
                     xlink:href="Role_Based_Access_Control-d1e808.html">RBAC roles</link> assigned to
                 the account.</para>
-	               <para>Responses can be in <link xlink:href="Sample_Request_Response-d1e64.html#userResp-xml">XML</link> 
-	                   or <link xlink:href="Sample_Request_Response-d1e64.html#userResp-json">JSON</link>. For details, see
-	                   <link xlink:href="Sample_Request_Response-d1e64#authSrvcatAttribsResp">token object attribute descriptions</link>.  
-			               <example xml:id="userResp-xml">
-				                 <title>Authentication Response: User object in XML format</title>
-				                 <programlisting>
-		    
-    &lt;user id="abcdefghik1236718712345890412345" name="demoauthor" rax-auth:defaultRegion="IAD"&gt;
-        &lt;roles&gt;
-            &lt;role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods" tenantId="yourTenantAlias_123ab1" rax-auth:propagate="true"/&gt;
-            &lt;role id="6" name="compute:default" description="A Role that allows a user access to keystone Service methods" tenantId="123ab1" rax-auth:propagate="true"/&gt;
-            &lt;role id="3" name="identity:user-admin" description="User Admin Role." rax-auth:propagate="false"/&gt;
-        &lt;/roles&gt;
-    &lt;/user&gt;
-
-		</programlisting>
-			               </example>
+	           	<para>Responses can be in <link xlink:href="Sample_Request_Response-d1e64.html#userResp-json">JSON</link> or 
+	           		<link xlink:href="Sample_Request_Response-d1e64.html#userResp-xml">XML</link>. For details, see the 
+	           		<link xlink:href="Sample_Request_Response-d1e64.html#authUserAttribsResp">user object attribute descriptions</link> in 
+	           		the table following the examples..  
+			              
 			               <example xml:id="userResp-json">
-				                 <title>Authentication Response: User object in JSON format</title>
-				                 <programlisting language="javascript">
-		        "user": {
-            "id": "10d2c2d0f3b644b9abea0d9fe80669e4",
-            "roles": [
-                {
-                    "tenantId": "MossoCloudFS_123ab1",
-                    "id": "5",
-                    "description": "A Role that allows a user access to keystone Service methods",
-                    "name": "object-store:default"
-                },
-                {
-                    "tenantId": "123ab1",
-                    "id": "6",
-                    "description": "A Role that allows a user access to keystone Service methods",
-                    "name": "compute:default"
-                },
-                {
-                    "id": "3",
-                    "description": "User Admin Role.",
-                    "name": "identity:user-admin"
-                }
-            ],
-            "name": "demoAuthor",
-            "RAX-AUTH:defaultRegion": "IAD"
-        }
-
-		</programlisting>
+				                 <title>Authentication response: User object in JSON format</title>
+				                 <programlisting language="json"><xi:include href="../../common/samples/auth-annotated-user.json" parse="text"/>
+		       
+		                         </programlisting>
 			               </example>
+	           		<example xml:id="userResp-xml">
+	           			<title>Authentication response: User object in XML format</title>
+	           			<programlisting><xi:include href="../../common/samples/auth-annotated-user.xml" parse="text"/>
+	           			</programlisting>
+	           		</example>
 		             </para>
 		           
 		             <table xml:id="authUserAttribsResp" rules="all" width="100%">
 			               <caption>Authentication response: User object attributes</caption>
-			               <col width="20%"/>
-			               <col width="10%"/>
-			               <col width="60%"/>
+				<col width="10%"/>
+				<col width="272pt"/>
+				<col width="8%"/>
+				<col width="60%"/>
+				<col width="1%"/>
 			               <thead>
 				                 <tr>
 					                   <th valign="top">Object</th>
 					                   <th>Attribute</th>
+						<th>Type</th>
 					                   <th>Description</th>
 				                 </tr>
 			               </thead>
@@ -1062,6 +595,7 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>id</parameter>
                         </td>
+						<td>String</td>
 					                   <td>
 						                     <para>The unique, system-generated ID assigned to the user account. The user
 							ID is required by many API operations for managing user accounts and
@@ -1072,12 +606,14 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>name</parameter>
                         </td>
+						<td>String</td>
 					                   <td>The name assigned to the user account. </td>
 				                 </tr>
 				                 <tr>
 					                   <td>
                            <parameter>RAX-AUTH:default Region</parameter>
                         </td>
+						<td>String</td>
 					                   <td>If API requests to a Rackspace Cloud service do not explicitly specify a region and
 						multiple endpoints are available, the <parameter>RAX-AUTH:default
 							Region</parameter> determines which region is selected by default. Use
@@ -1085,7 +621,6 @@ Cache-Control: no-cache
 				                 </tr>
 				                 <tr>
 					                   <td rowspan="4">
-						                     <para>User:</para>
 						                     <para>
                               <parameter>roles</parameter>
                            </para>
@@ -1093,24 +628,28 @@ Cache-Control: no-cache
 					                   <td>
                            <parameter>id</parameter>
                         </td>
+						<td>String</td>
 					                   <td>The unique, system-generated ID assigned to the role in the Identity system.</td>
 				                 </tr>
 				                 <tr>
 					                   <td>
                            <parameter>name</parameter>
                         </td>
+						<td>String</td>
 					                   <td>The name that identifies the role in the Identity system.</td>
 				                 </tr>
 				                 <tr>
 					                   <td>
                            <parameter>description</parameter>
                         </td>
+						<td>String</td>
 					                   <td>Provides information about the role and its intended use.</td>
 				                 </tr>
 				                 <tr>
 					                   <td>
                            <parameter>tenantID</parameter>
                         </td>
+						<td>String</td>
 					                   <td>
 						                     <para>Identifies the tenant for which the role is scoped.</para>
 					                   </td>

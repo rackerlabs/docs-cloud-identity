@@ -15,7 +15,7 @@
             "id": "abcdef123ghi4j5k67m8910n12op3qrs"
         },
         "user": {
-            "RAX-AUTH:defaultRegion": "ORD",
+            "RAX-AUTH:defaultRegion": "IAD",
             "RAX-AUTH:federated": false,
             "id": "789345",
             "name": "mfaTestUser",

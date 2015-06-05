@@ -156,10 +156,10 @@
                                 Add endpoint template to tenant</link> API request.</para>
                     </listitem>
                     <listitem>
-                        <para>After the endpoint template has beeen tested and is ready for production, an Identity Service administrator can 
+                        <para>After the endpoint template has beeen tested and is ready for production, an Identity service administrator can 
                             use the 
                             <link xlink:href="PUT_updateEndpointTemplate_v2.0_OS-KSCATALOG_endpointTemplates__endpointTemplateId__Endpoint_Template_Calls.html">Update endpoint template</link> 
-                            operation to update the configuration to enable the Identity Service to add the endpoint 
+                            operation to update the configuration to enable the Identity service to add the endpoint 
                             to service catalogs, tenants, and users automatically based the configuration settings.</para>
                     </listitem>
                 </itemizedlist></note>
@@ -180,7 +180,7 @@
                 </param>
                 <param name="region" style="plain" required="true" path="$.region" default="false" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        xml:lang="EN"><para>Indicates the data center for service hosting. Examples: <code>ORD</code>, 
+                        xml:lang="EN"><para>Indicates the data center for service hosting. Examples: <code>IAD</code>, 
                             <code>DFW</code>, <code>HKG</code>, <code>LON</code>, <code>SYN</code></para></wadl:doc>
                 </param>
                 <param name="type" style="plain" required="false" path="$.type" type="identity:ExtensibleServiceType">
@@ -294,10 +294,10 @@
                 </wadl:doc>
                 <param name="region" style="plain" required="true" path="$.region" default="false" type="xsd:string">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                        xml:lang="EN"><para>Indicates the data center for service hosting. Examples: <code>ORD</code>, 
+                        xml:lang="EN"><para>Indicates the data center for service hosting. Examples: <code>IAD</code>, 
                             <code>DFW</code>, <code>HKG</code>, <code>LON</code>, <code>SYN</code></para></wadl:doc>
                 </param>
-                <param name="global" style="plain" required="false" path="$.global" type="boolean">
+                <param name="global" style="plain" required="false" path="$.global" type="Boolean">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN">
                         <para>Specifies whether the endpoint applies to all tenant users. If this value is 
@@ -307,7 +307,7 @@
                         </para>
                     </wadl:doc>
                 </param>
-                <param name="default" style="plain" required="false" path="$.default" type="boolean">
+                <param name="default" style="plain" required="false" path="$.default" type="Boolean">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN">
                         
@@ -367,7 +367,7 @@
                             concatenated to the endpoint.
                         </para></wadl:doc>
                 </param>
-                <param name="enabled" style="plain" required="false" path="$.enabled" default="false" type="xsd:boolean">
+                <param name="enabled" style="plain" required="false" path="$.enabled" default="false" type="xsd:Boolean">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN"><para>Indicates whether the endpoint template is activated (enabled). The default 
                             value is <code>false</code>. An endpoint template can only be added if it is enabled.

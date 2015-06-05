@@ -587,7 +587,7 @@
       <listitem>
         <para><emphasis role="bold">New authentication endpoint</emphasis>. </para>
         <para>To authenticate, you issue a request to the &CIS;, which is an implementation of the OpenStack Keystone
-          Identity Service v2.0. Customers with UK-based accounts can now issue a &POST; <command>/tokens</command> request
+          Identity service v2.0. Customers with UK-based accounts can now issue a &POST; <command>/tokens</command> request
           to the &CIS; at the
           <link xlink:href="https://lon.identity.api.rackspacecloud.com/v2.0">https://lon.identity.api.rackspacecloud.com/v2.0</link>
           endpoint to authenticate access to either the &fgCS; or &ngCS; services. </para>
@@ -821,7 +821,7 @@
     <itemizedlist>
       <title>Changes</title>
       <listitem>
-        <para>Authentication is through the Rackspace Cloud Identity Service, which integrates with the
+        <para>Authentication is through the Rackspace Cloud Identity service, which integrates with the
           Rackspace managed infrastructure and is a modification of the OpenStack Keystone authentication specification. See
           <link xlink:href="http://docs.rackspace.com/servers/api/v2/cs-devguide/content/os-auth.html">Authentication</link>
           in the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle>.</para>

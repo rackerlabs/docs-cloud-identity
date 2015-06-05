@@ -9,7 +9,7 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
 	xml:id="Service_Types-d1e265">
 	<title>Suggested work flow for processing a Service Catalog response</title>
-	<para>When a client authenticates successfully, the Cloud Identity Service returns a service
+	<para>When a client authenticates successfully, the Identity service returns a service
 		catalog that shows the services available to that client, along with the service endpoints.
 		(See <link xlink:href="Sample_Request_Response-d1e64.html">Annotated authentication request
 			and response</link> for a service catalog example.)</para>
