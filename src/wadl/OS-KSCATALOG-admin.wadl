@@ -101,7 +101,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Allows us to filter by service id.</wadl:doc>
             </param>
         </request>
-        <response status="200 203">
+        <response status="200">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="OK">The request has completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplates">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"  xml:lang="EN">
@@ -123,7 +123,7 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get endpoint template">
             <para role="shortdesc">Retrieves an endpoint template.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <doc title="OK">The request has completed successfully.</doc>
             <representation mediaType="application/xml" element="OS-KSCATALOG:endpointTemplate">
                 <doc>
@@ -494,7 +494,7 @@
             <p xmlns="http://www.w3.org/1999/xhtml">Get an endpoint available to a tenant.</p>
             
         </doc>
-        <response status="200 203"  >
+        <response status="200"  >
                 <doc title="OK">The request has completed successfully.</doc>
             <representation mediaType="application/xml" element="identity:endpoint">
                 <doc xml:lang="EN">

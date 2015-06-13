@@ -105,7 +105,7 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List groups">
             <para role="shortdesc">Lists groups.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <doc title="OK">The request completed successfully.</doc>
             <representation mediaType="application/xml" element="grp:groups">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
@@ -184,7 +184,7 @@
             <para role="shortdesc">Gets information for a group by
                 ID.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/xml"
                 element="grp:group">
                 <wadl:doc xml:lang="EN"
@@ -267,7 +267,7 @@
                     type="xsd:int"/>
             </representation>
         </request>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/xml"
                 element="identity:users">
                 <wadl:doc xml:lang="EN"

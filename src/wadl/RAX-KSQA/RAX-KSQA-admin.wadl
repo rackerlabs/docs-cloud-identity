@@ -63,7 +63,7 @@
         <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get User Secret Q&amp;A">
             <para>Get a secret question and answer for a user.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/xml" element="RAX-KSQA:secretQA">
                 <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSQA-secretQA.xml"/>

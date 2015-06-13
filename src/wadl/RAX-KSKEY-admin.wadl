@@ -142,7 +142,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. </wadl:doc>
             </param>
         </request>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/xml" element="identity:credentials">
             <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                <xsdxt:code href="../common/samples/credentialswithapikey.xml"/>
@@ -175,7 +175,7 @@
                     xml:lang="EN"> Allows us to set size of page when paging through list of users. </wadl:doc>
             </param>
         </request>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/xml" element="identity:credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN">
@@ -265,7 +265,7 @@
                 use the <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> operation to find it.
             </para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <doc title="OK">Request completed successfully.</doc>
             <representation mediaType="application/xml" element="RAX-KSKEY:apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">

@@ -148,7 +148,7 @@
             
             <resource id="user_otp_devices" path="users/{userId}/RAX-AUTH/multi-factor/otp-devices">
                 <param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <wadl:doc>A valid authentication token</doc>
+                    <wadl:doc>A valid authentication token</wadl:doc>
                 </param>
                 <param name="userId" type="xsd:string" style="template" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>

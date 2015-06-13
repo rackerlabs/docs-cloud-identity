@@ -59,7 +59,7 @@
             <p xmlns="http://www.w3.org/1999/xhtml">List all the groups for a user.</p>
             
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/xml" element="RAX-KSGRP:groups">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/RAX-KSGRP-groups.xml"/>

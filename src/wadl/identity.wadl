@@ -248,7 +248,7 @@
             <para role="shortdesc">Gets detailed information about the specified version of the
                 Identity service API.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <param name="location" style="plain" type="xsd:anyURI" required="true"
                 path="/capi:version/atom:link[@rel='self']/@href">
                 <link resource_type="#VersionDetails_rack" rel="self"/>
@@ -274,7 +274,7 @@
                 available by issuing a GET on the <literal>/extensions</literal> URI.
                 </para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <param name="next" style="plain" type="xsd:anyURI"
                 path="/capi:extensions/atom:link[@rel='next']/@href">
                 <wadl:doc
@@ -319,7 +319,7 @@
                     ><para>The extension alias.</para> </wadl:doc>
             </param> -->
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/extension.json"/>
@@ -502,7 +502,7 @@
                 </doc>
             </representation>
         </request>
-        <response status="200 203">
+        <response status="200">
             <param name="access" style="plain" required="true"
                 type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -695,7 +695,7 @@
                 </para>
             </note>
         </wadl:doc>
-        <response status="200 203">           
+        <response status="200">           
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by name: XML response">
                     <xsdxt:code href="../common/samples/user.xml"/>
@@ -786,7 +786,7 @@
                 This request returns the following information for each account associated with the specified user ID: 
                 email address, username, user ID, status, default region, and domain id.</para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <!-- Pull in shared response parameters by using entity from common.ent file -->
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by id: XML response">
@@ -814,7 +814,7 @@
                 are managed in the <code>defaultRegion</code>. 
             </para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/xml" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by email: XML response">
                     <xsdxt:code href="../common/samples/userbyemailresponse.xml"/>
@@ -900,7 +900,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200 203">
+        <response status="200">
                 <param name="name" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>The name is a unique string assigned to a tenant. The value can be

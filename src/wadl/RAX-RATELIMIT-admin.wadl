@@ -67,7 +67,7 @@
                 The response body describes the user's current rate limits.
             </para>
         </wadl:doc>
-        <response status="200 203">
+        <response status="200">
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/ratelimit-list1user-response.json"/>
