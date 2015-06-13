@@ -410,7 +410,7 @@
             </representation>
         </request>
         
-        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+        <response status="200">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -429,7 +429,7 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get user secret Q&amp;A list">
             <para role="shortdesc">Returns the list of secret questions and answers for a user account.</para>
         </wadl:doc>
-        <response status="200" >
+        <response status="200">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -459,7 +459,7 @@
                     <xsdxt:code href="../common/samples/SecretQAList.json"/>
                 </wadl:doc>
             </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response>&commonFaults; &getFaults;</method>
 
     <method id="resetUserAPIKeyCredentials" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Reset API key for user">
@@ -1428,7 +1428,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>Allows us to filter by region. </para></wadl:doc>
             </param>
         </request>
-        <response status="200" >
+        <response>
             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
@@ -1440,7 +1440,7 @@
                     <xsdxt:code href="../common/samples/EndpointTemplateList.json"/>
                 </wadl:doc>
         </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response>&commonFaults; &getFaults; </method>
 
     <method id="authenticateWithMultiFactor" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Authenticate with multi-factor authentication passcode credentials">
@@ -1452,38 +1452,16 @@
             <para>If an account is enabled for multi-factor authentication, authentication is a two-step process: 
                 <orderedlist>
                     <listitem>
-                        <para>Send an initial  with user name and password credentials. See 
-                            <link xlink:href="POST_authenticate_v2.0_tokens_Token_Calls.html">Authenticate as user with password</link>.</para>
+                        <para>Send an initial with 
+                            <link xlink:href="POST_authenticate_v2.0_tokens_Token_Calls.html">user name and password credentials</link>.</para>
                         <para>The request triggers &CIS; to send an SMS message to the phone 
                             associated with the user account. In response to the authentication request,  &CIS; 
                             returns a 401 message that includes 
-                            a sessionId in the WWW-Authenticate header and a request for additional credentials.
-                            <screen><computeroutput>&lt;HTTP/1.1 401 Unauthorized
-* Server Apache-Coyote/1.1 is not blacklisted
-&lt; Server: Apache-Coyote/1.1
-&lt;vary:  Accept, Accept-Encoding, X-Auth-Token
-&lt; WWW-Authenticate: OS-MF sessionId='APU9ymMBWY5W-pTgnHuZEvjKsM5oG_ler4lC0g_EkCPYvPdUBHK55RWtsgpL5RZ22AyDNaVCNCz6mlDOwbJAI-RLFQywI7CgOvjH0MLhL5a6D-c4cd1x8BbZmy8uT8ejm7jzBUX_vDZ5R0Hcia5DkOB80yWNJ8XVKMxVYLg5Qwp0TPA2zx-HQOTM3xqVQE63u1mYDUqikrXQ', factor='PASSCODE'
-&lt;Content-Type: application/json
-&lt;Transfer-Encoding: chunked
-&lt; Date: Thu, 13 Mar 2XXX 21:10:50 GMT
-{ [data not shown]
-100   186    0    96  100    90    159    149 --:--:-- --:--:-- --:--:--   159
-* Connection #0 to host identity.api.rackspacecloud.com/v2.0 left intact
-{
-"unauthorized": {
-    "code": 401,
-    "message": "Additional authentication credentials required."
-    }
-}
-    {
-    "key":"value"
-    }</computeroutput></screen>
-                            
+                            a session ID in the WWW-Authenticate header and a request for additional credentials.
                         </para>                        
                     </listitem>
-                    <listitem>
-                        <para>Send an additional authentication request providing the sessionId and multi-factor authentication 
-                            passcode included in the SMS message from &CIS; verification service.
+                    <listitem><para>Send an additional authentication request providing the <code>sessionId</code> and multi-factor authentication 
+                     passcode included in the SMS message from &CIS; verification service.
                         </para>
                     </listitem>
                 </orderedlist></para>

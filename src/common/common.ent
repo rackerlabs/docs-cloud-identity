@@ -51,24 +51,24 @@ This operation does not require a request body.</para>'>
  <!ENTITY commonFaults
            '
         <response status="400">
-             <doc title="Bad Request">The request is missing one or more elements, or the values of some 
-                elements are invalid.</doc>
+             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Bad Request" xml:lang="EN">The request is missing one or more elements, or the values of some 
+                elements are invalid.</wadl:doc>
         </response>
         <response status="401">
-            <doc title="Unauthorized">You are not authorized to complete this operation. This error can occur if the request is submitted with an invalid authentication token.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Unauthorized" xml:lang="EN">You are not authorized to complete this operation. This error can occur if the request is submitted with an invalid authentication token.</wadl:doc>
         </response>
         <response status="403">
-            <doc title="Forbidden">The request was valid, but the server is refusing to respond because you do not have permission to access the requested resource. 
-            Submit a request to your account administrator to determine how to gain access.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Forbidden" xml:lang="EN">The request was valid, but the server is refusing to respond because you do not have permission to access the requested resource. 
+            Submit a request to your account administrator to determine how to gain access.</wadl:doc>
         </response>
         <response status="405">
-            <doc title="Invalid Method">The method specified in the request is not valid for the resource identified in the request URI.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Invalid Method" xml:lang="EN">The method specified in the request is not valid for the resource identified in the request URI.</wadl:doc>
         </response>
         <response status="413">
-            <doc title="Over Limit">The number of items returned is above the allowed limit.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Over Limit" xml:lang="EN">The number of items returned is above the allowed limit.</wadl:doc>
         </response>
         <response status="503">
-            <doc title="Service Fault">Service is not available.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Service Fault" xml:lang="EN">Service is not available.</wadl:doc>
         </response>
            '>
       <!--
@@ -77,7 +77,7 @@ This operation does not require a request body.</para>'>
      <!ENTITY getFaults
            '
         <response status="404">
-             <doc title="Not Found">The requested resource was not found.</doc>
+             wadl:doc xmlns="http://docbook.org/ns/docbook" title="Not Found" xml:lang="EN">The requested resource was not found.</wadl:doc>
         </response>
            '>
            
@@ -86,7 +86,7 @@ This operation does not require a request body.</para>'>
      <!ENTITY postPutFaults
            '
         <response status="415" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="Bad Media Type">Bad media type. This may result if the wrong media type is used in the API request. Check the content-type and accept headers included in the request.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Bad Media Type" xml:lang="EN">Bad media type. This may result if the wrong media type is used in the API request. Check the content-type and accept headers included in the request.</wadl:doc>
         </response>
            '>
            
@@ -95,21 +95,21 @@ This operation does not require a request body.</para>'>
 <!ENTITY MultifactorVerifyFaults
            '
         <response status="400">
-        <doc title="Bad Request">This error is returned in these cases: The request could not be understood by the server due to malformed syntax. The phone has already been verified.</doc>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Bad Request" xml:lang="EN">This error is returned in these cases: The request could not be understood by the server due to malformed syntax. The phone has already been verified.</wad:doc>
         </response>
         <response status="401">
-           <doc title="Unauthorized">You are not authorized to complete this operation. This error can occur if 
-           the request is submitted with an invalid authentication token.</doc>
+           <wadl:doc xmlns="http://docbook.org/ns/docbook title="Unauthorized" xml:lang="EN">You are not authorized to complete this operation. This error can occur if 
+           the request is submitted with an invalid authentication token.</wadl:doc>
         </response>
         <response status="403">
-            <doc title="Forbidden">The request was valid, but the server is refusing to respond because you do not have permission to access the requested resource. 
-            Submit a request to your account administrator to determine how to gain access.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Forbidden" xml:lang="EN">The request was valid, but the server is refusing to respond because you do not have permission to access the requested resource. 
+            Submit a request to your account administrator to determine how to gain access.</wadl:doc>
         </response>
         <response status="405">
-            <doc title="Invalid Method">The method specified in the request is not valid for the resource identified in the request URI.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Invalid Method" xml:lang="EN">The method specified in the request is not valid for the resource identified in the request URI.</wadl:doc>
         </response>
         <response status="503">
-             <doc title="Service Fault">Service is not available.</doc>
+             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Service Fault" xml:lang="EN">Service is not available.</wadl:doc>
         </response>
            '>
            

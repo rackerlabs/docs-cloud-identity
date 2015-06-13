@@ -900,7 +900,7 @@
             <para>Get information about a global role that belongs to a user.</para>
         </wadl:doc>
         
-        <response status="200">
+        <response status="200 203">
             <wadl:doc title="OK">Request completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="role">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1002,7 +1002,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
             </param>
         </request>
-        <response status="200">
+        <response status="200 203">
             <wadl:doc title="OK">Request completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1036,7 +1036,7 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200">
+        <response status="200 203">
             <wadl:doc title="OK">Request completed successfully.</wadl:doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1069,7 +1069,7 @@
             <para role="shortdesc">Gets user credentials.</para>
            <para >Get user credentials.</para>
         </wadl:doc>
-        <response status="200">
+        <response status="200 203">
             <wadl:doc title="OK">Request completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="credentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1275,7 +1275,7 @@
             <para role="shortdesc">Gets a role by name.</para>
             <para >Get a role by name.</para>
         </wadl:doc>
-        <response status="200">  
+        <response status="200 203">  
         <wadl:doc title="OK">Request completed successfuly.</wadl:doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1471,7 +1471,7 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">Allows us to set size of page when paging through list of users. This is the number of items per page.</wadl:doc>
             </param>
         </request>
-        <response status="200">
+        <response status="200 203">
             <wadl:doc title="OK">Request completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="OS-KSADM:services">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1496,7 +1496,7 @@
  <!--       <request>
             <param name="name" style="query" type="xsd:string" required="true"/>
         </request> -->
-        <response status="200"> 
+        <response status="200 203"> 
             <wadl:doc title="OK">Request completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="OS-KSADM:service">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
@@ -1518,7 +1518,7 @@
            <para >If you don't know the <code>service</code>, use the List services operation 
                 to find it.</para>
         </wadl:doc>
-        <response status="200">
+        <response status="200 203">
             <wadl:doc title="OK">Request completed successfully.</wadl:doc>
            
             <representation mediaType="application/xml" element="OS-KSADM:service">

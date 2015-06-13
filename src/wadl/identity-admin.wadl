@@ -248,7 +248,7 @@
                     <xsdxt:code href="../common/samples/versions.json"/>
             </wadl:doc>
             </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response>&commonFaults; &getFaults;</method>
     
     
     
