@@ -11,10 +11,11 @@
   xml:id="proc_mfa_admin">
   <title>Add a multi-factor authentication enforcement policy to Rackspace Cloud accounts</title> 
   <?dbhtml stop-chunking?>
-    
+  <para condition="client">Rackspace Cloud account administrators can configure enforcement settings for multi-factor
+    authentication across a domain.</para> 
   
-  <para>Rackspace Cloud account administrators can configure enforcement settings for multi-factor
-    authentication across a domain and customize them at the user level. </para>
+  <para condition="admin">Rackspace Cloud account administrators can configure enforcement settings for multi-factor
+    authentication across a domain and customize them at the user level.</para>
   <important condition="client">
     <para>To configure domain-level enforcment, your Administrator account must be configured to use
       multi-factor authentication. See <link xlink:href="proc_mfa_setup-phone.html">Set up
@@ -120,7 +121,7 @@
                     account</link>
                 </para>
               </listitem>
-              <listitem>
+              <listitem condition="admin">
                 <para><link xlink:href="mfa_admin_config_user.html">Customize multi-factor
                     authentication enforcement settings for specific users</link></para>
               </listitem>
@@ -131,7 +132,7 @@
     </variablelist>
   </para>
   
-  <section xml:id="mfa_admin_config_user">
+  <section xml:id="mfa_admin_config_user" condition="admin">
     <title>Update user-level enforcement for multi-factor authentication</title>
     <?dbhtml stop-chunking?>
     <para>Rackspace Cloud Identity and user administrators can use customize the multi-factor

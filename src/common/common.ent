@@ -77,7 +77,7 @@ This operation does not require a request body.</para>'>
      <!ENTITY getFaults
            '
         <response status="404">
-             wadl:doc xmlns="http://docbook.org/ns/docbook" title="Not Found" xml:lang="EN">The requested resource was not found.</wadl:doc>
+             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Not Found" xml:lang="EN">The requested resource was not found.</wadl:doc>
         </response>
            '>
            

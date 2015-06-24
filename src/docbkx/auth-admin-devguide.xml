@@ -53,6 +53,22 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-06-23</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated the 
+								<link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/DELETE_removeMultifactorForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Remove multi-factor authentication operation </link> to correct the URI.
+							</para>
+						</listitem>
+						<listitem>
+							<para>Updated the <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/GET_getMobilePhonesForUser_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls_client.html">List multi-factor phones for user</link> 
+								to add the attribute to look up a phone by ID.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-06-02</date>
 				<revdescription>
 					<itemizedlist>

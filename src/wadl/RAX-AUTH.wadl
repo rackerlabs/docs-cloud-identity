@@ -111,6 +111,7 @@
                             <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>The unique, system-generated user ID for an account.</para></wadl:doc>
                     </param>
                     <method href="#updateMultifactorSettings"/>
+                    <method href="#removeMultifactorForUser"/>
                 </resource>  
                     <resource id="multifactor_domainEnforce" path="RAX-AUTH/domains/{domainId}/multi-factor">
                         <method href="#updateDomainMultiFactorEnforcement"/>
@@ -127,7 +128,7 @@
                     </param>
                            <method href="#createMobilePhone"/> 
                            <method href="#getMobilePhonesForUser"/>
-                           <method href="#removeMultifactorForUser"/>
+                           <method href="#deleteMultifactorPhoneForUser"/>
                        
                     <resource id="multifactor_vcode" path="{phoneId}/verificationcode">
                     <param name="phoneId" style="template" type="string" required="true">
@@ -419,14 +420,14 @@
                 </wadl:doc>
             </representation>
         </response>
-        <response status="409" >
+        <response status="409">
             <wadl:doc title="Conflict">The request could not be completed due to a conflict with the current state of the resource.</wadl:doc>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
             <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
     <method id="getUserSecretQAs" name="GET">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get user secret Q&amp;A list">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user secret Q&amp;A list">
             <para role="shortdesc">Returns the list of secret questions and answers for a user account.</para>
         </wadl:doc>
         <response status="200">
@@ -454,12 +455,12 @@
                     </wadl:doc>
                 </param>
             </representation>
-            <representation mediaType="application/json">
+            <representation mediaType="application/json" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/SecretQAList.json"/>
                 </wadl:doc>
             </representation>
-        </response>&commonFaults; &getFaults;</method>
+        </response>&commonFaults;&getFaults;</method>
 
     <method id="resetUserAPIKeyCredentials" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Reset API key for user">
@@ -1788,18 +1789,20 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Lists multi-factor phones for user">
             <para role="shortdesc">Lists the mobile phones associated with the specified user account.</para>
             <para>A user or Identity administrator impersonating a user can use this operation to list the mobile phones  
-                associated with a user account. An account can have up to one mobile phone configured for multi-factor authentication..</para>
+                associated with a user account.</para>
+            <para>You can retrieve a specific phone by including the ID assigned to the phone when it was added to the 
+                Rackspace Cloud account.</para>
+            <para>    
+                An account can have up to one mobile phone configured for multi-factor authentication.</para>
             <para>If you don't know the user ID, use the List user operation to find it.</para>
-            <example><title>Get mobile phones for user: JSON cURL request</title>
-                <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-req-cURL.txt"/>
-            </example>
         </wadl:doc>
         <request>
-                <representation mediaType="application/json" element="RAX-AUTH:multi-factor">
+                <representation mediaType="application/xml" element="RAX-AUTH:multi-factor">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List multi-factor phones for user request: json cURL">
                         <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-req-cURL.txt"/>
                     </wadl:doc>
                 </representation>
+            
         </request>
         <response status="204" >
             <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
@@ -1842,17 +1845,34 @@
         </response> &commonFaults; &getFaults;
     </method>
     
-    <method id="removeMultifactorForUser" name="DELETE">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove mutlifactor authentication from account">
-            <para role="shortdesc">Removes the multi-factor authentication setting and all associated 
-                mobile phones from your user account.</para>
+    <method id="deleteMultifactorPhoneForUser" name="DELETE">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove phone from account">
+            <para role="shortdesc">Removes a phone number associated with a user account 
+                to support multi-factor authentication.</para>
             <para>This operation removes the multi-factor authentication setting from your account along with 
                 all phones associated with the account. To disable the feature without removing phones, use 
                 the Disable multi-factor setting operation.</para>
+                <para>This operation allows users and administrators to remove a mobile phone number 
+                    added to an account to support multi-factor authentication. You can remove the number if 
+                    multi-factor authentication is disabled, or if the user has decided to use an OTP device for 
+                    multi-factor authentication.
+            </para>
             <para>This operation can only be completed from the user account submitting the request.
                 Attempts to run it for a different user ID result in a 403 error message.
             </para>
         </wadl:doc>
+            <request>
+                <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <xsdxt:code href="../common/samples/auth-mfaremovphone-delete-http-req-xml.txt"/>
+                    </wadl:doc>
+                </representation> 
+                <representation mediaType="application/json" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/auth-mfaremovphone-delete-http-req-json.txt"/>
+                </wadl:doc>
+                </representation>   
+          </request>
         <response status="204" >
             <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
             <representation mediaType="application/xml" element="identity:noContent"/>
@@ -2373,6 +2393,35 @@
             <representation mediaType="application/json"/>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element"/>
         </response> 
+    </method>
+    <method id="removeMultifactorForUser" name="DELETE">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove mutlifactor authentication from account">
+            <para role="shortdesc">Removes the multi-factor authentication setting and all associated
+                mobile phones from your user account.</para>
+            <para>This operation removes the multi-factor authentication setting from your account along with
+                all phones associated with the account. To disable the feature without removing phones, use the update multi-factor 
+                settings on account operation to disable multi-factor authentication on the account.</para>
+            <para>This operation can be completed only on the user account used to submit the request.
+                Attempts to run it for a different user ID result in a 403 error message.
+            </para>
+        </wadl:doc>
+        <request>
+          <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove multi-factor authentication: XML request">
+                   <xsdxt:code href="../common/samples/auth-mfasettings-delete-http-req-xml.txt"/>
+                    </wadl:doc>     
+           </representation>
+            <representation mediaType="application/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove multi-factor authentication: JSON request">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-delete-http-req-json.txt"/>
+                </wadl:doc>     
+            </representation>
+        </request>   
+        <response status="204" >
+            <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
+            <representation mediaType="application/xml" element="identity:noContent"/>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults;
     </method>
     
     <method id="updateDomainMultiFactorEnforcement" name="PUT">
