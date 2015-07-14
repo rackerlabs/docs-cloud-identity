@@ -1790,7 +1790,7 @@
             <para role="shortdesc">Lists the mobile phones associated with the specified user account.</para>
             <para>A user or Identity administrator impersonating a user can use this operation to list the mobile phones  
                 associated with a user account.</para>
-            <para>You can retrieve a specific phone by including the ID assigned to the phone when it was added to the 
+            <para>You can retrieve a specific phone by including the unique, system-generated ID assigned to the phone when it was added to the 
                 Rackspace Cloud account.</para>
             <para>    
                 An account can have up to one mobile phone configured for multi-factor authentication.</para>
@@ -1798,11 +1798,21 @@
         </wadl:doc>
         <request>
                 <representation mediaType="application/xml" element="RAX-AUTH:multi-factor">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List multi-factor phones for user request: json cURL">
-                        <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-req-cURL.txt"/>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List multi-factor phones for user: XML request">
+                        <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-mfaphone-req-xml.txt"/>
                     </wadl:doc>
+                    <param name="mobilePhoneId" style="template" type="string" required="false">
+                        <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                            <para>Specifies the unique, system-generated ID assigned to the phone when 
+                                the phone was added to the user account.</para>
+                        </wadl:doc>          
+                    </param>
                 </representation>
-            
+            <representation mediaType="application/xml" element="RAX-AUTH:multi-factor">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="List multi-factor phones for user request: JSON request">
+                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-get-mfaphone-req-json.txt"/>
+                </wadl:doc>
+            </representation>
         </request>
         <response status="204" >
             <wadl:doc title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
@@ -2158,7 +2168,12 @@
                         <para>Returns the following information for an OTP device: ID, name, verification status.</para>
                     </wadl:doc>
                 </param>
-                &otpdeviceGetRespParam;
+            </representation>
+            <representation mediaType="application/xml">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt" />
+                    <xsdxt:code href="../common/samples//auth-otpdevices-get-resp.xml" />
+                </wadl:doc>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN">
@@ -2187,7 +2202,11 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify OTP devices for account: XML request">
                     <xsdxt:code href="../common/samples/auth-otpdevice-verify-http-req-xml.txt"/>
                 </wadl:doc>
-                &otpdeviceGetRespParam;
+                <param name="verified" style="plain" type="Boolean" required="true">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                        <para>Indicates whether the OTP device has been verified.</para>
+                    </wadl:doc>
+                </param>
             </representation>
             <representation mediaType="application/json" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Verify OTP devices for account: JSON request">
@@ -2198,7 +2217,7 @@
         <response status="204">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="No content">The request succeeded. The server fulfilled the request but does not need to return a body.</wadl:doc>
             <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Verify device by ID: 204 respone">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Verify device by ID: 204 response">
                     <xsdxt:code href="../common/samples/auth-204-http-resp.txt"/>
                 </wadl:doc>
             </representation>
@@ -2218,7 +2237,6 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete OTP device by ID: XML request">
                     <xsdxt:code href="../common/samples/auth-otpdevice-delete-http-req-xml.txt"/>
                 </wadl:doc>
-                &otpdeviceGetRespParam;
             </representation>
             <representation mediaType="application/json" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete OTP device by ID: JSON request">
