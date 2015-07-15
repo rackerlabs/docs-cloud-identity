@@ -158,7 +158,7 @@
 	
 	<!-- TOKENS -->
 	<section xml:id="Token_Calls">
-		<title>Authentication tokens</title>
+		<title>Tokens</title>
 	<para>The &CIS; is a <glossterm baseform="REST">RESTful</glossterm> web service that provides authentication services  
 		for the &CLOUD;. To gain access, users and administrators can use the <command>POST tokens</command> operation 
 		to request an authentication token from the &CIS;, or generate a new token after a previously 
@@ -216,12 +216,18 @@
 		<wadl:resource href="../../wadl/identity-admin.wadl#sessionId_mfa">
 			<wadl:method href="#authenticateWithMultiFactor"/>					
 		</wadl:resource>
-		
+
+		<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">
+			<!-- validate token -->
+			<wadl:method href="#user-validateToken"/>
+		</wadl:resource>
+	
 		<wadl:resource href="../../wadl/identity-admin.wadl#token">
 
 			<wadl:method href="#revokeToken"/>
 		</wadl:resource>
 	</wadl:resources>
+	
    </section>
 	<section xml:id="Tenant_Calls">
 		<title>Tenants</title>

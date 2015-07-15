@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!ENTITY % common SYSTEM "../../common/common.ent">
+%common;
+]>
+<!-- RATE LIMITING -->
+<section xml:id="Ratelimiting_Calls">
+    <title>Rate Limits</title>
+    <para>The operations described in this section allow service developers to manage rate limits.</para>
+    <para>
+        The rate limiting logic is based on a fixed-size bucket algorithm.
+    </para>
+    <para> Rate limiting is configured in a database which is accessible
+        via a separate endpoint. To update the rate limiting
+        configuration, change the values of three parameters in
+        the rate limiting database. Optionally, a fourth parameter
+        can be used to exclude (white list) some requests so that
+        no rate limits apply to them. 
+    </para>
+    <table rules="all">
+        <caption>Rate Limiting Configuration
+            Parameters</caption>
+        <col width="38%"/>
+        <col width="16%"/>
+        <col width="38%"/>
+        <col width="8%"/>
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default Value</th>
+            </tr>
+        </thead>				
+        <tbody>
+            <tr>
+                <td><code>rate.limit.interval.duration</code></td>
+                <td>Integer</td>
+                <td>Size (in seconds) of the time interval
+                    within which to limit the number of
+                    requests to the maximum defined by
+                    <code>rate.limit.threshold</code>.</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td><code>rate.limit.threshold</code></td>
+                <td>Integer</td>
+                <td>Number of requests allowed within the
+                    interval defined by
+                    <code>rate.limit.interval.duration</code>.</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td><code>rate.limit.enabled</code></td>
+                <td>Boolean</td>
+                <td>Enable (true) or disable (false) all rate
+                    limiting functionality.</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td><code>rate.limit.whitelist</code></td>
+                <td>Comma-delimited list</td>
+                <td>List of identifiers for which the rate
+                    should not be limited</td>
+                <td><emphasis role="italic"
+                    >none</emphasis></td>
+            </tr>
+        </tbody>
+    </table>
+    <para> For example, if
+        <code>rate.limit.enabled=true</code>,
+        <code>rate.limit.threshold=10</code>, and
+        <code>rate.limit.interval.duration=60</code>, then the
+        service call rate will be limited to 10 requests every 60
+        seconds. Users who issue more than 10 requests per 60
+        seconds must wait until their bucket is cleared.
+    </para>
+    <para>
+        For example, if  
+        <code>rate.limit.whitelist=192.168.1.105,user:alex,192.168.1.243</code>,
+        then two IP addresses and a user named "alex" are white listed and therefore not subject to the general rate limits.
+    </para>
+    <figure>
+        <title>
+            After hitting the Auth endpoint, a request hits the rate limiting filter; if the filter determines that rate limits apply, the rate limit module is called.
+        </title>
+        <!-- this is Alex Silva's drawing, 
+				from http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting 
+			    PNG fits PDF width 521x389
+			-->
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="../figures/auth-ratelimiting-flow.png" format="PNG" align="center" />
+            </imageobject>
+        </mediaobject>
+    </figure>
+    <para>
+        Request keys are at the core of the rate limiting functionality. For each request for a resource, 
+        these unique request identifiers relate the request to the user who submitted the request. The key-generation algorithm is illustrated below:
+    </para>
+    <figure>
+        <title>A request key for rate limiting can be generated from an IP
+            address, a header value, or a valid token. </title>
+        <!-- this is Alex Silva's drawing, 
+				from http://red.rackspace.com/display/auth/Cloud+Auth+Rate+Limiting 
+			    PNG fits PDF width at 521x317
+			-->
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="../figures/auth-ratelimiting-keygeneration-20.png" format="PNG" align="center" />
+            </imageobject>
+        </mediaobject>
+    </figure>
+    <note>
+        <para>
+            All API calls are rate limited, including API calls used to update the rate limiting configuration.
+        </para>
+        <para>
+            When a request is denied for rate limits, 30 seconds should pass before the rate limits are reset.
+        </para>
+        <para>
+            When no limit group is specified for a user, that user is assigned to the <code>default</code> group.
+        </para>
+    </note>
+    <!--- this section comes from 1 WADL: RAX-RATELIMIT-admin -->
+    <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <!-- list rate limit for 1 user -->
+        <wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+            <wadl:method href="#getRateLimit"/>
+        </wadl:resource>
+        <!-- change rate limit for 1 user -->
+        <wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+            <wadl:method href="#updateRateLimit"/>
+        </wadl:resource>
+        <!-- add 1 entry to rate limit whitelist -->
+        <wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+            <wadl:method href="#addWhitelistEntry"/>
+        </wadl:resource>
+        <!-- delete 1 entry from rate limit whitelist -->
+        <wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+            <wadl:method href="#deleteWhitelistEntry"/>
+        </wadl:resource>
+        <!-- replace entire rate limit whitelist -->
+        <wadl:resource href="../../wadl/RAX-RATELIMIT-admin.wadl#rtadm">
+            <wadl:method href="#replaceWhitelist"/>
+        </wadl:resource>
+    </wadl:resources>
+</section>
+

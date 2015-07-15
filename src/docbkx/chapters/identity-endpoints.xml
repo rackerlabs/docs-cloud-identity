@@ -12,18 +12,24 @@
     <important><para>If your Rackspace Cloud account requires multi-factor authentication, you can authenticate
             only with Identity API version 2.0 or later.</para></important>
     <?dbhtml stop-chunking?>  
-    
-    
-    
-    
-    
-
     <section xml:id="Identity_20">
         <title>Rackspace Identity API version 2.0</title>
         <para><itemizedlist>
-            <listitem>
+            <listitem condition="client">
                 <para><guilabel>Endpoint.</guilabel>
+                        <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">
+                            https://identity.api.rackspacecloud.com/v2.0</link>
+                    </para>
+            </listitem>
+            <listitem condition="admin">
+                <para><guilabel>Production endpoint.</guilabel>
                     <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">
+                        https://identity.api.rackspacecloud.com/v2.0</link>
+                </para>
+            </listitem>
+            <listitem condition="admin">
+                <para><guilabel>Staging endpoint.</guilabel>
+                    <link xlink:href="https://staging.identity-internal.api.rackspacecloud.com/">
                         https://identity.api.rackspacecloud.com/v2.0</link>
                 </para>
             </listitem>

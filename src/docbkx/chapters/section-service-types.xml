@@ -198,10 +198,7 @@
 				<td><code>rax:orchestration</code></td>
 				<td><para>Services of this type enable you to automate and standardize cloud infrastructure
 					setup and management.</para>
-					<para>Cloud Orchestration is the name of the Rackspace service of this type. The Rackspace
-						Cloud service is compatible with the <link
-							xlink:href="http://docs.openstack.org/developer/heat/">OpenStack
-							Orchestration (heat) service</link>.</para></td>
+					<para>Cloud Orchestration is the name of the Rackspace service of this type. </para></td>
 			</tr>
 			<tr>
 				<td><code>rax:queues</code></td>

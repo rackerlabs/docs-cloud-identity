@@ -9,7 +9,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
 	xml:id="Svc_Catalog_ovw">
 	<?dbhtml stop-chunking?>
-	<title>Service types</title>
+	<title>Service catalog</title>
 	<para>The service catalog provides information about Rackspace Cloud services that are available to customers who have successfully 
 		authenticated, including the API service endpoints to access the service. You can view <link xlink:href="Sample_Request_Response-d1e64.html#authSvccatRespservice">service catalog details</link> 
 		in the authentication response returned by the Identity service.</para> 
