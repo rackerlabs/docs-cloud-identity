@@ -441,28 +441,33 @@ Host: identity.api.rackspacecloud.com/v1.0/
 
 <section xml:id="Limits-d1e909">
 		<title>Limits</title>
-	<para condition="client">
-		Calls to the Identity API are rate-limited at a default of 50 requests per second. 
-		Since tokens have an expiration time of 24 hours, you should never hit this limit.
-	</para>
-	<para condition="client">
-		The limit is placed on either the request's IP address, the user name, or the token 
-		in the <code>X-Auth-Token</code> header, depending on the data available in the call's request.
-		If your request is rejected because you have exceeded your rate limit, you will receive a <errorcode>413</errorcode> <code>overLimit</code> error. 
-		While you can retry after a few seconds, 
-		we also recommend that you check your client code to verify that it is using the API in an efficient manner.
-	</para>
-	<para condition="client">
-		A future release will provide the ability to view your limits so you can track API utilization before being rate-limited.
-	</para>
-	<para condition="client">
-		The rate limit defaults are likely to change as we gauge realistic levels.  
-		If the default limits change, we'll update this document to reflect the current value.
-	</para>
-	<tip condition="client">
-		<para> You can learn about rate limiting operations in <link xlink:href="Ratelimiting_Calls.html">“Rate
-			Limits”</link>. </para>
-	</tip>
+	<para>All accounts have default, preconfigured thresholds (or limits) to manage capacity and
+			prevent abuse of the system. The &CIS; uses a rate limit threshold to control the
+			frequency at which the user can issue specific API requests. Rate limits are processed
+			by the <link xlink:href="https://www.openrepose.org">Repose service</link>.</para>
+	<para>Rate limits can be applied to any of the following entities, depending on the data available
+			in the operation request.<itemizedlist>
+				<listitem>
+					<para>IP address submitting the request</para>
+				</listitem>
+				<listitem>
+					<para>user name</para>
+				</listitem>
+				<listitem>
+					<para>token in the <code>X-Auth-Token</code>
+					</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+	<para>The rate limit threshold for the &CIS; is 50 requests per second. Because tokens have an
+			expiration time of 24 hours, you should never hit this limit.</para>
+	<para>If your account exceeds the rate limit, API requests are rejected with a
+				<errorcode>413</errorcode>
+			<code>overLimit</code> error. Typically, you can resubmit the request in a few seconds.
+			If client requests continue to be rejected, check the client, process, or application
+			code to verify that API access is managed effectively by following <link
+				xlink:href="QuickStart-000.html#manage_auth_tokens">best practices for managing
+				authentication tokens</link>.</para>	
 </section>
 
 <section xml:id="Faults-d1e908">

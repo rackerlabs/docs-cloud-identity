@@ -391,9 +391,12 @@ Host: identity.api.rackspacecloud.com/v1.0/
 	<xi:include href="section-namespaces.xml"/>
 	<section condition="admin" xml:id="Limits-d1e909">
 		<title>Limits</title>
-		<para>Rate limits control the frequency at which the user can issue specific API requests. Limits
-			can be applied to any of the following entities, depending on the data available in the
-			operation request.<itemizedlist>
+		<para>All accounts have default, preconfigured thresholds (or limits) to manage capacity and
+			prevent abuse of the system. The &CIS; uses a rate limit threshold to control the
+			frequency at which the user can issue specific API requests. Rate limits are processed
+			by the <link xlink:href="https://www.openrepose.org">Repose service</link>.</para>
+		<para>Rate limits can be applied to any of the following entities, depending on the data available
+			in the operation request.<itemizedlist>
 				<listitem>
 					<para>IP address submitting the request</para>
 				</listitem>
@@ -404,25 +407,48 @@ Host: identity.api.rackspacecloud.com/v1.0/
 					<para>token in the <code>X-Auth-Token</code>
 					</para>
 				</listitem>
-			</itemizedlist>
-		</para>
+			</itemizedlist></para>
+			
+			<para>The &CIS; has its own rate limit settings, and so does each
+			node. If an application node is restarted, the last properties set for any of the &CIS;
+			versions are loaded to all nodes. </para>
+			<para>The following table lists the rate limits for Identity API requests in production 
+				and staging environments. These settings are managed by Identity service 
+				administrators.</para>
+				
+		<table xml:id="auth-limits-tbl " rules="all" width="80%">
+				<caption>Rate limit thresholds for the Identity API requests</caption>
+				<col width="20%"/>
+				<col width="30%"/>
+				<col width="30%"/>
+				<thead>
+					<tr>
+						<th>Limit type</th>
+						<th>Production</th>
+						<th>Staging</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Standard</td>
+						<td>50/sec per IP address</td>
+						<td>50/sec per IP address</td>
+					</tr>
+					<tr>
+						<td>Whitelist members</td>
+						<td>200/sec per IP address</td>
+						<td>500/sec per IP address</td>
+					</tr>
+				</tbody>
+			</table>
 		
 		<para>If a requester exceeds the rate limit, the request is rejected with a <errorcode>413</errorcode>
 			<code>overLimit</code> error. Typically, the request can be resubmitted in a few seconds. 
 			If the client requests continue to be rejected, check the client, process, or application 
 			code to verify that API access is managed effectively.</para>
 		
-		<para>&CIS; has its own rate limiting settings, and so does each node. If an application node is
-			restarted, the last properties set for any of the &CIS; versions are loaded to all
-			nodes.</para>
+		<para>&CIS; administrators and developers manage the rate limit settings and configuration.</para>
 		
-		<para>&CIS; administrators and developers manage the rate limit settings and configuration, 
-			but Identity administrators can use the Rate limit API operations to get information about 
-			rate limit configuration and events to troubleshoot problems.</para>
-		
-		<tip condition="admin">
-			<para> You can learn about rate limiting operations in <link xlink:href="Ratelimiting_Calls.html">Rate Limits</link>.</para>
-		</tip>
 	</section>
 	<section xml:id="Faults-d1e908">
 		<title>Faults</title>
