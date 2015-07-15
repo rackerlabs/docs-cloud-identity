@@ -53,6 +53,43 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-07-14</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated the <link xlink:href="Limits-d1e909.html">Limits</link> information to add limits 
+								for whitelist members.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the multi-factor authentication operations to add headers to the XML and JSON 
+								request and response examples.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the <link xlink:href="POST_createOTPDeviceForUser_v2.0_users__userId__RAX-AUTH_multi-factor_otp-devices_Multifactor_Calls.html">
+								Create multi-factor OTP device
+							</link> operation to correct information about the attributes in the request body. 
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-07-02</date>
+				<revdescription>
+					<para>Removed Rate limit operations. Identity rate limiting is managed through Repose. 
+					</para>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-06-26</date>
+				<revdescription>
+					<para>Updated the response examples in the 
+						<link xlink:href="GET_validateToken_v2.0_tokens__tokenId__Token_Calls.html">Validate token</link> 
+						operations to . This operation is available to account users or client application developers who want to verify 
+						that the authentication token is valid before submitting subsequent API requests.</para>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-06-23</date>
 				<revdescription>
 					<itemizedlist>

@@ -96,6 +96,7 @@
                             <para>The unique authentication token ID for the token to be revoked.</para>
                         </wadl:doc>
                </param>        
+                        <method href="#user-validateToken"/>
                         <method href="#validateToken"/>
                         <method href="#checkToken"/>
                         <resource id="endpointsForToken" path="endpoints">
@@ -806,7 +807,44 @@
             <wadl:doc  xmlns="http://docbook.org/ns/docbook" title="Service Fault">Service is not available.</wadl:doc>
         </response>
     </method>
-
+    <method name="GET" id="user-validateToken">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Validate token">
+            <para role="shortdesc">Verify that the specified token is valid.</para>
+            
+            <para>In the <code>/tokens/{tokenId}</code> path, valid tokens exist and
+                invalid tokens do not. For application development, make sure that the client submitting the Validate token 
+                request can handle an ItemNotFound (<code>404</code>) error for an invalid token.</para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/xml" element="access">
+                <wadl:doc xmlns="http://docbook/org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-client-validate-token-xml-http-req.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json" element="access">
+                <wadl:doc xmlns="http://docbook/org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-client-validate-token-json-http-req.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
+        <response status="200">
+            <doc title="OK">The operation completed successfully.</doc>
+            <representation mediaType="application/xml" element="access">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
+                    <xsdxt:code href="../common/samples/auth-client-validate-token-resp.xml"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json" element="access">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt"/>
+                    <xsdxt:code href="../common/samples/auth-client-validate-token-resp.json"/>
+                </wadl:doc>
+            </representation>
+        </response> &commonFaults; &getFaults; </method>
+    
+    <!-- Validate token, admin operation -->
+    
     <method name="GET" id="validateToken">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Validate token">
             <para role="shortdesc">Verify that the specified token is valid, 
@@ -817,6 +855,9 @@
                 request can handle an ItemNotFound (<code>404</code>) error for an invalid token.</para>
             <para>If the operation is successful, rerun the tenant credentials to return the permissions 
                 relevant to a particular client.</para>
+            <para>Users with the <code>identity:default</code> role can use this operation to validate their 
+                own token. Users with the <code>identity:admin</code> or 
+                <code>idenity:user-admin</code> role can validate the token for any account user.</para>
             <tip><title>Tips</title>
                 <para>
                     Administrators can use this call to return information about an impersonator:
@@ -872,6 +913,7 @@
                 </wadl:doc>
             </representation>
         </response> &commonFaults; &getFaults; </method>
+    
     <method name="HEAD" id="checkToken">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Check token">
             <para role="shortdesc">Check that a token is valid and that it belongs to a

@@ -1,0 +1,13 @@
+# wadl2rst config file
+#
+
+src/wadl/identity-admin.wadl:
+    title: Rackspace Cloud Identity Developer Guide - API v2.0
+    output_directory: src/rst/api-operations
+
+src/wadl/RAX-AUTH.wadl:
+    title: Rackspace Cloud Identity Developer Guide - API v2.0
+    output_directory: src/rst/api-operations
+
+
+

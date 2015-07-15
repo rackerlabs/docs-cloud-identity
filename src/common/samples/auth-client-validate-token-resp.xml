@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<access 
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+    xmlns="http://docs.openstack.org/identity/api/v2.0" 
+    xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+    xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+    xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+    xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+    xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+    <token id="1ae706a797b541698b849158488b45678" expires="2015-07-15T21:27:47.458Z">
+        <tenant id="123456" name="123456"/>
+        <rax-auth:authenticatedBy>
+            <rax-auth:credential>APIKEY</rax-auth:credential>
+        </rax-auth:authenticatedBy>
+    </token>
+    <user id="7379368b171b4eddbc7bfc8d30a12345" name="accountusername" rax-auth:defaultRegion="DFW">
+        <roles>
+            <role id="10000112" name="billing:admin" description="Billing Admin Access" serviceId="bde1268ebabeeabb70a0e702a4626977c3312345" rax-auth:propagate="false"/>
+            <role id="10000113" name="admin" description="Full Access Admin Role for Account User" serviceId="bde1268ebabeeabb70a0e702a4626977c3312345" rax-auth:propagate="false"/>
+            <role id="12" name="compute:default" description="A Role that allows a user access to keystone Service methods" serviceId="a45b14e394a57e3fd4e45d59ff3693ead2012345" tenantId="123456" rax-auth:propagate="true"/>
+        </roles>
+    </user>
+</access>

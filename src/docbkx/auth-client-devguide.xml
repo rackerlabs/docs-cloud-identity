@@ -52,6 +52,30 @@
 		</abstract>
 		<revhistory>
 			<revision>
+				<date>2015-07-14</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated the <link xlink:href="Limits-d1e909.html">Limits</link> information to remove incorrect information about limit API operations. The rate limits for 
+							&CIS; are processed by the Repose service.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the multi-factor authentication operations to add headers to the XML and JSON 
+								request and response examples.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2015-06-26</date>
+				<revdescription>
+					<para>Updated the Token operations to include the 
+						<link xlink:href="GET_user-validateToken_v2.0_tokens__tokenId__Token_Calls.html">Validate token</link> 
+						operation. This operation is available to account users or client application developers who want to verify 
+						that the authentication token is valid before submitting subsequent API requests.</para>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-06-23</date>
 				<revdescription>
 					<para>Updated the following multi-factor authentication operations:</para>
