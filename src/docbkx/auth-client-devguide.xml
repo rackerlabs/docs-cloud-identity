@@ -52,6 +52,29 @@
 		</abstract>
 		<revhistory>
 			<revision>
+			<date>2015-09-02</date>
+				<revdescription>
+					<para>Updated Identity endpoint information to address in API requests to avoid connection issues caused by DNS changes.</para>
+				</revdescription>
+		</revision>
+			<revision>
+				<date>2015-08-11</date>
+				<revdescription>
+				<itemizedlist>
+					<listitem>
+						<para>Updated <link xlink:href="GET_admin-listCredentials_v2.0_users__userId__OS-KSADM_credentials_User_Calls.html">List user credentials</link> 
+							and <link xlink:href="GET_getUserCredential_v2.0_users__userId__OS-KSADM_credentials_RAX-KSKEYapiKeyCredentials_User_Calls.html">List user API key credentials</link> operations to correct 
+							request and response examples.</para>
+					</listitem>
+					<listitem>
+						<para>Updated 
+							<link xlink:href="POST_createMobilePhone_v2.0_users__userId__RAX-AUTH_multi-factor_mobile-phones_Multifactor_Calls.html">Add mobile phone operation</link> 
+							to correct response example.</para>
+					</listitem>
+				</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2015-07-14</date>
 				<revdescription>
 					<itemizedlist>
@@ -1012,6 +1035,7 @@
 	</info>
 	<xi:include href="chapters/identity-quickstart.xml"/>
 	<xi:include href="chapters/identity-overview.xml"/>
+	<xi:include href="chapters/section-identity-concepts.xml"/>
 	<xi:include href="chapters/identity-generalinfo.xml"/>
 	<!-- this chapter is generated from the WADLs -->
 	<xi:include href="chapters/identity-operations-client.xml"/>

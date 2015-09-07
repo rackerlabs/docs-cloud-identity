@@ -251,8 +251,6 @@
             </representation>
         </response>&commonFaults; &getFaults;</method>
     
-    
-    
     <method name="GET" id="admin-getVersionInfo">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Show version details">
@@ -548,6 +546,20 @@
                     </xsdxt:sample>
                 </wadl:doc>
             </representation>
+            <representation>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: XML request">
+                        <xsdxt:code href="../common/samples/auth_password_scoped_req.xml"/>
+                    </xsdxt:sample>
+                </wadl:doc>
+            </representation>
+            <representation>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: JSON request">
+                        <xsdxt:code href="../common/samples/auth_password_scoped_req.json"/>
+                    </xsdxt:sample>
+                </wadl:doc>
+            </representation>
         </request>
             <response status="200">
                 <wadl:doc  xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="OK">Operation completed successfully. See response examples.</wadl:doc>  
@@ -568,14 +580,14 @@
                 </representation>
                 <representation>
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: XML request">
+                        <xsdxt:sample title="Request scoped token to set up multi-factor authentication: XML request">
                             <xsdxt:code href="../common/samples/auth_password_scoped_req.xml"/>
                         </xsdxt:sample>
                     </wadl:doc>
                 </representation>
                 <representation>
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                        <xsdxt:sample title="Request scoped token to set up multi-factor authentication: MFA-SETUP token: JSON request">
+                        <xsdxt:sample title="Request scoped token to set up multi-factor authentication: JSON request">
                             <xsdxt:code href="../common/samples/auth_password_scoped_req.json"/>
                         </xsdxt:sample>
                     </wadl:doc>
@@ -720,14 +732,12 @@
         </response>
         <response status="403">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="User disabled">
-                <para>The request is valid, but you do not have permission to access the requested resource. 
-                    Check with the account administrator to request access.</para></wadl:doc>
-        </response>
-        <response status="403">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Forbidden">
-                <para>The request is valid, but your account requires  
-                    multi-authentication. <link xlink:href="proc_mfa_admin.html">Request a scoped multi-factor authentication token (SETUP-MFA)</link> 
-                    to set up multi-factor authentication for your account. Check with the account administrator to request access.</para></wadl:doc>
+                <para>This error can be returned if the request is valid, but you do not have permission to access the requested resource. If your 
+                    account requires multi-factor authentication, use the Authenticate with multifactor authentication passcode operation to 
+                    complete the authentication process.  If multi-factor authentication is not configured, you might be 
+                    prompted to <link xlink:href="proc_mfa_admin.html">Request a scoped multi-factor authentication token (SETUP-MFA)</link>.
+                 </para>
+                </wadl:doc>
         </response>
         <response status="404">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Item not found">The requested resource was not found. The subject token in X-Subject-Token  
@@ -823,7 +833,7 @@
             </representation>
             <representation mediaType="application/json" element="access">
                 <wadl:doc xmlns="http://docbook/org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-client-validate-token-json-http-req.txt"/>
+                    <xsdxt:code href="../common/samples/auth-client-validate-token-resp.xml"/>
                 </wadl:doc>
             </representation>
         </request>
@@ -837,7 +847,6 @@
             </representation>
             <representation mediaType="application/json" element="access">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt"/>
                     <xsdxt:code href="../common/samples/auth-client-validate-token-resp.json"/>
                 </wadl:doc>
             </representation>
@@ -1349,7 +1358,7 @@
             </para>
         </wadl:doc>
         <request>
-            <representation  mediaType="application/xml" element="users">
+            <representation  mediaType="application/http" element="users">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/auth-list-users-http-req-xml.txt"/>
                 </wadl:doc>
@@ -1364,7 +1373,7 @@
                 </wadl:doc>
             </param>
             </representation>
-            <representation mediaType="application/json" element="users">
+            <representation mediaType="application/http" element="users">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/auth-list-users-http-req-json.txt"/>
                 </wadl:doc>
@@ -1372,9 +1381,13 @@
         </request>
         <response status="200">
             <doc xml:lang="EN" title="OK">The request has succeeded.</doc>
-            <representation mediaType="application/xml" element="users">
+            <representation mediaType="application/http" element="users">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="users">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/auth-list-users.xml"/>
                 </wadl:doc>
                 <param name="users" style="plain" type="object" required="true">
@@ -1384,9 +1397,13 @@
                 </param>
                 &UserInfoResponse;
           </representation>
-            <representation mediaType="application/json" element="users">
+            <representation mediaType="application/http" element="users">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/json" element="users">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/auth-list-users.json"/>
                 </wadl:doc>
             </representation>
@@ -1412,9 +1429,13 @@
         </wadl:doc>
         <response status="200">
             <doc xml:lang="EN" title="OK">The operation completed successfully.</doc>
-            <representation mediaType="application/xml" element="identity:user">
+            <representation mediaType="application/http" element="identity:user">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by id: XML response">
                     <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="identity:user">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get user by id: XML response">
                     <xsdxt:code href="../common/samples/auth-get-user-by-id.xml"/>
                 </wadl:doc>
             </representation>
@@ -1457,15 +1478,15 @@
             </note>
         </wadl:doc>
         <request>
+            <representation mediaType="application/http" element="user">
+                <wadl:doc xml:lang="EN" title="Update user request: XML">
+                    <xsdxt:code href="../common/samples/auth-user-update-http-req-xml.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="user">
                 <wadl:doc xml:lang="EN" title="Update user request: XML">
                     <xsdxt:code href="../common/samples/updateuser.xml"/>
                 </wadl:doc>
-                <param name="id" style="plain"
-                    type="xsd:string" required="true">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user
-                        ID.</wadl:doc>
-                </param>
                 <param name="name" style="plain"
                     type="xsd:string" required="true">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">The user name. The
@@ -1500,9 +1521,19 @@
                     </wadl:doc>
                 </param>
             </representation>
+            <representation mediaType="application/http" element="user">
+                <wadl:doc xml:lang="EN" title="Update user request header: JSON">
+                    <xsdxt:code href="../common/samples/auth-user-update-http-req-json.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/json" element="user">
                 <wadl:doc xml:lang="EN" title="Update user request: JSON">
                     <xsdxt:code href="../common/samples/updateuser.json"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/http" element="user">
+                <wadl:doc xml:lang="EN" title="Update user password request header: XML">
+                    <xsdxt:code href="../common/samples/auth-user-update-http-req-xml.txt"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/xml" element="user">
@@ -1590,7 +1621,7 @@
     <method name="GET" id="admin-listCredentials">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List credentials">
             <para role="shortdesc">
-                List credentials.
+                List available credentials for the specified user.
             </para>
             <para>List credentials.</para>
         </wadl:doc>
@@ -1604,9 +1635,22 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"> Allows us to set size of page when paging through list of users. </wadl:doc>
             </param>
         </request>
-    -->    
+    -->   
+        <request>
+            <representation mediaType="application/http" element="user">
+                <wadl:doc xml:lang="EN" title="List credentials: XML request header">
+                    <xsdxt:code href="../common/samples/auth-user-list-credentials-req-xml.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/http" element="user">
+                <wadl:doc xml:lang="EN" title="List credentials: JSON request header">
+                    <xsdxt:code href="../common/samples/auth-user-list-credentials-req-json.txt"/>
+                </wadl:doc>
+            </representation>
+            
+        </request>
         <response status="200">
-            <doc title="OK">The request completed successfully.</doc>
+            <wadl:doc title="OK">The request completed successfully.</wadl:doc>
             <representation mediaType="application/json" element="apiKeyCredentials">
             <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                 <xsdxt:code href="../common/samples/credentialswithapikey.json"/>
@@ -1632,20 +1676,31 @@
                 use the <link xlink:href="GET_admin-listUsers_v2.0_users_User_Calls.html">List users</link> operation to find it.
             </para>
         </wadl:doc>
-        <response status="200">
-            <doc title="OK">The request completed successfully.</doc>
-            <representation mediaType="application/json" element="apiKeyCredentials">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
+        <request>
+            <representation mediaType="application/http" element="user">
+                <wadl:doc xml:lang="EN" title="List API key credentials: XML request header">
+                    <xsdxt:code href="../common/samples/auth-user-list-api-credentials-req-xml.txt"/>
                 </wadl:doc>
             </representation>
-            
+            <representation mediaType="application/http" element="user">
+                <wadl:doc xml:lang="EN" title="List API key credentials: JSON request header">
+                    <xsdxt:code href="../common/samples/auth-user-list-credentials-req-json.txt"/>
+                </wadl:doc>
+            </representation>
+        </request>
+        
+        <response status="200">
+            <wadl:doc title="OK">The request completed successfully.</wadl:doc>
             <representation mediaType="application/xml" element="apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <xsdxt:code href="../common/samples/apiKeyCredentials.xml"/>
                 </wadl:doc>
             </representation>
-          
+            <representation mediaType="application/json" element="apiKeyCredentials">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <xsdxt:code href="../common/samples/apiKeyCredentials.json"/>
+                </wadl:doc>
+            </representation>
         </response>
         &commonFaults;
         &getFaults;
@@ -1678,7 +1733,7 @@
           
         </request>
         <response status="200">
-            <doc title="OK">The request completed successfully.</doc>
+            <wadl:doc title="OK">The request completed successfully.</wadl:doc>
             <representation mediaType="application/json" element="apiKeyCredentials">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN">

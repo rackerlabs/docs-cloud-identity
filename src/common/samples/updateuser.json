@@ -1,6 +1,5 @@
 {
   "user": {
-    "id": "123456",
     "username": "jqsmith",
     "email": "john.smith@example.org",
     "enabled": true

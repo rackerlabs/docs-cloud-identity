@@ -310,7 +310,7 @@
 				<listitem>
 					<para>Passcode credentials for accounts that require multi-factor authentication: session Id and passcode
 						sent to <link xlink:href="proc_mfa_setup-phone.html"> a
-							mobile </link> associated with the user account.</para>
+							mobile phone</link> associated with the user account.</para>
 				</listitem>
 				<listitem>
 					<para>OTP passcode credentials for accounts that require multi-factor authentication: session Id and an
@@ -360,7 +360,6 @@
 				<wadl:method href="#authenticateAsRacker"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/RAX-AUTH.wadl#federation">
-				<!-- federation - get token by SAML -->
 				<wadl:method href="#getTokenBySAML"/>
 			</wadl:resource>
 			<wadl:resource href="../../wadl/identity-admin.wadl#tokenById">

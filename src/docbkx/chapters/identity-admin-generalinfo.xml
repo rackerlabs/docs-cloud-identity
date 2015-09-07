@@ -24,8 +24,6 @@
 	
 	<!--Note the Admin concepts section contains a workflow diagram not included in Dev guide.  
 		That's why the xi:include content is conditional.-->
-	<xi:include href="identity-concepts-admin.xml"/>
-	<xi:include href="section-identity-concepts.xml"/>
     <xi:include href="../shared/section_gs_curl_how_curl_works.xml"/>
 	<xi:include href="section-ReqRespTypes.xml"/>
 	<xi:include href="section-authReqResp_annotated.xml"/>

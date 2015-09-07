@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section [
+<!DOCTYPE chapter [
 <!ENTITY % common SYSTEM "../../common/common.ent">
 %common;
 ]>
-<section 
+<chapter 
     xmlns="http://docbook.org/ns/docbook" 
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Identity-Concpts">
@@ -38,9 +38,8 @@
                         
                     <listitem condition="admin">
                             <para>
-                                <link xlink:href="section_assign_roles_3.html">Assigning roles to account
-                                    users</link></para>
-                        
+                                <link xlink:href="section_assign_roles_3.html">Assigning roles to account users</link>
+                            </para>
                         </listitem>
                    </itemizedlist>
                 </para>
@@ -170,6 +169,21 @@
                     interpreted. For example, a role that grants access to certain resources or
                     capabilities within one service can grant access to completely different
                     resources and capabilities on different service.</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><emphasis role="bold">Identity provider</emphasis></term>
+            <listitem>
+                <para>An identity system external to the Rackspace Identity service that Identity service 
+                    administrators have configured as a trusted source of authenticated user information. 
+                    Authentication information from the Identity 
+                    registered as a trusted source of authenticated user information. Identity service 
+                    administrators 
+                    as a trusted source of authenticated user information. Identity service administrators 
+                    configure identity providers by using the 
+                    system that issues authentication credentials that dentity provider set up in the Identity service configuration as  
+                    trusted source of authenticated user information.  
+                </para>
             </listitem>
         </varlistentry>
         <varlistentry>
@@ -325,4 +339,4 @@
             </listitem>
         </varlistentry>
     </variablelist>   
-</section>
+</chapter>

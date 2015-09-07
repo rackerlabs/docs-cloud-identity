@@ -1639,7 +1639,12 @@
             <note><para>This example assumes that the endpoint URL, user ID, and authentication token have been exported to these environment variables: <code>AUTH_URL, USER_ID</code>, and <code>AUTH_TOKEN</code>.</para></note>
       </wadl:doc>
         <request>
-            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+            <representation mediaType="text/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML request header">
+                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-req-header-xml.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="text/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a mobile phone: XML request">
                 <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-req.xml"/>
                 </wadl:doc>
@@ -1649,11 +1654,16 @@
                     </wadl:doc>
                 </param>
             </representation>
+            <representation mediaType="text/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request header">
+                    <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-req-header-json.txt"/>
+                </wadl:doc>                
+            </representation> 
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add mobile phone: JSON request">
                     <xsdxt:code href="../common/samples/auth-MobilePhoneUser-create-req.json"/>
                 </wadl:doc>                
-            </representation> 
+            </representation>
         </request>
         
         <response status="201">
@@ -2021,24 +2031,36 @@
                 operation to pair the device with your account.</para>
         </wadl:doc>
         <request>
+            <representation mediaType="text/xml" element="RAX-AUTH:otpDevice" >
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: XML request header">
+                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-req-xml.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: XML request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-req-xml.txt"/>
                     <xsdxt:code href="../common/samples/auth-otpdevice-create-req.xml" />
+                </wadl:doc>
+            </representation>
+            <representation mediaType="text/xml" element="RAX-AUTH:otpDevice" >
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: JSON request header">
+                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-req-json.txt"/>
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: JSON request">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-req-json.txt"/>
                     <xsdxt:code href="../common/samples/auth-otpdevice-create-req.json" />
                 </wadl:doc>
             </representation>
         </request>
         <response status="201">
             <wadl:doc title="Success">The OTP device has been added to the user account.</wadl:doc>
+            <representation mediaType="text/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: XML response header">
+                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-resp-xml.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add an OTP device: XML response">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-resp-xml.txt"/>
                     <xsdxt:code href="../common/samples/auth-otpdevice-create-resp.xml"/>
                 </wadl:doc>
                 <param name="Location" style="header" type="xsd:anyURI" required="true">
@@ -2066,9 +2088,13 @@
                     </wadl:doc>
                 </param>
             </representation>
+            <representation mediaType="text/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a moble phone: JSON response header">
+                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-resp-json.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/json" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Add a moble phone: JSON response">
-                    <xsdxt:code href="../common/samples/auth-otpdevice-create-http-resp-json.txt"/>
                     <xsdxt:code href="../common/samples/auth-otpdevice-create-resp.json"/>
                 </wadl:doc>
             </representation>
@@ -2097,7 +2123,7 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get OTP devices for account: XML request">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Get OTP devices for account: XML request header">
                     <xsdxt:code href="../common/samples/auth-otpdevice-get-http-req-xml.txt"/>
                 </wadl:doc>
                 <param name="otpDevice" style="plain" type="object" >
@@ -2115,15 +2141,23 @@
         </request>
         <response status="200">
             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
+            <representation mediaType="text/xml" element="RAX-AUTH:otpDevices">
+                <wadl:doc xml:lang="EN" title="Get OTP devices for account: XML response">
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt" />
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
                 <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt" />
                     <xsdxt:code href="../common/samples/auth-otpdevice-get-resp.xml" />
+                </wadl:doc>
+            </representation>
+            <representation mediaType="text/xml" element="RAX-AUTH:otpDevices">
+                <wadl:doc xml:lang="EN" title="Get OTP devices for account: JSON response">
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt" />
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt" />
                     <xsdxt:code href="../common/samples//auth-otpdevice-get-resp.json" />
                 </wadl:doc>
             </representation>
@@ -2155,7 +2189,11 @@
             <wadl:doc xmlns="http://docbook.org/ns/docbook" title="OK" xml:lang="EN">The request succeeded.</wadl:doc>
             <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
                 <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt" />
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
+                <wadl:doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/auth-otpdevices-get-resp.xml" />
                 </wadl:doc>
                 <param name="otpDevices" style="plain" type="object" >
@@ -2169,15 +2207,23 @@
                     </wadl:doc>
                 </param>
             </representation>
+            <representation mediaType="application/xml" element="RAX-AUTH:otpDevices">
+            <wadl:doc xml:lang="EN">
+                <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt"/>
+            </wadl:doc>
+            </representation>
             <representation mediaType="application/xml">
                 <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-xml.txt" />
                     <xsdxt:code href="../common/samples//auth-otpdevices-get-resp.xml" />
+                </wadl:doc>
+            </representation>
+            <representation mediaType="text/xml" element="RAX-AUTH:otpDevices">
+                <wadl:doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt" />
                 </wadl:doc>
             </representation>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/auth-200-http-resp-json.txt" />
                     <xsdxt:code href="../common/samples//auth-otpdevices-get-resp.json" />
                 </wadl:doc>
             </representation>
@@ -2233,8 +2279,8 @@
             </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml" element="RAX-AUTH:otpDevice" >
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete OTP device by ID: XML request">
+            <representation mediaType="text/json" element="RAX-AUTH:otpDevice">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Delete OTP device by ID: XML request header">
                     <xsdxt:code href="../common/samples/auth-otpdevice-delete-http-req-xml.txt"/>
                 </wadl:doc>
             </representation>
@@ -2262,8 +2308,7 @@
     <method id="updateMultifactorSettings" name="PUT">
         <wadl:doc xmlns="http://docbook.org/ns/docbook"
             title="Updates multi-factor authentication settings on account">
-            <para role="shortdesc">Updates the multi-factor authentication settings for the specified account.
-            </para>
+            <para role="shortdesc">Updates the multi-factor authentication settings for the specified account.</para>
         </wadl:doc>
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">    
             <note><para>
@@ -2296,8 +2341,12 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: XML request">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: XML request header">
                     <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-xml.txt"/>
+                </wadl:doc>
+            </representation>
+            <representation mediaType="application/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable account for multi-factor authentication: XML request">
                     <xsdxt:code href="../common/samples/auth-MFAUserEnable-req.xml"/>
                 </wadl:doc>
                 <param name="enabled" style="plain" type="xsd:Boolean" required="false">
@@ -2342,22 +2391,34 @@
                             does not make any changes to the account.</para></wadl:doc>
                 </param>
             </representation>
+            <representation mediaType="application/json">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable multi-factor authentication on account: JSON request header">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
+                </wadl:doc>
+            </representation>
             
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Enable multi-factor authentication on account: JSON request">
-                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
                     <xsdxt:code href="../common/samples/auth-MFAUserEnable-req.json"/>
                 </wadl:doc>
             </representation>
             
-            
+            <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request header">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/xml" xml:lang="EN" element="capi:element">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: XML request">
-                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
                     <xsdxt:code href="../common/samples/auth-MFAUserDisable-req.xml"/>
                 </wadl:doc>
             </representation>
             
+            <representation mediaType="text/json" xml:lang="EN" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: JSON request header">
+                    <xsdxt:code href="../common/samples/auth-mfasettings-update-http-req-json.txt"/>
+                </wadl:doc>
+            </representation>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Disable multi-factor authentication on account: JSON request">
                     <xsdxt:code href="../common/samples/auth-MFAUserDisable-req.json"/>
@@ -2424,13 +2485,13 @@
             </para>
         </wadl:doc>
         <request>
-          <representation mediaType="application/xml" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove multi-factor authentication: XML request">
+          <representation mediaType="text/xml" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove multi-factor authentication: XML request header">
                    <xsdxt:code href="../common/samples/auth-mfasettings-delete-http-req-xml.txt"/>
                     </wadl:doc>     
            </representation>
-            <representation mediaType="application/json" element="capi:element">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove multi-factor authentication: JSON request">
+            <representation mediaType="text/json" element="capi:element">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" title="Remove multi-factor authentication: JSON request header">
                     <xsdxt:code href="../common/samples/auth-mfasettings-delete-http-req-json.txt"/>
                 </wadl:doc>     
             </representation>

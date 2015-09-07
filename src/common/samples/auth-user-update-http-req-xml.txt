@@ -1,0 +1,5 @@
+POST /v2.0/users/123456 HTTP/1.1
+Host: identity.api.rackspacecloud.com
+Accept: application/xml
+Content-type: application/xml
+X-Auth-Token: eaf8345057414cd397d0543123456789
