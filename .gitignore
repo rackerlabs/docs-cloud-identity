@@ -1,5 +1,6 @@
 /target
 /.project
+/_build
 
 # NetBeans user build actions
 nbactions.xml
@@ -92,11 +93,8 @@ src/docbkx/chapters/db2rst.py
 
 pom.xml
 
-pom.xml
-
 livesphinx/
 
-*.py
 
 rtd/.Python
 
