@@ -1,6 +1,7 @@
 /target
 /.project
 /_build
+_build
 
 # NetBeans user build actions
 nbactions.xml

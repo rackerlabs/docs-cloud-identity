@@ -1,15 +1,16 @@
-
-
 .. meta::
-   :description: Rackspace Cloud Images API Reference
-   :keywords: Rackspace, Cloud Images ReST API, API resources, API methods
+   :description: Rackspace Cloud Identity API Reference
+   :keywords: Rackspace, Cloud Identity ReST API, API resources, API methods
        
 .. toctree:: 
    :maxdepth: 2
 
-   images-operations
-   image-sharing-operations
-   image-tag-operations
-   image-task-operations
-   image-schema-operations
-   
+   version-operations
+   extensions-operations
+   users-operations
+   role-operations
+   token-operations
+   tenant-operations
+   domain-operations
+   secret-answer-operations
+   multifactor-client-operations
