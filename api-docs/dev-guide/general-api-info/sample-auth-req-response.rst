@@ -9,7 +9,7 @@ and API key credentials.
 
 ..  note:: 
     For more information, see the 
-    authentication instructions in the `Quickstart Guide <quickstart>`_ 
+    authentication instructions in the :ref:`Quickstart Guide <quickstart>`
     and additional
     authentication examples in the :ref:`Token operations <token-operations>` API
     reference pages.

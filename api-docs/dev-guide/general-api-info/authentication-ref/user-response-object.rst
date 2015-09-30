@@ -14,8 +14,8 @@ such as `Identity:default` to authenticate and gain access to Identity
 service capabilities and any other RBAC roles assigned to the
 account.
 
-Responses can be in `JSON <auth-resp-example-user-resp-json>`_ or
-`XML <auth-resp-example-user-resp-xml>`_. For details, see
+Responses can be in :ref:`JSON <auth-resp-example-user-resp-json>` or
+:ref:`XML <auth-resp-example-user-resp-xml>`. For details, see
 the `user object attribute descriptions <auth-resp-user-obj-attribs>` in
 the table following the examples.
 

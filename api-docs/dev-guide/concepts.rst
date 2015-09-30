@@ -167,12 +167,12 @@ Tenant
 
 	Rackspace Cloud has the following two tenant types:
 
-	   - The Mosso tenant (Mosso account) includes the collection of resources commonly 
-	      associated with services such as Cloud Servers, Cloud Database, Cloud Load Balancers.
+	- The Mosso tenant (Mosso account) includes the collection of resources commonly 
+	  associated with services such as Cloud Servers, Cloud Database, Cloud Load Balancers.
       
 
-	   - The NAST tenant (NAST account) includes the collection of
-   	     resources commonly associated with Cloud Files and Cloud Files CDN.
+	- The NAST tenant (NAST account) includes the collection of
+   	  resources commonly associated with Cloud Files and Cloud Files CDN.
    	   
 
 	Typically, a service provider determines how tenants are defined and

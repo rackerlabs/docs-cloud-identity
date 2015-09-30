@@ -28,8 +28,8 @@ documentation`_.
 
 +------------------------+----------------------------------------------------+
 | Service type           | Description                                        |
-+==============================+==============================================+
-| `compute`              | Services of this type provide managed VMs and      |
++========================+====================================================+
+|`compute`               | Services of this type provide managed VMs and      |
 |                        | bare-metal servers in the cloud.                   |
 |                        |                                                    |
 |                        | Cloud Servers is the name of a Rackspace Cloud     |
@@ -57,7 +57,7 @@ documentation`_.
 |                        | Cloud service of this type. The Rackspace          |
 |                        | service is compatible with the                     |
 |                        | `OpenStack Images (Glance) service`_ .             |
-+------------------------------+----------------------------------------------+
++------------------------+----------------------------------------------------+
 | `object-store`         | Services of this type provide scalable cloud       |
 |                        | object storage for files and media.                |
 |                        |                                                    |
@@ -160,7 +160,7 @@ documentation`_.
 |                        |                                                    |
 |                        | Cloud Monitoring is the name of a Rackspace        |
 |                        | Cloud service of this type.                        |
-+------------------------------+----------------------------------------------+
++------------------------+----------------------------------------------------+
 | `rax:orchestration`    | Services of this type enable you to automate and   |
 |                        | standardize cloud infrastructure setup and         |
 |                        | management.                                        |
