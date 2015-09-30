@@ -1,21 +1,32 @@
-.. _general-api-info:
+.. _general-api-information: 
 
 General API Information
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Cloud Images API is defined as a RESTful HTTP service that uses all aspects of the
-HTTP protocol, including methods, URIs, media types, and response codes. Review the topics 
-in this section to learn more about these API components and how to access and use the 
-API for this service. 
+The Rackspace Cloud Identity authentication service allows clients to obtain tokens 
+that can be used to access cloud services like those provided by Rackspace and
+OpenStack.
 
-The Cloud Images API supports JSON data serialization request and response formats.
+The authentication service API is implemented using a RESTful web
+service interface. All requests to authenticate and operate against the
+authentication service should be performed using SSL over HTTP (HTTPS)
+on TCP port 443.
+
 
 .. toctree:: :hidden:
    :maxdepth: 2
    
-   API requests and response <request-response>
-   cURL quick reference <how-curl-commands-work>   
-   Authentication <authenticate>  
-   role-based-access-control   
-   service-access-endpoints
-
+   how-curl-works
+   sample-auth-req-response
+   svc-catalog-ovw
+   use-mfa-ops
+   role-based-access-control
+   identity-service-endpoints
+   request-response-types
+   date-time-format
+   paginated-collections
+   limits
+   faults
+   contract-versions
+   extensions
+   namespaces

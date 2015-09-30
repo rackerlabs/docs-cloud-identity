@@ -6,8 +6,7 @@ Pricing and terms of service
 The Rackspace Cloud Identity service API provides authentication, authorization, and administrative 
 service for customers with Rackspace Cloud accounts. You are not charged for using the 
 Rackspace Cloud Identity API. You only pay for the Rackspace Cloud services that you use 
-after authenticating based on the `Rackspace Cloud pricing`_ schedule.
-
+after authenticating based on the `Rackspace Cloud pricing schedule`_.
 
 The service level agreement (SLA) for Rackspace Cloud Services is included in the `Rackspace Cloud SLA`_.
 
