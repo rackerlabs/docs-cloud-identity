@@ -29,7 +29,7 @@ and user accounts.
 
    Administrators and customers with sufficient access rights can
    create, manage, and assign RBAC roles by using the 
-   :ref:`role operations <role-operations>` available through the Identity
+   :ref:`role operations <roles-operations>` available through the Identity
    service API.
 
 Roles can be configured with a global or product-specific scope.
