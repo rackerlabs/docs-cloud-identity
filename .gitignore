@@ -76,14 +76,6 @@ src/common/js/xslt/schema.xslt
 
 .tox/checkbuild/.Python
 
-*.pyc
-
-*.bat
-
-makebzdocs
-
-Makefile
-
 src/wadl/RAX-AUTH-summarized.html
 
 src/docbkx/db2rst.py
@@ -104,3 +96,13 @@ rtd/bin/activate
 rtd/bin/activate.csh
 
 *.fish
+
+src/rst/admin/api-operations/delete-delete-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey:apikeycredentials.rst
+
+src/rst/admin/api-operations/delete-deletes-a-user-v2.0-users-userid.rst
+src/admin
+src/rst/raxauth/
+src/rst/osks/
+src/wadl2rst/
+src/rst/api-operations/
+src/rst/admin/
