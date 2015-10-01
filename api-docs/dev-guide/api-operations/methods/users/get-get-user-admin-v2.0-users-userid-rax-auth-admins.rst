@@ -1,21 +1,26 @@
-.. _get-show-version-details-v2.0:
+.. _get-user-admin-v2.0:
 
-Show version details
+Get user admin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /v2.0
+    GET /v2.0/users/{userId}/RAX-AUTH/admins
 
-Shows details for the Identity API v2.0.
+Account users with the ``identity:user-admin`` or ``identity:default`` role can use 
+this operation to identify the administrator or point of contact for a user account 
+if they have questions or need assistance regarding user or role management. 
+
+This request returns the following identifying information about the administrator: 
+domain name, domain ID, email address, status, user ID and user name.
+
 
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The operation completed  |
-|                          |                         |successfully.            |
+|200                       |OK                       |The request succeeded.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -61,81 +66,64 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the header and URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |Header                   |A valid admin            |
+|                          |String *(Required)*      |authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|{userId}                  |URI                      |The unique, system-      |
+|                          |String *(Required)*      |generated user ID for an |
+|                          |                         |account.                 |
++--------------------------+-------------------------+-------------------------+
+
+
 This operation does not accept a request body.
 
 Response
 """"""""""""""""
 
-**Example: Show version details: JSON response**
+****Example:  Get user admin: XML response**
+
+
+.. code::
+
+   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+   <users xmlns="http://docs.openstack.org/identity/api/v2.0" 
+       xmlns:ns2="http://www.w3.org/2005/Atom"
+       xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+       xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+       xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+       xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
+       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
+       <user id="10022879" 
+           username="JuserAdmin" 
+           enabled="true" 
+           display-name="JuserAdmin" 
+           rax-auth:defaultRegion="USA" 
+           rax-auth:domainId="5701091"/>
+   </users>
+
+
+****Example:  Get user admin: JSON response**
 
 
 .. code::
 
    {
-       "version": {
-           "id": "v2.0",
-           "links": [
-               {
-                   "href": "https://identity.api.rackspacecloud.com/v2.0",
-                   "rel": "self"
-               },
-               {
-                   "href": "http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf",
-                   "rel": "describedby",
-                   "type": "application/pdf"
-               },
-               {
-                   "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl",
-                   "rel": "describedby",
-                   "type": "application/vnd.sun.wadl+xml"
-               }
-           ],
-           "media-types": {
-               "values": [
-                   {
-                       "base": "application/xml",
-                       "type": "application/vnd.openstack.identity+xml;version=2.0"
-                   },
-                   {
-                       "base": "application/json",
-                       "type": "application/vnd.openstack.identity+json;version=2.0"
-                   }
-               ]
-           },
-           "status": "CURRENT",
-           "updated": "2012-01-21T11:33:21-06:00"
-       }
+       "users": [
+           {
+               "RAX-AUTH:defaultRegion": "",
+               "RAX-AUTH:domainId": "12345",
+               "email": "userAdmin@rack.com",
+               "enabled":"true",
+               "id": "10022879",
+               "username": "JuserAdmin"
+           }
+       ]
    }
-
-
-**Example: Show version details: XML response**
-
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8"?>
-   <version xmlns="http://docs.openstack.org/common/api/v1.0"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            id="v2.0" status="CURRENT" updated="2011-01-21T11:33:21-06:00">
-   
-        <media-types>
-            <media-type base="application/xml"
-               type="application/vnd.openstack.identity+xml;version=2.0"/>
-            <media-type base="application/json"
-               type="application/vnd.openstack.identity+json;version=2.0"/>
-        </media-types>
-   
-        <atom:link rel="self"
-            href="https://identity.api.rackspacecloud.com/v2.0/"/>
-   
-       <atom:link rel="describedby"
-                  type="application/pdf"
-                  href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
-   
-       <atom:link rel="describedby"
-                  type="application/vnd.sun.wadl+xml"
-                  href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
-   </version>
 
 
 

@@ -1,13 +1,19 @@
-.. _get-show-version-details-v2.0:
+.. _get-get-extension-details-v2.0-extensions-alias:
 
-Show version details
+Get extension details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /v2.0
+    GET /v2.0/extensions/{alias}
 
-Shows details for the Identity API v2.0.
+This operation returns detailed information about the specified extension. 
+
+Get information about a specific extension by looking up the unique alias.
+ 
+If an extension is not available, the GET extensions operation returns a ``404`` 
+error message. For a list of aliases, see :ref:`Extensions <extensions-ovw>`.
+
 
 This table shows the possible response codes for this operation:
 
@@ -60,82 +66,76 @@ This table shows the possible response codes for this operation:
 
 Request
 """"""""""""""""
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{alias}                   |String                   |The extension name.      |
++--------------------------+-------------------------+-------------------------+
 
 This operation does not accept a request body.
+
 
 Response
 """"""""""""""""
 
-**Example: Show version details: JSON response**
+**Example: Get extension details: JSON response**
 
 
 .. code::
 
    {
-       "version": {
-           "id": "v2.0",
-           "links": [
-               {
-                   "href": "https://identity.api.rackspacecloud.com/v2.0",
-                   "rel": "self"
-               },
-               {
-                   "href": "http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf",
-                   "rel": "describedby",
-                   "type": "application/pdf"
-               },
-               {
-                   "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl",
-                   "rel": "describedby",
-                   "type": "application/vnd.sun.wadl+xml"
-               }
-           ],
-           "media-types": {
-               "values": [
-                   {
-                       "base": "application/xml",
-                       "type": "application/vnd.openstack.identity+xml;version=2.0"
-                   },
-                   {
-                       "base": "application/json",
-                       "type": "application/vnd.openstack.identity+json;version=2.0"
-                   }
-               ]
-           },
-           "status": "CURRENT",
-           "updated": "2012-01-21T11:33:21-06:00"
-       }
+     "extension": {
+       "name": "User Metadata Extension",
+       "namespace": "http://docs.rackspacecloud.com/identity/api/ext/meta/v2.0",
+       "alias": "RS-META",
+       "updated": "2011-01-12T11:22:33-06:00",
+       "description": "Allows associating arbritrary metadata with a user.",
+       "links": [
+         {
+           "rel": "describedby",
+           "type": "application/pdf",
+           "href": "http://docs.rackspacecloud.com/identity/api/ext/identity-meta-20111201.pdf"
+         }, {
+           "rel": "describedby",
+           "type": "application/vnd.sun.wadl+xml",
+           "href": "http://docs.rackspacecloud.com/identity/api/ext/identity-cbs.wadl"
+         }
+       ]
+     }
    }
+   
 
-
-**Example: Show version details: XML response**
+**Example: Get extension details: XML response**
 
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <version xmlns="http://docs.openstack.org/common/api/v1.0"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            id="v2.0" status="CURRENT" updated="2011-01-21T11:33:21-06:00">
    
-        <media-types>
-            <media-type base="application/xml"
-               type="application/vnd.openstack.identity+xml;version=2.0"/>
-            <media-type base="application/json"
-               type="application/vnd.openstack.identity+json;version=2.0"/>
-        </media-types>
+   <extension xmlns="http://docs.openstack.org/common/api/v1.0"
+              xmlns:atom="http://www.w3.org/2005/Atom"
+              name="User Metadata Extension"
+              namespace="http://docs.rackspacecloud.com/identity/api/ext/meta/v2.0"
+              alias="RS-META"
+              updated="2011-01-12T11:22:33-06:00">
    
-        <atom:link rel="self"
-            href="https://identity.api.rackspacecloud.com/v2.0/"/>
+       <description>
+           Allows associating arbritrary metadata with a user.
+       </description>
    
        <atom:link rel="describedby"
                   type="application/pdf"
-                  href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
-   
+                  href="http://docs.rackspacecloud.com/identity/api/ext/identity-meta-20111201.pdf"/>
        <atom:link rel="describedby"
                   type="application/vnd.sun.wadl+xml"
-                  href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
-   </version>
+                  href="http://docs.rackspacecloud.com/identity/api/ext/identity-meta.wadl"/>
+   
+   </extension>
+       
+   
+   
 
 
 

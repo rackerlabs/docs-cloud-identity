@@ -1,21 +1,36 @@
-.. _get-show-version-details-v2.0:
+.. _delete-a-user-v2.0:
 
-Show version details
+Delete a user
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /v2.0
+    DELETE /v2.0/users/{userId}
 
-Shows details for the Identity API v2.0.
+Deletes a user.
 
+Rackspace Cloud account administrators (``identity:user-admin``) can use the Delete user 
+operation to remove a user from a Rackspace Cloud account. Administrators can only delete 
+user accounts that are assigned the user role (``identity:default``) with the same tenant 
+id as the Administrator account.
+
+To delete a user, specify the user ID in the request. If you know the user name but not id, 
+use the :ref:`List users <get-list-users-v2.0>` operation to look up account information by name.
+
+.. warning::
+
+   Don’t delete the wrong user! Before submitting the Delete request, use the List 
+   users or :ref:`Get user by id <get-user-by-id-v2.0>` operation to review the user 
+   account information and confirm that you are working with the correct account.
+   
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The operation completed  |
-|                          |                         |successfully.            |
+|204                       |No content               |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -61,81 +76,51 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the header and URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |Header                   |A valid admin            |
+|                          |String *(Required)*      |authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|{userId}                  |URI String               |A user ID assigned by    |
+|                          |String *(Required)*      |system when user is      |
+|                          |                         |added.                   |
++--------------------------+-------------------------+-------------------------+
+
+
+
+**Example:  Delete user HTTP request header: XML**
+
+
+.. code::
+
+   DELETE /v2.0/users/123456 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/xml
+   Content-type: application/xml
+   X-Auth-Token: eaf8345057414cd397d0543123456789
+   
+   
+**Example:  Delete user HTTP request header: JSON**
+
+
+.. code::
+
+   POST /v2.0/users/123456 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/json
+   Content-type: application/json
+   X-Auth-Token: eaf8345057414cd397d0543123456789
+
+
 This operation does not accept a request body.
 
 Response
 """"""""""""""""
 
-**Example: Show version details: JSON response**
-
-
-.. code::
-
-   {
-       "version": {
-           "id": "v2.0",
-           "links": [
-               {
-                   "href": "https://identity.api.rackspacecloud.com/v2.0",
-                   "rel": "self"
-               },
-               {
-                   "href": "http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf",
-                   "rel": "describedby",
-                   "type": "application/pdf"
-               },
-               {
-                   "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl",
-                   "rel": "describedby",
-                   "type": "application/vnd.sun.wadl+xml"
-               }
-           ],
-           "media-types": {
-               "values": [
-                   {
-                       "base": "application/xml",
-                       "type": "application/vnd.openstack.identity+xml;version=2.0"
-                   },
-                   {
-                       "base": "application/json",
-                       "type": "application/vnd.openstack.identity+json;version=2.0"
-                   }
-               ]
-           },
-           "status": "CURRENT",
-           "updated": "2012-01-21T11:33:21-06:00"
-       }
-   }
-
-
-**Example: Show version details: XML response**
-
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8"?>
-   <version xmlns="http://docs.openstack.org/common/api/v1.0"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            id="v2.0" status="CURRENT" updated="2011-01-21T11:33:21-06:00">
-   
-        <media-types>
-            <media-type base="application/xml"
-               type="application/vnd.openstack.identity+xml;version=2.0"/>
-            <media-type base="application/json"
-               type="application/vnd.openstack.identity+json;version=2.0"/>
-        </media-types>
-   
-        <atom:link rel="self"
-            href="https://identity.api.rackspacecloud.com/v2.0/"/>
-   
-       <atom:link rel="describedby"
-                  type="application/pdf"
-                  href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
-   
-       <atom:link rel="describedby"
-                  type="application/vnd.sun.wadl+xml"
-                  href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
-   </version>
+This operation does not return a response body.
 
 
 

@@ -11,7 +11,7 @@ service.
 
 **API operations**
 
-- List extensions
-- Get extension details
+.. include:: methods/get-list-extensions-v2.0-extensions.rst
+.. include:: methods/get-get-extension-details-v2.0-extensions-alias.rst
 
  

@@ -10,12 +10,10 @@ List versions
 
     GET /
 
-Lists information about all Identity API versions.
-
+This operation returns a list of the available Rackspace Cloud Identity API versions.
 
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -67,19 +65,9 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-
-
-
-
 This operation does not accept a request body.
 
-
-
-
-**Example List versions: XML request**
+**Example: List versions: XML request**
 
 
 .. code::
@@ -105,24 +93,12 @@ This operation does not accept a request body.
            </version>
    
    </versions>
-
-
-
 
 
 Response
 """"""""""""""""
 
-
-
-
-
-
-
-
-
-
-**Example List versions: XML response**
+**Example: List versions: XML response**
 
 
 .. code::
@@ -150,10 +126,7 @@ Response
    </versions>
 
 
-
-
-
-**Example List versions: JSON response**
+**Example: List versions: JSON response**
 
 
 .. code::

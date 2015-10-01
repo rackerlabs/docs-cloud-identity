@@ -1,21 +1,30 @@
-.. _get-show-version-details-v2.0:
 
-Show version details
+.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+
+.. _delete-delete-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey:apikeycredentials:
+
+Delete user API key credentials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /v2.0
+    DELETE /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
 
-Shows details for the Identity API v2.0.
+Delete user credentials.
+
+An API key is a credential; you can delete a user's API key with this call. To delete a credential from a user, specify the user ID in the request. If you know the user name but not the ID, use   ` <GET_admin-getUserByName_v2.0_users_User_Calls.html>`__  to   obtain complete identifying information about the user.
+
+
 
 This table shows the possible response codes for this operation:
+
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The operation completed  |
-|                          |                         |successfully.            |
+|204                       |No content               |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -54,6 +63,14 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the API request. Check   |
+|                          |                         |the content-type and     |
+|                          |                         |accept headers included  |
+|                          |                         |in the request.          |
++--------------------------+-------------------------+-------------------------+
 |503                       |Service Fault            |Service is not available.|
 +--------------------------+-------------------------+-------------------------+
 
@@ -61,81 +78,40 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+
+
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |A valid admin            |
+|                          |                         |authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|{userId}                  |String *(Required)*      |A user ID assigned by    |
+|                          |                         |system when user is      |
+|                          |                         |added.                   |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
+
 This operation does not accept a request body.
+
+
+
 
 Response
 """"""""""""""""
 
-**Example: Show version details: JSON response**
 
 
-.. code::
-
-   {
-       "version": {
-           "id": "v2.0",
-           "links": [
-               {
-                   "href": "https://identity.api.rackspacecloud.com/v2.0",
-                   "rel": "self"
-               },
-               {
-                   "href": "http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf",
-                   "rel": "describedby",
-                   "type": "application/pdf"
-               },
-               {
-                   "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl",
-                   "rel": "describedby",
-                   "type": "application/vnd.sun.wadl+xml"
-               }
-           ],
-           "media-types": {
-               "values": [
-                   {
-                       "base": "application/xml",
-                       "type": "application/vnd.openstack.identity+xml;version=2.0"
-                   },
-                   {
-                       "base": "application/json",
-                       "type": "application/vnd.openstack.identity+json;version=2.0"
-                   }
-               ]
-           },
-           "status": "CURRENT",
-           "updated": "2012-01-21T11:33:21-06:00"
-       }
-   }
 
 
-**Example: Show version details: XML response**
 
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8"?>
-   <version xmlns="http://docs.openstack.org/common/api/v1.0"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            id="v2.0" status="CURRENT" updated="2011-01-21T11:33:21-06:00">
-   
-        <media-types>
-            <media-type base="application/xml"
-               type="application/vnd.openstack.identity+xml;version=2.0"/>
-            <media-type base="application/json"
-               type="application/vnd.openstack.identity+json;version=2.0"/>
-        </media-types>
-   
-        <atom:link rel="self"
-            href="https://identity.api.rackspacecloud.com/v2.0/"/>
-   
-       <atom:link rel="describedby"
-                  type="application/pdf"
-                  href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
-   
-       <atom:link rel="describedby"
-                  type="application/vnd.sun.wadl+xml"
-                  href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
-   </version>
+This operation does not return a response body.
 
 
 

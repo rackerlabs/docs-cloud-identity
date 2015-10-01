@@ -3,6 +3,10 @@
 Users 
 --------
 
+.. contents::
+   :local:
+   :depth: 1
+
 Rackspace Cloud customers have :ref:`user <user-concept>` accounts that allow them to access, configure, and 
 manage their Rackspace Cloud services and account information. Each cloud account has 
 an :ref:`administrative owner <auth-roles-svc-adm-usr>` (``user-admin``) and can also have 
@@ -24,13 +28,16 @@ account information, and account credentials.
 
 **API operations**
 
-- Add user 
-- List users
-- Get user by id
-- Update user information and password 
-- Deletes a user
-- Get user admin 
-- Add credential to user
+.. include:: methods/users/post-add-user-v2.0-users.rst 
+.. include:: methods/users/get-list-users-v2.0-users.rst
+.. include:: methods/users/get-get-user-by-id-v2.0-users-userid.rst
+.. include:: methods/users/post-update-user-information-and-password-v2.0-users-userid.rst
+.. include:: methods/users/delete-deletes-a-user-v2.0-users-userid.rst
+.. include:: methods/users/get-get-user-admin-v2.0-users-userid-rax-auth-admins.rst
+.. include:: methods/users/post-add-credential-to-user-v2.0-users-userid-os-ksadm-credentials.rst
 - Get user credentials 
 - Reset API key credentials
+
+
+
 

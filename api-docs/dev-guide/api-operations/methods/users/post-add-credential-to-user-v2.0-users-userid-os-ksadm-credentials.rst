@@ -1,21 +1,27 @@
-.. _get-show-version-details-v2.0:
+.. _post-add-credential-to-user-v2.0-osksadm:
 
-Show version details
+Add credential to user
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /v2.0
+    POST /v2.0/users/{userId}/OS-KSADM/credentials
 
-Shows details for the Identity API v2.0.
+Use this API operation to add a 
+A password is a credential; you can add a password to a user with this call. 
+To add a credential to a user, specify the user's ID in the request. If you know the 
+user's name but not the user's ID, use :ref:`List users <get-list-users-v2.0>` operation 
+to find the ID.
 
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The operation completed  |
-|                          |                         |successfully.            |
+|201                       |Created                  |The request has been     |
+|                          |                         |fulfilled. The           |
+|                          |                         |credential has been      |
+|                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -54,6 +60,14 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the API request. Check   |
+|                          |                         |the content-type and     |
+|                          |                         |accept headers included  |
+|                          |                         |in the request.          |
++--------------------------+-------------------------+-------------------------+
 |503                       |Service Fault            |Service is not available.|
 +--------------------------+-------------------------+-------------------------+
 
@@ -61,81 +75,68 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |You need a valid admin   |
+|                          |                         |token for access.        |
++--------------------------+-------------------------+-------------------------+
+|{userId}                  |String *(Required)*      |The ID of the user for   |
+|                          |                         |which you want to        |
+|                          |                         |perform the request.     |
++--------------------------+-------------------------+-------------------------+
+
 This operation does not accept a request body.
 
-Response
-""""""""""""""""
 
-**Example: Show version details: JSON response**
+**Example:  Add credential to user: XML request**
+
+.. code::
+
+   <?xml version="1.0" encoding="UTF-8"?>
+    <passwordCredentials xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="http://docs.openstack.org/identity/api/v2.0" username="test_user" password="resetpass"/>
+
+
+
+**Example:  Add credential to user: JSON request**
 
 
 .. code::
 
    {
-       "version": {
-           "id": "v2.0",
-           "links": [
-               {
-                   "href": "https://identity.api.rackspacecloud.com/v2.0",
-                   "rel": "self"
-               },
-               {
-                   "href": "http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf",
-                   "rel": "describedby",
-                   "type": "application/pdf"
-               },
-               {
-                   "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl",
-                   "rel": "describedby",
-                   "type": "application/vnd.sun.wadl+xml"
-               }
-           ],
-           "media-types": {
-               "values": [
-                   {
-                       "base": "application/xml",
-                       "type": "application/vnd.openstack.identity+xml;version=2.0"
-                   },
-                   {
-                       "base": "application/json",
-                       "type": "application/vnd.openstack.identity+json;version=2.0"
-                   }
-               ]
-           },
-           "status": "CURRENT",
-           "updated": "2012-01-21T11:33:21-06:00"
+       "passwordCredentials": {
+           "username": "test_user",
+           "password": "resetpass"
+       }
+   }
+
+Response
+""""""""""""""""
+
+****Example:  Add credential to user: JSON response**
+
+
+.. code::
+
+   {
+       "passwordCredentials": {
+           "username": "test_user",
+           "password": "resetpass"
        }
    }
 
 
-**Example: Show version details: XML response**
+**Example:  Add credential to user: XML response**
 
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <version xmlns="http://docs.openstack.org/common/api/v1.0"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            id="v2.0" status="CURRENT" updated="2011-01-21T11:33:21-06:00">
-   
-        <media-types>
-            <media-type base="application/xml"
-               type="application/vnd.openstack.identity+xml;version=2.0"/>
-            <media-type base="application/json"
-               type="application/vnd.openstack.identity+json;version=2.0"/>
-        </media-types>
-   
-        <atom:link rel="self"
-            href="https://identity.api.rackspacecloud.com/v2.0/"/>
-   
-       <atom:link rel="describedby"
-                  type="application/pdf"
-                  href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
-   
-       <atom:link rel="describedby"
-                  type="application/vnd.sun.wadl+xml"
-                  href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
-   </version>
+    <passwordCredentials xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="http://docs.openstack.org/identity/api/v2.0" username="test_user" password="resetpass"/>
 
 
 
