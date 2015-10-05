@@ -1,7 +1,7 @@
 .. _extensions-ovw:
 
 API Extensions
-~~~~~~~~~~~~~~~~
+-----------------
 
 The authentication service API is extensible, meaning that the API is
 structured so that some functions are implemented in the core API and
@@ -96,7 +96,8 @@ extensions available with the Identity Service.
 .. _extended-resp-actions:
 
 Extended Responses and Actions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Extensions define new data types, parameters, actions, headers, states,
 and resources that are added to the core OpenStack APIs.
 
@@ -114,7 +115,7 @@ and resources that are added to the core OpenStack APIs.
 .. _json-req-resp-extensions-json:
 
 JSON requests and responses with extensions
-.............................................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In JSON, use the alias to reference extended resources and attributes.
 In this Add user API request, you see aliased references to the password
@@ -176,7 +177,7 @@ with the extension alias followed by a colon. For example, a user can be
 in the ``RAX-AUTH:multiFactorEnabled`` state.
 
 
-.. _json-req-resp-extensions-xml:
+.. _xml-req-resp-extensions-xml:
 
 XML requests and responses with extensions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

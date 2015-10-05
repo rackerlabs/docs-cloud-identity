@@ -1919,7 +1919,7 @@
                             Users with the <parameter>identity:user-admin</parameter> or 
                             <parameter>identity:admin</parameter> role can generate a single bypass code 
                             another user's account. Administrator-generated codes are valid for 30 minutes by default. Administrators can configure 
-                            the validity duration from 1 to 360 minutes.
+                            the validity duration from 1 to 180 minutes.
                         </para>
                     </listitem>
                 </itemizedlist>
@@ -1951,7 +1951,7 @@
                         <para>An attribute of the <parameter>RAX-AUTH:bypassCodes</parameter> element. Specifies the time interval that the bypass codes remain valid. 
                             If no value is specified, the value defaults to 30 minutes <code>PT30M</code>.</para>
                         <para>If the bypass codes are for your own account, customize the value as needed.</para>
-                        <para>Administrators can configure an interval between 1 and 360 minutes when 
+                        <para>Administrators can configure an interval between 1 and 180 minutes when 
                             creating a bypass code for other user account.</para>
                         
                         <para>The value is expressed in xsd:duration format, <code>PT20MPnYnMnDTnHnMnS</code> where</para> 

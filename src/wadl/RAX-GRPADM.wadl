@@ -133,6 +133,8 @@
     <method id="addGroup" name="POST">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add group">
             <para role="shortdesc">Adds a group.</para>
+            <important><para>The value you assign to the group name must be 64 characters or less.</para>
+            </important>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml" element="grp:group">
@@ -206,6 +208,8 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Update group">
             <para role="shortdesc">Updates a group.</para>
+            <important><para>The value you assign to the group name must be 64 characters or less.</para>
+            </important>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml"
@@ -223,8 +227,7 @@
                 <wadl:doc xml:lang="EN"
                     xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code
-                        href="../common/samples/group-for-update.json"
-                    />
+                        href="../common/samples/group-for-update.json"/>
                 </wadl:doc>
             </representation>
         </request>

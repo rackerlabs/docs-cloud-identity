@@ -44,7 +44,7 @@
       <code>RAX-AUTH:multiFactorEnabled</code> state.</para>
   </section>
   <section xml:id="extendedXML">
-    <title>JSON requests and responses with extensions</title>
+    <title>XML requests and responses with extensions</title>
     <?dbhtml stop-chunking?>
     <para>In XML, additional elements and attributes are defined in the namespace for the extension.
       To use these elements and attributes in an API request, include the namespace in the API request as shown in this example.
