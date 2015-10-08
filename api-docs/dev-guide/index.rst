@@ -1,7 +1,7 @@
 .. _index:
 
 =========================================================
-Rackspace Cloud Identity API 1.0
+Rackspace Cloud Identity API 2.0
 =========================================================
 
 *Last updated:* |today|
