@@ -1,4 +1,4 @@
-.. _auth-mfa-ovw:
+.. _multifactor-authenication-ovw:
 
 Multi-factor authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +41,7 @@ The following figure shows the work flow to set up multi-factor authentication o
 **Figure: Multi-factor authentication user account set up work
 flow**
 
-.. figure::  ../_images/multifactor_setup_user1.png
+.. figure:: ../_images/multifactor_setup_user1.png
    :alt: Multi-factor authentication user account set up work flow
 
 Additionally, Identity and user administrators can define multi-factor
@@ -52,6 +52,8 @@ requird to enable it before they can access their account.
 
 
 .. include:: mfa-content/proc-mfa-setup-phone.rst
+
+.. include:: mfa-content/proc-mfa-setup-otp.rst
 
 .. include:: mfa-content/proc-mfa-auth.rst
 

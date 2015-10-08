@@ -1,26 +1,43 @@
-.. _get-user-admin-v2.0:
+.. _post-sends-a-verfication-code-to-a-phone-v2.0:
 
-Get user admin
+Sends a verfication code to a phone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/users/{userId}/RAX-AUTH/admins
+    POST /v2.0/users/{userId}/RAX-AUTH/multi-factor/mobile-phones/{phoneId}/verificationcode
 
-Account users with the ``identity:user-admin`` or ``identity:default`` role can use 
-this operation to identify the administrator or point of contact for a user account 
-if they have questions or need assistance regarding user or role management. 
+This operation sends an SMS message with a PIN code to a phone added to an account 
+for multi-factor authentication.
 
-This request returns the following identifying information about the administrator: 
-domain name, domain ID, email address, status, user ID and user name.
+After you update an account with a mobile phone number for multi-factor authentication, 
+Rackspace must confirm that the user has the phone before it can be enabled for use in 
+the authentication process.
 
+When you send the verification code, include the ``phoneId`` in the API request. If you don't 
+know the ID, use the 
+:ref:`List multi-factor devices associated with <get-multifactor-phones-for-user-v2.0>` operation to get it.
 
+After you submit request, the Rackspace verification service sends a PIN to the specified 
+phone via SMS text message. Each PIN has a system-defined expiration time determined by 
+the Identity service system configuration. After receiving the PIN, use the Verify a 
+mobile phone operation to submit the PIN to the Identity service to confirm the device 
+for use with multi-factor authentication services. 
+
+.. important::
+
+   In the Send Verify request, the ``X-Auth-Token`` header parameter value must specify a 
+   valid authentication token ID for the user account associated with the mobile phone. 
+   If you submit an authentication token from any other account, the operation fails.
+   
+   
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The request succeeded.   |
+|202                       |Accepted                 |The request was accepted |
+|                          |                         |for processing.          |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -66,62 +83,46 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-This table shows the header and URI parameters for the request:
+This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Auth-Token              |Header                   |A valid admin            |
-|                          |String *(Required)*      |authentication token.    |
+|{userId}                  |String *(Required)*      |The unique, system-      |
+|                          |                         |generated user ID for an |
+|                          |                         |account.                 |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |URI                      |The unique, system-      |
-|                          |String *(Required)*      |generated user ID for an |
+|X-Auth-Token              |String *(Required)*      |A valid authentication   |
+|                          |                         |token.                   |
++--------------------------+-------------------------+-------------------------+
+|{phoneId}                 |String *(Required)*      |The ID for the phone     |
+|                          |                         |associated with the user |
 |                          |                         |account.                 |
 +--------------------------+-------------------------+-------------------------+
 
 
 This operation does not accept a request body.
 
+
+**Example Send verification code: JSON request in a cURL command**
+
+.. code::
+
+   $ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones/$PHONE_ID/verificationcode \        
+     -X POST \        
+     -H "Content-Type: application/json" \        
+     -H "Accept: application/json" \        
+     -H "X-Auth-Token: $AUTH_TOKEN"        | python -m json.tool
+     
+.. note::
+
+   This example assumes that the endpoint URL, user ID, and your authentication 
+   token have been exported to environment variables.
+   
+   
 Response
 """"""""""""""""
-
-**Example:  Get user admin response: XML**
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <users xmlns="http://docs.openstack.org/identity/api/v2.0" 
-       xmlns:ns2="http://www.w3.org/2005/Atom"
-       xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-       xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-       xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-       xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
-       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
-       <user id="10022879" 
-           username="JuserAdmin" 
-           enabled="true" 
-           display-name="JuserAdmin" 
-           rax-auth:defaultRegion="USA" 
-           rax-auth:domainId="5701091"/>
-   </users>
-
-
-**Example:  Get user admin response: JSON**
-
-.. code::
-
-   {
-       "users": [
-           {
-               "RAX-AUTH:defaultRegion": "",
-               "RAX-AUTH:domainId": "12345",
-               "email": "userAdmin@rack.com",
-               "enabled":"true",
-               "id": "10022879",
-               "username": "JuserAdmin"
-           }
-       ]
-   }
+This operation does not return a response body.
 
 
 

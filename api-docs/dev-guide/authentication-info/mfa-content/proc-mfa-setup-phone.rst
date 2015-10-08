@@ -34,7 +34,7 @@ Cloud Control panel.
     -  If the authentication response returns a `403 Forbidden` error
        message with a request to setup multi-factor authentication, your
        account has been restricted. To regain access, :ref:`submit a request for
-       a multi-factor scoped authentication token <auth-request-scoped-mfa-token>`  
+       a multi-factor scoped authentication token <req-mfa-setup-token>`  
        that you can use to set up your account.
        
        

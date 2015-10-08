@@ -1,14 +1,14 @@
 .. _auth-resp-user-resource:
 
 User resource: authentication response attributes
-..............................................................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The user object returns account information for the authenticated user
 that includes user name, ID, default region assignment, and information
 about role assignments.
 
 Users can have multiple roles, with each role providing specific
-privileges. For example, each account has an `Identity
+privileges. For example, each account has an :ref:`Identity
 role <auth-rbac-roles>`
 such as `Identity:default` to authenticate and gain access to Identity
 service capabilities and any other RBAC roles assigned to the
@@ -16,7 +16,7 @@ account.
 
 Responses can be in :ref:`JSON <auth-resp-example-user-resp-json>` or
 :ref:`XML <auth-resp-example-user-resp-xml>`. For details, see
-the `user object attribute descriptions <auth-resp-user-obj-attribs>` in
+the :ref:`user object attribute descriptions <auth-resp-user-obj-attribs>` in
 the table following the examples.
 
 

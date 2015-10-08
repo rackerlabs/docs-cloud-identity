@@ -18,14 +18,14 @@ body parameters like ``id``, ``enabled``, or ``rax-auth:domainId``.
 
 .. note::
       
-   -  Users who hold the admin role can update users who hold the user role 
-      (``identity:default``) or the admin role ( ``identity:user-admin`` ) for the same tenant.
+    -  Users who hold the admin role can update users who hold the user role 
+       (``identity:default``) or the admin role (``identity:user-admin``) for the same tenant.
       
-   -  Administrators can change the default region for another user, but the new value 
-      must be one of the regions listed for a Cloud Compute endpoint in the service catalog.
+    -  Administrators can change the default region for another user, but the new value 
+       must be one of the regions listed for a Cloud Compute endpoint in the service catalog.
       
-   -  Administrators can change a user default region, but the new value must be one of 
-      the regions listed for a Cloud Compute endpoint in the service catalog.
+    -  Administrators can change a user default region, but the new value must be one of 
+       the regions listed for a Cloud Compute endpoint in the service catalog.
    
 
 This table shows the possible response codes for this operation:
@@ -100,8 +100,6 @@ This table shows the header and URI parameters for the request:
 |                          |String *(Required)*      |system when user is      |
 |                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
-
-
 
 
 This table shows the body parameters for the request:

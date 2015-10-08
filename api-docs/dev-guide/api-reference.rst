@@ -1,4 +1,4 @@
-.. _api-reference:
+.. _api-reference-intro:
 
 ===================
 **API Reference**
@@ -12,5 +12,5 @@ require extensions to the API. If an extension is required, it is available in T
 implementation of the OpenStack Identity (keystone) service. You can learn how to create 
 API requests and understand the responses for operations that require extensions by 
 reviewing the sample requests and responses included in this API reference. For more 
-information about the available extensions, see :ref:'API extensions <extensions-ovw>`.
+information about the available extensions, see :ref:`API extensions <extensions-ovw>`.
 

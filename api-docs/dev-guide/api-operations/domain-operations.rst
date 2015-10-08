@@ -18,7 +18,7 @@ container for a customer's tenants (accounts) and users.
 
 **API operations**
 
-- Add Retrieve domains
-- Get a domain
+.. include:: methods/domains/get-list-domains-v2.0-rax-auth-domains.rst
+.. include:: methods/domains/get-get-a-domain-v2.0-rax-auth-domains-domainid.rst
 
 

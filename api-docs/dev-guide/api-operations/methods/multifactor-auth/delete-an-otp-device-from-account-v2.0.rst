@@ -1,26 +1,23 @@
-.. _get-user-admin-v2.0:
+.. _delete-a-specified-otp-device-from-a-user-account-v2.0:
 
-Get user admin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Removes a specified OTP device from a user account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/users/{userId}/RAX-AUTH/admins
+    DELETE /v2.0/users/{userId}/RAX-AUTH/multi-factor/otp-devices/{otpDeviceId}
 
-Account users with the ``identity:user-admin`` or ``identity:default`` role can use 
-this operation to identify the administrator or point of contact for a user account 
-if they have questions or need assistance regarding user or role management. 
-
-This request returns the following identifying information about the administrator: 
-domain name, domain ID, email address, status, user ID and user name.
-
+This operation deletes the OTP device with the specified ID from the user account.
 
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The request succeeded.   |
+|204                       |No content               |The request succeeded.   |
+|                          |                         |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -78,51 +75,52 @@ This table shows the header and URI parameters for the request:
 |                          |String *(Required)*      |generated user ID for an |
 |                          |                         |account.                 |
 +--------------------------+-------------------------+-------------------------+
-
+|{otpDeviceId}             |String *(Required)*      |The unique system-       |
+|                          |                         |generated ID assigned to |
+|                          |                         |the OTP device.          |
++--------------------------+-------------------------+-------------------------+
 
 This operation does not accept a request body.
+
+
+**Example: Delete OTP device by ID: XML request header**
+
+.. code::
+
+   DELETE /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices/6b2834a8bef6461e96ef2322b4c72998 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/xml
+   X-Auth-Token: 83aa159390854e4690e4834e0cfa5f6c
+   Content-type: application/xml
+
+
+**Example: Delete OTP device by ID: JSON request**
+
+.. code::
+
+   DELETE /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices/6b2834a8bef6461e96ef2322b4c72998 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/json
+   X-Auth-Token: 83aa159390854e4690e4834e0cfa5f6c
+   Content-type: application/json
+
+
+
+
 
 Response
 """"""""""""""""
 
-**Example:  Get user admin response: XML**
+**Example: Delete device by ID HTTP response**
+
 
 .. code::
 
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <users xmlns="http://docs.openstack.org/identity/api/v2.0" 
-       xmlns:ns2="http://www.w3.org/2005/Atom"
-       xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-       xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-       xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-       xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
-       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
-       <user id="10022879" 
-           username="JuserAdmin" 
-           enabled="true" 
-           display-name="JuserAdmin" 
-           rax-auth:defaultRegion="USA" 
-           rax-auth:domainId="5701091"/>
-   </users>
+   HTTP/1.1 204 No Content
+   
 
 
-**Example:  Get user admin response: JSON**
-
-.. code::
-
-   {
-       "users": [
-           {
-               "RAX-AUTH:defaultRegion": "",
-               "RAX-AUTH:domainId": "12345",
-               "email": "userAdmin@rack.com",
-               "enabled":"true",
-               "id": "10022879",
-               "username": "JuserAdmin"
-           }
-       ]
-   }
-
+This operation does not require a request body and does not return a response body.
 
 
 

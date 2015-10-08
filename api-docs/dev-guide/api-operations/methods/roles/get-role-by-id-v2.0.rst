@@ -1,27 +1,22 @@
-.. _post-add-credential-to-user-v2.0-osksadm:
+.. _get-role-by-id-v2.0:
 
-Add credential to user
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Get role by ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    POST /v2.0/users/{userId}/OS-KSADM/credentials
+    GET /v2.0/OS-KSADM/roles/{roleId}
 
-Use this API operation to add a password credential to a user account. 
+This operation retrieves information about the specified role ID. 
 
-To add a password, specify the user's ID in the request. If you know the 
-user's name but not the user's ID, use :ref:`List users <get-list-users-v2.0>` operation 
-to find the ID.
 
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|201                       |Created                  |The request has been     |
-|                          |                         |fulfilled. The           |
-|                          |                         |credential has been      |
-|                          |                         |added.                   |
+|200                       |OK                       |Request completed        |
+|                          |                         |successfully.            |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -88,56 +83,109 @@ This table shows the header and URI parameters for the request:
 |                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
 
-
 This operation does not accept a request body.
 
 
-**Example:  Add credential to user: XML request**
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8"?>
-    <passwordCredentials xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="http://docs.openstack.org/identity/api/v2.0" username="test_user" password="resetpass"/>
-
-
-
-**Example:  Add credential to user: JSON request**
+**Example:  Get role by ID request: XML**
 
 
 .. code::
 
-   {
-       "passwordCredentials": {
-           "username": "test_user",
-           "password": "resetpass"
-       }
-   }
+   GET /v2.0/OS-KSADM/roles/10000209 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   X-Auth-Token:82994d2fb9a0483a85b6ba622c2c4934
+   Accept: application/xml
+   Content-type: application/xml
+   
+
+**Example:  Get role by ID request: JSON**
+
+
+.. code::
+
+   GET /v2.0/OS-KSADM/roles/10000209 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   X-Auth-Token:82994d2fb9a0483a85b6ba622c2c4934
+   Accept: application/json
+   Content-type: application/json
+   
+
 
 Response
 """"""""""""""""
 
-**Example:  Add credential to user: JSON response**
+This table shows the body parameters for the response:
+
++---------------------------+-------------------------+-------------------------+
+|Name                       |Type                     |Description              |
++===========================+=========================+=========================+
+|role                       |Object                   |Returns the information  |
+|                           |                         |role information for the |
+|                           |                         |specified role ID.       | 
++---------------------------+-------------------------+-------------------------+
+|role.**id**                |Int                      |The role ID.             |
++---------------------------+-------------------------+-------------------------+
+|role.**name**              |String                   |The role name.           |
++---------------------------+-------------------------+-------------------------+
+|role.**description**       |String                   |The role description.    |
++---------------------------+-------------------------+-------------------------+
+|role.**serviceId**         |String                   |The id for the Rackspace |
+|                           |                         |Cloud service to which   |
+|                           |                         |the role applies.        |
++---------------------------+-------------------------+-------------------------+
+|role.**RAX-AUTH:propagate**|Boolean *(Optional)*     |Indicates whether this   |
+|                           |                         |role is assigned to an   |
+|                           |                         |account owner            |
+|                           |                         |(identity:user-admin)    |
+|                           |                         |and automatically        |
+|                           |                         |inherited by all account |
+|                           |                         |users (identity:default).|
++---------------------------+-------------------------+-------------------------+
+
+
+**Example:  Get role by ID response: XML**
 
 
 .. code::
 
-   {
-       "passwordCredentials": {
-           "username": "test_user",
-           "password": "resetpass"
-       }
-   }
-
-
-**Example:  Add credential to user: XML response**
+   HTTP/1.1 200 OK
+   Content-Type: application/xml
+   
 
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-    <passwordCredentials xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="http://docs.openstack.org/identity/api/v2.0" username="test_user" password="resetpass"/>
+   
+   <role xmlns="http://docs.openstack.org/identity/api/v2.0"
+     id="123" name="database:admin" description="Admin role for database service" \
+     serviceId="abc4321ebabeeabb70a0e702a4626977c331d5c4" rax-auth:propagate="false"/>
+   
+
+
+
+**Example:  Get role by ID response: JSON**
+
+
+.. code::
+
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+   
+
+
+.. code::
+
+   {
+     "role": {
+       "id": "123",
+       "serviceId": "abc4321ebabeeabb70a0e702a4626977c331d5c4"
+       "description": "Admin role for database service",
+       "name": "database:admin",
+       "RAX-AUTH:propagate": false
+     }
+   }
+   
 
 
 

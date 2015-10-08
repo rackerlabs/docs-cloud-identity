@@ -44,11 +44,10 @@ Use the token API operations to submit authentication requests and manage tokens
 	:ref:`OS-KSADM and RAX-AUTH extensions <extensions-ovw>` to the
 	core Identity API.
 
-**API operations**
+.. include:: methods/token/post-authenticate-as-user-with-password-or-api-key-v2.0-tokens.rst
+.. include:: methods/token/post-authenticate-as-tenant-with-token-v2.0-tokens.rst
+.. include:: methods/token/post-authenticate-with-multi-factor-authentication-passcode-credentials-v2.0-tokens.rst
+.. include:: methods/token/get-validate-token-v2.0-tokens-tokenid.rst
+.. include:: methods/token/delete-revoke-token-v2.0-tokens.rst
 
-- Authenticate as user with password or API key 
-- Authenticate as tenant with token 
-- Authenticate with multi-factor authentication passcode credentials 
-- Validate token 
-- Revoke token
 

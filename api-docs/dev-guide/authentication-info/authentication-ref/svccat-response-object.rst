@@ -1,7 +1,7 @@
 .. _svccat-resource:
 
 Service catalog resource: Authentication response attributes
-................................................................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Service catalog object provides service and endpoint information for
 services that you can access with the authentication token returned in
@@ -611,12 +611,11 @@ format**
         </service>
     </serviceCatalog>
              
-                             
-
-.. _auth-resp-svccat-obj-attribs: 
 
 The user object returns a service object returns the list of services that the user can access. Each service object includes an endpoint object with information about the service region, tenant, and service access 
 endpoints.
+
+.. _auth-resp-svccat-obj-attribs: 
 
 **Table: Authentication response: Service catalog object attributes**
 
@@ -637,8 +636,7 @@ endpoints.
 .. important:: 
    Use service type as the primary value for locating a service. If multiple endpoints of 
    the same service type exist in the same region, use service name as the tiebreaker. 
-   See :ref:Suggested workflow for processing a :ref:Service Catalog 
-   response <auth-svccat-workflow>.
+   See :ref:`Suggested workflow for processing a Service Catalog <auth-svccat-workflow>`.
 
 .. _auth-resp-svccat-endpoint-obj-attribs: 
 

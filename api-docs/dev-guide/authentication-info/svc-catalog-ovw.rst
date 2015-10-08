@@ -1,5 +1,5 @@
 Service types
-~~~~~~~~~~~~~~
+---------------
 
 The service catalog provides information about Rackspace Cloud services
 that are available to customers who have successfully authenticated,
@@ -13,7 +13,7 @@ identities the function that the service provides.
 .. auth-svccat-types:
 
 Service types in the catalog
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Every service listed in the catalog is associated with a service type.
 You can use the service type to identify services that perform similar
@@ -203,7 +203,7 @@ documentation`_.
 .. _auth-svccat-workflow:
 
 Suggested work flow for processing a service catalog response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your client issues a successful authentication request, the Cloud
 Identity service returns a service catalog that lists the available

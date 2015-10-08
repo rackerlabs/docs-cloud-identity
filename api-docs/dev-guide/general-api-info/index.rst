@@ -17,11 +17,6 @@ on TCP port 443.
    :maxdepth: 2
    
    how-curl-works
-   sample-auth-req-response
-   svc-catalog-ovw
-   use-mfa-ops
-   role-based-access-control
-   identity-service-endpoints
    request-response-types
    date-time-format
    paginated-collections

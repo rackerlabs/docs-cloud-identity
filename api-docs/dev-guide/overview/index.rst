@@ -4,7 +4,7 @@ About the API
 ----------------
 
 The Rackspace Cloud Identity API service enables developers to manage 
-authentication and authorization services for  Rackspace Cloud services 
+authentication and authorization services for Rackspace Cloud services 
 through a simple Representational State Transfer (REST) web service interface.
 
 The Rackspace Cloud Identity service v2.0 is an implementation of
@@ -20,10 +20,11 @@ Rackspace Cloud products and services.
 -  Authorization determines the resources and actions available to a
    user, client, or process based on access control capabilities that
    can be defined and managed using the Rackspace Cloud Identity
-   service.
+   service.   
 
 .. toctree:: :hidden:
    :maxdepth: 2
 
+   identity-service-endpoints
    additional-resources
    Pricing and terms of servie <pricing-service-level>

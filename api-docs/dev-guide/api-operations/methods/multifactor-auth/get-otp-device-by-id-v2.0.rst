@@ -1,19 +1,13 @@
-.. _get-user-admin-v2.0:
+.. _get-otp-device-by-id-v2.0:
 
-Get user admin
+Lists the specified OTP device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/users/{userId}/RAX-AUTH/admins
+    GET /v2.0/users/{userId}/RAX-AUTH/multi-factor/otp-devices/{otpDeviceId}
 
-Account users with the ``identity:user-admin`` or ``identity:default`` role can use 
-this operation to identify the administrator or point of contact for a user account 
-if they have questions or need assistance regarding user or role management. 
-
-This request returns the following identifying information about the administrator: 
-domain name, domain ID, email address, status, user ID and user name.
-
+This operation returns the OTP device associated with the account.
 
 This table shows the possible response codes for this operation:
 
@@ -78,49 +72,118 @@ This table shows the header and URI parameters for the request:
 |                          |String *(Required)*      |generated user ID for an |
 |                          |                         |account.                 |
 +--------------------------+-------------------------+-------------------------+
+|{otpDeviceId}             |String *(Required)*      |The unique system-       |
+|                          |                         |generated ID assigned to |
+|                          |                         |the OTP device.          |
++--------------------------+-------------------------+-------------------------+
 
 
-This operation does not accept a request body.
+This table shows the body parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|otpDevice                 |Object                   |Returns the following    |
+|                          |                         |information for an OTP   |
+|                          |                         |device: ID, name,        |
+|                          |                         |verification status.     |
++--------------------------+-------------------------+-------------------------+
+|otpDevice.\               |String                   |The unique system-       |
+|**id**                    |                         |generated ID assigned to |
+|                          |                         |the OTP device.          |
++--------------------------+-------------------------+-------------------------+
+|otpDevice.\               |String                   |The unique name assigned |
+|**name**                  |                         |to the OTP device.       |
++--------------------------+-------------------------+-------------------------+
+|otpDevice.\               |Boolean                  |Indicates whether the    |
+|**verified**              |                         |OTP device has been      |
+|                          |                         |verified.                |
++--------------------------+-------------------------+-------------------------+
+
+
+
+**Example:: Get OTP devices for account HTTP request header: XML**
+
+
+.. code::
+
+   GET /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices/6b2834a8bef6461e96ef2322b4c72998 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/xml
+   X-Auth-Token: 83aa159390854e4690e4834e0cfa5f6c
+   Content-type: application/xml
+
+
+
+**Example:: Get OTP devices for account HTTP request header: JSON**
+
+.. code::
+
+   GET /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices/6b2834a8bef6461e96ef2322b4c72998 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/json
+   X-Auth-Token: 83aa159390854e4690e4834e0cfa5f6c
+   Content-type: application/json
+
+
+
+
 
 Response
 """"""""""""""""
 
-**Example:  Get user admin response: XML**
+**Example: Get OTP devices for account HTTP response header: XML**
+
+
+.. code::
+
+   HTTP/1.1 200 OK
+   Content-Type: application/xml
+   
+
+**Example: Retrieves the specified OTP device response: XML**
+
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <users xmlns="http://docs.openstack.org/identity/api/v2.0" 
-       xmlns:ns2="http://www.w3.org/2005/Atom"
-       xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-       xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-       xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-       xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
-       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
-       <user id="10022879" 
-           username="JuserAdmin" 
-           enabled="true" 
-           display-name="JuserAdmin" 
-           rax-auth:defaultRegion="USA" 
-           rax-auth:domainId="5701091"/>
-   </users>
+   <rax-auth:otpDevices 
+        xmlns:atom="http://www.w3.org/2005/Atom" 
+        xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+        xmlns="http://docs.openstack.org/identity/api/v2.0" 
+        xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+        xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+        xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+        xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+        xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+        <rax-auth:otpDevice verified="true" name="NewOTPDevice" id="6b2834a8bef6461e96ef2322b4c72998"/>
+   </rax-auth:otpDevices>
+   
+   
 
 
-**Example:  Get user admin response: JSON**
+
+**Example: Get OTP devices for account HTTP response header: JSON**
+
+
+.. code::
+
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+   
+
+
+**Example: Retrieves the specified OTP device response: JSON**
+
 
 .. code::
 
    {
-       "users": [
-           {
-               "RAX-AUTH:defaultRegion": "",
-               "RAX-AUTH:domainId": "12345",
-               "email": "userAdmin@rack.com",
-               "enabled":"true",
-               "id": "10022879",
-               "username": "JuserAdmin"
-           }
-       ]
+       "RAX-AUTH:otpDevice": {
+           "id": "6b2834a8bef6461e96ef2322b4c72998",
+           "verified": true,
+           "name": "NewOTPDevice"
+       }
    }
 
 

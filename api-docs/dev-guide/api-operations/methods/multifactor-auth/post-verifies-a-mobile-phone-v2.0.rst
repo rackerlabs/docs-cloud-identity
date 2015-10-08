@@ -1,29 +1,33 @@
+.. _post-verifies-a-mobile-phone-v2.0:
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
-.. _post-update-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey:apikeycredentials:
-
-Update user API key credentials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Verifies a mobile phone
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    POST /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
+    POST /v2.0/users/{userId}/RAX-AUTH/multi-factor/mobile-phones/{phoneId}/verify
 
-Update user credentials.
+Use this operation to submit the verification PIN from the SMS text message sent by 
+Rackspace. After the PIN is accepted, use the Update settings for mulit-factor 
+authentication operation to enable multi-factor authentication on the user account.
 
-Identity administrators can update the API key on an account with this operation. Include the user ID for the acount in the request. You can use the use the `List users <GET_admin-listUsers_v2.0_users_User_Calls.html>`__ operation to find the ID.
+When you send the verification code, include the ``phoneId`` in the API request. 
+If you don't know the ID, use the :ref:`List phones for user 
+<get-multifactor-phones-for-user-v2.0>` operation to get it.
 
-
+This operation can only be completed from the user account that the phone is 
+associated with. The operation fails if the PIN is expired, or if it doesn't 
+match the code issued by the Rackspace verification service.
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The request completed    |
-|                          |                         |successfully.            |
+|204                       |No content               |The request succeeded.   |
+|                          |                         |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -48,9 +52,6 @@ This table shows the possible response codes for this operation:
 |                          |                         |account administrator to |
 |                          |                         |determine how to gain    |
 |                          |                         |access.                  |
-+--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |The requested resource   |
-|                          |                         |was not found.           |
 +--------------------------+-------------------------+-------------------------+
 |405                       |Invalid Method           |The method specified in  |
 |                          |                         |the request is not valid |
@@ -77,62 +78,64 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-This table shows the URI parameters for the request:
+This table shows the header and URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |A valid admin            |
-|                          |                         |authentication token.    |
+|X-Auth-Token              |Header                   |A valid admin            |
+|                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |String *(Required)*      |A user ID assigned by    |
-|                          |                         |system when user is      |
-|                          |                         |added.                   |
+|{userId}                  |URI                      |The unique, system-      |
+|                          |String *(Required)*      |generated user ID for an |
+|                          |                         |account.                 |
++--------------------------+-------------------------+-------------------------+
+|{phoneid}                 |String *(Required)*      |The unique, system-      |
+|                          |                         |generated ID assigned    |
+|                          |                         |when a phone is added to |
+|                          |                         |an account.              |
++--------------------------+-------------------------+-------------------------+
+
+
+This table shows the body parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|code                      |String *(Required)*      |The unique PIN code from |
+|                          |                         |the SMS text message     |
+|                          |                         |sent by the Rackspace    |
+|                          |                         |Cloud verification       |
+|                          |                         |service.                 |
 +--------------------------+-------------------------+-------------------------+
 
 
 
 
 
-This operation does not accept a request body.
+**Example: Verify device: XML request**
 
 
+.. code::
 
+   <?xml version="1.0" encoding="UTF-8"?>
+   <verificationCode 
+        code="1234"
+        xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+        xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+        xmlns:atom="http://www.w3.org/2005/Atom" 
+        xmlns:identity="http://docs.openstack.org/identity/api/v2.0"/>
 
-**Example Update user API key credentials: JSON request**
+**Example: Verify device: JSON request**
 
 
 .. code::
 
    {
-       "RAX-KSKEY:apiKeyCredentials": {
-           "username": "1406847123456",
-           "apiKey": "cffeab0e6d0d472f84b5c20c70123456"
+       "RAX-AUTH:verificationCode": {
+           "code": "1234"
        }
    }
-
-
-
-
-
-**Example Update user API key credentials: XML request**
-
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <apiKeyCredentials 
-   	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-   	xmlns:ns2="http://www.w3.org/2005/Atom" 
-   	xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-   	xmlns:ns4="http://docs.openstack.org/identity/api/v2.0" 
-   	xmlns:ns5="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-   	xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-   	xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-   	xmlns:ns8="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
 
 
 
@@ -141,46 +144,7 @@ This operation does not accept a request body.
 Response
 """"""""""""""""
 
-
-
-
-
-
-
-
-
-
-**Example Update user API key credentials: JSON response**
-
-
-.. code::
-
-   {
-       "RAX-KSKEY:apiKeyCredentials": {
-           "username": "1406847123456",
-           "apiKey": "cffeab0e6d0d472f84b5c20c70123456"
-       }
-   }
-
-
-
-
-
-**Example Update user API key credentials: XML response**
-
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <apiKeyCredentials 
-   	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-   	xmlns:ns2="http://www.w3.org/2005/Atom" 
-   	xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-   	xmlns:ns4="http://docs.openstack.org/identity/api/v2.0" 
-   	xmlns:ns5="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-   	xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-   	xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-   	xmlns:ns8="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
+This operation does not return a response body.
 
 
 

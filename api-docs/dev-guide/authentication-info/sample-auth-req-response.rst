@@ -1,7 +1,7 @@
 .. _annotated-auth-req-resp:
 
 Annotated authentication request and response
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------------
 
 The annotated authentication request and response illustrates a general
 use case for authenticating to the Rackspace Cloud by using user name
@@ -15,8 +15,10 @@ and API key credentials.
     reference pages.
     
 
-Sample authentication request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _sample-auth-req:
+
+Sample request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following authentication :ref:`JSON <example-auth-req-json>` and 
 :ref:`XML <example-auth-req-xml>` examples show the authentication header 
@@ -95,13 +97,13 @@ table following the examples.
 
 .. _samp-auth-resp:
 
-Sample authentication response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sample response
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you submit a **POST tokens** authentication request with valid
 credentials, the Identity service returns a response. The following
-authentication :ref:JSON <example-auth-resp-json> and 
-:ref:XML <example-auth-resp-xml> examples show the
+authentication :ref:`JSON <example-auth-resp-json>` and 
+:ref:`XML <example-auth-resp-xml>` examples show the
 entire authentication response header and body content.
 
 The sections that follow these examples provide detailed information

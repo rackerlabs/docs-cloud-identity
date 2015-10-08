@@ -1,14 +1,13 @@
 .. _auth-resp-token-resource:
 
 Token resource: authentication response attributes
-......................................................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The token object supplies a scoped authentication token that customers
 and processes can use to access Rackspace Cloud services for the
 specified tenant. Token scope is determined by tenant and user role
 assignments for the authenticated user. Responses can be in 
-:ref:JSON <auth-resp-token-obj-json> or :ref:XML <auth-resp-token-obj-xml> 
-as shown in the following examples. For details, see the 
+JSON or XML format as shown in the following examples. For details, see the 
 :ref:token object attribute descriptions <auth-resp-token-obj-attribs> in
 the table following the examples.
 

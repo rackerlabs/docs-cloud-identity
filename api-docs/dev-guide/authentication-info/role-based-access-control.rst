@@ -1,4 +1,4 @@
-.. _auth-roles-and-assignments: 
+.. _roles-and-assignments: 
 
 Roles and role assignments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

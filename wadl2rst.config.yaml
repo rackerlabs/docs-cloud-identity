@@ -5,7 +5,7 @@ src/wadl/identity-admin.wadl:
     title: Rackspace Cloud Identity Developer Guide - API v2.0
     output_directory: src/rst/identity-admin/api-operations
     
-src/wadl/identity.wadl:
+src/wadl/OS-KSADM-admin.wadl:
     title: Rackspace Cloud Identity Developer Guide - API v2.0
     output_directory: src/rst/identity/api-operations
 

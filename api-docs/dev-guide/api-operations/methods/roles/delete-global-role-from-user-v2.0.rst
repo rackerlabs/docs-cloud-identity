@@ -1,26 +1,32 @@
-.. _get-user-admin-v2.0:
+.. _delete-global-role-from-user-v2.0-os-ksadm:
 
-Get user admin
+Delete global role from user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/users/{userId}/RAX-AUTH/admins
+    DELETE /v2.0/users/{userId}/roles/OS-KSADM/{roleid}
 
-Account users with the ``identity:user-admin`` or ``identity:default`` role can use 
-this operation to identify the administrator or point of contact for a user account 
-if they have questions or need assistance regarding user or role management. 
+Use this operation to delete a multi-product or custom (product-specific) role from a 
+user account. 
 
-This request returns the following identifying information about the administrator: 
-domain name, domain ID, email address, status, user ID and user name.
+When you submit the request, include the system-assigned role ``id`` and user ``id`` 
+in the request. Use the List role and List user operations to find the correct ids.
 
+The DELETE operation allows the account owner (identity:user-admin) to manage 
+non-protected role assignment for users (identity:default), granting and revoking 
+access at will. Some roles like identity:rack_connect and identity:rax_managed 
+cannot be managed by customers to prevent them from revoking privileges unintentionally.
 
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The request succeeded.   |
+|204                       |No content               |The request succeeded.   |
+|                          |                         |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -74,55 +80,42 @@ This table shows the header and URI parameters for the request:
 |X-Auth-Token              |Header                   |A valid admin            |
 |                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |URI                      |The unique, system-      |
-|                          |String *(Required)*      |generated user ID for an |
-|                          |                         |account.                 |
+|{userId}                  |URI                      |A user ID assigned by    |
+|                          |String *(Required)*      |system when user is      |
+|                          |                         |added.                   |
++--------------------------+-------------------------+-------------------------+
+|{roleId}                  |String *(Required)*      |A role Id.               |
 +--------------------------+-------------------------+-------------------------+
 
 
 This operation does not accept a request body.
 
+**Example Delete global role from user: XML request**
+
+
+.. code::
+
+   DELETE /v2.0/users/123456/roles/OS-KSADM/30007896 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   X-Auth-Token:82994d2fb9a0483a85b6ba622c212345
+   Accept: application/xml
+   Content-type: application/xml
+   
+
+**Example Delete global role from user: JSON request**
+
+
+.. code::
+
+   DELETE /v2.0/users/123456/roles/OS-KSADM/30007896 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   X-Auth-Token:82994d2fb9a0483a85b6ba622c212345
+   Accept: application/json
+   Content-type: application/json
+   
+
 Response
 """"""""""""""""
 
-**Example:  Get user admin response: XML**
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <users xmlns="http://docs.openstack.org/identity/api/v2.0" 
-       xmlns:ns2="http://www.w3.org/2005/Atom"
-       xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-       xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-       xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-       xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
-       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
-       <user id="10022879" 
-           username="JuserAdmin" 
-           enabled="true" 
-           display-name="JuserAdmin" 
-           rax-auth:defaultRegion="USA" 
-           rax-auth:domainId="5701091"/>
-   </users>
-
-
-**Example:  Get user admin response: JSON**
-
-.. code::
-
-   {
-       "users": [
-           {
-               "RAX-AUTH:defaultRegion": "",
-               "RAX-AUTH:domainId": "12345",
-               "email": "userAdmin@rack.com",
-               "enabled":"true",
-               "id": "10022879",
-               "username": "JuserAdmin"
-           }
-       ]
-   }
-
-
-
+This operation does not return a response body.
 

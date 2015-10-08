@@ -1,29 +1,35 @@
+.. _post-verifies-an-otp-device-v2.0:
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
-.. _get-get-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey:apikeycredentials:
-
-Get user API key credentials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Verifies an OTP device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
+    POST /v2.0/users/{userId}/RAX-AUTH/multi-factor/otp-devices/{otpDeviceId}/verify
 
-Get user credentials.
+Sends the mobile passcode from the mobile passcode application to the Identity service 
+to pair the OTP device instance with the account.
 
-To list API key credentials for a specified user, include the user ID in the request. If you don't know the ID, use the `List users <GET_admin-listUsers_v2.0_users_User_Calls.html>`__ operation to find it.
+After you :ref:`set up an OTP device for multi-factor authentication <config-mfa-otp-device>` 
+this operation sends the passcode from the mobile passcode application to the Identity 
+service to confirm that you have the device so that you can use the device for 
+multi-factor authentication.
 
+If your account is set up for multi-factor authentication by using a mobile phone, or 
+if this is the first OTP device on your account, 
+:ref:`update the multi-factor authentication settings <update-multifactor-settings-on-account-v2.0>` 
+on your account to use the OTP device. 
 
 
 This table shows the possible response codes for this operation:
 
-
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The request completed    |
-|                          |                         |successfully.            |
+|204                       |No content               |The request succeeded.   |
+|                          |                         |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -69,104 +75,87 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-This table shows the URI parameters for the request:
+This table shows the header URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |A valid admin            |
-|                          |                         |authentication token.    |
+|X-Auth-Token              |Header                   |A valid admin            |
+|                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |String *(Required)*      |A user ID assigned by    |
-|                          |                         |system when user is      |
-|                          |                         |added.                   |
+|{userId}                  |String *(Required)*      |The unique, system-      |
+|                          |                         |generated user ID for an |
+|                          |                         |account.                 |
++--------------------------+-------------------------+-------------------------+
+|{otpDeviceId}             |String *(Required)*      |The unique system-       |
+|                          |                         |generated ID assigned to |
+|                          |                         |the OTP device.          |
 +--------------------------+-------------------------+-------------------------+
 
 
 
+This table shows the body parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|verified                  |Boolean *(Required)*     |Indicates whether the    |
+|                          |                         |OTP device has been      |
+|                          |                         |verified.                |
++--------------------------+-------------------------+-------------------------+
 
 
-This operation does not accept a request body.
-
-
-
-
-**Example List API key credentials: XML request header**
-
+**Example: : Verify OTP devices for account HTTP request header: XML**
 
 .. code::
 
-   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials HTTP/1.1
-   Host: v2.0
-   Accept: application/xml
-   Content-type: application/xml
-   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
-
-
-
-
-
-**Example List API key credentials: JSON request header**
-
-
-.. code::
-
-   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials HTTP/1.1
-   Host: v2.0
+   POST /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices/\
+   12345e4a1ffe4514a8859716136dc7cb/verify HTTP/1.1
+   Host: identity.api.rackspacecloud.com
    Accept: application/json
+   X-Auth-Token: 83aa159390854e4690e4834e0c123456
    Content-type: application/json
-   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
+   
+   
+**Example: : Verify OTP devices for account request: XML**
+   
+.. code::
+   
+   <?xml version="1.0" encoding="UTF-8"?>
+   <verificationCode code="123456"
+       xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+       xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+        xmlns:atom="http://www.w3.org/2005/Atom" xmlns:identity="http://docs.openstack.org/identity/api/v2.0"/>
 
 
 
+**Example: :Verify OTP devices for account HTTP request header: JSON**
+
+.. code::
+
+   POST /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices/\
+   a34b5e4a1ffe4514a8859716136dc7cb/verify HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/json
+   X-Auth-Token: 83aa159390854e4690e4834e0cfa5f6c
+   Content-type: application/json
+
+
+**Example: :Verify OTP devices for account request: JSON**
+   
+   {"RAX-AUTH:verificationCode": { "code": "662262" }}
 
 
 Response
 """"""""""""""""
 
-
-
-
-
-
-
-
-
-
-**Example Get user API key credentials: XML response**
+**Example: : Verify device by ID HTTP response**
 
 
 .. code::
 
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <apiKeyCredentials 
-   	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-   	xmlns:ns2="http://www.w3.org/2005/Atom" 
-   	xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-   	xmlns:ns4="http://docs.openstack.org/identity/api/v2.0" 
-   	xmlns:ns5="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-   	xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-   	xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-   	xmlns:ns8="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
-
-
-
-
-
-**Example Get user API key credentials: JSON response**
-
-
-.. code::
-
-   {
-       "RAX-KSKEY:apiKeyCredentials": {
-           "username": "1406847123456",
-           "apiKey": "cffeab0e6d0d472f84b5c20c70123456"
-       }
-   }
+   HTTP/1.1 204 No Content
+   
 
 
 

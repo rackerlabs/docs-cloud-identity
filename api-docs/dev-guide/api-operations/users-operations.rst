@@ -24,9 +24,7 @@ account information, and account credentials.
 
 	When these requests are issued by an account user, they act only upon
 	that account user. To learn more about Identity account users, see
-	:ref:`Roles and role assignments <auth-roles-and-assignments>`.
-
-**API operations**
+	:ref:`Roles and role assignments <roles-and-assignments>`.
 
 .. include:: methods/users/post-add-user-v2.0-users.rst 
 .. include:: methods/users/get-list-users-v2.0-users.rst
@@ -35,9 +33,8 @@ account information, and account credentials.
 .. include:: methods/users/delete-deletes-a-user-v2.0-users-userid.rst
 .. include:: methods/users/get-get-user-admin-v2.0-users-userid-rax-auth-admins.rst
 .. include:: methods/users/post-add-credential-to-user-v2.0-users-userid-os-ksadm-credentials.rst
-- Get user credentials 
-- Reset API key credentials
-
+.. include:: methods/users/get-get-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey.rst
+.. include:: methods/users/post-reset-api-key-for-user-v2.0-users-userid-os-ksadm-credentials-rax-kskey.rst
 
 
 

@@ -1,18 +1,20 @@
-.. _get-user-admin-v2.0:
+.. _post-reset-api-key-for-user-v2.0:
 
-Get user admin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reset API key for user
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /v2.0/users/{userId}/RAX-AUTH/admins
+    POST /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials/RAX-AUTH/reset
 
-Account users with the ``identity:user-admin`` or ``identity:default`` role can use 
-this operation to identify the administrator or point of contact for a user account 
-if they have questions or need assistance regarding user or role management. 
+Use the Reset API Key operation to reset the API key on the specified user account. 
 
-This request returns the following identifying information about the administrator: 
-domain name, domain ID, email address, status, user ID and user name.
+Identity users and user administrators should routinely reset passwords and API keys 
+to prevent unauthorized access to Rackspace Cloud accounts and services. 
+
+This reset operation returns the new API key for the user account. Unlike updating the password, 
+the API key reset does not revoke existing tokens. Identity user administrators can 
+use the :ref:`Revoke Token <delete-revoke-token-v2.0>` operation to invalidate the token for a user.
 
 
 This table shows the possible response codes for this operation:
@@ -59,6 +61,14 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the API request. Check   |
+|                          |                         |the content-type and     |
+|                          |                         |accept headers included  |
+|                          |                         |in the request.          |
++--------------------------+-------------------------+-------------------------+
 |503                       |Service Fault            |Service is not available.|
 +--------------------------+-------------------------+-------------------------+
 
@@ -74,53 +84,39 @@ This table shows the header and URI parameters for the request:
 |X-Auth-Token              |Header                   |A valid admin            |
 |                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |URI                      |The unique, system-      |
-|                          |String *(Required)*      |generated user ID for an |
-|                          |                         |account.                 |
+|{userId}                  |URI String               |A user ID assigned by    |
+|                          |String *(Required)*      |system when user is      |
+|                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
-
 
 This operation does not accept a request body.
 
 Response
 """"""""""""""""
 
-**Example:  Get user admin response: XML**
+**Example: Reset API key for user: XML response**
+
 
 .. code::
 
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <users xmlns="http://docs.openstack.org/identity/api/v2.0" 
-       xmlns:ns2="http://www.w3.org/2005/Atom"
-       xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-       xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-       xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-       xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
-       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0">
-       <user id="10022879" 
-           username="JuserAdmin" 
-           enabled="true" 
-           display-name="JuserAdmin" 
-           rax-auth:defaultRegion="USA" 
-           rax-auth:domainId="5701091"/>
-   </users>
+   <?xml version="1.0" encoding="UTF-8"?>
+   <apiKeyCredentials apiKey="aaaaa-bbbbb-ccccc-12345678"
+        username="jqsmith"
+        xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+        xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+        xmlns:atom="http://www.w3.org/2005/Atom" 
+        xmlns:identity="http://docs.openstack.org/identity/api/v2.0"/>
 
+**Example: Reset API key for user: JSON response**
 
-**Example:  Get user admin response: JSON**
 
 .. code::
 
    {
-       "users": [
-           {
-               "RAX-AUTH:defaultRegion": "",
-               "RAX-AUTH:domainId": "12345",
-               "email": "userAdmin@rack.com",
-               "enabled":"true",
-               "id": "10022879",
-               "username": "JuserAdmin"
-           }
-       ]
+     "RAX-KSKEY:apiKeyCredentials": {
+       "username": "jqsmith",
+       "apiKey": "aaaaa-bbbbb-ccccc-12345678"
+     }
    }
 
 
