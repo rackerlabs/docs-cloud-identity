@@ -1,6 +1,6 @@
 .. _get-list-extensions-v2.0-extensions:
 
-List Extensions
+List extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

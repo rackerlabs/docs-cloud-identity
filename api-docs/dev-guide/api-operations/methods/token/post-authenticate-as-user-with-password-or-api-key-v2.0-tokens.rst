@@ -170,7 +170,7 @@ This table shows the body parameters for the request:
 +--------------------------+-------------------------+----------------------------+
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with password or API key request JSON**
 
 
 .. code::
@@ -199,7 +199,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with password or API key JSON request**
 
 
 .. code::
@@ -216,7 +216,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with password or API key request JSON**
 
 
 .. code::
@@ -234,7 +234,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with password or API key JSON request**
 
 
 .. code::
@@ -249,7 +249,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with password or API key request JSON**
 
 
 .. code::
@@ -268,7 +268,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with password or API key request JSON**
 
 
 .. code::
@@ -284,7 +284,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with password or API key request JSON**
 
 
 .. code::
@@ -297,8 +297,6 @@ This table shows the body parameters for the request:
             }
        }
    }
-
-
 
 
 
@@ -315,18 +313,16 @@ This table shows the body parameters for the response:
 |                       |                       |service information upon      |
 |                       |                       |successful authentication.    |
 +-----------------------+-----------------------+------------------------------+
-|token                  |String *(Required)*    |The `token object             |
-|                       |                       |<Sample_Request_Response-     |
-|                       |                       |d1e64.html#authTokenResp>`__  |
+|token                  |String *(Required)*    |The :ref:`token object        |
+|                       |                       |<auth-resp-token-resource>`   |
 |                       |                       |supplies a scoped             |
 |                       |                       |authentication token that can |
 |                       |                       |be used to access Rackspace   |
 |                       |                       |Cloud services for the        |
 |                       |                       |specified tenant.             |
 +-----------------------+-----------------------+------------------------------+
-|user                   |String *(Required)*    |A `user object                |
-|                       |                       |<Sample_Request_Response-     |
-|                       |                       |d1e64.html#authUserResp>`__   |
+|user                   |String *(Required)*    |A :ref:`user object           |
+|                       |                       |<auth-resp-user-resource>`    |
 |                       |                       |that returns the following    |
 |                       |                       |information about the user,   |
 |                       |                       |if available for the account: |
@@ -334,9 +330,8 @@ This table shows the body parameters for the response:
 |                       |                       |default region, domain, multi-|
 |                       |                       |factor authentication status. |
 +-----------------------+-----------------------+------------------------------+
-|serviceCatalog         |String *(Required)*    |The `service catalog object   |
-|                       |                       |<Sample_Request_Response-     |
-|                       |                       |d1e64.html#authSvccatResp>`__ |
+|serviceCatalog         |String *(Required)*    |The :ref:`service catalog     |
+|                       |                       |<svccat-resource>`            |
 |                       |                       |provides information about    |
 |                       |                       |each service available to the |
 |                       |                       |authenticated user along with |
@@ -345,12 +340,7 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-
-
-
-
-
-**Example: Authenticate as user with password or API key: XML response**
+**Example: Authenticate as user with password or API key response XML**
 
 
 .. code::

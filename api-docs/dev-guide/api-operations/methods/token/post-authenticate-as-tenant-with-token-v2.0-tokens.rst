@@ -103,7 +103,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as tenant with token: JSON request**
+**Example: Authenticate as tenant with token request: JSON**
 
 
 .. code::
@@ -125,31 +125,27 @@ Response
 """"""""""""""""
 
 
-
-
-
 This table shows the body parameters for the response:
 
 +-----------------------+-----------------------+------------------------------+
 |Name                   |Type                   |Description                   |
 +=======================+=======================+==============================+
-|access                 |String *(Required)*    |An ``access`` object that     |
+|access                 |String                 |An ``access`` object that     |
 |                       |                       |returns token, user, and      |
 |                       |                       |service information upon      |
 |                       |                       |successful authentication.    |
 +-----------------------+-----------------------+------------------------------+
-|token                  |String *(Required)*    |The `token object             |
-|                       |                       |<Sample_Request_Response-     |
-|                       |                       |d1e64.html#authTokenResp>`__  |
+|token                  |String                 |The                           |
+|                       |                       |:ref:`token object            |
+|                       |                       |<auth-resp-token-resource>`   |
 |                       |                       |supplies a scoped             |
 |                       |                       |authentication token that can |
 |                       |                       |be used to access Rackspace   |
 |                       |                       |Cloud services for the        |
 |                       |                       |specified tenant.             |
 +-----------------------+-----------------------+------------------------------+
-|user                   |String *(Required)*    |A `user object                |
-|                       |                       |<Sample_Request_Response-     |
-|                       |                       |d1e64.html#authUserResp>`__   |
+|user                   |String                 |A :ref:`user object           |
+|                       |                       |<auth-resp-user-resource>`    |
 |                       |                       |that returns the following    |
 |                       |                       |information about the user,   |
 |                       |                       |if available for the account: |
@@ -157,9 +153,8 @@ This table shows the body parameters for the response:
 |                       |                       |default region, domain, multi-|
 |                       |                       |factor authentication status. |
 +-----------------------+-----------------------+------------------------------+
-|serviceCatalog         |String *(Required)*    |The `service catalog object   |
-|                       |                       |<Sample_Request_Response-     |
-|                       |                       |d1e64.html#authSvccatResp>`__ |
+|serviceCatalog         |String                 |The :ref:`service catalog     |
+|                       |                       |<svccat-resource>`            |
 |                       |                       |provides information about    |
 |                       |                       |each service available to the |
 |                       |                       |authenticated user along with |
@@ -168,12 +163,7 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-
-
-
-
-
-**Example: Authenticate as tenant with token: XML response**
+**Example: Authenticate as tenant with token response XML**
 
 
 .. code::
@@ -339,9 +329,7 @@ This table shows the body parameters for the response:
 
 
 
-
-
-**Example: Authenticate as tenant with token: JSON response**
+**Example: Authenticate as tenant with token response JSON**
 
 
 .. code::

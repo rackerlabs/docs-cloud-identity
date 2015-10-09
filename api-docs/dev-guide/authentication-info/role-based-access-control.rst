@@ -241,11 +241,11 @@ Cloud Control panel interface.
 Use the following API operations to add account users and manage role
 assignments:
 
--  `Add account user`_
+-  :ref:`Add account user <post-add-user-v2.0-users>`
 
--  `Assign role to account users`_
+-  :ref:`Assign role to account users <add-role-to-user-v2.0-os-ksadm>`
 
--  `Delete role from account user`_
+-  :ref:`Delete role from account user <delete-global-role-from-user-v2.0-os-ksadm>`
 
 For information about implementing RBAC by using the Cloud Control Panel
 and other RBAC-related topics, see the following Rackspace Knowledge
@@ -257,12 +257,6 @@ Center articles:
 
 
 .. comments  Reference URLs
-
-.. _Add account user: http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_User_Calls.html
-
-.. _Assign role to account users: http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html
-
-.. _Delete role from account user: http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html
 
 .. _Managing role-based access control through Cloud Control Panel: http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac
 

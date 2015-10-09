@@ -79,7 +79,7 @@ This table shows the header and URI parameters for the request:
 
 This operation does not accept a request body.
 
-**Example: Get a domain HTTP request header: XML**
+**Example: Get a domain HTTP request header XML**
 
 
 .. code::
@@ -108,56 +108,55 @@ Response
 
 This table shows the body parameters for the response:
 
-+----------------------------------+---------------------+---------------------+
-|Name                              |Type                 |Description          |
-+==================================+=====================+=====================+
-|RAX-AUTH:domain                   |Object *(Required)*  |An object that       |
-|                                  |                     |contains the domain  |
-|                                  |                     |configuration        |
-|                                  |                     |attribute settings.  |
-+----------------------------------+---------------------+---------------------+
-|id                                |String *(Required)*  |The unique id for    |
-|                                  |                     |the domain.          |
-+----------------------------------+---------------------+---------------------+
-|RAX-AUTH:domain                   |Object *(Required)*  |An object that       |
-|                                  |                     |contains the domain  |
-|                                  |                     |configuration        |
-|                                  |                     |attribute settings.  |
-+----------------------------------+---------------------+---------------------+
-|enabled                           |Boolean *(Optional)* |Indicates whether    |
-|                                  |                     |the domain is        |
-|                                  |                     |enabled.             |
-+----------------------------------+---------------------+---------------------+
-|rax-auth:description              |String *(Optional)*  |The domain           |
-|                                  |                     |description.         |
-+----------------------------------+---------------------+---------------------+
-|name                              |String *(Optional)*  |The domain name.     |
-+----------------------------------+---------------------+---------------------+
-|domainMultiFactorEnforcementLevel |String *(Optional)*  |If present, this     |
-|                                  |                     |extended attribute   |
-|                                  |                     |specifies the multi- |
-|                                  |                     |factor               |
-|                                  |                     |authentication       |
-|                                  |                     |enforcement policy   |
-|                                  |                     |that applies to      |
-|                                  |                     |accounts within the  |
-|                                  |                     |specified domain. *  |
-|                                  |                     |``REQUIRED`` Users   |
-|                                  |                     |within the domain    |
-|                                  |                     |must use multi-      |
-|                                  |                     |factor               |
-|                                  |                     |authentication to    |
-|                                  |                     |access their         |
-|                                  |                     |account. *           |
-|                                  |                     |``OPTIONAL`` Users   |
-|                                  |                     |have the option to   |
-|                                  |                     |authenticate using   |
-|                                  |                     |multi-factor         |
-|                                  |                     |authentication.      |
-+----------------------------------+---------------------+---------------------+
++-------------------------------------+---------------------+---------------------+
+|Name                                 |Type                 |Description          |
++=====================================+=====================+=====================+
+|RAX-AUTH:domain                      |Object               |An object that       |
+|                                     |                     |contains the domain  |
+|                                     |                     |configuration        |
+|                                     |                     |attribute settings.  |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.**id**               |String               |The unique id for    |
+|                                     |                     |the domain.          |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.**enabled**          |Boolean              |Indicates whether    |
+|                                     |                     |the domain is        |
+|                                     |                     |enabled.             |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.**description**      |String               |The domain           |
+|                                     |                     |description.         |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.**name**             |String               |The domain name.     |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |String               |If present, this     |
+|**domainMultiFactorEnforcementLevel**|                     |extended attribute   |
+|                                     |                     |specifies the multi- |
+|                                     |                     |factor               |
+|                                     |                     |authentication       |
+|                                     |                     |enforcement policy   |
+|                                     |                     |that applies to      |
+|                                     |                     |accounts within the  |
+|                                     |                     |specified domain. *  |
+|                                     |                     |                     |
+|                                     |                     |- ``REQUIRED``       |
+|                                     |                     |   Users             |
+|                                     |                     |   within the domain |
+|                                     |                     |   must use multi-   |
+|                                     |                     |   factor            |
+|                                     |                     |   authentication to |
+|                                     |                     |   access their      |
+|                                     |                     |   account. *        |
+|                                     |                     |                     |
+|                                     |                     |- ``OPTIONAL``       |
+|                                     |                     |   Users             |
+|                                     |                     |   have the option to|
+|                                     |                     |   authenticate using|
+|                                     |                     |   multi-factor      |
+|                                     |                     |   authentication.   |
++-------------------------------------+---------------------+---------------------+
 
 
-**Example: List domains response header: XML**
+**Example: List domains response header XML**
 
 
 .. code::
@@ -183,7 +182,7 @@ This table shows the body parameters for the response:
 
 
 
-**Example: List domains response header: JSON**
+**Example: List domains response heade JSON**
 
 
 .. code::
