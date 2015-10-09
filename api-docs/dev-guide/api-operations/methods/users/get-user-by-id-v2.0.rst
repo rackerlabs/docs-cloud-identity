@@ -1,25 +1,31 @@
-.. _get-get-user-api-key-credentials-v2.0:
+.. _get-user-by-id-v2.0:
 
-Get user API key credentials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Get user by id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
+    GET /v2.0/users/{userId}
 
-Use this operation to list API key credentials for a specified user, include the 
-user ID in the request. If you don't know the ID, use the use 
-:ref:`List users <get-list-users-v2.0>` operation to find it.
+This operation returns the following detailed account information for a specific user, 
+by user id: email address, user name, user id, status, default region, and domain id.
 
+.. note::
 
+   If this request is issued by a user holding the admin role (``identity:user-admin``), 
+   the specific user's information is returned only if that user is associated with the 
+   same tenant as the requester's ``user-admin`` token.
+   
+   If this request is issued by a user holding the user role (``identity:default``), 
+   the response only includes the user account information for the user who submitted the 
+   request. 
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The request completed    |
+|200                       |OK                       |The operation completed  |
 |                          |                         |successfully.            |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
@@ -79,85 +85,78 @@ This table shows the header and URI parameters for the request:
 |                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
 
-
 This operation does not accept a request body.
-
-
-
-
-**Example: List API key credentials: XML request header**
-
-
-.. code::
-
-   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials HTTP/1.1
-   Host: v2.0
-   Accept: application/xml
-   Content-type: application/xml
-   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
-
-
-
-
-
-**Example: List API key credentials: JSON request header**
-
-
-.. code::
-
-   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials HTTP/1.1
-   Host: v2.0
-   Accept: application/json
-   Content-type: application/json
-   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
-
-
-
-
 
 Response
 """"""""""""""""
 
 
-
-
-
-
-
-
-
-
-**Example: Get user API key credentials: XML response**
+**Example: Get user by id HTTP response header: XML**
 
 
 .. code::
 
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <apiKeyCredentials 
-   	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-   	xmlns:ns2="http://www.w3.org/2005/Atom" 
-   	xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-   	xmlns:ns4="http://docs.openstack.org/identity/api/v2.0" 
-   	xmlns:ns5="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-   	xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-   	xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-   	xmlns:ns8="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
+   HTTP/1.1 200 OK
+   Content-Type: application/xml
+   
+   
+**Example: Get user by id: XML response**
 
+.. code:: 
 
-
-
-
-**Example: Get user API key credentials: JSON response**
+   <?xml version="1.0" encoding="UTF-8"?>
+   <user 
+         xmlns="http://docs.openstack.org/identity/api/v2.0" 
+         xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+         xmlns:atom="http://www.w3.org/2005/Atom" 
+         xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+         xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
+         xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+         xmlns:ns7="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+         xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+         rax-auth:domainId="5830280" 
+         rax-auth:defaultRegion="DFW" 
+         rax-auth:multiFactorEnabled="true" 
+         rax-auth:multiFactorState="ACTIVE" 
+         rax-auth:userMultiFactorEnforcementLevel="OPTIONAL"
+         id="123456" 
+         username="jqsmith" 
+         email="john.smith@example.org" 
+         enabled="true"/>
+   
+   
+**Example: Get user by id HTTP response header: json**
 
 
 .. code::
 
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+      
+
+**Example: Get user by id response: json**
+
+
+.. code::
+
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+   
    {
-       "RAX-KSKEY:apiKeyCredentials": {
-           "username": "1406847123456",
-           "apiKey": "cffeab0e6d0d472f84b5c20c70123456"
+     "user": 
+       {
+         "rax-auth:domainId":"5830280"
+         "id": "123456",
+         "enabled": true,
+         "username": "jqsmith",
+         "email": "john.smith@example.org",
+         "rax-auth:defaultRegion":"DFW",
+         "rax-auth:multiFactorEnabled":"true",
+         "rax-auth:multiFactorState":"ACTIVE",
+         "rax-auth:userMultiFactorEnforcementLevel":"OPTIONAL"
        }
    }
+   
 
 
 

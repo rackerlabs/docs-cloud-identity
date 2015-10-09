@@ -1,36 +1,26 @@
-.. _delete-a-user-v2.0:
+.. _get-get-user-api-key-credentials-v2.0:
 
-Delete a user
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Get user credentials
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    DELETE /v2.0/users/{userId}
+    GET /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
 
-Deletes a user.
+Use this operation to list API key credentials for a specified user, include the 
+user ID in the request. If you don't know the ID, use the use 
+:ref:`List users <get-list-users-v2.0>` operation to find it.
 
-Rackspace Cloud account administrators (``identity:user-admin``) can use the Delete user 
-operation to remove a user from a Rackspace Cloud account. Administrators can only delete 
-user accounts that are assigned the user role (``identity:default``) with the same tenant 
-id as the Administrator account.
 
-To delete a user, specify the user ID in the request. If you know the user name but not id, 
-use the :ref:`List users <get-list-users-v2.0>` operation to look up account information by name.
 
-.. warning::
-
-   Don’t delete the wrong user! Before submitting the Delete request, use the List 
-   users or :ref:`Get user by id <get-user-by-id-v2.0>` operation to review the user 
-   account information and confirm that you are working with the correct account.
-   
 This table shows the possible response codes for this operation:
+
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|204                       |No content               |The server fulfilled the |
-|                          |                         |request but does not     |
-|                          |                         |need to return a body.   |
+|200                       |OK                       |The request completed    |
+|                          |                         |successfully.            |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -84,43 +74,81 @@ This table shows the header and URI parameters for the request:
 |X-Auth-Token              |Header                   |A valid admin            |
 |                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |URI String               |A user ID assigned by    |
+|{userId}                  |URI                      |A user ID assigned by    |
 |                          |String *(Required)*      |system when user is      |
 |                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
 
 
+This operation does not accept a request body.
 
-**Example:  Delete user HTTP request header: XML**
+
+
+
+**Example: List API key credentials: XML request header**
 
 
 .. code::
 
-   DELETE /v2.0/users/123456 HTTP/1.1
-   Host: identity.api.rackspacecloud.com
+   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials HTTP/1.1
+   Host: v2.0
    Accept: application/xml
    Content-type: application/xml
-   X-Auth-Token: eaf8345057414cd397d0543123456789
-   
-   
-**Example:  Delete user HTTP request header: JSON**
+   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
+
+
+
+
+
+**Example: List API key credentials: JSON request header**
 
 
 .. code::
 
-   POST /v2.0/users/123456 HTTP/1.1
-   Host: identity.api.rackspacecloud.com
+   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials HTTP/1.1
+   Host: v2.0
    Accept: application/json
    Content-type: application/json
-   X-Auth-Token: eaf8345057414cd397d0543123456789
+   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
 
 
-This operation does not accept a request body.
+
+
 
 Response
 """"""""""""""""
 
-This operation does not return a response body.
+**Example: Get user API key credentials: XML response**
+
+
+.. code::
+
+   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+   <apiKeyCredentials 
+   	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
+   	xmlns:ns2="http://www.w3.org/2005/Atom" 
+   	xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
+   	xmlns:ns4="http://docs.openstack.org/identity/api/v2.0" 
+   	xmlns:ns5="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
+   	xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+   	xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
+   	xmlns:ns8="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
+
+
+
+
+
+**Example: Get user API key credentials: JSON response**
+
+
+.. code::
+
+   {
+       "RAX-KSKEY:apiKeyCredentials": {
+           "username": "1406847123456",
+           "apiKey": "cffeab0e6d0d472f84b5c20c70123456"
+       }
+   }
 
 
 

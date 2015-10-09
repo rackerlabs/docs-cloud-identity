@@ -1,6 +1,6 @@
 .. _post-creates-an-otp-device-v2.0:
 
-Creates an OTP device
+Create an OTP device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

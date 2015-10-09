@@ -1,21 +1,31 @@
-.. _get-list-credentials-v2.0-users-userid-os-ksadm-credentials:
+.. _delete-delete-user-api-key-credentials-v2.0:
 
-List credentials
+Delete user API key credentials
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/users/{userId}/OS-KSADM/credentials
+    DELETE /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
 
-List available credentials for the specified user.
+Delete user credentials.
+
+An API key is a credential; you can delete a user's API key with this call. 
+To delete a credential from a user, specify the user ID in the request. 
+If you know the user name but not the ID, use  
+:ref:` <get-list-users-v2.0>`  to   obtain complete 
+identifying information about the user.
+
+
 
 This table shows the possible response codes for this operation:
+
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |OK                       |The request completed    |
-|                          |                         |successfully.            |
+|204                       |No content               |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request is missing   |
 |                          |                         |one or more elements, or |
@@ -54,6 +64,14 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the API request. Check   |
+|                          |                         |the content-type and     |
+|                          |                         |accept headers included  |
+|                          |                         |in the request.          |
++--------------------------+-------------------------+-------------------------+
 |503                       |Service Fault            |Service is not available.|
 +--------------------------+-------------------------+-------------------------+
 
@@ -61,91 +79,26 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-This table shows the URI parameters for the request:
+This table shows the header and URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |A valid admin            |
-|                          |                         |authentication token.    |
+|X-Auth-Token              |Header                   |A valid admin            |
+|                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |String *(Required)*      |A user ID assigned by    |
-|                          |                         |system when user is      |
+|{userId}                  |URI                      |A user ID assigned by    |
+|                          |String *(Required)*      |system when user is      |
 |                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
 
-
 This operation does not accept a request body.
-
-**Example: List credentials: XML request header**
-
-
-.. code::
-
-   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials HTTP/1.1
-   Host: v2.0
-   Accept: application/xml
-   Content-type: application/xml
-   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
-
-
-**Example: List credentials: JSON request header**
-
-
-.. code::
-
-   GET /users/00001e59ccb741dfafbba59b58123456/OS-KSADM/credentials HTTP/1.1
-   Host: v2.0
-   Accept: application/json
-   Content-type: application/json
-   X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
-
-
-
 
 
 Response
 """"""""""""""""
 
-**Example: List credentials: JSON response**
-
-
-.. code::
-
-   {
-       "credentials": [
-           {
-               "RAX-KSKEY:apiKeyCredentials": {
-                   "username": "1406847123456",
-                   "apiKey": "cffeab0e6d0d472f84b5c20c70123456"
-               }
-           }
-       ]
-   }
-   
-
-
-**Example: List credentials: XML response**
-
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <credentials 
-   	xmlns="http://docs.openstack.org/identity/api/v2.0" 
-   	xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0" 
-   	xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0" 
-   	xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" 
-   	xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-   	xmlns:atom="http://www.w3.org/2005/Atom" 
-   	xmlns:ns7="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-   	xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0">
-   	<rax-kskey:apiKeyCredentials username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
-   </credentials>
-   
+This operation does not return a response body.
 
 
 

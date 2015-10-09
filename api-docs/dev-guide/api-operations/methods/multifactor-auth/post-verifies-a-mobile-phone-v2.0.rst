@@ -1,6 +1,6 @@
 .. _post-verifies-a-mobile-phone-v2.0:
 
-Verifies a mobile phone
+Verify a mobile phone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

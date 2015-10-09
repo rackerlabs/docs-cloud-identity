@@ -1,13 +1,14 @@
-.. _get-show-version-details-v2.0:
+.. _get-list-versions:
 
-Show version details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0
+    GET /
 
-Shows details for the Identity API v2.0.
+This operation returns a list of the available Rackspace Cloud Identity API versions.
+
 
 This table shows the possible response codes for this operation:
 
@@ -63,79 +64,80 @@ Request
 
 This operation does not accept a request body.
 
+
 Response
 """"""""""""""""
 
-**Example: Show version details: JSON response**
+**Example: List versions response: JSON**
 
 
 .. code::
 
    {
-       "version": {
-           "id": "v2.0",
-           "links": [
+       "versions": {
+           "version": [
                {
-                   "href": "https://identity.api.rackspacecloud.com/v2.0",
-                   "rel": "self"
-               },
-               {
-                   "href": "http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf",
-                   "rel": "describedby",
-                   "type": "application/pdf"
-               },
-               {
-                   "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl",
-                   "rel": "describedby",
-                   "type": "application/vnd.sun.wadl+xml"
-               }
-           ],
-           "media-types": {
-               "values": [
-                   {
-                       "base": "application/xml",
-                       "type": "application/vnd.openstack.identity+xml;version=2.0"
+                   "id": "v1.0",
+                   "link": {
+                       "href": "https://identity.api.rackspacecloud.com/v1.0",
+                       "rel": "self"
                    },
-                   {
-                       "base": "application/json",
-                       "type": "application/vnd.openstack.identity+json;version=2.0"
-                   }
-               ]
-           },
-           "status": "CURRENT",
-           "updated": "2012-01-21T11:33:21-06:00"
+                   "status": "DEPRECATED",
+                   "updated": "2011-07-19T22:30:00Z"
+               },
+               {
+                   "id": "v1.1",
+                   "link": {
+                       "href": "http://docs.rackspacecloud.com/auth/api/v1.1/auth.wadl",
+                       "rel": "describedby",
+                       "type": "application/vnd.sun.wadl+xml"
+                   },
+                   "status": "CURRENT",
+                   "updated": "2012-01-19T22:30:00.25Z"
+               },
+               {
+                   "id": "v2.0",
+                   "link": {
+                       "href": "http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl",
+                       "rel": "describedby",
+                       "type": "application/vnd.sun.wadl+xml"
+                   },
+                   "status": "CURRENT",
+                   "updated": "2012-01-19T22:30:00.25Z"
+               }
+           ]
        }
    }
 
 
-**Example: Show version details: XML response**
+**Example: List versions response: XML**
 
 
 .. code::
 
-   <?xml version="1.0" encoding="UTF-8"?>
-   <version xmlns="http://docs.openstack.org/common/api/v1.0"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            id="v2.0" status="CURRENT" updated="2011-01-21T11:33:21-06:00">
+   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
    
-        <media-types>
-            <media-type base="application/xml"
-               type="application/vnd.openstack.identity+xml;version=2.0"/>
-            <media-type base="application/json"
-               type="application/vnd.openstack.identity+json;version=2.0"/>
-        </media-types>
+   <versions xmlns="http://docs.openstack.org/common/api/v1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:ns3="http://docs.rackspace.com/core/event">
    
-        <atom:link rel="self"
-            href="https://identity.api.rackspacecloud.com/v2.0/"/>
+           <version updated="2011-07-19T22:30:00Z" status="DEPRECATED" id="v1.0">
+                   <atom:link href="https://identity.api.rackspacecloud.com/v1.0" rel="self"/>
+           </version>
    
-       <atom:link rel="describedby"
-                  type="application/pdf"
-                  href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide-latest.pdf" />
+           <version updated="2012-01-19T22:30:00.25Z" status="CURRENT" id="v1.1">
+                   <atom:link href="https://identity.api.rackspacecloud.com/v1.1/" rel="self"/>
+                   <atom:link href="http://docs.rackspacecloud.com/auth/api/v1.1/auth-client-devguide-latest.pdf" rel="describedby" type="application/pdf"/>
+                   <atom:link href="http://docs.rackspacecloud.com/auth/api/v1.1/auth.wadl" rel="describedby" type="application/vnd.sun.wadl+xml"/>
+           </version>
    
-       <atom:link rel="describedby"
-                  type="application/vnd.sun.wadl+xml"
-                  href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" />
-   </version>
+           <version updated="2012-01-19T22:30:00.25Z" status="CURRENT" id="v2.0">
+                   <atom:link href="https://identity.api.rackspacecloud.com/v2.0/" rel="self"/>
+                   <atom:link href="http://docs.rackspacecloud.com/auth/api/v2.0/auth-client-devguide-latest.pdf" rel="describedby" type="application/pdf"/>
+                   <atom:link href="http://docs.rackspacecloud.com/auth/api/v2.0/auth.wadl" rel="describedby" type="application/vnd.sun.wadl+xml"/>
+           </version>
+   
+   </versions>
+
+
 
 
 

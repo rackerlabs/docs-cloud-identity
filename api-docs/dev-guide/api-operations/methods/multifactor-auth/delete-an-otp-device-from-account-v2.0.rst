@@ -1,6 +1,6 @@
 .. _delete-a-specified-otp-device-from-a-user-account-v2.0:
 
-Removes a specified OTP device from a user account
+Remove a specified OTP device from a user account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

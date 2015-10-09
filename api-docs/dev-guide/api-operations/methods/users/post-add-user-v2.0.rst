@@ -1,7 +1,7 @@
 .. _post-add-user-v2.0-users:
 
 Add user
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -26,7 +26,8 @@ from the User Management page in the Cloud Control panel.
  
    - Users with the User Admin role can manage sub-user accounts through the API or 
      from the `Cloud Control panel <https://mycloud.rackspace.com/cloud/929418/account#users>`__. 
-     Use the Control panel to add the user's full name, contact information, and configure account security.
+     Use the Control panel to add the user's full name, contact information, 
+     and configure account security.
      
    - If you try to create an account with the user name from an existing account, 
      the Add user operation returns an ``HTTP error 409`` message.
@@ -111,7 +112,11 @@ This table shows the body parameters for the request:
 +--------------------------+-------------------------+-----------------------------+
 |Name                      |Type                     |Description                  |
 +==========================+=========================+=============================+
-|username                  |String *(Required)*      |The name to assign to        |
+|user                      |Object                   |A ``user`` object that       |
+|                          |                         |specifies the user           |
+|                          |                         |account information.         |
++--------------------------+-------------------------+-----------------------------+
+|user.**username**         |String *(Required)*      |The name to assign to        |
 |                          |                         |the user. Specify a          |
 |                          |                         |value that meets the         |
 |                          |                         |following criteria:          |
@@ -126,12 +131,12 @@ This table shows the body parameters for the request:
 |                          |                         |  characters:. ``- @ _``     |
 |                          |                         |                             |
 +--------------------------+-------------------------+-----------------------------+
-|email                     |String *(Required)*      |Email address for the        |
+|user.**email**            |String *(Required)*      |Email address for the        |
 |                          |                         |user account, for example    |
 |                          |                         |``jqsmith@test.com``         |
 |                          |                         |                             |
 +--------------------------+-------------------------+-----------------------------+
-|enabled                   |Bool *(Required)*        |Indicates whether the        |
+|user.**enabled**          |Bool *(Required)*        |Indicates whether the        |
 |                          |                         |user can authenticate        |
 |                          |                         |after the user account       |
 |                          |                         |is created. If no value      |
@@ -140,7 +145,7 @@ This table shows the body parameters for the request:
 |                          |                         |specified:                   |
 |                          |                         |``enabled=true``.            |
 +--------------------------+-------------------------+-----------------------------+
-|OS-KSADM:password         |String *(Optional)*      |Specify an initial           |
+|user.**OS-KSADM:password**|String *(Optional)*      |Specify an initial           |
 |                          |                         |password for the user        |
 |                          |                         |account. If this value       |
 |                          |                         |is not specified, the        |
@@ -161,7 +166,7 @@ This table shows the body parameters for the request:
 |                          |                         |* Can start                  |
 |                          |                         |  with or include any of     |
 |                          |                         |  the following special      |
-|                          |                         |  characters: ~ ! @ # % ^    |
+|                          |                         |  characters: ~ ! @ # % ~    |
 |                          |                         |  & * _ - | \ ( ) { } [ ]    |
 |                          |                         |  : ; " ' < >,. ? /          |
 |                          |                         |                             |
@@ -234,44 +239,39 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|user                      |User *(Required)*        |A ``user`` object that   |
-|                          |                         |contains the user        |
+|user                      |Object                   |A ``user`` object that   |
+|                          |                         |returns the user         |
 |                          |                         |account information.     |
-|                          |                         |``{"user": {"username":  |
-|                          |                         |"test", "OS-             |
-|                          |                         |KSADM:password":         |
-|                          |                         |"xxxxxxxx", "email":     |
-|                          |                         |"jqsmith@test.com"}``    |
 +--------------------------+-------------------------+-------------------------+
-|RAX-AUTH:defaultRegion    |User *(Required)*        |Specifies the default    |
-|                          |                         |region for the user      |
+|user.\                    |String                   |Specifies the default    |
+|**RAX-AUTH:defaultRegion**|                         |region for the user      |
 |                          |                         |account. This value is   |
 |                          |                         |inherited from the user  |
 |                          |                         |administrator when the   |
 |                          |                         |account is created..     |
 +--------------------------+-------------------------+-------------------------+
-|RAX-AUTH:domainId         |User *(Required)*        |Identifies the domain    |
-|                          |                         |that contains the user   |
+|user.\                    |String                   |Identifies the domain    |
+|**RAX-AUTH:domainId**     |                         |that contains the user   |
 |                          |                         |account. This value is   |
 |                          |                         |inherited from the user  |
 |                          |                         |administrator when the   |
 |                          |                         |account is created.      |
 +--------------------------+-------------------------+-------------------------+
-|id                        |String *(Optional)*      |A unique system-         |
+|user.**id**               |String                   |A unique system-         |
 |                          |                         |generated ID for the     |
 |                          |                         |user account. The ID     |
 |                          |                         |generated for the        |
 |                          |                         |account cannot be        |
 |                          |                         |modified.                |
 +--------------------------+-------------------------+-------------------------+
-|username                  |String *(Required)*      |The name that the user   |
+|user.**username**         |String                   |The name that the user   |
 |                          |                         |can use to authenticate  |
 |                          |                         |to the Rackspace Cloud.  |
 |                          |                         |You can change this      |
 |                          |                         |value through the API or |
 |                          |                         |the Cloud Control panel. |
 +--------------------------+-------------------------+-------------------------+
-|OS-KSADM:password         |String *(Optional)*      |The password value that  |
+|user.**OS-KSADM:password**|String                   |The password value that  |
 |                          |                         |the user needs for       |
 |                          |                         |authentication. If the   |
 |                          |                         |Add user request         |
@@ -280,12 +280,12 @@ This table shows the body parameters for the response:
 |                          |                         |not included in the      |
 |                          |                         |response.                |
 +--------------------------+-------------------------+-------------------------+
-|email                     |String *(Required)*      |Email address for the    |
+|user.**email**            |String                   |Email address for the    |
 |                          |                         |user account, for example|
 |                          |                         |``jqsmith@test.com``     |
 |                          |                         |                         |
 +--------------------------+-------------------------+-------------------------+
-|enabled                   |Bool *(Required)*        |Indicates whether the    |
+|user.**enabled**          |Bool                     |Indicates whether the    |
 |                          |                         |user has permission to   |
 |                          |                         |authenticate using the   |
 |                          |                         |user name and password   |

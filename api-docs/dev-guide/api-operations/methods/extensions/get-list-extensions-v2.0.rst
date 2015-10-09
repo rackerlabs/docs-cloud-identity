@@ -1,7 +1,7 @@
 .. _get-list-extensions-v2.0-extensions:
 
 List Extensions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -73,7 +73,7 @@ This operation does not accept a request body.
 Response
 """"""""""""""""
 
-**Example: List Extensions: JSON response**
+**Example: List Extensions response: JSON**
 
 
 .. code::
@@ -123,7 +123,7 @@ Response
 
 
 
-**Example: List Extensions: XML response**
+**Example: List Extensions response: XML**
 
 
 .. code::

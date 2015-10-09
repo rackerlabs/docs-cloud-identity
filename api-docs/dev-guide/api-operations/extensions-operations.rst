@@ -9,9 +9,7 @@ can use the Extensions resource to query the API service endpoint
 for information about the extensions available for the specified
 service.
 
-**API operations**
-
-.. include:: methods/get-list-extensions-v2.0-extensions.rst
-.. include:: methods/get-get-extension-details-v2.0-extensions-alias.rst
+.. include:: methods/extensions/get-list-extensions-v2.0.rst
+.. include:: methods/extensions/get-extension-details-v2.0.rst
 
  

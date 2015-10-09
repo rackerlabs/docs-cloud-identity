@@ -1,6 +1,6 @@
 .. _post-sends-a-verfication-code-to-a-phone-v2.0:
 
-Sends a verfication code to a phone
+Send verfication code to phone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

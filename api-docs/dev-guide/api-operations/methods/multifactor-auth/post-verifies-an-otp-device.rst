@@ -1,6 +1,6 @@
 .. _post-verifies-an-otp-device-v2.0:
 
-Verifies an OTP device
+Verify an OTP device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

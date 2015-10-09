@@ -1,7 +1,7 @@
-.. _post-update-user-information-and-password-v2.0-users-userid:
+.. _post-update-user-information-and-password-v2.0:
 
 Update user information and password
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -147,7 +147,7 @@ This table shows the body parameters for the request:
 |                          |                         |* Can start                  |
 |                          |                         |  with or include any of     |
 |                          |                         |  the following special      |
-|                          |                         |  characters: ~ ! @ # % ^    |
+|                          |                         |  characters: ~ ! @ # % ~    |
 |                          |                         |  & * _ - | \ ( ) { } [ ]    |
 |                          |                         |  : ; " ' < >,. ? /          |
 |                          |                         |                             |

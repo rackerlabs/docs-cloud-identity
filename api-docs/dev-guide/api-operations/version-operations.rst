@@ -12,5 +12,5 @@ support in your cloud environment.
 
 **API operations**
 
-.. include:: methods/get-list-versions.rst 
-.. include:: methods/get-show-version-details-v2.0.rst
+.. include:: methods/versions/get-list-versions.rst 
+.. include:: methods/versions/get-show-version-details-v2.0.rst

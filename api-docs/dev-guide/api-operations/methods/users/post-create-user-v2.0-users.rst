@@ -1,10 +1,7 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _post-create-user-v2.0-users:
 
 Create user
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -12,40 +9,46 @@ Create user
 
 Creates a Rackspace Cloud account user.
 
-Users that have the ``identity:service-admin`` or ``identity:admin`` role can use the Create user operation to add a sub-user ( ``identity:default`` ) to a Rackspace Cloud account. Administrators can add up to 100 users to an account. 
+Users that have the ``identity:service-admin`` or ``identity:admin`` role can use the 
+Create user operation to add a sub-user ( ``identity:default`` ) to a Rackspace Cloud 
+account. Administrators can add up to 100 users to an account. 
 
 .. warning::
-   Account sub-users created using the Add user operation can only access Rackspace Cloud resources through the API. Only the Administrator user can access the account from the Cloud Control panel. The Administrator user is assigned when the Rackspace Cloud account is created during the Rackspace sign up process.
+   Account sub-users created using the Add user operation can only access Rackspace Cloud 
+   resources through the API. Only the Administrator user can access the account from the 
+   Cloud Control panel. The Administrator user is assigned when the Rackspace Cloud account 
+   is created during the Rackspace sign up process.
    
    
+In the Create user request, include the required values for the user name, email, and 
+initial account status (``enabled=true`` or ``enabled=false``) attributes.
 
-In the Create user request, include the required values for the user name, email, and initial account status ( ``enabled=true`` or ``enabled=false`` ) attributes.
+Users inherit the domain and default region associated with the Rackspace Cloud account. 
+They also inherit group membership. If you want to override a default value, include the 
+new value in the Create user request.
 
-Users inherit the domain and default region associated with the Rackspace Cloud account. They also inherit group membership. If you want to override a default value, include the new value in the Create user request.
-
-You can also include values for optional attributes such as password and role. Review the following details for additional information about specifying optional attributes.
+You can also include values for optional attributes such as password and role. Review the 
+following details for additional information about specifying optional attributes.
 
 password
-Use this parameter to specify an initial password for the user. If you don't specify a password, Identity service automatically generates one and returns it in the response. Make note of the password, so you can give it to the user. After the user is created, the password cannot be retrieved by any means.
-
-
+   Use this parameter to specify an initial password for the user. If you don't specify a 
+   password, Identity service automatically generates one and returns it in the response. 
+   Make note of the password, so you can give it to the user. After the user is created, 
+   the password cannot be retrieved by any means.
 
 defaultRegion
-Specify this attribute to override the default region assigned to the user. Users can change their default region by using the ` Update User <POST_admin-updateUser__userId__User_Calls.html>`__ API operation, but they can only change it to a region that is listed in the service catalog for the Cloud Servers service.
-
-
+   Specify this attribute to override the default region assigned to the user. Users can 
+   change their default region by using the :ref:`post-update-user-information-and-password-v2.0>`
+   API operation, but they can only change it to a region that is listed in the service catalog 
+   for the Cloud Servers service.
 
 roles
-Use the roles attribute to assign a user one or more roles other than the default role ( ``identity:default`` ). You can also associate the user with a new tenant by specifying a new alphanumeric ``tenantId`` attribute in the ``role`` element. You cannot specify an existing an id for an existing tenant.
-
-
-
-
-
-
+   Use the roles attribute to assign a user one or more roles other than the default 
+   role ( ``identity:default`` ). You can also associate the user with a new tenant by 
+   specifying a new alphanumeric ``tenantId`` attribute in the ``role`` element. You cannot 
+   specify an existing an id for an existing tenant.
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -104,9 +107,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -117,29 +117,29 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 
 
-
-
-
 This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|RAX-AUTH:defaultRegion    |String *(Optional)*      |Specify the default      |
-|                          |                         |region for the user:     |
+|user                      |Object                   |Specifies the user       |
+|                          |                         |information to update.   |
++--------------------------+-------------------------+-------------------------+
+|user.\                    |String *(Optional)*      |Specify the default      |
+|**RAX-AUTH:defaultRegion**|                         |region for the user:     |
 |                          |                         |``DFW``, ``IAD``,        |
 |                          |                         |``HKG``, or ``SYD``.     |
 +--------------------------+-------------------------+-------------------------+
-|RAX-AUTH:domainId         |String *(Required)*      |To assign the user to a  |
-|                          |                         |domain, specify the      |
+|user.\                    |String *(Required)*      |To assign the user to a  |
+|**RAX-AUTH:domainId**     |                         |domain, specify the      |
 |                          |                         |domain ID. If you don't  |
 |                          |                         |know the domain ID, use  |
 |                          |                         |the Retrieve domains     |
 |                          |                         |operation to list the    |
 |                          |                         |available domains.       |
 +--------------------------+-------------------------+-------------------------+
-|name                      |String *(Required)*      |The name to assign to    |
-|                          |                         |the user. Specify a      |
+|user.\                    |String *(Required)*      |The name to assign to    |
+|**name**                  |                         |the user. Specify a      |
 |                          |                         |value that meets the     |
 |                          |                         |following criteria: *    |
 |                          |                         |Start with an alpha      |
@@ -153,13 +153,13 @@ This table shows the body parameters for the request:
 |                          |                         | (hyphen), @, _          |
 |                          |                         |(underscore)             |
 +--------------------------+-------------------------+-------------------------+
-|email                     |String *(Required)*      |The user email.          |
+|user.**email**            |String *(Required)*      |The user email.          |
 +--------------------------+-------------------------+-------------------------+
-|enabled                   |Bool *(Required)*        |Indicates whether the    |
+|user.**enable**           |Bool *(Required)*        |Indicates whether the    |
 |                          |                         |user is enabled (true)   |
 |                          |                         |or disabled (false).     |
 +--------------------------+-------------------------+-------------------------+
-|OS-KSADM:password         |String *(Optional)*      |Specify a password       |
+|user.**OS-KSADM:password**|String *(Optional)*      |Specify a password       |
 |                          |                         |string that meets the    |
 |                          |                         |following criteria: *    |
 |                          |                         |Length must be at least  |
@@ -172,7 +172,7 @@ This table shows the body parameters for the request:
 |                          |                         |cannot begin with a      |
 |                          |                         |space.                   |
 +--------------------------+-------------------------+-------------------------+
-|roles                     |Rolelist *(Optional)*    |The roles object assigns |
+|user.**roles**            |Rolelist *(Optional)*    |The roles object assigns |
 |                          |                         |the user roles. For each |
 |                          |                         |role, specify the name   |
 |                          |                         |of an existing role      |
@@ -190,7 +190,7 @@ This table shows the body parameters for the request:
 |                          |                         |``tenantId`` in this     |
 |                          |                         |field.                   |
 +--------------------------+-------------------------+-------------------------+
-|RAX-KSGRP:groups          |String *(Optional)*      |This object defines the  |
+|user.**RAX-KSGRP:groups** |String *(Optional)*      |This object defines the  |
 |                          |                         |groups the user belongs  |
 |                          |                         |to. For each group,      |
 |                          |                         |specify the ``RAX-       |
@@ -201,7 +201,7 @@ This table shows the body parameters for the request:
 |                          |                         |examples for the correct |
 |                          |                         |syntax.                  |
 +--------------------------+-------------------------+-------------------------+
-|RAX-KSQA:secretQA         |String *(Optional)*      |This object specifies    |
+|user.**RAX-KSQA:secretQA**|String *(Optional)*      |This object specifies    |
 |                          |                         |the secret ``question``  |
 |                          |                         |and ``answer``           |
 |                          |                         |attributes that can be   |
@@ -210,10 +210,7 @@ This table shows the body parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 
 
-
-
-
-**Example Create user: XML request**
+**Example:  Create user request: XML**
 
 
 .. code::
@@ -226,7 +223,8 @@ This table shows the body parameters for the request:
         xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
         xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
         xmlns:RAX-KSGRP="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
-        xmlns:RAX-KSQA="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+        xmlns:RAX-KSQA="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
+        xmlns:atom="http://www.w3.org/2005/Atom">
         <roles>
              <role name="managed"/>
         </roles>
@@ -240,7 +238,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example Create user: JSON request**
+**Example:  Create user request: JSON**
 
 
 .. code::
@@ -272,10 +270,6 @@ This table shows the body parameters for the request:
    }
    
 
-
-
-
-
 Response
 """"""""""""""""
 
@@ -290,16 +284,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 
 
-
-
-
-
-
-
-
-
-**Example Create user: XML response**
-
+**Example:  Create user: XML response**
 
 .. code::
 
@@ -323,11 +308,7 @@ This table shows the header parameters for the response:
    </user>
 
 
-
-
-
-**Example Create user: JSON response**
-
+**Example:  Create user: JSON response**
 
 .. code::
 

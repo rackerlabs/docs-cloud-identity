@@ -1,6 +1,6 @@
 .. _get-otp-device-by-id-v2.0:
 
-Lists the specified OTP device
+List the specified OTP device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

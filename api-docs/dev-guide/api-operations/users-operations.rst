@@ -26,14 +26,14 @@ account information, and account credentials.
 	that account user. To learn more about Identity account users, see
 	:ref:`Roles and role assignments <roles-and-assignments>`.
 
-.. include:: methods/users/post-add-user-v2.0-users.rst 
-.. include:: methods/users/get-list-users-v2.0-users.rst
-.. include:: methods/users/get-get-user-by-id-v2.0-users-userid.rst
-.. include:: methods/users/post-update-user-information-and-password-v2.0-users-userid.rst
-.. include:: methods/users/delete-deletes-a-user-v2.0-users-userid.rst
-.. include:: methods/users/get-get-user-admin-v2.0-users-userid-rax-auth-admins.rst
+.. include:: methods/users/post-add-user-v2.0.rst 
+.. include:: methods/users/get-list-users-v2.0.rst
+.. include:: methods/users/get-user-by-id-v2.0.rst
+.. include:: methods/users/post-user-information-and-password-v2.0.rst
+.. include:: methods/users/delete-a-user-v2.0.rst
+.. include:: methods/users/get-user-admin-v2.0.rst
 .. include:: methods/users/post-add-credential-to-user-v2.0-users-userid-os-ksadm-credentials.rst
-.. include:: methods/users/get-get-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey.rst
+.. include:: methods/users/get-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey.rst
 .. include:: methods/users/post-reset-api-key-for-user-v2.0-users-userid-os-ksadm-credentials-rax-kskey.rst
 
 

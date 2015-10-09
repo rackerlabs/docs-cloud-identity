@@ -1,6 +1,6 @@
 .. _update-domain-enforcement-settings-v2.0:
 
-Update domain enforcement setting for multi-factor authentication
+Update domain enforcement setting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

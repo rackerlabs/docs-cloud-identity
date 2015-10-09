@@ -1,6 +1,6 @@
 .. _get-multifactor-phones-for-user-v2.0:
 
-Lists multi-factor phones for user
+List multi-factor phones for user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::

@@ -1,23 +1,27 @@
+.. _delete-a-user-v2.0:
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
-.. _delete-delete-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey:apikeycredentials:
-
-Delete user API key credentials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Delete a user
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    DELETE /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
+    DELETE /v2.0/users/{userId}
 
-Delete user credentials.
+Rackspace Cloud account administrators (``identity:user-admin``) can use the Delete user 
+operation to remove a user from a Rackspace Cloud account. Administrators can only delete 
+user accounts that are assigned the user role (``identity:default``) with the same tenant 
+id as the Administrator account.
 
-An API key is a credential; you can delete a user's API key with this call. To delete a credential from a user, specify the user ID in the request. If you know the user name but not the ID, use   ` <GET_admin-getUserByName_v2.0_users_User_Calls.html>`__  to   obtain complete identifying information about the user.
+To delete a user, specify the user ID in the request. If you know the user name but not id, 
+use the :ref:`List users <get-list-users-v2.0>` operation to look up account information by name.
 
+.. warning::
 
-
+   Don’t delete the wrong user! Before submitting the Delete request, use the List 
+   users or :ref:`Get user by id <get-user-by-id-v2.0>` operation to review the user 
+   account information and confirm that you are working with the correct account.
+   
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -63,14 +67,6 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|415                       |Bad Media Type           |Bad media type. This may |
-|                          |                         |result if the wrong      |
-|                          |                         |media type is used in    |
-|                          |                         |the API request. Check   |
-|                          |                         |the content-type and     |
-|                          |                         |accept headers included  |
-|                          |                         |in the request.          |
-+--------------------------+-------------------------+-------------------------+
 |503                       |Service Fault            |Service is not available.|
 +--------------------------+-------------------------+-------------------------+
 
@@ -78,38 +74,49 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-This table shows the URI parameters for the request:
+This table shows the header and URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |A valid admin            |
-|                          |                         |authentication token.    |
+|X-Auth-Token              |Header                   |A valid admin            |
+|                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|{userId}                  |String *(Required)*      |A user ID assigned by    |
-|                          |                         |system when user is      |
+|{userId}                  |URI String               |A user ID assigned by    |
+|                          |String *(Required)*      |system when user is      |
 |                          |                         |added.                   |
 +--------------------------+-------------------------+-------------------------+
 
 
 
+**Example:  Delete user HTTP request header: XML**
+
+
+.. code::
+
+   DELETE /v2.0/users/123456 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/xml
+   Content-type: application/xml
+   X-Auth-Token: eaf8345057414cd397d0543123456789
+   
+   
+**Example:  Delete user HTTP request header: JSON**
+
+
+.. code::
+
+   POST /v2.0/users/123456 HTTP/1.1
+   Host: identity.api.rackspacecloud.com
+   Accept: application/json
+   Content-type: application/json
+   X-Auth-Token: eaf8345057414cd397d0543123456789
 
 
 This operation does not accept a request body.
 
-
-
-
 Response
 """"""""""""""""
-
-
-
-
-
 
 This operation does not return a response body.
 
