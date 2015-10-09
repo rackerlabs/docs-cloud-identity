@@ -12,8 +12,6 @@ an account that Rackspace Support can use use for account verification.
 	  :ref:`OS-KSADM and RAX-KSQA extensions <extensions-ovw>` to the core Identity API.
 
 
-**API operations**
-
-- Add secret question to a user account 
-- Get questions 
+.. include:: methods/secretqa/post-add-secret-question-v2.0.rst
+.. include:: methods/secretqa/get-questions-v2.0.rst
 
