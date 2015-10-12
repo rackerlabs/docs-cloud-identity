@@ -75,19 +75,25 @@ Authentication token
 	An authentication token is an encrypted string returned by the
 	Identity service when you submit an authentication request with
 	valid credentials. Each time that you submit an API request, you
-	include this authentication token. Because the token expires after
+	include this authentication token. 
+	
+	Because the token expires after
 	24 hours, you must generate a new token once each day. The token
-	stores information about a suer's credentials and, optionally, user
+	stores information about a user's credentials and, optionally, user
 	identity information, as well as a time stamp and a digital
-	signature. If necessary, administrators and users can invalidate a
+	signature. 
+	
+	If necessary, administrators and users can invalidate a
 	token before it expires by submitting a Revoke token API request.
-
-	Authentication tokens expire in 24 hours. The expiration date is
-	included in the authentication response. If necessary,
-	Administrators and users can revoke a token before its expiration
-	date. After a token expires or becomes invalid, the Identity service
+    After a token expires or becomes invalid, the Identity service
 	returns 404 errors until you authenticate again.
-
+	
+	The Rackspace Cloud Identity service issues authenticated encrypted tokens (AE).
+	AE tokens are non-persistent tokens that contain encrypted metadata that supplies 
+	all the necessary information to determine whether a token is valid. For 
+	more information, see the 
+	:kc-article:`Authenticated Encrypted Tokens <introduction-to-encrypted-authenticated-token>` 
+	in the Rackspace Knowledge Center.
 
 .. _authorization-concept:
 
