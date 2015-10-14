@@ -16,7 +16,7 @@ Learn how to use the Rackspace Cloud Identity service by using the REST API.
    :maxdepth: 2
  
    overview/index
-   Quickstart Guide <quickstart-guide>
+   quickstart-guide
    developer-guide
    concepts
    general-api-info/index 
