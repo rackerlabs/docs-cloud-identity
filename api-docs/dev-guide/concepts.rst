@@ -25,8 +25,7 @@ User
 	Identity service system configuration. The user type and role
 	determine the resources and capabilities available to the user.
 
-For more information, see :ref:`Identity Service, admin, and user roles <auth-roles-svc-adm-usr>`.
-
+    For more information, see :ref:`Identity Service, admin, and user roles <auth-roles-svc-adm-usr>`.
 
 .. _authentication-concept:
 
@@ -48,7 +47,6 @@ Authentication
 	request as proof of identity, rights, and privileges to complete the
 	requested operation.
 
-
 .. _credentials-concept:
 
 Credentials
@@ -66,7 +64,7 @@ Credentials
 
 	-  verified cell phone number or email address
 
-	-   a multi-factor authentication passcode issued by the Rackspace Cloud Identity service
+	-  a multi-factor authentication passcode issued by the Rackspace Cloud Identity service
 
 
 .. _auth-token-concept:
@@ -84,16 +82,15 @@ Authentication token
 	signature. 
 	
 	If necessary, administrators and users can invalidate a
-	token before it expires by submitting a Revoke token API request.
-    After a token expires or becomes invalid, the Identity service
-	returns 404 errors until you authenticate again.
+	token before it expires by submitting a Revoke token API request. After a token 
+	expires or becomes invalid, the Identity service returns 404 errors until you authenticate again.
 	
 	The Rackspace Cloud Identity service issues authenticated encrypted tokens (AE).
 	AE tokens are non-persistent tokens that contain encrypted metadata that supplies 
 	all the necessary information to determine whether a token is valid. For 
 	more information, see the 
-	:kc-article:`Authenticated Encrypted Tokens <introduction-to-encrypted-authenticated-token>` 
-	in the Rackspace Knowledge Center.
+	:kc-article:`Authenticated Encrypted Tokens <introduction-to-encrypted-authenticated-tokens>` 
+	article in the Rackspace Knowledge Center.
 
 .. _authorization-concept:
 
