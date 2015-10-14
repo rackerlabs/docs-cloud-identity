@@ -3,6 +3,11 @@
 Multi-factor authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. contents:: 
+   :local: 
+   :depth: 1
+
+
 To improve security, customers can configure Rackspace Cloud accounts to
 support multi-factor authentication which requires users to authenticate
 in two steps:
@@ -46,8 +51,8 @@ flow**
 
 Additionally, Identity and user administrators can define multi-factor
 authentication policy for a domain by configuring the domain
-enforrcement setting. For example, if the domain enforcement setting is
-`Required`, users who have not set up multi-factor authentication are
+enforcement setting. For example, if the domain enforcement setting is 
+*Required*, users who have not set up multi-factor authentication are
 requird to enable it before they can access their account.
 
 

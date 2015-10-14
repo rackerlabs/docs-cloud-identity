@@ -1,7 +1,7 @@
 .. _additional-resources: 
 
-Additional Resources
-^^^^^^^^^^^^^^^^^^^^
+Additional resources
+~~~~~~~~~~~~~~~~~~~~~~~
 
 We welcome feedback, comments, and bug reports. Visit the 
 `Rackspace Product Feedback forum`_ to share feedback and

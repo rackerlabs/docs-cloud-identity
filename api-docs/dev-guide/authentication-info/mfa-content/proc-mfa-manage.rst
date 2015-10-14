@@ -50,7 +50,7 @@ Generate bypass codes
 .......................
 
 Users can submit the following cURL request to 
-:ref: `generate bypass codes <multifactor-operations` 
+:ref:`generate bypass codes <multifactor-operations>` 
 that can be used in place of the multi-factor authentication passcode if the phone 
 associated with the account is not available.
 

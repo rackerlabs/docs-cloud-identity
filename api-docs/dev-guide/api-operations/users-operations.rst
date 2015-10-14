@@ -24,7 +24,7 @@ account information, and account credentials.
 
 	When these requests are issued by an account user, they act only upon
 	that account user. To learn more about Identity account users, see
-	:ref:`Roles and role assignments <roles-and-assignments>`.
+	:ref:`Roles and role assignments <roles-and-role-assignments>`.
 
 .. include:: methods/users/post-add-user-v2.0.rst 
 .. include:: methods/users/get-list-users-v2.0.rst

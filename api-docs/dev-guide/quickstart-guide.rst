@@ -1,7 +1,7 @@
 .. _quickstart:
 
 ====================================
-**Authentication Quickstart Guide**
+**Quickstart Guide**
 ====================================
 
 Every REST request against Rackspace Cloud APIs requires an
@@ -48,7 +48,7 @@ operations.
 .. _generate-auth-token:
 
 Generate an authentication token
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 Perform the following steps to generate an authentication token.
 
@@ -101,34 +101,36 @@ Perform the following steps to generate an authentication token.
 #. Check the :ref:`authentication response <samp-auth-resp>`.
 
    -  If the request is successful, use the information in the
-      authentication response to `submit an API
+      authentication response to :ref:`submit an API
       request <submit-an-api-request>`.
 
    -  If the request is not successful, review the response message and
       the following error message descriptions to determine next steps.
 
-      `400 Invalid request body: unable to parse Auth data. Please reviewc XML or JSON formatting.`
-          Review the authentication request for syntax or coding errors.
-          If you are using cURL, see :ref:`How cURL commands
-          work <how-curl-commands-work>`.
+      ``400 Invalid request body: unable to parse Auth data. Please review XML or JSON formatting``
+      
+        Review the authentication request for syntax or coding errors.
+        If you are using cURL, see :ref:`How cURL commands
+        work <how-curl-commands-work>`.
+          
 
-      `401 Additional authentication credentials required`
-          You are requesting authentication for an account that requires
-          :ref:`multi-factor authentication <multifactor-authenication-ovw>`.
-          To complete the authentication process, submit a second **POST
-          tokens** request with the following credentials:
+      ``401 Additional authentication credentials required.``
+      
+        You are requesting authentication for an account that requires
+        :ref:`multi-factor authentication <multifactor-authenication-ovw>`.
+        To complete the authentication process, submit a second **POST
+        tokens** request with the following credentials:
 
-          -  The session ID value returned in the
-             `WWW-Authenticate: OS-MF sessionId` header parameter
-             included in the response to the initial authentication
-             request.
+        -  The session ID value returned in the
+           `WWW-Authenticate: OS-MF sessionId` header parameter
+           included in the response to the initial authentication
+           request.
 
-          -  The passcode from the mobile device associated with your
-             user account.
+        -  The passcode from the mobile device associated with your
+           user account.
 
               
-             **Example 1.1. Authentication request with multi-factor
-             authentication credentials**
+           **Example 1.1. Authentication request with multi-factor authentication credentials**
 
              .. code::  
 
@@ -139,26 +141,30 @@ Perform the following steps to generate an authentication token.
                         -H "Content-Type: application/json" --verbose | python -m json.tool
 
 
-      `401 Unable to authenticate user with credentials provided.`
-          Verify the authentication credentials submitted in the
-          authentication request. If necessary, contact your Rackspace
-          Cloud Administrator or Rackspace Support to get valid
-          credentials.
+      ``401 Unable to authenticate user with credentials provided.``
+        
+        Verify the authentication credentials submitted in the
+        authentication request. If necessary, contact your Rackspace
+        Cloud Administrator or Rackspace Support to get valid
+        credentials.
 
-      `403 setup-mfa: You must first enable multifactor for this account. Please request a scoped setup-mfa token to set up MFA on your account.`
-          Your Rackspace Cloud environment requires users to
-          authenticate by using multi-factor authentication. To enable
-          this feature, :ref:`request a scoped setup-mfa token <req-mfa-setup-token>` and use it to
-          authenticate and configure your account.
+      ``403 setup-mfa: You must first enable multifactor for this account. 
+      Please request a scoped setup-mfa token to set up MFA on your account.``
+        
+      Your Rackspace Cloud environment requires users to
+      authenticate by using multi-factor authentication. To enable
+      this feature, :ref:`request a scoped setup-mfa token <req-mfa-setup-token>` and use it to
+      authenticate and configure your account.
 
       ..  note:: 
+      
           You can find additional error message information in the :ref:`Token operations API reference <token-operations>`.
                 
 
 .. _submit-an-api-request:
 
 Submit an API request to a Rackspace Cloud service
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------------
 
 After you authenticate successfully, use the information in the
 :ref:`authentication response <samp-auth-resp>` to submit
@@ -231,9 +237,10 @@ an API request for any service included in the service catalog.
          * Connection #0 to host storage101.ord1.clouddrive.com left intact
                          
                        
+.. _manage-auth-tokens:
 
 Manage authentication tokens
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 Authentication tokens are valid for 24 hours by default. The expiration
 time stamp is included in the token object returned in the
@@ -269,13 +276,13 @@ endpoint.
    either of the following methods to get a new token before the
    existing token expires.
 
--  Submit a **POST tokens** request within an hour of the token
-   expiration to obtain a new token. Note that this behavior is a
-   Rackspace customization of the OpenStack Identity (keystone)
-   implementation.
+   -  Submit a **POST tokens** request within an hour of the token
+      expiration to obtain a new token. Note that this behavior is a
+      Rackspace customization of the OpenStack Identity (keystone)
+      implementation.
 
--  Submit a **DELETE token** request to revoke the existing
-   token, and then followed by a **POST tokens** request to get a new token.
+   -  Submit a **DELETE token** request to revoke the existing
+      token, and then followed by a **POST tokens** request to get a new token.
 
 -  To simplify authentication, credential, and token management, use an 
    `OpenStack command-line client application`_ or one of the `Rackspace SDKs`_.
@@ -304,5 +311,5 @@ Visit the following links to learn more about the Identity service.
 .. _API operations references for other Rackspace services: http://developer.rackspace.com/docs
 .. _OpenStack command-line client application: https://wiki.openstack.org/wiki/OpenStackClients
 .. _Rackspace SDKs: https://developer.rackspace.com/sdks/
-.. _Rackspace Software Development Kits: http://docs.rackspace.com/sdks/guide/content/intro.html
+.. _Rackspace Software Development Kits: https://developer.rackspace.com/docs/#sdks
 
