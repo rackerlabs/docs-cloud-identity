@@ -11,6 +11,10 @@ JSON or XML format as shown in the following examples. For details, see the
 :ref:token object attribute descriptions <auth-resp-token-obj-attribs> in
 the table following the examples.
 
+You include the token ID returned in the response to verify your identity when 
+in subsequent API requests to Rackspace Cloud services, you 
+
+
 .. _auth-resp-token-obj-json:
  
 **Example: Authentication response token object in JSON format**

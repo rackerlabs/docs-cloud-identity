@@ -612,25 +612,30 @@ format**
     </serviceCatalog>
              
 
-The user object returns a service object returns the list of services that the user can access. Each service object includes an endpoint object with information about the service region, tenant, and service access 
-endpoints.
+The user object returns a service catalog with the collection of services that the user 
+can access. Each service object includes an endpoint object with information about the 
+service region, tenant, and service access endpoints.
+
 
 .. _auth-resp-svccat-obj-attribs: 
 
-**Table: Authentication response: Service catalog object attributes**
+**Table: Authentication response: Service object attributes**
 
 +-----------+--------+------------------------------------------------------------------------------------------+
 | Attribute | Type   | Description                                                                              |
 +===========+========+==========================================================================================+
-| `name`    | String | The service name attribute identifies each unique service in the,catalog. Service names  |
-|           |        | are defined in the Identity Service configuration,and do not change. However,            |
+|service    | Object | Returns information about the service                                                    |
++-----------+--------+------------------------------------------------------------------------------------------+
+|service.   | String | The service name attribute identifies each unique service in the,catalog. Service names  |
+|**name**   |        | are defined in the Identity Service configuration,and do not change. However,            |
 |           |        | new services of the same service type can be,added to the catalog with new names.        |
 |           |        |                                                                                          |
 +-----------+--------+------------------------------------------------------------------------------------------+
-| `type`    | String | The type of service provided at the specified endpoint,, compute, object-store,          |
-|           |        | or rax:loadbalancer for example. Service types categorize the services                   |
+|service.   | String | The type of service provided at the specified endpoint,, compute, object-store,          |
+|**type**   |        | or rax:loadbalancer for example. Service types categorize the services                   |
 |           |        | registered with OpenStack or custom types,registered with the Rackspace                  |
-|           |        | Cloud Identity service. For a list of service types, see Service Types,                  |
+|           |        | Cloud Identity service. For a list of service types,                                     |
+|           |        | see :ref:`Service Types <service-types-in-catalog>`.                                     |
 +-----------+--------+------------------------------------------------------------------------------------------+
 
 .. important:: 
@@ -642,36 +647,38 @@ endpoints.
 
 **Table: Authentication response: Endpoint catalog object attributes**
 
-+-------------+--------+--------------------------------------------------------------------------------------+
-| Attribute   | Type   | Description                                                                          |
-+=============+========+======================================================================================+
-| `region`    | String | The location of the Rackspace data center where the specified service is hosted.     |
-|             |        | Accessing a service from a regional endpoint allows clients to provision resources   |
-|             |        | in a manner that provides high availability.                                         |
-+-------------+--------+--------------------------------------------------------------------------------------+
-| `tenantId`  | String | Some services recognize specification of a tenant. If a service recognizes tenants,  |
-|             |        | the format of the tenant specification is defined only by the service. For details   |
-|             |        | about whether and how to specify a tenant, check the documentation for the           |
-|             |        | service you are using.                                                               |
-+-------------+--------+--------------------------------------------------------------------------------------+
-|`publicURL`  | URI    | An endpoint can be assigned public, internal, and administrative service URLs.       |
-|`internalURL`|        | Access to a public URL usually incurs traffic charges. Internal and admin URLs       |
-|`AdminURL`   |        | are accessible only to services within the same region. Access to an internal URL    |
-|             |        | is free of charge.                                                                   |
-|             |        |                                                                                      |
-|             |        | The URL includes the API version and tenant ID for services that require it.         |
-|             |        | For example, in thehttps://iad.servers.api.rackspacecloud.com/v2/12345URL,           |
-|             |        | the version ID is 2 and the tenant ID is 12345. (The tenant ID is also referred      |
-|             |        | to as the account number.)                                                           |
-+-------------+--------+--------------------------------------------------------------------------------------+
-| `versionId` | String | Specifies the API version for the endpoint. The API version is also included in      |
-|             |        | the URL to access the service.                                                       |
-+-------------+--------+--------------------------------------------------------------------------------------+
-|`versionInfo`| URI    | URI to get information about the specified API version. You can also retrieve        |
-|             |        | information about an API version by using the Show version details API operation     |
-|             |        | for the specified service--for example, `GET endpointURL// vversion_number`.         |
-+-------------+--------+--------------------------------------------------------------------------------------+
-|`versionList`| URI    | URI to get information about all versions. You can also retrieve this information    |
-|             |        | by using the List versions API operation for the specified service,                  |
-|             |        | `GET endpointURL` for example.                                                       |
-+-------------+--------+--------------------------------------------------------------------------------------+
++---------------+--------+--------------------------------------------------------------------------------------+
+| Attribute     | Type   | Description                                                                          |
++===============+========+======================================================================================+
+|endpoint       | Object | Returns information to access the specified service.                                 |
++---------------+--------+--------------------------------------------------------------------------------------+
+|endpoint.\     | String | The location of the Rackspace data center where the specified service is hosted.     |
+|**region**     |        | Accessing a service from a regional endpoint allows clients to provision resources   |
+|               |        | in a manner that provides high availability.                                         |
++---------------+--------+--------------------------------------------------------------------------------------+
+|endpoint.\     | String | Some services recognize specification of a tenant. If a service recognizes tenants,  |
+|**tenantId**   |        | the format of the tenant specification is defined only by the service. For details   |
+|               |        | about whether and how to specify a tenant, check the documentation for the           |
+|               |        | service you are using.                                                               |
++---------------+--------+--------------------------------------------------------------------------------------+
+|endpoint.\     | URI    | An endpoint can be assigned public, internal, and administrative service URLs.       |
+|**publicURL**  |        | Access to a public URL usually incurs traffic charges. Internal and admin URLs       |
+|**internalURL**|        | are accessible only to services within the same region. Access to an internal URL    |
+|**AdminURL**   |        | is free of charge.                                                                   |
+|**internalURL**|        |                                                                                      |
+|               |        | The URL includes the API version and tenant ID for services that require it.         |
+|               |        | For example, in thehttps://iad.servers.api.rackspacecloud.com/v2/12345URL,           |
+|               |        | the version ID is 2 and the tenant ID is 12345. (The tenant ID is also referred      |
+|               |        | to as the account number.)                                                           |
++---------------+--------+--------------------------------------------------------------------------------------+
+|endpoint.\     | String | Specifies the API version for the endpoint. The API version is also included in      |
+|**versionId**  |        | the URL to access the service.                                                       |
++---------------+--------+--------------------------------------------------------------------------------------+
+|endpoint.\     | URI    | URI to get information about the specified API version. You can also retrieve        |
+|**versionInfo**|        | information about an API version by using the Show version details API operation     |
+|               |        | for the specified service--for example, `GET endpointURL// version_number`.          |
++---------------+--------+--------------------------------------------------------------------------------------+
+|endpoint.\     | URI    | URI to get information about all versions. You can also retrieve this information    |
+|**versionList**|        | by using the List versions API operation for the specified service,                  |
+|               |        | `GET endpointURL` for example.                                                       |
++---------------+--------+--------------------------------------------------------------------------------------+

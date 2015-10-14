@@ -1,3 +1,5 @@
+.. _service-types-in-catalog:
+
 Service types
 ---------------
 

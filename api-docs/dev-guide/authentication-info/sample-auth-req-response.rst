@@ -3,6 +3,10 @@
 Annotated authentication request and response
 -------------------------------------------------
 
+.. contents:: 
+   :local: 
+   :depth: 2
+
 The annotated authentication request and response illustrates a general
 use case for authenticating to the Rackspace Cloud by using user name
 and API key credentials.
