@@ -20,8 +20,8 @@ only 24 hours, which means that you must generate a new token each day.
 Use this Quick Start to learn how to authenticate and submit API
 requests and to manage authentication tokens for Rackspace Cloud
 accounts. The instructions use cURL commands to provide direct access to
-the Cloud service API. The `cURL command line tool`_ is
-operations.
+the Identity service API. The `cURL command line tool`_ is useful for running, 
+testing, and troubleshooting individual API operations.
 
 ..  tip:: 
 
@@ -67,14 +67,11 @@ Perform the following steps to generate an authentication token.
 
    tenant ID or tenant name (optional)
        Specify either the tenant ID or the tenant name for the specified
-       user account.
-
-       Administrative users can also authenticate by using 
-       :ref:`tenant ID and token credentials <token-operations>`.
-
-   If you do not have these credentials, submit a ticket to the Nebulous
-   Operations team, asking them to create a service account and provide
-   credentials.
+       user account. 
+       
+       .. note:: 
+           Administrative users can also authenticate by using 
+           :ref:`tenant ID and token credentials <token-operations>`.
 
 #. Submit a **POST tokens** request with valid credentials to the
    Identity service API endpoint as shown in the following
@@ -160,6 +157,7 @@ Perform the following steps to generate an authentication token.
       
           You can find additional error message information in the :ref:`Token operations API reference <token-operations>`.
                 
+.. _sign up: https://cart.rackspace.com/cloud
 
 .. _submit-an-api-request:
 
