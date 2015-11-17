@@ -128,4 +128,4 @@ information, see the following topics:
 
 -  Troubleshooting: :ref:`auth-mfa-manage-accounts`
 
--  :ref: `Multi-factor authentication API operations <multifactor-operations>`
+-  :ref:`Multi-factor authentication API operations <multifactor-operations>`
