@@ -280,7 +280,7 @@ endpoint.
       implementation.
 
    -  Submit a **DELETE token** request to revoke the existing
-      token, and then followed by a **POST tokens** request to get a new token.
+      token, and then submit another **POST tokens** request to get a new token.
 
 -  To simplify authentication, credential, and token management, use an 
    `OpenStack command-line client application`_ or one of the `Rackspace SDKs`_.
