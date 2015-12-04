@@ -7,7 +7,7 @@ You can use the Identity service to authenticate and get an
 :ref:`authentication token <auth-resp-token-resource>`, 
 :ref:`user account information <auth-resp-user-resource>`, and 
 a :ref:`service catalog <svccat-resource>` that lists the services 
-that they can access with the authentication token supplied in the response. 
+that you can access with the authentication token supplied in the response. 
 To learn more about authentication, 
 see :ref:`Annotated authenticate request and response <annotated-auth-req-resp>`.
 
