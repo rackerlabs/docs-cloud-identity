@@ -14,6 +14,7 @@ Learn how to use the Rackspace Cloud Identity service by using the REST API.
 
 .. toctree:: :hidden:
    :maxdepth: 2
+   
    Cloud Identity 2.0 <self>
    API Status <https://status.rackspace.com/>
    overview/index
