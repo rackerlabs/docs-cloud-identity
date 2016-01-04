@@ -4,7 +4,7 @@ Namespaces
 ~~~~~~~~~~~~
 
 The API operations described in the :ref:`Identity API Operations 
-Reference` are enabled by a combination of the
+Reference <api-reference-intro>` are enabled by a combination of the
 core Identity API and multiple API extensions. You can read more about
 extensions, including how to request details about all or specific
 extensions, at :ref:`Extensions <extensions-ovw>`.

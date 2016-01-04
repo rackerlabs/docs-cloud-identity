@@ -13,7 +13,7 @@ and API key credentials.
 
 ..  note:: 
     For more information, see the 
-    authentication instructions in the :ref:`Quickstart Guide <quickstart>`
+    authentication instructions in the :ref:`Quickstart Guide <quickstart-guide>`
     and additional
     authentication examples in the :ref:`Token operations <token-operations>` API
     reference pages.
