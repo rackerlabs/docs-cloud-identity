@@ -1,4 +1,4 @@
-.. _quickstart:
+.. _quickstart-guide:
 
 ====================================
 **Quickstart Guide**
@@ -203,8 +203,7 @@ an API request for any service included in the service catalog.
        -H "Content-type: application/json"  --verbose | python -m json.tool
 
    If the authentication token is accepted, the Cloud Files service
-   returns the following response if the authentication token is
-   accepted.
+   returns the following response.
 
    .. code:: 
                        
@@ -256,7 +255,8 @@ endpoint.
 
 .. _best-practices-token-management: 
 
-**Best practices**
+Best practices
+~~~~~~~~~~~~~~~~~~
 
 -  Cache authentication tokens.
 
@@ -284,12 +284,10 @@ endpoint.
 
 -  To simplify authentication, credential, and token management, use an 
    `OpenStack command-line client application`_ or one of the `Rackspace SDKs`_.
-   
-   
-. . . .
-   
-       
-**Learn more**
+      
+      
+Learn more
+~~~~~~~~~~~~~
 
 Visit the following links to learn more about the Identity service.
 

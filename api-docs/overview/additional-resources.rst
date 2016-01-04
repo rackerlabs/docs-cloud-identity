@@ -13,7 +13,7 @@ links to official Rackspace support channels, including knowledge base articles,
 forums, phone, chat, and email.  You can also follow Rackspace `on Twitter`_ to get
 product updates and announcements.
 
--  To get started using the Cloud Identity API, see the :ref:`Quickstart <quickstart>`
+-  To get started using the Cloud Identity API, see the :ref:`Quickstart <quickstart-guide>`.
 
 -  Visit the `Rackspace Knowledge Center`_  to learn how to use Rackspace services from 
    the `Rackspace Cloud Control Panel`_.
