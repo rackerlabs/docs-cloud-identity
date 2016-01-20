@@ -13,19 +13,16 @@ This github repository contains the source files for the following Rackspace Ide
 
 Contributions are welcome! 
 
-To suggest changes or report a problem, submit an [issue](https://github.com/rackerlabs/docs-cloud-identity/issues). 
+* To suggest changes or report a problem, submit an [issue](https://github.com/rackerlabs/docs-cloud-identity/issues). 
 
-To make changes to a project, create your own fork of the repository. Then, submit a [pull 
+* To make changes to a project, create your own fork of the repository. Then, submit a [pull 
 request](https://github.com/rackerlabs/docs-cloud-identity/compare?expand=1) to have your changes reviewed 
 and merged into the master branch as appropriate.
 
-To build the project, you need to install Sphinx and virtualenv.  However to contribute content, all you need is an editor, a 
+To build the project, you need to install Sphinx and virtualenv.  However to contribute content, all you need is an editor and a 
 basic understanding of the project layout and [Restructured Text](http://sphinx-doc.org/rest.html) syntax.
 
-#### Editors
-
-You can use the Github editor or any text editor to work with the documentation source 
-files. For quick syntax checking, try the 
+You can use the Github editor or any text editor to work with documentation source files. For quick syntax checking, try the 
 [Online Restructured text editor](http://rst.ninjs.org/). 
 
 ## Source format
@@ -56,22 +53,6 @@ Individual files for each API operations method, includes code samples (converte
 * [overview/index.rst](https://github.com/rackerlabs/docs-cloud-identity/blob/master/api-docs/overview/index.rst): Index for the Overview section
 * **make.bat**: windows build script
 * **Makefile**: linux/osx build
-
-## Contributing
-
-Contributions are welcome! 
-
-To suggest changes or report a problem, submit an [issue](https://github.com/rackerlabs/docs-cloud-identity/issues). 
-
-To make changes to a project, create your own fork of the repository. Then, submit a [pull 
-request](https://github.com/rackerlabs/docs-cloud-identity/compare?expand=1) to have your changes reviewed 
-and merged into the master branch as appropriate.
-
-#### Editors
-
-You can use the Github editor or any text editor to work with the documentation source 
-files. For quick syntax checking, try the 
-[Online Restructured text editor](http://rst.ninjs.org/). 
 
 ### Building from Source
 
@@ -108,16 +89,10 @@ To view the HTML build results in the target directory (``_build/html/``), run t
     open _build/html/index.html
 
 
-#### Editors
-
-You can use the Github editor or any text editor to work with the documentation source 
-files. For quick syntax checking, try the 
-[Online Restructured text editor](http://rst.ninjs.org/). 
-
 ### Support and Feedback
 
 If you find an issue, please submit the issue in Github directly.
 [Documentation Issues](https://github.com/objectrocket/documentation/issues)
 
 If you need additional assistance, drop us a note at 
-[support@objectrocket.com](mailto:support@objectrocket.com).
+[devdoct@rackspace.com](mailto:devdoc@rackspace.com).
