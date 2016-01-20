@@ -91,8 +91,7 @@ To view the HTML build results in the target directory (``_build/html/``), run t
 
 ### Support and Feedback
 
-If you find an issue, please submit the issue in Github directly.
-[Documentation Issues](https://github.com/objectrocket/documentation/issues)
+If you find a problem, open a Github [issue](https://github.com/rackerlabs/docs-cloud-identity/issues).
 
 If you need additional assistance, drop us a note at 
-[devdoct@rackspace.com](mailto:devdoc@rackspace.com).
+[devdoc@rackspace.com](mailto:devdoc@rackspace.com).
