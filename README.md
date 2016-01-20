@@ -1,6 +1,6 @@
 # Rackspace Cloud Identity API documentation
 
-**Build Status:** [Strider](http://ci.deconst.horse/) (http://ci.deconst.horse/rackerlabs/docs-cloud-identity-2.0/)
+**Build:** [Strider](http://ci.deconst.horse/) (http://ci.deconst.horse/rackerlabs/docs-cloud-identity-2.0/)
 
 ## Purpose
 
