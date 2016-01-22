@@ -7,6 +7,7 @@
 This GitHub repository contains the source files for the following Rackspace Cloud Identity API documentation:
 
 * [Cloud Identity Developer Guide](https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/)
+* [Cloud Identity Developer API Reference](https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#api-reference)
 * [Cloud Identity Admin Guide - Rackspace internal](http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/QuickStart-000.html/)
 
 ## Contributing
