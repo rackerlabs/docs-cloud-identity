@@ -19,8 +19,10 @@ Contributions are welcome!
 request](https://github.com/rackerlabs/docs-cloud-identity/compare?expand=1) to have your changes reviewed 
 and merged into the master branch as appropriate.
 
-To build the project, you need to install Sphinx and virtualenv.  However to contribute content, all you need is an editor and a 
+To contribute content, all you need is an editor and a 
 basic understanding of the project layout and [Restructured Text](http://sphinx-doc.org/rest.html) syntax.
+
+**Note:** If you want to build the project, you need to install the [Sphinx documentation generator](http://www.sphinx-doc.org/en/stable/install.html). 
 
 You can use the Github editor or any text editor to work with documentation source files. For quick syntax checking, try the 
 [Online Restructured text editor](http://rst.ninjs.org/). 
