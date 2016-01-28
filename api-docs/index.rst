@@ -26,6 +26,7 @@ Identity service REST API.
    authentication-info/index
    api-reference
    api-operations/index
+   copyright
 
    
    
