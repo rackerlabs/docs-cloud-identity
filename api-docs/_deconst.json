@@ -1,3 +1,5 @@
 {
-  "contentIDBase": "https://github.com/rackerlabs/docs-cloud-identity/"
+  "contentIDBase": "https://github.com/rackerlabs/docs-cloud-identity/",
+  "githubUrl": "https://github.com/rackerlabs/docs-cloud-identity/",
+  "githubBranch": "master"
 }
