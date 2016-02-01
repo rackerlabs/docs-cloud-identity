@@ -27,4 +27,3 @@ Rackspace Cloud products and services.
 
    identity-service-endpoints
    additional-resources
-   Pricing and terms of servie <pricing-service-level>
