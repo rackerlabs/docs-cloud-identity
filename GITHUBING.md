@@ -15,7 +15,7 @@ entire contributing process for this repo go to [CONTRIBUTING.md](CONTRIBUTING.m
 
     ```bash
 
-    git clone git@github.com:my-github-username/getcarina.com.git
+    git clone git@github.com:my-github-username/docs-cloud-identity.git
 
     ```
 
@@ -23,7 +23,7 @@ entire contributing process for this repo go to [CONTRIBUTING.md](CONTRIBUTING.m
     
     ```bash
     cd getcarina.com
-    git remote add --track master upstream git@github.com:getcarina/getcarina.com.git
+    git remote add --track master upstream git@github.com:rackerlabs/docs-cloud-identity.git
     
     ```
 
