@@ -53,7 +53,7 @@ with the source files.
 **Optional:** Preview your changes before submitting a 
 pull request by [building from source](#building-from-source).
 
-### Follow general style guidelines
+### Following style guidelines
 
 When you add or update content, use the following general style guidelines, which are 
 described in detail in [Style guidelines for technical content](https://github.com/rackerlabs/docs-rackspace/tree/master/style-guide):
