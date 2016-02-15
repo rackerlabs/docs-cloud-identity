@@ -4,10 +4,10 @@ These guidelines provide the general process for maintaining source code that bu
 Rackspace Cloud Identity developer documentation. 
 
 - [Project description](#project-description)
-- [Editing and adding content](#edit-or-add-content)
+- [Editing and adding content](#editing-and-adding-content)
 - [General style guidelines](#general-style-guidelines)
-- [Merging content](#merge-content)
-- [Previewing changes](#preview-your-changes)
+- [Merging content](#merging-content)
+- [Previewing changes](#previewing-your-changes)
 
 ##Project description
 <!-- Provide as little or as much information about architecture as needed to help 
