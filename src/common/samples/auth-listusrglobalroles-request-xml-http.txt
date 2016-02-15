@@ -1,5 +1,0 @@
-GET /v2.0/users/123456/roles HTTP/1.1
-Host: identity.api.rackspacecloud.com
-X-Auth-Token: 771dd18634734a46b49f2af620112345
-Accept: application/xml
-Content-type: application/xml

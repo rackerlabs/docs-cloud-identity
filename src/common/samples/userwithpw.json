@@ -1,8 +1,0 @@
-{
-    "user": {
-            "username": "newUser", 
-            "email": "newUser@example.com", 
-            "enabled": true, 
-            "OS-KSADM:password":"Password48"
-        }
-}

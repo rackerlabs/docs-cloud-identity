@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<rateLimitConfig enabled=true interval="30" threshold="5">
-    <allow>10.5.55.108</allow>
-</rateLimitConfig>

@@ -1,9 +1,0 @@
-{
-  "RAX-AUTH:otpDevices": [
-    {
-      "id": "12346",
-      "verified": true,
-      "name": "Google Authenticator (iPhone)"
-    }
-  ]
-}

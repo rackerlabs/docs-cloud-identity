@@ -1,5 +1,0 @@
-DELETE /v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor HTTP/1.1
-Host: identity.api.rackspacecloud.com
-Accept: application/xml
-X-Auth-Token: ab502872c7cc415483c945bcfc77322c
-Content-type: application/xml
