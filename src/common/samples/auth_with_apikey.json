@@ -1,8 +1,0 @@
-{
-    "auth": {
-        "RAX-KSKEY:apiKeyCredentials": {
-            "username": "demoauthor",
-            "apiKey": "aaaaa-bbbbb-ccccc-12345678"
-        }
-    }
-}

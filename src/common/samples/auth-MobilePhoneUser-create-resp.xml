@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mobilePhone id="e0de732f1b1c4fec9d4f266326123456" verified="false" number="+1 210-312-4600"
-     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-     xmlns:atom="http://www.w3.org/2005/Atom" xmlns:identity="http://docs.openstack.org/identity/api/v2.0"/>

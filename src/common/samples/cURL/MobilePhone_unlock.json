@@ -1,4 +1,0 @@
-curl -X PUT $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor 
--d '{"RAX-AUTH:multiFactor": { "unlock": "true" }}' 
--H "Content-type: application/json" 
--H "X-Auth-Token: $AUTH_TOKEN_IA" --verbose -k | json

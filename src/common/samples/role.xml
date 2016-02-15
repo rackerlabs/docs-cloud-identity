@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<role xmlns="http://docs.openstack.org/identity/api/v2.0"
-  id="123" name="Admin" description="All Access" serviceId="abc4321ebabeeabb70a0e702a4626977c331d5c4" />

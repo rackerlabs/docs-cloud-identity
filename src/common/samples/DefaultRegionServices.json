@@ -1,6 +1,0 @@
-{
-  "RAX-AUTH:defaultRegionServices": [
-    "cloudFiles",
-    "openstackNova"
-  ]
-}

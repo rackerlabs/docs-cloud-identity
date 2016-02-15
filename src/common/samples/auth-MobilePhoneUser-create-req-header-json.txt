@@ -1,5 +1,0 @@
-POST /v2.0/users/10d2c2d0f3b644b9abea0d9fe8123456/RAX-AUTH/multi-factor/mobile-phones HTTP/1.1
-Host: identity.api.rackspacecloud.com
-Accept: application/xml
-X-Auth-Token: 6cac79a5c16343abb7c41b6bee123456
-Content-type: application/json

@@ -1,5 +1,0 @@
-{
-    "RAX-AUTH:multiFactor": {
-        "userMultiFactorEnforcementLevel": "OPTIONAL",
-    }
-}
