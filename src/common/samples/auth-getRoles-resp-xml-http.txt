@@ -1,6 +1,0 @@
-HTTP/1.1 200 OK
-Content-Type: application/xml
-Content-Length: 3872
-Connection: keep-alive
-Link: <http://identity.api.rackspacecloud.com/cloud/v2.0/OS-KSADM/roles?marker=75&limit=25>; rel="last", 
-  <http://identity.api.rackspacecloud.com/cloud/v2.0/OS-KSADM/roles?marker=25&limit=25>; rel="next"

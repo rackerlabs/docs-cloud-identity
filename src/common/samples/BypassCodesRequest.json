@@ -1,6 +1,0 @@
-{
-  "RAX-AUTH:bypassCodes": {
-    "validityDuration": "PT20M",
-    "numberOfCodes": "1"
-  }
-}

@@ -1,8 +1,0 @@
-{
-    "rateLimitConfig": {
-        "enabled": true,
-        "interval": 30,
-        "threshold": 5,
-        "allow": "10.5.55.108"
-    }
-}

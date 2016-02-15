@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rax-auth:domain enabled="true" id="-222345" name="myNewDomain"
-     xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-     xmlns:atom="http://www.w3.org/2005/Atom" 
-     xmlns:identity="http://docs.openstack.org/identity/api/v2.0">
-     <rax-auth:description>"A very good customer"</rax-auth:description>
-</rax-auth:domain>

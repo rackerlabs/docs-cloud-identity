@@ -1,7 +1,0 @@
-
-    <token id="abcdef123ghi4j5k67m8910n12op3qrs" expires="2014-12-05T17:36:38.662Z">
-        <tenant id="123456" name="123456"/>
-        <rax-auth:authenticatedBy>
-            <rax-auth:credential>APIKEY</rax-auth:credential>
-        </rax-auth:authenticatedBy>
-    </token>

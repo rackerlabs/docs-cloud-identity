@@ -1,5 +1,0 @@
-HTTP/1.1 200 OK
-Content-Length: 1985
-Content-Type: application/json
-LOCATION: http://identity.api.rackspacecloud.com/cloud/v2.0/users/e0fb2b4ddb594819b697d0048614c117/RAX-AUTH/multi-factor/otp-devices/a34b5e4a1ffe4514a8859716136dc7cb
-Date: Tue, 05 May 2015 14:09:02 GMT

@@ -1,9 +1,0 @@
-{
-  "RAX-AUTH:domain": {
-    "id": "9883948",
-    "enabled": true,
-    "description": "A very good customer",
-    "name": "GCorp"
-    "domainMultiFactorEnforcementLevel": "OPTIONAL"
-  }
-}

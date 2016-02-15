@@ -1,5 +1,0 @@
-GET /v2.0/OS-KSADM/roles/10000209/RAX-AUTH/users HTTP/1.1
-Host: identity.api.rackspacecloud.com
-X-Auth-Token: 348052a0395e4d05929ef41685312345
-Accept: application/json
-Content-type: application/json

@@ -1,5 +1,0 @@
-$ curl -i \
-  -H "Content-type: application/json" \
-  -d '{"RAX-AUTH:domain": {"enabled":true,"id":"223457","name":"myDomain"}}' \
-  -H "X-Auth-Token: $token \
-   https://identity.api.rackspacecloud.com/v2.0/domain

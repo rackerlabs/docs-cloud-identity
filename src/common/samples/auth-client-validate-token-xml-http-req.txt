@@ -1,5 +1,0 @@
-GET /v2.0/tokens/1ae706a797b541698b84915841234567 HTTP/1.1
-Host: identity.api.rackspacecloud.com
-Accept: application/xml
-Content-type: application/xml
-X-Auth-Token: 1ae706a797b541698b849158488b5777

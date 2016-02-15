@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<region enabled="true" isDefault="true" name="DFW"
-     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-     xmlns:atom="http://www.w3.org/2005/Atom" 
-     xmlns:identity="http://docs.openstack.org/identity/api/v2.0"/>

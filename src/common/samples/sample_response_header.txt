@@ -1,6 +1,0 @@
-HTTP/1.1 200 OK
-Date: Sun, 29 Jun 2014 03:35:05 GMT
-Content-Type: application/xml
-Content-Length: 1060
-Connection: keep-alive
-vary: Accept, Accept-Encoding, X-Auth-Token

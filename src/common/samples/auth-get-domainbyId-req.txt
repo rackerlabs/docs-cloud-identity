@@ -1,5 +1,0 @@
-GET /v2.0/RAX-AUTH/domain/6159798 HTTP/1.1
-Host: identity.api.rackspacecloud.com
-Accept: application/json
-Content-type: application/json
-X-Auth-Token: c6f56a1d89274da4b14c1de36c412345
