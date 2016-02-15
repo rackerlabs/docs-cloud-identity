@@ -3,7 +3,13 @@
 These guidelines provide the general process for maintaining source code that builds the 
 Rackspace Cloud Identity developer documentation. 
 
+- [Project description](#project-description)
+- [Edit or add content](#edit-or-add-content)
+- [General style guidelines](#general-style-guidelines)
+- [Merge content](#merge-content)
+- [Preview your changes](#preview-your-changes)
 
+##Project description
 <!-- Provide as little or as much information about architecture as needed to help 
 contributors figure out which file to update.-->
 
@@ -32,28 +38,20 @@ Content | File
 |Windows build script|``make.bat``|
 |Requirements file to support local builds| ``requirements.txt`` 
 
-
-* Update the source files by using the GitHub editor or any plain text editor.
-* Format source files with 
-  [reStructuredText syntax](http://www.sphinx-doc.org/en/stable/rest.html).  
-* For quick syntax checking, try the 
-[Online reStructuredText editor](http://rst.ninjs.org/).
-
 ## Edit or add content
 
 * Follow the [GitHub workflow](GITHUBING.md) for this repository to work 
 with the source files. 
-* Update the source files by using the GitHub editor or any plain text editor.
+* Update source files by using the GitHub editor or any plain text editor
 * Format source files with 
   [reStructuredText syntax](http://www.sphinx-doc.org/en/stable/rest.html).  
 * For quick syntax checking, try the 
 [Online reStructuredText editor](http://rst.ninjs.org/). 
 
-
 **Optional:** Preview your changes before submitting a 
 pull request by [building from source](#building-from-source).
 
-### Follow general style guidelines
+## General style guidelines
 
 When you add or update content, use the following general style guidelines, which are 
 described in detail in [Style guidelines for technical content](https://github.com/rackerlabs/docs-rackspace/tree/master/style-guide):
@@ -73,34 +71,33 @@ described in detail in [Style guidelines for technical content](https://github.c
 output, or to the staging URL that Ash is working on. 
 --> 
 
-### Merging content
+## Merge content
 
 All pull requests must be reviewed before merging. For minor updates and corrections,  
 get a peer review to ensure content is error-free and doesn't introduce other issues.
 For more complex changes or additions, the content requires both technical and editorial 
 review before it can be merged. 
 
-**Technical review**
+### Technical review
 
 *Quality team to add info here.*
 
 
-**Editorial review** 
+### Editorial review** 
 
 *Quality team to add info here.*
-
-
 
 
 ## Preview your changes
 
 To preview changes, build the documentation locally using either of the 
 following options:
+
 - Install and run the [Sphinx documentation generator](http://sphinx-doc.org/) to build 
   the project locally with the [Read the Docs theme](http://docs.readthedocs.org/en/latest/theme.html).
 - Install and run the [deconst client](https://github.com/deconst/client) to build the 
   project with the Rackspace-branded theme. This build creates content that looks the 
-  same as the content delivered on developer.rackspace.com
+  same as the content delivered on developer.rackspace.com. See 
   [instructions for building with the client](https://github.com/rackerlabs/docs-migration/blob/master/docs/migration-instructions.rst#building-your-project-with-the-local-deconst-client).
  
 
