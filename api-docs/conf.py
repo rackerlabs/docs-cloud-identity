@@ -109,9 +109,6 @@ exclude_patterns = ['_build', 'samples', 'api-operations/methods',
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-# Adding substitution values
-rst_epilog = """.. |product name| replace:: Rackspace Identity"""
-
 # External link library
 extlinks = {
     'rax': ('http://www.rackspace.com/%s', ''),
@@ -121,22 +118,27 @@ extlinks = {
     'rax-devguide':('http:/developer.rackspace.com/docs/%s/developer-guide/',''),
     'rax-api': ('http:/developer.rackspace.com/docs/%s/developer-guide/#api-reference',''),
     'rax-git': ('https://github.com/rackspace/%s', ''),
+    'rax-glossary': ('https://developer.rackspace.com/docs/glossary/%s', ''),
     'mycloud': ('https://mycloud.rackspace.com/%s', ''),
-    'kc': ('http://www.rackspace.com/knowledge_center/%s', ''),
-    'kc-article': ('http://www.rackspace.com/knowledge_center/article/%s', ''),
-    'kc-faq': ('http://www.rackspace.com/knowledge_center/'
-               'frequently-asked-question/%s', ''),
-    'kc-product-faq': ('http://www.rackspace.com/knowledge_center/'
-                       'product-faq/%s', ''),
+    'how-to': ('http://support.rackspace.com/how-to/%s', ''),
     'os': ('http://www.openstack.org/%s', ''),
     'os-docs': ('http://docs.openstack.org/%s', ''),
     'os-wiki': ('http://wiki.openstack.org/%s', ''),
-    'git-repo': ('https://github.com/rackerlabs/'
-                 'docs-core-infra-user-guide/%s', ''),
+    'git-repo': ('https://github.com/rackerlabs/%s',''),
     'rackerlabs': ('https://github.com/rackerlabs/%s', ''),
-    'rocket': ('https://objectrocket.com/%s', '')
+    'rocket': ('https://objectrocket.com/%s', ''),
+
 }
 
+
+# Global variables that are replaced by the specified value during the build process.
+
+rst_epilog = """
+.. |apiservice| replace:: Rackspace Cloud Identity API
+.. |no changes| replace:: None for this release.
+.. |contract version| replace:: 2.0
+.. |product name| replace:: Rackspace Cloud Identity
+"""
 
 # A list of ignored prefixes for module index sorting.
 # modindex_common_prefix = []

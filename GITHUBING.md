@@ -1,17 +1,23 @@
-# GitHub Workflow :octocat:
+# GitHub workflow :octocat:
 
-This is the GitHub workflow we use to contribute content to this repo. To follow the 
-entire contributing process for this repo go to [CONTRIBUTING.md](CONTRIBUTING.md).
+To contribute content to this repository (repo), use the GitHub workflow described here. 
+To follow the entire contribution process, go to 
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Prerequisites
+**Note:** This workflow shows how to make changes to the repo from the command line by 
+using git commands. If you do not want to use the command line, you can use GitHub Desktop 
+or another GitHub GUI instead to accomplish the steps. 
+  
+
+## Prerequisite
 
 * [Generate SSH keys](https://help.github.com/articles/generating-ssh-keys/)
 
 ## Workflow
 
-1. Fork from the repository that contains the documentation project. 
+1. Create a fork of this repo.
 
-2. Clone your fork of the repo using the SSH clone URL
+2. Use the ssh URL for the forked repo to clone it to your local system.
 
     ```bash
 
@@ -26,18 +32,16 @@ entire contributing process for this repo go to [CONTRIBUTING.md](CONTRIBUTING.m
     git remote add --track master upstream git@github.com:rackerlabs/docs-cloud-identity.git
     
     ```
+    Start new changes with the following steps.
 
-4. :sunrise: Start new changes here.
-
-    Bring your branch up-to-date with upstream
+4.  Bring your branch up-to-date with upstream
    
     ```bash
     git checkout master
     git pull --rebase upstream master
     ```
 
-5. Create a branch to make a change. If you'd like to see some lovely graphics, 
-   this step is the start of the 
+5. Create a branch for changes. For details about this part of the workflow, see 
    [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/index.html) 
    guide.
     
@@ -46,56 +50,71 @@ entire contributing process for this repo go to [CONTRIBUTING.md](CONTRIBUTING.m
     git checkout -b <name-of-branch>
     ```
 
-6. Add all files relevant to the change
-    ```bash
+6. In the new branch, make changes to existing files and add new files, as needed. 
+   ```bash
     git add .
     ```
+7. Add all files relevant to the change 
+   
+   ```
+   git add .
+   ```
 
-7. Commit the changed files
+8. Commit the changed files.
     ```bash
     git commit -m "The reason for my change"
     ```
 
-8. Push your branch to your fork
+9. Push your branch to your fork
     ```bash
     git push -u origin <name-of-branch>
     ```
 
-9. Create a pull request (PR) to the upstream repo for your branch
+10. Create a pull request (PR) to the upstream repo for your branch
 
-    1. Go to https://github.com/rackerlabs/docs-cloud-identity
-    2. Click on the Create pull request button
-    3. If this PR is related to an outstanding github 
-    [issue](https://github.com/rackerlabs/docs-cloud-identity/issues), include a link to that GitHub issue in the comment
+    a. Go to https://github.com/rackerlabs/docs-cloud-identity
+    b. Click on the Create pull request button
+    c. If this PR is related to an outstanding github 
+      [GitHub issue](https://github.com/rackerlabs/docs-cloud-identity/issues), include a link to that GitHub issue in the comment
 
-10. Notify rcs-tech a PR is ready for [Tech Review](CONTRIBUTING.md#technical-review)
+11. Notify your technical reviewers that the PR is ready for 
+    [technical review](CONTRIBUTING.md#technical-review).
 
-11. Make updates to your PR by adding more commits
+12. If necessary, incorporate changes from the review, make updates to your PR by adding 
+    more commits.
+    
     ```bash
     git add .
     git commit -m "The reason for my update"
     git push
     ```
 
-12. When the tech review is complete, it's time for the [Editorial Review](CONTRIBUTING.md#editorial-review)
+12. When the tech review is complete, notify your editor that the PR is ready for an 
+    editorial review.
+    
+    
+13. Repeat step 12 as needed. 
 
-13. Deal with conflicts
+14. Resolve conflicts, if necessary.
 
     During your review process, someone might have already updated and merged a file that 
-    you are in the process of changing. This can result in a conflict and you won't be 
-    able to merge your PR. First you need to bring your branch up-to-date with upstream. 
-    While on your `<name-of-branch>` do
+    you are in the process of changing. . Such a conflict means that you can’t merge your 
+    PR. To resolve the conflict, perform the following steps. 
     
-    ```
-    git fetch upstream
-    git rebase upstream/master
-    ```
+    a. Bring your branch up-to-date with the upstream repo by running the following 
+       commands from your branch:
+       
+       ```
+        git fetch upstream
+        git rebase upstream/master
+       ```
     
-    Then, follow the steps to [resolve a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/).
+    b. Follow the steps to [resolve a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/).
 
-14. When the Editorial Review is complete and the button is green, [Merge It](CONTRIBUTING.md#merge-it)!
+15. When the editorial review, any conflicts are resolved, and the merge button is green,
+    [merge the PR](CONTRIBUTING.md#merge-it).
 
-15. Update your repo
+16. Update your repo
 
     ```bash
     git checkout master
@@ -103,9 +122,10 @@ entire contributing process for this repo go to [CONTRIBUTING.md](CONTRIBUTING.m
     git push
     ```
 
-## Tips and Tricks
+## Tip
 
-### Git prompt and completion
+To see repository status in your prompt and to activate auto-completion, 
+perform the following steps:
 
 1. Download 
 [git-prompt.sh](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh) 
@@ -131,5 +151,3 @@ source ~/.git-completion.bash
 * [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/index.html)
 * [Mastering GitHub Issues](https://guides.github.com/features/issues/)
 * [GitHub Help](https://help.github.com/)
-* GitHub help in Slack channel #git-support-group
-* deconst help in Slack channel #deconst

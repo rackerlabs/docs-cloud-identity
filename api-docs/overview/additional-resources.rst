@@ -15,10 +15,10 @@ product updates and announcements.
 
 -  To get started using the Cloud Identity API, see the :ref:`Quickstart <quickstart-guide>`.
 
--  Visit the `Rackspace Knowledge Center`_  to learn how to use Rackspace services from 
-   the `Rackspace Cloud Control Panel`_.
+-  Visit the :how-to:`Rackspace How To page <>`  to learn how to use Rackspace services from 
+   the :mycloud:`Rackspace Cloud Control Panel <>`.
    
--  Read the `Rackspace API Documentation`_
+-  Read the :rax-api:`Rackspace API Documentation <>`
    to learn about APIs for other Rackspace services.
 
 -  Find information about Rackspace SDKs and developer-focused articles
@@ -31,12 +31,9 @@ product updates and announcements.
 
 .. _on Twitter: http://www.twitter.com/rackspace
 
-.. _Rackspace Knowledge Center: http://www.rackspace.com/knowledge_center
-.. _Rackspace Cloud Control Panel: https://mycloud.rackspace.com/
 .. _Rackspace Developer site: https://developer.rackspace.com/
 .. _Rackspace Product Feedback forum: https://feedback.rackspace.com
 .. _OpenStack Keystone documentation: http://docs.openstack.org/developer/keystone/
 .. _Rackspace Cloud website: http://www.rackspace.com/
-.. _Rackspace API Documentation: https://developer.rackspace.com/docs/
 .. _Software Development Kits & Tools: https://developer.rackspace.com/docs/#sdks
 .. _HTTP Status Code Definitions: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
