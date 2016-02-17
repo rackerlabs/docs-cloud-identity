@@ -89,7 +89,7 @@ Authentication token
 	AE tokens are non-persistent tokens that contain encrypted metadata that supplies 
 	all the necessary information to determine whether a token is valid. For 
 	more information, see the 
-	:kc-article:`Authenticated Encrypted Tokens <introduction-to-encrypted-authenticated-tokens>` 
+	:how-to:`Authenticated Encrypted Tokens <introduction-to-encrypted-authenticated-tokens>` 
 	article in the Rackspace Knowledge Center.
 
 .. _authorization-concept:
