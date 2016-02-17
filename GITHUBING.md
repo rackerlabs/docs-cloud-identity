@@ -17,7 +17,7 @@ or another GitHub GUI instead to accomplish the steps.
 
 1. Create a fork of this repo.
 
-2. Clone your fork of the repo by using the ssh URL for the cloned repo.
+2. Use the ssh URL for the forked repo to clone it to your local system.
 
     ```bash
 
