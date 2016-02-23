@@ -4,9 +4,9 @@ These guidelines provide the general process for maintaining source code that bu
 Rackspace Cloud Identity developer documentation. 
 
 - [Project description](#project-description)
-- [Editing and adding content](#editing-and-adding-content)
+- [Updating and adding content](#updating-and-adding-content)
 - [General style guidelines](#general-style-guidelines)
-- [Merging content](#merging-content)
+- [Submitting your content](#submitting-your-content)
 - [Previewing changes](#previewing-your-changes)
 
 ##Project description
@@ -38,17 +38,17 @@ Content | File
 |Windows build script|``make.bat``|
 |Requirements file to support local builds| ``requirements.txt`` 
 
-## Editing and adding content
+## Updating and adding content
 
-To work with the existing source files or add new ones, follow the [GitHub workflow](GITHUBING.md) for this repository.
+Contributions are submitted, reviewed, and accepted by using GitHub pull requests, following the [GitHub workflow](GITHUBING.md) for this repository. 
+
+To update existing source files or add new ones, follow the [GitHub workflow](GITHUBING.md) for this repository.
 
 * Update source files by using the GitHub editor or any plain text editor.
 * Format source files with 
   [reStructuredText syntax](http://www.sphinx-doc.org/en/stable/rest.html).  
 * For quick syntax checking, try the 
 [Online reStructuredText editor](http://rst.ninjs.org/). 
-
-You can [preview your changes](#previewing-changes) before submitting a pull request.
 
 ## General style guidelines
 
@@ -70,26 +70,21 @@ described in detail in [Style guidelines for technical content](https://github.c
 output, or to the staging URL that Ash is working on. 
 --> 
 
-## Merging content
+# Submitting your changes
 
-All pull requests must be reviewed before they are merged. 
+When you've completed your changes, submit a pull request. Someone on the Information Development team will review your PR.
+- Minor updates and corrections get a quick review to ensure that content is error-free and doesn't introduce other issues.
+- More complex changes or additions require both technical and editorial review. 
 
-- For minor updates and corrections, get a peer review to ensure that content is error-free and doesn't introduce other issues.
-- For more complex changes or additions, the content requires both technical and editorial review before it can be merged. 
+Depending on the review feedback, you might be asked to make additional changes. 
 
-### Technical review
-
-*Quality team to add info here.*
-
-
-### Editorial review 
-
-*Quality team to add info here.*
-
+After content has been reviewed and approved, the updates can be merged to the master branch. The merge triggers the build and 
+deploy process. Typically, new content is available on developer.rackspace.com within a minute or two after it is merged. Larger 
+updates might take a bit longer.
 
 ## Previewing changes
 
-To preview changes, build the documentation locally by using one of the following options:
+If you want to preview your changes in the context of the entire project, use either of the following methods to build a local copy of the Sphinx documentation project.
 
 - Install and run the [Sphinx documentation generator](http://sphinx-doc.org/) to build 
   the project locally with the [Read the Docs theme](http://docs.readthedocs.org/en/latest/theme.html). See the following instructions.
@@ -142,4 +137,3 @@ These commands generate a single page HTML document with a navigation bar on the
 To open the generated project, run the following command: 
 
     open _build/html/index.html
-    
