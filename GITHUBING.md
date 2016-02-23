@@ -73,12 +73,13 @@ or another GitHub GUI instead to accomplish the steps.
 10. Create a pull request (PR) to the upstream repo for your branch
 
     a. Go to https://github.com/rackerlabs/docs-cloud-identity
+
     b. Click on the Create pull request button
+
     c. If this PR is related to an outstanding github 
       [GitHub issue](https://github.com/rackerlabs/docs-cloud-identity/issues), include a link to that GitHub issue in the comment
 
-11. Notify your technical reviewers that the PR is ready for 
-    [technical review](CONTRIBUTING.md#technical-review).
+11. The Information Development team will review your pull request. 
 
 12. If necessary, incorporate changes from the review, make updates to your PR by adding 
     more commits.
@@ -88,11 +89,6 @@ or another GitHub GUI instead to accomplish the steps.
     git commit -m "The reason for my update"
     git push
     ```
-
-12. When the tech review is complete, notify your editor that the PR is ready for an 
-    editorial review.
-    
-    
 13. Repeat step 12 as needed. 
 
 14. Resolve conflicts, if necessary.
@@ -111,8 +107,7 @@ or another GitHub GUI instead to accomplish the steps.
     
     b. Follow the steps to [resolve a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/).
 
-15. When the editorial review, any conflicts are resolved, and the merge button is green,
-    [merge the PR](CONTRIBUTING.md#merge-it).
+15. When content is approved and you have resolved any conflicts, the Information Development team will merge your pull request. 
 
 16. Update your repo
 
