@@ -136,4 +136,4 @@ These commands generate a single page HTML document with a navigation bar on the
 
 To open the generated project, run the following command: 
 
-    open _build/html/index.html
+    open _build/singlehtml/index.html
