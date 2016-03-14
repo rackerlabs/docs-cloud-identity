@@ -51,9 +51,7 @@ or another GitHub GUI instead to accomplish the steps.
     ```
 
 6. In the new branch, make changes to existing files and add new files, as needed. 
-   ```bash
-    git add .
-    ```
+
 7. Add all files relevant to the change 
    
    ```
