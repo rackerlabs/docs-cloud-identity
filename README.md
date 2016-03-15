@@ -1,5 +1,7 @@
 # Rackspace Cloud Identity API documentation
 
+[![build badge](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/badge?branch=master)](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/)
+
 This repository contains the source files that generate the following Cloud Identity API documentation: 
 
 * [Quickstart Guide](https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-quickstart-guide)
@@ -7,7 +9,7 @@ This repository contains the source files that generate the following Cloud Iden
 * [API Reference](https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#api-reference)
 
 When you commit changes to the master branch of this repository, the 
-[Strider CI/CD build job](http://ci.deconst.horse/rackerlabs/docs-cloud-identity-2.0/) 
+[Strider CI/CD build job](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/) 
 builds the documentation. Successful builds are deployed to production.
 
 ### Support and feedback
