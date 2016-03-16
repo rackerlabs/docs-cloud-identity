@@ -6,8 +6,8 @@ Rackspace Cloud Identity developer documentation.
 - [Project description](#project-description)
 - [Updating and adding content](#updating-and-adding-content)
 - [General style guidelines](#general-style-guidelines)
-- [Submitting your content](#submitting-your-content)
-- [Previewing changes](#previewing-your-changes)
+- [Submitting your content](#submitting-changes)
+- [Previewing changes](#previewing-changes)
 
 ##Project description
 <!-- Provide as little or as much information about architecture as needed to help 
@@ -70,7 +70,7 @@ described in detail in [Style guidelines for technical content](https://github.c
 output, or to the staging URL that Ash is working on. 
 --> 
 
-# Submitting your changes
+# Submitting changes
 
 When you've completed your changes, submit a pull request. Someone on the Information Development team will review your PR.
 - Minor updates and corrections get a quick review to ensure that content is error-free and doesn't introduce other issues.
@@ -88,4 +88,4 @@ When you submit a pull request, the Strider build process creates a preview of y
 After the build process completes, the following message displays in the pull request comments with a link to the content: ``Your content preview is now ready.``
 
 You can also build the project locally using the [Sphinx documentation generator](http://sphinx-doc.org/). For details, see 
-[Building from source](https://github.com/rackerlabs/docs-rackspace/blob/master/tools/build-from-source.rst)
+[Building from source](https://github.com/rackerlabs/docs-rackspace/blob/master/tools/build-from-source.rst).
