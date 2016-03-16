@@ -84,56 +84,8 @@ updates might take a bit longer.
 
 ## Previewing changes
 
-If you want to preview your changes in the context of the entire project, use either of the following methods to build a local copy of the Sphinx documentation project.
+When you submit a pull request, the Strider build process creates a preview of your changes in a staging environment. 
+After the build process completes, the following message displays in the pull request comments with a link to the content: ``Your content preview is now ready.``
 
-- Install and run the [Sphinx documentation generator](http://sphinx-doc.org/) to build 
-  the project locally with the [Read the Docs theme](http://docs.readthedocs.org/en/latest/theme.html). See the following instructions.
-- Install and run the [deconst client](https://github.com/deconst/client) to build the 
-  project with the Rackspace-branded theme. This build creates content that looks the 
-  same as the content delivered on developer.rackspace.com. See 
-  [instructions for building with the client](https://github.com/rackerlabs/docs-migration/blob/master/docs/migration-instructions.rst#building-your-project-with-the-local-deconst-client).
- 
-
-### Build the project with Sphinx
-
-Use these instructions to install and run the Sphinx documentation generator to build the project locally with the Read the Docs theme. 
-
-#### Prerequisites
-
-- Python 2.7 or later
-- Mac OS X: Install [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) or [pyenv](https://github.com/yyuu/pyenv)
-- Windows: 
-[Install Python, pip, and virtualenv with PowerShell](http://www.tylerbutler.com/2012/05/how-to-install-python-pip-and-virtualenv-on-windows-with-powershell/).
-
-
-#### Set up your build environment
-
-1. Run the following command to activate your virtual environment:
-
-   ```
-    bin activate env-name
-    
-   ```   
-
-2. In the root directory for the project, run the following commands to install Sphinx 
-   and other required packages:
-
-    ```
-    pip install -r requirements.txt
-    
-    ```
-    
-#### Build the project
-
-To build the documentation project, run the following commands:
-
-    cd api-docs
-    make clean singlehtml
-
-These commands generate a single page HTML document with a navigation bar on the right.
-
-#### View the HTML build results
-
-To open the generated project, run the following command: 
-
-    open _build/singlehtml/index.html
+You can also build the project locally using the [Sphinx documentation generator](http://sphinx-doc.org/). For details, see 
+[Building from source](https://github.com/rackerlabs/docs-rackspace/blob/master/tools/build-from-source.rst)
