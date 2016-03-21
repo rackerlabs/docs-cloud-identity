@@ -28,7 +28,7 @@ or another GitHub GUI instead to accomplish the steps.
 3. Track the upstream repo
     
     ```bash
-    cd getcarina.com
+    cd docs-cloud-identity
     git remote add --track master upstream git@github.com:rackerlabs/docs-cloud-identity.git
     
     ```
