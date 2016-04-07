@@ -9,7 +9,7 @@ List global roles assigned to a user
 
 This operation returns a list of :ref:`global roles <role-concept>` 
 that are assigned to the account with the specified user Id. If you don't know the ID, 
-use the :ref:`Get user by Id <get-user-by-id-v2.0>` operation to find it.
+use the :ref:`list users <get-list-users-v2.0>` operation to find it.
 
 For each role listed, the response includes identifying information such as the role ID 
 (such as ``123`` ), name (such as ``Admin``, and description (such as ``All Access``). 
