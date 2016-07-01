@@ -232,8 +232,7 @@ html_last_updated_fmt = '%b %d, %Y'
 htmlhelp_basename = 'RackspaceIdentityApiDeveloperDoc'
 
 # this will change the 'paragraph' character to '#'
-#
-#html_add_permalinks = '#'
+html_add_permalinks = '#'
 
 # -- Options for LaTeX output ---------------------------------------------
 
