@@ -26,9 +26,9 @@ an OTP device for multi-factor authentication.
     ..  note:: 
    
         If you have multi-factor authentication configured on your account,
-   	    follow the :ref:`multi-factor authentication process <auth-mfa-enabled-account>` 
+   	    follow the 
+   	    :ref:`multi-factor authentication process <auth-mfa-enabled-account>` 
    	    to get the authentication token.
-   	    
 
     .. code::  
 
