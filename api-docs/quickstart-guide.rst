@@ -150,12 +150,14 @@ Perform the following steps to generate an authentication token.
         
       Your Rackspace Cloud environment requires users to
       authenticate by using multi-factor authentication. To enable
-      this feature, :ref:`request a scoped setup-mfa token <req-mfa-setup-token>` and use it to
-      authenticate and configure your account.
+      this feature,
+      :ref:`request a scoped setup-mfa token <req-mfa-setup-token>` and use
+      it to authenticate and configure your account.
 
       ..  note:: 
       
-          You can find additional error message information in the :ref:`Token operations API reference <token-operations>`.
+          You can find additional error message information in the 
+          :ref:`Token operations API reference <token-operations>`.
                 
 .. _sign up: https://cart.rackspace.com/cloud
 
@@ -246,7 +248,7 @@ immediately by submitting a **Revoke token** API request to the Identity
 service endpoint.
 
 If you re-authenticate before the `token` expires, the Identity
-service returns the same token as long as it remains valid.
+service returns a new token.
 
 When a token expires or becomes invalid, any API request submitted
 against Rackspace Cloud services returns a 401 error message. To regain
@@ -269,8 +271,10 @@ Best practices
    an authentication request before each API operation. You can re-use the cached
    token value as long as it remains valid.
    
-   .. note:: For an example of how to cache credentials with an SDK, see `Caching credentials`_ 
-      in the php-opencloud documentation.
+   .. note:: 
+
+      For an example of how to cache credentials with an SDK, see
+      `Caching credentials`_ in the php-opencloud documentation.
 
 -  Design applications to re-authenticate after receiving a
    `401 Unauthorized` response from a service endpoint, or use
@@ -283,10 +287,12 @@ Best practices
       implementation.
 
    -  Submit a **DELETE token** request to revoke the existing
-      token, and then submit another **POST tokens** request to get a new token.
+      token, and then submit another **POST tokens** request to get a new
+      token.
 
 -  To simplify authentication, credential, and token management, use an 
-   `OpenStack command-line client application`_ or one of the `Rackspace SDKs`_.
+   `OpenStack command-line client application`_ or one of the
+   `Rackspace SDKs`_.
       
 Learn more
 ~~~~~~~~~~~~~
