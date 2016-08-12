@@ -1,27 +1,37 @@
-.. _general-api-information: 
+.. _general-api-info:
 
-General API Information
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=======================
+General API information
+=======================
 
-The Rackspace Cloud Identity authentication service allows clients to obtain tokens 
-that can be used to access cloud services like those provided by Rackspace and
-OpenStack.
+The information in this section is relevant to all operations of the API.
+For details about specific operations, see the
+:ref:`API reference <api-reference>`.
 
-The authentication service API is implemented using a RESTful web
-service interface. All requests to authenticate and operate against the
-authentication service should be performed using SSL over HTTP (HTTPS)
-on TCP port 443.
+The |apiservice| is implemented using a RESTful web
+service interface. Like other Rackspace Cloud services, this service
+shares a common token-based authentication system that allows seamless
+access between products and services.
+
+
+.. note::
+
+    All requests to authenticate and operate the service are performed using
+    HTTPS on TCP port 443. For authentication instructions, see
+    :ref:`Authenticate to the Rackspace Cloud <authenticate-to-cloud>`.
 
 
 .. toctree:: :hidden:
    :maxdepth: 2
-   
-   how-curl-works
+
+   authentication-info/index
+   service-access
+   svc-catalog-ovw
    request-response-types
    date-time-format
    paginated-collections
    limits
-   faults
+   http-status-codes
    contract-versions
    extensions
    namespaces

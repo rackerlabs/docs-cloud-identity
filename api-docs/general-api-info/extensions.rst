@@ -1,14 +1,14 @@
 .. _extensions-ovw:
 
+==============
 API Extensions
------------------
+==============
 
-The authentication service API is extensible, meaning that the API is
-structured so that some functions are implemented in the core API and
-others are implemented via optional extensions to that core. Extensions
-allow Service providers to introduce new features in the API without
-changing the contract version and to add custom functionality in their
-implementation of the OpenStack architecture.
+The |apiservice| uses extensions to implement some functionality that is not
+available in the core OpenStack Keystone API. Extensions allow Service
+providers like Rackspace to introduce new features in the API without changing
+the contract version and to add custom functionality in their implementation
+of the OpenStack architecture.
 
 Every service provider can add extensions to the core API based on
 service requirements.
@@ -90,19 +90,22 @@ extensions.
 
    -  Namespace:\ ``xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"``
 
-You can use the Extensions API operations to view and manage the
-extensions available with the Identity Service.
+You can use the :ref:`Extensions API operations <extensions-operations>`
+to view and manage the extensions available with the |apiservice| as shown in
+the following sections:
+
 
 .. _extended-resp-actions:
 
 Extended Responses and Actions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Extensions define new data types, parameters, actions, headers, states,
 and resources that are added to the core OpenStack APIs.
 
 
-.. Important:: 
+.. Important::
+
    During application development, make sure to code for cases where the
    application must ignore response data that contains extension elements
    if the extension is not available. If the application does not support
@@ -115,61 +118,57 @@ and resources that are added to the core OpenStack APIs.
 .. _json-req-resp-extensions-json:
 
 JSON requests and responses with extensions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------------
 
 In JSON, use the alias to reference extended resources and attributes.
-In this Add user API request, you see aliased references to the password
-attribute that is provided by the OS-KSADM extension.
+In this Get user admin API request, you see aliased references to the user
+attributes that are provided by the RAX-AUTH extension.
 
- 
-**Example 3.38. Extended Action: JSON Request**
+**Example 3.38. Extended Action: cURL Request**
 
-.. code::  
+.. code::
 
-    {
-        "user": {
-                "username": "newUser", 
-                "email": "newUser@example.com", 
-                "enabled": true, 
-                "OS-KSADM:password":"Password48"
-            }
-    }
-
-| 
+      $ curl -X GET $ENDPOINT/v2.0/users/$USER_ID/RAX-AUTH/admins \
+             -H "Content-type: application/json" \
+             -H "X-Auth-Token: $AUTH_TOKEN"  | python -m json.tool
 
 The API response shows aliases for any elements and attributes that are
-provided by extensions. In this example showing a List users response,
-the ``defaultRegion`` and ``domainId`` are provided by the RAX-AUTH
-extension.
+provided by extensions. In the following example, the response to the get user
+admin request returns the following extended attributes that are supported by
+the RAX-AUTH extension: ``defaultRegion``, ``domainId``, and
+``multiFactorEnabled``.
 
  
-**Example 3.39. Extended Server response: JSON**
+**Example: Extended Server HTTP and JSON response**
 
-.. code::  
+.. code::
 
-    {
-        "users": [
-            {
-                "RAX-AUTH:defaultRegion": "DFW",
-                "RAX-AUTH:domainId": "660507",
-                "email": "testbox@mailtrust.com",
-                "enabled": true,
-                "id": "000029f0da41496495ea1463c71cc6a5",
-                "username": "alicecuser513104"
-            },
-            {
+     HTTP/1.1 200 OK
+     Server: nginx
+     Date: Wed, 10 Aug 2016 20:31:21 GMT
+     Content-Type: application/json
+     Content-Length: 225
+     Connection: keep-alive
+     Vary: Accept, Accept-Encoding, X-Auth-Token
+     X-NewRelic-App-Data: PxQCWVFVDwQTVVRTBAQAUlATGhE1AwE2QgNWEVlbQFtcC2VOYwRAFjNTVTIDEU5aUwE9TUJCUhQXbRlIFxUGEHkGRT4XanVqHiRsNXk9HAMAW14PFUMQdHUwSEAbARlWSAEYAlRUVloAWg5OFQkYEABWClAGWFFRU1RUWF8FWlISSAcDW0JSOw==
+     x-trans-id: eyJyZXF1ZXN0SWQiOiI1N2FmZDI4Zi0zNzViLTQ5MzYtYmI5ZS0yMDUxMGJmNTA0YzYiLCJvcmlnaW4iOm51bGx9
+     Front-End-Https: on
+
+.. code::
+
+     {
+         "users": [
+             {
                 "RAX-AUTH:defaultRegion": "IAD",
-                "RAX-AUTH:domainId": "6019514",
-                "email": "jqsmith112326@thebestemailprovider.com",
+                "RAX-AUTH:domainId": "123456",
+                "RAX-AUTH:multiFactorEnabled": false,
+                "email": "user@email.com",
                 "enabled": true,
-                "id": "000064f713e445f78ee8002917207428",
-                "username": "jqsmith112326"
-            }
-
+                "id": "10d2c2d0f3b644b9abea0d9564321234",
+                "username": ""
+             }
         ]
-    }
-
-| 
+     }
 
 Extended headers are always prefixed with ``X-`` followed by the alias
 and a dash: (``X-AUTH-TOKEN``). You must prefix states and parameters
@@ -180,59 +179,44 @@ in the ``RAX-AUTH:multiFactorEnabled`` state.
 .. _xml-req-resp-extensions-xml:
 
 XML requests and responses with extensions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------
 
 In XML, additional elements and attributes are defined in the namespace
 for the extension. To use these elements and attributes in an API
 request, include the namespace in the API request as shown in this
 example.
 
- 
-**Example 3.40. Extended Action: XML Request**
+**Example: Extended Action: cURL Request**
 
-.. code::  
+.. code::
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <region enabled="true" isDefault="true" name="DFW"
-         xmlns="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-         xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-         xmlns:atom="http://www.w3.org/2005/Atom" 
-         xmlns:identity="http://docs.openstack.org/identity/api/v2.0"/>
+      $ curl -X GET $ENDPOINT/v2.0/users/$USER_ID/RAX-AUTH/admins.xml
+             -H "Content-type: application/xml"
+             -H "X-Auth-Token: $AUTH_TOKEN"  | xml
 
 The API response includes the namespaces for core API and extensions
 resources available to the API service.
-
  
-**Example 3.41. Extended Identity service: XML Response**
+**Example: Extended Identity service: HTTP and XML response**
 
-.. code::  
+.. code::
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <users xmlns:atom="http://www.w3.org/2005/Atom" 
-        xmlns:rax-auth="http://docs.thebestemailprovider.com/identity/api/ext/RAX-AUTH/v1.0" 
-        xmlns="http://docs.openstack.org/identity/api/v2.0" 
-        xmlns:ns4="http://docs.thebestemailprovider.com/identity/api/ext/RAX-KSGRP/v1.0" 
-        xmlns:rax-ksqa="http://docs.thebestemailprovider.com/identity/api/ext/RAX-KSQA/v1.0" 
-        xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-        xmlns:rax-kskey="http://docs.thebestemailprovider.com/identity/api/ext/RAX-KSKEY/v1.0" 
-        xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
-
-      <user 
-        rax-auth:domainId="660507" 
-        rax-auth:defaultRegion="DFW" 
-        id="000029f0da41496495ea1463c71cc6a5" 
-        username="alicecuser513104" 
-        email="testbox@myemailprovider.com" 
-        enabled="true"/>
-            
-      <user 
-        rax-auth:domainId="6019514" 
-        rax-auth:defaultRegion="IAD" 
-        id="000064f713e445f78ee8002917207428" 
-        username="jqsmith112326" 
-        email="jqsmith112326@thebestemailprovider.com" 
-        enabled="true"/>
-        
+     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+       <users
+          xmlns="http://docs.openstack.org/identity/api/v2.0"
+          xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0"
+          xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+          xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+          xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
+          xmlns:atom="http://www.w3.org/2005/Atom"
+          xmlns:ns7="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
+          xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0">
+          <user
+               enabled="true"
+               email="margaret.eker@rackspace.com"
+               username="maeker123"
+               id="10d2c2d0f3b644b9abea0d9fe80669e4"
+               rax-auth:multiFactorEnabled="false"
+               rax-auth:defaultRegion="IAD"
+               rax-auth:domainId="929418"/>
     </users>
-
-| 
