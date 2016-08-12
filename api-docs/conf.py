@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Rackspace Developer Documentation documentation build configuration file,
-# created by sphinx-quickstart on Thu Mar 6 14:14:55 2014.
+# Rackspace Developer documentation build configuration file, created by
+# sphinx-quickstart on Fri Jun 12 14:04:59 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -12,22 +12,20 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import os
-import sys
+try:
+    import sphinx_rtd_theme
+except ImportError:
+    sphinx_rtd_theme = None
 
-# -- Custom options for PHP output ----------------------------------------
-
-from pygments.lexers.web import PhpLexer
-
-from sphinx.highlighting import lexers
-
-lexers['php'] = PhpLexer(startinline=True)
-
+try:
+    from sphinxcontrib import spelling
+except:
+    spelling = None
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('.'))
+# sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
 
@@ -45,8 +43,11 @@ extensions = [
     'sphinx.ext.extlinks'
 ]
 
+if spelling is not None:
+    extensions.append('sphinxcontrib.spelling')
+
 # Add any paths that contain templates here, relative to this directory.
-#templates_path = ['_templates']
+# templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -58,13 +59,13 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # The builder to use when running via the deconst preparer
-# builder = 'deconst-serial'
-builder = 'deconst-single'
+builder = 'deconst-serial'
+# builder = 'deconst-single'
 
 
 # General information about the project.
 project = 'Rackspace Developer Documentation'
-copyright = '2015, Rackspace'
+copyright = '2011-2016, Rackspace'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -87,9 +88,10 @@ release = '1'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', 'samples', 'api-operations/methods', 
-   'authentication-info/mfa-content/*', 'authentication-info/authentication-ref/*', 
-    ]
+exclude_patterns = ['_build', 'samples', 'common-gs/*',
+                    'api-reference/methods', 'getting-started/mfa-content/*',
+                    'general-api-info/authentication-info/authentication-ref/*'
+                    ]
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -112,32 +114,38 @@ pygments_style = 'sphinx'
 # External link library
 extlinks = {
     'rax': ('http://www.rackspace.com/%s', ''),
+    'rax-cart': ('http://cart.rackspace.com/%s', ''),
+    'rax-special': ('http://%s.rackspace.com/', ''),
     'rax-cloud': ('http://www.rackspace.com/cloud/%s', ''),
     'rax-dev': ('https://developer.rackspace.com/%s', ''),
     'rax-devdocs': ('http://developer.rackspace.com/docs/%s', ''),
-    'rax-devguide':('http:/developer.rackspace.com/docs/%s/developer-guide/',''),
-    'rax-api': ('http:/developer.rackspace.com/docs/%s/developer-guide/#api-reference',''),
+    'rax-api':
+    ('http:/developer.rackspace.com/docs/%s/api-reference', ''),
     'rax-git': ('https://github.com/rackspace/%s', ''),
+    'mycloud': ('https://mycloud.rackspace.com/%s', ''),
     'rax-glossary': ('https://developer.rackspace.com/docs/glossary/%s', ''),
     'mycloud': ('https://mycloud.rackspace.com/%s', ''),
     'how-to': ('http://support.rackspace.com/how-to/%s', ''),
     'os': ('http://www.openstack.org/%s', ''),
     'os-docs': ('http://docs.openstack.org/%s', ''),
     'os-wiki': ('http://wiki.openstack.org/%s', ''),
-    'git-repo': ('https://github.com/rackerlabs/%s',''),
+    'git-repo': ('https://github.com/rackerlabs/'
+                 'docs-core-infra-user-guide/%s', ''),
     'rackerlabs': ('https://github.com/rackerlabs/%s', ''),
-    'rocket': ('https://objectrocket.com/%s', ''),
-
+    'rocket': ('https://objectrocket.com/%s', '')
 }
 
 
-# Global variables that are replaced by the specified value during the build process.
+# Global variables that are replaced by the specified value during the build
+# process.
+
 
 rst_epilog = """
-.. |apiservice| replace:: Rackspace Cloud Identity API
-.. |no changes| replace:: None for this release.
+.. |service| replace:: Identity
+.. |apiservice| replace:: Rackspace Identity API
+.. |no changes| replace:: None for this release
 .. |contract version| replace:: 2.0
-.. |product name| replace:: Rackspace Cloud Identity
+.. |product name| replace:: Cloud Identity
 """
 
 # A list of ignored prefixes for module index sorting.
@@ -151,7 +159,10 @@ rst_epilog = """
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-# html_theme = 'classic'
+if sphinx_rtd_theme:
+    html_theme = 'sphinx_rtd_theme'
+else:
+    html_theme = 'default'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -229,7 +240,7 @@ html_last_updated_fmt = '%b %d, %Y'
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RackspaceIdentityApiDeveloperDoc'
+htmlhelp_basename = 'docs-cloud-identitydoc'
 
 # this will change the 'paragraph' character to '#'
 html_add_permalinks = '#'
@@ -251,8 +262,8 @@ html_add_permalinks = '#'
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'RackspaceIdentityApiDeveloperDoc.tex',
-     'Rackspace Identity API 2.0 Developer Guide', 'Rackspace', 'manual')
+    (master_doc, 'docs-cloud-identity.tex',
+     'Rackspace Identity API Guide', 'Rackspace', 'manual')
 ]
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -281,8 +292,8 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 
 man_pages = [
-    ('index', 'RackspaceIdentityApiDeveloperDoc',
-     'Rackspace Identity API 2.0 Developer Guide', ['Rackspace'], 1)
+    (master_doc, 'Rackspace Identity API documentation',
+     'Rackspace developer documentation', ['Rackspace'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -295,10 +306,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'RackspaceIdentityDeveloperDoc',
-     'Rackspace Cloud Identity API Developer Guide', 'Rackspace',
+    (master_doc, 'docs-cloud-identity',
+     'Rackspace Cloud Identity API Guide', 'Rackspace',
      'RackspaceCloudIdentityDeveloperDoc',
-     'Learn about using the REST API for the Rackspace Cloud Identity',
+     'Learn about using the REST API for the Rackspace Cloud Identity service',
      'Miscellaneous'),
 ]
 

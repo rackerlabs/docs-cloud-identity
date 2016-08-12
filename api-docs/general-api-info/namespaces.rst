@@ -1,10 +1,11 @@
 .. _namespaces:
 
+==========
 Namespaces
-~~~~~~~~~~~~
+==========
 
-The API operations described in the :ref:`Identity API Operations 
-Reference <api-reference-intro>` are enabled by a combination of the
+The API operations described in the :ref:`Identity API Operations
+Reference <api-reference>` are enabled by a combination of the
 core Identity API and multiple API extensions. You can read more about
 extensions, including how to request details about all or specific
 extensions, at :ref:`Extensions <extensions-ovw>`.
@@ -32,33 +33,33 @@ that by making it possible to list a specific kind of credentials,
  
 **Example: Multiple Namespaces in an XML Response**
 
-.. code::  
+.. code::
 
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <ns2:credentials 
-        xmlns:ns1="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0" 
-        xmlns:ns2="http://docs.openstack.org/identity/api/v2.0" 
-        xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"           
-        xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0" 
-        xmlns:ns5="http://docs.openstack.org/common/api/v1.0" 
-        xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0" 
-        xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0" 
+    <ns2:credentials
+        xmlns:ns1="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+        xmlns:ns2="http://docs.openstack.org/identity/api/v2.0"
+        xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+        xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
+        xmlns:ns5="http://docs.openstack.org/common/api/v1.0"
+        xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
+        xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0"
         xmlns:ns8="http://www.w3.org/2005/Atom">
-        <ns3:apiKeyCredentials 
-            username="bobbuilder" 
+        <ns3:apiKeyCredentials
+            username="bobbuilder"
             apiKey="0f97f489c848438090250d50c7e1eaXZ"/>
     </ns2:credentials>
 
-The core Identity API, defined in ``ns2``, supports ``<credentials>``. This association is 
-valid only within this example. You might see namespaces identified differently in 
+The core Identity API, defined in ``ns2``, supports ``<credentials>``. This association is
+valid only within this example. You might see namespaces identified differently in
 responses that you generate.
 
-The ``RAX-KSKEY`` extension is defined in ``ns3``. This association is valid only 
-within this example. You might see namespaces identified differently in responses that 
-you generate. 
+The ``RAX-KSKEY`` extension is defined in ``ns3``. This association is valid only
+within this example. You might see namespaces identified differently in responses that
+you generate.
 
-Support for ``<apiKeyCredentials>`` is provided by the extension defined as ``ns3``. This 
-association is valid only within this example; you might see namespaces identified 
+Support for ``<apiKeyCredentials>`` is provided by the extension defined as ``ns3``. This
+association is valid only within this example; you might see namespaces identified
 differently in responses that you generate.
 
 
