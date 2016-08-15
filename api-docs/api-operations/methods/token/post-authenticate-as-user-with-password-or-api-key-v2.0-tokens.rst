@@ -170,7 +170,7 @@ This table shows the body parameters for the request:
 +--------------------------+-------------------------+----------------------------+
 
 
-**Example: Authenticate as user with password or API key request JSON**
+**Example: Authenticate as user with Password XML request**
 
 
 .. code::
@@ -183,7 +183,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+**Example: Authenticate as user with Password JSON request**
 
 
 .. code::
@@ -199,7 +199,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key JSON request**
+**Example: Authenticate as user with API Key XML request**
 
 
 .. code::
@@ -216,7 +216,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key request JSON**
+**Example: Authenticate as user with API Key JSON request**
 
 
 .. code::
@@ -234,7 +234,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key JSON request**
+**Example: Authenticate as user with Password and Tenant Id XML request**
 
 
 .. code::
@@ -249,7 +249,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key request JSON**
+**Example: Authenticate as user with API Key and Tenant ID JSON request**
 
 
 .. code::
@@ -268,7 +268,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key request JSON**
+**Example: Authenticate as user with Password for Multi-Factor Authentication Setup XML request**
 
 
 .. code::
@@ -284,7 +284,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key request JSON**
+**Example: Authenticate as user with Password for Multi-Factor Authentication Setup JSON request**
 
 
 .. code::
@@ -340,7 +340,7 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-**Example: Authenticate as user with password or API key response XML**
+**Example: Authenticate as user with password or API key XML response**
 
 
 .. code::
@@ -508,7 +508,7 @@ This table shows the body parameters for the response:
 
 
 
-**Example: Authenticate as user with password or API key: JSON response**
+**Example: Authenticate as user with password or API key JSON response**
 
 
 .. code::
@@ -998,7 +998,7 @@ This table shows the body parameters for the response:
 
 
 
-**Example: Authenticate as user with password or API key: JSON response**
+**Example: Authenticate as user with password or API key XML response**
 
 
 .. code::
@@ -1014,7 +1014,7 @@ This table shows the body parameters for the response:
 
 
 
-**Example: Authenticate as user with password or API key: JSON response**
+**Example: Authenticate as user with password or API key JSON response**
 
 
 .. code::
@@ -1027,7 +1027,3 @@ This table shows the body parameters for the response:
             }
        }
    }
-
-
-
-
