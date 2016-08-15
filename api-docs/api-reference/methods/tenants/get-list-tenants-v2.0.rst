@@ -98,35 +98,38 @@ This table shows the body parameters for the response:
 |                          |                         |the authenticated user   |
 |                          |                         |has permission to view.  |
 +--------------------------+-------------------------+-------------------------+
-|tenants.**tenant**        |                         |The tenant object        |
-|                          |                         |returns the following    |
+|tenants.\                 |                         |The tenant object        |
+|**tenant**                |                         |returns the following    |
 |                          |                         |tenant account           |
 |                          |                         |information: name,       |
 |                          |                         |tenant id, account       |
 |                          |                         |status, and description. |
 +--------------------------+-------------------------+-------------------------+
-|tenants.**id**            |String *(Required)*      |The unique,              |
-|                          |                         |system-generated ID      |
+|tenant.\                  |String *(Required)*      |The unique,              |
+|**id**                    |                         |system-generated ID      |
 |                          |                         |that identifies the      |
 |                          |                         |in the Rackspace system. |
 +--------------------------+-------------------------+-------------------------+
-|tenant.**name**           |String *(Required)*      |The answer that the user |
-|                          |                         |can provide to verify an |
-|                          |                         |account.                 |
-+--------------------------+-------------------------+-------------------------+
-|tenant.**description**    |String                   |Describes the tenant     |
-|                          |                         |tenant account.          |
-+--------------------------+-------------------------+-------------------------+
-|tenant.**enabled**        |Boolean                  |Indicates whether the    |
-|                          |                         |tenant is currently      |
+|tenant.\                  |Boolean                  |Indicates whether the    |
+|**enabled**               |                         |tenant is currently      |
 |                          |                         |active for use with the  |
 |                          |                         |Rackspace Cloud.         |
 +--------------------------+-------------------------+-------------------------+
-
+|tenant\                   |String                   |The name to display      |
+|**display-name**          |                         |in user interfaces       |
+|                          |                         |if it has been specified.|
++--------------------------+-------------------------+-------------------------+
+|tenant.\                  |String                   |Describes the tenant     |
+|**description**           |                         |tenant account i         |
+|                          |                         |if specified.            |
++--------------------------+-------------------------+-------------------------+
+|tenant.\                  |String                   |The answer that the user |
+|**name**                  |                         |can provide to verify an |
+|                          |                         |account.                 |
++--------------------------+-------------------------+-------------------------+
 
 
 **Example:  List tenants response XML**
-
 
 .. code::
 
@@ -136,36 +139,38 @@ This table shows the body parameters for the response:
    Date: Sun, 1 Jan 2011 9:00:00 GMT
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <tenants xmlns="http://docs.openstack.org/identity/api/v2.0">
-       <tenant enabled="true" id="1234" name="ACME Corp">
-           <description>A description...</description>
-       </tenant>
-       <tenant enabled="true" id="3645" name="Iron Works">
-           <description>A description...</description>
-       </tenant>
-   </tenants>
-
-
+   <tenants
+      xmlns="http://docs.openstack.org/identity/api/v2.0"
+      xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+      xmlns:atom="http://www.w3.org/2005/Atom">
+      <tenant display-name="Star Wars" enabled="true" id="5781234" name="star_wars">
+        <description>Used to manage the Star Wars games</description>
+      </tenant>
+      <tenant display-name="Star Wars" enabled="true" id="5781234_FS" name="start_wars_pictures">
+        <description>Used to manage the pictures for Star Wars</description>
+      </tenant>
+    </tenants>
 
 
 **Example:  List tenants response JSON**
 
-
 .. code::
 
    {
-       "tenants":[{
-               "id":"1234",
-               "name":"ACME Corp",
-               "description":"A description ...",
-               "enabled": true
-           },
-           {
-               "id":"3456",
-               "name":"Iron Works",
-               "description":"A description ...",
-               "enabled": true
-           }
-       ],
-       "tenants_links":[]
-   }
+     "tenants": [
+       {
+         "id": "5784574",
+         "enabled": true,
+         "display-name": "Star Wars",
+         "description": "Used to manage the Star Wars games",
+         "name": "star_wars"
+        },
+       {
+         "id": ""5781234_FS",
+         "enabled": true,
+         "display-name": "Star Wars",
+         "description": "Used to manage the pictures for Start Wars",
+         "name": "start_wars_pictures"
+       }
+      ]
+     }

@@ -9,7 +9,7 @@ and see request and response examples.
 
 Some of the Identity API operations require only the core authentication
 service API v2.0 and some require extensions to the API. If an extension is
-required, it is available in The Rackspace implementation of the OpenStack
+required, it is available in the Rackspace implementation of the OpenStack
 Identity (keystone) service. You can learn how to create API requests and
 understand the responses for operations that require extensions by reviewing
 the sample requests and responses included in this API reference. For more

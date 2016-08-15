@@ -28,7 +28,7 @@ the following credential types:
 
 	 For these types of accounts, you might also need to include either a tenant
    name or tenant ID in the credentials included in the authentication
-   request
+   request.
 
 This table shows the possible response codes for this operation:
 
@@ -62,9 +62,15 @@ This table shows the possible response codes for this operation:
 |              |found        |``X-Subject-Token`` has expired or is no longer available.                       |
 |              |             |Use the POST token request to get a new token.                                   |
 +--------------+-------------+---------------------------------------------------------------------------------+
-|500           |Service Fault|Service is not available                                                         |
+|500           |Service Fault|Service is not available.                                                        |
 +--------------+-------------+---------------------------------------------------------------------------------+
 
+See the following sections for information about the request and response
+parameters and XML and JSON examples.
+
+.. contents::
+     :local:
+     :depth: 2
 
 Request
 -------
@@ -166,9 +172,8 @@ This table shows the body parameters for the request:
 |                          |                         |specified together.         |
 +--------------------------+-------------------------+----------------------------+
 
-
-**Example: Authenticate as user with password or API key request JSON**
-
+Example: Authenticate as user with password XML request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -180,7 +185,8 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate as user with password or API key: JSON request**
+Example: Authenticate as user with password JSON request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. code::
@@ -193,11 +199,8 @@ This table shows the body parameters for the request:
    }
 
 
-
-
-
-**Example: Authenticate as user with password or API key JSON request**
-
+Example: Authenticate as user with an API key XML request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -210,11 +213,8 @@ This table shows the body parameters for the request:
      </auth>
 
 
-
-
-
-**Example: Authenticate as user with password or API key request JSON**
-
+Example: Authenticate as user with an API key request JSON
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -228,26 +228,22 @@ This table shows the body parameters for the request:
    }
 
 
-
-
-
-**Example: Authenticate as user with password or API key JSON request**
-
+Example: Authenticate as user with password and tenant ID XML request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <auth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://docs.openstack.org/identity/api/v2.0">
+   <auth
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://docs.openstack.org/identity/api/v2.0">
      <passwordCredentials username="demoauthor" password="theUsersPassword" tenantId="1100111"/>
    </auth>
 
 
 
-
-
-**Example: Authenticate as user with password or API key request JSON**
-
+Example: Authenticate as user with API key JSON request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -262,39 +258,34 @@ This table shows the body parameters for the request:
    }
 
 
-
-
-
-**Example: Authenticate as user with password or API key request JSON**
-
+Example: Authenticate to get MFA-SETUP token with password XML request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <auth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="http://docs.openstack.org/identity/api/v2.0">
-     <RAX-AUTH:scope="SETUP-MFA"/>
-     <passwordCredentials username="demoAuthor" password="myPassword01"/>
+   <auth RAX-AUTH:scope="SETUP-MFA"
+        xmlns="http://docs.openstack.org/identity/api/v2.0"
+        xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+        xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+        xmlns:atom="http://www.w3.org/2005/Atom">
+       <passwordCredentials password="theUsersPassword" username="demoauthor"/>
    </auth>
 
 
-
-
-
-**Example: Authenticate as user with password or API key request JSON**
-
-
+Example: Authenticate to get MFA-SETUP token with API key JSON request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code::
 
    {
-       "auth": {
-                 "RAX-AUTH:scope": "SETUP-MFA", "passwordCredentials": {
-                      "username":"'$USER_ADMIN_USERNAME'"
-                      "password":"'$PWD'"
-            }
-       }
+     "auth": {
+       "RAX-AUTH:scope": "SETUP-MFA",
+       "passwordCredentials": {
+       "username": "demoauthor",
+      "password": "theUsersPassword"
+     }
+    }
    }
-
 
 
 Response
@@ -337,8 +328,8 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-**Example: Authenticate as user with password or API key response XML**
-
+Example: Authenticate as user with API key response XML
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -503,10 +494,8 @@ This table shows the body parameters for the response:
 
 
 
-
-
-**Example: Authenticate as user with password or API key: JSON response**
-
+Example: Authenticate as user with API key JSON response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -992,35 +981,17 @@ This table shows the body parameters for the response:
    }
 
 
-
-
-
-**Example: Authenticate as user with password or API key: JSON response**
-
-
-.. code::
-
-   <?xml version="1.0" encoding="UTF-8"?>
-   <auth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="http://docs.openstack.org/identity/api/v2.0">
-     <RAX-AUTH:scope="SETUP-MFA"/>
-     <passwordCredentials username="demoAuthor" password="myPassword01"/>
-   </auth>
-
-
-
-
-
-**Example: Authenticate as user with password or API key: JSON response**
-
+Example: Authentication request for MFA-SETUP token with password JSON response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
    {
-       "auth": {
-                 "RAX-AUTH:scope": "SETUP-MFA", "passwordCredentials": {
-                      "username":"'$USER_ADMIN_USERNAME'"
-                      "password":"'$PWD'"
-            }
+      "token": {
+          "RAX-AUTH:authenticatedBy": [
+            "PASSWORD"
+          ],
+          "expires": "2014-01-09T15:08:53.645-06:00",
+          "id": "449f04aca3594ce38e5b0b18fce6b"
        }
-   }
+  }

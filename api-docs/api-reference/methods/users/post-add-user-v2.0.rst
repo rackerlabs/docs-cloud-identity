@@ -260,22 +260,22 @@ This table shows the body parameters for the response:
 |                          |                         |administrator when the   |
 |                          |                         |account is created.      |
 +--------------------------+-------------------------+-------------------------+
-|user.**id**               |String                   |A unique system-         |
-|                          |                         |generated ID for the     |
+|user.\**id**              |String                   |A unique system-         |
+|**id**                    |                         |generated ID for the     |
 |                          |                         |user account. The ID     |
 |                          |                         |generated for the        |
 |                          |                         |account cannot be        |
 |                          |                         |modified.                |
 +--------------------------+-------------------------+-------------------------+
-|user.**username**         |String                   |The name that the user   |
-|                          |                         |can use to authenticate  |
+|user.\                    |String                   |The name that the user   |
+|**username**              |                         |can use to authenticate  |
 |                          |                         |to the Rackspace Cloud.  |
 |                          |                         |You can change this      |
 |                          |                         |value through the API or |
 |                          |                         |the Cloud Control panel. |
 +--------------------------+-------------------------+-------------------------+
-|user.**OS-KSADM:password**|String                   |The password value that  |
-|                          |                         |the user needs for       |
+|user.\                    |String                   |The password value that  |
+|**OS-KSADM:password**     |                         |the user needs for       |
 |                          |                         |authentication. If the   |
 |                          |                         |Add user request         |
 |                          |                         |included a password      |
@@ -283,13 +283,13 @@ This table shows the body parameters for the response:
 |                          |                         |not included in the      |
 |                          |                         |response.                |
 +--------------------------+-------------------------+-------------------------+
-|user.**email**            |String                   |Email address for the    |
-|                          |                         |user account, for example|
+|user.\                    |String                   |Email address for the    |
+|**email**                 |                         |user account, for example|
 |                          |                         |``jqsmith@test.com``     |
 |                          |                         |                         |
 +--------------------------+-------------------------+-------------------------+
-|user.**enabled**          |Bool                     |Indicates whether the    |
-|                          |                         |user has permission to   |
+|user.\                    |Bool                     |Indicates whether the    |
+|**enabled**               |                         |user has permission to   |
 |                          |                         |authenticate using the   |
 |                          |                         |user name and password   |
 |                          |                         |credentials for the new  |
