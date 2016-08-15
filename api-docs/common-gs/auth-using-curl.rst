@@ -52,10 +52,11 @@ vary because the information returned is specific to your account.
 If the request was successful, it returns the following values that you need to
 include when you make service requests to the Rackspace product API:
 
-token ID
-    The token ID value is required to confirm your identity each
-    time you access the service. Include it in the ``X-Auth-Token`` header
-    for each API request.
+- token ID
+
+  The token ID value is required to confirm your identity each
+  time you access the service. Include it in the ``X-Auth-Token`` header
+  for each API request.
 
     The ``expires`` attribute indicates the date and time that the token will
     expire, unless it is revoked before the expiration. To get a new token,
@@ -63,13 +64,13 @@ token ID
     :rax-devdocs:`Manage authentication tokens
     <cloud-identity/v2/developer-guide/#manage-authentication-tokens>`.
 
-tenant ID
+- tenant ID
     The tenant ID provides your account number. For most Rackspace Cloud
     service APIs, the tenant ID is appended to the API endpoint in the service
     catalog automatically. For Rackspace Cloud services, the tenant ID has the
     same value as the tenant name.
 
-endpoint
+- endpoint
     The API endpoint provides the URL that you use to access the API service.
     For guidance on choosing an endpoint, see
     :ref:`Service access <service-access>`.

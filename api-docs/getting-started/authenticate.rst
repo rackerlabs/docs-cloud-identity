@@ -35,13 +35,4 @@ authentication request to get a new one.
 
      - :ref:`Manage tokens and token expiration <manage-auth-tokens>`
 
-To start using the API and run the examples in this section, you need the
-following items:
-
-- Rackspace Cloud account. If you don't have an account,
-  :rax-cart:`sign up <cloud>` for one.
-
-- :ref:`Command-line tool or browser client <send-api-requests>` for
-  communicating with the API service.
-
 .. include:: ../common-gs/auth-using-curl.rst
