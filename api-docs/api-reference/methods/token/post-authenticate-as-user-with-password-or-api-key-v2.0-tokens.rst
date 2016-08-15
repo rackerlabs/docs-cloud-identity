@@ -7,31 +7,21 @@ Authenticate as user with password or API key
 
     POST /v2.0/tokens
 
-Use this operation to authenticate to the Rackspace Cloud by using either a password
-or API key and generates an authentication token.
+Use this operation to authenticate to the Rackspace Cloud by using either a
+password or API key and generates an authentication token.
 
-Submit the POST token authentication request to the Identity service endpoint URL with `
-`v2.0/tokens `` supplied as the path and a payload with either of the following credential types:
+Submit the POST token authentication request to the Identity service endpoint
+URL with ``v2.0/tokens`` supplied as the path and a payload with either of
+the following credential types:
 
 - Password credentials: user name and password
 - API Key credentials: user name and API key
 
-.. note:
 
-   Some Rackspace Cloud accounts require multi-level authentication with service-specific
-   credentials in addition to vendor-specific credentials. In such cases, associating a
-   user with a tenant can be a method of passing that additional level of identifying
-   information to the service. Also, if a user account is assigned to multiple tenants,
-   then including the tenant information generates the authentication token for the specified tenant.
-
-	For these types of accounts, you might also need to include either a tenant name or
-	tenant ID in the credentials included in the authentication request. If you include both
-	the tenant ID and the tenant name,
-
-
-If the Identity service returns either of the following messages in response to the
-initial authentication request, your account uses multi-factor authentication and
-requires additional steps to complete the authentication process.
+If the Identity service returns a 401 or 403 error in response to
+the initial authentication request, your account uses multi-factor
+authentication and requires additional steps to complete the authentication
+process.
 
 This table shows the possible response codes for this operation:
 
@@ -59,7 +49,8 @@ This table shows the possible response codes for this operation:
 |              |             |                                                                                 |
 |              |             |The ``Forbidden`` message might be returned because your account requires        |
 |              |             |multi-factor authentication, and the feature has not been set up.                |
-|              |             |See :ref:`req-mfa-setup-token`.                                                  |
+|              |             |See :ref:`Request to set up multi-factor authentication on a user account        |
+|              |             |<req-mfa-setup-token>`.                                                          |
 +--------------+-------------+---------------------------------------------------------------------------------+
 |404           |Item not     |The requested resource was not found. The subject token in                       |
 |              |found        |``X-Subject-Token`` has expired or is no longer available.                       |
@@ -98,7 +89,6 @@ This table shows the header URI parameters for the request:
 |                          |                         |                           |
 |                          |                         |For details, see           |
 |                          |                         |:ref:`Request mfa\         |
-|                          |                         |setup token\               |
 |                          |                         |<req-mfa-setup-token>`.    |
 +--------------------------+-------------------------+---------------------------+
 
@@ -148,8 +138,8 @@ This table shows the body parameters for the request:
 |**username**              |                         |                            |
 +--------------------------+-------------------------+----------------------------+
 |auth.RAX-KSKEY:apiKey.\   |String *(Optional)*      |The API key associated      |
-|Credentials.**apiKey**    |                         |with the Rackspace Cloud    |
-|                          |                         |account. You can find       |
+|Credentials.\             |                         |with the Rackspace Cloud    |
+|**apiKey**                |                         |account. You can find       |
 |                          |                         |your API key on the         |
 |                          |                         |Account Settings page in    |
 |                          |                         |the Cloud Control panel. 	  |
@@ -178,7 +168,6 @@ This table shows the body parameters for the request:
 
 **Example: Authenticate as user with password XML request**
 
-
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
@@ -191,8 +180,8 @@ This table shows the body parameters for the request:
    </auth>
 
 
-**Example: Authenticate as user with password JSON request**
 
+**Example: Authenticate as user with password JSON request**
 
 .. code::
 
@@ -204,9 +193,7 @@ This table shows the body parameters for the request:
    }
 
 
-
 **Example: Authenticate as user with API key XML request**
-
 
 .. code::
 
@@ -234,6 +221,7 @@ This table shows the body parameters for the request:
    }
 
 
+
 **Example: Authenticate as user with password and tenant Id XML request**
 
 .. code::
@@ -247,7 +235,6 @@ This table shows the body parameters for the request:
 
 
 **Example: Authenticate as user with API key and tenant ID JSON request**
-
 
 .. code::
 
@@ -264,7 +251,6 @@ This table shows the body parameters for the request:
 
 **Example: Authenticate as user with password for multi-factor authentication setup XML request**
 
-
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
@@ -274,10 +260,7 @@ This table shows the body parameters for the request:
      <passwordCredentials username="demoAuthor" password="myPassword01"/>
    </auth>
 
-
-
 **Example: Authenticate as user with password for multi-factor authentication setup JSON request**
-
 
 .. code::
 
@@ -332,7 +315,7 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-**Example: Authenticate as user with password or API key XML response**
+**Example: Authenticate as user with API key XML response**
 
 
 .. code::
@@ -497,8 +480,7 @@ This table shows the body parameters for the response:
    </access>
 
 
-
-**Example: Authenticate as user with password or API key JSON response**
+**Example: Authenticate as user with API key JSON response**
 
 
 .. code::
@@ -985,9 +967,7 @@ This table shows the body parameters for the response:
    }
 
 
-
-**Example: Authenticate as user with password for multi-factor authentication setup JSON response**
-
+**Example: Authenticate as user with password key JSON response**
 
 .. code::
 

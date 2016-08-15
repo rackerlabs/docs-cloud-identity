@@ -115,7 +115,7 @@ This table shows the body parameters for the response:
 |                          |                         |active for use with the  |
 |                          |                         |Rackspace Cloud.         |
 +--------------------------+-------------------------+-------------------------+
-|tenant\                   |String                   |The name to display      |
+|tenant.\                  |String                   |The name to display      |
 |**display-name**          |                         |in user interfaces       |
 |                          |                         |if it has been specified.|
 +--------------------------+-------------------------+-------------------------+
