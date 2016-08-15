@@ -7,28 +7,31 @@ Authenticate as user with password or API key
 
     POST /v2.0/tokens
 
-Use this operation to authenticate to the Rackspace Cloud by using either a
-password  or API key and generates an authentication token.
+Use this operation to authenticate to the Rackspace Cloud by using either a password
+or API key and generates an authentication token.
 
-Submit the POST token authentication request to the Identity service endpoint
-URL with ` `v2.0/tokens `` supplied as the path and a payload with either of
-the following credential types:
+Submit the POST token authentication request to the Identity service endpoint URL with `
+`v2.0/tokens `` supplied as the path and a payload with either of the following credential types:
 
 - Password credentials: user name and password
 - API Key credentials: user name and API key
 
 .. note:
 
-   Some Rackspace Cloud accounts require multi-level authentication with
-   service-specific credentials in addition to vendor-specific credentials.
-   In such cases, associating a user with a tenant can be a method of passing
-   that additional level of identifying information to the service. Also, if a
-   user account is assigned to multiple tenants, then including the tenant
-   information generates the authentication token for the specified tenant.
+   Some Rackspace Cloud accounts require multi-level authentication with service-specific
+   credentials in addition to vendor-specific credentials. In such cases, associating a
+   user with a tenant can be a method of passing that additional level of identifying
+   information to the service. Also, if a user account is assigned to multiple tenants,
+   then including the tenant information generates the authentication token for the specified tenant.
 
-	 For these types of accounts, you might also need to include either a tenant
-   name or tenant ID in the credentials included in the authentication
-   request.
+	For these types of accounts, you might also need to include either a tenant name or
+	tenant ID in the credentials included in the authentication request. If you include both
+	the tenant ID and the tenant name,
+
+
+If the Identity service returns either of the following messages in response to the
+initial authentication request, your account uses multi-factor authentication and
+requires additional steps to complete the authentication process.
 
 This table shows the possible response codes for this operation:
 
@@ -62,15 +65,15 @@ This table shows the possible response codes for this operation:
 |              |found        |``X-Subject-Token`` has expired or is no longer available.                       |
 |              |             |Use the POST token request to get a new token.                                   |
 +--------------+-------------+---------------------------------------------------------------------------------+
-|500           |Service Fault|Service is not available.                                                        |
+|500           |Service Fault|Service is not available                                                         |
 +--------------+-------------+---------------------------------------------------------------------------------+
 
-See the following sections for information about the request and response
-parameters and XML and JSON examples.
+See the following sections for information about parameters and request and
+response examples:
 
 .. contents::
-     :local:
-     :depth: 2
+   :local:
+   :depth: 2
 
 Request
 -------
@@ -96,7 +99,7 @@ This table shows the header URI parameters for the request:
 |                          |                         |For details, see           |
 |                          |                         |:ref:`Request mfa\         |
 |                          |                         |setup token\               |
-|                          |                         |<req-mfa-setup-token>`     |
+|                          |                         |<req-mfa-setup-token>`.    |
 +--------------------------+-------------------------+---------------------------+
 
 
@@ -145,12 +148,12 @@ This table shows the body parameters for the request:
 |**username**              |                         |                            |
 +--------------------------+-------------------------+----------------------------+
 |auth.RAX-KSKEY:apiKey.\   |String *(Optional)*      |The API key associated      |
-|Credentials.\             |                         |with the Rackspace Cloud    |
-|**apiKey**                |                         |account. You can find your  |
+|Credentials.**apiKey**    |                         |with the Rackspace Cloud    |
+|                          |                         |account. You can find       |
 |                          |                         |your API key on the         |
 |                          |                         |Account Settings page in    |
 |                          |                         |the Cloud Control panel. 	  |
-|                          |                         |See :ref:`Get credentials \ |
+|                          |                         |See :ref:`Get credentials\  |
 |                          |                         |<get-credentials>`.         |
 +--------------------------+-------------------------+----------------------------+
 |auth.RAX-KSKEY:apiKey.\   |Uuid *(Optional)*        |The tenant ID for the       |
@@ -172,21 +175,23 @@ This table shows the body parameters for the request:
 |                          |                         |specified together.         |
 +--------------------------+-------------------------+----------------------------+
 
-Example: Authenticate as user with password XML request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Example: Authenticate as user with password XML request**
+
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <auth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="http://docs.openstack.org/identity/api/v2.0">
-     <passwordCredentials username="demoAuthor" password="myPassword01"/>
+   <auth RAX-AUTH:scope="SETUP-MFA"
+     xmlns="http://docs.openstack.org/identity/api/v2.0"
+     xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+     xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+     <passwordCredentials password="myPassword01" username="demoauthor"/>
    </auth>
 
 
-
-Example: Authenticate as user with password JSON request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with password JSON request**
 
 
 .. code::
@@ -199,8 +204,9 @@ Example: Authenticate as user with password JSON request
    }
 
 
-Example: Authenticate as user with an API key XML request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Example: Authenticate as user with API key XML request**
+
 
 .. code::
 
@@ -213,8 +219,8 @@ Example: Authenticate as user with an API key XML request
      </auth>
 
 
-Example: Authenticate as user with an API key request JSON
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with API key JSON request**
+
 
 .. code::
 
@@ -228,22 +234,20 @@ Example: Authenticate as user with an API key request JSON
    }
 
 
-Example: Authenticate as user with password and tenant ID XML request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with password and tenant Id XML request**
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <auth
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns="http://docs.openstack.org/identity/api/v2.0">
+   <auth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://docs.openstack.org/identity/api/v2.0">
      <passwordCredentials username="demoauthor" password="theUsersPassword" tenantId="1100111"/>
    </auth>
 
 
 
-Example: Authenticate as user with API key JSON request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with API key and tenant ID JSON request**
+
 
 .. code::
 
@@ -258,34 +262,34 @@ Example: Authenticate as user with API key JSON request
    }
 
 
-Example: Authenticate to get MFA-SETUP token with password XML request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with password for multi-factor authentication setup XML request**
+
 
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <auth RAX-AUTH:scope="SETUP-MFA"
-        xmlns="http://docs.openstack.org/identity/api/v2.0"
-        xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-        xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-        xmlns:atom="http://www.w3.org/2005/Atom">
-       <passwordCredentials password="theUsersPassword" username="demoauthor"/>
+   <auth xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="http://docs.openstack.org/identity/api/v2.0">
+     <RAX-AUTH:scope="SETUP-MFA"/>
+     <passwordCredentials username="demoAuthor" password="myPassword01"/>
    </auth>
 
 
-Example: Authenticate to get MFA-SETUP token with API key JSON request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Example: Authenticate as user with password for multi-factor authentication setup JSON request**
+
+
 .. code::
 
    {
-     "auth": {
-       "RAX-AUTH:scope": "SETUP-MFA",
-       "passwordCredentials": {
-       "username": "demoauthor",
-      "password": "theUsersPassword"
-     }
-    }
+       "auth": {
+                 "RAX-AUTH:scope": "SETUP-MFA", "passwordCredentials": {
+                      "username":"'$USER_ADMIN_USERNAME'"
+                      "password":"'$PWD'"
+            }
+       }
    }
+
 
 
 Response
@@ -328,8 +332,8 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-Example: Authenticate as user with API key response XML
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with password or API key XML response**
+
 
 .. code::
 
@@ -494,8 +498,8 @@ Example: Authenticate as user with API key response XML
 
 
 
-Example: Authenticate as user with API key JSON response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with password or API key JSON response**
+
 
 .. code::
 
@@ -981,17 +985,24 @@ Example: Authenticate as user with API key JSON response
    }
 
 
-Example: Authentication request for MFA-SETUP token with password JSON response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Example: Authenticate as user with password for multi-factor authentication setup JSON response**
+
 
 .. code::
 
    {
       "token": {
-          "RAX-AUTH:authenticatedBy": [
-            "PASSWORD"
-          ],
-          "expires": "2014-01-09T15:08:53.645-06:00",
-          "id": "449f04aca3594ce38e5b0b18fce6b"
-       }
-  }
+       "RAX-AUTH:authenticatedBy": [
+           "PASSWORD"
+        ],
+        "expires": "2014-01-09T15:08:53.645-06:00",
+        "id": "449f04aca3594ce38e5b0b18fce6b"
+      }
+   }
+
+.. note::
+
+   Use the token returned in this request to
+   :ref:`configure your account for multi-factor authentication
+   <multifactor-authenication-ovw>`.
