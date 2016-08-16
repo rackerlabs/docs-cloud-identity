@@ -17,7 +17,7 @@ information about the available extensions, see :ref:`API extensions
 <extensions-ovw>`.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    version-operations
    extensions-operations
