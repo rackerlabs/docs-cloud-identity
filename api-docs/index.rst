@@ -52,7 +52,7 @@ API.
    :rax-devdocs:`software development kits or the rack CLI <#sdks>`.
 
 .. toctree:: :hidden:
-   :maxdepth: 2
+   :maxdepth: 3
 
    Cloud Identity API 2.0 <https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#rackspace-cloud-identity-api-2-0>
    getting-started/index
