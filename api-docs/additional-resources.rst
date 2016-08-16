@@ -19,7 +19,7 @@ product updates and announcements.
 -  Visit the :how-to:`Rackspace How To page <>`  to learn how to use Rackspace
    services from the :mycloud:`Rackspace Cloud Control Panel <>`.
 
--  Read the :rax-api:`Rackspace API Documentation <>`
+-  Read the :rax-devdocs:`Rackspace API Documentation <>`
    to learn about APIs for other Rackspace services.
 
 -  Find information about Rackspace SDKs and developer-focused articles
