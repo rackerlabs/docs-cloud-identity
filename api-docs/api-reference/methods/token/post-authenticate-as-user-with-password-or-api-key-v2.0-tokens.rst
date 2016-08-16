@@ -7,31 +7,25 @@ Authenticate as user with password or API key
 
     POST /v2.0/tokens
 
-Use this operation to authenticate to the Rackspace Cloud by using either a password
-or API key and generates an authentication token.
+Use this operation to authenticate to the Rackspace Cloud by using either a
+password or API key and generates an authentication token.
 
-Submit the POST token authentication request to the Identity service endpoint URL with `
-`v2.0/tokens `` supplied as the path and a payload with either of the following credential types:
+Submit the POST token authentication request to the Identity service endpoint
+URL with ``v2.0/tokens`` supplied as the path and a payload with either of
+the following credential types:
 
 - Password credentials: user name and password
 - API Key credentials: user name and API key
 
-.. note:
+If the Identity service returns either of the following messages in response to
+the initial authentication request, your account uses multi-factor
+authentication and requires additional steps to complete the authentication
+process.
 
-   Some Rackspace Cloud accounts require multi-level authentication with service-specific
-   credentials in addition to vendor-specific credentials. In such cases, associating a
-   user with a tenant can be a method of passing that additional level of identifying
-   information to the service. Also, if a user account is assigned to multiple tenants,
-   then including the tenant information generates the authentication token for the specified tenant.
-
-	For these types of accounts, you might also need to include either a tenant name or
-	tenant ID in the credentials included in the authentication request. If you include both
-	the tenant ID and the tenant name,
-
-
-If the Identity service returns either of the following messages in response to the
-initial authentication request, your account uses multi-factor authentication and
-requires additional steps to complete the authentication process.
+If the Identity service returns a 401 or 403 error in response to
+the initial authentication request, your account uses multi-factor
+authentication and requires additional steps to complete the authentication
+process.
 
 This table shows the possible response codes for this operation:
 
@@ -59,7 +53,8 @@ This table shows the possible response codes for this operation:
 |              |             |                                                                                 |
 |              |             |The ``Forbidden`` message might be returned because your account requires        |
 |              |             |multi-factor authentication, and the feature has not been set up.                |
-|              |             |See :ref:`req-mfa-setup-token`.                                                  |
+|              |             |See :ref:`Request to set up multi-factor authentication on a user account        |
+|              |             |<req-mfa-setup-token>`.                                                          |
 +--------------+-------------+---------------------------------------------------------------------------------+
 |404           |Item not     |The requested resource was not found. The subject token in                       |
 |              |found        |``X-Subject-Token`` has expired or is no longer available.                       |
@@ -68,6 +63,12 @@ This table shows the possible response codes for this operation:
 |500           |Service Fault|Service is not available                                                         |
 +--------------+-------------+---------------------------------------------------------------------------------+
 
+See the following sections for information about parameters and request and
+response examples:
+
+.. contents::
+   :local:
+   :depth: 2
 
 Request
 -------
@@ -142,8 +143,8 @@ This table shows the body parameters for the request:
 |**username**              |                         |                            |
 +--------------------------+-------------------------+----------------------------+
 |auth.RAX-KSKEY:apiKey.\   |String *(Optional)*      |The API key associated      |
-|Credentials.**apiKey**    |                         |with the Rackspace Cloud    |
-|                          |                         |account. You can find       |
+|Credentials.\             |                         |with the Rackspace Cloud    |
+|**apiKey**                |                         |account. You can find       |
 |                          |                         |your API key on the         |
 |                          |                         |Account Settings page in    |
 |                          |                         |the Cloud Control panel. 	  |
@@ -172,7 +173,6 @@ This table shows the body parameters for the request:
 
 **Example: Authenticate as user with password XML request**
 
-
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
@@ -181,12 +181,10 @@ This table shows the body parameters for the request:
      xmlns:OS-KSADM="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
      xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
      xmlns:atom="http://www.w3.org/2005/Atom">
-     <passwordCredentials password="theUsersPassword" username="demoauthor"/>
+     <passwordCredentials password="myPassword01" username="demoauthor"/>
    </auth>
 
-
 **Example: Authenticate as user with password JSON request**
-
 
 .. code::
 
@@ -198,9 +196,7 @@ This table shows the body parameters for the request:
    }
 
 
-
 **Example: Authenticate as user with API key XML request**
-
 
 .. code::
 
@@ -242,7 +238,6 @@ This table shows the body parameters for the request:
 
 **Example: Authenticate as user with API key and tenant ID JSON request**
 
-
 .. code::
 
    {
@@ -258,7 +253,6 @@ This table shows the body parameters for the request:
 
 **Example: Authenticate as user with password for multi-factor authentication setup XML request**
 
-
 .. code::
 
    <?xml version="1.0" encoding="UTF-8"?>
@@ -269,9 +263,7 @@ This table shows the body parameters for the request:
    </auth>
 
 
-
-**Example: Authenticate as user with Password for Multi-Factor Authentication Setup JSON request**
-
+**Example: Authenticate as user with password for multi-factor authentication setup JSON request**
 
 .. code::
 
@@ -283,8 +275,6 @@ This table shows the body parameters for the request:
             }
        }
    }
-
-
 
 Response
 --------
@@ -326,8 +316,7 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-**Example: Authenticate as user with password or API key XML response**
-
+**Example: Authenticate as user with API key XML response**
 
 .. code::
 
@@ -490,9 +479,7 @@ This table shows the body parameters for the response:
        </serviceCatalog>
    </access>
 
-
-
-**Example: Authenticate as user with password or API key JSON response**
+**Example: Authenticate as user with API key JSON response**
 
 
 .. code::
@@ -978,25 +965,22 @@ This table shows the body parameters for the response:
        }
    }
 
-
-
 **Example: Authenticate as user with password for multi-factor authentication setup JSON response**
 
+   .. code::
 
-.. code::
+      {
+         "token": {
+             "RAX-AUTH:authenticatedBy": [
+               "password"
+             ],
+             "expires": "2014-01-09T15:08:53.645-06:00",
+             "id": "449f04aca3594ce38e5b0b18fce6b"
+          }
+     }
 
-   {
-      "token": {
-       "RAX-AUTH:authenticatedBy": [
-           "PASSWORD"
-        ],
-        "expires": "2014-01-09T15:08:53.645-06:00",
-        "id": "449f04aca3594ce38e5b0b18fce6b"
-      }
-   }
+   .. note::
 
-.. note::
-
-   Use the token returned in this request to
-   :ref:`configure your account for multi-factor authentication
-   <multifactor-authenication-ovw>`.
+      Use the mfa-setup token returned in the response to set up
+      multi-factor authentication on your account. For instructions,
+      see :ref:`Multifactor authentication <multifactor-authenication-ovw>`.
