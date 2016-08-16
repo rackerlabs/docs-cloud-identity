@@ -17,6 +17,10 @@ the following credential types:
 - Password credentials: user name and password
 - API Key credentials: user name and API key
 
+If the Identity service returns either of the following messages in response to
+the initial authentication request, your account uses multi-factor
+authentication and requires additional steps to complete the authentication
+process.
 
 If the Identity service returns a 401 or 403 error in response to
 the initial authentication request, your account uses multi-factor
@@ -89,6 +93,7 @@ This table shows the header URI parameters for the request:
 |                          |                         |                           |
 |                          |                         |For details, see           |
 |                          |                         |:ref:`Request mfa\         |
+|                          |                         |setup token\               |
 |                          |                         |<req-mfa-setup-token>`.    |
 +--------------------------+-------------------------+---------------------------+
 
@@ -179,8 +184,6 @@ This table shows the body parameters for the request:
      <passwordCredentials password="myPassword01" username="demoauthor"/>
    </auth>
 
-
-
 **Example: Authenticate as user with password JSON request**
 
 .. code::
@@ -221,7 +224,6 @@ This table shows the body parameters for the request:
    }
 
 
-
 **Example: Authenticate as user with password and tenant Id XML request**
 
 .. code::
@@ -260,6 +262,7 @@ This table shows the body parameters for the request:
      <passwordCredentials username="demoAuthor" password="myPassword01"/>
    </auth>
 
+
 **Example: Authenticate as user with password for multi-factor authentication setup JSON request**
 
 .. code::
@@ -272,8 +275,6 @@ This table shows the body parameters for the request:
             }
        }
    }
-
-
 
 Response
 --------
@@ -316,7 +317,6 @@ This table shows the body parameters for the response:
 
 
 **Example: Authenticate as user with API key XML response**
-
 
 .. code::
 
@@ -478,7 +478,6 @@ This table shows the body parameters for the response:
            </service>
        </serviceCatalog>
    </access>
-
 
 **Example: Authenticate as user with API key JSON response**
 
@@ -966,23 +965,22 @@ This table shows the body parameters for the response:
        }
    }
 
+**Example: Authenticate as user with password for multi-factor authentication setup JSON response**
 
-**Example: Authenticate as user with password key JSON response**
+   .. code::
 
-.. code::
+      {
+         "token": {
+             "RAX-AUTH:authenticatedBy": [
+               "password"
+             ],
+             "expires": "2014-01-09T15:08:53.645-06:00",
+             "id": "449f04aca3594ce38e5b0b18fce6b"
+          }
+     }
 
-   {
-      "token": {
-       "RAX-AUTH:authenticatedBy": [
-           "PASSWORD"
-        ],
-        "expires": "2014-01-09T15:08:53.645-06:00",
-        "id": "449f04aca3594ce38e5b0b18fce6b"
-      }
-   }
+   .. note::
 
-.. note::
-
-   Use the token returned in this request to
-   :ref:`configure your account for multi-factor authentication
-   <multifactor-authenication-ovw>`.
+      Use the mfa-setup token returned in the response to set up
+      multi-factor authentication on your account. For instructions,
+      see :ref:`Multifactor authentication <multifactor-authenication-ovw>`.
