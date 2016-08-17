@@ -1,8 +1,8 @@
 .. _index:
 
-==============================================================
-Rackspace |product name| Cloud Identity API |contract version|
-==============================================================
+===============================================
+Rackspace |product name| API |contract version|
+===============================================
 
 *Last updated:* |today|
 
@@ -55,7 +55,7 @@ API.
    :hidden:
    :maxdepth: 3
 
-   Cloud Identity API 2.0 <https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#rackspace-cloud-identity-api-2-0>
+   Cloud Identity API 2.0 <https://developer.rackspace.com/docs/cloud-identity/v2/>
    getting-started/index
    general-api-info/index
    api-reference/index
