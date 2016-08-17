@@ -13,8 +13,8 @@ credentials.
 .. note::
 
    User accounts that use multi-factor authentication must authenticate with
-   Identity service version 2.0 or later. Attempts to authenticate with earlier API
-   versions will fail.
+   Identity service version 2.0 or later. Attempts to authenticate with
+   earlier API versions will fail.
 
 If an account is enabled to use multi-factor authentication, authentication is
 a two-step process:
@@ -121,8 +121,8 @@ This table shows the body parameters for the request:
 +-----------------------+--------------+---------------------------------------+
 
 
-**Example: Authenticate with multi-factor authentication credentials HTTP request header: XML**
-
+Authenticate with multi-factor authentication credentials request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -132,12 +132,6 @@ This table shows the body parameters for the request:
    Accept: application/xml
    X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw
 
-
-
-**Example: Authenticate with multi-factor authentication credentials request: XML**
-
-.. code::
-
    <auth xmlns="http://docs.openstack.org/identity/api/v2.0"
    	xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
    	xmlns:atom="http://www.w3.org/2005/Atom">
@@ -146,8 +140,8 @@ This table shows the body parameters for the request:
 
 
 
-**Example: Authenticate with multi-factor authentication credentials HTTP request header: JSON**
-
+Authenticate with multi-factor authentication credentials JSON request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -157,22 +151,19 @@ This table shows the body parameters for the request:
    Accept: application/json
    X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw
 
-
-**Example: Authenticate with multi-factor authentication credentials request: JSON**
-
    {
-   "auth": {
-   "RAX-AUTH:passcodeCredentials": {
-   "passcode":”123456"
-   }
-   }
+      "auth": {
+         "RAX-AUTH:passcodeCredentials": {
+         "passcode":”123456"
+         }
+      }
    }
 
 
 Response
 --------
 
-**Example: Authenticate with multi-factor authentication credentials: XML response with header**
+Authenticate with multi-factor authentication credential XML response
 
 
 .. code::
@@ -220,7 +211,7 @@ Response
      <serviceCatalog/>
    </access>
 
-**Example: Authenticate with multi-factor authentication credentials: JSON response with header**
+Authenticate with multi-factor authentication credential JSON response
 
 
 .. code::
