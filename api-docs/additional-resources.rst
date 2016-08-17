@@ -1,17 +1,17 @@
 .. _additional-resources:
 
 Additional resources
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
 We welcome feedback, comments, and bug reports. Visit the
 `Rackspace Product Feedback forum`_ to share feedback and
 suggestions about Rackspace products and services, including this
 one.
 
-The `Rackspace Cloud website`_ offers information about Rackspace Cloud products,
-links to official Rackspace support channels, including knowledge base articles,
-forums, phone, chat, and email.  You can also follow Rackspace `on Twitter`_ to get
-product updates and announcements.
+The `Rackspace Cloud website`_ offers information about Rackspace Cloud
+products, links to official Rackspace support channels, including knowledge
+base articles, forums, phone, chat, and email.  You can also follow Rackspace
+`on Twitter`_ to get product updates and announcements.
 
 -  To get started using the Cloud Identity API, see
    :ref:`Getting Started <getting-started-guide>`.
@@ -19,7 +19,7 @@ product updates and announcements.
 -  Visit the :how-to:`Rackspace How To page <>`  to learn how to use Rackspace
    services from the :mycloud:`Rackspace Cloud Control Panel <>`.
 
--  Read the :rax-api:`Rackspace API Documentation <>`
+-  Read the :rax-devdocs:`Rackspace API Documentation <>`
    to learn about APIs for other Rackspace services.
 
 -  Find information about Rackspace SDKs and developer-focused articles
