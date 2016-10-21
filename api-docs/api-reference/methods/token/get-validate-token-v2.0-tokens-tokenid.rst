@@ -18,9 +18,8 @@ ItemNotFound (``404``) error for an invalid token.
 If the operation is successful, rerun the tenant credentials to return the
 permissions relevant to a particular client.
 
-Users with the ``identity:default`` role can use this operation to validate
-their own  token. Users with the ``identity:admin`` or ``idenity:user-admin``
-role can validate  the token for any account user.
+Any user can validate their own token. Users with the ``identity:admin`` or
+``idenity:user-admin`` role can validate the token for any account user.
 
 
 This table shows the possible response codes for this operation:
