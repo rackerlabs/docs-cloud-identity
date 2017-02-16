@@ -96,7 +96,7 @@ the examples.
 |                             |            | see the Tokens API operation reference.                                             |
 +-----------------------------+------------+-------------------------------------------------------------------------------------+
 | username                    | String     | This value is the user name that you use to log in to the Rackspace                 |
-|                             |            | Cloud Control Panel at http://mycloud.rackspace.com.                                |
+|                             |            | Cloud Control Panel at https://mycloud.rackspace.com.                               |
 +-----------------------------+------------+-------------------------------------------------------------------------------------+
 | tenantId                    | String     | Some services have multiple layers of authentication, with service-specific         |
 |                             | (Optional) | credentials in addition to vendor-specific credentials. In such cases, associating  |

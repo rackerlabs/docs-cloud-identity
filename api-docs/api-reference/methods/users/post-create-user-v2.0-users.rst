@@ -5,7 +5,7 @@ Create user
 
 .. code::
 
-    POST /v2.0/users
+   POST /v2.0/users
 
 Creates a Rackspace Cloud account user.
 
@@ -155,9 +155,9 @@ This table shows the body parameters for the request:
 |                          |                         |lowercase characters. *  |
 |                          |                         |Can contain any of the   |
 |                          |                         |following special        |
-|                          |                         |characters:., (period), -|
-|                          |                         | (hyphen), @, _          |
-|                          |                         |(underscore)             |
+|                          |                         |characters:., (period),  |
+|                          |                         |- (hyphen), @,           |
+|                          |                         |_ (underscore)           |
 +--------------------------+-------------------------+-------------------------+
 |user.**email**            |String *(Required)*      |The user email.          |
 +--------------------------+-------------------------+-------------------------+
@@ -199,11 +199,11 @@ This table shows the body parameters for the request:
 |user.**RAX-KSGRP:groups** |String *(Optional)*      |This object defines the  |
 |                          |                         |groups the user belongs  |
 |                          |                         |to. For each group,      |
-|                          |                         |specify the ``RAX-       |
-|                          |                         |KSGRP:group`` element    |
-|                          |                         |with the ``name``        |
-|                          |                         |attribute. See the XML   |
-|                          |                         |and JSON request         |
+|                          |                         |specify the              |
+|                          |                         |``RAX-KSGRP:group``      |
+|                          |                         |element with the ``name``|
+|                          |                         |``name`` attribute. See  |
+|                          |                         |the XML and JSON request |
 |                          |                         |examples for the correct |
 |                          |                         |syntax.                  |
 +--------------------------+-------------------------+-------------------------+

@@ -12,7 +12,7 @@ service configuration and the tenant and role assignments of the
 authenticated user. For example, if a service has an endpoint for
 administrative use that endpoint is classified as an AdminURL. The
 AdminURL is only visible to authenticated Service administrators (`role =
-service:admin`) and Idenity administrators (`role =
+service:admin`) and Identity administrators (`role =
 identity:admin`).
 
 Responses can be in :ref:`JSON <auth-resp-svccat-resp-json>` or
@@ -667,7 +667,7 @@ service region, tenant, and service access endpoints.
 |**AdminURL**   |        | is free of charge.                                                                   |
 |**internalURL**|        |                                                                                      |
 |               |        | The URL includes the API version and tenant ID for services that require it.         |
-|               |        | For example, in thehttps://iad.servers.api.rackspacecloud.com/v2/12345URL,           |
+|               |        | For example, in the ``https://iad.servers.api.rackspacecloud.com/v2/12345`` URL,     |
 |               |        | the version ID is 2 and the tenant ID is 12345. (The tenant ID is also referred      |
 |               |        | to as the account number.)                                                           |
 +---------------+--------+--------------------------------------------------------------------------------------+
@@ -676,9 +676,9 @@ service region, tenant, and service access endpoints.
 +---------------+--------+--------------------------------------------------------------------------------------+
 |endpoint.\     | URI    | URI to get information about the specified API version. You can also retrieve        |
 |**versionInfo**|        | information about an API version by using the Show version details API operation     |
-|               |        | for the specified service--for example, `GET endpointURL// version_number`.          |
+|               |        | for the specified service--for example, ``GET endpointURL// version_number``.        |
 +---------------+--------+--------------------------------------------------------------------------------------+
 |endpoint.\     | URI    | URI to get information about all versions. You can also retrieve this information    |
 |**versionList**|        | by using the List versions API operation for the specified service,                  |
-|               |        | `GET endpointURL` for example.                                                       |
+|               |        | ``GET endpointURL`` for example.                                                     |
 +---------------+--------+--------------------------------------------------------------------------------------+

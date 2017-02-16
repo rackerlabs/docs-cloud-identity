@@ -1,10 +1,10 @@
 .. _token-operations:
 
-=====================
+======================
 Authentication Tokens 
-=====================
+======================
 
-The Rackspace Coud Identity service service provides
+The Rackspace Cloud Identity service service provides
 authentication services for the Rackspace Cloud. To gain access, users
 and administrators can use the **POST tokens** operation to request an
 authentication token from the Identity service, or generate a new token
@@ -41,14 +41,14 @@ Use the following token API operations to submit authentication requests and
 manage tokens.
 
 .. contents::
-	 :depth: 1
-	 :local:
+   :depth: 1
+   :local:
 
 ..  note::
 
-	   Some of the functionality described in this section is provided by the
-	   :ref:`OS-KSADM and RAX-AUTH extensions <extensions-ovw>` to the
-	   core Identity API.
+     Some of the functionality described in this section is provided by the
+     :ref:`OS-KSADM and RAX-AUTH extensions <extensions-ovw>` to the
+     core Identity API.
 
 .. include:: methods/token/post-authenticate-as-user-with-password-or-api-key-v2.0-tokens.rst
 .. include:: methods/token/post-authenticate-as-tenant-with-token-v2.0-tokens.rst

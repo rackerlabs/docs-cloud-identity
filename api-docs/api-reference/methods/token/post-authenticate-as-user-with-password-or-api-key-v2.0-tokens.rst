@@ -115,7 +115,7 @@ This table shows the body parameters for the request:
 |auth.passwordCredentials.\|String *(Required)*      |The user name for the       |
 |**username**              |                         |Rackspace Cloud account.    |
 +--------------------------+-------------------------+----------------------------+
-|auth.passwordCredentials.\|Uuid *(Optional)*        |The tenant ID for the       |
+|auth.passwordCredentials.\|UUID *(Optional)*        |The tenant ID for the       |
 |**tenantId**              |                         |Rackspace Cloud account.    |
 |                          |                         |Both the                    |
 |                          |                         |``tenantId`` and            |
@@ -133,7 +133,7 @@ This table shows the body parameters for the request:
 |                          |                         |but should not be           |
 |                          |                         |specified together.         |
 +--------------------------+-------------------------+----------------------------+
-|auth\                     |Object *(Required)*      |Provides username and       |
+|auth.\                    |Object *(Required)*      |Provides username and       |
 |RAX-KSKEY:\               |                         |API key credentials for     |
 |**APIKeyCredentials**     |                         |the authentication          |
 |                          |                         |request.                    |
@@ -147,17 +147,17 @@ This table shows the body parameters for the request:
 |**apiKey**                |                         |account. You can find       |
 |                          |                         |your API key on the         |
 |                          |                         |Account Settings page in    |
-|                          |                         |the Cloud Control panel. 	  |
+|                          |                         |the Cloud Control panel.    |
 |                          |                         |See :ref:`Get credentials\  |
 |                          |                         |<get-credentials>`.         |
 +--------------------------+-------------------------+----------------------------+
-|auth.RAX-KSKEY:apiKey.\   |Uuid *(Optional)*        |The tenant ID for the       |
+|auth.RAX-KSKEY:apiKey.\   |UUID *(Optional)*        |The tenant ID for the       |
 |Credentials.\             |                         |Rackspace Cloud account.    |
 |**tenantId**              |                         |Both the                    |
 |                          |                         |``tenantId`` and            |
 |                          |                         |``tenantName``              |
 |                          |                         |attributes are optional,    |
-|                          |                         |but should not be        	  |
+|                          |                         |but should not be           |
 |                          |                         |specified together.         |
 +--------------------------+-------------------------+----------------------------+
 |auth.RAX-KSKEY:apiKey.\   |String *(Optional)*      |The tenant name for the     |
@@ -190,10 +190,10 @@ Example: Authenticate as user with password XML request
 .. code::
 
    {"auth":
-   	{"passwordCredentials":
-   		{"username":"demoAuthor",
-   		  "password":"myPassword01"}
-   	}
+     {"passwordCredentials":
+       {"username":"demoAuthor",
+         "password":"myPassword01"}
+     }
    }
 
 

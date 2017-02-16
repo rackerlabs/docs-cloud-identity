@@ -20,7 +20,7 @@ region, and domain id.
 
    If this request is issued by a user holding the user role
    (``identity:default``), the response only includes the user account
-   information for the user who submitted the request. 
+   information for the user who submitted the request.
 
 This table shows the possible response codes for this operation:
 

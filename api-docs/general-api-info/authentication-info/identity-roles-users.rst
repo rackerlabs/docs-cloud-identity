@@ -1,4 +1,4 @@
-.. _roles-and-role-assignments: 
+.. _roles-and-role-assignments:
 
 Identity roles and users
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -7,7 +7,7 @@ The Identity service provides different role types to simplify the
 access control configuration and management for Rackspace Cloud tenant
 and user accounts.
 
--  :ref:`Service-managed roles <auth-roles-svc-adm-usr>` 
+-  :ref:`Service-managed roles <auth-roles-svc-adm-usr>`
    allow Service and Identity administrators to restrict access to
    services and capabilities within a service. These roles can only be
    assigned to customers by Service or Identity administrators. Service
@@ -20,15 +20,15 @@ and user accounts.
    User managers are inherited automatically by all user accounts that
    the administrator creates and manages.
 
--  The :ref:`Role-based access control (RBAC) roles <auth-roles-svc-adm-usr>` 
-   feature allows customers to create, manage, and assign roles to restrict access to Cloud services
-   and capabilities to authorized users only. RBAC is an opt-in feature
-   available to all customers. Account owners can activate RBAC by
-   adding users to the account and assigning roles to users via the API,
-   the Cloud Control Panel, or by calling Customer support.
+-  The :ref:`Role-based access control (RBAC) roles <auth-roles-svc-adm-usr>`
+   feature allows customers to create, manage, and assign roles to restrict
+   access to Cloud services and capabilities to authorized users only. RBAC is
+   an opt-in feature available to all customers. Account owners can activate
+   RBAC by adding users to the account and assigning roles to users via the
+   API, the Cloud Control Panel, or by calling Customer support.
 
    Administrators and customers with sufficient access rights can
-   create, manage, and assign RBAC roles by using the 
+   create, manage, and assign RBAC roles by using the
    :ref:`role operations <roles-operations>` available through the Identity
    service API.
 
@@ -52,8 +52,8 @@ Identity service, admin, and user roles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Identity roles are service managed roles defined and managed by
-Rackspacee that the Identity service uses to make access control
-decsions when a user or service submits an API request to the Identity
+Rackspace that the Identity service uses to make access control
+decisions when a user or service submits an API request to the Identity
 API.
 
 In the Rackspace Cloud, users are represented as accounts created for
@@ -94,7 +94,7 @@ as shown in the following table.
 |               |                 | to as the Account Owner or User Administrator.  |
 +---------------+-----------------+-------------------------------------------------+
 | `identity:`   | Identity User   | A customer role that provides the same access   |
-| `user-manage` | Manager         | rights and privleges as the                     |
+| `user-manage` | Manager         | rights and privileges as the                    |
 |               |                 | `identity:user-admin` role.                     |
 |               |                 |                                                 |
 |               |                 | A Rackspace Cloud User Administrator can grant  |
@@ -119,26 +119,27 @@ as shown in the following table.
 +---------------+-----------------+-------------------------------------------------+
 
 
-Typically, a user account has only one Identity role that is assigned when the account 
-is created or updated. However, if the User Administrator updates a sub-user account 
-to add the `identity:user-manage` role the account has two Identity roles:
-`identity:default` and `identity:user-manage`.
+Typically, a user account has only one Identity role that is assigned when the
+account  is created or updated. However, if the User Administrator updates a
+sub-user account  to add the `identity:user-manage` role the account has two
+Identity roles: `identity:default` and `identity:user-manage`.
 
-The account owner user (`identity:user-admin`) can activate RBAC by adding users to 
-the account and assigning roles to users via the API, the Cloud Control Panel, or 
-by calling Customer support. An account can have additional customer-managed RBAC 
-product or global roles assigned to manage access and permissions for other Rackspace 
-services. For details, see :ref:`Rackspace Cloud RBAC Roles and
-Capabilities <auth-tbl-rbac-roles-and-capabilities>`.
+The account owner user (`identity:user-admin`) can activate RBAC by adding
+users to  the account and assigning roles to users via the API, the Cloud
+Control Panel, or  by calling Customer support. An account can have additional
+customer-managed RBAC  product or global roles assigned to manage access and
+permissions for other Rackspace  services. For details, see :ref:`Rackspace
+Cloud RBAC Roles and Capabilities <auth-tbl-rbac-roles-and-capabilities>`.
 
 Usage notes
 .............
 
-When managing Rackspace Cloud accounts as the User Administrator, keep the following points in mind to prevent unexpected changes to the
-sub-user accounts associated with the User administrator account.
+When managing Rackspace Cloud accounts as the User Administrator, keep the
+following points in mind to prevent unexpected changes to the sub-user accounts
+associated with the User administrator account.
 
 -  When a new account user is created, the account inherits the tenant
-   information, group memberships. amd endpoints from the User
+   information, group memberships, and endpoints from the User
    administrator account.
 
 -  If the User administrator account is assigned to a new group, its
@@ -148,13 +149,13 @@ sub-user accounts associated with the User administrator account.
    users are also removed.
 
 - If a service attempts to assign an account user to a group, the
-  attempt fails with the following error message: 
+  attempt fails with the following error message:
 
-    ``400  Cannot add sub-users directly to a group, must assign their parent user.`` 
-          
+  ``400  Cannot add sub-users directly to a group, must assign their\
+  parent user.``
+
   Correct the problem by assigning the User administrator parent account to
   the group so that the account user inherits the assignment.
 
-- Administrators can directly assign account users to a particular tenant so that the 
-  users behave as if they are contained within that tenant.
-
+- Administrators can directly assign account users to a particular tenant so
+  that the users behave as if they are contained within that tenant.

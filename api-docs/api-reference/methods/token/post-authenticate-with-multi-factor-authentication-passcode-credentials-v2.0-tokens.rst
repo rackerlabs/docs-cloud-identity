@@ -133,9 +133,9 @@ Authenticate with multi-factor authentication credentials request
    X-SessionId: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw
 
    <auth xmlns="http://docs.openstack.org/identity/api/v2.0"
-   	xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-   	xmlns:atom="http://www.w3.org/2005/Atom">
-   	<RAX-AUTH:passcodeCredentials factor="PASSCODE" passcode="123456"/>
+     xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+     <RAX-AUTH:passcodeCredentials factor="PASSCODE" passcode="123456"/>
    </auth>
 
 
@@ -176,37 +176,37 @@ Authenticate with multi-factor authentication credential XML response
 
    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
    <access
-   	xmlns:atom="http://www.w3.org/2005/Atom"
-   	xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-   	xmlns="http://docs.openstack.org/identity/api/v2.0"
-   	xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
-   	xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
-   	xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-   	xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-   	xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns="http://docs.openstack.org/identity/api/v2.0"
+     xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
+     xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
+     xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+     xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+     xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
 
      <token
-     	id="449f04aca3594ce38e5b0b18fce6bfad"
-     	expires="2014-01-09T15:08:53.645-06:00">
+       id="449f04aca3594ce38e5b0b18fce6bfad"
+       expires="2014-01-09T15:08:53.645-06:00">
 
        <rax-auth:authenticatedBy>
-         	<rax-auth:credential>PASSWORD</rax-auth:credential>
-      	</rax-auth:authenticatedBy>
-     	</token>
+           <rax-auth:credential>PASSWORD</rax-auth:credential>
+        </rax-auth:authenticatedBy>
+       </token>
 
      <user
-     	id= "ec7f0fd2de2f4eeeb07c7412c848fe69"
-     	name="jqsmith"
-     	rax-auth:defaultRegion="DFW"
-     	rax-auth:federated="false">
+       id= "ec7f0fd2de2f4eeeb07c7412c848fe69"
+       name="jqsmith"
+       rax-auth:defaultRegion="DFW"
+       rax-auth:federated="false">
 
-     	<roles>
+       <roles>
          <role
-         	id="3"
-         	name="identity:user-admin"
-         	description="User Admin Role."/>
-   		</roles>
-     	</user>
+           id="3"
+           name="identity:user-admin"
+           description="User Admin Role."/>
+       </roles>
+       </user>
 
      <serviceCatalog/>
    </access>

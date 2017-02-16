@@ -69,7 +69,7 @@ Identity service, credentials include these types of information:
 -  verified cell phone number or email address
 
 -  a multi-factor authentication passcode issued by the Rackspace Cloud
-	 Identity service
+   Identity service
 
 
 .. _auth-token-concept:

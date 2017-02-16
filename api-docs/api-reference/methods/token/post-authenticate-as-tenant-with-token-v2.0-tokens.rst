@@ -70,7 +70,7 @@ This table shows the body parameters for the request:
 |                          |                         |not include the tenant   |
 |                          |                         |ID.                      |
 +--------------------------+-------------------------+-------------------------+
-|tenantId                  |Uuid *(Optional)*        |Specify the unique ID    |
+|tenantId                  |UUID *(Optional)*        |Specify the unique ID    |
 |                          |                         |for the tenant account.  |
 |                          |                         |If you use this value in |
 |                          |                         |the request, do not      |

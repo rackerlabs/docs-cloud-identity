@@ -1,7 +1,7 @@
 .. _post-verifies-a-mobile-phone-v2.0:
 
 Verify a mobile phone
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -9,7 +9,7 @@ Verify a mobile phone
 
 Use this operation to submit the verification PIN from the SMS text message
 sent by  Rackspace. After the PIN is accepted, use the Update settings for
-mulit-factor  authentication operation to enable multi-factor authentication on
+multi-factor authentication operation to enable multi-factor authentication on
 the user account.
 
 When you send the verification code, include the ``phoneId`` in the API
@@ -91,7 +91,7 @@ This table shows the header and URI parameters for the request:
 |                          |String *(Required)*      |generated user ID for an |
 |                          |                         |account.                 |
 +--------------------------+-------------------------+-------------------------+
-|{phoneid}                 |String *(Required)*      |The unique, system-      |
+|{phoneId}                 |String *(Required)*      |The unique, system-      |
 |                          |                         |generated ID assigned    |
 |                          |                         |when a phone is added to |
 |                          |                         |an account.              |

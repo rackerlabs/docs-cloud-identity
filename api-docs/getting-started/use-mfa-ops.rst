@@ -28,13 +28,13 @@ in two steps:
 
 The following figure shows the multi-factor authentication process work flow.
 
- 
+
 **Figure: Multi-factor authentication process flow**
 
 .. figure:: ../_images/multifactor_auth.png
    :alt: Multi-factor authentication process flow
 
-To enable mulit-factor authentication, users must update the account
+To enable multi-factor authentication, users must update the account
 settings to add and verify a device that can be used to supply the
 multi-factor authentication passcode. You can configure account settings
 from the Cloud Control panel, or by using the Identity service API.
@@ -42,8 +42,6 @@ from the Cloud Control panel, or by using the Identity service API.
 The following figure shows the work flow to set up multi-factor authentication
 on an account.
 
-.. _auth-mfa-setup:
- 
 **Figure: Multi-factor authentication user account set up work
 flow**
 
@@ -54,7 +52,7 @@ Additionally, Identity and user administrators can define multi-factor
 authentication policy for a domain by configuring the domain
 enforcement setting. For example, if the domain enforcement setting is
 *Required*, users who have not set up multi-factor authentication are
-requird to enable it before they can access their account.
+required to enable it before they can access their account.
 
 
 .. include:: mfa-content/proc-mfa-setup-phone.rst

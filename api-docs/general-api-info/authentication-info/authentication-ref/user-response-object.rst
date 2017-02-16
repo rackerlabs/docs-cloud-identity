@@ -77,7 +77,7 @@ the table following the examples.
 
 .. _auth-resp-user-obj-attribs:
 
-The user object returns user information and a roles object that listes the roles
+The user object returns user information and a roles object that lists the roles
 associated with the user account.
 
 **Table: The user object attributes**

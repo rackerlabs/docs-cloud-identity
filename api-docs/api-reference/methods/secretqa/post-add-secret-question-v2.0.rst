@@ -143,6 +143,6 @@ This table shows the header parameters for the response:
 
 .. code:
 
-	POST /v2.0/users/266d3c8982534378bf88f64db2c916da/RAX-AUTH/secretqas HTTP/1.1
-	Host: staging.identity-internal.api.rackspacecloud.com
-	X-Auth-Token: 0f6e9f63600142f0a970911583522217
+  POST /v2.0/users/266d3c8982534378bf88f64db2c916da/RAX-AUTH/secretqas HTTP/1.1
+  Host: staging.identity-internal.api.rackspacecloud.com
+  X-Auth-Token: 0f6e9f63600142f0a970911583522217

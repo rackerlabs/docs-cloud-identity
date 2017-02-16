@@ -1,7 +1,7 @@
 .. _authentication-response-examples:
 
 .. code:: json
-  
+
             {
                 "endpoints": [
                     {
@@ -33,4 +33,3 @@
                 "name": "cloudLoadBalancers",
                 "type": "rax:load-balancer"
             },
-            

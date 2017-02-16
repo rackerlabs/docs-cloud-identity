@@ -30,11 +30,11 @@ base articles, forums, phone, chat, and email.  You can also follow Rackspace
    Identity service implementation.
 
 
-.. _on Twitter: http://www.twitter.com/rackspace
+.. _on Twitter: https://www.twitter.com/rackspace
 
 .. _Rackspace Developer site: https://developer.rackspace.com/
-.. _Rackspace Product Feedback forum: https://feedback.rackspace.com
-.. _OpenStack Keystone documentation: http://docs.openstack.org/developer/keystone/
+.. _Rackspace Product Feedback forum: https://community.rackspace.com/feedback/f/68
+.. _OpenStack Keystone documentation: https://docs.openstack.org/developer/keystone/
 .. _Rackspace Cloud website: http://www.rackspace.com/
 .. _Software Development Kits & Tools: https://developer.rackspace.com/docs/#sdks
 .. _HTTP Status Code Definitions: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html

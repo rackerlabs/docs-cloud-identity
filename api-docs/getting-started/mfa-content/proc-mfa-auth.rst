@@ -33,7 +33,7 @@ requires multi-factor authentication.
    Identity service.
 
    -  In the API response to the initial authentication request, locate
-      the sesssion ID value in the ``WWW-Authenticate`` header
+      the session ID value in the ``WWW-Authenticate`` header
       parameter:
 
       .. code::
@@ -80,7 +80,7 @@ requires multi-factor authentication.
 
 
    The authentication response returns the authentication token ID
-   and the service catalong with a list of available services. Note
+   and the service catalog with a list of available services. Note
    that the information returned in the
    `RAX-AUTH:authenticated By` object shows authentication by both passcode and password.
 

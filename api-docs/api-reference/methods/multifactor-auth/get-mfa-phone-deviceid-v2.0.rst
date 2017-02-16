@@ -1,4 +1,4 @@
-.. _get-multifactor-phones-by-deviceid-v2.0:
+.. _get-mfa-phone-deviceid-v2.0:
 
 Retrieve multi-factor mobile phone associated to a user by device ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,16 +166,14 @@ This table shows the body parameters for the response:
      xmlns:atom="http://www.w3.org/2005/Atom" xmlns:identity="http://docs.openstack.org/identity/api/v2.0"/>
 
 
-
 **Example: Lists multi-factor phones for user response: JSON**
-
 
 .. code::
 
    {
-  	"RAX-AUTH:mobilePhone": {
-    	"id": "12345",
-    	"verified": false,
-    	"number": "12658943489"
+    "RAX-AUTH:mobilePhone": {
+      "id": "12345",
+      "verified": false,
+      "number": "12658943489"
      }
    }

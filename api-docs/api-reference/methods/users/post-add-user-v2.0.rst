@@ -26,9 +26,9 @@ page in the Cloud Control panel.
 
 .. note::
 
-   - Users with the User Admin role can manage sub-user accounts through the API or
-     from the `Cloud Control panel
-     <https://mycloud.rackspace.com/cloud/929418/account#users>`__.
+   - Users with the User Admin role can manage sub-user accounts through the
+     API or from the `Cloud Control panel
+     <https://mycloud.rackspace.com/>`_.
      Use the Control panel to add the user's full name, contact information,
      and configure account security.
 
@@ -119,19 +119,19 @@ This table shows the body parameters for the request:
 |                          |                         |specifies the user           |
 |                          |                         |account information.         |
 +--------------------------+-------------------------+-----------------------------+
-|user.**username**         |String *(Required)*      |The name to assign to        |
+|user.\ **username**       |String *(Required)*      |The name to assign to        |
 |                          |                         |the user. Specify a          |
 |                          |                         |value that meets the         |
 |                          |                         |following criteria:          |
 |                          |                         |                             |
-|                          |                         |* Start with an alpha \      |
-|                          |                         |  character.\                |
-|                          |                         |* Minimum length: 1 character|
-|                          |                         |* Can contain upper and      |
+|                          |                         |- Start with an alpha        |
+|                          |                         |  character.                 |
+|                          |                         |- Minimum length: 1 character|
+|                          |                         |- Can contain upper and      |
 |                          |                         |  lowercase characters.      |
-|                          |                         |* Can contain any of the     |
+|                          |                         |- Can contain any of the     |
 |                          |                         |  following special          |
-|                          |                         |  characters:. ``- @ _``     |
+|                          |                         |  characters: ``- @ _``      |
 |                          |                         |                             |
 +--------------------------+-------------------------+-----------------------------+
 |user.**email**            |String *(Required)*      |Email address for the        |
@@ -139,7 +139,7 @@ This table shows the body parameters for the request:
 |                          |                         |``jqsmith@test.com``         |
 |                          |                         |                             |
 +--------------------------+-------------------------+-----------------------------+
-|user.**enabled**          |Bool *(Required)*        |Indicates whether the        |
+|user.**enabled**          |Boolean *(Required)*     |Indicates whether the        |
 |                          |                         |user can authenticate        |
 |                          |                         |after the user account       |
 |                          |                         |is created. If no value      |
@@ -201,7 +201,7 @@ This table shows the body parameters for the request:
        "username": "newUser",
        "email": "newUser@example:.com",
        "enabled": true
-   	}
+     }
    }
 
 
@@ -288,7 +288,7 @@ This table shows the body parameters for the response:
 |                          |                         |``jqsmith@test.com``     |
 |                          |                         |                         |
 +--------------------------+-------------------------+-------------------------+
-|user.\                    |Bool                     |Indicates whether the    |
+|user.\                    |Boolean                  |Indicates whether the    |
 |**enabled**               |                         |user has permission to   |
 |                          |                         |authenticate using the   |
 |                          |                         |user name and password   |
