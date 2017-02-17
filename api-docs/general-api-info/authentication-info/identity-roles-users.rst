@@ -71,17 +71,6 @@ as shown in the following table.
 | Role name     | Account user    | Description                                     |
 |               | type            |                                                 |
 +===============+=================+=================================================+
-|`identity:`    | Service         | A Rackspace-restricted role that provides full  |
-|`service-admin`| administrator   | administrative rights and privileges to manage  |
-|               |                 | the Identity service. This role is assigned     |
-|               |                 | only to Cloud Identity Operations team member   |
-|               |                 | accounts.                                       |
-+---------------+-----------------+-------------------------------------------------+
-| `identity:`   | Identity        | A Service role that allows Rackspace Cloud      |
-| `admin`       | administrator   | Services like Cloud Servers and Cloud Load      |
-|               |                 | Balancers to access the Identity service to     |
-|               |                 | validate tokens and retrieve user information.  |
-+---------------+-----------------+-------------------------------------------------+
 | `identity:`   | Identity User   | A customer role that is assigned automatically  |
 | `user-admin`  | Administrator   | when a user creates a Rackspace Cloud account.  |
 |               | also known as   | The `identity:user-admin` provides full         |
@@ -134,8 +123,7 @@ Capabilities <auth-tbl-rbac-roles-and-capabilities>`.
 Usage notes
 .............
 
-When managing Rackspace Cloud accounts as the User Administrator, keep the following points in mind to prevent unexpected changes to the
-sub-user accounts associated with the User administrator account.
+When managing Rackspace Cloud accounts as the User Administrator, keep the following points in mind to prevent unexpected changes to the sub-user accounts associated with the User administrator account.
 
 -  When a new account user is created, the account inherits the tenant
    information, group memberships. amd endpoints from the User
