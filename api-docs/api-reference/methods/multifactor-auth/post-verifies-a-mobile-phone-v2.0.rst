@@ -100,22 +100,23 @@ This table shows the header and URI parameters for the request:
 
 This table shows the body parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|code                      |String *(Required)*      |The unique PIN code from |
-|                          |                         |the SMS text message     |
-|                          |                         |sent by the Rackspace    |
-|                          |                         |Cloud verification       |
-|                          |                         |service.                 |
-+--------------------------+-------------------------+-------------------------+
-
-
-
++----------------------------+-------------------------+-------------------------+
+|Name                        |Type                     |Description              |
++============================+=========================+=========================+
+|RAX-AUTH:verificationCode   | Object                  |Provides the value to    |
+|                            |                         |verify a phone for       |
+|                            |                         |multifactor              |
+|                            |                         |authentication.          |
++----------------------------+-------------------------+-------------------------+
+|RAX-AUTH:verificationCode.\ |String *(Required)*      |The unique PIN code from |
+|**code**                    |                         |the SMS text message     |
+|                            |                         |sent by the Rackspace    |
+|                            |                         |Cloud verification       |
+|                            |                         |service.                 |
++----------------------------+-------------------------+-------------------------+
 
 
 **Example: Verify device: XML request**
-
 
 .. code::
 
@@ -129,7 +130,6 @@ This table shows the body parameters for the request:
 
 **Example: Verify device: JSON request**
 
-
 .. code::
 
    {
@@ -137,10 +137,6 @@ This table shows the body parameters for the request:
            "code": "1234"
        }
    }
-
-
-
-
 
 Response
 --------

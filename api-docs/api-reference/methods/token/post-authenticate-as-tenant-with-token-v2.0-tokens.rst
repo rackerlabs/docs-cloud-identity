@@ -101,13 +101,7 @@ This table shows the body parameters for the request:
    </auth>
 
 
-
-
-
-
-
 **Example: Authenticate as tenant with token request: JSON**
-
 
 .. code::
 

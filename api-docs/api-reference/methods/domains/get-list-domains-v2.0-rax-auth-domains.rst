@@ -117,54 +117,55 @@ Response
 
 This table shows the body parameters for the response:
 
-+----------------------------------+---------------------+---------------------+
-|Name                              |Type                 |Description          |
-+==================================+=====================+=====================+
-|RAX-AUTH:domains                  |Object *(Required)*  |The collection of    |
-|                                  |                     |``domains`` that the |
-|                                  |                     |authenticated user   |
-|                                  |                     |has permission to    |
-|                                  |                     |view.                |
-+----------------------------------+---------------------+---------------------+
-|RAX-AUTH:domain                   |Object *(Required)*  |An object that       |
-|                                  |                     |contains the domain  |
-|                                  |                     |configuration        |
-|                                  |                     |attribute settings.  |
-+----------------------------------+---------------------+---------------------+
-|id                                |String *(Required)*  |The unique id for    |
-|                                  |                     |the domain.          |
-+----------------------------------+---------------------+---------------------+
-|enabled                           |Boolean *(Optional)* |Indicates whether    |
-|                                  |                     |the domain is        |
-|                                  |                     |enabled.             |
-+----------------------------------+---------------------+---------------------+
-|rax-auth:description              |String *(Optional)*  |The domain           |
-|                                  |                     |description.         |
-+----------------------------------+---------------------+---------------------+
-|name                              |String *(Optional)*  |The domain name.     |
-+----------------------------------+---------------------+---------------------+
-|domainMultiFactorEnforcementLevel |String *(Optional)*  |If present, this     |
-|                                  |                     |extended attribute   |
-|                                  |                     |specifies the multi- |
-|                                  |                     |factor               |
-|                                  |                     |authentication       |
-|                                  |                     |enforcement policy   |
-|                                  |                     |that applies to      |
-|                                  |                     |accounts within the  |
-|                                  |                     |specified domain. *  |
-|                                  |                     |``REQUIRED`` Users   |
-|                                  |                     |within the domain    |
-|                                  |                     |must use multi-      |
-|                                  |                     |factor               |
-|                                  |                     |authentication to    |
-|                                  |                     |access their         |
-|                                  |                     |account. *           |
-|                                  |                     |``OPTIONAL`` Users   |
-|                                  |                     |have the option to   |
-|                                  |                     |authenticate using   |
-|                                  |                     |multi-factor         |
-|                                  |                     |authentication.      |
-+----------------------------------+---------------------+---------------------+
++-------------------------------------+---------------------+---------------------+
+|Name                                 |Type                 |Description          |
++=====================================+=====================+=====================+
+|RAX-AUTH:domains                     |Object *(Required)*  |The collection of    |
+|                                     |                     |``domains`` that the |
+|                                     |                     |authenticated user   |
+|                                     |                     |has permission to    |
+|                                     |                     |view.                |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain                      |Object *(Required)*  |An object that       |
+|                                     |                     |contains the domain  |
+|                                     |                     |configuration        |
+|                                     |                     |attribute settings.  |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\ **id**             |String *(Required)*  |The unique id for    |
+|                                     |                     |the domain.          |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\ **enabled**        |Boolean *(Optional)* |Indicates whether    |
+|                                     |                     |the domain is        |
+|                                     |                     |enabled.             |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |String *(Optional)*  |The domain           |
+|**rax-auth:description**             |                     |description.         |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |String *(Optional)*  |The domain name.     |
+|**name**                             |                     |                     |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |String *(Optional)*  |If present, this     |
+|**domainMultiFactorEnforcementLevel**|                     |extended attribute   |
+|                                     |                     |specifies the multi- |
+|                                     |                     |factor               |
+|                                     |                     |authentication       |
+|                                     |                     |enforcement policy   |
+|                                     |                     |that applies to      |
+|                                     |                     |accounts within the  |
+|                                     |                     |specified domain. *  |
+|                                     |                     |``REQUIRED`` Users   |
+|                                     |                     |within the domain    |
+|                                     |                     |must use multi-      |
+|                                     |                     |factor               |
+|                                     |                     |authentication to    |
+|                                     |                     |access their         |
+|                                     |                     |account. *           |
+|                                     |                     |``OPTIONAL`` Users   |
+|                                     |                     |have the option to   |
+|                                     |                     |authenticate using   |
+|                                     |                     |multi-factor         |
+|                                     |                     |authentication.      |
++-------------------------------------+---------------------+---------------------+
 
 
 **Example: List domains HTTP and XML response**
@@ -196,9 +197,7 @@ This table shows the body parameters for the response:
    </rax-auth:domain>
 
 
-
 **Example: List domains HTTP and JSON response**
-
 
 .. code::
 

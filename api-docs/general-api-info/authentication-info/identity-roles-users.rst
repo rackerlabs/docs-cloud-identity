@@ -120,15 +120,15 @@ as shown in the following table.
 
 
 Typically, a user account has only one Identity role that is assigned when the
-account  is created or updated. However, if the User Administrator updates a
-sub-user account  to add the `identity:user-manage` role the account has two
+account is created or updated. However, if the User Administrator updates a
+sub-user account to add the `identity:user-manage` role the account has two
 Identity roles: `identity:default` and `identity:user-manage`.
 
 The account owner user (`identity:user-admin`) can activate RBAC by adding
-users to  the account and assigning roles to users via the API, the Cloud
-Control Panel, or  by calling Customer support. An account can have additional
-customer-managed RBAC  product or global roles assigned to manage access and
-permissions for other Rackspace  services. For details, see :ref:`Rackspace
+users to the account and assigning roles to users via the API, the Cloud
+Control Panel, or by calling Customer support. An account can have additional
+customer-managed RBAC product or global roles assigned to manage access and
+permissions for other Rackspace services. For details, see :ref:`Rackspace
 Cloud RBAC Roles and Capabilities <auth-tbl-rbac-roles-and-capabilities>`.
 
 Usage notes

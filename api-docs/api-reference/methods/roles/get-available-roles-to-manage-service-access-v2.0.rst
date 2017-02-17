@@ -1,7 +1,7 @@
 .. _get-lists-available-roles-to-manage-service-access-v2.0:
 
-Lists available roles to manage service access
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+List roles for managing service access
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -139,10 +139,6 @@ This operation does not accept a request body.
    Content-type: application/json
 
 
-
-
-
-
 Response
 --------
 
@@ -153,18 +149,18 @@ This table shows the body parameters for the response:
 +==========================+=========================+=========================+
 |roles                     |String                   |Role object.             |
 +--------------------------+-------------------------+-------------------------+
-|roles.**id**              |Int                      |The role ID.             |
+|roles.\ **id**            |Int                      |The role ID.             |
 +--------------------------+-------------------------+-------------------------+
-|name                      |String                   |The role name.           |
+|roles.\ **name**          |String                   |The role name.           |
 +--------------------------+-------------------------+-------------------------+
-|description               |String                   |The role description.    |
+|roles.\ **description**   |String                   |The role description.    |
 +--------------------------+-------------------------+-------------------------+
-|serviceId                 |String                   |The id for the Rackspace |
+|roles.\ **serviceId**     |String                   |The id for the Rackspace |
 |                          |                         |Cloud service to which   |
 |                          |                         |the role applies.        |
 +--------------------------+-------------------------+-------------------------+
-|RAX-AUTH:propagate        |Boolean *(Optional)*     |Indicates whether this   |
-|                          |                         |role is assigned to an   |
+|roles.\                   |Boolean *(Optional)*     |Indicates whether this   |
+|**RAX-AUTH:propagate**    |                         |role is assigned to an   |
 |                          |                         |account owner            |
 |                          |                         |(identity:user-admin)    |
 |                          |                         |and automatically        |
