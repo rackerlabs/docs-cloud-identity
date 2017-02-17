@@ -81,7 +81,7 @@ This table shows the possible response codes for this operation:
 
    204, No Content, No Content
    400, Bad Request, Password provided does not meet minimum requirements.
-   401, Unauthorized, You are not authorized to complete this operation. This error can occuer if the supplied token is determined to either not be issued by Rackspace or a Rackspace issued token that has been expired or revoked.
+   401, Unauthorized, You are not authorized to complete this operation. This error can occur if the supplied token is determined to either not be issued by Rackspace or a Rackspace issued token that has been expired or revoked.
    403, Forbidden, "The request was valid, but the server is refusing to respond because the supplied token is a Rackspace issued token that is not expired or revoked, but is NOT a password reset token."
    404, Not Found, The requested resource was not found.
 

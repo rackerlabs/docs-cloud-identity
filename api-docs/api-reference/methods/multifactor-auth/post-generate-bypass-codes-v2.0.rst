@@ -115,7 +115,7 @@ This table shows the body parameters for the request:
 |                          |                         |syntax.                  |
 +--------------------------+-------------------------+-------------------------+
 |RAX-AUTH:bypassCodes.\    |Duration *(Optional)*    |Specifies the            |
-| **validityDuration**     |                         |time interval that the   |
+|**validityDuration**      |                         |time interval that the   |
 |                          |                         |bypass codes remain      |
 |                          |                         |valid.                   |
 |                          |                         |                         |

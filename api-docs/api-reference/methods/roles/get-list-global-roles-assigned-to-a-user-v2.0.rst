@@ -1,7 +1,7 @@
 .. _get-list-global-roles-assigned-to-a-user-v2.0:
 
 List global roles assigned to a user
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -117,11 +117,6 @@ This operation does not accept a request body.
    X-Auth-Token: 771dd18634734a46b49f2af620112345
    Accept: application/json
    Content-type: application/json
-
-
-
-
-
 
 Response
 --------

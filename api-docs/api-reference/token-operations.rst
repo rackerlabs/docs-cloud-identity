@@ -1,8 +1,8 @@
 .. _token-operations:
 
-======================
+=====================
 Authentication Tokens 
-======================
+=====================
 
 The Rackspace Cloud Identity service service provides
 authentication services for the Rackspace Cloud. To gain access, users

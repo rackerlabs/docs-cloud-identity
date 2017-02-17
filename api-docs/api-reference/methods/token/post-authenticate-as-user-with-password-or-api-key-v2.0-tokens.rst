@@ -189,11 +189,13 @@ Example: Authenticate as user with password XML request
 
 .. code::
 
-   {"auth":
-     {"passwordCredentials":
-       {"username":"demoAuthor",
-         "password":"myPassword01"}
-     }
+   {
+      "auth": {
+          "passwordCredentials": {
+             "username":"demoAuthor",
+             "password":"myPassword01"
+          }
+       }
    }
 
 
@@ -216,7 +218,7 @@ Example: Authenticate as user with API key JSON request
 .. code::
 
    {
-       "auth": {
+        "auth": {
            "RAX-KSKEY:apiKeyCredentials": {
                "username": "demoauthor",
                "apiKey": "aaaaa-bbbbb-ccccc-12345678"

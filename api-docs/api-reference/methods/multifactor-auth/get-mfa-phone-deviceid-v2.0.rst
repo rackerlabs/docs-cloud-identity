@@ -1,17 +1,16 @@
 .. _get-mfa-phone-deviceid-v2.0:
 
-Retrieve multi-factor mobile phone associated to a user by device ID
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+List multi-factor mobile phone by device ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
     GET v2.0/users/{userId}/RAX-AUTH/multi-factor/mobile-phones/{mobilePhoneId}
 
-Use this operation to retrieve the multi-factor mobile phone for a specified
-user account by  device ID.  This request is useful if you want to locate the
-phone number for a device  registered to a user account for multi-factor
-authentication.
-
+When you configure a user account with multi-factor authentication by mobile
+phone, the Identity system assigns a unique device ID to the phone.
+If you know the device ID, you can use this operation to look up the phone
+number associated with the specified ID.
 
 This table shows the possible response codes for this operation:
 
@@ -142,7 +141,7 @@ This table shows the body parameters for the response:
 |                          |                         |phones from the account. |
 +--------------------------+-------------------------+-------------------------+
 |RAX-AUTH:mobilePhones.\   |Boolean *(Optional)*     |A Boolean value that     |
-|verified                  |                         |indicates whether the    |
+|**verified**              |                         |indicates whether the    |
 |                          |                         |phone can be used to     |
 |                          |                         |authenticate to the      |
 |                          |                         |Identity service. Phones |

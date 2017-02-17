@@ -134,13 +134,13 @@ This table shows the body parameters for the request:
 |                          |                         |  characters: ``- @ _``      |
 |                          |                         |                             |
 +--------------------------+-------------------------+-----------------------------+
-|user.**email**            |String *(Required)*      |Email address for the        |
-|                          |                         |user account, for example    |
+|user.\                    |String *(Required)*      |Email address for the        |
+|**email**                 |                         |user account, for example    |
 |                          |                         |``jqsmith@test.com``         |
 |                          |                         |                             |
 +--------------------------+-------------------------+-----------------------------+
-|user.**enabled**          |Boolean *(Required)*     |Indicates whether the        |
-|                          |                         |user can authenticate        |
+|user.\                    |Boolean *(Required)*     |Indicates whether the        |
+|**enabled**               |                         |user can authenticate        |
 |                          |                         |after the user account       |
 |                          |                         |is created. If no value      |
 |                          |                         |is specified, the            |
@@ -148,8 +148,8 @@ This table shows the body parameters for the request:
 |                          |                         |specified:                   |
 |                          |                         |``enabled=true``.            |
 +--------------------------+-------------------------+-----------------------------+
-|user.**OS-KSADM:password**|String *(Optional)*      |Specify an initial           |
-|                          |                         |password for the user        |
+|user.\                    |String *(Optional)*      |Specify an initial           |
+|**OS-KSADM:password**     |                         |password for the user        |
 |                          |                         |account. If this value       |
 |                          |                         |is not specified, the        |
 |                          |                         |Identity service             |
@@ -260,7 +260,7 @@ This table shows the body parameters for the response:
 |                          |                         |administrator when the   |
 |                          |                         |account is created.      |
 +--------------------------+-------------------------+-------------------------+
-|user.\**id**              |String                   |A unique system-         |
+|user.\                    |String                   |A unique system-         |
 |**id**                    |                         |generated ID for the     |
 |                          |                         |user account. The ID     |
 |                          |                         |generated for the        |
