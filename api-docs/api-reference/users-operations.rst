@@ -1,8 +1,8 @@
 .. _user-operations:
 
-======
+=====
 Users 
-======
+=====
 
 Rackspace Cloud customers have :ref:`user <user-concept>` accounts that allow
 them to access, configure, and  manage their Rackspace Cloud services and
