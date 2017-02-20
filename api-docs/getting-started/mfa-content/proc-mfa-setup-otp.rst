@@ -14,9 +14,9 @@ install one of these:
 -  `Google
    Authenticator <https://support.google.com/accounts/answer/1066447?hl=en>`__
 
--  `Authy <https://www.authy.com/users>`__
+-  `Authy <https://www.authy.com/app/>`__
 
--  `Duo Mobile <https://www.duosecurity.com/product/methods>`__
+-  `Duo Mobile <https://duo.com/product/trusted-users/two-factor-authentication/authentication-methods>`__
 
 Run the following sequence of API operations to create, enable, and use
 an OTP device for multi-factor authentication.
@@ -26,9 +26,9 @@ an OTP device for multi-factor authentication.
     ..  note::
 
         If you have multi-factor authentication configured on your account,
-   	    follow the
-   	    :ref:`multi-factor authentication process <auth-mfa-enabled-account>`
-   	    to get the authentication token.
+        follow the
+        :ref:`multi-factor authentication process <auth-mfa-enabled-account>`
+        to get the authentication token.
 
     .. code::
 

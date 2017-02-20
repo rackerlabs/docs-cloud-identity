@@ -12,6 +12,15 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+import os
+import sys
+import shlex
+
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+sys.path.insert(0, os.path.abspath('.'))
+
 try:
     import sphinx_rtd_theme
 except ImportError:
@@ -22,11 +31,6 @@ try:
 except:
     spelling = None
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-# sys.path.insert(0, os.path.abspath('.'))
-
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -35,19 +39,33 @@ except:
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
 extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.todo',
+    'sphinx.ext.extlinks',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'sphinx.ext.extlinks'
+    'chios.bolditalic',
+    'chios.remotecode',
+    'chios.remoteinclude'
 ]
 
 if spelling is not None:
     extensions.append('sphinxcontrib.spelling')
 
-# Add any paths that contain templates here, relative to this directory.
-# templates_path = ['_templates']
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
+
+html_context = {
+    'css_files': [
+        '_static/theme_overrides.css',  # overrides wide tables in RTD theme
+        '_static/bespoke.css',  # custom CSS styling
+        '_static/bolditalic.css',  # bolditalic styling
+        ],
+    }
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -65,13 +83,13 @@ builder = 'deconst-serial'
 
 # General information about the project.
 project = 'Rackspace Developer Documentation'
-copyright = '2011-2016, Rackspace'
+copyright = '2011-2017, Rackspace'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 # The short X.Y version.
-version = '1'
+version = '2'
 
 # The full version, including alpha/beta/rc tags.
 release = '1'
@@ -113,28 +131,30 @@ pygments_style = 'sphinx'
 
 # External link library
 extlinks = {
-    'rax': ('http://www.rackspace.com/%s', ''),
+    'rax': ('https://www.rackspace.com/%s', ''),
     'rax-cart': ('http://cart.rackspace.com/%s', ''),
-    'rax-special': ('http://%s.rackspace.com/', ''),
-    'rax-cloud': ('http://www.rackspace.com/cloud/%s', ''),
+    'rax-special': ('https://%s.rackspace.com/', ''),
+    'rax-cloud': ('https://www.rackspace.com/cloud/%s', ''),
     'rax-dev': ('https://developer.rackspace.com/%s', ''),
-    'rax-devdocs': ('http://developer.rackspace.com/docs/%s', ''),
+    'rax-devdocs': ('https://developer.rackspace.com/docs/%s', ''),
     'rax-api':
-    ('http:/developer.rackspace.com/docs/%s/api-reference', ''),
+    ('https:/developer.rackspace.com/docs/%s/api-reference', ''),
     'rax-git': ('https://github.com/rackspace/%s', ''),
     'mycloud': ('https://mycloud.rackspace.com/%s', ''),
     'rax-glossary': ('https://developer.rackspace.com/docs/glossary/%s', ''),
-    'mycloud': ('https://mycloud.rackspace.com/%s', ''),
-    'how-to': ('http://support.rackspace.com/how-to/%s', ''),
-    'os': ('http://www.openstack.org/%s', ''),
-    'os-docs': ('http://docs.openstack.org/%s', ''),
-    'os-wiki': ('http://wiki.openstack.org/%s', ''),
+    'how-to': ('https://support.rackspace.com/how-to/%s', ''),
+    'os': ('https://www.openstack.org/%s', ''),
+    'os-docs': ('https://docs.openstack.org/%s', ''),
+    'os-wiki': ('https://wiki.openstack.org/%s', ''),
     'git-repo': ('https://github.com/rackerlabs/'
                  'docs-core-infra-user-guide/%s', ''),
     'rackerlabs': ('https://github.com/rackerlabs/%s', ''),
     'rocket': ('https://objectrocket.com/%s', '')
 }
 
+
+# Global variables that are replaced by the specified value during the build
+# process.
 
 # Global variables that are replaced by the specified value during the build
 # process.

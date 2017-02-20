@@ -1,21 +1,19 @@
-.. _delete-delete-user-api-key-credentials-v2.0:
+.. _delete-user-api-key-credentials-v2.0:
 
 Delete user API key credentials
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    DELETE /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
+   DELETE /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
 
 Delete user credentials.
 
 An API key is a credential; you can delete a user's API key with this call.
 To delete a credential from a user, specify the user ID in the request.
-If you know the user name but not the ID, use 
-:ref:` <get-list-users-v2.0>` to  obtain complete
+If you know the user name but not the ID, use  the
+:ref:`list users <get-list-users-v2.0>` operation to  obtain complete
 identifying information about the user.
-
-
 
 This table shows the possible response codes for this operation:
 

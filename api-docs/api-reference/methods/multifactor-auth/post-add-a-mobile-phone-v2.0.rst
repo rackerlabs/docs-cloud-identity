@@ -1,7 +1,7 @@
 .. _post-add-a-mobile-phone-v2.0:
 
 Add a mobile phone
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 .. code::
 
@@ -19,10 +19,10 @@ Add mobile phone: cURL request
 .. code::
 
    $ curl $AUTH_URL/v2.0/users/$USER_ID/RAX-AUTH/multi-factor/mobile-phones  \
-     -X POST \
-     -H "Content-Type: application/json" \
-     -H "X-Auth-Token: $AUTH_TOKEN"
-     -d '{"RAX-AUTH:mobilePhone": { "number": "+1 210-312-4600" }}'| python -m json.tool`
+          -X POST \
+          -H "Content-Type: application/json" \
+          -H "X-Auth-Token: $AUTH_TOKEN"
+          -d '{"RAX-AUTH:mobilePhone": { "number": "+1 210-312-4600" }}'| python -m json.tool`
 
 
 .. note::
@@ -92,7 +92,7 @@ This table shows the body parameters for the request:
 |                        |                        | information for the        |
 |                        |                        | account.                   |
 +------------------------+------------------------+----------------------------+
-|RAX-AUTH:mobilePhone\   |String *(Required)*     |The phone number for the    |
+|RAX-AUTH:mobilePhone.\  |String *(Required)*     |The phone number for the    |
 |**number**              |                        |mobile phone you want to    |
 |                        |                        |add in `E.123 format        |
 |                        |                        |<https://www.itu.int/rec/T- |

@@ -1,7 +1,7 @@
-.. _post-sends-a-verfication-code-to-a-phone-v2.0:
+.. _post-sends-a-verification-code-to-a-phone-v2.0:
 
-Send verfication code to phone
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Send verification code to phone
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 

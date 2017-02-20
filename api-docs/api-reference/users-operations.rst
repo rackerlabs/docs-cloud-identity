@@ -20,13 +20,13 @@ accounts,  account information, and account credentials.
 
 ..  note::
 
-	   Some of the functionality described in this section is provided by the
-	   :ref:`OS-KSADM and RAX-KSKEY extensions <extensions-ovw>` to the
-	   core Identity API.
+     Some of the functionality described in this section is provided by the
+     :ref:`OS-KSADM and RAX-KSKEY extensions <extensions-ovw>` to the
+     core Identity API.
 
-	   When these requests are issued by an account user, they act only upon
-	   that account user. To learn more about Identity account users, see
-	   :ref:`Roles and role assignments <roles-and-role-assignments>`.
+     When these requests are issued by an account user, they act only upon
+     that account user. To learn more about Identity account users, see
+     :ref:`Roles and role assignments <roles-and-role-assignments>`.
 
 .. include:: methods/users/post-add-user-v2.0.rst
 .. include:: methods/users/get-list-users-v2.0.rst

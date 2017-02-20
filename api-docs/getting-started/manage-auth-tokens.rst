@@ -79,7 +79,7 @@ Visit the following links to learn more about the Identity service.
 
 
 .. _Caching credentials: http://php-opencloud.readthedocs.io/en/latest/caching-creds.html
-.. _API operations references for other Rackspace services: http://developer.rackspace.com/docs
+.. _API operations references for other Rackspace services: https://developer.rackspace.com/docs
 .. _OpenStack command-line client application: https://wiki.openstack.org/wiki/OpenStackClients
-.. _Rackspace SDKs: https://developer.rackspace.com/sdks/
+.. _Rackspace SDKs: https://developer.rackspace.com/docs/#sdks
 .. _Rackspace Software Development Kits: https://developer.rackspace.com/docs/#sdks

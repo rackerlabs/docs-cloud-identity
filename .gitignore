@@ -1,108 +1,35 @@
-/target
-/.project
-/_build
-_build
-
-# NetBeans user build actions
-nbactions.xml
-
-# Folder view configuration files                                                                                                                                                                                                                                             
 .DS_Store
-Desktop.ini
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
-
-
-.idea/compiler.xml
-
-.idea/.name
-
-.idea/copyright/profiles_settings.xml
-
-.idea/dictionaries/marg7175.xml
-
-.idea/encodings.xml
-
-.idea/misc.xml
-
-.idea/modules.xml
-
-.idea/scopes/scope_settings.xml
-
-.idea/vcs.xml
-
-.idea/workspace.xml
-
-1
-
-src/common/xsd/Transforms/global_transform_scenarios.scenarios
-
-src/common/xsd/token.xsd
-
-*.xsd
-
-src/common/samples/RAX-GRPADM-old/samples/group-for-create.json
-
-src/wadl/identity-api/.DS_Store
-
-src/wadl/identity-api/openstack-identity-api/.DS_Store
-
 *.xpr
+.idea
+.eggs
 
-*.zip
+# Build results
+target/
+/publish-docs/
+/www/output/
+/generated/
+.doctrees
 
+build/
+_build/
+/build-*.log.gz
+*.pdf
+glossary.rst
+*.mo
 
-*.jpeg
+# Python compiled files
+*.pyc
 
-*.bak
+# Ignore Vagrant Related Files
+acceptance_config.yml
+boxes/*
+/.vagrant
 
-src/common/xsd/docHtml.css
+# Testenvironment
+.tox/
 
-src/common/xsd/RAX-AUTH.json
-
-src/common/xsd/RAX-AUTH.xsd
-
-src/docbkx/out/xhtml-chunks/.rst
-
-src/docbkx/authDevGuideCompiled.xml
-
-src/common/js/xslt/schema.xslt
-
-.tox/checkbuild/.Python
-
-src/wadl/RAX-AUTH-summarized.html
-
-src/docbkx/db2rst.py
-
-src/docbkx/chapters/test.rst
-
-src/docbkx/chapters/db2rst.py
-
-pom.xml
-
-livesphinx/
-
-
-rtd/.Python
-
-rtd/bin/activate
-
-rtd/bin/activate.csh
-
-*.fish
-
-src/rst/admin/api-operations/delete-delete-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey:apikeycredentials.rst
-
-src/rst/admin/api-operations/delete-deletes-a-user-v2.0-users-userid.rst
-src/admin
-src/rst/raxauth/
-src/rst/osks/
-src/wadl2rst/
-src/rst/api-operations/
-src/rst/admin/
+# Editors
+*~
+.*.swp
+.bak
+/.project

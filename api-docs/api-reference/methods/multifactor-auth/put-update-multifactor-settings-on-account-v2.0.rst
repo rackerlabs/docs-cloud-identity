@@ -74,7 +74,7 @@ This table shows the body parameters for the request:
 +-----------------------+--------------+------------------------------------------+
 |Name                   |Type          |Description                               |
 +=======================+==============+==========================================+
-|RAX-                   |Object        |A collection of multi-factor au           |
+|RAX-                   |Object        |A collection of multi-factor              |
 |AUTH:multiFactor       |*(Optional)*  |authentication settings.                  |
 +-----------------------+--------------+------------------------------------------+
 |RAX-AUTH:multiFactor.\ |Boolean       |If an account has been configured for     |

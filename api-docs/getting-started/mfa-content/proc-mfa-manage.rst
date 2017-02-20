@@ -103,7 +103,7 @@ of multi-factor authentication.
 Disable multi-factor authentication on a user account
 -----------------------------------------------------
 
-Use the folowing cURL request to disable (enabled=false) multi-factor for
+Use the following cURL request to disable (enabled=false) multi-factor for
 the specified user account.
 
 .. code::

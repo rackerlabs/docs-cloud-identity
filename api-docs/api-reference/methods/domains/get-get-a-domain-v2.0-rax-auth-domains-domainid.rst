@@ -116,17 +116,17 @@ This table shows the body parameters for the response:
 |                                     |                     |configuration        |
 |                                     |                     |attribute settings.  |
 +-------------------------------------+---------------------+---------------------+
-|RAX-AUTH:domain.**id**               |String               |The unique id for    |
+|RAX-AUTH:domain.\ **id**             |String               |The unique id for    |
 |                                     |                     |the domain.          |
 +-------------------------------------+---------------------+---------------------+
-|RAX-AUTH:domain.**enabled**          |Boolean              |Indicates whether    |
+|RAX-AUTH:domain.\ **enabled**        |Boolean              |Indicates whether    |
 |                                     |                     |the domain is        |
 |                                     |                     |enabled.             |
 +-------------------------------------+---------------------+---------------------+
-|RAX-AUTH:domain.**description**      |String               |The domain           |
+|RAX-AUTH:domain.\ **description**    |String               |The domain           |
 |                                     |                     |description.         |
 +-------------------------------------+---------------------+---------------------+
-|RAX-AUTH:domain.**name**             |String               |The domain name.     |
+|RAX-AUTH:domain.\ **name**           |String               |The domain name.     |
 +-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\                    |String               |If present, this     |
 |**domainMultiFactorEnforcementLevel**|                     |extended attribute   |
