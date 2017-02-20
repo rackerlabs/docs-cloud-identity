@@ -13,7 +13,7 @@ them at the user level.
 
 .. Important::
 
-   To configure domain-level enforcment, your Administrator account must be
+   To configure domain-level enforcement, your Administrator account must be
    configured to use multi-factor authentication `by using a
    :ref:`mobile phone <auth-config-mfa-phone>` or
    a one-time password device <auth-config-mfa-otp-device>`.

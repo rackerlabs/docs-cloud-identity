@@ -4,7 +4,7 @@
 Multi-factor authentication
 ===========================
 
-Use the following mulit-factor authentication API operations to configure and
+Use the following multi-factor authentication API operations to configure and
 manage multi-factor authentication settings for
 Rackspace Cloud Accounts. For more information, see :ref:`Using multi-factor
 authentication <multifactor-authenication-ovw>`.
@@ -20,9 +20,9 @@ authentication <multifactor-authenication-ovw>`.
 
 
 .. include:: methods/multifactor-auth/post-add-a-mobile-phone-v2.0.rst
-.. include:: methods/multifactor-auth/post-sends-a-verfication-code-to-a-phone-v2.0.rst
+.. include:: methods/multifactor-auth/post-sends-a-verification-code-to-a-phone-v2.0.rst
 .. include:: methods/multifactor-auth/post-verifies-a-mobile-phone-v2.0.rst
-.. include:: methods/multifactor-auth/get-mulit-factor-phone-by-deviceid-v2.0.rst
+.. include:: methods/multifactor-auth/get-mfa-phone-deviceid-v2.0.rst
 .. include:: methods/multifactor-auth/get-multi-factor-phones-for-user-v2.0.rst
 .. include:: methods/multifactor-auth/delete-remove-phone-from-account-v2.0.rst
 .. include:: methods/multifactor-auth/post-add-an-otp-device-v2.0.rst

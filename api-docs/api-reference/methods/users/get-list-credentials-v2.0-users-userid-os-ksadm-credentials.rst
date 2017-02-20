@@ -61,9 +61,6 @@ This table shows the possible response codes for this operation:
 Request
 -------
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -104,9 +101,6 @@ This operation does not accept a request body.
    X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
 
 
-
-
-
 Response
 --------
 
@@ -135,13 +129,13 @@ Response
 
    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
    <credentials
-   	xmlns="http://docs.openstack.org/identity/api/v2.0"
-   	xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-   	xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-   	xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0"
-   	xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
-   	xmlns:atom="http://www.w3.org/2005/Atom"
-   	xmlns:ns7="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
-   	xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0">
-   	<rax-kskey:apiKeyCredentials username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
+     xmlns="http://docs.openstack.org/identity/api/v2.0"
+     xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+     xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0"
+     xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:ns7="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
+     xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0">
+     <rax-kskey:apiKeyCredentials username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
    </credentials>

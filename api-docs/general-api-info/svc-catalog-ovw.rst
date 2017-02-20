@@ -186,21 +186,21 @@ documentation`_.
 
 .. _Rackspace developer documentation: https://developer.rackspace.com/docs/
 
-.. _OpenStack Compute (Nova) version 1.1 service: http://docs.openstack.org/developer/nova/
+.. _OpenStack Compute (Nova) version 1.1 service: https://docs.openstack.org/developer/nova/
 
-.. _OpenStack Identity (Keystone) version 2 service: http://docs.openstack.org/developer/keystone/
+.. _OpenStack Identity (Keystone) version 2 service: https://docs.openstack.org/developer/keystone/
 
-.. _OpenStack Images (Glance) service: http://docs.openstack.org/developer/heat/
+.. _OpenStack Images (Glance) service: https://docs.openstack.org/developer/heat/
 
-.. _OpenStack Networking (Neutron) service: http://docs.openstack.org/developer/neutron/
+.. _OpenStack Networking (Neutron) service: https://docs.openstack.org/developer/neutron/
 
-.. _OpenStack Compute (Nova) service: http://docs.openstack.org/developer/nova/
+.. _OpenStack Compute (Nova) service: https://docs.openstack.org/developer/nova/
 
-.. _OpenStack Object Storage (Swift) service: http://docs.openstack.org/developer/swift/
+.. _OpenStack Object Storage (Swift) service: https://docs.openstack.org/developer/swift/
 
-.. _OpenStack Block Storage (Cinder) service: http://docs.openstack.org/developer/cinder/
+.. _OpenStack Block Storage (Cinder) service: https://docs.openstack.org/developer/cinder/
 
-.. _OpenStack Orchestration (Heat) service: http://docs.openstack.org/developer/heat/
+.. _OpenStack Orchestration (Heat) service: https://docs.openstack.org/developer/heat/
 
 
 .. _auth-svccat-workflow:

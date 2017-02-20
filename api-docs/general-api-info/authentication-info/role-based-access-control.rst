@@ -7,11 +7,11 @@ Role-based access control
    :local:
    :depth: 1
 
-RBAC roles are cusotmer-managed roles with specific permissions that
+RBAC roles are customer-managed roles with specific permissions that
 determine the services a user can access and the types of operations
 they can complete. For example, an account user with the `lbaas:admin`
 role has create, read, update, and delete permissions for the Cloud
-Loadbalancer service.
+Load Balancer service.
 
 All RBAC roles are subordinate to the `identity:user-admin` or the
 `identity:user-manage` roles that the Identity service assigns to
@@ -102,9 +102,9 @@ Center articles:
 
 .. comments  Reference URLs
 
-.. _Managing role-based access control through Cloud Control Panel: http://www.rackspace.com/knowledge_center/article/managing-role-based-access-control-rbac
+.. _Managing role-based access control through Cloud Control Panel: https://support.rackspace.com/how-to/managing-role-based-access-control-rbac/
 
-.. _Getting Started with role-based access control (RBAC): http://www.rackspace.com/knowledge_center/article/getting-started-with-role-based-access-control-rbac-0
+.. _Getting Started with role-based access control (RBAC): https://support.rackspace.com/how-to/getting-started-with-role-based-access-control-rbac/
 
 
 .. _auth-resolve-rbac-role-conflicts:

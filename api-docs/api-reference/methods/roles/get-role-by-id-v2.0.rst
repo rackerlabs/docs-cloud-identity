@@ -123,18 +123,18 @@ This table shows the body parameters for the response:
 |                           |                         |role information for the |
 |                           |                         |specified role ID.       |
 +---------------------------+-------------------------+-------------------------+
-|role.**id**                |Int                      |The role ID.             |
+|role.\ **id**              |Int                      |The role ID.             |
 +---------------------------+-------------------------+-------------------------+
-|role.**name**              |String                   |The role name.           |
+|role.\ **name**            |String                   |The role name.           |
 +---------------------------+-------------------------+-------------------------+
-|role.**description**       |String                   |The role description.    |
+|role.\ **description**     |String                   |The role description.    |
 +---------------------------+-------------------------+-------------------------+
-|role.**serviceId**         |String                   |The id for the Rackspace |
+|role.\ **serviceId**       |String                   |The id for the Rackspace |
 |                           |                         |Cloud service to which   |
 |                           |                         |the role applies.        |
 +---------------------------+-------------------------+-------------------------+
-|role.**RAX-AUTH:propagate**|Boolean *(Optional)*     |Indicates whether this   |
-|                           |                         |role is assigned to an   |
+|role.\                     |Boolean *(Optional)*     |Indicates whether this   |
+|**RAX-AUTH:propagate**     |                         |role is assigned to an   |
 |                           |                         |account owner            |
 |                           |                         |(identity:user-admin)    |
 |                           |                         |and automatically        |

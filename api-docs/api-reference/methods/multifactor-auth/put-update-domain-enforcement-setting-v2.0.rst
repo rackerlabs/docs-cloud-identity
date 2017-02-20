@@ -19,7 +19,7 @@ configured with multi-factor authentication.
 
    Administrators can override the domain-level enforcement level for specific
    user accounts by using the
-   :ref:`Update multi-factor authentication settings operation 
+   :ref:`Update multi-factor authentication settings operation
    <update-multifactor-settings-on-account-v2.0>` to set user level enforcement.
 
 

@@ -25,10 +25,10 @@ following resources:
 
 .. include:: ../common-gs/how-to-use-curl.rst
 
-.. _cURL command line tool: http://curl.haxx.se/
-.. _Rackspace SDKs: https://developer.rackspace.com/sdks/
+.. _cURL command line tool: https://curl.haxx.se/
+.. _Rackspace SDKs: https://developer.rackspace.com/docs/#sdks
 .. _Rackspace CLI: https://developer.rackspace.com/docs/rack-cli/
 .. _Openstack client applications: https://wiki.openstack.org/wiki/OpenStackClients
-.. _Postman: http://www.getpostman.com
+.. _Postman: https://www.getpostman.com
 .. _RESTClient for Firefox: https://addons.mozilla.org/en-US/firefox/addon/restclient
 .. _Cloud Control Panel: https://mycloud.rackspace.com

@@ -4,7 +4,7 @@ cURL is a command-line tool that you can use to interact with REST interfaces.
 cURL lets you transmit and receive HTTP requests and responses from the command
 line or a shell script, which enables you to work with the API directly. cURL
 is available for Linux distributions, Mac OS® X, and Microsoft Windows®. For
-information about cURL, see `http://curl.haxx.se/ <http://curl.haxx.se/>`__.
+information about cURL, see `https://curl.haxx.se/ <https://curl.haxx.se/>`__.
 
 To run the cURL request examples shown in this guide on Mac OS® X or another
 Linux-based operating system, copy each example directly to the command line
@@ -123,7 +123,7 @@ If you do not want to pretty-print JSON output, omit this code.
    to pretty-print the output. Header information is not in JSON format, and
    the API service returns an error if you specify json.tool.
 
-.. _json encoder and decoder: http://docs.python.org/2/library/json.html
+.. _json encoder and decoder: https://docs.python.org/2/library/json.html
 .. _simplejson encoder and decoder: https://simplejson.readthedocs.io/en/latest
 
 

@@ -11,8 +11,8 @@ endpoint for information about the extensions available for the specified
 service.
 
 .. contents::
-	 :depth: 1
-	 :local:
+   :depth: 1
+   :local:
 
 .. include:: methods/extensions/get-list-extensions-v2.0.rst
 .. include:: methods/extensions/get-extension-details-v2.0.rst

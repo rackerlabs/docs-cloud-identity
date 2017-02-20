@@ -7,14 +7,11 @@ Get user credentials
 
     GET /v2.0/users/{userId}/OS-KSADM/credentials/RAX-KSKEY:apiKeyCredentials
 
-Use this operation to list API key credentials for a specified user, include the
-user ID in the request. If you don't know the ID, use the use
+Use this operation to list API key credentials for a specified user, include
+the user ID in the request. If you don't know the ID, use the
 :ref:`List users <get-list-users-v2.0>` operation to find it.
 
-
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -83,8 +80,6 @@ This table shows the header and URI parameters for the request:
 This operation does not accept a request body.
 
 
-
-
 **Example: List API key credentials: XML request header**
 
 
@@ -95,9 +90,6 @@ This operation does not accept a request body.
    Accept: application/xml
    Content-type: application/xml
    X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
-
-
-
 
 
 **Example: List API key credentials: JSON request header**
@@ -112,9 +104,6 @@ This operation does not accept a request body.
    X-Auth-Token: AAA3IQ7zIvKbovOwFOyz4tZfOXy3O34UI12XUg8nusYS...
 
 
-
-
-
 Response
 --------
 
@@ -125,14 +114,14 @@ Response
 
    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
    <apiKeyCredentials
-   	xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-   	xmlns:ns2="http://www.w3.org/2005/Atom"
-   	xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-   	xmlns:ns4="http://docs.openstack.org/identity/api/v2.0"
-   	xmlns:ns5="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
-   	xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
-   	xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-   	xmlns:ns8="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
+     xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+     xmlns:ns2="http://www.w3.org/2005/Atom"
+     xmlns:ns3="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+     xmlns:ns4="http://docs.openstack.org/identity/api/v2.0"
+     xmlns:ns5="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
+     xmlns:ns6="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
+     xmlns:ns7="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+     xmlns:ns8="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" username="1406847123456" apiKey="cffeab0e6d0d472f84b5c20c70123456"/>
 
 
 
