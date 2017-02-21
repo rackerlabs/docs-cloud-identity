@@ -131,7 +131,7 @@ XML format.
          </token>
          <user name="demoauthor" rax-auth:defaultRegion="DFW" rax-auth:federated="false">
               <roles>
-                   <role id="1" name="identity:admin" description="Admin Role."/>
+                   <role id="3" name="user:admin" description="User Admin Role."/>
               </roles>
          </user>
          <serviceCatalog/>

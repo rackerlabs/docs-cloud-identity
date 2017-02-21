@@ -11,9 +11,7 @@ The information returned for a service is determined by the Identity
 service configuration and the tenant and role assignments of the
 authenticated user. For example, if a service has an endpoint for
 administrative use that endpoint is classified as an AdminURL. The
-AdminURL is only visible to authenticated Service administrators (`role =
-service:admin`) and Identity administrators (`role =
-identity:admin`).
+AdminURL is visible only to authenticated Rackspace administrators.
 
 Responses can be in :ref:`JSON <auth-resp-svccat-resp-json>` or
 :ref:`XML <auth-resp-svccat-resp-xml>`.
