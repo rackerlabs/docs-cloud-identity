@@ -71,17 +71,6 @@ as shown in the following table.
 | Role name     | Account user    | Description                                     |
 |               | type            |                                                 |
 +===============+=================+=================================================+
-|`identity:`    | Service         | A Rackspace-restricted role that provides full  |
-|`service-admin`| administrator   | administrative rights and privileges to manage  |
-|               |                 | the Identity service. This role is assigned     |
-|               |                 | only to Cloud Identity Operations team member   |
-|               |                 | accounts.                                       |
-+---------------+-----------------+-------------------------------------------------+
-| `identity:`   | Identity        | A Service role that allows Rackspace Cloud      |
-| `admin`       | administrator   | Services like Cloud Servers and Cloud Load      |
-|               |                 | Balancers to access the Identity service to     |
-|               |                 | validate tokens and retrieve user information.  |
-+---------------+-----------------+-------------------------------------------------+
 | `identity:`   | Identity User   | A customer role that is assigned automatically  |
 | `user-admin`  | Administrator   | when a user creates a Rackspace Cloud account.  |
 |               | also known as   | The `identity:user-admin` provides full         |
