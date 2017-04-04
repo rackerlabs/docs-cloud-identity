@@ -1,7 +1,7 @@
 .. _user-operations:
 
 =====
-Users 
+Users
 =====
 
 Rackspace Cloud customers have :ref:`user <user-concept>` accounts that allow
