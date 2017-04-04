@@ -1,7 +1,7 @@
 .. _tenants-operations:
 
 =======
-Tenants 
+Tenants
 =======
 
 Use the List tenant API operation to retrieve information about Rackspace Cloud
