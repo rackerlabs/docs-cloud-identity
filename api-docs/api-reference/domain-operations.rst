@@ -18,6 +18,7 @@ specified user account.
 
 .. include:: methods/domains/get-list-domains-v2.0-rax-auth-domains.rst
 .. include:: methods/domains/get-get-a-domain-v2.0-rax-auth-domains-domainid.rst
+.. include:: methods/domains/put-update-a-domain.rst
 
 ..  note::
 
