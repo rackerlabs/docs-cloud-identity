@@ -624,7 +624,8 @@ about the following parts of the response:
                     }
                 ],
                 "name": "yourUserName",
-                "RAX-AUTH:defaultRegion": "DFW"
+                "RAX-AUTH:defaultRegion": "DFW",
+                "RAX-AUTH:sessionInactivityTimeout": "PT15M"
             }
         }
     }
@@ -652,7 +653,7 @@ about the following parts of the response:
                 <rax-auth:credential>APIKEY</rax-auth:credential>
             </rax-auth:authenticatedBy>
         </token>
-        <user id="172157" name="yourUserName" rax-auth:defaultRegion="DFW">
+        <user id="172157" name="yourUserName" rax-auth:defaultRegion="DFW" rax-auth:sessionInactivityTimeout="PT15M">
             <roles>
                 <role id="10000150" name="checkmate" description="Checkmate Access role" rax-auth:propagate="false"/>
                 <role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods"

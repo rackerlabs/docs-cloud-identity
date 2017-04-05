@@ -53,7 +53,8 @@ the table following the examples.
                     }
                 ],
                 "name": "yourUserName",
-                "RAX-AUTH:defaultRegion": "DFW"
+                "RAX-AUTH:defaultRegion": "DFW",
+                "RAX-AUTH:sessionInactivityTimeout": "PT15M"
             }
 
 
@@ -63,7 +64,7 @@ the table following the examples.
 
 .. code::
 
-    <user id="187345" name="yourUserName" rax-auth:defaultRegion="DFW">
+    <user id="187345" name="yourUserName" rax-auth:defaultRegion="DFW" rax-auth:sessionInactivityTimeout="PT15M">
         <roles>
             <role id="10000150" name="checkmate" description="Checkmate Access role" rax-auth:propagate="false"/>
             <role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods"
@@ -82,49 +83,53 @@ associated with the user account.
 
 **Table: The user object attributes**
 
-+--------------------------+--------+-----------------------------------------------------+
-| Attribute                | Type   | Description                                         |
-+==========================+========+=====================================================+
-|user                      |Object  |Returns user and role information for the user       |
-|                          |        |associated with the credentials submitted in the     |
-|                          |        |authentication request.                              |
-+--------------------------+--------+-----------------------------------------------------+
-|user.\                    |String  |The unique, system-generated ID assigned to the      |
-|**id**                    |        |user account. The user ID is required by many API    |
-|                          |        |operations for managing user accounts and            |
-|                          |        |information.                                         |
-+--------------------------+--------+-----------------------------------------------------+
-|user.\                    |String  |The name assigned to the user account.               |
-|**name**                  |        |                                                     |
-+--------------------------+--------+-----------------------------------------------------+
-|user.\                    |String  |If API requests to a Rackspace Cloud service do not  |
-|**RAX-AUTH:defaultRegion**|        |explicitly specify a region and multiple endpoints   |
-|                          |        |are available, the RAX-AUTH:defaultRegion determines |
-|                          |        |the region that is selected by default. Use the      |
-|                          |        |update user API operation to change the value.       |
-|                          |        |change the value.                                    |
-+--------------------------+--------+-----------------------------------------------------+
-|user.\                    |Object  |Returns information about the roles assigned to the  |
-|**roles**                 |        |user account associated with the credentials         |
-|                          |        |submitted in the authentication request.             |
-+--------------------------+--------+-----------------------------------------------------+
-|user.roles.\              |Object  |Returns information about a role associated with the |
-|**role**                  |        |user account.                                        |
-|                          |        |                                                     |
-+--------------------------+--------+-----------------------------------------------------+
-|roles.role.\              |String  |The unique, system-generated ID assigned to the role |
-|**id**                    |        |in the Identity system.                              |
-|                          |        |                                                     |
-+--------------------------+--------+-----------------------------------------------------+
-|roles.role.\              |String  |The name that identifies the role in the Identity    |
-|**name**                  |        |system.                                              |
-|                          |        |                                                     |
-+--------------------------+--------+-----------------------------------------------------+
-|roles.role.\              |String  |Provides information about the role and              |
-|**`description**          |        |its intended use.                                    |
-|                          |        |                                                     |
-+--------------------------+--------+-----------------------------------------------------+
-|roles.role.\              |String  | Identifies the tenant for which the role is scoped. |
-|**tenantID**              |        |                                                     |
-|                          |        |                                                     |
-+--------------------------+--------+-----------------------------------------------------+
++---------------------------------------+--------+-----------------------------------------------------+
+| Attribute                             | Type   | Description                                         |
++=======================================+========+=====================================================+
+|user                                   |Object  |Returns user and role information for the user       |
+|                                       |        |associated with the credentials submitted in the     |
+|                                       |        |authentication request.                              |
++---------------------------------------+--------+-----------------------------------------------------+
+|user.\                                 |String  |The unique, system-generated ID assigned to the      |
+|**id**                                 |        |user account. The user ID is required by many API    |
+|                                       |        |operations for managing user accounts and            |
+|                                       |        |information.                                         |
++---------------------------------------+--------+-----------------------------------------------------+
+|user.\                                 |String  |The name assigned to the user account.               |
+|**name**                               |        |                                                     |
++---------------------------------------+--------+-----------------------------------------------------+
+|user.\                                 |String  |If API requests to a Rackspace Cloud service do not  |
+|**RAX-AUTH:defaultRegion**             |        |explicitly specify a region and multiple endpoints   |
+|                                       |        |are available, the RAX-AUTH:defaultRegion determines |
+|                                       |        |the region that is selected by default. Use the      |
+|                                       |        |update user API operation to change the value.       |
+|                                       |        |change the value.                                    |
++---------------------------------------+--------+-----------------------------------------------------+
+|user.\                                 |Duration|Session inactivity timeout property used across all  |
+|**RAX-AUTH:sessionInactivityTimeout**  |        |Rackspace UIs.                                       |
+|                                       |        |                                                     |
++---------------------------------------+--------+-----------------------------------------------------+
+|user.\                                 |Object  |Returns information about the roles assigned to the  |
+|**roles**                              |        |user account associated with the credentials         |
+|                                       |        |submitted in the authentication request.             |
++---------------------------------------+--------+-----------------------------------------------------+
+|user.roles.\                           |Object  |Returns information about a role associated with the |
+|**role**                               |        |user account.                                        |
+|                                       |        |                                                     |
++---------------------------------------+--------+-----------------------------------------------------+
+|roles.role.\                           |String  |The unique, system-generated ID assigned to the role |
+|**id**                                 |        |in the Identity system.                              |
+|                                       |        |                                                     |
++---------------------------------------+--------+-----------------------------------------------------+
+|roles.role.\                           |String  |The name that identifies the role in the Identity    |
+|**name**                               |        |system.                                              |
+|                                       |        |                                                     |
++---------------------------------------+--------+-----------------------------------------------------+
+|roles.role.\                           |String  |Provides information about the role and              |
+|**description**                        |        |its intended use.                                    |
+|                                       |        |                                                     |
++---------------------------------------+--------+-----------------------------------------------------+
+|roles.role.\                           |String  | Identifies the tenant for which the role is scoped. |
+|**tenantID**                           |        |                                                     |
+|                                       |        |                                                     |
++---------------------------------------+--------+-----------------------------------------------------+
