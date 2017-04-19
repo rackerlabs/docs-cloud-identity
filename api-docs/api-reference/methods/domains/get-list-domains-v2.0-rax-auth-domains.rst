@@ -144,6 +144,9 @@ This table shows the body parameters for the response:
 |RAX-AUTH:domain.\                    |String *(Optional)*  |The domain name.     |
 |**name**                             |                     |                     |
 +-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |String *(Optional)*  |The Rackspace        |
+|**rackspaceCustomerNumber**          |                     |customer number.     |
++-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\                    |String *(Optional)*  |If present, this     |
 |**domainMultiFactorEnforcementLevel**|                     |extended attribute   |
 |                                     |                     |specifies the multi- |
@@ -187,11 +190,11 @@ This table shows the body parameters for the response:
         xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
         xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
         xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
-        <rax-auth:domain enabled="true" id="9883948" name="GCorp">
-        <rax-auth:description>A very good customer</rax-auth:description>
+        <rax-auth:domain enabled="true" id="9883948" name="GCorp" rackspaceCustomerNumber="RCN-123-123-123">
+            <rax-auth:description>A very good customer</rax-auth:description>
         </rax-auth:domain>
         <rax-auth:domain enabled="true" id="111" name="Azuri">
-             <rax-auth:description>High profile</rax-auth:description>
+            <rax-auth:description>High profile</rax-auth:description>
         </rax-auth:domain>
         <rax-auth:domain enabled="true" id="222" name="GCorp"/>
    </rax-auth:domain>
@@ -213,7 +216,8 @@ This table shows the body parameters for the response:
                    "id": "9883948",
                    "enabled": true,
                    "description": "A very good customer",
-                   "name": "GCorp"
+                   "name": "GCorp",
+                   "rackspaceCustomerNumber": "RCN-123-123-123",
                    "domainMultiFactorEnforcementLevel": "OPTIONAL"
                },
                {
