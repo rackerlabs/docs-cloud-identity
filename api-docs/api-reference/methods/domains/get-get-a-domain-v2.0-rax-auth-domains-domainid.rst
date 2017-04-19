@@ -133,6 +133,9 @@ This table shows the body parameters for the response:
 |                                     |                     |across all Rackspace |
 |                                     |                     |UIs.                 |
 +-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |String               |The Rackspace        |
+|**rackspaceCustomerNumber**          |                     |customer number.     |
++-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\                    |String               |If present, this     |
 |**domainMultiFactorEnforcementLevel**|                     |extended attribute   |
 |                                     |                     |specifies the multi- |
@@ -161,7 +164,7 @@ This table shows the body parameters for the response:
 +-------------------------------------+---------------------+---------------------+
 
 
-**Example: List domains response header XML**
+**Example: Get domain response header XML**
 
 
 .. code::
@@ -170,7 +173,7 @@ This table shows the body parameters for the response:
    Content-Type: application/xml
 
 
-**Example: List domains response: XML**
+**Example: Get domain response: XML**
 
 .. code::
 
@@ -183,12 +186,12 @@ This table shows the body parameters for the response:
         xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
         xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
         xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0"
-        id="123456" sessionInactivityTimeout="PT15M" enabled="true" domainMultiFactorEnforcementLevel="OPTIONAL">
+        id="123456" sessionInactivityTimeout="PT15M" name="GCorp" enabled="true" rackspaceCustomerNumber="RCN-123-123-123" domainMultiFactorEnforcementLevel="OPTIONAL">
     </rax-auth:domain>
 
 
 
-**Example: List domains response heade JSON**
+**Example: Get domain response header JSON**
 
 
 .. code::
@@ -197,16 +200,17 @@ This table shows the body parameters for the response:
    Content-Type: application/json
 
 
-**Example: List domains response: JSON**
+**Example: Get domain response: JSON**
 .. code::
 
    {
      "RAX-AUTH:domain": {
-       "id": "9883948",
+       "id": "123456",
        "enabled": true,
        "description": "A very good customer",
        "sessionInactivityTimeout": "PT15M",
        "name": "GCorp",
+       "rackspaceCustomerNumber": "RCN-123-123-123",
        "domainMultiFactorEnforcementLevel": "OPTIONAL"
      }
    }
