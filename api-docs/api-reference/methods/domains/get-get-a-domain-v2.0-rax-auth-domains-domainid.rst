@@ -128,7 +128,7 @@ This table shows the body parameters for the response:
 +-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\ **name**           |String               |The domain name.     |
 +-------------------------------------+---------------------+---------------------+
-|RAX-AUTH:domain.\                    |String               |The Rackspace        |
+|RAX-AUTH:domain.\                    |String *(Optional)*  |The Rackspace        |
 |**rackspaceCustomerNumber**          |                     |customer number.     |
 +-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\                    |String               |If present, this     |
@@ -183,12 +183,12 @@ This table shows the body parameters for the response:
         xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
         xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0"
         id="123456" name="GCorp" enabled="true" rackspaceCustomerNumber="RCN-123-123-123" domainMultiFactorEnforcementLevel="OPTIONAL">
+            <rax-auth:description>A very good customer</rax-auth:description>
     </rax-auth:domain>
 
 
 
 **Example: Get domain response header JSON**
-
 
 .. code::
 
@@ -197,15 +197,16 @@ This table shows the body parameters for the response:
 
 
 **Example: Get domain response: JSON**
+
 .. code::
 
-   {
-     "RAX-AUTH:domain": {
-       "id": "123456",
-       "enabled": true,
-       "description": "A very good customer",
-       "name": "GCorp",
-       "rackspaceCustomerNumber": "RCN-123-123-123",
-       "domainMultiFactorEnforcementLevel": "OPTIONAL"
-     }
-   }
+    {
+        "RAX-AUTH:domain": {
+            "id": "123456",
+            "enabled": true,
+            "description": "A very good customer",
+            "name": "GCorp",
+            "rackspaceCustomerNumber": "RCN-123-123-123",
+            "domainMultiFactorEnforcementLevel": "OPTIONAL"
+        }
+    }

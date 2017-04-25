@@ -33,6 +33,7 @@ accounts,  account information, and account credentials.
 .. include:: methods/users/get-user-by-id-v2.0.rst
 .. include:: methods/users/post-user-information-and-password-v2.0.rst
 .. include:: methods/users/delete-a-user-v2.0.rst
+.. include:: methods/users/get-accessible-domains-for-user-v2.0.rst
 .. include:: methods/users/get-user-admin-v2.0.rst
 .. include:: methods/users/post-add-credential-to-user-v2.0-users-userid-os-ksadm-credentials.rst
 .. include:: methods/users/get-user-api-key-credentials-v2.0-users-userid-os-ksadm-credentials-rax-kskey.rst

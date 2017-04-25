@@ -193,10 +193,12 @@ This table shows the body parameters for the response:
         <rax-auth:domain enabled="true" id="9883948" name="GCorp" rackspaceCustomerNumber="RCN-123-123-123">
             <rax-auth:description>A very good customer</rax-auth:description>
         </rax-auth:domain>
-        <rax-auth:domain enabled="true" id="111" name="Azuri">
+        <rax-auth:domain enabled="true" id="111" name="Azuri" rackspaceCustomerNumber="RCN-123-123-123">
             <rax-auth:description>High profile</rax-auth:description>
         </rax-auth:domain>
-        <rax-auth:domain enabled="true" id="222" name="GCorp"/>
+        <rax-auth:domain enabled="true" id="222" name="domain123" rackspaceCustomerNumber="RCN-123-123-124">
+            <rax-auth:description>Domain's description</rax-auth:description>
+        </rax-auth:domain>
    </rax-auth:domain>
 
 
@@ -224,12 +226,15 @@ This table shows the body parameters for the response:
                    "id": "111",
                    "enabled": true,
                    "description": "High profile",
-                   "name": "Azuri"
+                   "name": "Azuri",
+                   "rackspaceCustomerNumber": "RCN-123-123-123"
                },
                {
                    "id": "222",
                    "enabled": true,
-                   "name": "GCorp"
+                   "description": "Domain's description",
+                   "name": "domain123",
+                   "rackspaceCustomerNumber": "RCN-123-123-124"
                }
            ]
        }
