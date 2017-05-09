@@ -33,3 +33,5 @@ boxes/*
 .*.swp
 .bak
 /.project
+
+.python-version

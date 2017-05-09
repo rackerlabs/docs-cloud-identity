@@ -88,7 +88,7 @@ This operation does not accept a request body.
 
 .. code::
 
-   GET /v2.0/RAX-AUTH/domains/123456 HTTP/1.1
+   GET /v2.0/RAX-AUTH/domains HTTP/1.1
    Host: identity.api.rackspacecloud.com
    Accept: application/xml
    Content-type: application/xml
@@ -133,6 +133,11 @@ This table shows the body parameters for the response:
 +-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\ **id**             |String *(Required)*  |The unique id for    |
 |                                     |                     |the domain.          |
++-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |Duration *(Required)*|Session inactivity   |
+|**sessionInactivityTimeout**         |                     |timeout property     |
+|                                     |                     |used across all      |
+|                                     |                     |Rackspace UIs.       |
 +-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\ **enabled**        |Boolean *(Optional)* |Indicates whether    |
 |                                     |                     |the domain is        |
@@ -187,13 +192,13 @@ This table shows the body parameters for the response:
         xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
         xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
         xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
-        <rax-auth:domain enabled="true" id="9883948" name="GCorp">
-        <rax-auth:description>A very good customer</rax-auth:description>
+        <rax-auth:domain sessionInactivityTimeout="PT15M" enabled="true" id="9883948" name="GCorp">
+            <rax-auth:description>A very good customer</rax-auth:description>
         </rax-auth:domain>
         <rax-auth:domain enabled="true" id="111" name="Azuri">
-             <rax-auth:description>High profile</rax-auth:description>
+            <rax-auth:description>High profile</rax-auth:description>
         </rax-auth:domain>
-        <rax-auth:domain enabled="true" id="222" name="GCorp"/>
+        <rax-auth:domain sessionInactivityTimeout="PT15M" enabled="true" id="222" name="GCorp"/>
    </rax-auth:domain>
 
 
@@ -213,19 +218,22 @@ This table shows the body parameters for the response:
                    "id": "9883948",
                    "enabled": true,
                    "description": "A very good customer",
-                   "name": "GCorp"
-                   "domainMultiFactorEnforcementLevel": "OPTIONAL"
+                   "name": "GCorp",
+                   "domainMultiFactorEnforcementLevel": "OPTIONAL",
+                   "sessionInactivityTimeout": "PT15M"
                },
                {
                    "id": "111",
                    "enabled": true,
                    "description": "High profile",
-                   "name": "Azuri"
+                   "name": "Azuri",
+                   "sessionInactivityTimeout": "PT15M"
                },
                {
                    "id": "222",
                    "enabled": true,
-                   "name": "GCorp"
+                   "name": "GCorp",
+                   "sessionInactivityTimeout": "PT15M"
                }
            ]
        }

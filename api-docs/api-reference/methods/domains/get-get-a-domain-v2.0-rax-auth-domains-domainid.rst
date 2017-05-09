@@ -128,6 +128,11 @@ This table shows the body parameters for the response:
 +-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\ **name**           |String               |The domain name.     |
 +-------------------------------------+---------------------+---------------------+
+|RAX-AUTH:domain.\                    |Duration             |Session inactivity   |
+|**sessionInactivityTimeout**         |                     |timeout property used|
+|                                     |                     |across all Rackspace |
+|                                     |                     |UIs.                 |
++-------------------------------------+---------------------+---------------------+
 |RAX-AUTH:domain.\                    |String               |If present, this     |
 |**domainMultiFactorEnforcementLevel**|                     |extended attribute   |
 |                                     |                     |specifies the multi- |
@@ -169,16 +174,17 @@ This table shows the body parameters for the response:
 
 .. code::
 
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <rax-auth:domain
-        xmlns:atom="http://www.w3.org/2005/Atom"
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <rax-auth:domain xmlns:atom="http://www.w3.org/2005/Atom"
         xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
         xmlns="http://docs.openstack.org/identity/api/v2.0"
         xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
         xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
         xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
         xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-        xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0" id="123456" enabled="true" domainMultiFactorEnforcementLevel="OPTIONAL"></rax-auth:domain>
+        xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0"
+        id="123456" sessionInactivityTimeout="PT15M" enabled="true" domainMultiFactorEnforcementLevel="OPTIONAL">
+    </rax-auth:domain>
 
 
 
@@ -199,6 +205,7 @@ This table shows the body parameters for the response:
        "id": "9883948",
        "enabled": true,
        "description": "A very good customer",
+       "sessionInactivityTimeout": "PT15M",
        "name": "GCorp",
        "domainMultiFactorEnforcementLevel": "OPTIONAL"
      }
