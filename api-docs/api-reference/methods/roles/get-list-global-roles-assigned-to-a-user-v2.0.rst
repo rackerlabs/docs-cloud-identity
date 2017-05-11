@@ -92,6 +92,14 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 
 
+This table shows the query parameters for the request:
+
+.. csv-table::
+    :header: Name, Type, Description
+    :widths: 2, 2, 2
+
+    apply_rcn_roles, Boolean *(Optional)*, "When true, RCN roles assigned to the user are NOT returned. Defaults to false."
+
 This operation does not accept a request body.
 
 **Example List global roles assigned to a user: XML request**
@@ -126,21 +134,26 @@ Response
 
 .. code::
 
-   <?xml version="1.0" encoding="UTF-8"?>
-     <roles
-       xmlns:atom="http://www.w3.org/2005/Atom"
-       xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
-       xmlns="http://docs.openstack.org/identity/api/v2.0"
-       xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
-       xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
-       xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
-       xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-       xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
+    <?xml version="1.0" encoding="UTF-8"?>
+        <roles
+        xmlns:atom="http://www.w3.org/2005/Atom"
+        xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
+        xmlns="http://docs.openstack.org/identity/api/v2.0"
+        xmlns:ns4="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
+        xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
+        xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+        xmlns:rax-kskey="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+        xmlns:os-ksec2="http://docs.openstack.org/identity/api/ext/OS-KSEC2/v1.0">
 
-       <role id="100" name="devops" description="DevOps center" serviceId="cke5372rw2rty8bb70a0e702a4626977x4406e5" rax-auth:propagate="true"/>
-       <role id="30007896" name="acctCreator:public" description="Account creator public role" serviceId="cke5372ebabeeabb70a0e702a4626977x4406e5" rax-auth:propagate="false"/>
-       <role id="30007897" name="acctCreator:trusted" description="Account creator trusted role" serviceId="bde1268ebabeeabb70a0e702a4626977c331d5c4" rax-auth:propagate="false"/>
-       <role id="30007653" name="database:admin" description="admin role for cloud files" serviceId="bde1268ebabeeabb70a0e702a4626977c331d5c4" rax-auth:propagate="false"/>
+        <role id="100" name="devops" description="DevOps center" serviceId="cke5372rw2rty8bb70a0e702a4626977x4406e5" rax-auth:propagate="true"/>
+        <role id="30007896" name="acctCreator:public" description="Account creator public role" serviceId="cke5372ebabeeabb70a0e702a4626977x4406e5" rax-auth:propagate="false"/>
+        <role id="30007897" name="acctCreator:trusted" description="Account creator trusted role" serviceId="bde1268ebabeeabb70a0e702a4626977c331d5c4" rax-auth:propagate="false"/>
+        <role id="30007653" name="database:admin" description="admin role for cloud files" serviceId="bde1268ebabeeabb70a0e702a4626977c331d5c4" rax-auth:propagate="false"/>
+        <role id="123" name="rcnRole" description="An RCN role" serviceId="12345678" rax-auth:roleType="RCN">
+            <rax-auth:types>
+                <rax-auth:type>*</rax-auth:type>
+            </rax-auth:types>
+        </role>
    </roles>
 
 
@@ -150,32 +163,42 @@ Response
 
 .. code::
 
-   {
-       "roles": [
-           {
-               "description": "DevOps center",
-               "id": "100",
-               "name": "devops",
-               "serviceId": "cke5372rw2rty8bb70a0e702a4626977x4406e5"
-           },
-           {
-               "description": "Account creator public role",
-               "id": "30007896",
-               "name": "acctCreator:public",
-               "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
-           },
-           {
-               "description": "Admin creator trusted role",
-               "id": "30007897",
-               "name": "acctCreator:trusted",
-               "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
-           },
-           {
-               "description": "Admin role for database service",
-               "id": "30007653",
-               "name": "database:admin",
-               "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
-           },
 
-       ]
+    {
+        "roles": [
+            {
+                "description": "DevOps center",
+                "id": "100",
+                "name": "devops",
+                "serviceId": "cke5372rw2rty8bb70a0e702a4626977x4406e5"
+            },
+            {
+                "description": "Account creator public role",
+                "id": "30007896",
+                "name": "acctCreator:public",
+                "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
+            },
+            {
+                "description": "Admin creator trusted role",
+                "id": "30007897",
+                "name": "acctCreator:trusted",
+                "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
+            },
+            {
+                "description": "Admin role for database service",
+                "id": "30007653",
+                "name": "database:admin",
+                "serviceId": "cke5372ebabeeabb70a0e702a4626977x4406e5"
+            },
+            {
+                "description": "An RCN role",
+                "id": "123",
+                "name": "rcnRole",
+                "serviceId": "12345678",
+                "RAX-AUTH:roleType": "RCN",
+                "RAX-AUTH:types": [
+                    "*"
+                ],
+            },
+        ]
    }
