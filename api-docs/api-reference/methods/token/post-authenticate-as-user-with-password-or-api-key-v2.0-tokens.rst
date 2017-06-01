@@ -8,7 +8,7 @@ Authenticate as user with password or API key
     POST /v2.0/tokens
 
 Use this operation to authenticate to the Rackspace Cloud by using either a
-password or API key and generates an authentication token.
+password or API key and generate an authentication token.
 
 Submit the POST token authentication request to the Identity service endpoint
 URL with ``v2.0/tokens`` supplied as the path and a payload with either of
@@ -18,7 +18,7 @@ the following credential types:
 - API Key credentials: user name and API key
 
 If the Identity service returns either of the following messages in response to
-the initial authentication request, your account uses multi-factor
+the initial authentication request, your account may require multi-factor
 authentication and requires additional steps to complete the authentication
 process.
 
@@ -29,39 +29,43 @@ process.
 
 This table shows the possible response codes for this operation:
 
-+--------------+-------------+---------------------------------------------------------------------------------+
-|Response Code |Name         |Description                                                                      |
-+==============+=============+=================================================================================+
-|200           |OK           |Operation completed successfully. See response examples.                         |
-+--------------+-------------+---------------------------------------------------------------------------------+
-|400           |Bad Request  |Missing required parameters. This error also occurs if you include               |
-|              |             |both the tenant name and ID in the request.                                      |
-+--------------+-------------+---------------------------------------------------------------------------------+
-|401           |Unauthorized |This error message might indicate any of the following conditions:               |
-|              |             |                                                                                 |
-|              |             |- You are not authorized to complete this operation.                             |
-|              |             |                                                                                 |
-|              |             |- Additional authentication credentials required. Submit a second                |
-|              |             |  authentication request with                                                    |
-|              |             |  :ref:`multi-factor authentication credentials <post-authenticate-with-multi-\  |
-|              |             |  factor-authentication-passcode-credentials-v2.0>`                              |
-|              |             |                                                                                 |
-+--------------+-------------+---------------------------------------------------------------------------------+
-|403           |User disabled|The ``User disabled`` message indicates that the request is valid,               |
-|              |Forbidden    |but the user doesn't have access to the requested resource.                      |
-|              |             |Check with the account administrator to request access.                          |
-|              |             |                                                                                 |
-|              |             |The ``Forbidden`` message might be returned because your account requires        |
-|              |             |multi-factor authentication, and the feature has not been set up.                |
-|              |             |See :ref:`Request to set up multi-factor authentication on a user account        |
-|              |             |<req-mfa-setup-token>`.                                                          |
-+--------------+-------------+---------------------------------------------------------------------------------+
-|404           |Item not     |The requested resource was not found. The subject token in                       |
-|              |found        |``X-Subject-Token`` has expired or is no longer available.                       |
-|              |             |Use the POST token request to get a new token.                                   |
-+--------------+-------------+---------------------------------------------------------------------------------+
-|500           |Service Fault|Service is not available                                                         |
-+--------------+-------------+---------------------------------------------------------------------------------+
+.. list-table::
+  :widths: 20 20 60
+  :header-rows: 1
+
+  * - Response Code
+    - Name
+    - Description
+  * - 200
+    - OK
+    - Operation completed successfully. See response examples.
+  * - 400
+    - Bad Request
+    - Missing required parameters. This error also occurs if you include both
+      the tenant name and ID in the request.
+  * - 401
+    - Unauthorized
+    - This error message might indicate any of the following conditions:
+
+      - You supplied incorrect credentials.
+
+      - Additional authentication credentials required. Submit a second
+        authentication request with :ref:`multi-factor authentication
+        credentials <post-authenticate-with-multi-factor-authentication-\
+        passcode-credentials-v2.0>`
+  * - 403
+    - User disabled/Forbidden
+    - The ``User disabled`` message indicates that the request is valid, but
+      the user does not have access to the requested resource. Check with the
+      account administrator to request access.
+
+      The ``Forbidden`` message might be returned because your account requires
+      multi-factor authentication, and the feature has not been set up. See
+      :ref:`Request to set up multi-factor authentication on a user account
+      <req-mfa-setup-token>`.
+  * - 500
+    - Service Fault
+    - Service is not available
 
 See the following sections for information about parameters and request and
 response examples:
@@ -73,103 +77,72 @@ response examples:
 Request
 -------
 
-This table shows the header URI parameters for the request:
+This table shows the query parameters for the request:
 
-+--------------------------+-------------------------+---------------------------+
-|Name                      |Type                     |Description                |
-+==========================+=========================+===========================+
-|RAX-AUTH:scope            |Header                   |Indicates that the         |
-|                          |String *(Optional)*      |authentication request     |
-|                          |                         |is for a scoped multi-     |
-|                          |                         |factor authentication      |
-|                          |                         |token that provides        |
-|                          |                         |capabilities for a user    |
-|                          |                         |to set up and enable       |
-|                          |                         |multi-factor               |
-|                          |                         |authentication on an       |
-|                          |                         |account. Specify the       |
-|                          |                         |following value: ``SETUP-  |
-|                          |                         |MFA``.                     |
-|                          |                         |                           |
-|                          |                         |For details, see           |
-|                          |                         |:ref:`Request mfa\         |
-|                          |                         |setup token\               |
-|                          |                         |<req-mfa-setup-token>`.    |
-+--------------------------+-------------------------+---------------------------+
+.. csv-table::
+   :header: Name, Type, Description
+   :widths: 2, 2, 2
 
+   apply_rcn_roles, Boolean *(Optional)*, "When true, return any roles and
+   endpoints to which the user has access due to RCN roles. Defaults to false."
 
 This table shows the body parameters for the request:
 
-+--------------------------+-------------------------+----------------------------+
-|Name                      |Type                     |Description                 |
-+==========================+=========================+============================+
-|auth                      |Object *(Required)*      |The auth object provides    |
-|                          |                         |the credentials for the     |
-|                          |                         |authentication request.     |
-+--------------------------+-------------------------+----------------------------+
-|auth.\                    |Object *(Required)*      |Provides username and       |
-|**passwordCredentials**   |                         |password credentials        |
-|                          |                         |to access the Rackspace     |
-|                          |                         |Cloud account.              |
-+--------------------------+-------------------------+----------------------------+
-|auth.passwordCredentials.\|String *(Required)*      |The user name for the       |
-|**username**              |                         |Rackspace Cloud account.    |
-+--------------------------+-------------------------+----------------------------+
-|auth.passwordCredentials.\|UUID *(Optional)*        |The tenant ID for the       |
-|**tenantId**              |                         |Rackspace Cloud account.    |
-|                          |                         |Both the                    |
-|                          |                         |``tenantId`` and            |
-|                          |                         |``tenantName``              |
-|                          |                         |attributes are optional,    |
-|                          |                         |but should not be           |
-|                          |                         |specified together.         |
-+--------------------------+-------------------------+----------------------------+
-|auth.passwordCredentials.\|String *(Optional)*      |The tenant name for the     |
-|**tenantName**            |                         |Rackspace Cloud account.    |
-|                          |                         |Both the                    |
-|                          |                         |``tenantName`` and          |
-|                          |                         |``tenanId``                 |
-|                          |                         |attributes are optional,    |
-|                          |                         |but should not be           |
-|                          |                         |specified together.         |
-+--------------------------+-------------------------+----------------------------+
-|auth.\                    |Object *(Required)*      |Provides username and       |
-|RAX-KSKEY:\               |                         |API key credentials for     |
-|**APIKeyCredentials**     |                         |the authentication          |
-|                          |                         |request.                    |
-+--------------------------+-------------------------+----------------------------+
-|auth.RAX-KSKEY:apiKey\    |String *(Required)*      |The user name for the       |
-|Credentials.\             |                         |Rackspace Cloud account     |
-|**username**              |                         |                            |
-+--------------------------+-------------------------+----------------------------+
-|auth.RAX-KSKEY:apiKey.\   |String *(Optional)*      |The API key associated      |
-|Credentials.\             |                         |with the Rackspace Cloud    |
-|**apiKey**                |                         |account. You can find       |
-|                          |                         |your API key on the         |
-|                          |                         |Account Settings page in    |
-|                          |                         |the Cloud Control panel.    |
-|                          |                         |See :ref:`Get credentials\  |
-|                          |                         |<get-credentials>`.         |
-+--------------------------+-------------------------+----------------------------+
-|auth.RAX-KSKEY:apiKey.\   |UUID *(Optional)*        |The tenant ID for the       |
-|Credentials.\             |                         |Rackspace Cloud account.    |
-|**tenantId**              |                         |Both the                    |
-|                          |                         |``tenantId`` and            |
-|                          |                         |``tenantName``              |
-|                          |                         |attributes are optional,    |
-|                          |                         |but should not be           |
-|                          |                         |specified together.         |
-+--------------------------+-------------------------+----------------------------+
-|auth.RAX-KSKEY:apiKey.\   |String *(Optional)*      |The tenant name for the     |
-|Credentials.\             |                         |Rackspace Cloud account.    |
-|**tenantName**            |                         |Both the                    |
-|                          |                         |``tenantName`` and          |
-|                          |                         |``tenanId``                 |
-|                          |                         |attributes are optional,    |
-|                          |                         |but should not be           |
-|                          |                         |specified together.         |
-+--------------------------+-------------------------+----------------------------+
+.. list-table::
+  :widths: 30 20 50
+  :header-rows: 1
 
+  * - Name
+    - Type
+    - Description
+  * - auth
+    - Object *(Required)*
+    - The auth object provides the credentials for the authentication request.
+  * - auth.\ **RAX-AUTH:scope**
+    - Object *(Optional)*
+    - Indicates that the authentication request is for a scoped multi-factor
+      authentication token that provides capabilities for a user to set up and
+      enable multi-factor authentication on an account. Specify the following
+      value: ``SETUP-MFA``. For details, see :ref:`Request mfa setup token \
+      <req-mfa-setup-token>`.
+  * - auth.\ **passwordCredentials**
+    - Object *(Required)*
+    - Provides username and password credentials to access the Rackspace Cloud
+      account.
+  * - auth.passwordCredentials.\ **username**
+    - String *(Required)*
+    - The user name for the Rackspace Cloud account.
+  * - auth.passwordCredentials.\ **tenantId**
+    - UUID *(Optional)*
+    - The tenant ID for the Rackspace Cloud account. Both the ``tenantId`` and
+      ``tenantName`` attributes are optional, but should not be specified
+      together.
+  * - auth.passwordCredentials.\ **tenantName**
+    - String *(Optional)*
+    - The tenant name for the Rackspace Cloud account. Both the ``tenantName``
+      and ``tenantId`` attributes are optional, but should not be specified
+      together.
+  * - auth.RAX-KSKEY:\ **APIKeyCredentials**
+    - Object *(Required)*
+    - Provides username and API key credentials for the authentication request.
+  * - auth.RAX-KSKEY:apiKeyCredentials.\ **username**
+    - String *(Required)*
+    - The user name for the Rackspace Cloud account
+  * - auth.RAX-KSKEY:apiKeyCredentials.\ **apiKey**
+    - String *(Optional)*
+    - The API key associated with the Rackspace Cloud account. You can find
+      your API key on the Account Settings page in the Cloud Control panel.
+      See :ref:`Get credentials <get-credentials>`.
+  * - auth.RAX-KSKEY:apiKeyCredentials.\ **tenantId**
+    - UUID *(Optional)*
+    - The tenant ID for the Rackspace Cloud account. Both the ``tenantId`` and
+      ``tenantName`` attributes are optional, but should not be specified
+      together.
+  * - auth.RAX-KSKEY:apiKeyCredentials.\ **tenantName**
+    - String *(Optional)*
+    - The tenant name for the Rackspace Cloud account. Both the ``tenantName``
+      and ``tenantId`` attributes are optional, but should not be specified
+      together.
 
 Example: Authenticate as user with password XML request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -310,8 +283,7 @@ This table shows the body parameters for the response:
 |                       |                       |information about the user,   |
 |                       |                       |if available for the account: |
 |                       |                       |id, name, assigned roles,     |
-|                       |                       |default region, domain, multi-|
-|                       |                       |factor authentication status. |
+|                       |                       |default region, and domain.   |
 +-----------------------+-----------------------+------------------------------+
 |serviceCatalog         |String *(Required)*    |The :ref:`service catalog     |
 |                       |                       |<svccat-resource>`            |
@@ -344,7 +316,7 @@ Example: Authenticate as user with API key XML response
                <rax-auth:credential>APIKEY</rax-auth:credential>
            </rax-auth:authenticatedBy>
        </token>
-       <user id="172157" name="yourUserName" rax-auth:defaultRegion="DFW">
+       <user id="172157" name="yourUserName" rax-auth:defaultRegion="DFW" rax-auth:domainId="123456">
            <roles>
                <role id="10000150" name="checkmate" description="Checkmate Access role" rax-auth:propagate="false"/>
                <role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods"
@@ -969,7 +941,8 @@ Example: Authenticate as user with API key JSON response
                    }
                ],
                "name": "yourUserName",
-               "RAX-AUTH:defaultRegion": "DFW"
+               "RAX-AUTH:defaultRegion": "DFW",
+               "RAX-AUTH:domainId": "123456"
            }
        }
    }

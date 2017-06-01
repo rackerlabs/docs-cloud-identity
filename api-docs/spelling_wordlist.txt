@@ -266,6 +266,7 @@ mobilePhoneId
 mobilePhones
 mongodb
 monospace
+mosso
 multi
 multiFactor
 multiFactorDomain
