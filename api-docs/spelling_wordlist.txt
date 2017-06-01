@@ -132,6 +132,7 @@ camelCase
 cassandra
 cd
 cdb
+changePasswordCredentials
 checksyntax
 ci
 cloudFiles
