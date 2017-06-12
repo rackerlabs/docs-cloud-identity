@@ -56,7 +56,7 @@ This table shows the URI parameters for the request:
     :header: Name, Type, Description
     :widths: 2, 2, 2
 
-    ``{domainId}``, String *(Required)*, A domain ID.
+    {domainId}, String *(Required)*, A domain ID.
 
 
 Response
