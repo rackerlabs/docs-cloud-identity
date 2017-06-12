@@ -92,7 +92,7 @@ This table shows the URI parameters for the request:
     * - Name
       - Type
       - Description
-    * - ``{tokenId}``
+    * - {tokenId}
       - String
       - The authentication token to validate.
 
