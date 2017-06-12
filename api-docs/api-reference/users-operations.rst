@@ -40,3 +40,4 @@ accounts,  account information, and account credentials.
 .. include:: methods/users/post-reset-api-key-for-user-v2.0-users-userid-os-ksadm-credentials-rax-kskey.rst
 .. include:: methods/users/post-forgot-pwd-v2.0.rst
 .. include:: methods/users/post-reset-pwd-v2.0.rst
+.. include:: methods/users/change-pwd-v2.0.rst

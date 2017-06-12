@@ -12,6 +12,11 @@ Use the following Domain operations supplied by the :ref:`RAX-AUTH extension
 :ref:`domains <domain-concept>` or about the domain associated with a
 specified user account.
 
+..  note::
+
+     Typically, only Identity service administrators have the capabilities to
+     create, update, and delete domains.
+
 .. contents::
    :depth: 1
    :local:
@@ -19,8 +24,5 @@ specified user account.
 .. include:: methods/domains/get-list-domains-v2.0-rax-auth-domains.rst
 .. include:: methods/domains/get-get-a-domain-v2.0-rax-auth-domains-domainid.rst
 .. include:: methods/domains/put-update-a-domain.rst
-
-..  note::
-
-     Typically, only Identity service administrators have the capabilities to
-     create, update, and delete domains.
+.. include:: methods/domains/set-password-policy-on-domain-v2.0.rst
+.. include:: methods/domains/get-password-policy-on-domain-v2.0.rst
