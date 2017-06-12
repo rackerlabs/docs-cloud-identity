@@ -22,7 +22,7 @@ effective immediately for a domain.
     otherwise, Identity uses the last time any attribute on the account
     was updated (including password, email, and MFA settings).
 
-    Password policies can only be set using JSON; XML is not supported
+    Password policies can only be set using JSON; XML is not supported.
 
 This table shows the possible response codes for this operation:
 
