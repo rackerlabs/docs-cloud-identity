@@ -144,8 +144,7 @@ This table shows the body parameters for the request:
       and ``tenantId`` attributes are optional, but should not be specified
       together.
 
-Example: Authenticate as user with password XML request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with password XML request**
 
 .. code::
 
@@ -185,8 +184,7 @@ Example: Authenticate as user with password XML request
      </auth>
 
 
-Example: Authenticate as user with API key JSON request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with API key JSON request**
 
 .. code::
 
@@ -200,8 +198,7 @@ Example: Authenticate as user with API key JSON request
    }
 
 
-Example: Authenticate as user with password and tenant Id XML request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with password and tenant Id XML request**
 
 .. code::
 
@@ -213,8 +210,7 @@ Example: Authenticate as user with password and tenant Id XML request
 
 
 
-Example: Authenticate as user with API key and tenant ID JSON request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with API key and tenant ID JSON request**
 
 .. code::
 
@@ -229,8 +225,7 @@ Example: Authenticate as user with API key and tenant ID JSON request
    }
 
 
-Example: Authenticate for multi-factor authentication setup XML request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate for multi-factor authentication setup XML request**
 
 .. code::
 
@@ -242,8 +237,7 @@ Example: Authenticate for multi-factor authentication setup XML request
    </auth>
 
 
-Example: Authenticate for multi-factor authentication setup JSON request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate for multi-factor authentication setup JSON request**
 
 .. code::
 
@@ -295,8 +289,7 @@ This table shows the body parameters for the response:
 +-----------------------+-----------------------+------------------------------+
 
 
-Example: Authenticate as user with API key XML response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate as user with API key XML response**
 
 .. code::
 
@@ -459,9 +452,7 @@ Example: Authenticate as user with API key XML response
        </serviceCatalog>
    </access>
 
-Example: Authenticate as user with API key JSON response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+**Example: Authenticate as user with API key JSON response**
 
 .. code::
 
@@ -947,8 +938,7 @@ Example: Authenticate as user with API key JSON response
        }
    }
 
-Example: Authenticate for multi-factor authentication setup JSON response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Authenticate for multi-factor authentication setup JSON response**
 
    .. code::
 
