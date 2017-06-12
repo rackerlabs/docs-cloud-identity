@@ -19,14 +19,14 @@ credentials.
 If an account is enabled to use multi-factor authentication, authentication is
 a two-step process:
 
-#. Send an initial POST token authentication request with either password or
-   API credentials.
+#. Send an initial POST token authentication request with password credentials.
 
    In response to the authentication request, the Identity service returns a
    401 message that includes the ``X-SessionId`` parameter in the
-   WWW-Authenticate header and a request for additional credentials. The
-   Identity service also sends the multi-factor authentication passcode to
-   the phone associated with the user account.
+   WWW-Authenticate header and a request for additional credentials. If SMS
+   multi-factor authentication is used, the Identity service also sends a
+   multi-factor authentication passcode to the phone associated with the user
+   account.
 
 #. Send an additional authentication request that includes the ``X-SessionID``
    and the multi-factor authentication ``passcode``
@@ -57,69 +57,49 @@ This table shows the possible response codes for this operation:
 Request
 -------
 
-This table shows the header and URI parameters for the request:
+The following table shows the header parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-SessionId               |Header                   |The SessionId header     |
-|                          |String *(Optional)*      |returned when a          |
-|                          |                         |multifactor-enabled user |
-|                          |                         |authenticates to         |
-|                          |                         |Identity service with    |
-|                          |                         |either Password or API   |
-|                          |                         |key credentials.         |
-|                          |                         |Required to authenticate |
-|                          |                         |with multi-factor        |
-|                          |                         |authentication Passcode  |
-|                          |                         |credentials.             |
-+--------------------------+-------------------------+-------------------------+
-|{passcode}                |URI                      |Passcode received on the |
-|                          |String *(Optional)*      |multifactor-enabled      |
-|                          |                         |phone associated with    |
-|                          |                         |the user account.        |
-+--------------------------+-------------------------+-------------------------+
+.. list-table::
+    :widths: 20 20 60
+    :header-rows: 1
 
+    * - Name
+      - Type
+      - Description
+    * - X-SessionId
+      - String *(Required)*
+      - The SessionId header returned when a multifactor-enabled user
+        authenticates to Identity service with Password credentials.
+        Required to authenticate with multi-factor authentication
+        Passcode credentials.
 
-Request
--------
+The following table shows the query parameters for the request:
+
+.. csv-table::
+    :header: Name, Type, Description
+    :widths: 2, 2, 2
+
+    apply_rcn_roles, Boolean *(Optional)*, "When true, return any roles and
+    endpoints to which the user has access due to RCN roles. Defaults to false."
 
 This table shows the body parameters for the request:
 
-+-----------------------+--------------+---------------------------------------+
-|Name                   |Type          |Description                            |
-+=======================+==============+=======================================+
-|RAX-AUTH:\             |Object        |Specifies the multi-factor             |
-|passcodeCredentials    |              |passcode credentials for the           |
-|                       |              |authentication request.                |
-|                       |              |for multi-factor authentication.       |
-|                       |              |Specify either of these values. *      |
-|                       |              |``domainMultiFactorEnforcementLevel:   |
-|                       |              |"REQUIRED"`` makes multi-factor        |
-|                       |              |authentication mandatory for all       |
-|                       |              |account users. *                       |
-|                       |              |``domainMultiFactorEnforcementLevel:   |
-|                       |              |"OPTIONAL"`` Users within the domain   |
-|                       |              |can choose whether to use multi-factor |
-|                       |              |authentication on their own accounts.  |
-+-----------------------+--------------+---------------------------------------+
-|RAX-AUTH:\             |String        |The domain enforcement level for       |
-|passcodeCredentials    |              |multi-factor authentication. Specify   |
-|**domainMultiFactor\   |              |one of the following values:           |
-|EnforcementLevel**     |              |                                       |
-|                       |              |- ``REQUIRED``                         |
-|                       |              |   Authentication is mandatory for all |
-|                       |              |   account users within the specified  |
-|                       |              |   domain.                             |
-|                       |              |                                       |
-|                       |              |- ``OPTIONAL``                         |
-|                       |              |   Users within the specified domain   |
-|                       |              |   can choose whether to use           |
-|                       |              |   multi-factor authentication         |
-|                       |              |   on their account.                   |
-|                       |              |                                       |
-+-----------------------+--------------+---------------------------------------+
+.. list-table::
+  :widths: 30 20 50
+  :header-rows: 1
 
+  * - Name
+    - Type
+    - Description
+  * - auth
+    - Object *(Required)*
+    - The auth object provides the credentials for the authentication request.
+  * - auth.\ **RAX-AUTH:passcodeCredentials**
+    - Object *(Required)*
+    - The passcodeCredentials object for the authentication request.
+  * - RAX-AUTH:passcodeCredentials.\ **passcode**
+    - String *(Required)*
+    - The passcode.
 
 Authenticate with multi-factor authentication credentials request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,9 +115,8 @@ Authenticate with multi-factor authentication credentials request
    <auth xmlns="http://docs.openstack.org/identity/api/v2.0"
      xmlns:RAX-AUTH="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
      xmlns:atom="http://www.w3.org/2005/Atom">
-     <RAX-AUTH:passcodeCredentials factor="PASSCODE" passcode="123456"/>
+     <RAX-AUTH:passcodeCredentials passcode="123456"/>
    </auth>
-
 
 
 Authenticate with multi-factor authentication credentials JSON request
@@ -198,6 +177,7 @@ Authenticate with multi-factor authentication credential XML response
        id= "ec7f0fd2de2f4eeeb07c7412c848fe69"
        name="jqsmith"
        rax-auth:defaultRegion="DFW"
+       rax-auth:domainId="123456"
        rax-auth:federated="false">
 
        <roles>
@@ -234,6 +214,7 @@ Authenticate with multi-factor authentication credential JSON response
            },
            "user": {
                "RAX-AUTH:defaultRegion": "IAD",
+               "RAX-AUTH:domainId": "123456",
                "RAX-AUTH:federated": false,
                "id": "789345",
                "name": "mfaTestUser",
