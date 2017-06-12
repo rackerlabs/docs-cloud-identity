@@ -74,7 +74,7 @@ This table shows the possible response codes for this operation:
 Request
 -------
 
-This table shows the header and URI parameters for the request:
+This table shows the header parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
@@ -83,16 +83,35 @@ This table shows the header and URI parameters for the request:
 |                          |String *(Required)*      |authentication token.    |
 +--------------------------+-------------------------+-------------------------+
 
+This table shows the URI parameters for the request:
+
+.. list-table::
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Description
+    * - {tokenId}
+      - String
+      - The authentication token to validate.
 
 This table shows the query parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|belongsTo                 |String *(Optional)*      |Validate that a token    |
-|                          |                         |has the specified tenant |
-|                          |                         |in scope.                |
-+--------------------------+-------------------------+-------------------------+
+.. list-table::
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Description
+    * - belongsTo
+      - String *(Optional)*
+      - Validate that a token has the specified tenant in scope.
+    * - apply_rcn_roles
+      - Boolean *(Optional)*
+      - "When true, include any roles to which the user has access due to RCN
+        roles. Defaults to false."
 
 This operation does not accept a request body.
 
