@@ -132,6 +132,7 @@ camelCase
 cassandra
 cd
 cdb
+changePasswordCredentials
 checksyntax
 ci
 cloudFiles
@@ -266,6 +267,7 @@ mobilePhoneId
 mobilePhones
 mongodb
 monospace
+mosso
 multi
 multiFactor
 multiFactorDomain
@@ -447,3 +449,6 @@ xsd
 yml
 yyyy
 º
+rcn
+tokenId
+passwordPolicy

@@ -11,11 +11,11 @@ Identity user administrators can use this operation to authenticate by using a
 tenant ID  or tenant name and a valid token.
 
 Submit the POST token authentication request to the Identity service endpoint
-URL  with a payload of credentials. Use either of the following credentials in
+URL with a payload of credentials. Use either of the following credentials in
 the request.
 
 * ``tenantName`` and ``token`` or
-* ``tenantId`` and ``token ID``
+* ``tenantId`` and ``token``
 
 If the request includes both the name and ID, the server returns a 400 Bad
 Request error.
@@ -24,41 +24,35 @@ Request error.
 
    If you authenticate as a tenant, the ``Service Catalog`` returned includes
    only endpoints for the Rackspace Cloud services authorized for that tenant.
-
+   The exception to this rule is if you specify the mosso (cloud) tenant for
+   which the full service catalog will still be returned.
 
 This table shows the possible response codes for this operation:
 
-+-------------------------+-------------------------+--------------------------+
-|Response Code            |Name                     |Description               |
-+=========================+=========================+==========================+
-|200                      |OK                       |Success. The tenant is    |
-|                         |                         |authenticated.            |
-+-------------------------+-------------------------+--------------------------+
-|400                      |Bad Request              |Missing required          |
-|                         |                         |parameters. This error    |
-|                         |                         |also occurs if you        |
-|                         |                         |include both the tenant   |
-|                         |                         |name and ID in the        |
-|                         |                         |request.                  |
-+-------------------------+-------------------------+--------------------------+
-|401                      |Unauthorized             |You are not authorized    |
-|                         |                         |to complete this          |
-+-------------------------+-------------------------+--------------------------+
-|404                      |Item not found           |The requested resource    |
-|                         |                         |was not found. The        |
-|                         |                         |subject token in X-       |
-|                         |                         |Subject-Token has expired |
-|                         |                         |or is no longer           |
-|                         |                         |available. Use the POST   |
-|                         |                         |token request to get a    |
-|                         |                         |new token.                |
-+-------------------------+-------------------------+--------------------------+
-|500                      |Service Fault            |Service is not available  |
-+-------------------------+-------------------------+--------------------------+
+.. csv-table::
+    :header: Response Code, Name, Description
+    :widths: 2, 2, 2
 
+    200, OK, "Success. The tenant is authenticated."
+    400, Bad Request, "Missing required parameters. This error also occurs
+    if you include both the tenant name and ID in the request."
+    401, Unauthorized, "You provided invalid credentials."
+    404, Not Found, "The requested resource was not found. The token has
+    expired or is no longer available. Use the POST token request to get a new token."
+    500, Service Fault, "Service is not available."
 
 Request
 -------
+
+This table shows the query parameters for the request:
+
+.. csv-table::
+    :header: Name, Type, Description
+    :widths: 2, 2, 2
+
+    apply_rcn_roles, Boolean *(Optional)*, "When true, include any roles and
+    endpoints to which the user has access due to RCN roles. Defaults to false."
+
 This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -83,10 +77,6 @@ This table shows the body parameters for the request:
 |                          |                         |Required to authenticate |
 |                          |                         |as a tenant.             |
 +--------------------------+-------------------------+-------------------------+
-
-
-
-
 
 **Example: Authenticate as tenant with token: XML request**
 
@@ -147,8 +137,7 @@ This table shows the body parameters for the response:
 |                       |                       |information about the user,   |
 |                       |                       |if available for the account: |
 |                       |                       |id, name, assigned roles,     |
-|                       |                       |default region, domain, multi-|
-|                       |                       |factor authentication status. |
+|                       |                       |default region, and domain.   |
 +-----------------------+-----------------------+------------------------------+
 |serviceCatalog         |String                 |The :ref:`service catalog     |
 |                       |                       |<svccat-resource>`            |
@@ -181,7 +170,7 @@ This table shows the body parameters for the response:
                <rax-auth:credential>APIKEY</rax-auth:credential>
            </rax-auth:authenticatedBy>
        </token>
-       <user id="172157" name="yourUserName" rax-auth:defaultRegion="DFW">
+       <user id="172157" name="yourUserName" rax-auth:defaultRegion="DFW" rax-auth:domainId="123456">
            <roles>
                <role id="10000150" name="checkmate" description="Checkmate Access role" rax-auth:propagate="false"/>
                <role id="5" name="object-store:default" description="A Role that allows a user access to keystone Service methods"
@@ -807,7 +796,8 @@ This table shows the body parameters for the response:
                    }
                ],
                "name": "yourUserName",
-               "RAX-AUTH:defaultRegion": "DFW"
+               "RAX-AUTH:defaultRegion": "DFW",
+               "RAX-AUTH:domainId": "123456"
            }
        }
    }

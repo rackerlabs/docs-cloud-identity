@@ -7,12 +7,18 @@ List tenants
 
     GET /v2.0/tenants
 
-Get a list of tenants, or look up a tenant by name.
+Get a list of tenants.
 
-Identity administrators can use this operation to retrieve a list of tenants
-or an individual tenant by name.
+The list of tenants returned includes only those to which the user has access,
+based on the user's X-Auth-token. The tenants to which the user has access
+via RCN roles are returned only if requested.
 
+.. note::
 
+    - The list tenants operation can be made by any users with an Identity
+      role.
+    - Tenants associated to a user via an RCN role will be returned **only**
+      when ``apply_rcn_roles`` query parameter is set to ``true``.
 
 This table shows the possible response codes for this operation:
 
@@ -79,9 +85,15 @@ This table shows the URI parameters for the request:
 |                          |                         |privileges.              |
 +--------------------------+-------------------------+-------------------------+
 
+This table shows the query parameters for the request:
+
+.. csv-table::
+    :header: Name, Type, Description
+    :widths: 2, 2, 2
+
+    apply_rcn_roles, Boolean *(Optional)*, "When true, include any tenants to which the user has access due to RCN roles. Defaults to false."
+
 This operation does not accept a request body.
-
-
 
 
 Response
