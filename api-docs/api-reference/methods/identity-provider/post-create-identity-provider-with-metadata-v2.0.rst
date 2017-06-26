@@ -13,7 +13,7 @@ Create a new Identity Provider using XML metadata.
 
    - Creating IDP using metadata auto assigns the IDP's name to at most 29
      characters of the caller's domain ID.
-   - If IDP's name already exists, a digit is added at the end of the
+   - If the IDP's name already exists, a digit is added at the end of the
      name until a unique name is found. Ex: example_2
    - This resource describes a single deployment using `EntityDescriptor`.
 
@@ -65,7 +65,7 @@ This table shows the body parameters for the request:
     EntityDescriptor.IDPSSODescriptor.SingleSignOnService.\ **Binding**, String *(Required)*, Describes a protocol binding. Only `HTTP-Redirect` is currently supported.
     EntityDescriptor.IDPSSODescriptor.SingleSignOnService.\ **Location**, String *(Required)*, Describes the authentication url.
     EntityDescriptor.IDPSSODescriptor.\ **KeyDescriptor**, Object *(Optional)*, Associates one or more public keys with the system being defined.
-    EntityDescriptor.IDPSSODescriptor.KeyDescriptor.\ **KeyInfo**, Object *(Optional)*, The element describing keys.
+    EntityDescriptor.IDPSSODescriptor.KeyDescriptor.\ **KeyInfo**, Object *(Optional)*, An element describing keys.
 
 **Example: Create IDP request: XML**
 
@@ -113,7 +113,7 @@ This table shows the header parameters for the response:
     :header: Name, Type, Description
     :widths: auto
 
-    Location, String *(Required)*, Location to the URI of the newly created IDP
+    Location, String *(Required)*, The location URI of the newly created IDP.
 
 **Example:  Create IDP: XML response**
 
