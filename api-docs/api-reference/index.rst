@@ -28,3 +28,4 @@ information about the available extensions, see :ref:`API extensions
    domain-operations
    secret-answer-operations
    multifactor-client-operations
+   identity-provider-operations
