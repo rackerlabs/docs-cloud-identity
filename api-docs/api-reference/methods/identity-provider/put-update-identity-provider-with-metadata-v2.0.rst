@@ -1,21 +1,18 @@
-.. _post-create-identity-provider-with-metadata-v2.0:
+.. _put-update-identity-provider-with-metadata-v2.0:
 
-Create IDP with metadata
+Update IDP with metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-   POST /v2.0/RAX-AUTH/federation/identity-providers
+   PUT /v2.0/RAX-AUTH/federation/identity-providers/{identityProviderId}/metadata
 
-Create a new Identity Provider using XML metadata.
+Update an existing Identity Provider using XML metadata.
 
 .. note::
 
-   - Creating IDP using metadata auto assigns the IDP's name to at most 29
-     characters of the caller's domain ID.
-   - If the IDP's name already exists, a digit is added at the end of the
-     name until a unique name is found. Ex: example_2
-   - This resource describes a single deployment using `EntityDescriptor`.
+   - Only IDP's authentication url and certificates are allowed to be updated
+     via metadata.
 
 This table shows the possible response codes for this operation:
 
@@ -23,7 +20,7 @@ This table shows the possible response codes for this operation:
    :header: Response Code, Name, Description
    :widths: auto
 
-   201, Created, The request has been fulfilled. The IDP has been created.
+   200, OK, The request has been fulfilled.
    400, Bad Request, "The request is missing one or more elements, or
    the values of some elements are invalid."
    401, Unauthorized, "You are not authorized to complete this operation.
@@ -43,13 +40,21 @@ This table shows the possible response codes for this operation:
 Request
 -------
 
-This table shows the URI parameters for the request:
+This table shows the header parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
    :widths: auto
 
    X-Auth-Token, String *(Required)*, A valid authentication token.
+
+This table shows the URI parameters for the request:
+
+.. csv-table::
+   :header: Name, Type, Description
+   :widths: auto
+
+   {identityProviderId}, String *(Required)*, The Identity Provider's ID.
 
 This table shows the body parameters for the request:
 
@@ -62,12 +67,12 @@ This table shows the body parameters for the request:
     EntityDescriptor.\ **IDPSSODescriptor**, Object *(Required)*, An IDP role.
     EntityDescriptor.IDPSSODescriptor.\ **protocolSupportEnumeration**, String *(Required)*, Represents general classes of protocol support for the role in question.
     EntityDescriptor.IDPSSODescriptor.\ **SingleSignOnService**, Object *(Required)*, Describes a protocol binding endpoint.
-    EntityDescriptor.IDPSSODescriptor.SingleSignOnService.\ **Binding**, String *(Required)*, Describes a protocol binding. Only `HTTP-Redirect` is currently supported.
-    EntityDescriptor.IDPSSODescriptor.SingleSignOnService.\ **Location**, String *(Required)*, Describes the authentication url.
+    EntityDescriptor.IDPSSODescriptor.SingleSignOnService.\ **Binding**, String *(Optional)*, Describes a protocol binding. Only `HTTP-Redirect` is currently supported.
+    EntityDescriptor.IDPSSODescriptor.SingleSignOnService.\ **Location**, String *(Optional)*, Describes the authentication url.
     EntityDescriptor.IDPSSODescriptor.\ **KeyDescriptor**, Object *(Optional)*, Associates one or more public keys with the system being defined.
     EntityDescriptor.IDPSSODescriptor.KeyDescriptor.\ **KeyInfo**, Object *(Optional)*, An element describing keys.
 
-**Example: Create IDP request: XML**
+**Example: Update IDP request: XML**
 
 .. code::
 
@@ -115,13 +120,12 @@ This table shows the header parameters for the response:
 
     Location, String *(Required)*, The location URI of the newly created IDP.
 
-**Example: Create IDP: XML response**
+**Example: Update IDP: XML response**
 
 .. code::
 
-    < HTTP/1.1 201 Created
+    < HTTP/1.1 200 OK
     < vary:  Accept, Accept-Encoding, X-Auth-Token
-    < Location: http://localhost:8083/idm/cloud/v2.0/RAX-AUTH/federation/identity-providers/123456
     < Content-Type: application/xml
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -137,13 +141,12 @@ This table shows the header parameters for the response:
         </approvedDomainIds>
     </identityProvider>
 
-**Example: Create IDP: JSON response**
+**Example: Update IDP: JSON response**
 
 .. code::
 
-   < HTTP/1.1 201 Created
+   < HTTP/1.1 200 OK
    < vary:  Accept, Accept-Encoding, X-Auth-Toke
-   < Location: http://localhost:8083/idm/cloud/v2.0/RAX-AUTH/federation/identity-providers/adsdfwejjbwerh
    < Content-Type: application/json
 
     {
