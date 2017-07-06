@@ -36,6 +36,14 @@ Request
 This table shows the URI parameters for the request:
 
 .. csv-table::
+    :header: Name, Type, Description
+    :widths: auto
+
+    identityProviderId, String *(Required)*, The ID of the identity provider.
+
+This table shows the header parameters for the request:
+
+.. csv-table::
    :header: Name, Type, Description
    :widths: auto
 
