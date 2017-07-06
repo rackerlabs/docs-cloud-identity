@@ -30,4 +30,5 @@ Identity Providers.
 .. include:: methods/identity-provider/post-create-identity-provider-with-metadata-v2.0.rst
 .. include:: methods/identity-provider/put-update-identity-provider-with-metadata-v2.0.rst
 .. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
+.. include:: methods/identity-provider/put-add-cert-to-identity-provider-v2.0.rst
 
