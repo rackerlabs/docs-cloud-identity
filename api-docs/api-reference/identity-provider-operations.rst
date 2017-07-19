@@ -18,7 +18,18 @@ controlled via the following roles.
 
    CreateIDPs, Yes, Yes, Yes
    UpdateIDPs, Yes, Yes, Yes
+   GetIDPs, Yes, Yes, Yes
+   ListIDPs, Yes, Yes, Yes
    GetIDPsMetadata, Yes, Yes, Yes
+
+.. note::
+
+   - User-admin or User-manage can make requests only when the caller’s domain
+     is the same as the specified Identity Provider’s (IDP’s)
+     ``approvedDomainId``.
+   - A user with the role rcn:admin can make requests only when the caller’s
+     domain is within the same RCN as the IDP’s specified ``approvedDomainId``.
+
 
 Use the following API operations to create, review, update, and delete
 Identity Providers.
@@ -29,5 +40,7 @@ Identity Providers.
 
 .. include:: methods/identity-provider/post-create-identity-provider-with-metadata-v2.0.rst
 .. include:: methods/identity-provider/put-update-identity-provider-with-metadata-v2.0.rst
+.. include:: methods/identity-provider/get-identity-provider-v2.0.rst
+.. include:: methods/identity-provider/get-list-identity-providers-v2.0.rst
 .. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
 
