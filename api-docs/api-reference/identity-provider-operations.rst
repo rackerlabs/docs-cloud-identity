@@ -19,6 +19,8 @@ controlled via the following roles.
    CreateIDPs, Yes, Yes, Yes
    UpdateIDPs, Yes, Yes, Yes
    GetIDPsMetadata, Yes, Yes, Yes
+   GetIDPsMappingPolicy, Yes, Yes, Yes
+   UpdateIDPsMappingPolicy, Yes, Yes, Yes
 
 Use the following API operations to create, review, update, and delete
 Identity Providers.
@@ -29,5 +31,7 @@ Identity Providers.
 
 .. include:: methods/identity-provider/post-create-identity-provider-with-metadata-v2.0.rst
 .. include:: methods/identity-provider/put-update-identity-provider-with-metadata-v2.0.rst
+.. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
+.. include:: methods/identity-provider/get-identity-provider-mapping-policy-v2.0.rst
 .. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
 
