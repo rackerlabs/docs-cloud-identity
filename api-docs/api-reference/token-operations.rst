@@ -55,3 +55,4 @@ manage tokens.
 .. include:: methods/token/post-authenticate-with-multi-factor-authentication-passcode-credentials-v2.0-tokens.rst
 .. include:: methods/token/get-validate-token-v2.0-tokens-tokenid.rst
 .. include:: methods/token/delete-revoke-token-v2.0-tokens.rst
+.. include:: methods/token/get-list-endpoints-for-token-v2.0-tokens-tokenid.rst
