@@ -17,64 +17,34 @@ user.
 
 The following table shows the possible response codes for this operation:
 
-+-------------------------+-------------------------+-------------------------+
-|Response Code            |Name                     |Description              |
-+=========================+=========================+=========================+
-|200                      |OK                       |The operation completed  |
-|                         |                         |successfully.            |
-+-------------------------+-------------------------+-------------------------+
-|400                      |Bad Request              |The request is missing   |
-|                         |                         |one or more elements, or |
-|                         |                         |the values of some       |
-|                         |                         |elements are invalid.    |
-+-------------------------+-------------------------+-------------------------+
-|401                      |Unauthorized             |You are not authorized   |
-|                         |                         |to complete this         |
-|                         |                         |operation. This error    |
-|                         |                         |can occur if the request |
-|                         |                         |is submitted with an     |
-|                         |                         |invalid authentication   |
-|                         |                         |token.                   |
-+-------------------------+-------------------------+-------------------------+
-|403                      |Forbidden                |The request was valid,   |
-|                         |                         |but the server is        |
-|                         |                         |refusing to respond      |
-|                         |                         |because you do not have  |
-|                         |                         |permission to access the |
-|                         |                         |requested resource.      |
-|                         |                         |Submit a request to your |
-|                         |                         |account administrator to |
-|                         |                         |determine how to gain    |
-|                         |                         |access.                  |
-+-------------------------+-------------------------+-------------------------+
-|404                      |Not Found                |The requested resource   |
-|                         |                         |was not found.           |
-+-------------------------+-------------------------+-------------------------+
-|405                      |Invalid Method           |The method specified in  |
-|                         |                         |the request is not valid |
-|                         |                         |for the resource         |
-|                         |                         |identified in the        |
-|                         |                         |request URI.             |
-+-------------------------+-------------------------+-------------------------+
-|413                      |Over Limit               |The number of items      |
-|                         |                         |returned is above the    |
-|                         |                         |allowed limit.           |
-+-------------------------+-------------------------+-------------------------+
-|503                      |Service Fault            |Service is not available.|
-+-------------------------+-------------------------+-------------------------+
+.. csv-table::
+   :header: Response code, Name, Description
+   :widths: auto
 
+   200, OK, The request has been fulfilled.
+   401, Unauthorized, "You are not authorized to complete this operation.
+   This error can occur if the request is submitted with an invalid
+   authentication token."
+   403, Forbidden, "The request was valid, but the server is refusing to
+   respond because you do not have permission to access the requested
+   resource. Submit a request to your account administrator to
+   determine how to gain access."
+   404, Not Found, The requested resource was not found.
+   405, Invalid Method, "The method specified in the request is not valid for
+   the resource identified in the request URI."
+   406, Not Acceptable, The server cannot send data in a format requested.
+   413, Over Limit, The number of items returned is above the allowed limit.
+   503, Service Fault, Service is not available.
 
 Request
 -------
 
 The following table shows the header parameters for the request:
 
-+-------------------------+-------------------------+-------------------------+
-|Name                     |Type                     |Description              |
-+=========================+=========================+=========================+
-|X-Auth-Token             |String *(Required)*      |A valid authentication   |
-|                         |                         |token.                   |
-+-------------------------+-------------------------+-------------------------+
+.. csv-table::
+   :header: Name, Type, Description
+
+   X-Auth-Token, String *(Required)*, A valid authentication token.
 
 The following table shows the URI parameters for the request:
 
