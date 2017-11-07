@@ -3,8 +3,8 @@
 Additional resources
 ~~~~~~~~~~~~~~~~~~~~
 
-We welcome feedback, comments, and bug reports.
-Email `<infodev@rackspace.com>`__ with your comments, suggestions, and
+We welcome feedback, comments, and bug reports. Email
+`<infodev@rackspace.com>`__ with your comments, suggestions, and
 feedback.
 
 The `Rackspace Cloud website`_ offers information about Rackspace Cloud
