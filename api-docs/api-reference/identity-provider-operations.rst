@@ -21,6 +21,8 @@ controlled via the following roles.
    GetIDPs, Yes, Yes, Yes
    ListIDPs, Yes, Yes, Yes
    GetIDPsMetadata, Yes, Yes, Yes
+   GetIDPsMappingPolicy, Yes, Yes, Yes
+   UpdateIDPsMappingPolicy, Yes, Yes, Yes
 
 .. note::
 
@@ -42,5 +44,7 @@ Identity Providers.
 .. include:: methods/identity-provider/put-update-identity-provider-with-metadata-v2.0.rst
 .. include:: methods/identity-provider/get-identity-provider-v2.0.rst
 .. include:: methods/identity-provider/get-list-identity-providers-v2.0.rst
+.. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
+.. include:: methods/identity-provider/get-identity-provider-mapping-policy-v2.0.rst
 .. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
 
