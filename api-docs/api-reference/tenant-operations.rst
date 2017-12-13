@@ -10,3 +10,4 @@ account is created.
 
 
 .. include:: methods/tenants/get-list-tenants-v2.0.rst
+.. include:: methods/tenants/get-list-users-for-tenant-v2.0.rst
