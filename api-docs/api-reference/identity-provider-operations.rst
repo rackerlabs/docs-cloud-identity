@@ -46,5 +46,5 @@ Identity Providers.
 .. include:: methods/identity-provider/get-list-identity-providers-v2.0.rst
 .. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
 .. include:: methods/identity-provider/get-identity-provider-mapping-policy-v2.0.rst
-.. include:: methods/identity-provider/get-identity-provider-metadata-v2.0.rst
+.. include:: methods/identity-provider/put-update-identity-provider-mapping-policy-v2.0.rst
 

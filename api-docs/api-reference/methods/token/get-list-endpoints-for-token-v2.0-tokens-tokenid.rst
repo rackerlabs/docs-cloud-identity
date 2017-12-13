@@ -81,7 +81,6 @@ Response
 
 **Example: Validate token: JSON response**
 
-
 .. code::
 
    {
