@@ -69,7 +69,7 @@ This table shows the query parameters for the request:
 
    roleId, String *(Optional)*, Filter users with role for tenant. Mutually exclusive with ``contactId`` query parameter.
    contactId, String *(Optional)*, Filter users with contact ID for tenant. Mutually exclusive with ``roleId`` query parameter.
-   marker, Object *(Optional)*, Allows us to page through list of users for a tenant. This is the numeric id of the item to start the list.
+   marker, Object *(Optional)*, Allows us to page through list of users for a tenant. This is the numeric ID of the item to start the list.
    limit, Object *(Optional)*, Allows us to set size of page when paging through list of users for a tenant. This is the number of items per page.
 
 Response:
