@@ -7,14 +7,14 @@ Update IDP
 
    PUT /v2.0/RAX-AUTH/federation/identity-providers/{identityProviderId}
 
-Update an Identity provider.
+Update an Identity provider (IDP).
 
 .. note::
 
-   - User-admin or User-manage can make a request only when caller's domain is the same as the specified Identity Provider's (IDP's) approvedDomainId.
-   - User-admin or User-manage can update the name, description and emailDomains. Any specified values for other fields are ignored.
-   - User with the role rcn:admin can make a request only when caller's domain is within the same RCN as the IDP's specified approvedDomainId.
-   - User with the role rcn:admin can update the name, description and approvedDomainId. Any specified values for other fields are ignored.
+   - User-admin or User-manage roles can make a request only when the caller's domain is the same as the specified Identity Provider's approvedDomainId.
+   - User-admin or User-manage roles can update the name, description, and emailDomains. Any specified values for other fields are ignored.
+   - A user with the role rcn:admin can make a request only when the caller's domain is within the same RCN as the IDP's specified approvedDomainId.
+   - A user with the role rcn:admin can update the name, description, emailDomains, and approvedDomainId. Any specified values for other fields are ignored.
 
 This table shows the possible response codes for this operation:
 
@@ -65,10 +65,10 @@ This table shows the body parameters for the request:
    :header: Name, Type, Description
    :widths: 2, 2, 2
 
-    RAX-AUTH:identityProvider, Object, A ``identity-provider`` object that specifies the IDP information.
+    RAX-AUTH:identityProvider, Object, An ``identity-provider`` object that specifies the IDP information.
     RAX-AUTH:identityProvider.\ **name**, String *(Optional)*, "The name of the provider. Must consist of only alphanumeric, '-', '.', and be less than 255 characters."
     RAX-AUTH:identityProvider.\ **description**, String *(Optional)*, "Blurb to describe the IDP. Used for informative purposes only."
-    RAX-AUTH:identityProvider.\ **approvedDomainIds**, Object *(Optional)*, Limits the IDP to only authenticating for the specified domains. Mutually exclusive w/ approvedDomainGroup.
+    RAX-AUTH:identityProvider.\ **approvedDomainIds**, Object *(Optional)*, Limits the IDP to authenticating only for the specified domains. Mutually exclusive with ``approvedDomainGroup``.
     RAX-AUTH:identityProvider.\ **emailDomains**, Object *(Optional)*, List of email domains.
     RAX-AUTH:identityProvider.emailDomains.\ **emailDomain**, String *(Optional)*, String representing an email domain. Value must be unique across all identity providers.
 
