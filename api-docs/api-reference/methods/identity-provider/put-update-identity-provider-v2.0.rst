@@ -13,8 +13,8 @@ Update an Identity provider (IDP).
 
    - User-admin or User-manage roles can make a request only when the caller's domain is the same as the specified Identity Provider's approvedDomainId.
    - User-admin or User-manage roles can update the name, description, and emailDomains. Any specified values for other fields are ignored.
-   - A user with the role rcn:admin can make a request only when the caller's domain is within the same RCN as the IDP's specified approvedDomainId.
-   - A user with the role rcn:admin can update the name, description, emailDomains, and approvedDomainId. Any specified values for other fields are ignored.
+   - A user with the role ``rcn:admin`` can make a request only when the caller's domain is within the same RCN as the IDP's specified approvedDomainId.
+   - A user with the role ``rcn:admin`` can update the name, description, emailDomains, and approvedDomainId. Any specified values for other fields are ignored.
 
 This table shows the possible response codes for this operation:
 
