@@ -12,15 +12,15 @@ being modified remain unchanged.
 
 .. note::
 
-   - The caller must at least have the ``identity:user-manage``. If caller has
-     only domain access, verify that the caller's domain matches the target
-     user's domain.
+   - The caller must have at least the ``identity:user-manage`` role. If the
+     caller has only domain access, verify that the caller's domain matches
+     the target user's domain.
    - The tenants on assignments must belong to the same domain as the target
      user's domain.
    - The role assignments cannot assign identity user type roles with the
      exception of ``identity:user-manage``.
    - The caller must be authorized to assign the specified roles.
-   - The Tenant assignments can include either ["*"] or a set of tenant ids.
+   - The tenant assignments can include either ["*"] or a set of tenant ids.
    - This request effectively replaces any assignment that already exists for
      these roles on the user.
 
