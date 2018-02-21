@@ -146,6 +146,7 @@ conditionalize
 conf
 config
 configId
+contactId
 contentIDBase
 contentIDbase
 cron
@@ -182,6 +183,7 @@ dropdown
 drupal
 ecommerce
 el
+emailDomains
 entityId
 env
 eth
@@ -226,6 +228,7 @@ iPod
 iSCSI
 iad
 idempotency
+identityProvider
 identityProviderId
 idpType
 indices
@@ -362,6 +365,7 @@ restorepoint
 resumable
 rext
 robb
+roleAssignments
 roleId
 routefilter
 rpc
@@ -403,6 +407,7 @@ symlink
 tcp
 tcpflags
 tempsuffix
+tenantAssignments
 tenantId
 tenantName
 testenv
