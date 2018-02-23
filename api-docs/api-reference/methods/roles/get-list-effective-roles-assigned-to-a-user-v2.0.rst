@@ -9,23 +9,25 @@ List effective roles assigned to a user
 
 This operation returns the list of all roles that are assigned to the user with
 the specified user Id. If you don't know the user ID, use the
-:ref:`Get user by Id <get-user-by-id-v2.0>` operation to find it.
+:ref:`List users <get-list-users-v2.0>` operation with query parameter ``name``
+to find it.
 
 For each role listed, the response includes identifying information such as the
-role ID, name, and tenants to which the role is assigned, and the sources that
-determined how the user received the role on the specified tenants.
+role ID, name, and the tenants to which the role is assigned, and the sources
+that determined how the user received the role on the specified tenants.
 
 This calls differs from the similar
 :ref:`List global roles assigned to a user
 <get-list-global-roles-assigned-to-a-user-v2.0>` call by:
 
-- Including all means by which a user can be granted a role including:
+- Including all means by which a user can be granted a role such as the
+  following:
 
   - Through the user itself
   - Through membership in a user group
   - Through the system
 
-- Including all forms of role assignment
+- Including all forms of role assignment such as the following:
 
   - On domain
   - On individual tenants
@@ -43,8 +45,8 @@ assigned through the user on the domain.
      role can list roles for users within their domain and with the
      ``identity:default`` role.
 
-   - Use the service only to return roles for provisioned users.
-     Returning roles for federated users is not yet supported.
+   - The service returns roles for provisioned users only. Returning roles for
+     federated users is not yet supported.
 
 .. csv-table::
    :header: Response code, Name, Description
@@ -115,9 +117,9 @@ This operation does not accept a request body.
 Response
 --------
 
-The response groups by role. Each role is shown as a ``tenantAssignment`` with
-all tenants on which the user has the role included, regardless of the tenant's
-domain.
+The response groups returned data by role. Each role is shown as a
+``tenantAssignment``, and with all tenants on which the user has the role are
+included, regardless of the tenant's domain.
 
 .. list-table::
    :header-rows: 1
@@ -175,7 +177,8 @@ tenants on which that source granted the user the specified role.
 
 SourceType and SourceId
 ^^^^^^^^^^^^^^^^^^^^^^^
-A user can receive a given role through multiple methods.
+A user can receive a given role through multiple methods, as shown in the
+following table.
 
 .. list-table:: Source Type
    :header-rows: 1
@@ -192,14 +195,15 @@ A user can receive a given role through multiple methods.
        roles
 
 The ``sourceId`` identifies the id of the ``sourceType``. For example, the
-``sourceId`` for the source with a ``USER`` source type is the ID for the
+``sourceId`` for the source with a ``USER`` source type is the ID of the
 user to which the role was directly assigned, whereas the ``sourceId`` for a
-``USERGROUP`` type would be the ID for the user group.
+``USERGROUP`` type would be the ID of the user group.
 
 Assignment type
 ^^^^^^^^^^^^^^^
-Role assignments are classified in to three ways based on how the tenants for
-which those assignments apply are determined.
+Role assignments are classified based on how the tenants, for which those
+assignments apply, are determined. The classifications are shown in the
+following table:
 
 .. list-table:: Source type
    :header-rows: 1
@@ -222,7 +226,7 @@ Examples
 **Generic Example Response**
 
 This example is contrived to show the different ``sourceTypes`` in a single
-example, and is not meant to represent an real world example.
+example, and is not meant to represent a real-world example.
 
 JSON::
 
@@ -288,12 +292,12 @@ JSON::
 
 **Across Domains Assignment Example Response**
 
-Assume:
+This example depends on the following assumptions:
 
-- d1t1 and d1t2 are tenants within the same domain (Domain 1).
-- d2t1 is a tenant in a different domain (Domain 2).
-- The user has the 'observer' role assigned on tenant d1t1, d1t2 in Domain 1
-  and on tenant d2t1 on Domain 2.
+- ``d1t1`` and ``d1t2`` are tenants within the same domain (Domain 1).
+- ``d2t1`` is a tenant in a different domain (Domain 2).
+- The user has the 'observer' role assigned on tenant ``d1t1``, ``d1t2`` in
+  Domain 1 and on tenant ``d2t1`` on Domain 2.
 
 JSON::
 
@@ -327,12 +331,12 @@ JSON::
 
 **RCN Role Example Response**
 
-Assume:
+This example depends on the following assumptions:
 
-- The user's RCN contains the domain Domain 1 with the d1t1 and d1t2 tenants.
-- The user's RCN contains the domain Domain 2 with the d2t1 tenants.
+- The user's RCN contains the domain Domain 1 with the ``d1t1`` and ``d1t2``
+  tenants.
+- The user's RCN contains the domain Domain 2 with the ``d2t1`` tenants.
 - The RCN role applies to all the mentioned tenants.
-
 
 JSON::
 
@@ -372,10 +376,10 @@ tenants. The user could also be assigned an RCN role that doesn't match any
 tenant within the user's RCN. The service returns the role, but shows that that
 source doesn't apply to any tenants.
 
-Assume:
+This example depends on the following assumptions:
 
-- The user's domain does not contain any tenants
-- The user has the identity:user-admin role
+- The user's domain does not contain any tenants.
+- The user has the ``identity:user-admin`` role.
 
 JSON::
 
