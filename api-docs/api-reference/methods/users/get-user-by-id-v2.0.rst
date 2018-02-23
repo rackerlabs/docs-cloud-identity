@@ -92,9 +92,65 @@ This operation does not accept a request body.
 Response
 --------
 
+This table shows the body parameters for the response:
 
-**Example: Get user by id HTTP response header: XML**
+.. list-table::
+  :widths: 40 20 40
+  :header-rows: 1
 
+  * - Name
+    - Type
+    - Description
+  * - **users**
+    - Object *(Required)*
+    - Returns the collection of users who match the specification in the List
+      user API request.
+  * - users.**user**
+    - Object *(Required)*
+    - A user object that provides user account information.
+  * - user.**RAX-AUTH:defaultRegion**
+    - String *(Optional)*
+    - The default region that the user is assigned to. Must be one of the
+      regions available in the service catalog.
+  * - user.**RAX-AUTH:domainId**
+    - String *(Optional)*
+    - The ID for the domain that the user account has been assigned to.
+  * - user.**RAX-AUTH:multiFactorEnabled**
+    - Boolean *(Optional)*
+    - If an account has been configured to use multi-factor authentication,
+      this field indicates if multi-factor authentication is currently
+      enabled or disabled.
+  * - user.**RAX-AUTH:multiFactorState**
+    - String *(Optional)*
+    - This extended attribute indicates if a multi-factor-enabled user
+      account is locked as a result of failed authentication attempts. If the
+      account has been locked at any point, the value is either ``LOCKED`` or
+      ``ACTIVE``. User administrators can use the Update multi-factor
+      authentication settings on account operation to restore access to a
+      locked account.
+  * - user.**RAX-AUTH:userMultiFactorEnforcementLevel**
+    - String *(Optional)*
+    - If present, this extended attribute specifies the multi-factor
+      authentication enforcement policy that applies to the specified account.
+
+      * ``REQUIRED`` The user must use multi-factor authentication to log in to
+        their Rackspace Cloud account.
+      * ``OPTIONAL.`` The user has the option to authenticate using
+        multi-factor authentication.
+      * ``DEFAULT.`` The user multi-factor authentication requirements are
+        determined by the domain level enforcement setting for multi-factor
+        authentication.
+  * - user.**RAX-AUTH:contactId**
+    - String *(Optional)*
+    - The core contact ID.
+  * - user.**RAX-AUTH:passwordExpiration**
+    - String *(Optional)*
+    - If present, this extended attribute specifies the time when the
+      user's current password will expire.
+
+
+Example: Get user by ID HTTP response header: XML
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -102,7 +158,8 @@ Response
    Content-Type: application/xml
 
 
-**Example: Get user by id: XML response**
+Example: Get user by ID: XML response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -116,19 +173,21 @@ Response
          xmlns:rax-ksqa="http://docs.rackspace.com/identity/api/ext/RAX-KSQA/v1.0"
          xmlns:ns7="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
          xmlns:os-ksadm="http://docs.openstack.org/identity/api/ext/OS-KSADM/v1.0"
+         rax-auth:contactId="1234"
          rax-auth:domainId="5830280"
          rax-auth:defaultRegion="DFW"
          rax-auth:multiFactorEnabled="true"
          rax-auth:multiFactorState="ACTIVE"
          rax-auth:userMultiFactorEnforcementLevel="OPTIONAL"
+         rax-auth:passwordExpiration="2018-02-09T13:39:53.685-06:00"
          id="123456"
          username="jqsmith"
          email="john.smith@example.org"
          enabled="true"/>
 
 
-**Example: Get user by id HTTP response header: json**
-
+Example: Get user by ID HTTP response header: JSON
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -136,14 +195,15 @@ Response
    Content-Type: application/json
 
 
-**Example: Get user by id response: json**
-
+Example: Get user by ID response: JSON
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
    {
      "user":
        {
+         "rax-auth:contactId":"1234"
          "rax-auth:domainId":"5830280"
          "id": "123456",
          "enabled": true,
@@ -153,5 +213,6 @@ Response
          "rax-auth:multiFactorEnabled":"true",
          "rax-auth:multiFactorState":"ACTIVE",
          "rax-auth:userMultiFactorEnforcementLevel":"OPTIONAL"
+         "rax-auth:passwordExpiration":"2018-02-09T13:39:53.685-06:00"
        }
    }

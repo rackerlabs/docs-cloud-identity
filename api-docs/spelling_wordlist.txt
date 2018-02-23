@@ -324,6 +324,7 @@ parsedoc
 passcode
 passcodeCredentials
 passwordCredentials
+passwordExpiration
 passwordPolicy
 passwordReset
 permalink
