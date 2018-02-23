@@ -117,7 +117,7 @@ This operation does not accept a request body.
 Response
 --------
 
-The response groups returned data by role. Each role is shown as a
+The response groups return data by role. Each role is shown as a
 ``tenantAssignment``, and with all tenants on which the user has the role are
 included, regardless of the tenant's domain.
 
