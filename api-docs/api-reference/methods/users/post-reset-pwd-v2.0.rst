@@ -5,7 +5,7 @@ Reset password
 
 .. code::
 
-    POST /v2.0/users/RAX-AUTH/reset-pwd
+    POST /v2.0/users/RAX-AUTH/pwd-reset
 
 Use the Reset Password operation to update user's password.
 
@@ -33,7 +33,7 @@ This table shows the body parameters for the request:
 
 .. code::
 
-   POST /v2.0/users/RAX-AUTH/reset-pwd HTTP/1.1
+   POST /v2.0/users/RAX-AUTH/pwd-reset HTTP/1.1
    Host: identity.api.rackspacecloud.com
    Content-Type: application/xml
    X-Auth-Token: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw
@@ -49,7 +49,7 @@ This table shows the body parameters for the request:
 
 .. code::
 
-   POST /v2.0/users/RAX-AUTH/reset-pwd HTTP/1.1
+   POST /v2.0/users/RAX-AUTH/pwd-reset HTTP/1.1
    Host: identity.api.rackspacecloud.com
    Content-Type: application/json
    X-Auth-Token: APU9ymNjSKJG21HVdiRdOg0rk2fqh7uQ1FafVDXo3SId6nMHjUkKSDacFwDLGCC9U_DKI6Lwzu-wMi3LIWT-bA24EdGYdycM3rKzAfVPiCCjigN315ZLJo5s2TmiGQTSW9b5H7euQjJ6KBTk5elT2l8HrPH-9rrBjw
