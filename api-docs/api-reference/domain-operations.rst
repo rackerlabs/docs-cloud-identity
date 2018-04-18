@@ -26,3 +26,4 @@ specified user account.
 .. include:: methods/domains/put-update-a-domain.rst
 .. include:: methods/domains/set-password-policy-on-domain-v2.0.rst
 .. include:: methods/domains/get-password-policy-on-domain-v2.0.rst
+.. include:: methods/domains/delete-password-policy-on-domain-v2.0.rst

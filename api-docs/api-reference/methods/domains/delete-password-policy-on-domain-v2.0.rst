@@ -1,19 +1,14 @@
-.. _get-password-policy-on-domain-v2.0:
+.. _delete-password-policy-on-domain-v2.0:
 
-Get domain password policy
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Delete domain password policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
-    GET /v2.0/RAX-AUTH/domains/{domainId}/password-policy
+    DELETE /v2.0/RAX-AUTH/domains/{domainId}/password-policy
 
-Get the domain's password policy. For more information on password policies,
-see :ref:`set-password-policy-on-domain-v2.0`.
-
-
-.. note::
-
-    Password policies can only be returned in JSON.
+Deletes the domain's password policy. For more information on password
+policies, see :ref:`set-password-policy-on-domain-v2.0`.
 
 The following table shows the possible response codes for this operation:
 
@@ -21,8 +16,8 @@ The following table shows the possible response codes for this operation:
     :header: Response Code, Name, Description
     :widths: 2, 2, 2
 
-    200, OK, "The request has been fulfilled. The domain's password
-    policy was returned."
+    204, No Content, "The request has been fulfilled. The domain's password
+    policy was deleted."
     400, Bad Request, "The request is missing one or more elements, or
     the values of some elements are invalid."
     401, Unauthorized, "You are not authorized to complete this operation.
@@ -58,17 +53,9 @@ The following table shows the URI parameters for the request:
 
     ``{domainId}``, String *(Required)*, A domain ID.
 
+This operation does not accept a request body.
 
 Response
 --------
 
-**Example:  GET Method response: JSON**
-
-.. code::
-
-    {
-        "passwordPolicy": {
-            "passwordDuration": "P90DT6H30M5S",
-            "passwordHistoryRestriction": "10"
-        }
-    }
+This operation does not return a response body.
