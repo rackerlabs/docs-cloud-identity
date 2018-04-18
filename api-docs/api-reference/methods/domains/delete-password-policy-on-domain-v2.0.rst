@@ -7,7 +7,7 @@ Delete domain password policy
 
     DELETE /v2.0/RAX-AUTH/domains/{domainId}/password-policy
 
-Deletes the domain's password policy. For more information on password
+This method deletes the domain's password policy. For more information on password
 policies, see :ref:`set-password-policy-on-domain-v2.0`.
 
 The following table shows the possible response codes for this operation:
