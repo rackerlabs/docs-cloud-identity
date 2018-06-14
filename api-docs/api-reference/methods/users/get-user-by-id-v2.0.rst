@@ -125,7 +125,7 @@ This table shows the body parameters for the response:
     - This extended attribute indicates if a multi-factor-enabled user
       account is locked as a result of failed authentication attempts. If the
       account has been locked at any point, the value is either ``LOCKED`` or
-      ``ACTIVE``. User administrators can use the Update multi-factor
+      ``ACTIVE``. User administrators can use the update multi-factor
       authentication settings on account operation to restore access to a
       locked account.
   * - user.**RAX-AUTH:userMultiFactorEnforcementLevel**

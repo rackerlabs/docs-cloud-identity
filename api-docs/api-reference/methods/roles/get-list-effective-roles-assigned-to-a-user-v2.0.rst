@@ -8,33 +8,34 @@ List effective roles assigned to a user
     GET /v2.0/users/{userId}/RAX-AUTH/roles
 
 This operation returns the list of all roles that are assigned to the user with
-the specified user Id. If you don't know the user ID, use the
+the specified ``userId``. If you don't know the user ID, use the
 :ref:`List users <get-list-users-v2.0>` operation with query parameter ``name``
 to find it.
 
 For each role listed, the response includes identifying information such as the
-role ID, name, and the tenants to which the role is assigned, and the sources
+role ID, name, the tenants to which the role is assigned, and the sources
 that determined how the user received the role on the specified tenants.
 
 This calls differs from the similar
 :ref:`List global roles assigned to a user
-<get-list-global-roles-assigned-to-a-user-v2.0>` call by:
+<get-list-global-roles-assigned-to-a-user-v2.0>` call because it includes the
+following things:
 
-- Including all means by which a user can be granted a role such as the
+- All means by which a user can be granted a role such as the
   following:
 
   - Through the user itself
   - Through membership in a user group
   - Through the system
 
-- Including all forms of role assignment such as the following:
+- All forms of role assignment such as the following items:
 
   - On domain
   - On individual tenants
   - On RCN
 
 The :ref:`List global roles assigned to a user
-<get-list-global-roles-assigned-to-a-user-v2.0>` accounts only for roles
+<get-list-global-roles-assigned-to-a-user-v2.0>` call accounts only for roles
 assigned through the user on the domain.
 
 .. note::
@@ -46,7 +47,7 @@ assigned through the user on the domain.
      ``identity:default`` role.
 
    - The service returns roles for provisioned users only. Returning roles for
-     federated users is not yet supported.
+     federated users are not yet supported.
 
 .. csv-table::
    :header: Response code, Name, Description
@@ -81,7 +82,7 @@ This table shows the URI parameters for the request:
 .. csv-table::
    :header: Name, Type, Description
 
-   {userId}, String, The id of the user for which roles should be returned.
+   {userId}, String, The ID of the user for which roles should be returned.
 
 This table shows the query parameters for the request:
 
@@ -118,7 +119,7 @@ Response
 --------
 
 The response groups return data by role. Each role is shown as a
-``tenantAssignment``, and with all tenants on which the user has the role are
+``tenantAssignment`` and with all tenants on which the user has the role are
 included, regardless of the tenant's domain.
 
 .. list-table::
@@ -143,27 +144,31 @@ included, regardless of the tenant's domain.
    * - RAX-AUTH:roleAssignments.tenantAssignments.\ **forTenants**
      - String *(Required)*
      - An array of tenant IDs to which the role is assigned. This is the union
-       of all tenants across all sources for the role
+       of all tenants across all sources for the role.
    * - RAX-AUTH:roleAssignments.tenantAssignments.\ **sources**
      - An array of sources *(Required)*
      - An array of sources which grant the user the role on the specified
-       tenant(s)
+       tenant(s).
    * - RAX-AUTH:roleAssignments.tenantAssignments.sources.\ **sourceType**
      - String *(Required)*
-     - The source of the role assignment. This can be
-        - USER
-        - USERGROUP
-        - SYSTEM
+     - The source of the role assignment. This can be one of the following
+       items:
+
+       - USER
+       - USERGROUP
+       - SYSTEM
    * - RAX-AUTH:roleAssignments.tenantAssignments.sources.\ **sourceId**
      - String *(Required)*
      - A unique identifier for the source. For users and groups this is the
-       respective id. For SYSTEM, this is the source system (e.g. IDENTITY)
+       respective id. For SYSTEM, this is the source system (e.g. IDENTITY).
    * - RAX-AUTH:roleAssignments.tenantAssignments.sources.\ **assignmentType**
      - String *(Required)*
-     - How tenants are determined for the source. This can be one of
-        - DOMAIN
-        - TENANT
-        - RCN
+     - How tenants are determined for the source. This can be one of the
+       following items:
+
+       - DOMAIN
+       - TENANT
+       - RCN
    * - RAX-AUTH:roleAssignments.tenantAssignments.sources.\ **forTenants**
      - Array of Strings *(Required)*
      - The list of tenants to which the source grants the user the role.
@@ -172,7 +177,7 @@ included, regardless of the tenant's domain.
 Sources
 -------
 The response includes one or more sources for each role that the user has
-assigned. Each source includes a source type, source id, assignment type, and
+assigned. Each source includes a source type, source ID, assignment type, and
 tenants on which that source granted the user the specified role.
 
 SourceType and SourceId
@@ -194,7 +199,7 @@ following table.
      - Identity System level functionality that automatically assigns certain
        roles
 
-The ``sourceId`` identifies the id of the ``sourceType``. For example, the
+The ``sourceId`` identifies the ID of the ``sourceType``. For example, the
 ``sourceId`` for the source with a ``USER`` source type is the ID of the
 user to which the role was directly assigned, whereas the ``sourceId`` for a
 ``USERGROUP`` type would be the ID of the user group.
@@ -226,7 +231,7 @@ Examples
 **Generic Example Response**
 
 This example is contrived to show the different ``sourceTypes`` in a single
-example, and is not meant to represent a real-world example.
+example and is not meant to represent a real-world example.
 
 JSON::
 
