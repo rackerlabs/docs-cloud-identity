@@ -22,7 +22,7 @@ Users can also be assigned to a tenant or region so that they inherit a set of
 access rights and privileges automatically, based on the tenant or region
 configuration.
 
-In the Rackspace Cloud Users are represented as accounts created for assigns a
+In the Rackspace Cloud, users are represented as accounts created for a
 user type and a default role automatically, based on the Identity service
 system configuration. The user type and role determine the resources and
 capabilities available to the user.
