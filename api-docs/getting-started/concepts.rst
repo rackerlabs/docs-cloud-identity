@@ -24,7 +24,7 @@ configuration.
 
 In the Rackspace Cloud, users are represented as accounts. The accounts
 are automatically created with a default user type and role, based on the
-Identity service system configuration. The user type and role determine 
+Identity Service system configuration. The user type and role determine 
 the resources and capabilities that are available to the user.
 
 For more information, see :ref:`Identity Service, admin, and user roles
