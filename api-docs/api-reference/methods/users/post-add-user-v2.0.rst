@@ -28,7 +28,7 @@ page in the Cloud Control panel.
 
    - Users with the User Admin role can manage sub-user accounts through the
      API or from the `Cloud Control panel
-     <https://mycloud.rackspace.com/>`_.
+     <https://login.rackspace.com/>`_.
      Use the Control panel to add the user's full name, contact information,
      and configure account security.
 
