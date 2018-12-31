@@ -8,7 +8,7 @@ Get user by id
     GET /v2.0/users/{userId}
 
 This operation returns the following detailed account information for a
-specific user,  by user id: email address, user name, user id, status, default
+specific user, by user id: email address, user name, user id, status, default
 region, and domain id.
 
 .. note::
