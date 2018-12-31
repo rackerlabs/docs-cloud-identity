@@ -19,7 +19,7 @@ The following table shows the possible response codes for this operation:
 
 .. csv-table::
    :header: Response code, Name, Description
-   :widths: auto
+   :widths: 15 25 60
 
    200, OK, The request has been fulfilled.
    401, Unauthorized, "You are not authorized to complete this operation.

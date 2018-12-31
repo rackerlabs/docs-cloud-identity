@@ -18,7 +18,7 @@ This table shows the possible response codes for this operation:
 
 .. csv-table::
    :header: Response Code, Name, Description
-   :widths: auto
+   :widths: 15 25 60
 
    200, OK, The request has been fulfilled.
    400, Bad Request, "The request is missing one or more elements, or
@@ -44,7 +44,7 @@ This table shows the header parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 25 25 50
 
    X-Auth-Token, String *(Required)*, A valid authentication token.
 
@@ -52,7 +52,7 @@ This table shows the URI parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 25 25 50
 
    {identityProviderId}, String *(Required)*, The Identity Provider's ID.
 
@@ -60,7 +60,7 @@ This table shows the body parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 25 25 50
 
     **EntityDescriptor**, Object *(Required)*, Describes a system entity such as an Identity Provider.
     EntityDescriptor.\ **entityID**, String *(Required)*, The issuer for IDP.
@@ -116,7 +116,7 @@ This table shows the header parameters for the response:
 
 .. csv-table::
     :header: Name, Type, Description
-    :widths: auto
+    :widths: 25 25 50
 
     Location, String *(Required)*, The location URI of the newly created IDP.
 

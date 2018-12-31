@@ -23,7 +23,7 @@ The following table shows the possible response codes for this operation:
 
 .. csv-table::
    :header: Response Code, Name, Description
-   :widths: 2, 2, 2
+   :widths: 15 25 60
 
    200, OK, The request completed successfully.
    400, Bad Request, "The request is missing one or more elements, or the values of some elements are invalid."

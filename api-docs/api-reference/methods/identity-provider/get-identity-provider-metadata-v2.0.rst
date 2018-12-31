@@ -13,7 +13,7 @@ This table shows the possible response codes for this operation:
 
 .. csv-table::
    :header: Response Code, Name, Description
-   :widths: auto
+   :widths: 15 25 60
 
    200, OK, The request has been fulfilled.
    401, Unauthorized, "You are not authorized to complete this operation.
@@ -37,7 +37,7 @@ This table shows the URI parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 25 25 50
 
    X-Auth-Token, String *(Required)*, A valid authentication token.
 

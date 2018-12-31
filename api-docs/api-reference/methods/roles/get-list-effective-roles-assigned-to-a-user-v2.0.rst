@@ -88,7 +88,7 @@ This table shows the query parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 25 25 50
 
    onTenantId, String *(Optional)*, "Filter roles that have been granted on
    the specified tenantId for the user."

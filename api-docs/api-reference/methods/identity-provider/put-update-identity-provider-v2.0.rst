@@ -20,7 +20,7 @@ This table shows the possible response codes for this operation:
 
 .. csv-table::
    :header: Response code, Name, Description
-   :widths: auto
+   :widths: 15 25 60
 
    200, OK, The request has been fulfilled.
    400, Bad Request, "The request is missing one or more elements, or
@@ -47,7 +47,7 @@ This table shows the header parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 25 25 50
 
    X-Auth-Token, String *(Required)*, A valid authentication token.
 
@@ -55,7 +55,7 @@ This table shows the URI parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 25 25 50
 
       {identityProviderId}, String *(Required)*, The Identity Provider's ID.
 
@@ -63,7 +63,7 @@ This table shows the body parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: 2, 2, 2
+   :widths: 25 25 50
 
     RAX-AUTH:identityProvider, Object, An ``identity-provider`` object that specifies the IDP information.
     RAX-AUTH:identityProvider.\ **name**, String *(Optional)*, "The name of the provider. Must consist of only alphanumeric, '-', '.', and be less than 255 characters."
