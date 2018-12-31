@@ -23,7 +23,7 @@ endpoint.
 Best practices
 ~~~~~~~~~~~~~~
 
--  When you authenticate to the Rackspace Identity service be sure to
+-  When you authenticate to the Rackspace Identity service ensure that you
    cache the token value that is returned.
 
    The Rackspace Identity service validates the authentication in every

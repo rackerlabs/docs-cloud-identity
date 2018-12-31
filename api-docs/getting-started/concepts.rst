@@ -137,7 +137,7 @@ Identity service supports two types of roles:
   particular Rackspace Cloud service.
 
 A user with a specific role inherits the rights and privileges associated with
-the role. In Rackspace Identity service, the authentication token issued
+the role. In the Rackspace Identity service, the authentication token issued
 to a user includes the list of roles associated with the user. The service
 configuration determines how user roles are interpreted. For example, a role
 that grants access to certain resources or capabilities within one service can

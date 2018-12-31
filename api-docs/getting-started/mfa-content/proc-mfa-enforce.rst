@@ -120,7 +120,7 @@ their account.
 Update user-level enforcement policy for multi-factor authentication
 --------------------------------------------------------------------
 
-Rackspace Identity and user administrators can use customize the
+Rackspace Identity and user administrators can customize the
 multi-factor enforcement level for specific users by using the update
 multi-factor authentication settings operation.
 

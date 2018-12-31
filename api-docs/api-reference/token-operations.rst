@@ -4,7 +4,7 @@
 Authentication tokens
 =====================
 
-The Rackspace Identity service service provides
+The Rackspace Identity service provides
 authentication services for the Rackspace Cloud. To gain access, users
 and administrators can use the **POST tokens** operation to request an
 authentication token from the Identity service, or generate a new token

@@ -18,11 +18,11 @@ Rackspace Cloud products and services.
 -  Authentication generates a token in response to valid credentials
    submitted by a user, process, or client. Then, that token is used to
    confirm identity when requesting access to systems or resources
-   defined in the Rackspace Identity service service catalog.
+   defined in the Rackspace Identity service catalog.
 
 -  Authorization determines the resources and actions available to a
    user, client, or process based on access control capabilities that
-   can be defined and managed using the Rackspace Identity
+   can be defined and managed by using the Rackspace Identity
    service.
 
 This guide is intended to assist software developers who want to develop
