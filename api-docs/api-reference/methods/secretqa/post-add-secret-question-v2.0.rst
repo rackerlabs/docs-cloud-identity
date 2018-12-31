@@ -137,11 +137,11 @@ This table shows the body parameters for the request:
 Response
 --------
 
-This table shows the header parameters for the response:
+This example shows the response:
 
 **Example:  Create a secret question HTTP response header**
 
-.. code:
+.. code::
 
   POST /v2.0/users/266d3c8982534378bf88f64db2c916da/RAX-AUTH/secretqas HTTP/1.1
   Host: staging.identity-internal.api.rackspacecloud.com
