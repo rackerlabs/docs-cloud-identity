@@ -632,7 +632,7 @@ service region, tenant, and service access endpoints.
 |service.   | String | The type of service provided at the specified endpoint,, compute, object-store,          |
 |**type**   |        | or rax:loadbalancer for example. Service types categorize the services                   |
 |           |        | registered with OpenStack or custom types,registered with the Rackspace                  |
-|           |        | Cloud Identity service. For a list of service types,                                     |
+|           |        | Identity service. For a list of service types,                                           |
 |           |        | see :ref:`Service Types <service-types-in-catalog>`.                                     |
 +-----------+--------+------------------------------------------------------------------------------------------+
 

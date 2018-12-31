@@ -165,7 +165,7 @@ rst_epilog = """
 .. |apiservice| replace:: Rackspace Identity API
 .. |no changes| replace:: None for this release
 .. |contract version| replace:: 2.0
-.. |product name| replace:: Cloud Identity
+.. |product name| replace:: Rackspace Identity
 """
 
 # A list of ignored prefixes for module index sorting.
@@ -327,9 +327,9 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'docs-cloud-identity',
-     'Rackspace Cloud Identity API Guide', 'Rackspace',
-     'RackspaceCloudIdentityDeveloperDoc',
-     'Learn about using the REST API for the Rackspace Cloud Identity service',
+     'Rackspace Identity API Guide', 'Rackspace',
+     'RackspaceIdentityDeveloperDoc',
+     'Learn about using the REST API for the Rackspace Identity service',
      'Miscellaneous'),
 ]
 

@@ -1,10 +1,10 @@
 .. _api-reference:
 
 =============
-API Reference
+API reference
 =============
 
-Learn about the available Rackspace Cloud Identity API resources and methods
+Learn about the available Rackspace Identity API resources and methods
 and see request and response examples.
 
 Some of the Identity API operations require only the core authentication

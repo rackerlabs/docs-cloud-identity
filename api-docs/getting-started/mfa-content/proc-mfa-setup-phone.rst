@@ -26,7 +26,7 @@ Cloud Control panel.
     -  When multi-factor is enabled on an account, any existing tokens for
        that user are immediately revoked.
 
-    -  Multi-factor authentication requires Rackspace Cloud Identity
+    -  Multi-factor authentication requires Rackspace Identity
        service, version 2.0 or later. User accounts that have been
        configured for multi-factor authentication cannot authenticate using
        Identity API version 1.1 or earlier.
