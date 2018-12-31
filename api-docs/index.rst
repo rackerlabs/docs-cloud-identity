@@ -1,8 +1,8 @@
 .. _index:
 
-=====================================
-|product name| API |contract version|
-=====================================
+=========================================
+Rackspace Identity API |contract version|
+=========================================
 
 *Last updated:* |today|
 
