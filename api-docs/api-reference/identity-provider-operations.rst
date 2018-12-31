@@ -12,10 +12,11 @@ Services are provided to manage Identity Providers (IDPs) within Identity.
 Access to the CRUD Identity Provider Management services using metadata are
 controlled via the following roles.
 
-.. csv-table::
-   :header: Service, identity:user-admin, identity:user-manage, rcn:admin
-   :widths: auto
+.. list-table::
+   :widths: 25 25 25 25
+   :header-rows: 1 
 
+   Service, identity:user-admin, identity:user-manage, rcn:admin
    CreateIDPs, Yes, Yes, Yes
    UpdateIDPs, Yes, Yes, Yes
    GetIDPs, Yes, Yes, Yes
