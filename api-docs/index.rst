@@ -57,7 +57,6 @@ API.
 
 
 
-
     Rackspace Identity API 2.0 <https://developer.rackspace.com/docs/cloud-identity/v2/>
    getting-started/index
    general-api-info/index
