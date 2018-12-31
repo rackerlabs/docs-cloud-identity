@@ -7,7 +7,7 @@ Create an OTP device
 
     POST /v2.0/users/{userId}/RAX-AUTH/multi-factor/otp-devices
 
-adds a OTP (one-time password) device for multi-factor authentication
+Adds an OTP (one-time password) device for multi-factor authentication.
 
 You can add up to five OTP devices to a user account. After adding the device,
 use the :ref:`verify OTP device <post-verifies-an-otp-device-v2.0>`.

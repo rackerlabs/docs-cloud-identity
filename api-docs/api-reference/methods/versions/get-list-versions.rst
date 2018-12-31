@@ -7,7 +7,7 @@ List versions
 
     GET /
 
-This operation returns a list of the available Rackspace Cloud Identity API
+This operation returns a list of the available Rackspace Identity API
 versions.
 
 

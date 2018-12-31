@@ -24,8 +24,8 @@ configuration.
 
 In the Rackspace Cloud, users are represented as accounts. The accounts
 are automatically created with a default user type and role, based on the
-Identity Service system configuration. The user type and role determine 
-the resources and capabilities that are available to the user.
+Rackspace Identity service system configuration. The user type and role
+determine the resources and capabilities that are available to the user.
 
 For more information, see :ref:`Identity Service, admin, and user roles
 <auth-roles-svc-adm-usr>`.
@@ -92,7 +92,7 @@ expires by submitting a Revoke token API request. After a token expires or
 becomes invalid, the Identity service returns 404 errors until you
 authenticate again.
 
-The Rackspace Cloud Identity service issues authenticated encrypted tokens
+The Rackspace Identity service issues authenticated encrypted tokens
 (AE). AE tokens are non-persistent tokens that contain encrypted metadata that
 supplies all the necessary information to determine whether a token is valid.
 For more information, see the :how-to:`Authenticated Encrypted Tokens
@@ -137,7 +137,7 @@ Identity service supports two types of roles:
   particular Rackspace Cloud service.
 
 A user with a specific role inherits the rights and privileges associated with
-the role. In Rackspace Cloud Identity service, the authentication token issued
+the role. In the Rackspace Identity service, the authentication token issued
 to a user includes the list of roles associated with the user. The service
 configuration determines how user roles are interpreted. For example, a role
 that grants access to certain resources or capabilities within one service can
@@ -195,7 +195,7 @@ Domain
 ~~~~~~
 
 A domain establishes an administrative boundary for a customer and a space
-within the Rackspace Cloud Identity service.
+within the Rackspace Identity service.
 
 In the Identity service API, the domain resource provides a mechanism to
 expose administrative activities directly to system users. Specifically, an

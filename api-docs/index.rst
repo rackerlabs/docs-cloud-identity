@@ -1,16 +1,16 @@
 .. _index:
 
-===============================================
-Rackspace |product name| API |contract version|
-===============================================
+=========================================
+Rackspace Identity API |contract version|
+=========================================
 
 *Last updated:* |today|
 
-The Rackspace Cloud Identity API service enables developers to manage
+The Rackspace Identity API service enables developers to manage
 authentication and authorization services for Rackspace Cloud services
 through a simple Representational State Transfer (REST) web service interface.
 
-The Rackspace Cloud Identity service v2.0 is an implementation of
+The Rackspace Identity service v2.0 is an implementation of
 OpenStack Keystone Service v2.0 that provides common, token-based
 authentication and authorization services that allow seamless access to
 Rackspace Cloud products and services.
@@ -18,11 +18,11 @@ Rackspace Cloud products and services.
 -  Authentication generates a token in response to valid credentials
    submitted by a user, process, or client. Then, that token is used to
    confirm identity when requesting access to systems or resources
-   defined in the Cloud Identity service service catalog.
+   defined in the Rackspace Identity service catalog.
 
 -  Authorization determines the resources and actions available to a
    user, client, or process based on access control capabilities that
-   can be defined and managed using the Rackspace Cloud Identity
+   can be defined and managed by using the Rackspace Identity
    service.
 
 This guide is intended to assist software developers who want to develop
@@ -38,7 +38,7 @@ familiar with the following technologies:
    * JSON or XML serialization formats
 
 Use the following links to get user and
-reference information for using the Rackspace Cloud Identity service REST
+reference information for using the Rackspace Identity service REST
 API.
 
 - :ref:`Getting Started <getting-started-guide>`
@@ -55,7 +55,8 @@ API.
    :hidden:
    :maxdepth: 3
 
-   Cloud Identity API 2.0 <https://developer.rackspace.com/docs/cloud-identity/v2/>
+
+    Rackspace Identity API 2.0 <https://developer.rackspace.com/docs/cloud-identity/v2/>
    getting-started/index
    general-api-info/index
    api-reference/index

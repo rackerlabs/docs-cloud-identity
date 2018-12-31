@@ -23,10 +23,10 @@ endpoint.
 Best practices
 ~~~~~~~~~~~~~~
 
--  When you authenticate to the Rackspace Cloud Identity service be sure to
+-  When you authenticate to the Rackspace Identity service ensure that you
    cache the token value that is returned.
 
-   The Rackspace Cloud Identity service validates the authentication in every
+   The Rackspace Identity service validates the authentication in every
    API request before attempting to complete the operation. To optimize your
    API operations and reduce system load, store the
    authentication token in a secure cache or database so that applications
@@ -74,7 +74,7 @@ Visit the following links to learn more about the Identity service.
 
 ..  tip::
     You can find language binding examples that can be modified to work with
-    the Cloud Identity service in the `Rackspace Software Development
+    the Rackspace Identity service in the `Rackspace Software Development
     Kits`_.
 
 

@@ -11,7 +11,7 @@ Use the Forgot password operation to get a password reset token delivered to
 the email address associated with your account.
 
 You can use the forgot password operation to reset the password through the
-Cloud Identity API or Rackspace Cloud user interface.
+Rackspace Identity API or Rackspace Cloud user interface.
 
     - To reset the password by using the API, submit the forgot password
       request without the portal attribute. After you submit the request, the
@@ -96,7 +96,7 @@ This table shows the possible response codes for this operation:
 
 .. csv-table::
    :header: Response Code, Name, Description
-   :widths: 2, 2, 2
+   :widths: 15 25 60
 
    204, No Content, No Content
 

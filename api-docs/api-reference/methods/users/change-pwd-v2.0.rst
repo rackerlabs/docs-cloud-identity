@@ -21,7 +21,7 @@ This table shows the possible response codes for this operation:
 
 .. csv-table::
     :header: Response Code, Name, Description
-    :widths: 2, 2, 2
+    :widths: 15 25 60
 
     204, Updated, "The request has been fulfilled. The account's password
     was updated."

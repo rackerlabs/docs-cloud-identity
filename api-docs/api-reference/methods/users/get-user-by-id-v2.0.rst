@@ -8,7 +8,7 @@ Get user by id
     GET /v2.0/users/{userId}
 
 This operation returns the following detailed account information for a
-specific user,  by user id: email address, user name, user id, status, default
+specific user, by user id: email address, user name, user id, status, default
 region, and domain id.
 
 .. note::
@@ -105,22 +105,22 @@ This table shows the body parameters for the response:
     - Object *(Required)*
     - Returns the collection of users who match the specification in the List
       user API request.
-  * - users.**user**
+  * - users.\ **user**
     - Object *(Required)*
     - A user object that provides user account information.
-  * - user.**RAX-AUTH:defaultRegion**
+  * - user.\ **RAX-AUTH:defaultRegion**
     - String *(Optional)*
     - The default region that the user is assigned to. Must be one of the
       regions available in the service catalog.
-  * - user.**RAX-AUTH:domainId**
+  * - user.\ **RAX-AUTH:domainId**
     - String *(Optional)*
     - The ID for the domain that the user account has been assigned to.
-  * - user.**RAX-AUTH:multiFactorEnabled**
+  * - user.\ **RAX-AUTH:multiFactorEnabled**
     - Boolean *(Optional)*
     - If an account has been configured to use multi-factor authentication,
       this field indicates if multi-factor authentication is currently
       enabled or disabled.
-  * - user.**RAX-AUTH:multiFactorState**
+  * - user.\ **RAX-AUTH:multiFactorState**
     - String *(Optional)*
     - This extended attribute indicates if a multi-factor-enabled user
       account is locked as a result of failed authentication attempts. If the
@@ -128,7 +128,7 @@ This table shows the body parameters for the response:
       ``ACTIVE``. User administrators can use the update multi-factor
       authentication settings on account operation to restore access to a
       locked account.
-  * - user.**RAX-AUTH:userMultiFactorEnforcementLevel**
+  * - user.\ **RAX-AUTH:userMultiFactorEnforcementLevel**
     - String *(Optional)*
     - If present, this extended attribute specifies the multi-factor
       authentication enforcement policy that applies to the specified account.
@@ -140,10 +140,10 @@ This table shows the body parameters for the response:
       * ``DEFAULT.`` The user multi-factor authentication requirements are
         determined by the domain level enforcement setting for multi-factor
         authentication.
-  * - user.**RAX-AUTH:contactId**
+  * - user.\ **RAX-AUTH:contactId**
     - String *(Optional)*
     - The core contact ID.
-  * - user.**RAX-AUTH:passwordExpiration**
+  * - user.\ **RAX-AUTH:passwordExpiration**
     - String *(Optional)*
     - If present, this extended attribute specifies the time when the
       user's current password will expire.
