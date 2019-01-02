@@ -71,7 +71,6 @@ Identity service, credentials include these types of information:
 -  a multi-factor authentication passcode issued by the Rackspace Cloud
    Identity service
 
-
 .. _auth-token-concept:
 
 Authentication token
