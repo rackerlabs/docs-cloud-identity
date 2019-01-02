@@ -47,7 +47,7 @@ This table shows the possible response codes for this operation:
 |                          |                         |multi-factor             |
 |                          |                         |authentication service.  |
 |                          |                         |Contact the Identity     |
-|                          |                         |service service          |
+|                          |                         |service                  |
 |                          |                         |administrator for help.  |
 +--------------------------+-------------------------+-------------------------+
 

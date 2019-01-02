@@ -71,7 +71,6 @@ Identity service, credentials include these types of information:
 -  a multi-factor authentication passcode issued by the Rackspace Cloud
    Identity service
 
-
 .. _auth-token-concept:
 
 Authentication token
@@ -125,7 +124,7 @@ role without updating
 
 Roles can be assigned to users, groups, or tenants automatically based on
 organization security policy. An administrator can view, manage, and update
-role configuration and assignments as required. Only Identity service service
+role configuration and assignments as required. Only Identity service
 administrators can create new roles.
 
 Identity service supports two types of roles:
