@@ -162,10 +162,10 @@ extlinks = {
 
 rst_epilog = """
 .. |service| replace:: Identity
-.. |apiservice| replace:: Rackspace Identity API
+.. |apiservice| replace:: Identity API
 .. |no changes| replace:: None for this release
 .. |contract version| replace:: 2.0
-.. |product name| replace:: Rackspace Identity
+.. |product name| replace:: Identity
 """
 
 # A list of ignored prefixes for module index sorting.
@@ -283,7 +283,7 @@ html_add_permalinks = '#'
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'docs-cloud-identity.tex',
-     'Rackspace Identity API Guide', 'Rackspace', 'manual')
+     'Identity API Guide', 'Rackspace', 'manual')
 ]
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -312,7 +312,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 
 man_pages = [
-    (master_doc, 'Rackspace Identity API documentation',
+    (master_doc, 'Identity API documentation',
      'Rackspace developer documentation', ['Rackspace'], 1)
 ]
 
@@ -327,9 +327,9 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'docs-cloud-identity',
-     'Rackspace Identity API Guide', 'Rackspace',
-     'RackspaceIdentityDeveloperDoc',
-     'Learn about using the REST API for the Rackspace Identity service',
+     'Identity API Guide', 'Rackspace',
+     'IdentityDeveloperDoc',
+     'Learn about using the REST API for the Identity service',
      'Miscellaneous'),
 ]
 

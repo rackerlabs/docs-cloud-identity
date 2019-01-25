@@ -24,7 +24,7 @@ configuration.
 
 In the Rackspace Cloud, users are represented as accounts. The accounts
 are automatically created with a default user type and role, based on the
-Rackspace Identity service system configuration. The user type and role
+Identity service system configuration. The user type and role
 determine the resources and capabilities that are available to the user.
 
 For more information, see :ref:`Identity Service, admin, and user roles
@@ -91,7 +91,7 @@ expires by submitting a Revoke token API request. After a token expires or
 becomes invalid, the Identity service returns 404 errors until you
 authenticate again.
 
-The Rackspace Identity service issues authenticated encrypted tokens
+The Identity service issues authenticated encrypted tokens
 (AE). AE tokens are non-persistent tokens that contain encrypted metadata that
 supplies all the necessary information to determine whether a token is valid.
 For more information, see the :how-to:`Authenticated Encrypted Tokens
@@ -136,7 +136,7 @@ Identity service supports two types of roles:
   particular Rackspace Cloud service.
 
 A user with a specific role inherits the rights and privileges associated with
-the role. In the Rackspace Identity service, the authentication token issued
+the role. In the Identity service, the authentication token issued
 to a user includes the list of roles associated with the user. The service
 configuration determines how user roles are interpreted. For example, a role
 that grants access to certain resources or capabilities within one service can
@@ -194,7 +194,7 @@ Domain
 ~~~~~~
 
 A domain establishes an administrative boundary for a customer and a space
-within the Rackspace Identity service.
+within the Identity service.
 
 In the Identity service API, the domain resource provides a mechanism to
 expose administrative activities directly to system users. Specifically, an
@@ -228,7 +228,7 @@ endpoints required to complete processes and operations. Users must know the
 URL for a service endpoint in order to use the service. An API might offer
 several regional endpoints for a single API.
 
-The Rackspace Identity service provides one global endpoint:
+The Identity service provides one global endpoint:
 https://identity.api.rackspacecloud.com. To see supported API versions, browse
 to the endpoint URL. To use a specific version of the API, append the version
 number to the global endpoint: https://identity.api.rackspacecloud.com/v2.0/.

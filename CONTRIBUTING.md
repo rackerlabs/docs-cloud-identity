@@ -1,7 +1,7 @@
 # Contributor guidelines
 
 These guidelines provide the general process for maintaining source code that
-builds the Rackspace Identity developer documentation.
+builds the Identity developer documentation.
 
 - [Project description](#project-description)
 - [Updating and adding content](#updating-and-adding-content)

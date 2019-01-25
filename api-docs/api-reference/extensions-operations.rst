@@ -4,7 +4,7 @@
 API extensions
 ==============
 
-The Rackspace Identity service deploys API extensions to add user
+The Identity service deploys API extensions to add user
 and administrative features to the core OpenStack Keystone v2.0 API. You
 can use the following Extensions resource operations to query the API service
 endpoint for information about the extensions available for the specified
