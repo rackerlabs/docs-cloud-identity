@@ -1,8 +1,8 @@
-# Rackspace Identity API documentation
+# Identity API documentation
 
 [![build badge](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/badge?branch=master)](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/)
 
-This repository contains the source files that generate the following Rackspace Identity API documentation:
+This repository contains the source files that generate the following Identity API documentation:
 
 * [Quickstart Guide](https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-quickstart-guide)
 * [Developer Guide](https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-developer-guide)

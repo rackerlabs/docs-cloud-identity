@@ -8,8 +8,8 @@ List extensions
     GET //v2.0/extensions
 
 This operations lists the Identity API extensions that are available in the
-Rackspace Identity service. For more information, see the
-:ref:`Extensions <extensions-ovw>` section of the Rackspace Identity
+Identity service. For more information, see the
+:ref:`Extensions <extensions-ovw>` section of the Identity
 Developer Guide.
 
 Applications can programmatically determine which extensions are available by

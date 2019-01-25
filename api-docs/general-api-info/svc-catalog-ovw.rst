@@ -47,8 +47,8 @@ documentation`_.
 |                        | who request access to Rackspace Cloud service      |
 |                        | access to Rackspace Cloud services.                |
 |                        |                                                    |
-|                        | Rackspace Identity is the name of the Rackspace    |
-|                        | Cloud service of this type. The Rackspace service  |
+|                        | Identity is the name of the Rackspace              |
+|                        | service of this type. The service                  |
 |                        | is compatible with the                             |
 |                        | `OpenStack Identity (Keystone) version 2 service`_.|
 +------------------------+----------------------------------------------------+
