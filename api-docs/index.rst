@@ -7,13 +7,13 @@ Identity API |contract version|
 *Last updated:* |today|
 
 The Identity API service enables developers to manage
-authentication and authorization services for Rackspace Cloud services
+authentication and authorization services for Rackspace services
 through a simple Representational State Transfer (REST) web service interface.
 
 The Identity service v2.0 is an implementation of
 OpenStack Keystone Service v2.0 that provides common, token-based
 authentication and authorization services that allow seamless access to
-Rackspace Cloud products and services.
+Rackspace products and services.
 
 -  Authentication generates a token in response to valid credentials
    submitted by a user, process, or client. Then, that token is used to
