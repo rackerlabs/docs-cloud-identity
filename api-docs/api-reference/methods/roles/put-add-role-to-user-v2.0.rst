@@ -19,6 +19,19 @@ If an Identity service Administrator (``identity:service-admin``) assigns a role
 an account owner (``identity:user-admin``), the role is propagated to all account
 users (``identity:default``).
 
+.. note::
+
+  - Users with the ``identity:service-admin`` role can add a role to a user for
+    users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can add a role to a user for users
+    with the ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:user-admin`` or ``identity:user-manage``
+    role can add a role to a user for users within their domain and with the
+    ``identity:default`` role.
+
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+

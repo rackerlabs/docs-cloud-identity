@@ -16,6 +16,22 @@ To delete a user, specify the user ID in the request. If you know the user name
 but not id,  use the :ref:`List users <get-list-users-v2.0>` operation to look
 up account information by name.
 
+.. note::
+
+  - Users can always use this service to delete themselves with the exception
+    of ``identity:user-admin`` users.
+
+  - Users with the ``identity:service-admin`` role can delete users with the
+    ``identity:admin`` role, users with the ``identity:user-admin`` role, and
+    sub-users.
+
+  - Users with the ``identity:admin`` role can delete users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:user-admin`` and ``identity:user-manage`` role
+    can delete users within their domain and with the ``identity:default``
+    role.
+
 .. warning::
 
    Don’t delete the wrong user! Before submitting the Delete request, use the

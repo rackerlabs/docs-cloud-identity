@@ -11,13 +11,17 @@ This operation returns a list of users with detailed account information about
 each  user including email, name, user ID, account configuration and status
 information.
 
-- If this request is issued by a user holding the Identity admin role
-  ( ``identity:user-admin`` ), it returns a list of all users for the tenant.
+- If this request is issued by a user holding the Identity user admin role
+  ( ``identity:user-admin`` ), it returns a list of all users for the domain.
   To find a single user, include the ``name`` in the request.
 
+- If this request is issued by a user holding the Identity user manage role
+  (``identity:user-manage``), it returns a list of all users with the Identity
+  user role (``identity:default``) within their domain.
+
 - If this request is issued by a user holding the Identity user role
-  (``identity:default``), the operation returns only information about the
-  user account.
+  (``identity:default``), the operation returns only information about the user
+  account.
 
 .. note::
 

@@ -11,6 +11,22 @@ Use this operation to list API key credentials for a specified user, include
 the user ID in the request. If you don't know the ID, use the
 :ref:`List users <get-list-users-v2.0>` operation to find it.
 
+.. note::
+
+  - Users can always use this service to retrieve API key credentials for
+    themselves.
+
+  - Users with the ``identity:service-admin`` role can retrieve API key
+    credentials for users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can retrieve API key credentials for
+    users with the ``identity:user-admin`` role and sub-users.
+
+  - Users with the ``identity:user-admin`` or ``identity:user-manage``
+    role can retrieve API key credentials for users within their domain and
+    with the ``identity:default`` role.
+
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+

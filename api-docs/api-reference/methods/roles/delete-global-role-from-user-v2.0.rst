@@ -19,6 +19,19 @@ revoking  access at will. Some roles like identity:rack_connect and
 identity:rax_managed  cannot be managed by customers to prevent them from
 revoking privileges unintentionally.
 
+.. note::
+
+  - Users with the ``identity:service-admin`` role can delete a global role
+    from a user for users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can delete a global role from a user
+    for users with the ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:user-admin`` or ``identity:user-manage`` role can
+    delete a global role from sub-users within their domain that have the
+    ``identity:default`` role.
+
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+

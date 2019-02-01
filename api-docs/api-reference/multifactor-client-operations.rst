@@ -15,9 +15,21 @@ authentication <multifactor-authenication-ovw>`.
 
 ..  note::
 
-    The functionality described in this section is provided by the
-    :ref:`RAX-AUTH extension <extensions-ovw>`.
+  - Users can always use the MFA services on themselves.
 
+  - Users with the ``identity:service-admin`` role can preform MFA operations
+    for users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can preform MFA operations for users
+    with the ``identity:user-admin`` role and sub-users.
+
+  - Users with the ``identity:user-admin`` or ``identity:user-manage`` role can
+    preform MFA operations for users within their domain and with the
+    ``identity:default`` role.
+
+The functionality described in this section is provided by the
+    :ref:`RAX-AUTH extension <extensions-ovw>`.
 
 .. include:: methods/multifactor-auth/post-add-a-mobile-phone-v2.0.rst
 .. include:: methods/multifactor-auth/post-sends-a-verification-code-to-a-phone-v2.0.rst
