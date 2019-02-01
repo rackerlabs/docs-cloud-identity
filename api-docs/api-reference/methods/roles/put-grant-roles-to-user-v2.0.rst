@@ -17,7 +17,7 @@ being modified remain unchanged.
     ``identity:user-admin`` role, and sub-users.
 
   - Users with the ``identity:admin`` role can grant roles to a user for users
-    with the ``identity:user-admin`` role, and sub-users.
+    with the ``identity:user-admin`` role and sub-users.
 
   - Users with the ``identity:user-admin`` or ``identity:user-manage``
     role can grant roles to a user for users within their domain and with the

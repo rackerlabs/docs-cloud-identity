@@ -28,7 +28,7 @@ Identity user administrators can  use the :ref:`Revoke Token
     ``identity:user-admin`` role, and sub-users.
 
   - Users with the ``identity:admin`` role can reset API key credentials for
-    users with the ``identity:user-admin`` role, and sub-users.
+    users with the ``identity:user-admin`` role and sub-users.
 
   - Users with the ``identity:user-admin`` and ``identity:user-manage`` role
     can reset API key credentials for users within their domain and with the

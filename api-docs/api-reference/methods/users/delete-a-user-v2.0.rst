@@ -26,7 +26,7 @@ up account information by name.
     sub-users.
 
   - Users with the ``identity:admin`` role can delete users with the
-    ``identity:user-admin`` role, and sub-users.
+    ``identity:user-admin`` role and sub-users.
 
   - Users with the ``identity:user-admin`` and ``identity:user-manage`` role
     can delete users within their domain and with the ``identity:default``

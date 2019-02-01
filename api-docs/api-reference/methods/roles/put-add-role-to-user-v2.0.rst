@@ -26,7 +26,7 @@ users (``identity:default``).
     ``identity:user-admin`` role, and sub-users.
 
   - Users with the ``identity:admin`` role can add a role to a user for users
-    with the ``identity:user-admin`` role, and sub-users.
+    with the ``identity:user-admin`` role and sub-users.
 
   - Users with the ``identity:user-admin`` or ``identity:user-manage``
     role can add a role to a user for users within their domain and with the

@@ -26,7 +26,7 @@ revoking privileges unintentionally.
     ``identity:user-admin`` role, and sub-users.
 
   - Users with the ``identity:admin`` role can delete a global role from a user
-    for users with the ``identity:user-admin`` role, and sub-users.
+    for users with the ``identity:user-admin`` role and sub-users.
 
   - Users with the ``identity:user-admin`` or ``identity:user-manage`` role can
     delete a global role from sub-users within their domain that have the
