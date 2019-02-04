@@ -10,6 +10,21 @@ Get accessible domains for user
 Use the get accessible domains for user operation to retrieve the list of
 domains a user has access to.
 
+..  note::
+
+  - Users can always list their own accessible domains.
+
+  - Users with the ``identity:service-admin`` role can list accessible domains
+    for users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can list accessible domains for
+    users with the ``identity:user-admin`` role and sub-users.
+
+  - Users with the ``identity:user-admin`` or ``identity:user-manage`` role can
+    list accessible domains for users within their domain and with the
+    ``identity:default`` role.
+
 Request
 -------
 

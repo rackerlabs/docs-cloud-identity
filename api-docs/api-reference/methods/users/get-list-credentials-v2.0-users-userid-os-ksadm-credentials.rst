@@ -9,6 +9,21 @@ List credentials
 
 List available credentials for the specified user.
 
+.. note::
+
+  - Users can always use this service to list credentials for themselves.
+
+  - Users with the ``identity:service-admin`` role can list credentials for
+    users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can list credentials for users with
+    the ``identity:user-admin`` role and sub-users.
+
+  - Users with the ``identity:user-admin`` or ``identity:user-manage``
+    role can list credentials for users within their domain and with the
+    ``identity:default`` role.
+
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+

@@ -15,6 +15,22 @@ know the user name but not the ID, use the
 :ref:`list users <get-list-users-v2.0>` operation to obtain complete
 identifying information about the user.
 
+.. note::
+
+  - Users can always use this service to delete the API key credentials for
+    themselves with the exception of ``identity:user-admin`` users.
+
+  - Users with the ``identity:service-admin`` role can delete API key
+    credentials for users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can delete API key credentials for
+    users with the ``identity:user-admin`` role and sub-users.
+
+  - Users with the ``identity:user-manage`` role can delete API key
+    credentials for users within their domain and with the ``identity:default``
+    role.
+
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
