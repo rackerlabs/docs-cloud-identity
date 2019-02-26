@@ -95,8 +95,7 @@ The Identity service issues authenticated encrypted tokens
 (AE). AE tokens are non-persistent tokens that contain encrypted metadata that
 supplies all the necessary information to determine whether a token is valid.
 For more information, see the :how-to:`Authenticated Encrypted Tokens
-<introduction-to-encrypted-authenticated-tokens>` article in the Rackspace
-Knowledge Center.
+<introduction-to-encrypted-authenticated-tokens>` article.
 
 .. _authorization-concept:
 
