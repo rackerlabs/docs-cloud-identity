@@ -8,8 +8,8 @@ We welcome feedback, comments, and bug reports. Email
 feedback.
 
 The `Rackspace Cloud website`_ offers information about Rackspace Cloud
-products, links to official Rackspace support channels, including knowledge
-base articles, forums, phone, chat, and email.  You can also follow Rackspace
+products, links to official Rackspace support channels, including How-To
+articles, forums, phone, chat, and email.  You can also follow Rackspace
 `on Twitter`_ to get product updates and announcements.
 
 -  To get started using the Identity API, see
@@ -21,8 +21,8 @@ base articles, forums, phone, chat, and email.  You can also follow Rackspace
 -  Read the :rax-devdocs:`Rackspace API Documentation <>`
    to learn about APIs for other Rackspace services.
 
--  Find information about Rackspace SDKs and developer-focused articles
-   and information on the `Rackspace Developer site`_.
+-  Find developer-focused articles and information on the
+   `Rackspace Developer site`_.
 
 -  Review the `OpenStack Keystone documentation`_ to
    learn about the reference architecture for the Rackspace Cloud
