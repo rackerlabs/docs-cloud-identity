@@ -56,7 +56,7 @@ Rackspace that the Identity service uses to make access control
 decisions when a user or service submits an API request to the Identity
 API.
 
-In the Rackspace Cloud, users are represented as accounts created for
+In the Rackspace Cloud, users are represented as accounts created for specific individuals
 associated with the account. When a user is created, the Identity
 service automatically assigns a default Identity role to the account,
 based on the Identity service system configuration. The Identity role
