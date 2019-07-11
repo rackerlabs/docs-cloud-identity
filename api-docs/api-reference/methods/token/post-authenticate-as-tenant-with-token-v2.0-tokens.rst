@@ -104,50 +104,50 @@ This table shows the body parameters for the request:
        }
    }
 
-
-
-
-
 Response
 --------
 
 
 This table shows the body parameters for the response:
 
-+-----------------------+-----------------------+------------------------------+
-|Name                   |Type                   |Description                   |
-+=======================+=======================+==============================+
-|access                 |String                 |An ``access`` object that     |
-|                       |                       |returns token, user, and      |
-|                       |                       |service information upon      |
-|                       |                       |successful authentication.    |
-+-----------------------+-----------------------+------------------------------+
-|token                  |String                 |The                           |
-|                       |                       |:ref:`token object            |
-|                       |                       |<auth-resp-token-resource>`   |
-|                       |                       |supplies a scoped             |
-|                       |                       |authentication token that can |
-|                       |                       |be used to access Rackspace   |
-|                       |                       |Cloud services for the        |
-|                       |                       |specified tenant.             |
-+-----------------------+-----------------------+------------------------------+
-|user                   |String                 |A :ref:`user object           |
-|                       |                       |<auth-resp-user-resource>`    |
-|                       |                       |that returns the following    |
-|                       |                       |information about the user,   |
-|                       |                       |if available for the account: |
-|                       |                       |id, name, assigned roles,     |
-|                       |                       |default region, and domain.   |
-+-----------------------+-----------------------+------------------------------+
-|serviceCatalog         |String                 |The :ref:`service catalog     |
-|                       |                       |<svccat-resource>`            |
-|                       |                       |provides information about    |
-|                       |                       |each service available to the |
-|                       |                       |authenticated user along with |
-|                       |                       |the service endpoints for API |
-|                       |                       |requests.                     |
-+-----------------------+-----------------------+------------------------------+
+.. list-table::
+  :widths: 30 20 50
+  :header-rows: 1
 
+  * - Name
+    - Type
+    - Description
+  * - access
+    - String *(Required)*
+    - An ``access`` object that returns token, user, and service information
+      upon successful authentication.
+  * - token
+    - String *(Required)*
+    - The token object supplies a scoped authentication token that can be used
+      to access Rackspace services for the specified tenant.
+  * - user
+    - String *(Required)*
+    - A user object that returns the following information about the user, if
+      available for the account: id, name, assigned roles, default region, and
+      domain.
+  * - serviceCatalog
+    - String *(Required)*
+    - The service catalog provides information about each service available to
+      the authenticated user along with the service endpoints for API requests.
+  * - RAX-AUTH:phonePin
+    - String *(Required)*
+    - A six digit pin which allows a user to confirm their identity to a support
+      racker when they call Rackspace to get help with their account(s).
+  * - RAX-AUTH:phonePinState
+    - String *(Required)*
+    - The phone pin state.
+
+      * ``INACTIVE`` The user does not have a phone pin.
+      * ``LOCKED`` The user has a phone pin, but the pin has been locked due to
+        excessive failed verification attempts. The user must unlock the pin
+        before pin verifications can occur.
+      * ``ACTIVE`` The user has a phone pin against which verifications can be
+        performed.
 
 **Example: Authenticate as tenant with token response XML**
 
@@ -798,6 +798,8 @@ This table shows the body parameters for the response:
                "name": "yourUserName",
                "RAX-AUTH:defaultRegion": "DFW",
                "RAX-AUTH:domainId": "123456"
+               "RAX-AUTH:phonePin": "914737",
+               "RAX-AUTH:phonePinState": "ACTIVE"
            }
        }
    }

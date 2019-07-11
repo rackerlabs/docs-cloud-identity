@@ -22,6 +22,9 @@ region, and domain id.
    (``identity:default``), the response only includes the user account
    information for the user who submitted the request.
 
+   The user's phone pin is only returned if the caller is retrieving their
+   own user account.
+
 This table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
@@ -115,6 +118,19 @@ This table shows the body parameters for the response:
   * - user.\ **RAX-AUTH:domainId**
     - String *(Optional)*
     - The ID for the domain that the user account has been assigned to.
+  * - user.**RAX-AUTH:phonePin**
+    - String *(Optional)*
+    - A user's phone pin.
+  * - user.**RAX-AUTH:phonePinState**
+    - String *(Required)*
+    - The phone pin state.
+
+      * ``INACTIVE`` The user does not have a phone pin.
+      * ``LOCKED`` The user has a phone pin, but the pin has been locked due to
+        excessive failed verification attempts. The user must unlock the pin
+        before pin verifications can occur.
+      * ``ACTIVE`` The user has a phone pin against which verifications can be
+        performed.
   * - user.\ **RAX-AUTH:multiFactorEnabled**
     - Boolean *(Optional)*
     - If an account has been configured to use multi-factor authentication,
@@ -210,6 +226,8 @@ Example: Get user by ID response: JSON
          "username": "jqsmith",
          "email": "john.smith@example.org",
          "rax-auth:defaultRegion":"DFW",
+         "rax-auth:phonePin":"914737",
+         "rax-auth:phonePinState": "ACTIVE",
          "rax-auth:multiFactorEnabled":"true",
          "rax-auth:multiFactorState":"ACTIVE",
          "rax-auth:userMultiFactorEnforcementLevel":"OPTIONAL"

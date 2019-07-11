@@ -8,8 +8,8 @@ List users
     GET /v2.0/users
 
 This operation returns a list of users with detailed account information about
-each  user including email, name, user ID, account configuration and status
-information.
+each user including email, name, user ID, phone pin state, account
+configuration, and status information.
 
 - If this request is issued by a user holding the Identity admin role
   ( ``identity:user-admin`` ), it returns a list of all users for the tenant.
@@ -143,6 +143,16 @@ This table shows the body parameters for the response:
   * - users.\ **user**
     - Object *(Required)*
     - A user object that provides user account information.
+  * - user.**RAX-AUTH:phonePinState**
+    - String *(Required)*
+    - The phone pin state.
+
+      * ``INACTIVE`` The user does not have a phone pin.
+      * ``LOCKED`` The user has a phone pin, but the pin has been locked due to
+        excessive failed verification attempts. The user must unlock the pin
+        before pin verifications can occur.
+      * ``ACTIVE`` The user has a phone pin against which verifications can be
+        performed.
   * - user.\ **RAX-AUTH:defaultRegion**
     - String *(Optional)*
     - The default region that the user is assigned to. Must be one of the
@@ -279,6 +289,7 @@ Example: List users: JSON response
          "username": "jqsmith",
          "email": "john.smith@example.org",
          "rax-auth:defaultRegion":"DFW",
+         "rax-auth:phonePinState": "ACTIVE",
          "rax-auth:multiFactorEnabled":"true",
          "rax-auth:multiFactorState":"ACTIVE",
          "rax-auth:userMultiFactorEnforcementLevel":"OPTIONAL"
@@ -307,6 +318,7 @@ Example: Get user by username: JSON response
             "RAX-AUTH:domainId": "4185",
             "RAX-AUTH:multiFactorEnabled": false,
             "RAX-AUTH:passwordExpiration": "2018-02-09T13:39:53.685-06:00",
+            "rax-auth:phonePinState": "ACTIVE",
             "created": "2018-02-08T13:37:06.527-06:00",
             "email": "user459@rackspace.com",
             "enabled": true,
