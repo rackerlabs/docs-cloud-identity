@@ -24,6 +24,10 @@ include the other  body parameters like ``id``, ``enabled``, or
        (``identity:default``) or the admin role (``identity:user-admin``) for
        the same tenant.
 
+    - Users with the ``identity:user-admin`` or ``identity:user-manage``
+      role can update user information for users within their domain and with
+      the ``identity:default`` role.
+
     -  Administrators can change the default region for another user, but the
        new value must be one of the regions listed for a Cloud Compute
        endpoint in the service catalog.
@@ -32,135 +36,96 @@ include the other  body parameters like ``id``, ``enabled``, or
        be one of the regions listed for a Cloud Compute endpoint in the
        service catalog.
 
+    - Only users with the ``identity:service-admin`` or ``identity:admin``
+      role are allowed to update a user's ``RAX-AUTH:contactId``.
+
+    - Only the ``RAX-AUTH:contactId`` attribute can be updated for a federated
+      user.
+
+    - The ``RAX-AUTH:phonePin`` is only returned if the caller is updating
+      their own user account and a phone pin exists on the account.
+
 
 This table shows the possible response codes for this operation:
 
-+--------------------------+-------------------------+-------------------------+
-|Response Code             |Name                     |Description              |
-+==========================+=========================+=========================+
-|200                       |OK                       |Success. The tenant is   |
-|                          |                         |authenticated.           |
-+--------------------------+-------------------------+-------------------------+
-|400                       |Bad Request              |The request is missing   |
-|                          |                         |one or more elements, or |
-|                          |                         |the values of some       |
-|                          |                         |elements are invalid.    |
-+--------------------------+-------------------------+-------------------------+
-|401                       |Unauthorized             |You are not authorized   |
-|                          |                         |to complete this         |
-|                          |                         |operation. This error    |
-|                          |                         |can occur if the request |
-|                          |                         |is submitted with an     |
-|                          |                         |invalid authentication   |
-|                          |                         |token.                   |
-+--------------------------+-------------------------+-------------------------+
-|403                       |Forbidden                |The request was valid,   |
-|                          |                         |but the server is        |
-|                          |                         |refusing to respond      |
-|                          |                         |because you do not have  |
-|                          |                         |permission to access the |
-|                          |                         |requested resource.      |
-|                          |                         |Submit a request to your |
-|                          |                         |account administrator to |
-|                          |                         |determine how to gain    |
-|                          |                         |access.                  |
-+--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |The requested resource   |
-|                          |                         |was not found.           |
-+--------------------------+-------------------------+-------------------------+
-|405                       |Invalid Method           |The method specified in  |
-|                          |                         |the request is not valid |
-|                          |                         |for the resource         |
-|                          |                         |identified in the        |
-|                          |                         |request URI.             |
-+--------------------------+-------------------------+-------------------------+
-|413                       |Over Limit               |The number of items      |
-|                          |                         |returned is above the    |
-|                          |                         |allowed limit.           |
-+--------------------------+-------------------------+-------------------------+
-|415                       |Bad Media Type           |Bad media type. This may |
-|                          |                         |result if the wrong      |
-|                          |                         |media type is used in    |
-|                          |                         |the API request. Check   |
-|                          |                         |the content-type and     |
-|                          |                         |accept headers included  |
-|                          |                         |in the request.          |
-+--------------------------+-------------------------+-------------------------+
-|503                       |Service Fault            |Service is not available.|
-+--------------------------+-------------------------+-------------------------+
+This table shows the possible response codes for this operation:
 
+.. csv-table::
+:header: Response code, Name, Description
+   :widths: auto
+
+       200, OK, The request has been fulfilled. The user has been updated.
+       400, Bad Request, "The request is missing one or more elements, or
+       the values of some elements are invalid."
+       401, Unauthorized, "You are not authorized to complete this operation.
+       This error can occur if the request is submitted with an invalid
+       authentication token."
+       403, Forbidden, "The request was valid, but the server is refusing to
+       respond because you do not have permission to access the requested
+       resource. Submit a request to your account administrator to
+       determine how to gain access."
+       404, Not Found, The requested resource was not found.
+       405, Invalid Method, "The method specified in the request is not valid for
+       the resource identified in the request URI."
+       406, Not Acceptable, The server cannot send data in a format requested.
+       413, Over Limit, The number of items returned is above the allowed limit.
+       503, Service Fault, Service is not available.
 
 Request
 -------
 
-This table shows the header and URI parameters for the request:
+This table shows the header parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |Header                   |A valid admin            |
-|                          |String *(Required)*      |authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-|{userId}                  |URI String               |A user ID assigned by    |
-|                          |String *(Required)*      |system when user is      |
-|                          |                         |added.                   |
-+--------------------------+-------------------------+-------------------------+
+.. csv-table::
+   :header: Name, Type, Description
+   :widths: auto
 
+   X-Auth-Token, String *(Required)*, A valid authentication token.
+   {userId}, String *(Required)*, "A user ID assigned by system when a user is
+   added."
+
+This table shows the URI parameters for the request:
+
+.. csv-table::
+   :header: Name, Type, Description
+   :widths: auto
+
+   {userId}, String *(Required)*, "A user ID assigned by system when a user is
+   created"
 
 This table shows the body parameters for the request:
 
-+--------------------------+-------------------------+-----------------------------+
-|Name                      |Type                     |Description                  |
-+==========================+=========================+=============================+
-|name                      |String *(Required)*      |The user name. The value     |
-|                          |                         |must begin with an alpha     |
-|                          |                         |character.                   |
-+--------------------------+-------------------------+-----------------------------+
-|email                     |String *(Optional)*      |The user email.              |
-+--------------------------+-------------------------+-----------------------------+
-|enabled                   |Boolean *(Optional)*     |Indicates whether the        |
-|                          |                         |user is enabled (true)       |
-|                          |                         |or disabled (false).         |
-|                          |                         |Users cannot update          |
-|                          |                         |the``enabled`` status on     |
-|                          |                         |their own account.           |
-+--------------------------+-------------------------+-----------------------------+
-|RAX-AUTH:defaultRegion    |String *(Optional)*      |The default region that      |
-|                          |                         |the user is assigned to.     |
-|                          |                         |Must be one of the           |
-|                          |                         |regions available in the     |
-|                          |                         |service catalog.             |
-+--------------------------+-------------------------+-----------------------------+
-|OS-KSADM:password         |String *(Optional)*      |Specify an initial           |
-|                          |                         |password for the user        |
-|                          |                         |account. If this value       |
-|                          |                         |is not specified, the        |
-|                          |                         |Identity service             |
-|                          |                         |automatically generates      |
-|                          |                         |a password. Ensure that      |
-|                          |                         |the value you specify        |
-|                          |                         |meets the following          |
-|                          |                         |criteria:                    |
-|                          |                         |                             |
-|                          |                         |* Length must be at least    |
-|                          |                         |  8 characters; no maximum.  |
-|                          |                         |                             |
-|                          |                         |* Can include uppercase,     |
-|                          |                         |  lower case, and numeric    |
-|                          |                         |  characters.                |
-|                          |                         |                             |
-|                          |                         |* Can start                  |
-|                          |                         |  with or include any of     |
-|                          |                         |  the following special      |
-|                          |                         |  characters: ~ ! @ # % ~    |
-|                          |                         |  & * _ - | \ ( ) { } [ ]    |
-|                          |                         |  : ; " ' < >,. ? /          |
-|                          |                         |                             |
-|                          |                         |* Password cannot begin      |
-|                          |                         |  with a space, but it can   |
-|                          |                         |  contain a space.           |
-|                          |                         |                             |
-+--------------------------+-------------------------+-----------------------------+
+.. csv-table::
+   :header: Name, Type, Description
+   :widths: auto
+
+   **user**, Object, "A ``user`` object that specifies the user account
+   information."
+   user.\ **username**, String *(Optional)*, The name to assign to the user.
+   user.\ **email**, String *(Optional)*, Email address for the user account.
+   user.\ **enabled**, String *(Optional)*, "Indicates whether the user is
+   enabled (true) or disabled (false). Users cannot update the ``enabled``
+   status on their own account."
+   user.\ **RAX-AUTH:defaultRegion**, String *(Optional)*, "The default region
+   that the user is assigned to. Must be one of the regions available in the
+   service catalog."
+   user.\ **RAX-AUTH:phonePin**, String *(Optional)*, "Specify a new phone pin
+   for the user account.  Ensure that the value specified meets the following
+   criteria:
+
+   - Use six numeric digits (such as 871694). A phone pin cannot include more
+     than three repeating numbers. (444 is OK, but 4444 is not.) A phone pin
+     cannot include more than three sequential numbers. (234 is OK, but 2345
+     is not.)"
+
+   user.\ **OS-KSADM:password**, String *(Optional)*, "Specify a new password
+   for the user account. Ensure that the value specified meets the following
+   criteria:
+
+   - Password must be at least 8 characters in length, must contain at least
+     one uppercase letter, one lowercase letter, and one numeric character."
+
+   user.\ **RAX-AUTH:contactId**, String *(Optional)*, The core contact ID.
 
 
 **Example:  Update user HTTP request header: XML**
@@ -197,7 +162,8 @@ This table shows the body parameters for the request:
          xmlns:rax-auth="http://docs.rackspace.com/identity/api/ext/RAX-AUTH/v1.0"
          username="jqsmith"
          enabled="true"
-         email="john.smith@example.org">
+         email="john.smith@example.org"
+         RAX-AUTH:contactId="12345">
    </user>
 
 
@@ -210,7 +176,8 @@ This table shows the body parameters for the request:
      "user": {
        "username": "jqsmith",
        "email": "john.smith@example.org",
-       "enabled": true
+       "enabled": true,
+       "RAX-AUTH:contactId": "1234"
      }
    }
 
@@ -279,6 +246,8 @@ Response
          email="john.smith@example.org"
          RAX-AUTH:defaultRegion="DFW"
          RAX-AUTH:domainId="5830280"
+         RAX-AUTH:phonePin="125897"
+         RAX-AUTH:contactId="1234"
          RAX-AUTH:multiFactorEnabled="true" >
    </user>
 
@@ -297,7 +266,8 @@ Response
        "enabled": true,
        "RAX-AUTH:defaultRegion":"DFW",
        "RAX-AUTH:domainId":"5830280",
-       "RAX-AUTH:multiFactorEnabled": true
-
+       "RAX-AUTH:phonePin":"136983",
+       "RAX-AUTH:multiFactorEnabled": true,
+       "RAX-AUTH:contactId":"1234"
      }
    }
