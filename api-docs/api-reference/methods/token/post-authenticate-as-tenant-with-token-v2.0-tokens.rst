@@ -25,7 +25,7 @@ Request error.
    If you authenticate as a tenant, the ``Service Catalog`` returned includes
    only endpoints for the Rackspace Cloud services authorized for that tenant.
    The exception to this rule is if you specify the mosso (cloud) tenant for
-   which the full service catalog will still be returned.
+   which the full service catalog is still returned.
 
 This table shows the possible response codes for this operation:
 
@@ -136,8 +136,8 @@ This table shows the body parameters for the response:
       the authenticated user along with the service endpoints for API requests.
   * - RAX-AUTH:phonePin
     - String *(Required)*
-    - A six digit pin which allows a user to confirm their identity to a support
-      racker when they call Rackspace to get help with their account(s).
+    - A six digit pin that allows a user to confirm their identity to a Support
+      Racker when they call Rackspace to get help with their account or accounts.
   * - RAX-AUTH:phonePinState
     - String *(Required)*
     - The phone pin state.
