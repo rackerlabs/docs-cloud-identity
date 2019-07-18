@@ -65,5 +65,5 @@ request:
   :widths: 2, 2, 2
 
     ``only_if_missing`` , Boolean *(Optional)*, "If the value of this parameter
-    is true and the specified user already has a phone PIN, then service will
-    return a 409 HTTP response without changing the user's phone PIN."
+    is true and the specified user already has a phone PIN, then the service
+    returns a 409 HTTP response without changing the user's phone PIN."
