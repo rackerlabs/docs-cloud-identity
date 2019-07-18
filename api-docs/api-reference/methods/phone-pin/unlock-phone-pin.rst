@@ -25,14 +25,15 @@ The following table shows the possible response codes for this operation:
   :header: Response Code, Name, Description
   :widths: 2, 2, 2
 
-  204, No Content, "The request has been fulfilled. Phone PIN got unlocked."
+  204, No Content, "The request has been fulfilled. The Phone PIN is
+  unlocked."
   400, Bad Request, "The request was invalid."
   401, Unauthorized, "You are not authorized to complete this operation.
   This error can occur if the request is submitted with an invalid
   authentication token."
   403, Forbidden, "Caller does not have an appropriate role or phone PIN is
   not in a locked state"
-  404, Not Found, "User was not found"
+  404, Not Found, "The user was not found."
   405, Invalid Method, "The method specified in the request is not valid for
   the resource identified in the request URI."
   503, Service Fault, "Service is not available."
