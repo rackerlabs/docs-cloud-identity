@@ -71,18 +71,6 @@ not in locked state JSON response**
         }
     }
 
-**Example: When user without ``phone-pin-admin`` role, tries to
-unlock phone pin for other user JSON response**
-
-.. code::
-
-    {
-        "forbidden": {
-            "code": 403,
-            "message": "Error code: 'PP-002'; Not Authorized"
-        }
-    }
-
 **Example: When invalid user id is passed in request url JSON response**
 
 .. code::
