@@ -8,8 +8,8 @@ Reset the phone PIN
    POST /v2.0/users/{userId}/RAX-AUTH/phone-pin/reset
 
 Reset the phone PIN for a specific user. Users are not allowed to reset
-their own Phone PINs by calling this service. If a user tries to
-reset their Phone PIN, the service returns a 403 HTTP response.
+their own phone PINs by calling this service. If a user tries to
+reset their phone PIN, the service returns a 403 HTTP response.
 
 ..  note::
 
