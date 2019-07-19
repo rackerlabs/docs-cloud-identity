@@ -39,7 +39,7 @@ This table shows the possible response codes for this operation:
     401, Unauthorized, "You provided invalid credentials."
     404, Not Found, "The requested resource was not found. The token has
     expired or is no longer available. Use the POST token request to get a new token."
-    500, Service Fault, "Service is not available."
+    500, Service Fault, "Service is not available. "
 
 Request
 -------
