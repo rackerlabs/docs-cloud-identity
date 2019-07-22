@@ -3,11 +3,13 @@
 =========
 Phone PIN
 =========
-When a customer calls into Rackspace, they will be required to give a 6 digit
-phone PIN to the IVR or Support Racker to verify their identity. When a new user
-is created, a 6 digit numeric phone PIN is assigned to the user by default. The
-phone PIN cannot be deleted, however a user can update his phone PIN
-using ``Update user information and password`` API.
+
+When a customer calls into Rackspace, they must give a 6-digit phone PIN to the
+Interactive Voice Response (IVR) system or to the Support Racker
+to verify their identity. When a new user is created, a 6-digit numeric phone PIN
+is assigned to the user by default. The phone PIN cannot be deleted, however a 
+user can update their phone PIN by using the ``Update user information and password``
+operation.
 
 **Update your own phone PIN**
 

@@ -21,6 +21,7 @@ information about the available extensions, see :ref:`API extensions
 
    version-operations
    extensions-operations
+   phone-pin-operations
    users-operations
    role-operations
    token-operations
