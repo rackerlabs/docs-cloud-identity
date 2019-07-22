@@ -3,6 +3,7 @@
 =========
 Phone PIN
 =========
+
 When a customer calls into Rackspace, they will be required to give a 6 digit
 phone PIN to the IVR or Support Racker to verify their identity. When a new user
 is created, a 6 digit numeric phone PIN is assigned to the user by default. The

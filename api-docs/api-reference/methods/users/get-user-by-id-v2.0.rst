@@ -118,10 +118,10 @@ This table shows the body parameters for the response:
   * - user.\ **RAX-AUTH:domainId**
     - String *(Optional)*
     - The ID for the domain that the user account has been assigned to.
-  * - user.**RAX-AUTH:phonePin**
+  * - user.\ **RAX-AUTH:phonePin**
     - String *(Optional)*
     - A user's phone pin.
-  * - user.**RAX-AUTH:phonePinState**
+  * - user.\ **RAX-AUTH:phonePinState**
     - String *(Required)*
     - The phone pin state.
 

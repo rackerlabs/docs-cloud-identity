@@ -48,28 +48,26 @@ include the other  body parameters like ``id``, ``enabled``, or
 
 This table shows the possible response codes for this operation:
 
-This table shows the possible response codes for this operation:
-
 .. csv-table::
-:header: Response code, Name, Description
+   :header: Response code, Name, Description
    :widths: auto
 
-       200, OK, The request has been fulfilled. The user has been updated.
-       400, Bad Request, "The request is missing one or more elements, or
-       the values of some elements are invalid."
-       401, Unauthorized, "You are not authorized to complete this operation.
-       This error can occur if the request is submitted with an invalid
-       authentication token."
-       403, Forbidden, "The request was valid, but the server is refusing to
-       respond because you do not have permission to access the requested
-       resource. Submit a request to your account administrator to
-       determine how to gain access."
-       404, Not Found, The requested resource was not found.
-       405, Invalid Method, "The method specified in the request is not valid for
-       the resource identified in the request URI."
-       406, Not Acceptable, The server cannot send data in a format requested.
-       413, Over Limit, The number of items returned is above the allowed limit.
-       503, Service Fault, Service is not available.
+   200, OK, The request has been fulfilled. The user has been updated.
+   400, Bad Request, "The request is missing one or more elements, or
+   the values of some elements are invalid."
+   401, Unauthorized, "You are not authorized to complete this operation.
+   This error can occur if the request is submitted with an invalid
+   authentication token."
+   403, Forbidden, "The request was valid, but the server is refusing to
+   respond because you do not have permission to access the requested
+   resource. Submit a request to your account administrator to
+   determine how to gain access."
+   404, Not Found, The requested resource was not found.
+   405, Invalid Method, "The method specified in the request is not valid for
+   the resource identified in the request URI."
+   406, Not Acceptable, The server cannot send data in a format requested.
+   413, Over Limit, The number of items returned is above the allowed limit.
+   503, Service Fault, Service is not available.
 
 Request
 -------
@@ -117,14 +115,12 @@ This table shows the body parameters for the request:
      than three repeating numbers. (444 is OK, but 4444 is not.) A phone PIN
      cannot include more than three sequential numbers. (234 is OK, but 2345
      is not.)"
-
    user.\ **OS-KSADM:password**, String *(Optional)*, "Specify a new password
    for the user account. Ensure that the value specified meets the following
    criteria:
 
    - Password must be at least 8 characters in length, must contain at least
      one uppercase letter, one lowercase letter, and one numeric character."
-
    user.\ **RAX-AUTH:contactId**, String *(Optional)*, The core contact ID.
 
 
