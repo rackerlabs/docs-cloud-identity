@@ -1,28 +1,28 @@
 .. _reset-phone-pin:
 
-Reset the phone PIN
-~~~~~~~~~~~~~~~~~~~
+Reset the Support PIN
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
    POST /v2.0/users/{userId}/RAX-AUTH/phone-pin/reset
 
-Reset the phone PIN for a specific user. Users are not allowed to reset
-their own phone PINs by calling this service. If a user tries to
-reset their phone PIN, the service returns a 403 HTTP response.
+Reset the Support PIN for a specific user. Users are not allowed to reset
+their own Support PINs by calling this service. If a user tries to
+reset their Support PIN, the service returns a 403 HTTP response.
 
 ..  note::
 
     This service is only available to the following roles:
 
-    ``identity:user-admin``: Can reset the phone PIN for all of the users on
+    ``identity:user-admin``: Can reset the Support PIN for all of the users on
     the caller's domain.
 
-    ``identity:user-manage``: Can reset the phone PIN of users in the caller's
+    ``identity:user-manage``: Can reset the Support PIN of users in the caller's
     domain who have the identity:user-manage role or below.
 
-A successful reset phone PIN request returns no response body with ``HTTP 204``
-status code.
+A successful reset Support PIN request returns no response body with
+``HTTP 204`` status code.
 
 The following table shows the possible response codes for this operation:
 
@@ -48,7 +48,7 @@ The following table shows the possible response codes for this operation:
 Request
 -------
 
-The following table shows the header parameters for the reset phone PIN
+The following table shows the header parameters for the reset Support PIN
 request:
 
 .. csv-table::
@@ -57,7 +57,7 @@ request:
 
     X-Auth-Token, String *(Required)*, A valid authentication token.
 
-The following table shows the request parameters for the reset phone PIN
+The following table shows the request parameters for the reset Support PIN
 request:
 
 .. csv-table::
@@ -65,5 +65,5 @@ request:
   :widths: 2, 2, 2
 
     ``only_if_missing`` , Boolean *(Optional)*, "If the value of this parameter
-    is true and the specified user already has a phone PIN, then the service
-    returns a 409 HTTP response without changing the user's phone PIN."
+    is true and the specified user already has a Support PIN, then the service
+    returns a 409 HTTP response without changing the user's Support PIN."

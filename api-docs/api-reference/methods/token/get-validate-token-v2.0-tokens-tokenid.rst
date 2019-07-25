@@ -24,7 +24,7 @@ Rackspace administrators can validate the token for any account user.
 The validation response includes information about the user associated with
 the token being validated. The ``RAX-AUTH:phonePin`` attribute is only returned
 if the provided X-Auth-Token matches the token to validate, and the associated
-user has a phone pin.  The ``RAX-AUTH:phonePinState`` is returned for all
+user has a Support PIN.  The ``RAX-AUTH:phonePinState`` is returned for all
 valid requests.
 
 This table shows the possible response codes for this operation:

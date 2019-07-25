@@ -22,7 +22,7 @@ region, and domain id.
    (``identity:default``), the response only includes the user account
    information for the user who submitted the request.
 
-   The user's phone pin is only returned if the caller is retrieving their
+   The user's Support PIN is only returned if the caller is retrieving their
    own user account.
 
 This table shows the possible response codes for this operation:
@@ -120,17 +120,17 @@ This table shows the body parameters for the response:
     - The ID for the domain that the user account has been assigned to.
   * - user.\ **RAX-AUTH:phonePin**
     - String *(Optional)*
-    - A user's phone pin.
+    - A user's Support PIN.
   * - user.\ **RAX-AUTH:phonePinState**
     - String *(Required)*
-    - The phone pin state.
+    - The Support PIN state.
 
-      * ``INACTIVE`` The user does not have a phone pin.
-      * ``LOCKED`` The user has a phone pin, but the pin has been locked due to
-        excessive failed verification attempts. The user must unlock the pin
-        before pin verifications can occur.
-      * ``ACTIVE`` The user has a phone pin against which verifications can be
-        performed.
+      * ``INACTIVE`` The user does not have a Support PIN.
+      * ``LOCKED`` The user has a Support PIN, but the PIN has been locked due
+        to excessive failed verification attempts. The user must unlock the pin
+        before PIN verifications can occur.
+      * ``ACTIVE`` The user has a Support PIN against which verifications can
+        be performed.
   * - user.\ **RAX-AUTH:multiFactorEnabled**
     - Boolean *(Optional)*
     - If an account has been configured to use multi-factor authentication,
@@ -165,8 +165,7 @@ This table shows the body parameters for the response:
       user's current password will expire.
 
 
-Example: Get user by ID HTTP response header: XML
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Get user by ID HTTP response header: XML**
 
 .. code::
 
@@ -174,8 +173,7 @@ Example: Get user by ID HTTP response header: XML
    Content-Type: application/xml
 
 
-Example: Get user by ID: XML response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Get user by ID: XML response**
 
 .. code::
 
@@ -202,8 +200,8 @@ Example: Get user by ID: XML response
          enabled="true"/>
 
 
-Example: Get user by ID HTTP response header: JSON
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Get user by ID HTTP response header: JSON**
+
 
 .. code::
 
@@ -211,8 +209,7 @@ Example: Get user by ID HTTP response header: JSON
    Content-Type: application/json
 
 
-Example: Get user by ID response: JSON
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Example: Get user by ID response: JSON**
 
 .. code::
 

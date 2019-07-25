@@ -43,7 +43,7 @@ include the other  body parameters like ``id``, ``enabled``, or
       user.
 
     - The ``RAX-AUTH:phonePin`` is only returned if the caller is updating
-      their own user account and a phone PIN exists on the account.
+      their own user account and a Support PIN exists on the account.
 
 
 This table shows the possible response codes for this operation:
@@ -107,12 +107,12 @@ This table shows the body parameters for the request:
    user.\ **RAX-AUTH:defaultRegion**, String *(Optional)*, "The default region
    that the user is assigned to. Must be one of the regions available in the
    service catalog."
-   user.\ **RAX-AUTH:phonePin**, String *(Optional)*, "Specify a new phone PIN
-   for the user account.  Ensure that the value specified meets the following
+   user.\ **RAX-AUTH:phonePin**, String *(Optional)*, "Specify a new Support
+   PIN for the user account. Ensure that the value specified meets the following
    criteria:
 
-   - Use six numeric digits (such as 871694). A phone PIN cannot include more
-     than three repeating numbers. (444 is OK, but 4444 is not.) A phone PIN
+   - Use six numeric digits (such as 871694). A Support PIN cannot include more
+     than three repeating numbers. (444 is OK, but 4444 is not.) A Support PIN
      cannot include more than three sequential numbers. (234 is OK, but 2345
      is not.)"
    user.\ **OS-KSADM:password**, String *(Optional)*, "Specify a new password
