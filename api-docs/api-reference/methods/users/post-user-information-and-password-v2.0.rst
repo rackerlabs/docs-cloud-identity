@@ -50,7 +50,7 @@ This table shows the possible response codes for this operation:
 
 .. csv-table::
    :header: Response code, Name, Description
-   :widths: auto
+   :widths: 15 25 60
 
    200, OK, The request has been fulfilled. The user has been updated.
    400, Bad Request, "The request is missing one or more elements, or
@@ -76,7 +76,7 @@ This table shows the header parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 35 15 50
 
    X-Auth-Token, String *(Required)*, A valid authentication token.
    {userId}, String *(Required)*, "A user ID assigned by system when a user is
@@ -86,7 +86,7 @@ This table shows the URI parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 35 15 50
 
    {userId}, String *(Required)*, "A user ID assigned by system when a user is
    created."
@@ -95,7 +95,7 @@ This table shows the body parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: auto
+   :widths: 35 15 50
 
    **user**, Object, "A ``user`` object that specifies the user account
    information."
