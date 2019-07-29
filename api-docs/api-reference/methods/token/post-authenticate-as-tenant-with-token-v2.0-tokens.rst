@@ -136,18 +136,18 @@ This table shows the body parameters for the response:
       the authenticated user along with the service endpoints for API requests.
   * - RAX-AUTH:phonePin
     - String *(Required)*
-    - A six digit pin that allows a user to confirm their identity to a Support
+    - A six digit PIN that allows a user to confirm their identity to a Support
       Racker when they call Rackspace to get help with their account or accounts.
   * - RAX-AUTH:phonePinState
     - String *(Required)*
-    - The phone pin state.
+    - The Support PIN state.
 
-      * ``INACTIVE`` The user does not have a phone pin.
-      * ``LOCKED`` The user has a phone pin, but the pin has been locked due to
-        excessive failed verification attempts. The user must unlock the pin
-        before pin verifications can occur.
-      * ``ACTIVE`` The user has a phone pin against which verifications can be
-        performed.
+      * ``INACTIVE`` The user does not have a Support PIN.
+      * ``LOCKED`` The user has a Support PIN, but the PIN has been locked due
+        to excessive failed verification attempts. The user must unlock the PIN
+        before PIN verifications can occur.
+      * ``ACTIVE`` The user has a Support PIN against which verifications can
+        be performed.
 
 **Example: Authenticate as tenant with token response XML**
 

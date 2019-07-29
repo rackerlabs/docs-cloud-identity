@@ -8,7 +8,7 @@ List users
     GET /v2.0/users
 
 This operation returns a list of users with detailed account information about
-each user including email, name, user ID, phone pin state, account
+each user including email, name, user ID, Support PIN state, account
 configuration, and status information.
 
 - If this request is issued by a user holding the Identity admin role
@@ -145,14 +145,14 @@ This table shows the body parameters for the response:
     - A user object that provides user account information.
   * - user.**RAX-AUTH:phonePinState**
     - String *(Required)*
-    - The phone pin state.
+    - The Support PIN state.
 
-      * ``INACTIVE`` The user does not have a phone pin.
-      * ``LOCKED`` The user has a phone pin, but the pin has been locked due to
-        excessive failed verification attempts. The user must unlock the pin
-        before pin verifications can occur.
-      * ``ACTIVE`` The user has a phone pin against which verifications can be
-        performed.
+      * ``INACTIVE`` The user does not have a Support PIN.
+      * ``LOCKED`` The user has a Support PIN, but the PIN has been locked due
+        to excessive failed verification attempts. The user must unlock the PIN
+        before PIN verifications can occur.
+      * ``ACTIVE`` The user has a Support PIN against which verifications can
+        be performed.
   * - user.\ **RAX-AUTH:defaultRegion**
     - String *(Optional)*
     - The default region that the user is assigned to. Must be one of the

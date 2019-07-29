@@ -177,7 +177,7 @@ an OTP device for multi-factor authentication.
 
    If you provide an invalid or expired passcode, the Identity service
    returns an error message.
-   ``400 The pin provided is either invalid or expired/``. To fix the
+   ``400 The PIN provided is either invalid or expired/``. To fix the
    problem, wait for the passcode in the mobile passcode application to
    refresh, then resubmit the verify request.
 

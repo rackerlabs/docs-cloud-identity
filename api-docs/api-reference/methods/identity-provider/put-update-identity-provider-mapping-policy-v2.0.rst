@@ -52,7 +52,7 @@ This table shows the URI parameters for the request:
 
 .. csv-table::
    :header: Name, Type, Description
-   :widths: 25 25 50 
+   :widths: 25 25 50
 
    {identityProviderId}, String *(Required)*, The Identity Provider's ID.
 
