@@ -37,7 +37,7 @@ The following figure shows the multi-factor authentication process work flow.
 To enable multi-factor authentication, users must update the account
 settings to add and verify a device that can be used to supply the
 multi-factor authentication passcode. You can configure account settings
-from the Cloud Control panel, or by using the Identity service API.
+from the `Cloud Control panel<https://support.rackspace.com/how-to/myrackspace-multi-factor-authentication/>`_, or by using the Identity service API.
 
 The following figure shows the work flow to set up multi-factor authentication
 on an account.
