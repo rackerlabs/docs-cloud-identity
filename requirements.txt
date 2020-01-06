@@ -1,4 +1,4 @@
-chios==0.1.3
+chios==0.1.4
 bashate
 doc8
 flake8

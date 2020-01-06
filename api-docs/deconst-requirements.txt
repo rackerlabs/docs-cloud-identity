@@ -1,1 +1,1 @@
-chios
+chios==0.1.4
