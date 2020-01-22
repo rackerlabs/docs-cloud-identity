@@ -31,7 +31,8 @@ Best practices
    API operations and reduce system load, store the
    authentication token in a secure cache or database so that applications
    can use the stored value instead of requiring the application to issue
-   an authentication request before each API operation. You can re-use the cached
+   an authentication request before each API operation.
+   You can re-use the cached
    token value as long as it remains valid.
 
    .. note::
