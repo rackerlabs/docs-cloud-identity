@@ -31,7 +31,7 @@ The following figure shows the multi-factor authentication process work flow.
 
 **Figure: Multi-factor authentication process flow**
 
-.. figure:: ../_images/multifactor_auth.png :alt: Multi-factor authentication
+.. figure:: ../_images/multifactor_auth.png :alt:Multi-factor authentication
 process flow
 
 To enable multi-factor authentication, users must update the account
