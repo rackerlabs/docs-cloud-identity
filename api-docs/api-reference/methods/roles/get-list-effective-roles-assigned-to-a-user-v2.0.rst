@@ -46,9 +46,6 @@ assigned through the user on the domain.
      role can list roles for users within their domain and with the
      ``identity:default`` role.
 
-   - The service returns roles for provisioned users only. Returning roles for
-     federated users are not yet supported.
-
 .. csv-table::
    :header: Response code, Name, Description
 

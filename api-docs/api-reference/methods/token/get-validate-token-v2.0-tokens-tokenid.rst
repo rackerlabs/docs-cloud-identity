@@ -21,6 +21,11 @@ permissions relevant to a particular client.
 Any user can validate their own token. Identity user account administrators and
 Rackspace administrators can validate the token for any account user.
 
+The validation response includes information about the user associated with
+the token being validated. The ``RAX-AUTH:phonePin`` attribute is only returned
+if the provided X-Auth-Token matches the token to validate, and the associated
+user has a Support PIN.  The ``RAX-AUTH:phonePinState`` is returned for all
+valid requests.
 
 This table shows the possible response codes for this operation:
 
@@ -158,7 +163,7 @@ Response
          <rax-auth:credential>APIKEY</rax-auth:credential>
        </rax-auth:authenticatedBy>
      </token>
-     <user rax-auth:defaultRegion="SYD" name="maeker12" id="92bb036af5b0467198cded345597f6b4">
+     <user rax-auth:phonePin="914737" rax-auth:defaultRegion="SYD" name="maeker12" id="92bb036af5b0467198cded345597f6b4">
        <roles>
          <role rax-auth:propagate="false" serviceId="bde1268ebabeeabb70a0e702a4626977c331d5c4" description="Cloud Networks" name="CloudNetworks-Security-Groups" id="88"/>
          <role rax-auth:propagate="true" tenantId="5830280" serviceId="a45b14e394a57e3fd4e45d59ff3693ead204998b" description="A Role that allows a user access to keystone Service methods" name="compute:default" id="684"/>
@@ -220,7 +225,9 @@ Response
                    }
                ],
                "name": "accountUserName",
-               "RAX-AUTH:defaultRegion": "SYD"
+               "RAX-AUTH:defaultRegion": "SYD",
+               "RAX-AUTH:phonePin": "653161",
+               "RAX-AUTH:phonePinState": "ACTIVE"
            }
        }
    }

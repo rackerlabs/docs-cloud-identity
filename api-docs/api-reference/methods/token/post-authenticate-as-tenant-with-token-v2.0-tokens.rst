@@ -25,7 +25,7 @@ Request error.
    If you authenticate as a tenant, the ``Service Catalog`` returned includes
    only endpoints for the Rackspace Cloud services authorized for that tenant.
    The exception to this rule is if you specify the mosso (cloud) tenant for
-   which the full service catalog will still be returned.
+   which the full service catalog is still returned.
 
 This table shows the possible response codes for this operation:
 
@@ -104,50 +104,50 @@ This table shows the body parameters for the request:
        }
    }
 
-
-
-
-
 Response
 --------
 
 
 This table shows the body parameters for the response:
 
-+-----------------------+-----------------------+------------------------------+
-|Name                   |Type                   |Description                   |
-+=======================+=======================+==============================+
-|access                 |String                 |An ``access`` object that     |
-|                       |                       |returns token, user, and      |
-|                       |                       |service information upon      |
-|                       |                       |successful authentication.    |
-+-----------------------+-----------------------+------------------------------+
-|token                  |String                 |The                           |
-|                       |                       |:ref:`token object            |
-|                       |                       |<auth-resp-token-resource>`   |
-|                       |                       |supplies a scoped             |
-|                       |                       |authentication token that can |
-|                       |                       |be used to access Rackspace   |
-|                       |                       |Cloud services for the        |
-|                       |                       |specified tenant.             |
-+-----------------------+-----------------------+------------------------------+
-|user                   |String                 |A :ref:`user object           |
-|                       |                       |<auth-resp-user-resource>`    |
-|                       |                       |that returns the following    |
-|                       |                       |information about the user,   |
-|                       |                       |if available for the account: |
-|                       |                       |id, name, assigned roles,     |
-|                       |                       |default region, and domain.   |
-+-----------------------+-----------------------+------------------------------+
-|serviceCatalog         |String                 |The :ref:`service catalog     |
-|                       |                       |<svccat-resource>`            |
-|                       |                       |provides information about    |
-|                       |                       |each service available to the |
-|                       |                       |authenticated user along with |
-|                       |                       |the service endpoints for API |
-|                       |                       |requests.                     |
-+-----------------------+-----------------------+------------------------------+
+.. list-table::
+  :widths: 30 20 50
+  :header-rows: 1
 
+  * - Name
+    - Type
+    - Description
+  * - access
+    - String *(Required)*
+    - An ``access`` object that returns token, user, and service information
+      upon successful authentication.
+  * - token
+    - String *(Required)*
+    - The token object supplies a scoped authentication token that can be used
+      to access Rackspace services for the specified tenant.
+  * - user
+    - String *(Required)*
+    - A user object that returns the following information about the user, if
+      available for the account: id, name, assigned roles, default region, and
+      domain.
+  * - serviceCatalog
+    - String *(Required)*
+    - The service catalog provides information about each service available to
+      the authenticated user along with the service endpoints for API requests.
+  * - RAX-AUTH:phonePin
+    - String *(Required)*
+    - A six digit PIN that allows a user to confirm their identity to a Support
+      Racker when they call Rackspace to get help with their account or accounts.
+  * - RAX-AUTH:phonePinState
+    - String *(Required)*
+    - The Support PIN state.
+
+      * ``INACTIVE`` The user does not have a Support PIN.
+      * ``LOCKED`` The user has a Support PIN, but the PIN has been locked due
+        to excessive failed verification attempts. The user must unlock the PIN
+        before PIN verifications can occur.
+      * ``ACTIVE`` The user has a Support PIN against which verifications can
+        be performed.
 
 **Example: Authenticate as tenant with token response XML**
 
@@ -798,6 +798,8 @@ This table shows the body parameters for the response:
                "name": "yourUserName",
                "RAX-AUTH:defaultRegion": "DFW",
                "RAX-AUTH:domainId": "123456"
+               "RAX-AUTH:phonePin": "914737",
+               "RAX-AUTH:phonePinState": "ACTIVE"
            }
        }
    }

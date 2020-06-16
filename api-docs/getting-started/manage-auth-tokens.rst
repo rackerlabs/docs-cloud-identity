@@ -31,7 +31,8 @@ Best practices
    API operations and reduce system load, store the
    authentication token in a secure cache or database so that applications
    can use the stored value instead of requiring the application to issue
-   an authentication request before each API operation. You can re-use the cached
+   an authentication request before each API operation.
+   You can re-use the cached
    token value as long as it remains valid.
 
    .. note::
@@ -54,8 +55,7 @@ Best practices
       token.
 
 -  To simplify authentication, credential, and token management, use an
-   `OpenStack command-line client application`_ or one of the
-   `Rackspace SDKs`_.
+   `OpenStack command-line client application`_.
 
 Learn more
 ~~~~~~~~~~
@@ -72,14 +72,8 @@ Visit the following links to learn more about the Identity service.
 
 -  `API operations references for other Rackspace services`_
 
-..  tip::
-    You can find language binding examples that can be modified to work with
-    the Identity service in the `Rackspace Software Development
-    Kits`_.
-
 
 .. _Caching credentials: http://php-opencloud.readthedocs.io/en/latest/caching-creds.html
 .. _API operations references for other Rackspace services: https://developer.rackspace.com/docs
 .. _OpenStack command-line client application: https://wiki.openstack.org/wiki/OpenStackClients
-.. _Rackspace SDKs: https://developer.rackspace.com/docs/#sdks
-.. _Rackspace Software Development Kits: https://developer.rackspace.com/docs/#sdks
+
