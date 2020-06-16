@@ -138,7 +138,6 @@ admin request returns the following extended attributes that are supported by
 the RAX-AUTH extension: ``defaultRegion``, ``domainId``, and
 ``multiFactorEnabled``.
 
- 
 **Example: Extended Server HTTP and JSON response**
 
 .. code::
@@ -196,7 +195,7 @@ example.
 
 The API response includes the namespaces for core API and extensions
 resources available to the API service.
- 
+
 **Example: Extended Identity service: HTTP and XML response**
 
 .. code::
@@ -220,3 +219,4 @@ resources available to the API service.
                rax-auth:defaultRegion="IAD"
                rax-auth:domainId="929418"/>
     </users>
+

@@ -248,7 +248,6 @@ services and their endpoints:
     compute services are added with different names, the service `type`
     filter returns all available services.
 
- 
 **Example: Connect a client to an endpoint listed as`type="compute"`.**
 
 #. Navigate to the endpoint for the specified `compute` service, and

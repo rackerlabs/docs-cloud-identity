@@ -80,7 +80,6 @@ In these examples, the request body is in JSON format with the Accept header
 specified as XML. When the request is submitted, the response is returned in
 XML format.
 
- 
 .. _auth-req-header-json-example:
 
 **Example: Authentication Request with Headers: JSON**
