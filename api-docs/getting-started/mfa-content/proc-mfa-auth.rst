@@ -58,7 +58,6 @@ requires multi-factor authentication.
    -  Get the multi-factor authentication passcode value from the SMS
       message sent to the phone associated with the account.
 
-       
       **Example: SMS message with passcode**
 
       .. code::

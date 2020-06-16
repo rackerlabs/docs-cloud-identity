@@ -36,7 +36,6 @@ Administrators can update the domain-level enforcement setting from the
 API or the Cloud Control Panel. The following figure shows the API work
 flow for updating domain enforcement settings.
 
- 
 **Figure: API workflow for domain-level enforcement policy for multi-factor
 authentication**
 
@@ -50,7 +49,6 @@ admin token (``$ADMIN_TOKEN``) and the ID of the domain (``$DOMAIN_ID``)
 to update. Use the :ref:`List domains operation <get-a-domain-v2.0-rax-auth>`
 to retrieve the domain ID.
 
- 
 **Example: Update domain to require multi-factor authentication for
 all users: cURL JSON request**
 
@@ -66,7 +64,6 @@ Successful requests return a HTTP ``204 No Content`` message. To verify
 the change, submit a **GET domain by id** request, as shown in the
 following example.
 
- 
 **Example: Verify domain settings after update: cURL JSON request
 and response**
 
@@ -138,7 +135,6 @@ Administrators can update the user-level enforcement setting from the
 API or the Cloud Control Panel. The following figure shows the API work
 flow for updating the user enforcement setting with state transitions.
 
- 
 **Figure: Workflow to set up a user account for multi-factor
 authentication**
 
@@ -149,7 +145,6 @@ The following example assumes the following accounts and credentials: an
 authenticated User Administrator account with a valid authentication
 token and a user account within the same domain.
 
- 
 **Example: Require user to log in by using multi-factor authentication: cURL JSON request and response**
 
 .. code::
@@ -206,7 +201,6 @@ To get account access, the user must request a scoped ``MFA-SETUP``
 token that provides limited access to the Identity service for account
 configuration.
 
- 
 **Example: User authentication request for a scoped mfa-setup token: cURL JSON request and response**
 
 .. code::
@@ -252,7 +246,6 @@ their account so that they can set up multi-factor authentication. The
 following figure shows the permissions available to a user that authenticates
 using the scoped mfa-setup token.
 
- 
 **Figure: Permissions available with a scoped mfa-setup token**
 
 .. figure::  ../_images/mfa-setup-token-permissions.png
@@ -264,7 +257,6 @@ environment variable as shown in the following example, and use it to
 :ref:`configure their account for multi-factor authentication via mobile
 phone <auth-config-mfa-phone>`.
 
- 
 **Example: Export scoped token**
 
 .. code::

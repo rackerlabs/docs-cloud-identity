@@ -330,6 +330,8 @@ passwordPolicy
 passwordReset
 permalink
 phoneId
+phonePin
+phonePinState
 php
 phpMyAdmin
 phpmyadmin

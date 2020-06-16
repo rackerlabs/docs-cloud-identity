@@ -30,7 +30,6 @@ possible to list ``credentials`` and the ``RAX-KSKEY`` extension adds to
 that by making it possible to list a specific kind of credentials,
 ``apiKeyCredentials``.
 
- 
 **Example: Multiple Namespaces in an XML Response**
 
 .. code::
