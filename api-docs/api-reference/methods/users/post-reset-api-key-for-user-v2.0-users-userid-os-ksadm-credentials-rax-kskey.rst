@@ -18,6 +18,21 @@ updating the password,  the API key reset does not revoke existing tokens.
 Identity user administrators can  use the :ref:`Revoke Token
 <delete-revoke-token-v2.0>` operation to invalidate the token for a user.
 
+.. note::
+
+  - Users can always use this service to reset the API key credentials for
+    themselves.
+
+  - Users with the ``identity:service-admin`` role can reset API key
+    credentials for users with the ``identity:admin`` role, users with the
+    ``identity:user-admin`` role, and sub-users.
+
+  - Users with the ``identity:admin`` role can reset API key credentials for
+    users with the ``identity:user-admin`` role and sub-users.
+
+  - Users with the ``identity:user-admin`` and ``identity:user-manage`` role
+    can reset API key credentials for users within their domain and with the
+    ``identity:default`` role.
 
 This table shows the possible response codes for this operation:
 

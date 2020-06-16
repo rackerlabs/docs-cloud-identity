@@ -20,25 +20,18 @@ include the other  body parameters like ``id``, ``enabled``, or
 
 .. note::
 
-    -  Users who hold the admin role can update users who hold the user role
-       (``identity:default``) or the admin role (``identity:user-admin``) for
-       the same tenant.
+    - Users who hold the admin role can update users who hold the user role
+      (``identity:default``) or the admin role (``identity:user-admin``) for
+      the same tenant.
 
     - Users with the ``identity:user-admin`` or ``identity:user-manage``
       role can update user information for users within their domain and with
-      the ``identity:default`` role.
+      the ``identity:default`` role
 
-    -  Administrators can change the default region for another user, but the
-       new value must be one of the regions listed for a Cloud Compute
-       endpoint in the service catalog.
-
-    -  Administrators can change a user default region, but the new value must
-       be one of the regions listed for a Cloud Compute endpoint in the
-       service catalog.
-
-    - Only users with the ``identity:service-admin`` or ``identity:admin``
-      role are allowed to update a user's ``RAX-AUTH:contactId``.
-
+    - Administrators can change the default region for another user, but the
+      new value must be one of the regions listed for a Cloud Compute endpoint
+      in the service catalog.
+      
     - Only the ``RAX-AUTH:contactId`` attribute can be updated for a federated
       user.
 
