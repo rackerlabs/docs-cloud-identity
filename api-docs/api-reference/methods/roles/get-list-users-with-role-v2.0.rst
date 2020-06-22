@@ -13,13 +13,6 @@ configuration, and status information assigned to the specified role ID.
 
 .. note::
 
-  - Users with the ``identity:service-admin`` role can list users with the
-    ``identity:admin`` role, ``identity:user-admin`` role and sub-users assigned
-    to a specified role.
-
-  - Users with the ``identity:admin`` role can list users with the
-    ``identity:user-admin`` role and sub-users assigned to a specified role.
-
   - Users with the ``identity:user-admin`` role can list sub-users within their
     domain that have the ``identity:manage`` role and ``identity:default`` role
     assigned to a specified role.
