@@ -31,7 +31,7 @@ include the other  body parameters like ``id``, ``enabled``, or
     - Administrators can change the default region for another user, but the
       new value must be one of the regions listed for a Cloud Compute endpoint
       in the service catalog.
-      
+
     - Only the ``RAX-AUTH:contactId`` attribute can be updated for a federated
       user.
 
