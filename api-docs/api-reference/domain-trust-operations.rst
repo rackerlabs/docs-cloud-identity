@@ -1,13 +1,13 @@
 .. _domain-trust-operations:
 
 ============
-Domain Trust
+Domain trust
 ============
 
 Users can authenticate into a different domain than the one to which they
-belong to by creating a domain trust that specifies the roles that can be
-assigned to users that use the domain trust. The domain trust is then accepted
-by a user that can manage users in the delegate domain.
+belong by creating a domain trust that specifies the roles that can be
+assigned to users who use the domain trust. The user that can manage users
+in the delegate domain then accepts the domain trust.
 
 .. contents::
    :depth: 1
