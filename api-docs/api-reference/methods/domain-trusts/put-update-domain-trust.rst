@@ -36,14 +36,14 @@ The following table shows the possible response codes for this operation:
 Request
 -------
 
-The following table shows the URI parameters for the update domain-trust
+The following table shows the URI parameters for the update domain trust
 request:
 
 .. csv-table::
    :header: Name, Type, Description
    :widths: auto
 
-    {domainTrustId}, String, A domain-trust ID.
+    {domainTrustId}, String, A domain trust ID.
 
 The following table shows the body parameters for the request:
 

@@ -15,7 +15,7 @@ Update domain trust user delegate roles.
       if their domain matches the domain of the user.
     - Users with the role ``identity:domain-trust-admin`` can update roles
       for any user delegate.
-    - Roles can only be delegated to a user if they are part of the domain
+    - Roles can be delegated to a user only if they are part of the domain
       trust roles assignment.
 
 The following table shows the possible response codes for this operation:
@@ -54,7 +54,7 @@ The following table shows the body parameters for the request:
 
   **roleAssignments**, String *(Required)*, "An object containing a list of role assignments."
   roleAssignments.\ **roles**, String *(Required)*, "A list of roles that are delegated to the user."
-  roleAssignments.\ **conditions**, String *(Required)*, "A list of conditions defining how the role will be applied. The conditions are provided in the format ``id=<tenantId>``"
+  roleAssignments.\ **conditions**, String *(Required)*, "A list of conditions defining how the role is applied. The conditions are provided in the format ``id=<tenantId>``"
   roleAssignments.\ **resourceType**, String *(Required)*, "The type of resource that the role is applied to. Valid values are ``domain`` or ``tenant``."
 
 **Example: Granting roles to a user delegate JSON Request**

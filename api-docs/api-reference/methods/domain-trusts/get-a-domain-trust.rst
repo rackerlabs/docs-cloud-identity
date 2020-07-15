@@ -53,9 +53,9 @@ request:
    :header: Name, Type, Description
    :widths: auto
 
-    {domainTrustId}, String, A domain-trust ID.
+    {domainTrustId}, String, A domain trust ID.
 
-**Example: Get a domain-trust: JSON request**
+**Example: Get a domain trust: JSON request**
 
 .. code::
 
@@ -71,7 +71,7 @@ This operation does not accept a request body.
 Response
 --------
 
-**Example: Get a domain-trust JSON response**
+**Example: Get a domain trust JSON response**
 
 .. code::
 

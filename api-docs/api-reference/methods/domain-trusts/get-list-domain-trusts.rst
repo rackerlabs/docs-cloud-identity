@@ -37,7 +37,7 @@ The following table shows the possible response codes for this operation:
 Request
 -------
 
-The following table shows the header parameters for the get a domain-trust
+The following table shows the header parameters for the get a domain trust
 request:
 
 .. csv-table::

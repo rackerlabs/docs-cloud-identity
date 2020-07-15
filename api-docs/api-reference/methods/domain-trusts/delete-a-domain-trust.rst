@@ -1,13 +1,13 @@
 .. _delete-a-domain-trust:
 
-Delete a domain-trust
+Delete a domain trust
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. code::
 
     DELETE /v2.0/RAX-AUTH/trusts/{domainTrustId}
 
-Use this operation to delete a specified domain-trust by domain-trust id
+Use this operation to delete a specified domain trust by domain trust ID.
 
 ..  note::
 
@@ -36,7 +36,7 @@ The following table shows the possible response codes for this operation:
 Request
 -------
 
-The following table shows the header parameters for the delete domain-trust
+The following table shows the header parameters for the delete domain trust
 request:
 
 .. csv-table::
@@ -45,16 +45,16 @@ request:
 
     X-Auth-Token, String *(Required)*, A valid authentication token.
 
-The following table shows the URI parameters for the delete domain-trust
+The following table shows the URI parameters for the delete domain trust
 request:
 
 .. csv-table::
    :header: Name, Type, Description
    :widths: auto
 
-    {domainTrustId}, String, A domain-trust ID.
+    {domainTrustId}, String, A domain trust ID.
 
-**Example: Delete a domain-trust: JSON request**
+**Example: Delete a domain trust: JSON request**
 
 .. code::
 
