@@ -30,3 +30,4 @@ information about the available extensions, see :ref:`API extensions
    secret-answer-operations
    multifactor-client-operations
    identity-provider-operations
+   domain-trust-operations

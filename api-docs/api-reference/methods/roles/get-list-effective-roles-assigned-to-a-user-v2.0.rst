@@ -87,8 +87,8 @@ This table shows the query parameters for the request:
    :header: Name, Type, Description
    :widths: 25 25 50
 
-   onTenantId, String *(Optional)*, "Filter roles that have been granted on
-   the specified tenantId for the user."
+   onTenantId, String *(Optional)*, "Filter roles that have been granted on the specified tenantId for the user."
+   domainId, String *(Optional)*, "Filter roles that have been granted to a user under the specified domain ID."
 
 This operation does not accept a request body.
 
