@@ -98,7 +98,9 @@ This table shows the query parameters for the request:
     :header: Name, Type, Description
     :widths: 2, 2, 2
 
-    apply_rcn_roles, Boolean *(Optional)*, "When true, RCN roles assigned to the user are NOT returned. Defaults to false."
+    serviceId, String *(Optional)*, Allows filtering the requested roles for user by service ID.
+    apply_rcn_roles, Boolean *(Optional)*, "When true, RCN roles assigned to the user are returned. Defaults to false."
+    domainId, String *(Optional)*, "Filter roles that have been granted to a user under the specified domain ID."
 
 This operation does not accept a request body.
 
