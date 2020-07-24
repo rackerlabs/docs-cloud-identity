@@ -27,7 +27,7 @@ that use  multi-factor authentication.
 Unlock user account
 -------------------
 
-If your account is locked as a result of failed login attempts, wait 5 minutes and then
+If your account is locked as a result of failed login attempts, wait 10 minutes and then
 try to authenticate again using the passcode sent to your account. If you are still not
 able to access your account, contact the User administrator to
 :ref:`unlock your account <multifactor-operations>`.
