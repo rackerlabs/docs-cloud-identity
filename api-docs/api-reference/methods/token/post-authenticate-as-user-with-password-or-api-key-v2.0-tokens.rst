@@ -85,6 +85,12 @@ This table shows the query parameters for the request:
 
    apply_rcn_roles, Boolean *(Optional)*, "When true, return any roles and
    endpoints to which the user has access due to RCN roles. Defaults to false."
+   include_accessible_domains, Boolean *(Optional)*, "When true, returns a
+   list of domains that a user has access to. The list is returned on the user
+   object of the authentication response. Defaults to false."
+   include_endpoints, Boolean *(Optional)*, "When false, Identity API
+   authentication token POST response should not include endpoints. Default
+   to true."
 
 This table shows the body parameters for the request:
 
@@ -938,22 +944,133 @@ This table shows the body parameters for the response:
        }
    }
 
+**Example: Authenticate as user including accessible domains JSON response**
+
+.. code::
+
+   {
+       "access": {
+           "token": {
+               "id": "d74f592f986e4d6e995853ccf0123456",
+               "expires": "2015-06-05T16:24:57.637Z",
+               "tenant": {
+                   "id": "123456",
+                   "name": "123456"
+               },
+               "RAX-AUTH:authenticatedBy": [
+                   "APIKEY"
+               ]
+           },
+           "serviceCatalog": [
+               {
+                   "name": "cloudServers",
+                   "endpoints": [
+                       {
+                           "tenantId": "123456",
+                           "publicURL": "https://servers.api.rackspacecloud.com/v1.0/123456",
+                           "versionInfo": "https://servers.api.rackspacecloud.com/v1.0",
+                           "versionList": "https://servers.api.rackspacecloud.com/",
+                           "versionId": "1.0"
+                       }
+                   ],
+                   "type": "compute"
+               },
+               {
+                   "name": "rackCDN",
+                   "endpoints": [
+                       {
+                           "region": "DFW",
+                           "tenantId": "123456",
+                           "publicURL": "https://global.cdn.api.rackspacecloud.com/v1.0/123456",
+                           "internalURL": "https://global.cdn.api.rackspacecloud.com/v1.0/123456"
+                       }
+                   ],
+                   "type": "rax:cdn"
+               },
+               {
+                   "name": "cloudFiles",
+                   "endpoints": [
+                       {
+                           "region": "DFW",
+                           "tenantId": "MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f"
+                       },
+                       {
+                           "region": "SYD",
+                           "tenantId": "MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "publicURL": "https://storage101.syd2.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "internalURL": "https://snet-storage101.syd2.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f"
+                       },
+                       {
+                           "region": "IAD",
+                           "tenantId": "MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "publicURL": "https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "internalURL": "https://snet-storage101.iad3.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f"
+                       },
+                       {
+                           "region": "HKG",
+                           "tenantId": "MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "publicURL": "https://storage101.hkg1.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                           "internalURL": "https://snet-storage101.hkg1.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f"
+                       }
+                   ],
+                   "type": "object-store"
+               },
+               ...
+           ],
+           "user": {
+               "RAX-AUTH:accessibleDomains": [
+                   {
+                       "id": "123456",
+                       "id": "432112"
+                   }
+               ],
+               "id": "172157",
+               "roles": [
+                   {
+                       "tenantId": "MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f",
+                       "id": "5",
+                       "description": "A Role that allows a user access to keystone Service methods",
+                       "name": "object-store:default"
+                   },
+                   {
+                       "tenantId": "123456",
+                       "id": "6",
+                       "description": "A Role that allows a user access to keystone Service methods",
+                       "name": "compute:default"
+                   },
+                   {
+                       "id": "3",
+                       "description": "User Admin Role.",
+                       "name": "identity:user-admin"
+                   }
+               ],
+               "name": "yourUserName",
+               "RAX-AUTH:defaultRegion": "DFW",
+               "RAX-AUTH:domainId": "123456",
+               "RAX-AUTH:phonePin": "914737",
+               "RAX-AUTH:phonePinState": "ACTIVE"
+           }
+       }
+   }
+
 **Example: Authenticate for multi-factor authentication setup JSON response**
 
-   .. code::
+.. code::
 
-      {
-         "token": {
-             "RAX-AUTH:authenticatedBy": [
-               "password"
-             ],
-             "expires": "2014-01-09T15:08:53.645-06:00",
-             "id": "449f04aca3594ce38e5b0b18fce6b"
-          }
-     }
+   {
+      "token": {
+          "RAX-AUTH:authenticatedBy": [
+            "password"
+          ],
+          "expires": "2014-01-09T15:08:53.645-06:00",
+          "id": "449f04aca3594ce38e5b0b18fce6b"
+       }
+  }
 
-   .. note::
+.. note::
 
-      Use the mfa-setup token returned in the response to set up
-      multi-factor authentication on your account. For instructions,
-      see :ref:`Multifactor authentication <multifactor-authenication-ovw>`.
+   Use the mfa-setup token returned in the response to set up
+   multi-factor authentication on your account. For instructions,
+   see :ref:`Multifactor authentication <multifactor-authenication-ovw>`.
