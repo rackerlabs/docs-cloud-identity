@@ -38,7 +38,7 @@ include the other  body parameters like ``id``, ``enabled``, or
     - The ``RAX-AUTH:phonePin`` is only returned if the caller is updating
       their own user account and a Support PIN exists on the account.
 
-    - Users with the ``identity:user-manage-limited`` can update any sub users
+    - Users with the ``identity:user-manage-limited`` can update any sub-users'
       email and enabled status within their domain.
 
 This table shows the possible response codes for this operation:
