@@ -117,6 +117,11 @@ This table shows the query parameters for the request:
       - Boolean *(Optional)*
       - "When true, include any roles to which the user has access due to RCN
         roles. Defaults to false."
+    * - include_accessible_domains
+      - Boolean *(Optional)*
+      - When true, returns a list of domains that a user has access to. The
+        list is returned on the user object of the authentication response.
+        Defaults to false.
 
 This operation does not accept a request body.
 
