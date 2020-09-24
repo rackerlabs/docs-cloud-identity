@@ -7,7 +7,9 @@ Get domain password policy
 
     GET /v2.0/RAX-AUTH/domains/{domainId}/password-policy
 
-Get the domain's password policy. For more information on password policies,
+Get the domain's password policy. A User administrator and User manager
+can get a policy on their own domain. System and Identity administrators
+can get a policy on any domain. For more information on password policies,
 see :ref:`set-password-policy-on-domain-v2.0`.
 
 

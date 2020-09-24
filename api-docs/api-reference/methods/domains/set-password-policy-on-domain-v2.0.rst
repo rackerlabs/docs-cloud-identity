@@ -10,9 +10,9 @@ Set domain password policy
 Set the domain's password policy. The policy allows authorized users to set a
 password rotation requirement for all users within the domain. This forces
 users to change their password after a specified time period. A User
-administrator can set a policy on their own domain. System and Identity
-administrators can set a policy on any domain. A password policy is effective
-immediately for a domain.
+administrator and User manager can set a policy on their own domain. System
+and Identity administrators can set a policy on any domain. A password policy
+is effective immediately for a domain.
 
 
 .. note::
