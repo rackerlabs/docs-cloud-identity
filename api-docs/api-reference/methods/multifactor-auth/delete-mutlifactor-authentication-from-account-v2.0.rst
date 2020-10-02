@@ -15,10 +15,17 @@ account along  with all phones associated with the account. To disable the
 feature without removing phones,  use the update multi-factor settings on
 account operation to disable multi-factor  authentication on the account.
 
-This operation can be completed only on the user account used to submit the
-request.  Attempts to run it for a different user ID result in a 403 error
-message.
+.. note::
 
+  - Users can always use this service to remove multi-factor authentication
+    from themselves.
+
+  - Users with the ``identity:user-admin`` role can remove multi-factor
+    authentication from any user within their domain.
+
+  - Users with the ``identity:user-manage`` or ``identity:user-manage-limited``
+    role can remove multi-factor authentication from any sub user within their
+    domain.
 
 This table shows the possible response codes for this operation:
 
