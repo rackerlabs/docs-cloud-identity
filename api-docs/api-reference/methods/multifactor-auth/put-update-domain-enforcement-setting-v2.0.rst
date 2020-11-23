@@ -17,10 +17,13 @@ configured with multi-factor authentication.
 
 .. note::
 
-   Administrators can override the domain-level enforcement level for specific
+ - Administrators can override the domain-level enforcement level for specific
    user accounts by using the
    :ref:`Update multi-factor authentication settings operation
    <update-multifactor-settings-on-account-v2.0>` to set user level enforcement.
+ - Customers need a support ticket if they want to update a domain to have the
+   ``RACKSPACE_MANDATED`` mfa enforcement policy and also to update a domain's mfa
+   enforcement when it is already set to ``RACKSPACE_MANDATED``.
 
 
 Update domain enforcement settings:json cURL request
@@ -121,6 +124,10 @@ This table shows the body parameters for the request:
 |                       |              |"OPTIONAL"`` Users within the domain   |
 |                       |              |can choose whether to use multi-factor |
 |                       |              |authentication on their own accounts.  |
+|                       |              |``domainMultiFactorEnforcementLevel:   |
+|                       |              |"RACKSPACE_MANDATED"`` makes           |
+|                       |              |multi-factor authentication mandatory  |
+|                       |              |for all account users. *               |
 +-----------------------+--------------+---------------------------------------+
 |RAX-AUTH:multi\        |String        |The domain enforcement level for       |
 |FactorDomain.\         |              |multi-factor authentication. Specify   |
@@ -137,6 +144,10 @@ This table shows the body parameters for the request:
 |                       |              |   multi-factor authentication         |
 |                       |              |   on their account.                   |
 |                       |              |                                       |
+|                       |              |- ``RACKSPACE_MANDATED``               |
+|                       |              |   Authentication is mandatory for all |
+|                       |              |   account users within the specified  |
+|                       |              |   domain.                             |
 +-----------------------+--------------+---------------------------------------+
 
 
