@@ -21,7 +21,7 @@ Panel.
 
 .. note::
 
- - Customers need a support ticket if they want to update user's MFA
+ - Customers need a support ticket if they want to update a user's MFA
    enforcement setting when the domain MFA enforcement setting is
    ``RACKSPACE_MANDATED``.
 
