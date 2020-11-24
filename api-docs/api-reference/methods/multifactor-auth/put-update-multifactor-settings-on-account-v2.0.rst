@@ -19,6 +19,12 @@ on an account.  Note that this feature is available only through the API. You
 cannot override domain enforcement settings from the Rackspace Cloud Control
 Panel.
 
+.. note::
+
+ - Customers need a support ticket if they want to update user's MFA
+   enforcement setting when the domain MFA enforcement setting is
+   ``RACKSPACE_MANDATED``.
+
 
 This table shows the possible response codes for this operation:
 
@@ -41,6 +47,12 @@ This table shows the possible response codes for this operation:
 |                          |                         |user account; multi      |
 |                          |                         |factor phone on account  |
 |                          |                         |is not verified.         |
++--------------------------+-------------------------+-------------------------+
+|403                       |Forbidden                |Cannot update user       |
+|                          |                         |enforcement level when   |
+|                          |                         |domain enforcement level |
+|                          |                         |set as                   |
+|                          |                         |``RACKSPACE_MANDATED``.  |
 +--------------------------+-------------------------+-------------------------+
 |500                       |Service Fault            |Problem linking phone    |
 |                          |                         |with Identity service    |
