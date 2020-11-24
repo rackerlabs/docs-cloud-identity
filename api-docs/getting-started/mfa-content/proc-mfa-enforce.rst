@@ -32,6 +32,9 @@ all user accounts within a specified domain.
 -  Set the enforcement level to **``OPTIONAL``** to make multi-factor
    authentication optional for all users.
 
+-  Set the enforcement level to **``RACKSPACE_MANDATED``** to make multi-factor
+   authentication mandatory for accounts within a specified domain.
+
 Administrators can update the domain-level enforcement setting from the
 API or the Cloud Control Panel. The following figure shows the API work
 flow for updating domain enforcement settings.
@@ -94,12 +97,12 @@ and response**
               }
 
 
-As soon as the domain enforcement level changes to **``REQUIRED``**, the
-Identity service revokes all tokens that were not obtained by using the
-multi-factor authentication flow. To regain account access, users who
-have not enabled multi-factor authentication can request a scoped
-mfa-setup token that they can use to add multi-factor authentication to
-their account.
+As soon as the domain enforcement level changes to **``REQUIRED``** or
+**``RACKSPACE_MANDATED``**, the Identity service revokes all tokens
+that were not obtained by using the multi-factor authentication flow.
+To regain account access, users who have not enabled multi-factor
+authentication can request a scoped mfa-setup token that they can use
+to add multi-factor authentication to their account.
 
 **Next steps**
 
@@ -164,11 +167,12 @@ token and a user account within the same domain.
 
 As soon as the user-level enforcement level changes to **``REQUIRED``**
 or if the value changes to **``DEFAULT``** and the domain-level
-enforcement setting is **``REQUIRED``**, the Identity service revokes
-all tokens for the user that were not obtained by using the multi-factor
-authentication process. Also, if the To regain account access, users can
-:ref:`request for a scoped mfa-setup token <req-mfa-setup-token>`
-that they can use to update their account configuration.
+enforcement setting is **``REQUIRED``** or **``RACKSPACE_MANDATED``**,
+the Identity service revokes all tokens for the user that were not
+obtained by using the multi-factor authentication process. Also, if the
+To regain account access, users can :ref:`request for a scoped mfa-setup
+token <req-mfa-setup-token>` that they can use to update their account
+configuration.
 
 The account user must submit another authentication request to retrieve
 a scoped authentication token that allows access to the Identity service
