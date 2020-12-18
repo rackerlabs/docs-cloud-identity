@@ -7,3 +7,4 @@ pyenchant==1.6.8
 sphinxcontrib-spelling==4.1.0
 sphinx==1.5.1
 sphinx_rtd_theme>=0.1.9
+tox==2.6.0
