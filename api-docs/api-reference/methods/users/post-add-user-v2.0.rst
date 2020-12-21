@@ -35,9 +35,13 @@ page in the Cloud Control panel.
    - If you try to create an account with the user name from an existing
      account, the Add user operation returns an ``HTTP error 409`` message.
 
-   - When a user-admin is created in a domain with domain type ``CLOUD``
-     or ``DEDICATED``, domain MFA enforcement is set as ``RACKSPACE_MANDATED``
-     and user MFA enforcement is set as ``DEFAULT``.
+   - Domain multi-factor authentication, MFA, enforcement is set to
+     ``RACKSPACE_MANDATED`` for all new dedicated and cloud accounts.
+     This means that the new user-admin will need to configure MFA
+     before using their account. This is done by :ref:`getting a scoped
+     token <req-mfa-setup-token>` and :ref:`using the token to configure
+     MFA <multifactor-authenication-ovw>`.
+
 
 This table shows the possible response codes for this operation:
 
