@@ -28,10 +28,24 @@ boxes/*
 # Testenvironment
 .tox/
 
+# Virtualenv
+.venv/
+ENV/
+
 # Editors
 *~
 .*.swp
 .bak
 /.project
-
 .python-version
+node_modules
+.vscode
+Gemfile.lock
+.env
+Pipfile.lock
+docs/_build/
+docs/build/
+doc/_build/
+doc/build/
+api-docs/_build/
+api-docs/build/
