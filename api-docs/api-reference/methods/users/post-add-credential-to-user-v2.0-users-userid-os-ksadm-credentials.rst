@@ -7,6 +7,12 @@ Add credential to user
 
     POST /v2.0/users/{userId}/OS-KSADM/credentials
 
+.. note::
+
+    Add api-key credentials to a user is deprecated.
+    Please use :ref:`Reset API Key<post-reset-api-key-for-user-v2.0>`
+
+
 Use this API operation to add a password credential to a user account.
 
 To add a password, specify the user's ID in the request. If you know the
