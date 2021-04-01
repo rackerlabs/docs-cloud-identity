@@ -14,7 +14,7 @@ This Getting Started Guide shows how to send requests by using the
 To learn about other ways to use Rackspace Cloud API services, see the
 following resources:
 
--  If you are developing applications or automation, try using
+-  If you are developing applications or automation, see
    `Rackspace SDKs`_ or `OpenStack client applications`_.
 
 -  For API development, testing and workflow management in a graphical
