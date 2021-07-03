@@ -12,6 +12,7 @@ To improve security, customers can configure Rackspace Cloud accounts to
 support multi-factor authentication which requires users to authenticate
 in two steps:
 
+
 #. Submit an initial **POST tokens** request to the Identity service
    endpoint, with username and password credentials.
 
@@ -25,6 +26,7 @@ in two steps:
    If the credentials are valid, the Identity service returns an
    authentication token and service catalog that includes the API
    service endpoints available to the user.
+
 
 The following figure shows the multi-factor authentication process work flow.
 
