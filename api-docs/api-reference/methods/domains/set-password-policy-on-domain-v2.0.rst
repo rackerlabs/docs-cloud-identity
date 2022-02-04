@@ -81,11 +81,14 @@ The following table shows the body parameters for the request:
     passwordPolicy.\ **passwordDuration**, String, "The duration for which
     a password can be used. The format is similar to an ISO 8601
     Duration (https://en.wikipedia.org/wiki/ISO_8601#Durations), but
-    only days, hours, minutes, and seconds can be specified."
+    only days, hours, minutes, and seconds can be specified. A zero
+    value duration means that a password never expires."
     passwordPolicy.\ **passwordHistoryRestriction**, String *(Optional)*, "An
     integer value from 0-10 specifying how many previous passwords are
     looked at when a new password is being set. A value of ``0`` means the
     password history will be ignored."
+    passwordPolicy.\ **passwordMinSize**, String *(Optional)*, "An
+    integer value from 8-32 specifying the minimum size for passwords."
 
 **Example: PUT Method request: JSON**
 
@@ -97,7 +100,8 @@ time of 90 days, 6 hours, 30 minutes, and 5 seconds after the password was set.
     {
         "passwordPolicy": {
             "passwordDuration": "P90DT6H30M5S",
-            "passwordHistoryRestriction": "10"
+            "passwordHistoryRestriction": "10",
+            "passwordMinSize": "10"
         }
     }
 
@@ -111,6 +115,7 @@ Response
     {
         "passwordPolicy": {
             "passwordDuration": "P90DT6H30M5S",
-            "passwordHistoryRestriction": "10"
+            "passwordHistoryRestriction": "10",
+            "passwordMinSize": "10"
         }
     }
